@@ -1,0 +1,11 @@
+{
+  "_fv": 43,
+  "_type": "tab",
+  "definition": {
+    "name": "Magic Book",
+    "icon": {
+      "value": "Items.WRITABLE_BOOK"
+    },
+    "showSearch": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "_fv": 43,
+  "_type": "enchantment",
+  "definition": {
+    "name": "Kill",
+    "type": "WEAPON",
+    "rarity": "COMMON",
+    "minLevel": 1,
+    "maxLevel": 1,
+    "damageModifier": 0,
+    "compatibleEnchantments": [],
+    "excludeEnchantments": true,
+    "compatibleItems": [],
+    "excludeItems": true,
+    "isTreasureEnchantment": false,
+    "isCurse": false,
+    "isAllowedOnBooks": true,
+    "canGenerateInLootTables": true,
+    "canVillagerTrade": true
+  }
+}
