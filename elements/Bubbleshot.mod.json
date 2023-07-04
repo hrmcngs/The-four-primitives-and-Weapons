@@ -3,9 +3,9 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "fireball",
+    "texture": "bubbleshot",
     "customModelName": "Normal",
-    "name": "§cFireball",
+    "name": "§3Bubbleshot",
     "rarity": "RARE",
     "creativeTab": {
       "value": "CUSTOM:MagicBook"

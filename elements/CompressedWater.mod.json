@@ -3,14 +3,14 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "fireball",
+    "texture": "compressedwater",
     "customModelName": "Normal",
-    "name": "§cFireball",
+    "name": "§9Compressed Water",
     "rarity": "RARE",
     "creativeTab": {
-      "value": "CUSTOM:MagicBook"
+      "value": "MATERIALS"
     },
-    "stackSize": 1,
+    "stackSize": 64,
     "enchantability": 0,
     "useDuration": 0,
     "toolType": 1.0,

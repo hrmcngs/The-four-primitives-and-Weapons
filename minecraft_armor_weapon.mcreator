@@ -165,6 +165,168 @@
           }
         ]
       }
+    },
+    {
+      "name": "Bubbleshot",
+      "type": "item",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bubbleshot",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/minecraftarmorweapon/item/BubbleshotItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bubbleshot.json"
+        ]
+      }
+    },
+    {
+      "name": "Arrow1ehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 13,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "arrow_1ehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/minecraftarmorweapon/procedures/Arrow1ehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Arrow1",
+      "type": "potioneffect",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "arrow_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/minecraftarmorweapon/potion/Arrow1MobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ArmorAndWeapon",
+      "type": "villagerprofession",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_and_weapon",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "WeaponAndArmor",
+      "type": "villagertrade",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "weapon_and_armor",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "WaterIronIngot",
+      "type": "item",
+      "sortid": 14,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "water_iron_ingot",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/minecraftarmorweapon/item/WaterIronIngotItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/water_iron_ingot.json"
+        ]
+      }
+    },
+    {
+      "name": "FireIronIngot",
+      "type": "item",
+      "sortid": 15,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fire_iron_ingot",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/fire_iron_ingot.json",
+          "src/main/java/net/mcreator/minecraftarmorweapon/item/FireIronIngotItem.java"
+        ]
+      }
+    },
+    {
+      "name": "WaterIronIngotRecipe",
+      "type": "recipe",
+      "sortid": 17,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "water_iron_ingot_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/water_iron_ingot_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "FireIronIngotRecipe",
+      "type": "recipe",
+      "sortid": 16,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fire_iron_ingot_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/fire_iron_ingot_recipe.json"
+        ]
+      }
+    },
+    {
+      "name": "CompressedWater",
+      "type": "item",
+      "sortid": 18,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "compressed_water",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/compressed_water.json",
+          "src/main/java/net/mcreator/minecraftarmorweapon/item/CompressedWaterItem.java"
+        ]
+      }
+    },
+    {
+      "name": "CompressedWaterRecipe",
+      "type": "recipe",
+      "sortid": 19,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "compressed_water_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/compressed_water_recipe.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -184,14 +346,20 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
+      "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "gui.minecraft_armor_weapon.ddd.label_var": "\u003cVAR:aaa\u003e",
-      "item.minecraft_armor_weapon.fireball": "Fireball",
+      "item.minecraft_armor_weapon.fireball": "§cFireball",
       "itemGroup.tabbuki": "Buki",
-      "item.minecraft_armor_weapon.netherite_katana": "Netherite Katana",
-      "enchantment.minecraft_armor_weapon.demonized": "§4§l§kDemonized",
       "itemGroup.tabmagic_book": "Magic Book",
+      "entity.minecraft.villager.minecraft_armor_weapon.armor_and_weapon": "Armor And Weapon",
       "enchantment.minecraft_armor_weapon.kill": "Kill",
-      "key.minecraft_armor_weapon.r": "技を切り替える"
+      "item.minecraft_armor_weapon.bubbleshot": "§3Bubbleshot",
+      "key.minecraft_armor_weapon.r": "技を切り替える",
+      "item.minecraft_armor_weapon.water_iron_ingot": "§1Water Iron Ingot",
+      "item.minecraft_armor_weapon.compressed_water": "§9Compressed Water",
+      "item.minecraft_armor_weapon.fire_iron_ingot": "§cFire Iron Ingot",
+      "item.minecraft_armor_weapon.netherite_katana": "Netherite Katana",
+      "enchantment.minecraft_armor_weapon.demonized": "§4§l§kDemonized"
     }
   },
   "foldersRoot": {
