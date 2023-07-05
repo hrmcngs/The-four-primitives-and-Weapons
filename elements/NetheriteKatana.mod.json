@@ -3,19 +3,19 @@
   "_type": "tool",
   "definition": {
     "renderType": 1,
-    "texture": "qq",
+    "texture": "aa",
     "customModelName": "netherite_katana:default",
-    "name": "Netherite Katana",
+    "name": "Netheritekatana",
     "specialInfo": [],
     "creativeTab": {
-      "value": "CUSTOM:Buki"
+      "value": "COMBAT"
     },
     "toolType": "Sword",
-    "harvestLevel": 10,
-    "efficiency": 10.0,
+    "harvestLevel": 1,
+    "efficiency": 4.0,
     "attackSpeed": 1.6,
-    "enchantability": 5,
-    "damageVsEntity": 10.0,
+    "enchantability": 2,
+    "damageVsEntity": 8.0,
     "usageCount": 0,
     "blocksAffected": [],
     "hasGlow": false,

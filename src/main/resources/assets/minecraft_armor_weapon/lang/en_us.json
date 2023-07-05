@@ -1,16 +1,10 @@
 {
-  "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
-  "gui.minecraft_armor_weapon.ddd.label_var": "\u003cVAR:aaa\u003e",
-  "item.minecraft_armor_weapon.fireball": "§cFireball",
-  "itemGroup.tabbuki": "Buki",
-  "itemGroup.tabmagic_book": "Magic Book",
-  "entity.minecraft.villager.minecraft_armor_weapon.armor_and_weapon": "Armor And Weapon",
-  "enchantment.minecraft_armor_weapon.kill": "Kill",
-  "item.minecraft_armor_weapon.bubbleshot": "§3Bubbleshot",
-  "key.minecraft_armor_weapon.r": "技を切り替える",
-  "item.minecraft_armor_weapon.water_iron_ingot": "§1Water Iron Ingot",
+  "item.minecraft_armor_weapon.compressed_magma": "§cCompressed Magma",
+  "item.minecraft_armor_weapon.water_iron_ingot": "§9Water Iron Ingot",
   "item.minecraft_armor_weapon.compressed_water": "§9Compressed Water",
+  "entity.minecraft.villager.minecraft_armor_weapon.armor_and_weapon_villagers_position": "Armor And Weapon Villagers Position",
+  "itemGroup.tabmagic_books": "Magic Books",
+  "itemGroup.tabbuki": "Buki",
   "item.minecraft_armor_weapon.fire_iron_ingot": "§cFire Iron Ingot",
-  "item.minecraft_armor_weapon.netherite_katana": "Netherite Katana",
-  "enchantment.minecraft_armor_weapon.demonized": "§4§l§kDemonized"
+  "item.minecraft_armor_weapon.netheritekatana": "Netheritekatana"
 }

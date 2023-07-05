@@ -3,10 +3,10 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "compressedwater",
+    "texture": "compressedmagma",
     "customModelName": "Normal",
     "name": "§9Compressed Water",
-    "rarity": "RARE",
+    "rarity": "UNCOMMON",
     "creativeTab": {
       "value": "MATERIALS"
     },

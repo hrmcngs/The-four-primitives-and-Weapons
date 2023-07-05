@@ -3,10 +3,10 @@
   "_type": "item",
   "definition": {
     "renderType": 0,
-    "texture": "mizu",
+    "texture": "compressedwater",
     "customModelName": "Normal",
-    "name": "§9Water Iron Ingot",
-    "rarity": "RARE",
+    "name": "§cCompressed Magma",
+    "rarity": "UNCOMMON",
     "creativeTab": {
       "value": "MATERIALS"
     },
