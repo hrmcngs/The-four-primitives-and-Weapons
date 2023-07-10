@@ -101,19 +101,89 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/water_iron_ingot.json"
         ]
       }
+    },
+    {
+      "name": "ThunderIronIngot",
+      "type": "item",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "thunder_iron_ingot",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/ThunderIronIngotItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/thunder_iron_ingot.json"
+        ]
+      }
+    },
+    {
+      "name": "CompressedElectricity",
+      "type": "item",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "compressed_electricity",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/compressed_electricity.json",
+          "src/main/java/minecraftarmorweapon/item/CompressedElectricityItem.java"
+        ]
+      }
+    },
+    {
+      "name": "Fireball",
+      "type": "item",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireball",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/fireball.json",
+          "src/main/java/minecraftarmorweapon/item/FireballItem.java"
+        ]
+      }
+    },
+    {
+      "name": "WeapondAndArmor",
+      "type": "villagertrade",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "weapond_and_armor",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "Thunderbolt",
+      "type": "item",
+      "sortid": 11,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "thunderbolt",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/ThunderboltItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/thunderbolt.json"
+        ]
+      }
     }
   ],
   "variable_elements": [],
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "item.minecraft_armor_weapon.compressed_magma": "§cCompressed Magma",
-      "item.minecraft_armor_weapon.water_iron_ingot": "§9Water Iron Ingot",
-      "item.minecraft_armor_weapon.compressed_water": "§9Compressed Water",
       "entity.minecraft.villager.minecraft_armor_weapon.armor_and_weapon_villagers_position": "Armor And Weapon Villagers Position",
       "itemGroup.tabmagic_books": "Magic Books",
+      "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+      "item.minecraft_armor_weapon.fireball": "§cFireball",
       "itemGroup.tabbuki": "Buki",
+      "item.minecraft_armor_weapon.compressed_magma": "§cCompressed Magma",
+      "item.minecraft_armor_weapon.water_iron_ingot": "§9Water Iron Ingot",
+      "item.minecraft_armor_weapon.thunder_iron_ingot": "§eThunder Iron Ingot",
+      "item.minecraft_armor_weapon.compressed_water": "§9Compressed Water",
       "item.minecraft_armor_weapon.fire_iron_ingot": "§cFire Iron Ingot",
+      "item.minecraft_armor_weapon.compressed_electricity": "§eCompressed Electricity",
       "item.minecraft_armor_weapon.netheritekatana": "Netheritekatana"
     }
   },
@@ -135,6 +205,7 @@
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "forge-1.19.2",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "minecraftarmorweapon",
     "lockBaseModFiles": false
   },

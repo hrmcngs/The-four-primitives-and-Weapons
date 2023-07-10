@@ -1,10 +1,14 @@
 {
-  "item.minecraft_armor_weapon.compressed_magma": "§cCompressed Magma",
-  "item.minecraft_armor_weapon.water_iron_ingot": "§9Water Iron Ingot",
-  "item.minecraft_armor_weapon.compressed_water": "§9Compressed Water",
   "entity.minecraft.villager.minecraft_armor_weapon.armor_and_weapon_villagers_position": "Armor And Weapon Villagers Position",
   "itemGroup.tabmagic_books": "Magic Books",
+  "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+  "item.minecraft_armor_weapon.fireball": "§cFireball",
   "itemGroup.tabbuki": "Buki",
+  "item.minecraft_armor_weapon.compressed_magma": "§cCompressed Magma",
+  "item.minecraft_armor_weapon.water_iron_ingot": "§9Water Iron Ingot",
+  "item.minecraft_armor_weapon.thunder_iron_ingot": "§eThunder Iron Ingot",
+  "item.minecraft_armor_weapon.compressed_water": "§9Compressed Water",
   "item.minecraft_armor_weapon.fire_iron_ingot": "§cFire Iron Ingot",
+  "item.minecraft_armor_weapon.compressed_electricity": "§eCompressed Electricity",
   "item.minecraft_armor_weapon.netheritekatana": "Netheritekatana"
 }
