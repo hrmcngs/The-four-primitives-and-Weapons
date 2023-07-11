@@ -1,4 +1,7 @@
 {
   "itemGroup.tabmagic_books": "Magic Books",
-  "item.minecraft_armor_weapon.fireball": "§cFireball"
+  "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+  "item.minecraft_armor_weapon.fireball": "§cFireball",
+  "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
+  "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill"
 }

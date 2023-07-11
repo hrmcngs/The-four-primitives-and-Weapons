@@ -13,6 +13,7 @@
     {
       "name": "Fireball",
       "type": "item",
+      "sortid": 2,
       "compiles": true,
       "locked_code": false,
       "registry_name": "fireball",
@@ -22,6 +23,46 @@
           "src/main/java/minecraftarmorweapon/item/FireballItem.java"
         ]
       }
+    },
+    {
+      "name": "Bubbleshot",
+      "type": "item",
+      "sortid": 1,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bubbleshot",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bubbleshot.json",
+          "src/main/java/minecraftarmorweapon/item/BubbleshotItem.java"
+        ]
+      }
+    },
+    {
+      "name": "Thunderbolt",
+      "type": "item",
+      "sortid": 3,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "thunderbolt",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/ThunderboltItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/thunderbolt.json"
+        ]
+      }
+    },
+    {
+      "name": "Kill",
+      "type": "enchantment",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kill",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/enchantment/KillEnchantment.java"
+        ]
+      }
     }
   ],
   "variable_elements": [],
@@ -29,7 +70,10 @@
   "language_map": {
     "en_us": {
       "itemGroup.tabmagic_books": "Magic Books",
-      "item.minecraft_armor_weapon.fireball": "§cFireball"
+      "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+      "item.minecraft_armor_weapon.fireball": "§cFireball",
+      "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
+      "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill"
     }
   },
   "foldersRoot": {
