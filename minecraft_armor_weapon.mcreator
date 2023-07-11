@@ -1,0 +1,57 @@
+{
+  "mod_elements": [
+    {
+      "name": "MagicBooks",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magic_books",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "Fireball",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireball",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/fireball.json",
+          "src/main/java/minecraftarmorweapon/item/FireballItem.java"
+        ]
+      }
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [],
+  "language_map": {
+    "en_us": {
+      "itemGroup.tabmagic_books": "Magic Books",
+      "item.minecraft_armor_weapon.fireball": "§cFireball"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "minecraft_armor_weapon",
+    "modName": "minecraft armor weapon",
+    "version": "1.0.0",
+    "author": "hrmcn, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Academic Free License v3.0",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.19.2",
+    "modElementsPackage": "minecraftarmorweapon",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202300224119
+}
