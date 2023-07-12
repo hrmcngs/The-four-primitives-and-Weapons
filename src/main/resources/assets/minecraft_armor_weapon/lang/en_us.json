@@ -1,14 +1,13 @@
 {
-  "entity.minecraft.villager.minecraft_armor_weapon.armor_and_weapon_villagers_position": "Armor And Weapon Villagers Position",
+  "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
   "itemGroup.tabmagic_books": "Magic Books",
   "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
   "item.minecraft_armor_weapon.fireball": "§cFireball",
-  "itemGroup.tabbuki": "Buki",
-  "item.minecraft_armor_weapon.compressed_magma": "§cCompressed Magma",
-  "item.minecraft_armor_weapon.water_iron_ingot": "§9Water Iron Ingot",
-  "item.minecraft_armor_weapon.thunder_iron_ingot": "§eThunder Iron Ingot",
-  "item.minecraft_armor_weapon.compressed_water": "§9Compressed Water",
-  "item.minecraft_armor_weapon.fire_iron_ingot": "§cFire Iron Ingot",
-  "item.minecraft_armor_weapon.compressed_electricity": "§eCompressed Electricity",
-  "item.minecraft_armor_weapon.netheritekatana": "Netheritekatana"
+  "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
+  "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
+  "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
+  "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
+  "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
+  "itemGroup.tabweapon": "Weapon",
+  "key.minecraft_armor_weapon.r": "R"
 }

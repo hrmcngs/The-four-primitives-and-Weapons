@@ -1,0 +1,34 @@
+{
+  "_fv": 43,
+  "_type": "overlay",
+  "definition": {
+    "priority": "NORMAL",
+    "components": [
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_dddgemu_neiniobareiwo_biao",
+          "text": {
+            "fixedValue": "",
+            "name": "DddgemuNeiniobareiwoBiaoShi"
+          },
+          "color": {
+            "value": -5921371,
+            "falpha": 0.0
+          },
+          "x": 329,
+          "y": 229
+        }
+      }
+    ],
+    "baseTexture": "",
+    "overlayTarget": "Ingame",
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

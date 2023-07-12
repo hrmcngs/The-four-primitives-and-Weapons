@@ -1,0 +1,12 @@
+{
+  "_fv": 43,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "R",
+    "keyBindingName": "R",
+    "keyBindingCategoryKey": "misc",
+    "onKeyPressed": {
+      "name": "RkigaYasaretatoki"
+    }
+  }
+}

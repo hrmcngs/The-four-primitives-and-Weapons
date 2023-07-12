@@ -29,9 +29,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
-import minecraftarmorweapon.init.MinecraftArmorWeaponModVillagerProfessions;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
+import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
+import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
 import java.util.function.Supplier;
 import java.util.function.Function;
@@ -54,7 +55,10 @@ public class MinecraftArmorWeaponMod {
 
 		MinecraftArmorWeaponModItems.REGISTRY.register(bus);
 
-		MinecraftArmorWeaponModVillagerProfessions.PROFESSIONS.register(bus);
+		MinecraftArmorWeaponModMobEffects.REGISTRY.register(bus);
+
+		MinecraftArmorWeaponModEnchantments.REGISTRY.register(bus);
+
 	}
 
 	private static final String PROTOCOL_VERSION = "1";
