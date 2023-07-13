@@ -53,9 +53,6 @@ public class Kill1Procedure {
 					}
 				}
 			}
-			if (sourceentity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.FIREBALLEFFECT.get()) : false) {
-				entity.setSecondsOnFire(15);
-			}
 		}
 		if (!world.isClientSide()) {
 			if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.DEMONIZED.get(), (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
@@ -68,6 +65,11 @@ public class Kill1Procedure {
 				if (sourceentity instanceof Player _player)
 					_player.getFoodData().setFoodLevel((int) ((sourceentity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0)
 							+ EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.DEMONIZED.get(), (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))));
+			}
+		}
+		if (!world.isClientSide()) {
+			if (sourceentity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.FIREBALLEFFECT.get()) : false) {
+				entity.setSecondsOnFire(15);
 			}
 		}
 	}
