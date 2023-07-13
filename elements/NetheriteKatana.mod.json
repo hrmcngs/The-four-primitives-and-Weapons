@@ -1,0 +1,30 @@
+{
+  "_fv": 43,
+  "_type": "tool",
+  "definition": {
+    "renderType": 1,
+    "texture": "aa",
+    "customModelName": "netherite_katana:default",
+    "name": "§8Netherite Katana",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:Weapon"
+    },
+    "toolType": "Sword",
+    "harvestLevel": 10,
+    "efficiency": 9.0,
+    "attackSpeed": 3.2,
+    "enchantability": 9,
+    "damageVsEntity": 10.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "NetheriteKatanaYoukuritukusitatoki"
+    }
+  }
+}

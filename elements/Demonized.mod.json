@@ -2,23 +2,26 @@
   "_fv": 43,
   "_type": "enchantment",
   "definition": {
-    "name": "§8§l§oKill",
+    "name": "§4§kDemonized",
     "type": "WEAPON",
     "rarity": "RARE",
     "minLevel": 1,
-    "maxLevel": 1,
+    "maxLevel": 10,
     "damageModifier": 0,
     "compatibleEnchantments": [],
     "excludeEnchantments": false,
     "compatibleItems": [
       {
-        "value": "Items.IRON_SWORD"
+        "value": "CUSTOM:NetheriteKatana"
       },
       {
         "value": "Items.WOODEN_SWORD"
       },
       {
         "value": "Items.STONE_SWORD"
+      },
+      {
+        "value": "Items.IRON_SWORD"
       },
       {
         "value": "Items.GOLDEN_SWORD"
@@ -30,6 +33,24 @@
         "value": "Items.NETHERITE_SWORD"
       },
       {
+        "value": "Items.WOODEN_AXE"
+      },
+      {
+        "value": "Items.STONE_AXE"
+      },
+      {
+        "value": "Items.IRON_AXE"
+      },
+      {
+        "value": "Items.GOLDEN_AXE"
+      },
+      {
+        "value": "Items.DIAMOND_AXE"
+      },
+      {
+        "value": "Items.NETHERITE_AXE"
+      },
+      {
         "value": "Items.TRIDENT"
       },
       {
@@ -37,9 +58,6 @@
       },
       {
         "value": "Items.CROSSBOW"
-      },
-      {
-        "value": "CUSTOM:NetheriteKatana"
       },
       {
         "value": "CUSTOM:ItemWeaponsword"

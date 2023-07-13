@@ -3,6 +3,7 @@
     {
       "name": "MagicBooks",
       "type": "tab",
+      "sortid": 6,
       "compiles": true,
       "locked_code": false,
       "registry_name": "magic_books",
@@ -55,6 +56,7 @@
     {
       "name": "Kill",
       "type": "enchantment",
+      "sortid": 11,
       "compiles": true,
       "locked_code": false,
       "registry_name": "kill",
@@ -63,17 +65,313 @@
           "src/main/java/minecraftarmorweapon/enchantment/KillEnchantment.java"
         ]
       }
+    },
+    {
+      "name": "Kill1",
+      "type": "procedure",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kill_1",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/Kill1Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ItemWeaponsword",
+      "type": "tool",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "item_weaponsword",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/item_weaponsword.json",
+          "src/main/java/minecraftarmorweapon/item/ItemWeaponswordItem.java"
+        ]
+      }
+    },
+    {
+      "name": "Weapon",
+      "type": "tab",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "weapon",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "NetheriteKatana",
+      "type": "tool",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "netherite_katana",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/netherite_katana.json",
+          "src/main/java/minecraftarmorweapon/item/NetheriteKatanaItem.java"
+        ]
+      }
+    },
+    {
+      "name": "Arrow1ehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "arrow_1ehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/Arrow1ehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Arrow1",
+      "type": "potioneffect",
+      "sortid": 16,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "arrow_1",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/Arrow1MobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "Demonized",
+      "type": "enchantment",
+      "sortid": 10,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "demonized",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/enchantment/DemonizedEnchantment.java"
+        ]
+      }
+    },
+    {
+      "name": "DddgemuNeiniobareiwoBiaoShi",
+      "type": "procedure",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dddgemu_neiniobareiwo_biao_shi",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/DddgemuNeiniobareiwoBiaoShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ddd",
+      "type": "overlay",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ddd",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/client/screens/DddOverlay.java"
+        ]
+      }
+    },
+    {
+      "name": "RkigaYasaretatoki",
+      "type": "procedure",
+      "sortid": 13,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rkiga_yasaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/RkigaYasaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "R",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "r",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/network/RMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "FireballeffectehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 14,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireballeffectehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/FireballeffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Fireballeffect",
+      "type": "potioneffect",
+      "sortid": 15,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireballeffect",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/FireballeffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "FireballYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 17,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireball_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/FireballYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "NetheriteKatanaYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 18,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "netherite_katana_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/NetheriteKatanaYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
-  "variable_elements": [],
+  "variable_elements": [
+    {
+      "name": "ddd",
+      "type": "string",
+      "scope": "player_persistent",
+      "value": "\"\""
+    },
+    {
+      "name": "aaa",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "2.0"
+    }
+  ],
   "sound_elements": [],
   "language_map": {
     "en_us": {
+      "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
+      "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
+      "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
-      "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill"
+      "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
+      "itemGroup.tabweapon": "Weapon",
+      "key.minecraft_armor_weapon.r": "R",
+      "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
+      "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized"
     }
   },
   "foldersRoot": {

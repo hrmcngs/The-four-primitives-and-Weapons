@@ -30,6 +30,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
+import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
@@ -53,6 +54,8 @@ public class MinecraftArmorWeaponMod {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
 		MinecraftArmorWeaponModItems.REGISTRY.register(bus);
+
+		MinecraftArmorWeaponModMobEffects.REGISTRY.register(bus);
 
 		MinecraftArmorWeaponModEnchantments.REGISTRY.register(bus);
 

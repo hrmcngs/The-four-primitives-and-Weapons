@@ -12,16 +12,21 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 
 import java.util.List;
 
-public class KillEnchantment extends Enchantment {
-	public KillEnchantment(EquipmentSlot... slots) {
+public class DemonizedEnchantment extends Enchantment {
+	public DemonizedEnchantment(EquipmentSlot... slots) {
 		super(Enchantment.Rarity.RARE, EnchantmentCategory.WEAPON, slots);
+	}
+
+	@Override
+	public int getMaxLevel() {
+		return 10;
 	}
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
 		Item item = stack.getItem();
-		return List.of(Items.IRON_SWORD, Items.WOODEN_SWORD, Items.STONE_SWORD, Items.GOLDEN_SWORD, Items.DIAMOND_SWORD, Items.NETHERITE_SWORD, Items.TRIDENT, Items.BOW, Items.CROSSBOW, MinecraftArmorWeaponModItems.NETHERITE_KATANA.get(),
-				MinecraftArmorWeaponModItems.ITEM_WEAPONSWORD.get()).contains(item);
+		return List.of(MinecraftArmorWeaponModItems.NETHERITE_KATANA.get(), Items.WOODEN_SWORD, Items.STONE_SWORD, Items.IRON_SWORD, Items.GOLDEN_SWORD, Items.DIAMOND_SWORD, Items.NETHERITE_SWORD, Items.WOODEN_AXE, Items.STONE_AXE, Items.IRON_AXE,
+				Items.GOLDEN_AXE, Items.DIAMOND_AXE, Items.NETHERITE_AXE, Items.TRIDENT, Items.BOW, Items.CROSSBOW, MinecraftArmorWeaponModItems.ITEM_WEAPONSWORD.get()).contains(item);
 	}
 
 	@Override
