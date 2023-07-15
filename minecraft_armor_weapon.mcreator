@@ -341,6 +341,102 @@
           }
         ]
       }
+    },
+    {
+      "name": "Armor",
+      "type": "tab",
+      "sortid": 19,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "Rose",
+      "type": "plant",
+      "sortid": 20,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rose",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/world/features/plants/RoseFeature.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/rose.json",
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/rose.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/rose.json",
+          "src/main/java/minecraftarmorweapon/block/RoseBlock.java",
+          "src/main/resources/data/minecraft_armor_weapon/forge/biome_modifier/rose_biome_modifier.json"
+        ]
+      }
+    },
+    {
+      "name": "MagicBooksLootTable",
+      "type": "loottable",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magic_books_loot_table",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/loot_tables/chests/magic_books_loot_table.json"
+        ]
+      }
+    },
+    {
+      "name": "PillagerArmorbutunoMeiteitukunoibento",
+      "type": "procedure",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "pillager_armorbutuno_meiteitukunoibento",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/PillagerArmorbutunoMeiteitukunoibentoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PillagerArmor",
+      "type": "armor",
+      "sortid": 23,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "pillager_armor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/pillager_armor_chestplate.json",
+          "src/main/java/minecraftarmorweapon/item/PillagerArmorItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/pillager_armor_boots.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/pillager_armor_helmet.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/pillager_armor_leggings.json"
+        ]
+      }
+    },
+    {
+      "name": "RosemobupureiyagaZhiWutoChongTusitatoki",
+      "type": "procedure",
+      "sortid": 24,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rosemobupureiyaga_zhi_wuto_chong_tusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/RosemobupureiyagaZhiWutoChongTusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -361,17 +457,23 @@
   "language_map": {
     "en_us": {
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
+      "itemGroup.tabarmor": "Armor",
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
+      "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "itemGroup.tabweapon": "Weapon",
       "key.minecraft_armor_weapon.r": "R",
+      "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
-      "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized"
+      "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
+      "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
+      "block.minecraft_armor_weapon.rose": "Rose"
     }
   },
   "foldersRoot": {
@@ -382,7 +484,7 @@
     "modid": "minecraft_armor_weapon",
     "modName": "minecraft armor weapon",
     "version": "1.0.0",
-    "author": "hrmcn, MCreator",
+    "author": "0526ngs",
     "websiteURL": "https://mcreator.net",
     "license": "Academic Free License v3.0",
     "disableForgeVersionCheck": true,
@@ -392,6 +494,7 @@
     "dependants": [],
     "mcreatorDependencies": [],
     "currentGenerator": "forge-1.19.2",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
     "modElementsPackage": "minecraftarmorweapon",
     "lockBaseModFiles": false
   },

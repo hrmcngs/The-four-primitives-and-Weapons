@@ -1,0 +1,11 @@
+{
+  "_fv": 43,
+  "_type": "tab",
+  "definition": {
+    "name": "Armor",
+    "icon": {
+      "value": "Items.TURTLE_HELMET"
+    },
+    "showSearch": false
+  }
+}

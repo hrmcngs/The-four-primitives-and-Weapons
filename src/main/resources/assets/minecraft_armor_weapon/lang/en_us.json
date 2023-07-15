@@ -1,14 +1,20 @@
 {
   "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
+  "itemGroup.tabarmor": "Armor",
   "itemGroup.tabmagic_books": "Magic Books",
   "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
   "item.minecraft_armor_weapon.fireball": "§cFireball",
+  "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
   "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
   "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
   "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
   "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
+  "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
   "itemGroup.tabweapon": "Weapon",
   "key.minecraft_armor_weapon.r": "R",
+  "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
   "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
-  "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized"
+  "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
+  "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
+  "block.minecraft_armor_weapon.rose": "Rose"
 }

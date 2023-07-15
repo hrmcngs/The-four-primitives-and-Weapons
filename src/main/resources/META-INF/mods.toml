@@ -8,7 +8,7 @@ version="1.0.0"
 displayName="minecraft armor weapon"
 credits="Created using mod maker MCreator - https://mcreator.net/about"
 displayURL="https://mcreator.net"
-authors="hrmcn, MCreator"
+authors="0526ngs"
 
 [[dependencies.minecraft_armor_weapon]]
     modId="minecraft"
