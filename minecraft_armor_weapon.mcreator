@@ -437,6 +437,20 @@
           }
         ]
       }
+    },
+    {
+      "name": "CustomElytraTest",
+      "type": "armor",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "custom_elytra_test",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/custom_elytra_test_chestplate.json",
+          "src/main/java/minecraftarmorweapon/item/CustomElytraTestItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -456,6 +470,7 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
+      "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "itemGroup.tabarmor": "Armor",
       "itemGroup.tabmagic_books": "Magic Books",

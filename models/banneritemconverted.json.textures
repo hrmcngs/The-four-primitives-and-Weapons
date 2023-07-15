@@ -2,7 +2,7 @@
   "mappings": {
     "default": {
       "map": {
-        "2": "banneritem"
+        "2": "banneritemconverted"
       },
       "name": "default"
     }

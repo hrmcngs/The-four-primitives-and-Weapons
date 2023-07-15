@@ -18,6 +18,7 @@ import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.FireballItem;
+import minecraftarmorweapon.item.CustomElytraTestItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -34,6 +35,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> PILLAGER_ARMOR_CHESTPLATE = REGISTRY.register("pillager_armor_chestplate", () -> new PillagerArmorItem.Chestplate());
 	public static final RegistryObject<Item> PILLAGER_ARMOR_LEGGINGS = REGISTRY.register("pillager_armor_leggings", () -> new PillagerArmorItem.Leggings());
 	public static final RegistryObject<Item> PILLAGER_ARMOR_BOOTS = REGISTRY.register("pillager_armor_boots", () -> new PillagerArmorItem.Boots());
+	public static final RegistryObject<Item> CUSTOM_ELYTRA_TEST_CHESTPLATE = REGISTRY.register("custom_elytra_test_chestplate", () -> new CustomElytraTestItem.Chestplate());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
