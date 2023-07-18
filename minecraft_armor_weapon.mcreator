@@ -465,6 +465,38 @@
           "src/main/resources/data/minecraft_armor_weapon/forge/biome_modifier/outpost_site_biome_modifier.json"
         ]
       }
+    },
+    {
+      "name": "ThunderboltEffrct",
+      "type": "potioneffect",
+      "sortid": 27,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "thunderbolt_effrct",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/ThunderboltEffrctMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ThunderboltYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 28,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "thunderbolt_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ThunderboltYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -490,6 +522,7 @@
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
+      "effect.minecraft_armor_weapon.thunderbolt_effrct": "thunderbolt",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",

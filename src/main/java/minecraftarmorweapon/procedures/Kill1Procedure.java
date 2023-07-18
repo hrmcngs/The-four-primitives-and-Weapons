@@ -72,5 +72,13 @@ public class Kill1Procedure {
 				entity.setSecondsOnFire(15);
 			}
 		}
+		if (!world.isClientSide()) {
+			if (sourceentity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.THUNDERBOLT_EFFRCT.get()) : false) {
+				if (entity instanceof Player _player)
+					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem(), 100);
+				if (entity instanceof Player _player)
+					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 100);
+			}
+		}
 	}
 }

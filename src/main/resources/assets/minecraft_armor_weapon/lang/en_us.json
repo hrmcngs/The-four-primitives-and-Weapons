@@ -5,6 +5,7 @@
   "itemGroup.tabmagic_books": "Magic Books",
   "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
   "item.minecraft_armor_weapon.fireball": "§cFireball",
+  "effect.minecraft_armor_weapon.thunderbolt_effrct": "thunderbolt",
   "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
   "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
   "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",

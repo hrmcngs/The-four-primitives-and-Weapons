@@ -10,6 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.effect.MobEffect;
 
+import minecraftarmorweapon.potion.ThunderboltEffrctMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.Arrow1MobEffect;
 
@@ -19,4 +20,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, MinecraftArmorWeaponMod.MODID);
 	public static final RegistryObject<MobEffect> FIREBALLEFFECT = REGISTRY.register("fireballeffect", () -> new FireballeffectMobEffect());
 	public static final RegistryObject<MobEffect> ARROW_1 = REGISTRY.register("arrow_1", () -> new Arrow1MobEffect());
+	public static final RegistryObject<MobEffect> THUNDERBOLT_EFFRCT = REGISTRY.register("thunderbolt_effrct", () -> new ThunderboltEffrctMobEffect());
 }
