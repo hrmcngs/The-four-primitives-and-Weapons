@@ -375,7 +375,7 @@
       "name": "MagicBooksLootTable",
       "type": "loottable",
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "magic_books_loot_table",
       "metadata": {
         "files": [
@@ -449,6 +449,20 @@
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/custom_elytra_test_chestplate.json",
           "src/main/java/minecraftarmorweapon/item/CustomElytraTestItem.java"
+        ]
+      }
+    },
+    {
+      "name": "OutpostSite",
+      "type": "structure",
+      "sortid": 26,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "outpost_site",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/world/features/OutpostSiteFeature.java",
+          "src/main/resources/data/minecraft_armor_weapon/forge/biome_modifier/outpost_site_biome_modifier.json"
         ]
       }
     }
