@@ -1,0 +1,20 @@
+{
+  "_fv": 43,
+  "_type": "potioneffect",
+  "definition": {
+    "effectName": "tunderboltattack",
+    "icon": "fireballeffect.png",
+    "color": {
+      "value": -852224,
+      "falpha": 0.0
+    },
+    "isInstant": false,
+    "isBad": false,
+    "isBenefitical": false,
+    "renderStatusInInventory": true,
+    "renderStatusInHUD": true,
+    "onActiveTick": {
+      "name": "TunderbolteffrctehuekutogaYouXiaoShinoteituku"
+    }
+  }
+}

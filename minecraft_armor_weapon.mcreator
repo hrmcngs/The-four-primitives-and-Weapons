@@ -467,22 +467,41 @@
       }
     },
     {
-      "name": "ThunderboltEffrct",
+      "name": "Tunderbolteffrct",
       "type": "potioneffect",
-      "sortid": 27,
+      "sortid": 29,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "thunderbolt_effrct",
+      "registry_name": "tunderbolteffrct",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/ThunderboltEffrctMobEffect.java"
+          "src/main/java/minecraftarmorweapon/potion/TunderbolteffrctMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "TunderbolteffrctehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 30,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tunderbolteffrctehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TunderbolteffrctehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
         ]
       }
     },
     {
       "name": "ThunderboltYoukuritukusitatoki",
       "type": "procedure",
-      "sortid": 28,
+      "sortid": 31,
       "compiles": true,
       "locked_code": false,
       "registry_name": "thunderbolt_youkuritukusitatoki",
@@ -495,6 +514,38 @@
             "name": "entity",
             "type": "entity"
           }
+        ]
+      }
+    },
+    {
+      "name": "AtarutoehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 32,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "atarutoehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/AtarutoehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Ataruto",
+      "type": "potioneffect",
+      "sortid": 33,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ataruto",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/AtarutoMobEffect.java"
         ]
       }
     }
@@ -522,7 +573,6 @@
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
-      "effect.minecraft_armor_weapon.thunderbolt_effrct": "thunderbolt",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
@@ -532,9 +582,11 @@
       "itemGroup.tabweapon": "Weapon",
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
+      "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
+      "effect.minecraft_armor_weapon.ataruto": "ataruto",
       "block.minecraft_armor_weapon.rose": "Rose"
     }
   },

@@ -12,10 +12,10 @@ public class ThunderboltYoukuritukusitatokiProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		if (MinecraftArmorWeaponModItems.THUNDERBOLT.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()
-				&& MinecraftArmorWeaponModItems.THUNDERBOLT.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()
+				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
 			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDERBOLT_EFFRCT.get(), 100, 1, true, false));
+				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get(), 100, 1, true, false));
 		}
 	}
 }

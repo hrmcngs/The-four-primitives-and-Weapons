@@ -5,7 +5,6 @@
   "itemGroup.tabmagic_books": "Magic Books",
   "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
   "item.minecraft_armor_weapon.fireball": "§cFireball",
-  "effect.minecraft_armor_weapon.thunderbolt_effrct": "thunderbolt",
   "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
   "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
   "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
@@ -15,8 +14,10 @@
   "itemGroup.tabweapon": "Weapon",
   "key.minecraft_armor_weapon.r": "R",
   "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
+  "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
   "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
   "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
   "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
+  "effect.minecraft_armor_weapon.ataruto": "ataruto",
   "block.minecraft_armor_weapon.rose": "Rose"
 }
