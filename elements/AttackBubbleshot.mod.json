@@ -2,10 +2,10 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "ataruto",
+    "effectName": "attack",
     "icon": "attack_bubbleshot.png",
     "color": {
-      "value": -1,
+      "value": -15662849,
       "falpha": 0.0
     },
     "isInstant": false,
@@ -14,7 +14,7 @@
     "renderStatusInInventory": true,
     "renderStatusInHUD": true,
     "onActiveTick": {
-      "name": "AtarutoehuekutogaYouXiaoShinoteituku"
+      "name": "AttackBubbleshotehuekutogaYouXiaoShinoteituku"
     }
   }
 }

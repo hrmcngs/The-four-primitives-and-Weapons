@@ -2,8 +2,8 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "ataruto",
-    "icon": "attack_bubbleshot.png",
+    "effectName": "illusioner_armor_effect",
+    "icon": "aaaaa.png",
     "color": {
       "value": -1,
       "falpha": 0.0
@@ -12,9 +12,6 @@
     "isBad": false,
     "isBenefitical": false,
     "renderStatusInInventory": true,
-    "renderStatusInHUD": true,
-    "onActiveTick": {
-      "name": "AtarutoehuekutogaYouXiaoShinoteituku"
-    }
+    "renderStatusInHUD": true
   }
 }

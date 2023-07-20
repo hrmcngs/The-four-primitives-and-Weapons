@@ -12,6 +12,9 @@ import net.minecraft.world.effect.MobEffect;
 
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
+import minecraftarmorweapon.potion.BowAttackMobEffect;
+import minecraftarmorweapon.potion.AttackBubbleshotMobEffect;
+import minecraftarmorweapon.potion.AttackBowMobEffect;
 import minecraftarmorweapon.potion.AtarutoMobEffect;
 import minecraftarmorweapon.potion.Arrow1MobEffect;
 
@@ -23,4 +26,7 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> ARROW_1 = REGISTRY.register("arrow_1", () -> new Arrow1MobEffect());
 	public static final RegistryObject<MobEffect> TUNDERBOLTEFFRCT = REGISTRY.register("tunderbolteffrct", () -> new TunderbolteffrctMobEffect());
 	public static final RegistryObject<MobEffect> ATARUTO = REGISTRY.register("ataruto", () -> new AtarutoMobEffect());
+	public static final RegistryObject<MobEffect> BOW_ATTACK = REGISTRY.register("bow_attack", () -> new BowAttackMobEffect());
+	public static final RegistryObject<MobEffect> ATTACK_BOW = REGISTRY.register("attack_bow", () -> new AttackBowMobEffect());
+	public static final RegistryObject<MobEffect> ATTACK_BUBBLESHOT = REGISTRY.register("attack_bubbleshot", () -> new AttackBubbleshotMobEffect());
 }

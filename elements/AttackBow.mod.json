@@ -2,19 +2,19 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "ataruto",
-    "icon": "attack_bubbleshot.png",
+    "effectName": "bow attack",
+    "icon": "bow_attack.png",
     "color": {
       "value": -1,
       "falpha": 0.0
     },
-    "isInstant": false,
+    "isInstant": true,
     "isBad": false,
     "isBenefitical": false,
     "renderStatusInInventory": true,
     "renderStatusInHUD": true,
-    "onActiveTick": {
-      "name": "AtarutoehuekutogaYouXiaoShinoteituku"
+    "onStarted": {
+      "name": "AttackBowposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
     }
   }
 }
