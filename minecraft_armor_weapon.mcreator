@@ -695,6 +695,18 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/black_bow.json"
         ]
       }
+    },
+    {
+      "name": "MinecraftArmorWeaponItemsProperties",
+      "type": "code",
+      "compiles": false,
+      "locked_code": true,
+      "registry_name": "minecraft_armor_weapon_items_properties",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/MinecraftArmorWeaponItemsProperties.java"
+        ]
+      }
     }
   ],
   "variable_elements": [

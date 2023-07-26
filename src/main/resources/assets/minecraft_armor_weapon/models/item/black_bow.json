@@ -1,9 +1,9 @@
 
 {
-     "parent": "item/generated",
+  "parent": "item/generated",
   "textures": {
     "layer0": "minecraft_armor_weapon:items/dream_bow"
-    },
+  },
     "display": {
         "thirdperson_righthand": {
             "rotation": [ -80, 260, -40 ],
@@ -33,7 +33,6 @@
             },
             "model": "minecraft_armor_weapon:item/dream_bow_arrow_0"
         },
-         
         {
             "predicate": {
                 "pulling": 1,
@@ -47,34 +46,6 @@
                 "pull": 0.9
             },
             "model": "minecraft_armor_weapon:item/dream_bow_arrow_2"
-        },
-        {
-            "predicate": {
-                "pulling": 1,
-                "lefthanded": 1
-                
-            },
-            "model": "minecraft_armor_weapon:item/dream_bow_arrow_0"
-        },
-         
-        {
-            "predicate": {
-                "pulling": 1,
-                "pull": 0.65,
-                "lefthanded": 1
-                
-            },
-            "model": "minecraft_armor_weapon:item/dream_bow_arrow_1"
-        },
-        {
-            "predicate": {
-                "pulling": 1,
-                "pull": 0.9,
-                "lefthanded": 1
-                
-            },
-            "model": "minecraft_armor_weapon:item/dream_bow_arrow_2"
         }
-
     ]
 }
