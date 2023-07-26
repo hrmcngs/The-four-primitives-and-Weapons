@@ -1,0 +1,322 @@
+{
+  "_fv": 43,
+  "_type": "block",
+  "definition": {
+    "texture": "netherite_katana",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 2,
+    "customModelName": "netherite_katanablock:default",
+    "rotationMode": 5,
+    "enablePitch": false,
+    "emissiveRendering": false,
+    "displayFluidOverlay": false,
+    "itemTexture": "aa",
+    "particleTexture": "aa",
+    "tintType": "No tint",
+    "isItemTinted": false,
+    "hasTransparency": true,
+    "connectedSides": false,
+    "transparencyType": "SOLID",
+    "disableOffset": false,
+    "boundingBoxes": [
+      {
+        "mx": 7.5,
+        "my": 10.75,
+        "mz": -1.5,
+        "Mx": 8.5,
+        "My": 11.75,
+        "Mz": -0.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 6.75,
+        "mz": -0.5,
+        "Mx": 8.5,
+        "My": 12.75,
+        "Mz": 0.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 5.75,
+        "mz": -1.5,
+        "Mx": 8.5,
+        "My": 9.75,
+        "Mz": -0.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 5.75,
+        "mz": -2.5,
+        "Mx": 8.5,
+        "My": 7.75,
+        "Mz": -1.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 9.75,
+        "mz": 0.5,
+        "Mx": 8.5,
+        "My": 11.75,
+        "Mz": 1.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 7.75,
+        "mz": 0.5,
+        "Mx": 8.5,
+        "My": 9.75,
+        "Mz": 1.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 6.75,
+        "mz": 1.5,
+        "Mx": 8.5,
+        "My": 12.75,
+        "Mz": 2.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 11.75,
+        "mz": 2.5,
+        "Mx": 8.5,
+        "My": 12.75,
+        "Mz": 5.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 12.75,
+        "mz": 3.5,
+        "Mx": 8.5,
+        "My": 13.75,
+        "Mz": 5.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 10.75,
+        "mz": 2.5,
+        "Mx": 8.5,
+        "My": 11.75,
+        "Mz": 4.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 5.75,
+        "mz": 2.5,
+        "Mx": 8.5,
+        "My": 10.75,
+        "Mz": 3.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 4.75,
+        "mz": 3.5,
+        "Mx": 8.5,
+        "My": 9.75,
+        "Mz": 4.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 3.75,
+        "mz": 4.5,
+        "Mx": 8.5,
+        "My": 8.75,
+        "Mz": 5.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 2.75,
+        "mz": 5.5,
+        "Mx": 8.5,
+        "My": 7.75,
+        "Mz": 6.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 1.75,
+        "mz": 6.5,
+        "Mx": 8.5,
+        "My": 6.75,
+        "Mz": 7.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 0.75,
+        "mz": 7.5,
+        "Mx": 8.5,
+        "My": 5.75,
+        "Mz": 8.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": -0.25,
+        "mz": 8.5,
+        "Mx": 8.5,
+        "My": 4.75,
+        "Mz": 9.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": -1.25,
+        "mz": 9.5,
+        "Mx": 8.5,
+        "My": 3.75,
+        "Mz": 10.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": -1.25,
+        "mz": 10.5,
+        "Mx": 8.5,
+        "My": 2.75,
+        "Mz": 11.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 11.75,
+        "mz": -2.5,
+        "Mx": 8.5,
+        "My": 12.75,
+        "Mz": -1.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 11.75,
+        "mz": -1.5,
+        "Mx": 8.5,
+        "My": 13.75,
+        "Mz": -0.5,
+        "subtract": false
+      },
+      {
+        "mx": 7.5,
+        "my": 12.75,
+        "mz": -4.5,
+        "Mx": 8.5,
+        "My": 15.75,
+        "Mz": -1.5,
+        "subtract": false
+      }
+    ],
+    "name": "Netherite Katana Block",
+    "specialInfo": [],
+    "hardness": 0.0,
+    "resistance": 10.0,
+    "hasGravity": false,
+    "isWaterloggable": false,
+    "creativeTab": {
+      "value": "BUILDING_BLOCKS"
+    },
+    "destroyTool": "Not specified",
+    "customDrop": {
+      "value": "CUSTOM:NetheriteKatana"
+    },
+    "dropAmount": 1,
+    "useLootTableForDrops": false,
+    "requiresCorrectTool": false,
+    "enchantPowerBonus": 0.0,
+    "plantsGrowOn": false,
+    "canRedstoneConnect": false,
+    "lightOpacity": 0,
+    "material": {
+      "value": "IRON"
+    },
+    "tickRate": 0,
+    "tickRandomly": false,
+    "isReplaceable": false,
+    "canProvidePower": false,
+    "emittedRedstonePower": {
+      "fixedValue": 15.0
+    },
+    "colorOnMap": "DEFAULT",
+    "creativePickItem": {
+      "value": "CUSTOM:NetheriteKatana"
+    },
+    "offsetType": "NONE",
+    "aiPathNodeType": "DEFAULT",
+    "beaconColorModifier": {
+      "value": -16777216,
+      "falpha": 0.0
+    },
+    "flammability": 0,
+    "fireSpreadSpeed": 0,
+    "isLadder": false,
+    "slipperiness": 0.6,
+    "speedFactor": 1.0,
+    "jumpFactor": 1.0,
+    "reactionToPushing": "NORMAL",
+    "isNotColidable": false,
+    "isCustomSoundType": false,
+    "soundOnStep": {
+      "value": "METAL"
+    },
+    "breakSound": {
+      "value": ""
+    },
+    "fallSound": {
+      "value": ""
+    },
+    "hitSound": {
+      "value": ""
+    },
+    "placeSound": {
+      "value": ""
+    },
+    "stepSound": {
+      "value": ""
+    },
+    "luminance": 5,
+    "unbreakable": false,
+    "breakHarvestLevel": 1,
+    "isBonemealable": false,
+    "hasInventory": false,
+    "guiBoundTo": "<NONE>",
+    "openGUIOnRightClick": false,
+    "inventorySize": 9,
+    "inventoryStackSize": 64,
+    "inventoryDropWhenDestroyed": true,
+    "inventoryComparatorPower": true,
+    "inventoryOutSlotIDs": [],
+    "inventoryInSlotIDs": [],
+    "hasEnergyStorage": false,
+    "energyInitial": 0,
+    "energyCapacity": 400000,
+    "energyMaxReceive": 200,
+    "energyMaxExtract": 200,
+    "isFluidTank": false,
+    "fluidCapacity": 8000,
+    "fluidRestrictions": [],
+    "spawnWorldTypes": [],
+    "restrictionBiomes": [],
+    "blocksToReplace": [],
+    "generationShape": "UNIFORM",
+    "frequencyPerChunks": 10,
+    "frequencyOnChunk": 16,
+    "minGenerateHeight": 0,
+    "maxGenerateHeight": 64
+  }
+}

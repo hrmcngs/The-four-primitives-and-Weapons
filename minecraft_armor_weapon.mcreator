@@ -682,43 +682,18 @@
       }
     },
     {
-      "name": "BlackBow",
-      "type": "rangeditem",
+      "name": "NetheriteKatanaBlock",
+      "type": "block",
       "sortid": 42,
       "compiles": true,
-      "locked_code": true,
-      "registry_name": "black_bow",
+      "locked_code": false,
+      "registry_name": "netherite_katana_block",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/entity/BlackBowEntity.java",
-          "src/main/java/minecraftarmorweapon/item/BlackBowItem.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/black_bow.json"
-        ]
-      }
-    },
-    {
-      "name": "MinecraftArmorWeaponItemsProperties",
-      "type": "code",
-      "sortid": 44,
-      "compiles": false,
-      "locked_code": true,
-      "registry_name": "minecraft_armor_weapon_items_properties",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/MinecraftArmorWeaponItemsProperties.java"
-        ]
-      }
-    },
-    {
-      "name": "MinecraftArmorWeaponItems",
-      "type": "code",
-      "sortid": 43,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "minecraft_armor_weapon_items",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/MinecraftArmorWeaponItems.java"
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/netherite_katana_block.json",
+          "src/main/java/minecraftarmorweapon/block/NetheriteKatanaBlockBlock.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/netherite_katana_block.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/netherite_katana_block.json"
         ]
       }
     }
@@ -754,8 +729,8 @@
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
+      "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
       "itemGroup.tabarmor": "Armor",
-      "item.minecraft_armor_weapon.black_bow": "Black Bow",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "effect.minecraft_armor_weapon.attack_bubbleshot": "attack",
