@@ -699,12 +699,26 @@
     {
       "name": "MinecraftArmorWeaponItemsProperties",
       "type": "code",
+      "sortid": 44,
       "compiles": false,
       "locked_code": true,
       "registry_name": "minecraft_armor_weapon_items_properties",
       "metadata": {
         "files": [
           "src/main/java/minecraftarmorweapon/MinecraftArmorWeaponItemsProperties.java"
+        ]
+      }
+    },
+    {
+      "name": "MinecraftArmorWeaponItems",
+      "type": "code",
+      "sortid": 43,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "minecraft_armor_weapon_items",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/MinecraftArmorWeaponItems.java"
         ]
       }
     }
