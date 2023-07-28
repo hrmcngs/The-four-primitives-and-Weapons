@@ -5,5 +5,5 @@
     "particle": "minecraft_armor_weapon:blocks/aa",
     "5": "minecraft_armor_weapon:blocks/netherite_katana"
   },
-  "render_type": "solid"
+  "render_type": "cutout"
 }
