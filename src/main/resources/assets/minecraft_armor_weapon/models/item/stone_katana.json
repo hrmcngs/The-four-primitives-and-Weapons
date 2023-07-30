@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/stonekatana",
+  "textures": {
+    "3": "minecraft_armor_weapon:blocks/stonekatana",
+    "particle": "minecraft_armor_weapon:items/aa"
+  }
+}

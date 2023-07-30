@@ -696,6 +696,36 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/netherite_katana_block.json"
         ]
       }
+    },
+    {
+      "name": "StoneKatanaBlock",
+      "type": "block",
+      "sortid": 43,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stone_katana_block",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_katana_block.json",
+          "src/main/java/minecraftarmorweapon/block/StoneKatanaBlockBlock.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block.json"
+        ]
+      }
+    },
+    {
+      "name": "StoneKatana",
+      "type": "tool",
+      "sortid": 44,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stone_katana",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/StoneKatanaItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -728,6 +758,7 @@
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
+      "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
       "itemGroup.tabarmor": "Armor",
@@ -741,6 +772,7 @@
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
+      "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "effect.minecraft_armor_weapon.ataruto": "ataruto",
       "block.minecraft_armor_weapon.rose": "Rose"
