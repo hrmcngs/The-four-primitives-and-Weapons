@@ -12,6 +12,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -42,7 +43,12 @@ public class NetheriteKatanaYoukuritukusitatokiProcedure {
 			r = 1;
 			alpha = entity.getYRot();
 			beta = entity.getXRot();
-			for (int index0 = 0; index0 < 2; index0++) {
+			for (int index0 = 0; index0 < 180; index0++) {
+				if (entity instanceof LivingEntity _entity)
+					_entity.swing(InteractionHand.MAIN_HAND, true);
+				entity.lookAt(EntityAnchorArgument.Anchor.EYES, new Vec3((x + 2), y, (z + 2)));
+			}
+			for (int index1 = 0; index1 < 5; index1++) {
 				{
 					final Vec3 _center = new Vec3((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), (y + 1), (z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))));
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))

@@ -726,6 +726,67 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana.json"
         ]
       }
+    },
+    {
+      "name": "AaitemuwoShoudeChituteiruJiannoteituku",
+      "type": "procedure",
+      "sortid": 45,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aaitemuwo_shoude_chituteiru_jiannoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/AaitemuwoShoudeChituteiruJiannoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "A",
+      "type": "item",
+      "sortid": 46,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "a",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/a.json",
+          "src/main/java/minecraftarmorweapon/item/AItem.java"
+        ]
+      }
+    },
+    {
+      "name": "StoneKatanaBlock2",
+      "type": "block",
+      "sortid": 47,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stone_katana_block_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_katana_block_2.json",
+          "src/main/java/minecraftarmorweapon/block/StoneKatanaBlock2Block.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block_2.json",
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block_2.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -746,6 +807,7 @@
   "language_map": {
     "en_us": {
       "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
+      "item.minecraft_armor_weapon.a": "A",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
@@ -764,6 +826,7 @@
       "itemGroup.tabarmor": "Armor",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
+      "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.attack_bubbleshot": "attack",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",

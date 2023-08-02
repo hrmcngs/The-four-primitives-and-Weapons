@@ -1,5 +1,6 @@
 {
   "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
+  "item.minecraft_armor_weapon.a": "A",
   "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
   "itemGroup.tabmagic_books": "Magic Books",
   "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
@@ -18,6 +19,7 @@
   "itemGroup.tabarmor": "Armor",
   "item.minecraft_armor_weapon.fireball": "§cFireball",
   "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
+  "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
   "effect.minecraft_armor_weapon.attack_bubbleshot": "attack",
   "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
   "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",

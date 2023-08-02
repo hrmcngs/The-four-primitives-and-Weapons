@@ -4,6 +4,8 @@
  */
 package minecraftarmorweapon.init;
 
+import org.checkerframework.checker.units.qual.A;
+
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.DeferredRegister;
@@ -22,6 +24,7 @@ import minecraftarmorweapon.item.IllusionerArmorItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.CustomElytraTestItem;
 import minecraftarmorweapon.item.BubbleshotItem;
+import minecraftarmorweapon.item.AItem;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -45,6 +48,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> NETHERITE_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.NETHERITE_KATANA_BLOCK, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Item> STONE_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Item> STONE_KATANA = REGISTRY.register("stone_katana", () -> new StoneKatanaItem());
+	public static final RegistryObject<Item> A = REGISTRY.register("a", () -> new AItem());
+	public static final RegistryObject<Item> STONE_KATANA_BLOCK_2 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_2, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
