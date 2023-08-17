@@ -1,0 +1,1 @@
+/summon iron_golem

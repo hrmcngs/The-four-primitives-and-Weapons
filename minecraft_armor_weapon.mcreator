@@ -322,22 +322,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       }
@@ -787,6 +771,66 @@
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block_2.json"
         ]
       }
+    },
+    {
+      "name": "Kaitenn",
+      "type": "potioneffect",
+      "sortid": 48,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kaitenn",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/KaitennMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "KaitennehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 49,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kaitennehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/KaitennehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IronGolemSummon",
+      "type": "function",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_golem_summon",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/iron_golem_summon.mcfunction"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -834,6 +878,7 @@
       "itemGroup.tabweapon": "Weapon",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
+      "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",

@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.effect.MobEffect;
 
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
+import minecraftarmorweapon.potion.KaitennMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
 import minecraftarmorweapon.potion.AttackBubbleshotMobEffect;
@@ -29,4 +30,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> BOW_ATTACK = REGISTRY.register("bow_attack", () -> new BowAttackMobEffect());
 	public static final RegistryObject<MobEffect> ATTACK_BOW = REGISTRY.register("attack_bow", () -> new AttackBowMobEffect());
 	public static final RegistryObject<MobEffect> ATTACK_BUBBLESHOT = REGISTRY.register("attack_bubbleshot", () -> new AttackBubbleshotMobEffect());
+	public static final RegistryObject<MobEffect> KAITENN = REGISTRY.register("kaitenn", () -> new KaitennMobEffect());
 }

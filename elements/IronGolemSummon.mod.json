@@ -1,0 +1,9 @@
+{
+  "_fv": 43,
+  "_type": "function",
+  "definition": {
+    "code": "/summon iron_golem",
+    "name": "iron_golem_summon",
+    "namespace": "mod"
+  }
+}
