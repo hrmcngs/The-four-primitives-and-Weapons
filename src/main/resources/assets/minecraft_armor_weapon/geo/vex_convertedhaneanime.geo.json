@@ -1,0 +1,61 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.vex_Convertedhaneanime",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-4, 23, -4], "size": [8, 8, 8], "inflate": 1, "uv": [0, 22]},
+						{"origin": [-4, 33, -4], "size": [8, 0, 8], "uv": [0, 14]}
+					]
+				},
+				{
+					"name": "right_arm",
+					"pivot": [-5, 22, 0]
+				},
+				{
+					"name": "left_leg",
+					"pivot": [1.9, 12, 0]
+				},
+				{
+					"name": "right_leg",
+					"pivot": [-1.9, 12, 0]
+				},
+				{
+					"name": "left_arm",
+					"pivot": [5, 22, 0]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "bone",
+					"parent": "body",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [0, 12, 2], "size": [20, 12, 1], "uv": [0, 0], "mirror": true}
+					]
+				},
+				{
+					"name": "bone2",
+					"parent": "body",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-20, 12, 2], "size": [20, 12, 1], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

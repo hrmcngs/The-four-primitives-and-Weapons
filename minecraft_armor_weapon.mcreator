@@ -831,6 +831,172 @@
           "src/main/resources/data/minecraft_armor_weapon/functions/iron_golem_summon.mcfunction"
         ]
       }
+    },
+    {
+      "name": "IronKatana",
+      "type": "tool",
+      "sortid": 50,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_katana",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/IronKatanaItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/iron_katana.json"
+        ]
+      }
+    },
+    {
+      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku",
+      "type": "procedure",
+      "sortid": 51,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_katanaturuwo_shoude_chituteiru_jiannoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "IronKatanaYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 52,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_katana_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/IronKatanaYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TamewazaehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 53,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tamewazaehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TamewazaehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tamewaza",
+      "type": "potioneffect",
+      "sortid": 54,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tamewaza",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/TamewazaMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "OtiruyooehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 55,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otiruyooehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/OtiruyooehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Otiruyoo",
+      "type": "potioneffect",
+      "sortid": 56,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otiruyoo",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/OtiruyooMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "Hammer",
+      "type": "item",
+      "sortid": 57,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hammer",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/hammer.json",
+          "src/main/java/minecraftarmorweapon/item/HammerItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -867,6 +1033,8 @@
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
+      "effect.minecraft_armor_weapon.tamewaza": "tamerwaza",
+      "item.minecraft_armor_weapon.hammer": "Hammer",
       "itemGroup.tabarmor": "Armor",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
@@ -875,7 +1043,9 @@
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
+      "effect.minecraft_armor_weapon.otiruyoo": "q",
       "itemGroup.tabweapon": "Weapon",
+      "item.minecraft_armor_weapon.iron_katana": "Iron Katana",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",

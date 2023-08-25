@@ -23,22 +23,7 @@ public class NetheriteKatanaYoukuritukusitatokiProcedure {
 		double beta = 0;
 		if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
 			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KAITENN.get(), 120, 1, true, false));
-			for (int index0 = 0; index0 < 180; index0++) {
-				{
-					Entity _ent = entity;
-					_ent.setYRot((float) (entity.getYRot() + 2));
-					_ent.setXRot(0);
-					_ent.setYBodyRot(_ent.getYRot());
-					_ent.setYHeadRot(_ent.getYRot());
-					_ent.yRotO = _ent.getYRot();
-					_ent.xRotO = _ent.getXRot();
-					if (_ent instanceof LivingEntity _entity) {
-						_entity.yBodyRotO = _entity.getYRot();
-						_entity.yHeadRotO = _entity.getYRot();
-					}
-				}
-			}
+				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KAITENN.get(), 2, 1, true, false));
 		}
 	}
 }

@@ -20,7 +20,9 @@ import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
+import minecraftarmorweapon.item.IronKatanaItem;
 import minecraftarmorweapon.item.IllusionerArmorItem;
+import minecraftarmorweapon.item.HammerItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.CustomElytraTestItem;
 import minecraftarmorweapon.item.BubbleshotItem;
@@ -50,6 +52,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> STONE_KATANA = REGISTRY.register("stone_katana", () -> new StoneKatanaItem());
 	public static final RegistryObject<Item> A = REGISTRY.register("a", () -> new AItem());
 	public static final RegistryObject<Item> STONE_KATANA_BLOCK_2 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_2, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Item> IRON_KATANA = REGISTRY.register("iron_katana", () -> new IronKatanaItem());
+	public static final RegistryObject<Item> HAMMER = REGISTRY.register("hammer", () -> new HammerItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
