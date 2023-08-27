@@ -247,6 +247,7 @@
     {
       "name": "R",
       "type": "keybind",
+      "sortid": 60,
       "compiles": true,
       "locked_code": false,
       "registry_name": "r",
@@ -833,20 +834,6 @@
       }
     },
     {
-      "name": "IronKatana",
-      "type": "tool",
-      "sortid": 50,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "iron_katana",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/item/IronKatanaItem.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/iron_katana.json"
-        ]
-      }
-    },
-    {
       "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku",
       "type": "procedure",
       "sortid": 51,
@@ -901,54 +888,6 @@
       }
     },
     {
-      "name": "TamewazaehuekutogaYouXiaoShinoteituku",
-      "type": "procedure",
-      "sortid": 53,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tamewazaehuekutoga_you_xiao_shinoteituku",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/TamewazaehuekutogaYouXiaoShinoteitukuProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
-      "name": "Tamewaza",
-      "type": "potioneffect",
-      "sortid": 54,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tamewaza",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/potion/TamewazaMobEffect.java"
-        ]
-      }
-    },
-    {
       "name": "OtiruyooehuekutogaYouXiaoShinoteituku",
       "type": "procedure",
       "sortid": 55,
@@ -997,6 +936,202 @@
           "src/main/java/minecraftarmorweapon/item/HammerItem.java"
         ]
       }
+    },
+    {
+      "name": "Aaaa",
+      "type": "potioneffect",
+      "sortid": 62,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aaaa",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/AaaaMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "IronKatana",
+      "type": "tool",
+      "sortid": 63,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "iron_katana",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/IronKatanaItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/iron_katana.json"
+        ]
+      }
+    },
+    {
+      "name": "Cross",
+      "type": "block",
+      "sortid": 64,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "cross",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/block/CrossBlock.java",
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/cross.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/cross.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/cross.json"
+        ]
+      }
+    },
+    {
+      "name": "SyugekiOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 65,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "syugeki_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/SyugekiOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Syugeki",
+      "type": "potioneffect",
+      "sortid": 66,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "syugeki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/SyugekiMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "WaterKatana",
+      "type": "tool",
+      "sortid": 67,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "water_katana",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/water_katana.json",
+          "src/main/java/minecraftarmorweapon/item/WaterKatanaItem.java"
+        ]
+      }
+    },
+    {
+      "name": "WaterKatanaYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 68,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "water_katana_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/WaterKatanaYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SuityuuehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 70,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "suityuuehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/SuityuuehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Suityuu",
+      "type": "potioneffect",
+      "sortid": 71,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "suityuu",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/SuityuuMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "TissokuehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 72,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tissokuehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TissokuehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tissoku",
+      "type": "potioneffect",
+      "sortid": 73,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tissoku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/TissokuMobEffect.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1016,26 +1151,31 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
       "item.minecraft_armor_weapon.a": "A",
+      "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
+      "block.minecraft_armor_weapon.cross": "Cross",
+      "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "key.minecraft_armor_weapon.r": "R",
+      "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
-      "effect.minecraft_armor_weapon.tamewaza": "tamerwaza",
       "item.minecraft_armor_weapon.hammer": "Hammer",
+      "effect.minecraft_armor_weapon.suityuu": "suityuu",
+      "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "itemGroup.tabarmor": "Armor",
+      "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
@@ -1045,7 +1185,7 @@
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
       "itemGroup.tabweapon": "Weapon",
-      "item.minecraft_armor_weapon.iron_katana": "Iron Katana",
+      "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",

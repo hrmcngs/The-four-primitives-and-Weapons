@@ -14,6 +14,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -29,22 +30,21 @@ import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Comparator;
 
-public class IronKatanaYoukuritukusitatokiProcedure {
+public class WaterKatanaYoukuritukusitatokiProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
 		double r = 0;
 		double alpha = 0;
 		double beta = 0;
-		double dis1 = 0;
-		double delay = 0;
-		double cooldown = 0;
-		double speed = 0;
-		double precision = 0;
-		double width = 0;
-		double size = 0;
-		double range = 0;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.IRON_KATANA.get()) {
+		double Grow = 0;
+		double TrackZ = 0;
+		double TrackY = 0;
+		double TrackX = 0;
+		double X = 0;
+		double Y = 0;
+		double Z = 0;
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()) {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KAITENN.get(), 1, 1, true, false));
@@ -54,45 +54,53 @@ public class IronKatanaYoukuritukusitatokiProcedure {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-				r = 1;
-				alpha = entity.getYRot();
-				beta = entity.getXRot();
-				for (int index0 = 0; index0 < 100; index0++) {
-					{
-						final Vec3 _center = new Vec3((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))),
-								(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))));
-						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
-								.collect(Collectors.toList());
-						for (Entity entityiterator : _entfound) {
-							MinecraftArmorWeaponMod.queueServerWork(5, () -> {
-								if (!(entityiterator == entity)) {
-									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entityiterator instanceof Mob) {
-											{
-												Entity _ent = entityiterator;
-												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-													_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-															_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+				X = entity.getX();
+				Y = entity.getY();
+				Z = entity.getZ();
+				if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
+					TrackX = X - entity.getX();
+					TrackY = Y - entity.getY() + entity.getBbHeight() * 0.75 - entity.getBbHeight() * 0.75;
+					TrackZ = Z - entity.getZ();
+					Grow = 1;
+					for (int index0 = 0; index0 < 20; index0++) {
+						{
+							final Vec3 _center = new Vec3((entity.getX() + TrackX * Grow), (entity.getY() + entity.getBbHeight() * 0.75 + TrackY * Grow), (entity.getZ() + TrackZ * Grow));
+							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+									.collect(Collectors.toList());
+							for (Entity entityiterator : _entfound) {
+								MinecraftArmorWeaponMod.queueServerWork(5, () -> {
+									if (!(entityiterator == entity)) {
+										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+											if (entityiterator instanceof Mob) {
+												{
+													Entity _ent = entityiterator;
+													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+													}
+												}
+												{
+													Entity _ent = entityiterator;
+													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+																"/deta merge entity @s (Health:0)");
+													}
 												}
 											}
-											{
-												Entity _ent = entityiterator;
-												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-													_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-															_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
-												}
+										} else {
+											if (entityiterator instanceof Mob) {
+												entityiterator.hurt(DamageSource.GENERIC, 10);
 											}
-										}
-									} else {
-										if (entityiterator instanceof Mob) {
-											entityiterator.hurt(DamageSource.GENERIC, 10);
 										}
 									}
-								}
-							});
+								});
+							}
 						}
+						if (world instanceof ServerLevel _level)
+							_level.sendParticles(ParticleTypes.ENCHANTED_HIT, (entity.getX() + TrackX * Grow), (entity.getY() + entity.getBbHeight() * 0.75 + TrackY * Grow), (entity.getZ() + TrackZ * Grow), 5, 0.15, 0.15, 0.15, 0);
+						Grow = Grow - 0.05;
 					}
-					r = r + 0.2;
 				}
 				entity.setDeltaMovement(new Vec3(
 						(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(3)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()

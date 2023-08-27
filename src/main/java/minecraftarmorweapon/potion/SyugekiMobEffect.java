@@ -9,23 +9,23 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
-import minecraftarmorweapon.procedures.TamewazaehuekutogaYouXiaoShinoteitukuProcedure;
+import minecraftarmorweapon.procedures.SyugekiOnEffectActiveTickProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-public class TamewazaMobEffect extends MobEffect {
-	public TamewazaMobEffect() {
+public class SyugekiMobEffect extends MobEffect {
+	public SyugekiMobEffect() {
 		super(MobEffectCategory.NEUTRAL, -1);
 	}
 
 	@Override
 	public String getDescriptionId() {
-		return "effect.minecraft_armor_weapon.tamewaza";
+		return "effect.minecraft_armor_weapon.syugeki";
 	}
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		TamewazaehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
+		SyugekiOnEffectActiveTickProcedure.execute(entity.level, entity);
 	}
 
 	@Override

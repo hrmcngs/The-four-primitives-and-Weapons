@@ -61,12 +61,128 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 		double Y3 = 0;
 		double Y4 = 0;
 		double dis1 = 0;
+		double X5 = 0;
+		double dis2 = 0;
 		if (entity instanceof LivingEntity _entity)
 			_entity.swing(InteractionHand.MAIN_HAND, true);
+		loop4 = Math.toRadians(entity.getYRot());
+		xRadius4 = 1;
+		zRadius4 = 1;
+		for (int index0 = 0; index0 < 72; index0++) {
+			X4 = x + Math.cos(loop4) * xRadius4;
+			Y4 = y + 1;
+			Z4 = z + Math.sin(loop4) * zRadius4;
+			{
+				final Vec3 _center = new Vec3(X4, Y4, Z4);
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						.collect(Collectors.toList());
+				for (Entity entityiterator : _entfound) {
+					if (!(entityiterator == entity)) {
+						if (entityiterator instanceof Mob) {
+							if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+									}
+								}
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
+								}
+							} else {
+								entityiterator.hurt(DamageSource.GENERIC, 16);
+							}
+							dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
+						}
+					}
+				}
+			}
+		}
+		loop3 = Math.toRadians(entity.getYRot());
+		xRadius3 = 2;
+		zRadius3 = 2;
+		for (int index1 = 0; index1 < 72; index1++) {
+			X3 = x + Math.cos(loop3) * xRadius3;
+			Y3 = y + 1;
+			Z3 = z + Math.sin(loop3) * zRadius3;
+			{
+				final Vec3 _center = new Vec3(X3, Y3, Z3);
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						.collect(Collectors.toList());
+				for (Entity entityiterator : _entfound) {
+					if (!(entityiterator == entity)) {
+						if (entityiterator instanceof Mob) {
+							if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+									}
+								}
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
+								}
+							} else {
+								entityiterator.hurt(DamageSource.GENERIC, 16);
+							}
+							dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
+						}
+					}
+				}
+			}
+		}
+		loop2 = Math.toRadians(entity.getYRot());
+		xRadius2 = 3;
+		zRadius2 = 3;
+		for (int index2 = 0; index2 < 72; index2++) {
+			X2 = x + Math.cos(loop2) * xRadius2;
+			Y2 = y + 1;
+			X2 = z + Math.sin(loop2) * zRadius2;
+			{
+				final Vec3 _center = new Vec3(X2, Y2, Z2);
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						.collect(Collectors.toList());
+				for (Entity entityiterator : _entfound) {
+					if (!(entityiterator == entity)) {
+						if (entityiterator instanceof Mob) {
+							if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+									}
+								}
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
+								}
+							} else {
+								entityiterator.hurt(DamageSource.GENERIC, 16);
+							}
+							dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
+						}
+					}
+				}
+			}
+		}
 		loop = Math.toRadians(entity.getYRot());
 		xRadius = 4;
 		zRadius = 4;
-		for (int index0 = 0; index0 < 72; index0++) {
+		for (int index3 = 0; index3 < 72; index3++) {
 			X = x + Math.cos(loop) * xRadius;
 			Y = y + 1;
 			Z = z + Math.sin(loop) * zRadius;
@@ -100,20 +216,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 							} else {
 								entityiterator.hurt(DamageSource.GENERIC, 16);
 							}
-							xknockback = entityiterator.getX() - entity.getX();
-							yknockback = entityiterator.getY() - entity.getY();
-							zknockback = entityiterator.getZ() - entity.getZ();
 							dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
-							if (dis != 0) {
-								xknockback = (xknockback / dis) * 5;
-								yknockback = Math.min((yknockback / dis) * 13, 9.8);
-								zknockback = (zknockback / dis) * 5;
-							} else {
-								xknockback = 0;
-								yknockback = 0;
-								zknockback = 0;
-							}
-							entityiterator.setDeltaMovement(new Vec3(xknockback, yknockback, zknockback));
 						}
 					}
 				}

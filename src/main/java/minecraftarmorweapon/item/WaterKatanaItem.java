@@ -12,13 +12,13 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
+import minecraftarmorweapon.procedures.WaterKatanaYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
-import minecraftarmorweapon.procedures.IronKatanaYoukuritukusitatokiProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
-public class IronKatanaItem extends SwordItem {
-	public IronKatanaItem() {
+public class WaterKatanaItem extends SwordItem {
+	public WaterKatanaItem() {
 		super(new Tier() {
 			public int getUses() {
 				return 0;
@@ -49,7 +49,7 @@ public class IronKatanaItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		IronKatanaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		WaterKatanaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
 

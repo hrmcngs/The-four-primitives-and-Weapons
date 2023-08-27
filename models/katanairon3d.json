@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "katanairon3d",
 	"textures": {
-		"0": "katana3D",
-		"particle": "katana3D"
+		"0": "katanairon3d",
+		"particle": "katanairon3d"
 	},
 	"elements": [
 		{

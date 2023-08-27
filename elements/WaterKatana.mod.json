@@ -4,8 +4,8 @@
   "definition": {
     "renderType": 1,
     "texture": "aaaaa",
-    "customModelName": "katanairon3d:default",
-    "name": "§7Iron Katana",
+    "customModelName": "katana3dmizu:default",
+    "name": "§9Water Katana",
     "specialInfo": [],
     "creativeTab": {
       "value": "CUSTOM:Weapon"
@@ -24,7 +24,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
-      "name": "IronKatanaYoukuritukusitatoki"
+      "name": "WaterKatanaYoukuritukusitatoki"
     },
     "onItemInUseTick": {
       "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
