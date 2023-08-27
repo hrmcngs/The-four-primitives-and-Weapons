@@ -503,38 +503,6 @@
       }
     },
     {
-      "name": "AtarutoehuekutogaYouXiaoShinoteituku",
-      "type": "procedure",
-      "sortid": 32,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "atarutoehuekutoga_you_xiao_shinoteituku",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/AtarutoehuekutogaYouXiaoShinoteitukuProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      }
-    },
-    {
-      "name": "Ataruto",
-      "type": "potioneffect",
-      "sortid": 33,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ataruto",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/potion/AtarutoMobEffect.java"
-        ]
-      }
-    },
-    {
       "name": "IllusionerArmorChestplateTickEvent",
       "type": "procedure",
       "sortid": 34,
@@ -606,38 +574,6 @@
       "metadata": {
         "files": [
           "src/main/java/minecraftarmorweapon/procedures/AttackBowposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      }
-    },
-    {
-      "name": "AttackBubbleshot",
-      "type": "potioneffect",
-      "sortid": 39,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "attack_bubbleshot",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/potion/AttackBubbleshotMobEffect.java"
-        ]
-      }
-    },
-    {
-      "name": "AttackBubbleshotehuekutogaYouXiaoShinoteituku",
-      "type": "procedure",
-      "sortid": 40,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "attack_bubbleshotehuekutoga_you_xiao_shinoteituku",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/AttackBubbleshotehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1132,6 +1068,70 @@
           "src/main/java/minecraftarmorweapon/potion/TissokuMobEffect.java"
         ]
       }
+    },
+    {
+      "name": "BubbleshotEffectehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 74,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bubbleshot_effectehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BubbleshotEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BubbleshotEffect",
+      "type": "potioneffect",
+      "sortid": 75,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bubbleshot_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/BubbleshotEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ThunderHit",
+      "type": "potioneffect",
+      "sortid": 76,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "thunder_hit",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/ThunderHitMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ThunderHitehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 77,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "thunder_hitehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ThunderHitehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1179,8 +1179,9 @@
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
-      "effect.minecraft_armor_weapon.attack_bubbleshot": "attack",
+      "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
+      "effect.minecraft_armor_weapon.thunder_hit": "a",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
@@ -1192,7 +1193,6 @@
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
-      "effect.minecraft_armor_weapon.ataruto": "ataruto",
       "block.minecraft_armor_weapon.rose": "Rose"
     }
   },

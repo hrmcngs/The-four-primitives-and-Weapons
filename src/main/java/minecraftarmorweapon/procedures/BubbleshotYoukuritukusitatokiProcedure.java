@@ -15,7 +15,7 @@ public class BubbleshotYoukuritukusitatokiProcedure {
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
 			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ATTACK_BUBBLESHOT.get(), 100, 2, true, false));
+				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get(), 100, 2, true, false));
 		}
 	}
 }

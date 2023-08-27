@@ -14,7 +14,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -54,53 +53,45 @@ public class WaterKatanaYoukuritukusitatokiProcedure {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-				X = entity.getX();
-				Y = entity.getY();
-				Z = entity.getZ();
-				if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
-					TrackX = X - entity.getX();
-					TrackY = Y - entity.getY() + entity.getBbHeight() * 0.75 - entity.getBbHeight() * 0.75;
-					TrackZ = Z - entity.getZ();
-					Grow = 1;
-					for (int index0 = 0; index0 < 20; index0++) {
-						{
-							final Vec3 _center = new Vec3((entity.getX() + TrackX * Grow), (entity.getY() + entity.getBbHeight() * 0.75 + TrackY * Grow), (entity.getZ() + TrackZ * Grow));
-							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
-									.collect(Collectors.toList());
-							for (Entity entityiterator : _entfound) {
-								MinecraftArmorWeaponMod.queueServerWork(5, () -> {
-									if (!(entityiterator == entity)) {
-										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-											if (entityiterator instanceof Mob) {
-												{
-													Entity _ent = entityiterator;
-													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
-													}
-												}
-												{
-													Entity _ent = entityiterator;
-													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
-																"/deta merge entity @s (Health:0)");
-													}
+				r = 1;
+				alpha = entity.getYRot();
+				beta = entity.getXRot();
+				for (int index0 = 0; index0 < 100; index0++) {
+					{
+						final Vec3 _center = new Vec3((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))),
+								(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))));
+						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+								.collect(Collectors.toList());
+						for (Entity entityiterator : _entfound) {
+							MinecraftArmorWeaponMod.queueServerWork(5, () -> {
+								if (!(entityiterator == entity)) {
+									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+										if (entityiterator instanceof Mob) {
+											{
+												Entity _ent = entityiterator;
+												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+													_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+															_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
 												}
 											}
-										} else {
-											if (entityiterator instanceof Mob) {
-												entityiterator.hurt(DamageSource.GENERIC, 10);
+											{
+												Entity _ent = entityiterator;
+												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+													_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+															_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+												}
 											}
 										}
+									} else {
+										if (entityiterator instanceof Mob) {
+											entityiterator.hurt(DamageSource.GENERIC, 10);
+										}
 									}
-								});
-							}
+								}
+							});
 						}
-						if (world instanceof ServerLevel _level)
-							_level.sendParticles(ParticleTypes.ENCHANTED_HIT, (entity.getX() + TrackX * Grow), (entity.getY() + entity.getBbHeight() * 0.75 + TrackY * Grow), (entity.getZ() + TrackZ * Grow), 5, 0.15, 0.15, 0.15, 0);
-						Grow = Grow - 0.05;
 					}
+					r = r + 0.2;
 				}
 				entity.setDeltaMovement(new Vec3(
 						(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(3)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()

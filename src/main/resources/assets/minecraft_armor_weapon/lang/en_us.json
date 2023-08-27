@@ -27,8 +27,9 @@
   "item.minecraft_armor_weapon.fireball": "§cFireball",
   "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
   "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
-  "effect.minecraft_armor_weapon.attack_bubbleshot": "attack",
+  "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
   "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
+  "effect.minecraft_armor_weapon.thunder_hit": "a",
   "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
   "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
   "effect.minecraft_armor_weapon.otiruyoo": "q",
@@ -40,6 +41,5 @@
   "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
   "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
   "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
-  "effect.minecraft_armor_weapon.ataruto": "ataruto",
   "block.minecraft_armor_weapon.rose": "Rose"
 }
