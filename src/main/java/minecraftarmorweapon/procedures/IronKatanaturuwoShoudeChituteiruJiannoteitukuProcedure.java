@@ -4,6 +4,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
@@ -30,7 +31,9 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 			}
 			if (entity.isInWater()) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SUITYUU.get(), 2, 1, true, false));
+					_entity.addEffect(new MobEffectInstance(MobEffects.CONDUIT_POWER, 2, 1, true, false));
+				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+					_entity.addEffect(new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 2, 1, true, false));
 			}
 			{
 				Entity _ent = entity;

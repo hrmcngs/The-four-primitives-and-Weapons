@@ -1132,6 +1132,25 @@
           }
         ]
       }
+    },
+    {
+      "name": "TissokuposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 78,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tissokuposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TissokuposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1151,8 +1170,8 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
       "item.minecraft_armor_weapon.a": "A",
+      "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",

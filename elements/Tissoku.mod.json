@@ -15,6 +15,9 @@
     "renderStatusInHUD": false,
     "onActiveTick": {
       "name": "TissokuehuekutogaYouXiaoShinoteituku"
+    },
+    "onExpired": {
+      "name": "TissokuposiyonXiaoGuogaQieretaShi"
     }
   }
 }

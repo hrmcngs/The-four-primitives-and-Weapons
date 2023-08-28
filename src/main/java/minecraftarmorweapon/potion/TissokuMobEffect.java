@@ -3,12 +3,14 @@ package minecraftarmorweapon.potion;
 
 import net.minecraftforge.client.extensions.common.IClientMobEffectExtensions;
 
+import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
+import minecraftarmorweapon.procedures.TissokuposiyonXiaoGuogaQieretaShiProcedure;
 import minecraftarmorweapon.procedures.TissokuehuekutogaYouXiaoShinoteitukuProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -26,6 +28,12 @@ public class TissokuMobEffect extends MobEffect {
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
 		TissokuehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity);
+	}
+
+	@Override
+	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.removeAttributeModifiers(entity, attributeMap, amplifier);
+		TissokuposiyonXiaoGuogaQieretaShiProcedure.execute(entity);
 	}
 
 	@Override
