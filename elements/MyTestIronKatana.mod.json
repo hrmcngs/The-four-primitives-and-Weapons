@@ -1,0 +1,33 @@
+{
+  "_fv": 43,
+  "_type": "tool",
+  "definition": {
+    "renderType": 1,
+    "texture": "aaaaa",
+    "customModelName": "katanairon3dtest:default",
+    "name": "§8Zero Iron Katana",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:Weapon"
+    },
+    "toolType": "Sword",
+    "harvestLevel": 9,
+    "efficiency": 9.0,
+    "attackSpeed": 2.6,
+    "enchantability": 9,
+    "damageVsEntity": 6.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "MyTestIronKatanaYoukuritukusitatoki"
+    },
+    "onItemInUseTick": {
+      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
+    }
+  }
+}

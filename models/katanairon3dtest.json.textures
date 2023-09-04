@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "katanairon3dtest"
+      },
+      "name": "default"
+    }
+  }
+}

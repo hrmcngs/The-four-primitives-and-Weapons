@@ -1,0 +1,12 @@
+{
+  "_fv": 43,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "N",
+    "keyBindingName": "N",
+    "keyBindingCategoryKey": "misc",
+    "onKeyPressed": {
+      "name": "NkigaYasaretatoki"
+    }
+  }
+}

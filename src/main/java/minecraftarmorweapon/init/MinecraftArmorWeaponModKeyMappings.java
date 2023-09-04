@@ -16,6 +16,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 
 import minecraftarmorweapon.network.RMessage;
+import minecraftarmorweapon.network.NMessage;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -34,10 +35,24 @@ public class MinecraftArmorWeaponModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
+	public static final KeyMapping N = new KeyMapping("key.minecraft_armor_weapon.n", GLFW.GLFW_KEY_N, "key.categories.misc") {
+		private boolean isDownOld = false;
+
+		@Override
+		public void setDown(boolean isDown) {
+			super.setDown(isDown);
+			if (isDownOld != isDown && isDown) {
+				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new NMessage(0, 0));
+				NMessage.pressAction(Minecraft.getInstance().player, 0, 0);
+			}
+			isDownOld = isDown;
+		}
+	};
 
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
 		event.register(R);
+		event.register(N);
 	}
 
 	@Mod.EventBusSubscriber({Dist.CLIENT})
@@ -46,6 +61,7 @@ public class MinecraftArmorWeaponModKeyMappings {
 		public static void onClientTick(TickEvent.ClientTickEvent event) {
 			if (Minecraft.getInstance().screen == null) {
 				R.consumeClick();
+				N.consumeClick();
 			}
 		}
 	}

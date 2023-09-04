@@ -1155,6 +1155,155 @@
           }
         ]
       }
+    },
+    {
+      "name": "Nagiharai",
+      "type": "potioneffect",
+      "sortid": 79,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nagiharai",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/NagiharaiMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "NagiharaiehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 80,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nagiharaiehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/NagiharaiehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MyTestIronKatana",
+      "type": "tool",
+      "sortid": 81,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "my_test_iron_katana",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/MyTestIronKatanaItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/my_test_iron_katana.json"
+        ]
+      }
+    },
+    {
+      "name": "MyTestIronKatanaYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 82,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "my_test_iron_katana_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/MyTestIronKatanaYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Kurutimenasi",
+      "type": "potioneffect",
+      "sortid": 83,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kurutimenasi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/KurutimenasiMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "NkigaYasaretatoki",
+      "type": "procedure",
+      "sortid": 84,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nkiga_yasaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/NkigaYasaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "N",
+      "type": "keybind",
+      "sortid": 85,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "n",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/network/NMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "KurutimenasiposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 86,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kurutimenasiposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/KurutimenasiposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1193,6 +1342,7 @@
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
+      "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
@@ -1203,6 +1353,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
+      "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
@@ -1210,9 +1361,11 @@
       "effect.minecraft_armor_weapon.otiruyoo": "q",
       "itemGroup.tabweapon": "Weapon",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
+      "key.minecraft_armor_weapon.n": "N",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
+      "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",

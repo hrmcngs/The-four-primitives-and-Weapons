@@ -151,6 +151,19 @@ public class IronKatanaYoukuritukusitatokiProcedure {
 				if (entity instanceof Player _player)
 					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
 			}
+			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 3) {
+				if (entity instanceof LivingEntity _entity)
+					_entity.swing(InteractionHand.MAIN_HAND, true);
+				entity.getPersistentData().putDouble("X", x);
+				entity.getPersistentData().putDouble("Z", z);
+				entity.getPersistentData().putDouble("Ypos", y);
+				entity.getPersistentData().putDouble("yaw", (entity.getYRot()));
+				entity.getPersistentData().putDouble("distance", 3);
+				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.NAGIHARAI.get(), 2, 1, true, false));
+				if (entity instanceof Player _player)
+					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
+			}
 		}
 	}
 }

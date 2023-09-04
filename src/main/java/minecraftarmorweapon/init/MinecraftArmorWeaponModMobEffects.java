@@ -16,6 +16,8 @@ import minecraftarmorweapon.potion.ThunderHitMobEffect;
 import minecraftarmorweapon.potion.SyugekiMobEffect;
 import minecraftarmorweapon.potion.SuityuuMobEffect;
 import minecraftarmorweapon.potion.OtiruyooMobEffect;
+import minecraftarmorweapon.potion.NagiharaiMobEffect;
+import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KaitennMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
@@ -41,4 +43,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> TISSOKU = REGISTRY.register("tissoku", () -> new TissokuMobEffect());
 	public static final RegistryObject<MobEffect> BUBBLESHOT_EFFECT = REGISTRY.register("bubbleshot_effect", () -> new BubbleshotEffectMobEffect());
 	public static final RegistryObject<MobEffect> THUNDER_HIT = REGISTRY.register("thunder_hit", () -> new ThunderHitMobEffect());
+	public static final RegistryObject<MobEffect> NAGIHARAI = REGISTRY.register("nagiharai", () -> new NagiharaiMobEffect());
+	public static final RegistryObject<MobEffect> KURUTIMENASI = REGISTRY.register("kurutimenasi", () -> new KurutimenasiMobEffect());
 }

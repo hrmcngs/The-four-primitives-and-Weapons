@@ -20,8 +20,7 @@ public class ThunderHitehuekutogaYouXiaoShinoteitukuProcedure {
 			return;
 		if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 			_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
-					entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get()).getDuration() : 0,
-					entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get()).getAmplifier() : 0, true, false));
+					entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get()).getDuration() : 0, 6, true, false));
 		MinecraftArmorWeaponMod.queueServerWork(5, () -> {
 			if (entity instanceof LivingEntity _entity)
 				_entity.hurt(new DamageSource("\u611F\u96FB").bypassArmor(), 1);
