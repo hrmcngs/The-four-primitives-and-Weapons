@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/luna",
+  "textures": {
+    "1": "minecraft_armor_weapon:blocks/luna",
+    "particle": "minecraft_armor_weapon:items/luna"
+  }
+}

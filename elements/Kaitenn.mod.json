@@ -13,6 +13,9 @@
     "isBenefitical": false,
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
+    "onStarted": {
+      "name": "KaitennposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
+    },
     "onActiveTick": {
       "name": "KaitennehuekutogaYouXiaoShinoteituku"
     }

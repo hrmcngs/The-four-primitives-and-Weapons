@@ -21,6 +21,7 @@ import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
+import minecraftarmorweapon.item.LunaItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.IronKatanaItem;
 import minecraftarmorweapon.item.IllusionerArmorItem;
@@ -59,6 +60,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> CROSS = block(MinecraftArmorWeaponModBlocks.CROSS, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Item> WATER_KATANA = REGISTRY.register("water_katana", () -> new WaterKatanaItem());
 	public static final RegistryObject<Item> MY_TEST_IRON_KATANA = REGISTRY.register("my_test_iron_katana", () -> new MyTestIronKatanaItem());
+	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
