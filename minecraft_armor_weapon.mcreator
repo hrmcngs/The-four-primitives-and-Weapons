@@ -764,6 +764,7 @@
     {
       "name": "IronGolemSummon",
       "type": "function",
+      "sortid": 93,
       "compiles": true,
       "locked_code": false,
       "registry_name": "iron_golem_summon",
@@ -1389,6 +1390,114 @@
           "src/main/java/minecraftarmorweapon/potion/WazaMobEffect.java"
         ]
       }
+    },
+    {
+      "name": "LunaEntity",
+      "type": "livingentity",
+      "sortid": 91,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "luna_entity",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/luna_entity_spawn_egg.json",
+          "src/main/java/minecraftarmorweapon/entity/LunaEntityEntity.java",
+          "src/main/java/minecraftarmorweapon/client/renderer/LunaEntityRenderer.java"
+        ]
+      }
+    },
+    {
+      "name": "Mahouzinn",
+      "type": "function",
+      "sortid": 92,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mahouzinn",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/mahouzinn.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "Magiczin",
+      "type": "potioneffect",
+      "sortid": 94,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magiczin",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/MagiczinMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "LunaYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 95,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "luna_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LunaYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "MagiczinOnEffectActiveTick",
+      "type": "procedure",
+      "sortid": 96,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magiczin_on_effect_active_tick",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/MagiczinOnEffectActiveTickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ArrowsKill",
+      "type": "function",
+      "sortid": 97,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "arrows_kill",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/arrows_kill.mcfunction"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1408,24 +1517,24 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
-      "block.minecraft_armor_weapon.cross": "Cross",
+      "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "block.minecraft_armor_weapon.cross": "Cross",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
-      "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
+      "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
-      "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
+      "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
@@ -1433,8 +1542,8 @@
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "key.minecraft_armor_weapon.n": "N",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
-      "effect.minecraft_armor_weapon.nagiharai": "aa",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
+      "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "block.minecraft_armor_weapon.rose": "Rose",
@@ -1445,15 +1554,18 @@
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
+      "entity.minecraft_armor_weapon.luna_entity": "Luna Entity",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "itemGroup.tabarmor": "Armor",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
+      "effect.minecraft_armor_weapon.magiczin": "mahouzinn",
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
+      "item.minecraft_armor_weapon.luna_entity_spawn_egg": "Luna Entity Spawn Egg",
       "itemGroup.tabweapon": "Weapon",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots"

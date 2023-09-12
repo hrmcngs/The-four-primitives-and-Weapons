@@ -33,6 +33,7 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModFeatures;
+import minecraftarmorweapon.init.MinecraftArmorWeaponModEntities;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModBlocks;
 
@@ -57,6 +58,7 @@ public class MinecraftArmorWeaponMod {
 
 		MinecraftArmorWeaponModBlocks.REGISTRY.register(bus);
 		MinecraftArmorWeaponModItems.REGISTRY.register(bus);
+		MinecraftArmorWeaponModEntities.REGISTRY.register(bus);
 
 		MinecraftArmorWeaponModFeatures.REGISTRY.register(bus);
 

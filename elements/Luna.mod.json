@@ -23,6 +23,9 @@
     "immuneToFire": false,
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "LunaYoukuritukusitatoki"
+    },
     "onEntitySwing": {
       "name": "LunaenteiteigaaitemuwoZhentutaShi"
     }
