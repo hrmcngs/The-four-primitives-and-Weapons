@@ -12,6 +12,7 @@
   "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
   "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
   "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
+  "item.minecraft_armor_weapon.mahoutane": "Mahoutane",
   "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
   "effect.minecraft_armor_weapon.suityuu": "suityuu",
   "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
@@ -48,7 +49,10 @@
   "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
   "effect.minecraft_armor_weapon.thunder_hit": "a",
   "item.minecraft_armor_weapon.luna_entity_spawn_egg": "Luna Entity Spawn Egg",
+  "entity.minecraft_armor_weapon.mahouzinn_entity": "Mahouzinn Entity",
+  "effect.minecraft_armor_weapon.magiczin_kill": "mahouzinn",
   "itemGroup.tabweapon": "Weapon",
+  "item.minecraft_armor_weapon.mahouzinn_entity_spawn_egg": "Mahouzinn Entity Spawn Egg",
   "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
   "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots"
 }

@@ -22,6 +22,7 @@ import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
+import minecraftarmorweapon.item.MahoutaneItem;
 import minecraftarmorweapon.item.LunaItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.IronKatanaItem;
@@ -63,6 +64,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> MY_TEST_IRON_KATANA = REGISTRY.register("my_test_iron_katana", () -> new MyTestIronKatanaItem());
 	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
 	public static final RegistryObject<Item> LUNA_ENTITY_SPAWN_EGG = REGISTRY.register("luna_entity_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.LUNA_ENTITY, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+	public static final RegistryObject<Item> MAHOUTANE = REGISTRY.register("mahoutane", () -> new MahoutaneItem());
+	public static final RegistryObject<Item> MAHOUZINN_ENTITY_SPAWN_EGG = REGISTRY.register("mahouzinn_entity_spawn_egg",
+			() -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.MAHOUZINN_ENTITY, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

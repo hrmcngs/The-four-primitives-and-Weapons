@@ -13,14 +13,14 @@ import minecraftarmorweapon.procedures.MagiczinOnEffectActiveTickProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-public class MagiczinMobEffect extends MobEffect {
-	public MagiczinMobEffect() {
+public class MagiczinKillMobEffect extends MobEffect {
+	public MagiczinKillMobEffect() {
 		super(MobEffectCategory.NEUTRAL, -1);
 	}
 
 	@Override
 	public String getDescriptionId() {
-		return "effect.minecraft_armor_weapon.magiczin";
+		return "effect.minecraft_armor_weapon.magiczin_kill";
 	}
 
 	@Override
