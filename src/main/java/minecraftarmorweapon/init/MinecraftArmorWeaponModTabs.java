@@ -12,6 +12,7 @@ public class MinecraftArmorWeaponModTabs {
 	public static CreativeModeTab TAB_WEAPON;
 	public static CreativeModeTab TAB_MAGIC_BOOKS;
 	public static CreativeModeTab TAB_ARMOR;
+	public static CreativeModeTab TAB_YOPKEINAMONO;
 
 	public static void load() {
 		TAB_WEAPON = new CreativeModeTab("tabweapon") {
@@ -40,6 +41,17 @@ public class MinecraftArmorWeaponModTabs {
 			@Override
 			public ItemStack makeIcon() {
 				return new ItemStack(Items.TURTLE_HELMET);
+			}
+
+			@Override
+			public boolean hasSearchBar() {
+				return false;
+			}
+		};
+		TAB_YOPKEINAMONO = new CreativeModeTab("tabyopkeinamono") {
+			@Override
+			public ItemStack makeIcon() {
+				return new ItemStack(MinecraftArmorWeaponModBlocks.CROSS.get());
 			}
 
 			@Override

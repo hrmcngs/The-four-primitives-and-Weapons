@@ -58,7 +58,7 @@
     "hasGravity": false,
     "isWaterloggable": false,
     "creativeTab": {
-      "value": "BUILDING_BLOCKS"
+      "value": "CUSTOM:Yopkeinamono"
     },
     "destroyTool": "Not specified",
     "customDrop": {

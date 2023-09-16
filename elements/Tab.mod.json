@@ -1,0 +1,12 @@
+{
+  "_fv": 43,
+  "_type": "keybind",
+  "definition": {
+    "triggerKey": "TAB",
+    "keyBindingName": "henkou",
+    "keyBindingCategoryKey": "misc",
+    "onKeyPressed": {
+      "name": "TabkigaYasaretatoki"
+    }
+  }
+}

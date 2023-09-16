@@ -1545,6 +1545,148 @@
           "src/main/java/minecraftarmorweapon/entity/MahouzinnEntityEntity.java"
         ]
       }
+    },
+    {
+      "name": "Quiverinventory",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "quiverinventory",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/client/gui/QuiverinventoryScreen.java",
+          "src/main/java/minecraftarmorweapon/world/inventory/QuiverinventoryMenu.java",
+          "src/main/java/minecraftarmorweapon/network/QuiverinventoryButtonMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "QuiverItemaitemugainbentoriniaruJiannoteituku",
+      "type": "procedure",
+      "sortid": 106,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "quiver_itemaitemugainbentoriniaru_jiannoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "QuiverItem",
+      "type": "item",
+      "sortid": 107,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "quiver_item",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/QuiverItemItem.java",
+          "src/main/java/minecraftarmorweapon/item/inventory/QuiverItemInventoryCapability.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/quiver_item.json"
+        ]
+      }
+    },
+    {
+      "name": "Toziru",
+      "type": "procedure",
+      "sortid": 108,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "toziru",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ToziruProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "QuiverItems",
+      "type": "itemextension",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "quiver_items",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "Yopkeinamono",
+      "type": "tab",
+      "sortid": 110,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "yopkeinamono",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "NetheriteArmorAndQuiverChestplateTickEvent",
+      "type": "procedure",
+      "sortid": 114,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "netherite_armor_and_quiver_chestplate_tick_event",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/NetheriteArmorAndQuiverChestplateTickEventProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TabkigaYasaretatoki",
+      "type": "procedure",
+      "sortid": 116,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tabkiga_yasaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TabkigaYasaretatokiProcedure.java"
+        ],
+        "dependencies": []
+      }
+    },
+    {
+      "name": "Tab",
+      "type": "keybind",
+      "sortid": 117,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tab",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/network/TabMessage.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1559,15 +1701,22 @@
       "type": "number",
       "scope": "player_persistent",
       "value": "2.0"
+    },
+    {
+      "name": "tab",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "2.0"
     }
   ],
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabmagic_books": "Magic Books",
       "block.minecraft_armor_weapon.cross": "Cross",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.luna": "§eLuna",
@@ -1588,6 +1737,7 @@
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
+      "item.minecraft_armor_weapon.quiver_item": "Quiver Item",
       "key.minecraft_armor_weapon.n": "N",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
@@ -1599,6 +1749,7 @@
       "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "effect.minecraft_armor_weapon.waza": "waza",
+      "key.minecraft_armor_weapon.tab": "henkou",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",

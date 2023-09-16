@@ -31,6 +31,7 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
+import minecraftarmorweapon.init.MinecraftArmorWeaponModMenus;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModFeatures;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEntities;
@@ -65,6 +66,8 @@ public class MinecraftArmorWeaponMod {
 		MinecraftArmorWeaponModMobEffects.REGISTRY.register(bus);
 
 		MinecraftArmorWeaponModEnchantments.REGISTRY.register(bus);
+
+		MinecraftArmorWeaponModMenus.REGISTRY.register(bus);
 
 	}
 
