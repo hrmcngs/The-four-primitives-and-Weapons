@@ -779,7 +779,7 @@
       "type": "procedure",
       "sortid": 51,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "iron_katanaturuwo_shoude_chituteiru_jiannoteituku",
       "metadata": {
         "files": [
@@ -789,6 +789,22 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
@@ -1420,19 +1436,6 @@
       }
     },
     {
-      "name": "Magiczin",
-      "type": "potioneffect",
-      "sortid": 94,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "magiczin",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/potion/MagiczinMobEffect.java"
-        ]
-      }
-    },
-    {
       "name": "LunaYoukuritukusitatoki",
       "type": "procedure",
       "sortid": 95,
@@ -1468,29 +1471,6 @@
       }
     },
     {
-      "name": "MagiczinOnEffectActiveTick",
-      "type": "procedure",
-      "sortid": 96,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "magiczin_on_effect_active_tick",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/MagiczinOnEffectActiveTickProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
       "name": "ArrowsKill",
       "type": "function",
       "sortid": 97,
@@ -1500,19 +1480,6 @@
       "metadata": {
         "files": [
           "src/main/resources/data/minecraft_armor_weapon/functions/arrows_kill.mcfunction"
-        ]
-      }
-    },
-    {
-      "name": "MagiczinKill",
-      "type": "potioneffect",
-      "sortid": 98,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "magiczin_kill",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/potion/MagiczinKillMobEffect.java"
         ]
       }
     },
@@ -1532,23 +1499,9 @@
       }
     },
     {
-      "name": "MahouzinnEntity",
-      "type": "livingentity",
-      "sortid": 100,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "mahouzinn_entity",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/mahouzinn_entity_spawn_egg.json",
-          "src/main/java/minecraftarmorweapon/client/renderer/MahouzinnEntityRenderer.java",
-          "src/main/java/minecraftarmorweapon/entity/MahouzinnEntityEntity.java"
-        ]
-      }
-    },
-    {
       "name": "Quiverinventory",
       "type": "gui",
+      "sortid": 128,
       "compiles": true,
       "locked_code": false,
       "registry_name": "quiverinventory",
@@ -1639,15 +1592,31 @@
       }
     },
     {
-      "name": "NetheriteArmorAndQuiverChestplateTickEvent",
-      "type": "procedure",
-      "sortid": 114,
+      "name": "BlackSpectralArrow",
+      "type": "rangeditem",
+      "sortid": 118,
       "compiles": true,
-      "locked_code": false,
-      "registry_name": "netherite_armor_and_quiver_chestplate_tick_event",
+      "locked_code": true,
+      "registry_name": "black_spectral_arrow",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/NetheriteArmorAndQuiverChestplateTickEventProcedure.java"
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/black_spectral_arrow.json",
+          "src/main/java/minecraftarmorweapon/item/BlackSpectralArrowItem.java",
+          "src/main/java/minecraftarmorweapon/entity/BlackSpectralArrowEntity.java",
+          "src/main/java/minecraftarmorweapon/client/renderer/BlackSpectralArrowRenderer.java"
+        ]
+      }
+    },
+    {
+      "name": "EffectMagicehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 120,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "effect_magicehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/EffectMagicehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1655,36 +1624,202 @@
             "type": "entity"
           },
           {
-            "name": "itemstack",
-            "type": "itemstack"
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
     },
     {
-      "name": "TabkigaYasaretatoki",
-      "type": "procedure",
-      "sortid": 116,
+      "name": "EffectMagic",
+      "type": "potioneffect",
+      "sortid": 121,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tabkiga_yasaretatoki",
+      "registry_name": "effect_magic",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/TabkigaYasaretatokiProcedure.java"
-        ],
-        "dependencies": []
+          "src/main/java/minecraftarmorweapon/potion/EffectMagicMobEffect.java"
+        ]
       }
     },
     {
-      "name": "Tab",
-      "type": "keybind",
-      "sortid": 117,
+      "name": "StopArrow",
+      "type": "procedure",
+      "sortid": 122,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "tab",
+      "registry_name": "stop_arrow",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/network/TabMessage.java"
+          "src/main/java/minecraftarmorweapon/procedures/StopArrowProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Barrier",
+      "type": "procedure",
+      "sortid": 123,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "barrier",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BarrierProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BarrierEffect",
+      "type": "potioneffect",
+      "sortid": 124,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "barrier_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/BarrierEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "BarrierEffectehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 125,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "barrier_effectehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BarrierEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "SkeltonMob",
+      "type": "livingentity",
+      "sortid": 126,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "skelton_mob",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/client/renderer/SkeltonMobRenderer.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/skelton_mob_spawn_egg.json",
+          "src/main/java/minecraftarmorweapon/entity/SkeltonMobEntity.java"
+        ]
+      }
+    },
+    {
+      "name": "SkeltonMobenteiteiwoYoukuritukusitaShi",
+      "type": "procedure",
+      "sortid": 129,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "skelton_mobenteiteiwo_youkuritukusita_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/SkeltonMobenteiteiwoYoukuritukusitaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
         ]
       }
     }
@@ -1707,22 +1842,32 @@
       "type": "number",
       "scope": "player_persistent",
       "value": "2.0"
+    },
+    {
+      "name": "noa",
+      "type": "number",
+      "scope": "player_lifetime",
+      "value": "0"
     }
   ],
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
+      "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+      "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
       "block.minecraft_armor_weapon.cross": "Cross",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
+      "effect.minecraft_armor_weapon.effect_magic": "magic",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
+      "item.minecraft_armor_weapon.black_spectral_arrow": "Black Spectral Arrow",
+      "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
@@ -1730,8 +1875,8 @@
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
-      "item.minecraft_armor_weapon.fireball": "§cFireball",
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
+      "item.minecraft_armor_weapon.fireball": "§cFireball",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
@@ -1749,7 +1894,6 @@
       "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "effect.minecraft_armor_weapon.waza": "waza",
-      "key.minecraft_armor_weapon.tab": "henkou",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
@@ -1760,15 +1904,12 @@
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "itemGroup.tabarmor": "Armor",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
-      "effect.minecraft_armor_weapon.magiczin": "mahouzinn",
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
       "item.minecraft_armor_weapon.luna_entity_spawn_egg": "Luna Entity Spawn Egg",
-      "entity.minecraft_armor_weapon.mahouzinn_entity": "Mahouzinn Entity",
-      "effect.minecraft_armor_weapon.magiczin_kill": "mahouzinn",
       "itemGroup.tabweapon": "Weapon",
-      "item.minecraft_armor_weapon.mahouzinn_entity_spawn_egg": "Mahouzinn Entity Spawn Egg",
+      "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots"
     }
