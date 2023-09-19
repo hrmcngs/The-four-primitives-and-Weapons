@@ -26,6 +26,9 @@
     "onRightClickedInAir": {
       "name": "LunaYoukuritukusitatoki"
     },
+    "onItemInUseTick": {
+      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
+    },
     "onEntitySwing": {
       "name": "LunaenteiteigaaitemuwoZhentutaShi"
     }

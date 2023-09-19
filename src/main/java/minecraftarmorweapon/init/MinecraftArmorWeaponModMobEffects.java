@@ -18,13 +18,13 @@ import minecraftarmorweapon.potion.SyugekiMobEffect;
 import minecraftarmorweapon.potion.SuityuuMobEffect;
 import minecraftarmorweapon.potion.OtiruyooMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
-import minecraftarmorweapon.potion.MagiczinMobEffect;
-import minecraftarmorweapon.potion.MagiczinKillMobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KaitennMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
+import minecraftarmorweapon.potion.EffectMagicMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
+import minecraftarmorweapon.potion.BarrierEffectMobEffect;
 import minecraftarmorweapon.potion.AttackBowMobEffect;
 import minecraftarmorweapon.potion.Arrow1MobEffect;
 import minecraftarmorweapon.potion.AaaaMobEffect;
@@ -49,6 +49,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> NAGIHARAI = REGISTRY.register("nagiharai", () -> new NagiharaiMobEffect());
 	public static final RegistryObject<MobEffect> KURUTIMENASI = REGISTRY.register("kurutimenasi", () -> new KurutimenasiMobEffect());
 	public static final RegistryObject<MobEffect> WAZA = REGISTRY.register("waza", () -> new WazaMobEffect());
-	public static final RegistryObject<MobEffect> MAGICZIN = REGISTRY.register("magiczin", () -> new MagiczinMobEffect());
-	public static final RegistryObject<MobEffect> MAGICZIN_KILL = REGISTRY.register("magiczin_kill", () -> new MagiczinKillMobEffect());
+	public static final RegistryObject<MobEffect> EFFECT_MAGIC = REGISTRY.register("effect_magic", () -> new EffectMagicMobEffect());
+	public static final RegistryObject<MobEffect> BARRIER_EFFECT = REGISTRY.register("barrier_effect", () -> new BarrierEffectMobEffect());
 }

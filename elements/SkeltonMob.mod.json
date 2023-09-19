@@ -2,16 +2,16 @@
   "_fv": 43,
   "_type": "livingentity",
   "definition": {
-    "mobName": "Mahouzinn Entity",
+    "mobName": "Skelton Mob",
     "mobLabel": "",
-    "mobModelName": "Modelmahouzinn",
-    "mobModelTexture": "alchemymod.png",
+    "mobModelName": "Modelskeleton_Converted",
+    "mobModelTexture": "skeleton.png",
     "mobModelGlowTexture": "",
     "solidBoundingBox": {
       "fixedValue": false
     },
     "modelWidth": 1.0,
-    "modelHeight": 1.0,
+    "modelHeight": 1.5,
     "modelShadowSize": 0.0,
     "mountedYOffset": 0.0,
     "hasSpawnEgg": true,
@@ -30,7 +30,7 @@
     "bossBarColor": "PINK",
     "bossBarType": "PROGRESS",
     "equipmentMainHand": {
-      "value": ""
+      "value": "CUSTOM:IronKatana"
     },
     "equipmentOffHand": {
       "value": ""
@@ -51,16 +51,16 @@
     "mobCreatureType": "UNDEFINED",
     "attackStrength": 3,
     "attackKnockback": 0.0,
-    "knockbackResistance": 0.0,
+    "knockbackResistance": 1000.0,
     "movementSpeed": 0.3,
     "stepHeight": 0.6,
     "armorBaseValue": 0.0,
     "trackingRange": 64,
     "followRange": 16,
-    "health": 10,
+    "health": 1,
     "xpAmount": 0,
     "waterMob": true,
-    "flyingMob": true,
+    "flyingMob": false,
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
@@ -68,37 +68,40 @@
     "ridable": false,
     "canControlForward": false,
     "canControlStrafe": false,
-    "immuneToFire": true,
-    "immuneToArrows": true,
+    "immuneToFire": false,
+    "immuneToArrows": false,
     "immuneToFallDamage": true,
-    "immuneToCactus": true,
+    "immuneToCactus": false,
     "immuneToDrowning": true,
-    "immuneToLightning": true,
+    "immuneToLightning": false,
     "immuneToPotions": true,
     "immuneToPlayer": true,
-    "immuneToExplosion": true,
-    "immuneToTrident": true,
-    "immuneToAnvil": true,
-    "immuneToWither": true,
-    "immuneToDragonBreath": true,
+    "immuneToExplosion": false,
+    "immuneToTrident": false,
+    "immuneToAnvil": false,
+    "immuneToWither": false,
+    "immuneToDragonBreath": false,
     "mobDrop": {
-      "value": ""
+      "value": "Items.BONE"
     },
     "livingSound": {
       "value": ""
     },
     "hurtSound": {
-      "value": ""
+      "value": "entity.generic.hurt"
     },
     "deathSound": {
-      "value": ""
+      "value": "entity.generic.death"
     },
     "stepSound": {
       "value": ""
     },
-    "hasAI": false,
+    "onRightClickedOn": {
+      "name": "SkeltonMobenteiteiwoYoukuritukusitaShi"
+    },
+    "hasAI": true,
     "aiBase": "(none)",
-    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"><next><block type=\"attack_on_collide\"><field name=\"speed\">1.2</field><field name=\"longmemory\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"wander\"><field name=\"speed\">1</field><field name=\"condition\">null,null</field><next><block type=\"attack_action\"><field name=\"callhelp\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"look_around\"><field name=\"condition\">null,null</field><next><block type=\"swim_in_water\"><field name=\"condition\">null,null</field></block></next></block></next></block></next></block></next></block></next></block></xml>",
+    "aixml": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"aitasks_container\" deletable=\"false\" x=\"40\" y=\"40\"></block><block type=\"attack_on_collide\" x=\"146\" y=\"197\"><field name=\"speed\">1.2</field><field name=\"longmemory\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"wander\"><field name=\"speed\">1</field><field name=\"condition\">null,null</field><next><block type=\"attack_action\"><field name=\"callhelp\">FALSE</field><field name=\"condition\">null,null</field><next><block type=\"look_around\"><field name=\"condition\">null,null</field><next><block type=\"swim_in_water\"><field name=\"condition\">null,null</field></block></next></block></next></block></next></block></next></block></xml>",
     "breedable": false,
     "tameable": false,
     "breedTriggerItems": [],

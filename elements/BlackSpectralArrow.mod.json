@@ -5,12 +5,12 @@
     "renderType": 0,
     "texture": "aaa",
     "customModelName": "Normal",
-    "name": "Mahoutane",
+    "name": "Black Spectral Arrow",
     "specialInfo": [],
     "creativeTab": {
-      "value": "COMBAT"
+      "value": "CUSTOM:Weapon"
     },
-    "stackSize": 1,
+    "stackSize": 64,
     "ammoItem": {
       "value": ""
     },
@@ -19,19 +19,19 @@
     "actionSound": {
       "value": "entity.arrow.shoot"
     },
-    "hasGlow": false,
-    "animation": "none",
+    "hasGlow": true,
+    "animation": "spear",
     "enableMeleeDamage": false,
     "damageVsEntity": 0.0,
     "bulletPower": 1.0,
-    "bulletDamage": 0.0,
+    "bulletDamage": 5.0,
     "bulletKnockback": 0,
     "bulletParticles": false,
     "bulletIgnitesFire": false,
     "bulletItemTexture": {
-      "value": "Blocks.REINFORCED_DEEPSLATE"
+      "value": ""
     },
-    "bulletModel": "Default",
-    "customBulletModelTexture": ""
+    "bulletModel": "Modelblack_spectral_arrow_Converted",
+    "customBulletModelTexture": "black_spectral_arrow.png"
   }
 }

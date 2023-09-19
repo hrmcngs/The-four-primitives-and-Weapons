@@ -2,8 +2,8 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "mahouzinn",
-    "icon": "kurutimenasi.png",
+    "effectName": "magic",
+    "icon": "kaitenn.png",
     "color": {
       "value": -1,
       "falpha": 0.0
@@ -14,7 +14,7 @@
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
     "onActiveTick": {
-      "name": "MagiczinOnEffectActiveTick"
+      "name": "EffectMagicehuekutogaYouXiaoShinoteituku"
     }
   }
 }

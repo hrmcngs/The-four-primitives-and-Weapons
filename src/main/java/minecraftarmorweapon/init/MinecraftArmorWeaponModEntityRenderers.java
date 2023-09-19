@@ -11,8 +11,9 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
-import minecraftarmorweapon.client.renderer.MahouzinnEntityRenderer;
+import minecraftarmorweapon.client.renderer.SkeltonMobRenderer;
 import minecraftarmorweapon.client.renderer.LunaEntityRenderer;
+import minecraftarmorweapon.client.renderer.BlackSpectralArrowRenderer;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MinecraftArmorWeaponModEntityRenderers {
@@ -20,6 +21,7 @@ public class MinecraftArmorWeaponModEntityRenderers {
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.LUNA_ENTITY.get(), LunaEntityRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.MAHOUTANE.get(), ThrownItemRenderer::new);
-		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.MAHOUZINN_ENTITY.get(), MahouzinnEntityRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.BLACK_SPECTRAL_ARROW.get(), BlackSpectralArrowRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.SKELTON_MOB.get(), SkeltonMobRenderer::new);
 	}
 }

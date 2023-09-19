@@ -32,6 +32,7 @@ import minecraftarmorweapon.item.HammerItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.CustomElytraTestItem;
 import minecraftarmorweapon.item.BubbleshotItem;
+import minecraftarmorweapon.item.BlackSpectralArrowItem;
 import minecraftarmorweapon.item.AItem;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -66,9 +67,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
 	public static final RegistryObject<Item> LUNA_ENTITY_SPAWN_EGG = REGISTRY.register("luna_entity_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.LUNA_ENTITY, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> MAHOUTANE = REGISTRY.register("mahoutane", () -> new MahoutaneItem());
-	public static final RegistryObject<Item> MAHOUZINN_ENTITY_SPAWN_EGG = REGISTRY.register("mahouzinn_entity_spawn_egg",
-			() -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.MAHOUZINN_ENTITY, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> QUIVER_ITEM = REGISTRY.register("quiver_item", () -> new QuiverItemItem());
+	public static final RegistryObject<Item> BLACK_SPECTRAL_ARROW = REGISTRY.register("black_spectral_arrow", () -> new BlackSpectralArrowItem());
+	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.SKELTON_MOB, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

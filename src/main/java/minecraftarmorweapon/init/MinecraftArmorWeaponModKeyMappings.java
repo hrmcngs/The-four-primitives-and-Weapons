@@ -15,7 +15,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
 
-import minecraftarmorweapon.network.TabMessage;
 import minecraftarmorweapon.network.RMessage;
 import minecraftarmorweapon.network.NMessage;
 
@@ -49,25 +48,11 @@ public class MinecraftArmorWeaponModKeyMappings {
 			isDownOld = isDown;
 		}
 	};
-	public static final KeyMapping TAB = new KeyMapping("key.minecraft_armor_weapon.tab", GLFW.GLFW_KEY_TAB, "key.categories.misc") {
-		private boolean isDownOld = false;
-
-		@Override
-		public void setDown(boolean isDown) {
-			super.setDown(isDown);
-			if (isDownOld != isDown && isDown) {
-				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new TabMessage(0, 0));
-				TabMessage.pressAction(Minecraft.getInstance().player, 0, 0);
-			}
-			isDownOld = isDown;
-		}
-	};
 
 	@SubscribeEvent
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
 		event.register(R);
 		event.register(N);
-		event.register(TAB);
 	}
 
 	@Mod.EventBusSubscriber({Dist.CLIENT})
@@ -77,7 +62,6 @@ public class MinecraftArmorWeaponModKeyMappings {
 			if (Minecraft.getInstance().screen == null) {
 				R.consumeClick();
 				N.consumeClick();
-				TAB.consumeClick();
 			}
 		}
 	}

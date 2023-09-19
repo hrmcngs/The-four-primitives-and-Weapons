@@ -9,23 +9,23 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
-import minecraftarmorweapon.procedures.MagiczinOnEffectActiveTickProcedure;
+import minecraftarmorweapon.procedures.EffectMagicehuekutogaYouXiaoShinoteitukuProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-public class MagiczinMobEffect extends MobEffect {
-	public MagiczinMobEffect() {
+public class EffectMagicMobEffect extends MobEffect {
+	public EffectMagicMobEffect() {
 		super(MobEffectCategory.NEUTRAL, -1);
 	}
 
 	@Override
 	public String getDescriptionId() {
-		return "effect.minecraft_armor_weapon.magiczin";
+		return "effect.minecraft_armor_weapon.effect_magic";
 	}
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		MagiczinOnEffectActiveTickProcedure.execute(entity.level, entity);
+		EffectMagicehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override

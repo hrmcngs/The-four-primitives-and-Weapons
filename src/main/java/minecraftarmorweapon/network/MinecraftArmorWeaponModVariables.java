@@ -70,6 +70,7 @@ public class MinecraftArmorWeaponModVariables {
 			clone.aaa = original.aaa;
 			clone.tab = original.tab;
 			if (!event.isWasDeath()) {
+				clone.noa = original.noa;
 			}
 		}
 	}
@@ -108,6 +109,7 @@ public class MinecraftArmorWeaponModVariables {
 		public String ddd = "\"\"";
 		public double aaa = 2.0;
 		public double tab = 2.0;
+		public double noa = 0;
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -119,6 +121,7 @@ public class MinecraftArmorWeaponModVariables {
 			nbt.putString("ddd", ddd);
 			nbt.putDouble("aaa", aaa);
 			nbt.putDouble("tab", tab);
+			nbt.putDouble("noa", noa);
 			return nbt;
 		}
 
@@ -127,6 +130,7 @@ public class MinecraftArmorWeaponModVariables {
 			ddd = nbt.getString("ddd");
 			aaa = nbt.getDouble("aaa");
 			tab = nbt.getDouble("tab");
+			noa = nbt.getDouble("noa");
 		}
 	}
 
@@ -154,6 +158,7 @@ public class MinecraftArmorWeaponModVariables {
 					variables.ddd = message.data.ddd;
 					variables.aaa = message.data.aaa;
 					variables.tab = message.data.tab;
+					variables.noa = message.data.noa;
 				}
 			});
 			context.setPacketHandled(true);

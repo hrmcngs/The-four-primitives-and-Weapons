@@ -7,9 +7,9 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
+
 import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,32 +22,33 @@ import net.minecraft.network.protocol.Packet;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEntities;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
-public class MahoutaneEntity extends AbstractArrow implements ItemSupplier {
-	public MahoutaneEntity(PlayMessages.SpawnEntity packet, Level world) {
-		super(MinecraftArmorWeaponModEntities.MAHOUTANE.get(), world);
+public class BlackSpectralArrowEntity extends AbstractArrow implements ItemSupplier {
+	public BlackSpectralArrowEntity(PlayMessages.SpawnEntity packet, Level world) {
+		super(MinecraftArmorWeaponModEntities.BLACK_SPECTRAL_ARROW.get(), world);
 	}
 
-	public MahoutaneEntity(EntityType<? extends MahoutaneEntity> type, Level world) {
+
+	public BlackSpectralArrowEntity(EntityType<? extends BlackSpectralArrowEntity> type, Level world) {
 		super(type, world);
 	}
 
-	public MahoutaneEntity(EntityType<? extends MahoutaneEntity> type, double x, double y, double z, Level world) {
+	public BlackSpectralArrowEntity(EntityType<? extends BlackSpectralArrowEntity> type, double x, double y, double z, Level world) {
 		super(type, x, y, z, world);
 	}
 
-	public MahoutaneEntity(EntityType<? extends MahoutaneEntity> type, LivingEntity entity, Level world) {
+	public BlackSpectralArrowEntity(EntityType<? extends BlackSpectralArrowEntity> type, LivingEntity entity, Level world) {
 		super(type, entity, world);
 	}
 
 	@Override
 	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
-	}
+}
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public ItemStack getItem() {
-		return new ItemStack(Blocks.REINFORCED_DEEPSLATE);
+		return ItemStack.EMPTY;
 	}
 
 	@Override
@@ -68,8 +69,8 @@ public class MahoutaneEntity extends AbstractArrow implements ItemSupplier {
 			this.discard();
 	}
 
-	public static MahoutaneEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
-		MahoutaneEntity entityarrow = new MahoutaneEntity(MinecraftArmorWeaponModEntities.MAHOUTANE.get(), entity, world);
+	public static BlackSpectralArrowEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
+		BlackSpectralArrowEntity entityarrow = new BlackSpectralArrowEntity(MinecraftArmorWeaponModEntities.BLACK_SPECTRAL_ARROW.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
 		entityarrow.setSilent(true);
 		entityarrow.setCritArrow(false);
@@ -80,14 +81,14 @@ public class MahoutaneEntity extends AbstractArrow implements ItemSupplier {
 		return entityarrow;
 	}
 
-	public static MahoutaneEntity shoot(LivingEntity entity, LivingEntity target) {
-		MahoutaneEntity entityarrow = new MahoutaneEntity(MinecraftArmorWeaponModEntities.MAHOUTANE.get(), entity, entity.level);
+	public static BlackSpectralArrowEntity shoot(LivingEntity entity, LivingEntity target) {
+		BlackSpectralArrowEntity entityarrow = new BlackSpectralArrowEntity(MinecraftArmorWeaponModEntities.BLACK_SPECTRAL_ARROW.get(), entity, entity.level);
 		double dx = target.getX() - entity.getX();
 		double dy = target.getY() + target.getEyeHeight() - 1.1;
 		double dz = target.getZ() - entity.getZ();
 		entityarrow.shoot(dx, dy - entityarrow.getY() + Math.hypot(dx, dz) * 0.2F, dz, 1f * 2, 12.0F);
 		entityarrow.setSilent(true);
-		entityarrow.setBaseDamage(0);
+		entityarrow.setBaseDamage(5);
 		entityarrow.setKnockback(0);
 		entityarrow.setCritArrow(false);
 		entity.level.addFreshEntity(entityarrow);
