@@ -18,7 +18,7 @@ import net.minecraft.commands.CommandSource;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
-import minecraftarmorweapon.entity.LunaEntityEntity;
+import minecraftarmorweapon.entity.SkeltonMobEntity;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -87,7 +87,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -131,7 +131,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -175,7 +175,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -219,7 +219,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -263,7 +263,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -307,7 +307,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -351,7 +351,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -395,7 +395,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -439,7 +439,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{
@@ -483,7 +483,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 						.collect(Collectors.toList());
 				for (Entity entityiterator : _entfound) {
 					if (!(entityiterator == entity)) {
-						if (!(entityiterator instanceof LunaEntityEntity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (entityiterator instanceof Mob) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 									{

@@ -24,15 +24,15 @@ import minecraftarmorweapon.client.model.Modelbanner_Converted;
 public class MinecraftArmorWeaponModModels {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		event.registerLayerDefinition(Modelblack_spectral_arrow_Converted.LAYER_LOCATION, Modelblack_spectral_arrow_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelskeleton_Converted.LAYER_LOCATION, Modelskeleton_Converted::createBodyLayer);
-		event.registerLayerDefinition(Modelbanner_Converted.LAYER_LOCATION, Modelbanner_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelnetherite_arrow_armor_layer_1_Converted.LAYER_LOCATION, Modelnetherite_arrow_armor_layer_1_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelpillager_Converted.LAYER_LOCATION, Modelpillager_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelmahouzinn.LAYER_LOCATION, Modelmahouzinn::createBodyLayer);
-		event.registerLayerDefinition(Modelluna_Converted.LAYER_LOCATION, Modelluna_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelillusioner_armor_layer_3_Converted.LAYER_LOCATION, Modelillusioner_armor_layer_3_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelpiglin_brute_Converted.LAYER_LOCATION, Modelpiglin_brute_Converted::createBodyLayer);
+		event.registerLayerDefinition(Modelblack_spectral_arrow_Converted.LAYER_LOCATION, Modelblack_spectral_arrow_Converted::createBodyLayer);
+		event.registerLayerDefinition(Modelbanner_Converted.LAYER_LOCATION, Modelbanner_Converted::createBodyLayer);
+		event.registerLayerDefinition(Modelluna_Converted.LAYER_LOCATION, Modelluna_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelelytra_Converted.LAYER_LOCATION, Modelelytra_Converted::createBodyLayer);
 	}
 }

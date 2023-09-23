@@ -18,7 +18,6 @@ import net.minecraft.world.entity.Entity;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.MahoutaneEntity;
-import minecraftarmorweapon.entity.LunaEntityEntity;
 import minecraftarmorweapon.entity.BlackSpectralArrowEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -26,8 +25,6 @@ import minecraftarmorweapon.MinecraftArmorWeaponMod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MinecraftArmorWeaponModEntities {
 	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MinecraftArmorWeaponMod.MODID);
-	public static final RegistryObject<EntityType<LunaEntityEntity>> LUNA_ENTITY = register("luna_entity",
-			EntityType.Builder.<LunaEntityEntity>of(LunaEntityEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(LunaEntityEntity::new).fireImmune().sized(1f, 1f));
 	public static final RegistryObject<EntityType<MahoutaneEntity>> MAHOUTANE = register("projectile_mahoutane",
 			EntityType.Builder.<MahoutaneEntity>of(MahoutaneEntity::new, MobCategory.MISC).setCustomClientFactory(MahoutaneEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<BlackSpectralArrowEntity>> BLACK_SPECTRAL_ARROW = register("projectile_black_spectral_arrow", EntityType.Builder.<BlackSpectralArrowEntity>of(BlackSpectralArrowEntity::new, MobCategory.MISC)
@@ -44,14 +41,12 @@ public class MinecraftArmorWeaponModEntities {
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
-			LunaEntityEntity.init();
 			SkeltonMobEntity.init();
 		});
 	}
 
 	@SubscribeEvent
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
-		event.put(LUNA_ENTITY.get(), LunaEntityEntity.createAttributes().build());
 		event.put(SKELTON_MOB.get(), SkeltonMobEntity.createAttributes().build());
 	}
 }

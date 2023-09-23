@@ -22,7 +22,7 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
-import minecraftarmorweapon.entity.LunaEntityEntity;
+import minecraftarmorweapon.entity.SkeltonMobEntity;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -91,7 +91,7 @@ public class NagiharaiehuekutogaYouXiaoShinoteitukuProcedure {
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(5 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
 			for (Entity entityiterator : _entfound) {
 				if (!(entityiterator == entity)) {
-					if (!(entityiterator instanceof LunaEntityEntity)) {
+					if (!(entityiterator instanceof SkeltonMobEntity)) {
 						if (entityiterator instanceof Mob) {
 							if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 								if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
@@ -139,7 +139,7 @@ public class NagiharaiehuekutogaYouXiaoShinoteitukuProcedure {
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(5 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
 			for (Entity entityiterator : _entfound) {
 				if (!(entityiterator == entity)) {
-					if (!(entityiterator instanceof LunaEntityEntity)) {
+					if (!(entityiterator instanceof SkeltonMobEntity)) {
 						if (entityiterator instanceof Mob) {
 							if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 								if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
@@ -187,7 +187,7 @@ public class NagiharaiehuekutogaYouXiaoShinoteitukuProcedure {
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(5 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
 			for (Entity entityiterator : _entfound) {
 				if (!(entityiterator == entity)) {
-					if (!(entityiterator instanceof LunaEntityEntity)) {
+					if (!(entityiterator instanceof SkeltonMobEntity)) {
 						if (entityiterator instanceof Mob) {
 							if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 								if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {

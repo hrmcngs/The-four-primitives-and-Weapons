@@ -31,21 +31,14 @@ import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Comparator;
 
-public class WaterKatanaYoukuritukusitatokiProcedure {
+public class GomanorikenYoukuritukusitatokiProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
 		double r = 0;
 		double alpha = 0;
 		double beta = 0;
-		double Grow = 0;
-		double TrackZ = 0;
-		double TrackY = 0;
-		double TrackX = 0;
-		double X = 0;
-		double Y = 0;
-		double Z = 0;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()) {
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()) {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KAITENN.get(), 1, 1, true, false));

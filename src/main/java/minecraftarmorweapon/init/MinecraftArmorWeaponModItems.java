@@ -29,6 +29,7 @@ import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.IronKatanaItem;
 import minecraftarmorweapon.item.IllusionerArmorItem;
 import minecraftarmorweapon.item.HammerItem;
+import minecraftarmorweapon.item.GomanorikenItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.CustomElytraTestItem;
 import minecraftarmorweapon.item.BubbleshotItem;
@@ -65,11 +66,11 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> WATER_KATANA = REGISTRY.register("water_katana", () -> new WaterKatanaItem());
 	public static final RegistryObject<Item> MY_TEST_IRON_KATANA = REGISTRY.register("my_test_iron_katana", () -> new MyTestIronKatanaItem());
 	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
-	public static final RegistryObject<Item> LUNA_ENTITY_SPAWN_EGG = REGISTRY.register("luna_entity_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.LUNA_ENTITY, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> MAHOUTANE = REGISTRY.register("mahoutane", () -> new MahoutaneItem());
 	public static final RegistryObject<Item> QUIVER_ITEM = REGISTRY.register("quiver_item", () -> new QuiverItemItem());
 	public static final RegistryObject<Item> BLACK_SPECTRAL_ARROW = REGISTRY.register("black_spectral_arrow", () -> new BlackSpectralArrowItem());
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.SKELTON_MOB, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+	public static final RegistryObject<Item> GOMANORIKEN = REGISTRY.register("gomanoriken", () -> new GomanorikenItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
