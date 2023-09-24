@@ -1,0 +1,43 @@
+repositories {
+  maven {
+    url = "https://cursemaven.com"
+  }
+}
+
+dependencies {
+  implementation fg.deobf("curse.maven:kleidersplayerrenderer-682065:4478427")
+}
+
+repositories {
+  maven {
+      url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+  }
+}
+
+dependencies {
+  implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.40')
+}
+
+minecraft {
+  runs {
+   client {    
+      property 'mixin.env.remapRefMap', 'true'
+      property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+       }
+        server {
+         property 'mixin.env.remapRefMap', 'true'
+         property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+       }
+      }
+     }
+
+repositories {
+ maven {
+     url = 'https://maven.kosmx.dev/'
+ }
+}
+
+ dependencies {
+   implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:0.4.0-test1")
+ }
+
