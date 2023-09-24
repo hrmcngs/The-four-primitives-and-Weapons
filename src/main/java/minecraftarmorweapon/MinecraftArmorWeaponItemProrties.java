@@ -6,10 +6,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.item.ItemProperties;
+import minecraftarmorweapon.item.AchromaticShieldItem;
 
 
 public class MinecraftArmorWeaponItemProrties {
-	public MinecraftArmorWeaponItemProrties(){
+	public static void addCustomItemProperties(){
 	makeShield(MinecraftArmorWeaponItems.ACHROMATIC_SHIELD.get());
 	}
 
