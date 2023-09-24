@@ -88,10 +88,10 @@
       "value": ""
     },
     "hurtSound": {
-      "value": "entity.generic.hurt"
+      "value": "entity.skeleton.hurt"
     },
     "deathSound": {
-      "value": "entity.generic.death"
+      "value": "entity.skeleton.death"
     },
     "stepSound": {
       "value": ""

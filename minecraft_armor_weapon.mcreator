@@ -1856,6 +1856,38 @@
           }
         ]
       }
+    },
+    {
+      "name": "AaposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 132,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aaposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/AaposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Aa",
+      "type": "potioneffect",
+      "sortid": 133,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aa",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/AaMobEffect.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1908,6 +1940,7 @@
       "item.minecraft_armor_weapon.mahoutane": "Mahoutane",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
+      "effect.minecraft_armor_weapon.aa": "n0okku",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "item.minecraft_armor_weapon.fireball": "§cFireball",

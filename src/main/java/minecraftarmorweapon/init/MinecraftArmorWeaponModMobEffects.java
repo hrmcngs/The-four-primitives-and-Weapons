@@ -28,6 +28,7 @@ import minecraftarmorweapon.potion.BarrierEffectMobEffect;
 import minecraftarmorweapon.potion.AttackBowMobEffect;
 import minecraftarmorweapon.potion.Arrow1MobEffect;
 import minecraftarmorweapon.potion.AaaaMobEffect;
+import minecraftarmorweapon.potion.AaMobEffect;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -51,4 +52,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> WAZA = REGISTRY.register("waza", () -> new WazaMobEffect());
 	public static final RegistryObject<MobEffect> EFFECT_MAGIC = REGISTRY.register("effect_magic", () -> new EffectMagicMobEffect());
 	public static final RegistryObject<MobEffect> BARRIER_EFFECT = REGISTRY.register("barrier_effect", () -> new BarrierEffectMobEffect());
+	public static final RegistryObject<MobEffect> AA = REGISTRY.register("aa", () -> new AaMobEffect());
 }

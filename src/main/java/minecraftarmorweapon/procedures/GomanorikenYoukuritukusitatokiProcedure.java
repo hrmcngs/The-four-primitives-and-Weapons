@@ -5,6 +5,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Mob;
@@ -38,6 +39,36 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 		double r = 0;
 		double alpha = 0;
 		double beta = 0;
+		double zRadius3 = 0;
+		double zRadius2 = 0;
+		double yknockback = 0;
+		double zRadius = 0;
+		double xRadius2 = 0;
+		double xRadius3 = 0;
+		double xRadius4 = 0;
+		double zRadius4 = 0;
+		double dis = 0;
+		double loop = 0;
+		double X = 0;
+		double Z2 = 0;
+		double Y = 0;
+		double Z3 = 0;
+		double Z = 0;
+		double X2 = 0;
+		double Z4 = 0;
+		double X3 = 0;
+		double X4 = 0;
+		double xknockback = 0;
+		double loop2 = 0;
+		double loop3 = 0;
+		double zknockback = 0;
+		double xRadius = 0;
+		double loop4 = 0;
+		double Y2 = 0;
+		double Y3 = 0;
+		double Y4 = 0;
+		double a = 0;
+		double b = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()) {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
@@ -65,25 +96,49 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
 										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											if (entityiterator instanceof Mob) {
-												{
-													Entity _ent = entityiterator;
-													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD) {
+													entityiterator.setDeltaMovement(new Vec3(((-1.5) * entityiterator.getDeltaMovement().x()), ((-1.5) * entityiterator.getDeltaMovement().y()), ((-1.5) * entityiterator.getDeltaMovement().z())));
+													{
+														Entity _ent = entityiterator;
+														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																	_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+														}
 													}
-												}
-												{
-													Entity _ent = entityiterator;
-													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
-																"/deta merge entity @s (Health:0)");
+													{
+														Entity _ent = entityiterator;
+														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																	_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+																	"/deta merge entity @s (Health:0)");
+														}
+													}
+												} else {
+													{
+														Entity _ent = entityiterator;
+														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																	_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+														}
+													}
+													{
+														Entity _ent = entityiterator;
+														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																	_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+																	"/deta merge entity @s (Health:0)");
+														}
 													}
 												}
 											}
 										} else {
 											if (entityiterator instanceof Mob) {
-												entityiterator.hurt(DamageSource.GENERIC, 10);
+												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD) {
+													entityiterator.setDeltaMovement(new Vec3(((-1.5) * entityiterator.getDeltaMovement().x()), ((-1.5) * entityiterator.getDeltaMovement().y()), ((-1.5) * entityiterator.getDeltaMovement().z())));
+													entityiterator.hurt(DamageSource.GENERIC, 20);
+												} else {
+													entityiterator.hurt(DamageSource.GENERIC, 10);
+												}
 											}
 										}
 									}
@@ -106,6 +161,10 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
 					if (entity instanceof Player _player)
 						_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
+					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD) {
+						if (entity instanceof Player _player)
+							_player.getCooldowns().addCooldown(Items.SHIELD, 50);
+					}
 				}
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 5) {
