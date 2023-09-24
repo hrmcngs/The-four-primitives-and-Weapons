@@ -42,7 +42,6 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 		double zRadius3 = 0;
 		double zRadius2 = 0;
 		double yknockback = 0;
-		double zRadius = 0;
 		double xRadius2 = 0;
 		double xRadius3 = 0;
 		double xRadius4 = 0;
@@ -69,6 +68,7 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 		double Y4 = 0;
 		double a = 0;
 		double b = 0;
+		double zRadius = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()) {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
@@ -91,13 +91,28 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 								.collect(Collectors.toList());
 						for (Entity entityiterator : _entfound) {
+							entity.getPersistentData().putDouble("xknockback", (entityiterator.getX() - entity.getX()));
+							entity.getPersistentData().putDouble("yknockback", (entityiterator.getY() - entity.getY() + 0));
+							entity.getPersistentData().putDouble("zknockback", (entityiterator.getZ() - entity.getZ()));
+							entity.getPersistentData().putDouble("dis",
+									(Math.abs(entity.getPersistentData().getDouble("xknockback")) + Math.abs(entity.getPersistentData().getDouble("yknockback")) + Math.abs(entity.getPersistentData().getDouble("zknockback"))));
+							if (entity.getPersistentData().getDouble("dis") != 0) {
+								entity.getPersistentData().putDouble("xknockback", ((entity.getPersistentData().getDouble("xknockback") / entity.getPersistentData().getDouble("dis")) * 5));
+								entity.getPersistentData().putDouble("yknockback", Math.min((entity.getPersistentData().getDouble("yknockback") / entity.getPersistentData().getDouble("dis")) * 13, 9.8));
+								entity.getPersistentData().putDouble("zknockback", ((entity.getPersistentData().getDouble("zknockback") / entity.getPersistentData().getDouble("dis")) * 5));
+							} else {
+								entity.getPersistentData().putDouble("xknockback", 0);
+								entity.getPersistentData().putDouble("yknockback", 0);
+								entity.getPersistentData().putDouble("zknockback", 0);
+							}
 							MinecraftArmorWeaponMod.queueServerWork(5, () -> {
 								if (!(entityiterator == entity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
 										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											if (entityiterator instanceof Mob) {
 												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD) {
-													entityiterator.setDeltaMovement(new Vec3(((-1.5) * entityiterator.getDeltaMovement().x()), ((-1.5) * entityiterator.getDeltaMovement().y()), ((-1.5) * entityiterator.getDeltaMovement().z())));
+													entityiterator
+															.setDeltaMovement(new Vec3((entity.getPersistentData().getDouble("xknockback")), (entity.getPersistentData().getDouble("yknockback")), (entity.getPersistentData().getDouble("zknockback"))));
 													{
 														Entity _ent = entityiterator;
 														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -134,8 +149,9 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 										} else {
 											if (entityiterator instanceof Mob) {
 												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD) {
-													entityiterator.setDeltaMovement(new Vec3(((-1.5) * entityiterator.getDeltaMovement().x()), ((-1.5) * entityiterator.getDeltaMovement().y()), ((-1.5) * entityiterator.getDeltaMovement().z())));
-													entityiterator.hurt(DamageSource.GENERIC, 20);
+													entityiterator
+															.setDeltaMovement(new Vec3((entity.getPersistentData().getDouble("xknockback")), (entity.getPersistentData().getDouble("yknockback")), (entity.getPersistentData().getDouble("zknockback"))));
+													entityiterator.hurt(DamageSource.GENERIC, 10);
 												} else {
 													entityiterator.hurt(DamageSource.GENERIC, 10);
 												}
