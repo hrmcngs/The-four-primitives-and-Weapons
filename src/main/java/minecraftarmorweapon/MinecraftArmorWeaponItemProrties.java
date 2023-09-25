@@ -1,11 +1,14 @@
 package minecraftarmorweapon;
 
+import net.minecraftforge.fml.common.Mod;
+
 import net.minecraft.world.item.Item;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.item.ItemProperties;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MinecraftArmorWeaponItemProrties {
 	public static void addCustomItemProperties() {
 		makeShield(MinecraftArmorWeaponModItems.ACHROMATIC_SHIELD.get());
