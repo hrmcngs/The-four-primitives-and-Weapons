@@ -38,7 +38,6 @@
   "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
   "block.minecraft_armor_weapon.rose": "Rose",
   "item.minecraft_armor_weapon.a": "A",
-  "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
   "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
   "effect.minecraft_armor_weapon.waza": "waza",
   "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
@@ -56,6 +55,7 @@
   "effect.minecraft_armor_weapon.thunder_hit": "a",
   "itemGroup.tabweapon": "Weapon",
   "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
+  "item.minecraft_armor_weapon.m_16": "M 1 6",
   "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
   "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
   "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"

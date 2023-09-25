@@ -24,6 +24,7 @@ import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
 import minecraftarmorweapon.item.MahoutaneItem;
+import minecraftarmorweapon.item.M16Item;
 import minecraftarmorweapon.item.LunaItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.IronKatanaItem;
@@ -31,7 +32,6 @@ import minecraftarmorweapon.item.IllusionerArmorItem;
 import minecraftarmorweapon.item.HammerItem;
 import minecraftarmorweapon.item.GomanorikenItem;
 import minecraftarmorweapon.item.FireballItem;
-import minecraftarmorweapon.item.CustomElytraTestItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BlackSpectralArrowItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
@@ -51,7 +51,6 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> PILLAGER_ARMOR_CHESTPLATE = REGISTRY.register("pillager_armor_chestplate", () -> new PillagerArmorItem.Chestplate());
 	public static final RegistryObject<Item> PILLAGER_ARMOR_LEGGINGS = REGISTRY.register("pillager_armor_leggings", () -> new PillagerArmorItem.Leggings());
 	public static final RegistryObject<Item> PILLAGER_ARMOR_BOOTS = REGISTRY.register("pillager_armor_boots", () -> new PillagerArmorItem.Boots());
-	public static final RegistryObject<Item> CUSTOM_ELYTRA_TEST_CHESTPLATE = REGISTRY.register("custom_elytra_test_chestplate", () -> new CustomElytraTestItem.Chestplate());
 	public static final RegistryObject<Item> ILLUSIONER_ARMOR_HELMET = REGISTRY.register("illusioner_armor_helmet", () -> new IllusionerArmorItem.Helmet());
 	public static final RegistryObject<Item> ILLUSIONER_ARMOR_CHESTPLATE = REGISTRY.register("illusioner_armor_chestplate", () -> new IllusionerArmorItem.Chestplate());
 	public static final RegistryObject<Item> ILLUSIONER_ARMOR_LEGGINGS = REGISTRY.register("illusioner_armor_leggings", () -> new IllusionerArmorItem.Leggings());
@@ -73,6 +72,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.SKELTON_MOB, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> GOMANORIKEN = REGISTRY.register("gomanoriken", () -> new GomanorikenItem());
 	public static final RegistryObject<Item> ACHROMATIC_SHIELD = REGISTRY.register("achromatic_shield", () -> new AchromaticShieldItem());
+	public static final RegistryObject<Item> M_16 = REGISTRY.register("m_16", () -> new M16Item());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

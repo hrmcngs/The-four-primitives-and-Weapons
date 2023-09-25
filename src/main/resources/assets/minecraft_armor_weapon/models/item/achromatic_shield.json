@@ -3,12 +3,13 @@
   "textures": {
     "0": "minecraft_armor_weapon:blocks/shieldb",
     "particle": "minecraft_armor_weapon:items/shieldb"
-  }
-  
-  "overrides": [{
-  	"predicate": {
-  		"blocking": 1
-  		},
-  		"model": "minecraft_armor_weapon:custom/shiel2dconverted"}]
-
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "minecraft_armor_weapon:item/blocking_achromatic_shield"
+    }
+  ]
 }

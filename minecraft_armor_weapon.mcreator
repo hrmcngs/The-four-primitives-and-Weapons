@@ -424,20 +424,6 @@
       }
     },
     {
-      "name": "CustomElytraTest",
-      "type": "armor",
-      "sortid": 25,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "custom_elytra_test",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/custom_elytra_test_chestplate.json",
-          "src/main/java/minecraftarmorweapon/item/CustomElytraTestItem.java"
-        ]
-      }
-    },
-    {
       "name": "OutpostSite",
       "type": "structure",
       "sortid": 26,
@@ -1906,12 +1892,27 @@
     {
       "name": "MinecraftArmorWeaponItemProrties",
       "type": "code",
-      "compiles": false,
+      "compiles": true,
       "locked_code": true,
       "registry_name": "minecraft_armor_weapon_item_prorties",
       "metadata": {
         "files": [
           "src/main/java/minecraftarmorweapon/MinecraftArmorWeaponItemProrties.java"
+        ]
+      }
+    },
+    {
+      "name": "M16",
+      "type": "rangeditem",
+      "sortid": 135,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "m_16",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/entity/M16Entity.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/m_16.json",
+          "src/main/java/minecraftarmorweapon/item/M16Item.java"
         ]
       }
     }
@@ -1984,7 +1985,6 @@
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "block.minecraft_armor_weapon.rose": "Rose",
       "item.minecraft_armor_weapon.a": "A",
-      "item.minecraft_armor_weapon.custom_elytra_test_chestplate": "Custom Elytra Tes",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "effect.minecraft_armor_weapon.waza": "waza",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
@@ -2002,6 +2002,7 @@
       "effect.minecraft_armor_weapon.thunder_hit": "a",
       "itemGroup.tabweapon": "Weapon",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
+      "item.minecraft_armor_weapon.m_16": "M 1 6",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"

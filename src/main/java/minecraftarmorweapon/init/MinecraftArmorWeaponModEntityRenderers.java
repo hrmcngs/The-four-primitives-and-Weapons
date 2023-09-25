@@ -21,5 +21,6 @@ public class MinecraftArmorWeaponModEntityRenderers {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.MAHOUTANE.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.BLACK_SPECTRAL_ARROW.get(), BlackSpectralArrowRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.SKELTON_MOB.get(), SkeltonMobRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.M_16.get(), ThrownItemRenderer::new);
 	}
 }
