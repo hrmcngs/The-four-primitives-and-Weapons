@@ -18,7 +18,6 @@ import net.minecraft.world.entity.Entity;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.MahoutaneEntity;
-import minecraftarmorweapon.entity.M16Entity;
 import minecraftarmorweapon.entity.BlackSpectralArrowEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -34,8 +33,6 @@ public class MinecraftArmorWeaponModEntities {
 			EntityType.Builder.<SkeltonMobEntity>of(SkeltonMobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(SkeltonMobEntity::new)
 
 					.sized(1f, 1.5f));
-	public static final RegistryObject<EntityType<M16Entity>> M_16 = register("projectile_m_16",
-			EntityType.Builder.<M16Entity>of(M16Entity::new, MobCategory.MISC).setCustomClientFactory(M16Entity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

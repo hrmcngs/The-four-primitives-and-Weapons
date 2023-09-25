@@ -1900,21 +1900,6 @@
           "src/main/java/minecraftarmorweapon/MinecraftArmorWeaponItemProrties.java"
         ]
       }
-    },
-    {
-      "name": "M16",
-      "type": "rangeditem",
-      "sortid": 135,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "m_16",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/entity/M16Entity.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/m_16.json",
-          "src/main/java/minecraftarmorweapon/item/M16Item.java"
-        ]
-      }
     }
   ],
   "variable_elements": [
@@ -2002,7 +1987,6 @@
       "effect.minecraft_armor_weapon.thunder_hit": "a",
       "itemGroup.tabweapon": "Weapon",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
-      "item.minecraft_armor_weapon.m_16": "M 1 6",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"
