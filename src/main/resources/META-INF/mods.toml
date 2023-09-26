@@ -26,12 +26,6 @@ authors="0526ngs"
     ordering="NONE"
     side="BOTH"
 [[dependencies.minecraft_armor_weapon]]
-    modId="geckolib"
-    mandatory=false
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.minecraft_armor_weapon]]
     modId="playeranimator"
     mandatory=false
     versionRange="[0,)"

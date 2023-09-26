@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft_armor_weapon:custom/swordbblock",
+  "textures": {
+    "all": "minecraft_armor_weapon:blocks/katanab",
+    "particle": "minecraft_armor_weapon:blocks/katanab",
+    "0": "minecraft_armor_weapon:blocks/katanab"
+  },
+  "render_type": "cutout_mipped"
+}

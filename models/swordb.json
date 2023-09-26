@@ -246,7 +246,8 @@
 		},
 		"ground": {
 			"rotation": [180, 0, 0],
-			"translation": [7.75, 0.5, 7.75]
+			"translation": [7.75, 3.5, 7.75],
+			"scale": [1, 1.5, 1]
 		},
 		"gui": {
 			"rotation": [-90, 135, 90],

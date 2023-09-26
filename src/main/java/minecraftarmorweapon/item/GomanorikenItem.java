@@ -75,11 +75,12 @@ public class GomanorikenItem extends SwordItem {
 		if (selected)
 			IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
-     @Override
+
+     @Override
 	public void fillItemCategory(CreativeModeTab tab,NonNullList<ItemStack>items) {
 	if (this.allowedIn(tab)) {
 		ItemStack stack = new ItemStack(this);
-		stack.enchant(Enchantments.SMITE,5);
+		stack.enchant(Enchantments.SMITE ,5);
 		items.add(stack);
 	} }
 	@Override

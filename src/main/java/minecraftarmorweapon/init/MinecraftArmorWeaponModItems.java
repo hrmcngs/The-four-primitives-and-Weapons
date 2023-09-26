@@ -71,6 +71,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.SKELTON_MOB, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> GOMANORIKEN = REGISTRY.register("gomanoriken", () -> new GomanorikenItem());
 	public static final RegistryObject<Item> ACHROMATIC_SHIELD = REGISTRY.register("achromatic_shield", () -> new AchromaticShieldItem());
+	public static final RegistryObject<Item> GOMANORIKEN_BLOCK = block(MinecraftArmorWeaponModBlocks.GOMANORIKEN_BLOCK, MinecraftArmorWeaponModTabs.TAB_MAGIC_BOOKS);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

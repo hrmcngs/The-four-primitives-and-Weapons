@@ -14,6 +14,7 @@ import minecraftarmorweapon.block.StoneKatanaBlockBlock;
 import minecraftarmorweapon.block.StoneKatanaBlock2Block;
 import minecraftarmorweapon.block.RoseBlock;
 import minecraftarmorweapon.block.NetheriteKatanaBlockBlock;
+import minecraftarmorweapon.block.GomanorikenBlockBlock;
 import minecraftarmorweapon.block.CrossBlock;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -25,4 +26,5 @@ public class MinecraftArmorWeaponModBlocks {
 	public static final RegistryObject<Block> STONE_KATANA_BLOCK = REGISTRY.register("stone_katana_block", () -> new StoneKatanaBlockBlock());
 	public static final RegistryObject<Block> STONE_KATANA_BLOCK_2 = REGISTRY.register("stone_katana_block_2", () -> new StoneKatanaBlock2Block());
 	public static final RegistryObject<Block> CROSS = REGISTRY.register("cross", () -> new CrossBlock());
+	public static final RegistryObject<Block> GOMANORIKEN_BLOCK = REGISTRY.register("gomanoriken_block", () -> new GomanorikenBlockBlock());
 }
