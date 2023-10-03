@@ -6,6 +6,19 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.monster.ZombifiedPiglin;
+import net.minecraft.world.entity.monster.ZombieVillager;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.Zoglin;
+import net.minecraft.world.entity.monster.WitherSkeleton;
+import net.minecraft.world.entity.monster.Stray;
+import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.monster.Husk;
+import net.minecraft.world.entity.monster.Drowned;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.animal.horse.ZombieHorse;
+import net.minecraft.world.entity.animal.horse.SkeletonHorse;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
@@ -16,6 +29,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
+import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
@@ -105,6 +119,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 									entityiterator.hurt(DamageSource.GENERIC, 16);
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
@@ -149,6 +169,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 									entityiterator.hurt(DamageSource.GENERIC, 16);
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
@@ -193,6 +219,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 									entityiterator.hurt(DamageSource.GENERIC, 16);
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
@@ -237,6 +269,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 									entityiterator.hurt(DamageSource.GENERIC, 16);
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
@@ -281,6 +319,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 									entityiterator.hurt(DamageSource.GENERIC, 16);
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
@@ -325,6 +369,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 									entityiterator.hurt(DamageSource.GENERIC, 16);
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
@@ -370,6 +420,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 									}
 								} else {
 									entityiterator.hurt(DamageSource.GENERIC, 16);
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
 							}
@@ -414,6 +470,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 									}
 								} else {
 									entityiterator.hurt(DamageSource.GENERIC, 16);
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
 							}
@@ -458,6 +520,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 									}
 								} else {
 									entityiterator.hurt(DamageSource.GENERIC, 16);
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
 							}
@@ -502,6 +570,12 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 									}
 								} else {
 									entityiterator.hurt(DamageSource.GENERIC, 16);
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
 								}
 								dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
 							}

@@ -8,6 +8,19 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.monster.ZombifiedPiglin;
+import net.minecraft.world.entity.monster.ZombieVillager;
+import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.Zoglin;
+import net.minecraft.world.entity.monster.WitherSkeleton;
+import net.minecraft.world.entity.monster.Stray;
+import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.entity.monster.Husk;
+import net.minecraft.world.entity.monster.Drowned;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.animal.horse.ZombieHorse;
+import net.minecraft.world.entity.animal.horse.SkeletonHorse;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
@@ -110,7 +123,8 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
 										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											if (entityiterator instanceof Mob) {
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD) {
+												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD
+														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.ACHROMATIC_SHIELD.get()) {
 													entityiterator
 															.setDeltaMovement(new Vec3((entity.getPersistentData().getDouble("xknockback")), (entity.getPersistentData().getDouble("yknockback")), (entity.getPersistentData().getDouble("zknockback"))));
 													{
@@ -148,13 +162,20 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 											}
 										} else {
 											if (entityiterator instanceof Mob) {
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD) {
+												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD
+														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.ACHROMATIC_SHIELD.get()) {
 													entityiterator
 															.setDeltaMovement(new Vec3((entity.getPersistentData().getDouble("xknockback")), (entity.getPersistentData().getDouble("yknockback")), (entity.getPersistentData().getDouble("zknockback"))));
 													entityiterator.hurt(DamageSource.GENERIC, 10);
 												} else {
 													entityiterator.hurt(DamageSource.GENERIC, 10);
 												}
+											}
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get() && (entityiterator instanceof Skeleton
+													|| entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+												entityiterator.hurt(DamageSource.GENERIC, 10);
 											}
 										}
 									}
@@ -212,7 +233,13 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 									}
 								} else {
 									if (entityiterator instanceof Mob) {
-										entityiterator.hurt(DamageSource.GENERIC, 20);
+										entityiterator.hurt(DamageSource.GENERIC, 10);
+									}
+									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.GOMANORIKEN.get()
+											&& (entityiterator instanceof Skeleton || entityiterator instanceof Stray || entityiterator instanceof WitherSkeleton || entityiterator instanceof Zombie || entityiterator instanceof ZombieHorse
+													|| entityiterator instanceof ZombieVillager || entityiterator instanceof Drowned || entityiterator instanceof Husk || entityiterator instanceof Husk || entityiterator instanceof ZombifiedPiglin
+													|| entityiterator instanceof Phantom || entityiterator instanceof WitherBoss || entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
+										entityiterator.hurt(DamageSource.GENERIC, 10);
 									}
 								}
 							}

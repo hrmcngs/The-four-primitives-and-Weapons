@@ -1563,22 +1563,6 @@
       }
     },
     {
-      "name": "BlackSpectralArrow",
-      "type": "rangeditem",
-      "sortid": 118,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "black_spectral_arrow",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/black_spectral_arrow.json",
-          "src/main/java/minecraftarmorweapon/item/BlackSpectralArrowItem.java",
-          "src/main/java/minecraftarmorweapon/entity/BlackSpectralArrowEntity.java",
-          "src/main/java/minecraftarmorweapon/client/renderer/BlackSpectralArrowRenderer.java"
-        ]
-      }
-    },
-    {
       "name": "EffectMagicehuekutogaYouXiaoShinoteituku",
       "type": "procedure",
       "sortid": 120,
@@ -1947,6 +1931,88 @@
           }
         ]
       }
+    },
+    {
+      "name": "HarvestMoon2023929",
+      "type": "item",
+      "sortid": 137,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "harvest_moon_2023929",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/harvest_moon_2023929.json",
+          "src/main/java/minecraftarmorweapon/item/HarvestMoon2023929Item.java"
+        ]
+      }
+    },
+    {
+      "name": "NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 138,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nagiharaiposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EnderQuiverItem",
+      "type": "item",
+      "sortid": 139,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ender_quiver_item",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/inventory/EnderQuiverItemInventoryCapability.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/ender_quiver_item.json",
+          "src/main/java/minecraftarmorweapon/item/EnderQuiverItemItem.java"
+        ]
+      }
+    },
+    {
+      "name": "NetheriteQuiverItem",
+      "type": "item",
+      "sortid": 140,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "netherite_quiver_item",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/NetheriteQuiverItemItem.java",
+          "src/main/java/minecraftarmorweapon/item/inventory/NetheriteQuiverItemInventoryCapability.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/netherite_quiver_item.json"
+        ]
+      }
+    },
+    {
+      "name": "EnderPearlNetheriteQuiverItem",
+      "type": "item",
+      "sortid": 141,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ender_pearl_netherite_quiver_item",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/ender_pearl_netherite_quiver_item.json",
+          "src/main/java/minecraftarmorweapon/item/inventory/EnderPearlNetheriteQuiverItemInventoryCapability.java",
+          "src/main/java/minecraftarmorweapon/item/EnderPearlNetheriteQuiverItemItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -1978,12 +2044,14 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+      "item.minecraft_armor_weapon.ender_quiver_item": "Ender Quiver Item",
       "itemGroup.tabmagic_books": "Magic Books",
+      "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+      "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
-      "itemGroup.tabyopkeinamono": "建築とかに",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "block.minecraft_armor_weapon.cross": "Cross",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "effect.minecraft_armor_weapon.effect_magic": "magic",
@@ -1991,7 +2059,6 @@
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
-      "item.minecraft_armor_weapon.black_spectral_arrow": "Black Spectral Arrow",
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
@@ -2021,6 +2088,7 @@
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "effect.minecraft_armor_weapon.waza": "waza",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
+      "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
@@ -2035,6 +2103,7 @@
       "effect.minecraft_armor_weapon.thunder_hit": "a",
       "itemGroup.tabweapon": "Weapon",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
+      "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"

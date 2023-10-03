@@ -18,7 +18,6 @@ import net.minecraft.world.entity.Entity;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.MahoutaneEntity;
-import minecraftarmorweapon.entity.BlackSpectralArrowEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -27,12 +26,10 @@ public class MinecraftArmorWeaponModEntities {
 	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MinecraftArmorWeaponMod.MODID);
 	public static final RegistryObject<EntityType<MahoutaneEntity>> MAHOUTANE = register("projectile_mahoutane",
 			EntityType.Builder.<MahoutaneEntity>of(MahoutaneEntity::new, MobCategory.MISC).setCustomClientFactory(MahoutaneEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
-	public static final RegistryObject<EntityType<BlackSpectralArrowEntity>> BLACK_SPECTRAL_ARROW = register("projectile_black_spectral_arrow", EntityType.Builder.<BlackSpectralArrowEntity>of(BlackSpectralArrowEntity::new, MobCategory.MISC)
-			.setCustomClientFactory(BlackSpectralArrowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<SkeltonMobEntity>> SKELTON_MOB = register("skelton_mob",
 			EntityType.Builder.<SkeltonMobEntity>of(SkeltonMobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(SkeltonMobEntity::new)
 
-					.sized(1f, 1.5f));
+					.sized(0.6f, 1.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

@@ -1,6 +1,8 @@
 {
+  "item.minecraft_armor_weapon.ender_quiver_item": "Ender Quiver Item",
   "itemGroup.tabmagic_books": "Magic Books",
   "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+  "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
   "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
   "block.minecraft_armor_weapon.cross": "Cross",
   "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
@@ -12,7 +14,6 @@
   "key.minecraft_armor_weapon.r": "R",
   "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
   "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
-  "item.minecraft_armor_weapon.black_spectral_arrow": "Black Spectral Arrow",
   "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
   "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
   "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
@@ -42,6 +43,7 @@
   "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
   "effect.minecraft_armor_weapon.waza": "waza",
   "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
+  "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
   "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
   "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
   "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
@@ -56,6 +58,7 @@
   "effect.minecraft_armor_weapon.thunder_hit": "a",
   "itemGroup.tabweapon": "Weapon",
   "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
+  "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
   "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
   "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
   "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"
