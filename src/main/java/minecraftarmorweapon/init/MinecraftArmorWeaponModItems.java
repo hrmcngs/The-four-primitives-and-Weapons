@@ -17,6 +17,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.BlockItem;
 
 import minecraftarmorweapon.item.WaterKatanaItem;
+import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.QuiverItemItem;
@@ -78,6 +79,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> ENDER_QUIVER_ITEM = REGISTRY.register("ender_quiver_item", () -> new EnderQuiverItemItem());
 	public static final RegistryObject<Item> NETHERITE_QUIVER_ITEM = REGISTRY.register("netherite_quiver_item", () -> new NetheriteQuiverItemItem());
 	public static final RegistryObject<Item> ENDER_PEARL_NETHERITE_QUIVER_ITEM = REGISTRY.register("ender_pearl_netherite_quiver_item", () -> new EnderPearlNetheriteQuiverItemItem());
+	public static final RegistryObject<Item> WARABITETOU = REGISTRY.register("warabitetou", () -> new WarabitetouItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

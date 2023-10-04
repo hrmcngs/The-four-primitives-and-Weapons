@@ -1,8 +1,8 @@
 {
   "item.minecraft_armor_weapon.ender_quiver_item": "Ender Quiver Item",
-  "itemGroup.tabmagic_books": "Magic Books",
-  "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
   "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
+  "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+  "itemGroup.tabmagic_books": "Magic Books",
   "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
   "block.minecraft_armor_weapon.cross": "Cross",
   "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
@@ -41,6 +41,7 @@
   "block.minecraft_armor_weapon.rose": "Rose",
   "item.minecraft_armor_weapon.a": "A",
   "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
+  "item.minecraft_armor_weapon.warabitetou": "蕨手刀",
   "effect.minecraft_armor_weapon.waza": "waza",
   "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
   "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
