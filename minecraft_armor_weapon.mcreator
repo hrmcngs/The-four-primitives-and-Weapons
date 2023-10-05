@@ -20,8 +20,8 @@
       "registry_name": "fireball",
       "metadata": {
         "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/fireball.json",
-          "src/main/java/minecraftarmorweapon/item/FireballItem.java"
+          "src/main/java/minecraft_armor_weapon/item/FireballItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/fireball.json"
         ]
       }
     },
@@ -34,8 +34,8 @@
       "registry_name": "bubbleshot",
       "metadata": {
         "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/bubbleshot.json",
-          "src/main/java/minecraftarmorweapon/item/BubbleshotItem.java"
+          "src/main/java/minecraft_armor_weapon/item/BubbleshotItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bubbleshot.json"
         ]
       }
     },
@@ -48,8 +48,8 @@
       "registry_name": "thunderbolt",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/ThunderboltItem.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/thunderbolt.json"
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/thunderbolt.json",
+          "src/main/java/minecraft_armor_weapon/item/ThunderboltItem.java"
         ]
       }
     },
@@ -62,7 +62,7 @@
       "registry_name": "kill",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/enchantment/KillEnchantment.java"
+          "src/main/java/minecraft_armor_weapon/enchantment/KillEnchantment.java"
         ]
       }
     },
@@ -75,7 +75,7 @@
       "registry_name": "kill_1",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/Kill1Procedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/Kill1Procedure.java"
         ],
         "dependencies": [
           {
@@ -103,7 +103,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/item_weaponsword.json",
-          "src/main/java/minecraftarmorweapon/item/ItemWeaponswordItem.java"
+          "src/main/java/minecraft_armor_weapon/item/ItemWeaponswordItem.java"
         ]
       }
     },
@@ -128,7 +128,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/netherite_katana.json",
-          "src/main/java/minecraftarmorweapon/item/NetheriteKatanaItem.java"
+          "src/main/java/minecraft_armor_weapon/item/NetheriteKatanaItem.java"
         ]
       }
     },
@@ -141,7 +141,7 @@
       "registry_name": "arrow_1ehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/Arrow1ehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/Arrow1ehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -176,7 +176,7 @@
       "registry_name": "arrow_1",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/Arrow1MobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/Arrow1MobEffect.java"
         ]
       }
     },
@@ -189,7 +189,7 @@
       "registry_name": "demonized",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/enchantment/DemonizedEnchantment.java"
+          "src/main/java/minecraft_armor_weapon/enchantment/DemonizedEnchantment.java"
         ]
       }
     },
@@ -203,7 +203,7 @@
       "metadata": {
         "return_type": "string",
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/DddgemuNeiniobareiwoBiaoShiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/DddgemuNeiniobareiwoBiaoShiProcedure.java"
         ],
         "dependencies": [
           {
@@ -221,7 +221,7 @@
       "registry_name": "ddd",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/client/screens/DddOverlay.java"
+          "src/main/java/minecraft_armor_weapon/client/screens/DddOverlay.java"
         ]
       }
     },
@@ -234,7 +234,7 @@
       "registry_name": "rkiga_yasaretatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/RkigaYasaretatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/RkigaYasaretatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -253,7 +253,7 @@
       "registry_name": "r",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/network/RMessage.java"
+          "src/main/java/minecraft_armor_weapon/network/RMessage.java"
         ]
       }
     },
@@ -266,7 +266,7 @@
       "registry_name": "fireballeffectehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/FireballeffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/FireballeffectehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -285,7 +285,7 @@
       "registry_name": "fireballeffect",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/FireballeffectMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/FireballeffectMobEffect.java"
         ]
       }
     },
@@ -298,7 +298,7 @@
       "registry_name": "fireball_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/FireballYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/FireballYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -317,7 +317,7 @@
       "registry_name": "netherite_katana_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/NetheriteKatanaYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/NetheriteKatanaYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -347,11 +347,11 @@
       "registry_name": "rose",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/world/features/plants/RoseFeature.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/block/rose.json",
+          "src/main/java/minecraft_armor_weapon/world/features/plants/RoseFeature.java",
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/rose.json",
+          "src/main/java/minecraft_armor_weapon/block/RoseBlock.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/rose.json",
-          "src/main/java/minecraftarmorweapon/block/RoseBlock.java",
           "src/main/resources/data/minecraft_armor_weapon/forge/biome_modifier/rose_biome_modifier.json"
         ]
       }
@@ -377,7 +377,7 @@
       "registry_name": "pillager_armorbutuno_meiteitukunoibento",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/PillagerArmorbutunoMeiteitukunoibentoProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/PillagerArmorbutunoMeiteitukunoibentoProcedure.java"
         ],
         "dependencies": [
           {
@@ -397,7 +397,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/pillager_armor_chestplate.json",
-          "src/main/java/minecraftarmorweapon/item/PillagerArmorItem.java",
+          "src/main/java/minecraft_armor_weapon/item/PillagerArmorItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/pillager_armor_boots.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/pillager_armor_helmet.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/pillager_armor_leggings.json"
@@ -413,7 +413,7 @@
       "registry_name": "rosemobupureiyaga_zhi_wuto_chong_tusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/RosemobupureiyagaZhiWutoChongTusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/RosemobupureiyagaZhiWutoChongTusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -432,8 +432,8 @@
       "registry_name": "outpost_site",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/world/features/OutpostSiteFeature.java",
-          "src/main/resources/data/minecraft_armor_weapon/forge/biome_modifier/outpost_site_biome_modifier.json"
+          "src/main/resources/data/minecraft_armor_weapon/forge/biome_modifier/outpost_site_biome_modifier.json",
+          "src/main/java/minecraft_armor_weapon/world/features/OutpostSiteFeature.java"
         ]
       }
     },
@@ -446,7 +446,7 @@
       "registry_name": "tunderbolteffrct",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/TunderbolteffrctMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/TunderbolteffrctMobEffect.java"
         ]
       }
     },
@@ -459,7 +459,7 @@
       "registry_name": "tunderbolteffrctehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/TunderbolteffrctehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/TunderbolteffrctehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -478,7 +478,7 @@
       "registry_name": "thunderbolt_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/ThunderboltYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/ThunderboltYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -497,7 +497,7 @@
       "registry_name": "illusioner_armor_chestplate_tick_event",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/IllusionerArmorChestplateTickEventProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/IllusionerArmorChestplateTickEventProcedure.java"
         ],
         "dependencies": [
           {
@@ -516,10 +516,10 @@
       "registry_name": "illusioner_armor",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/IllusionerArmorItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/illusioner_armor_leggings.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/illusioner_armor_boots.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/illusioner_armor_helmet.json",
+          "src/main/java/minecraft_armor_weapon/item/IllusionerArmorItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/illusioner_armor_chestplate.json"
         ]
       }
@@ -533,7 +533,7 @@
       "registry_name": "bow_attack",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/BowAttackMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/BowAttackMobEffect.java"
         ]
       }
     },
@@ -546,7 +546,7 @@
       "registry_name": "attack_bow",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/AttackBowMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/AttackBowMobEffect.java"
         ]
       }
     },
@@ -559,7 +559,7 @@
       "registry_name": "attack_bowposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/AttackBowposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/AttackBowposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -578,7 +578,7 @@
       "registry_name": "bubbleshot_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/BubbleshotYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/BubbleshotYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -598,7 +598,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/netherite_katana_block.json",
-          "src/main/java/minecraftarmorweapon/block/NetheriteKatanaBlockBlock.java",
+          "src/main/java/minecraft_armor_weapon/block/NetheriteKatanaBlockBlock.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/block/netherite_katana_block.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/netherite_katana_block.json"
         ]
@@ -615,8 +615,8 @@
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_katana_block.json",
-          "src/main/java/minecraftarmorweapon/block/StoneKatanaBlockBlock.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block.json"
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block.json",
+          "src/main/java/minecraft_armor_weapon/block/StoneKatanaBlockBlock.java"
         ]
       }
     },
@@ -629,8 +629,8 @@
       "registry_name": "stone_katana",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/StoneKatanaItem.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana.json"
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana.json",
+          "src/main/java/minecraft_armor_weapon/item/StoneKatanaItem.java"
         ]
       }
     },
@@ -643,7 +643,7 @@
       "registry_name": "aaitemuwo_shoude_chituteiru_jiannoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/AaitemuwoShoudeChituteiruJiannoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/AaitemuwoShoudeChituteiruJiannoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -679,7 +679,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/a.json",
-          "src/main/java/minecraftarmorweapon/item/AItem.java"
+          "src/main/java/minecraft_armor_weapon/item/AItem.java"
         ]
       }
     },
@@ -693,7 +693,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_katana_block_2.json",
-          "src/main/java/minecraftarmorweapon/block/StoneKatanaBlock2Block.java",
+          "src/main/java/minecraft_armor_weapon/block/StoneKatanaBlock2Block.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block_2.json",
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block_2.json"
         ]
@@ -708,7 +708,7 @@
       "registry_name": "kaitenn",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/KaitennMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/KaitennMobEffect.java"
         ]
       }
     },
@@ -721,7 +721,7 @@
       "registry_name": "kaitennehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/KaitennehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/KaitennehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -804,7 +804,7 @@
       "registry_name": "iron_katana_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/IronKatanaYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/IronKatanaYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -839,7 +839,7 @@
       "registry_name": "otiruyooehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/OtiruyooehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/OtiruyooehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -862,7 +862,7 @@
       "registry_name": "otiruyoo",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/OtiruyooMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/OtiruyooMobEffect.java"
         ]
       }
     },
@@ -876,7 +876,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/hammer.json",
-          "src/main/java/minecraftarmorweapon/item/HammerItem.java"
+          "src/main/java/minecraft_armor_weapon/item/HammerItem.java"
         ]
       }
     },
@@ -889,7 +889,7 @@
       "registry_name": "aaaa",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/AaaaMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/AaaaMobEffect.java"
         ]
       }
     },
@@ -902,7 +902,7 @@
       "registry_name": "iron_katana",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/IronKatanaItem.java",
+          "src/main/java/minecraft_armor_weapon/item/IronKatanaItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/iron_katana.json"
         ]
       }
@@ -916,8 +916,8 @@
       "registry_name": "cross",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/block/CrossBlock.java",
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/cross.json",
+          "src/main/java/minecraft_armor_weapon/block/CrossBlock.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/cross.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/block/cross.json"
         ]
@@ -932,7 +932,7 @@
       "registry_name": "syugeki_on_effect_active_tick",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/SyugekiOnEffectActiveTickProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/SyugekiOnEffectActiveTickProcedure.java"
         ],
         "dependencies": [
           {
@@ -955,7 +955,7 @@
       "registry_name": "syugeki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/SyugekiMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/SyugekiMobEffect.java"
         ]
       }
     },
@@ -969,7 +969,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/water_katana.json",
-          "src/main/java/minecraftarmorweapon/item/WaterKatanaItem.java"
+          "src/main/java/minecraft_armor_weapon/item/WaterKatanaItem.java"
         ]
       }
     },
@@ -982,7 +982,7 @@
       "registry_name": "water_katana_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/WaterKatanaYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/WaterKatanaYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1017,7 +1017,7 @@
       "registry_name": "suityuuehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/SuityuuehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/SuityuuehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1036,7 +1036,7 @@
       "registry_name": "suityuu",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/SuityuuMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/SuityuuMobEffect.java"
         ]
       }
     },
@@ -1049,7 +1049,7 @@
       "registry_name": "tissokuehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/TissokuehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/TissokuehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1072,7 +1072,7 @@
       "registry_name": "tissoku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/TissokuMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/TissokuMobEffect.java"
         ]
       }
     },
@@ -1085,7 +1085,7 @@
       "registry_name": "bubbleshot_effectehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/BubbleshotEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/BubbleshotEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1104,7 +1104,7 @@
       "registry_name": "bubbleshot_effect",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/BubbleshotEffectMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/BubbleshotEffectMobEffect.java"
         ]
       }
     },
@@ -1117,7 +1117,7 @@
       "registry_name": "thunder_hit",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/ThunderHitMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/ThunderHitMobEffect.java"
         ]
       }
     },
@@ -1130,7 +1130,7 @@
       "registry_name": "thunder_hitehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/ThunderHitehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/ThunderHitehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1153,7 +1153,7 @@
       "registry_name": "tissokuposiyon_xiao_guoga_qiereta_shi",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/TissokuposiyonXiaoGuogaQieretaShiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/TissokuposiyonXiaoGuogaQieretaShiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1172,7 +1172,7 @@
       "registry_name": "nagiharai",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/NagiharaiMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/NagiharaiMobEffect.java"
         ]
       }
     },
@@ -1185,7 +1185,7 @@
       "registry_name": "nagiharaiehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/NagiharaiehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/NagiharaiehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1208,8 +1208,8 @@
       "registry_name": "my_test_iron_katana",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/MyTestIronKatanaItem.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/my_test_iron_katana.json"
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/my_test_iron_katana.json",
+          "src/main/java/minecraft_armor_weapon/item/MyTestIronKatanaItem.java"
         ]
       }
     },
@@ -1222,7 +1222,7 @@
       "registry_name": "my_test_iron_katana_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/MyTestIronKatanaYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/MyTestIronKatanaYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1257,7 +1257,7 @@
       "registry_name": "kurutimenasi",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/KurutimenasiMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/KurutimenasiMobEffect.java"
         ]
       }
     },
@@ -1270,7 +1270,7 @@
       "registry_name": "nkiga_yasaretatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/NkigaYasaretatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/NkigaYasaretatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1289,7 +1289,7 @@
       "registry_name": "n",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/network/NMessage.java"
+          "src/main/java/minecraft_armor_weapon/network/NMessage.java"
         ]
       }
     },
@@ -1302,7 +1302,7 @@
       "registry_name": "kurutimenasiposiyon_xiao_guoga_qiereta_shi",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/KurutimenasiposiyonXiaoGuogaQieretaShiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/KurutimenasiposiyonXiaoGuogaQieretaShiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1321,7 +1321,7 @@
       "registry_name": "kaitennposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/KaitennposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/KaitennposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1340,7 +1340,7 @@
       "registry_name": "lunaenteiteigaaitemuwo_zhentuta_shi",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/LunaenteiteigaaitemuwoZhentutaShiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/LunaenteiteigaaitemuwoZhentutaShiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1375,7 +1375,7 @@
       "registry_name": "luna",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/LunaItem.java",
+          "src/main/java/minecraft_armor_weapon/item/LunaItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/luna.json"
         ]
       }
@@ -1389,7 +1389,7 @@
       "registry_name": "waza",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/WazaMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/WazaMobEffect.java"
         ]
       }
     },
@@ -1415,7 +1415,7 @@
       "registry_name": "luna_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/LunaYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/LunaYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1463,9 +1463,9 @@
       "registry_name": "mahoutane",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/MahoutaneItem.java",
+          "src/main/java/minecraft_armor_weapon/item/MahoutaneItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/mahoutane.json",
-          "src/main/java/minecraftarmorweapon/entity/MahoutaneEntity.java"
+          "src/main/java/minecraft_armor_weapon/entity/MahoutaneEntity.java"
         ]
       }
     },
@@ -1478,9 +1478,9 @@
       "registry_name": "quiverinventory",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/client/gui/QuiverinventoryScreen.java",
-          "src/main/java/minecraftarmorweapon/world/inventory/QuiverinventoryMenu.java",
-          "src/main/java/minecraftarmorweapon/network/QuiverinventoryButtonMessage.java"
+          "src/main/java/minecraft_armor_weapon/client/gui/QuiverinventoryScreen.java",
+          "src/main/java/minecraft_armor_weapon/world/inventory/QuiverinventoryMenu.java",
+          "src/main/java/minecraft_armor_weapon/network/QuiverinventoryButtonMessage.java"
         ]
       }
     },
@@ -1493,7 +1493,7 @@
       "registry_name": "quiver_itemaitemugainbentoriniaru_jiannoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1516,9 +1516,9 @@
       "registry_name": "quiver_item",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/QuiverItemItem.java",
-          "src/main/java/minecraftarmorweapon/item/inventory/QuiverItemInventoryCapability.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/quiver_item.json"
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/quiver_item.json",
+          "src/main/java/minecraft_armor_weapon/item/QuiverItemItem.java",
+          "src/main/java/minecraft_armor_weapon/item/inventory/QuiverItemInventoryCapability.java"
         ]
       }
     },
@@ -1531,7 +1531,7 @@
       "registry_name": "toziru",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/ToziruProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/ToziruProcedure.java"
         ],
         "dependencies": [
           {
@@ -1571,7 +1571,7 @@
       "registry_name": "effect_magicehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/EffectMagicehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/EffectMagicehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1606,7 +1606,7 @@
       "registry_name": "effect_magic",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/EffectMagicMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/EffectMagicMobEffect.java"
         ]
       }
     },
@@ -1619,7 +1619,7 @@
       "registry_name": "stop_arrow",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/StopArrowProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/StopArrowProcedure.java"
         ],
         "dependencies": [
           {
@@ -1654,7 +1654,7 @@
       "registry_name": "barrier",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/BarrierProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/BarrierProcedure.java"
         ],
         "dependencies": [
           {
@@ -1689,7 +1689,7 @@
       "registry_name": "barrier_effect",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/BarrierEffectMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/BarrierEffectMobEffect.java"
         ]
       }
     },
@@ -1702,7 +1702,7 @@
       "registry_name": "barrier_effectehuekutoga_you_xiao_shinoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/BarrierEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/BarrierEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -1737,9 +1737,9 @@
       "registry_name": "skelton_mob",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/client/renderer/SkeltonMobRenderer.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/skelton_mob_spawn_egg.json",
-          "src/main/java/minecraftarmorweapon/entity/SkeltonMobEntity.java"
+          "src/main/java/minecraft_armor_weapon/client/renderer/SkeltonMobRenderer.java",
+          "src/main/java/minecraft_armor_weapon/entity/SkeltonMobEntity.java"
         ]
       }
     },
@@ -1752,7 +1752,7 @@
       "registry_name": "skelton_mobenteiteiwo_youkuritukusita_shi",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/SkeltonMobenteiteiwoYoukuritukusitaShiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/SkeltonMobenteiteiwoYoukuritukusitaShiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1801,7 +1801,7 @@
       "registry_name": "gomanoriken_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/GomanorikenYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/GomanorikenYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1836,7 +1836,7 @@
       "registry_name": "aaposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/AaposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/AaposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1855,7 +1855,7 @@
       "registry_name": "aa",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/potion/AaMobEffect.java"
+          "src/main/java/minecraft_armor_weapon/potion/AaMobEffect.java"
         ]
       }
     },
@@ -1896,7 +1896,7 @@
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/gomanoriken_block.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/block/gomanoriken_block.json",
-          "src/main/java/minecraftarmorweapon/block/GomanorikenBlockBlock.java",
+          "src/main/java/minecraft_armor_weapon/block/GomanorikenBlockBlock.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/gomanoriken_block.json"
         ]
       }
@@ -1910,7 +1910,7 @@
       "registry_name": "gomanoriken_blockburotukuga_youkuritukusaretatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/GomanorikenBlockburotukugaYoukuritukusaretatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/GomanorikenBlockburotukugaYoukuritukusaretatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1942,7 +1942,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/harvest_moon_2023929.json",
-          "src/main/java/minecraftarmorweapon/item/HarvestMoon2023929Item.java"
+          "src/main/java/minecraft_armor_weapon/item/HarvestMoon2023929Item.java"
         ]
       }
     },
@@ -1955,7 +1955,7 @@
       "registry_name": "nagiharaiposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -1978,9 +1978,9 @@
       "registry_name": "ender_quiver_item",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/inventory/EnderQuiverItemInventoryCapability.java",
+          "src/main/java/minecraft_armor_weapon/item/EnderQuiverItemItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/ender_quiver_item.json",
-          "src/main/java/minecraftarmorweapon/item/EnderQuiverItemItem.java"
+          "src/main/java/minecraft_armor_weapon/item/inventory/EnderQuiverItemInventoryCapability.java"
         ]
       }
     },
@@ -1993,8 +1993,8 @@
       "registry_name": "netherite_quiver_item",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/item/NetheriteQuiverItemItem.java",
-          "src/main/java/minecraftarmorweapon/item/inventory/NetheriteQuiverItemInventoryCapability.java",
+          "src/main/java/minecraft_armor_weapon/item/inventory/NetheriteQuiverItemInventoryCapability.java",
+          "src/main/java/minecraft_armor_weapon/item/NetheriteQuiverItemItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/netherite_quiver_item.json"
         ]
       }
@@ -2009,8 +2009,8 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/ender_pearl_netherite_quiver_item.json",
-          "src/main/java/minecraftarmorweapon/item/inventory/EnderPearlNetheriteQuiverItemInventoryCapability.java",
-          "src/main/java/minecraftarmorweapon/item/EnderPearlNetheriteQuiverItemItem.java"
+          "src/main/java/minecraft_armor_weapon/item/EnderPearlNetheriteQuiverItemItem.java",
+          "src/main/java/minecraft_armor_weapon/item/inventory/EnderPearlNetheriteQuiverItemInventoryCapability.java"
         ]
       }
     },
@@ -2023,8 +2023,8 @@
       "registry_name": "warabitetou",
       "metadata": {
         "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/warabitetou.json",
-          "src/main/java/minecraftarmorweapon/item/WarabitetouItem.java"
+          "src/main/java/minecraft_armor_weapon/item/WarabitetouItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/warabitetou.json"
         ]
       }
     },
@@ -2037,7 +2037,7 @@
       "registry_name": "warabitetou_youkuritukusitatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/WarabitetouYoukuritukusitatokiProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/WarabitetouYoukuritukusitatokiProcedure.java"
         ],
         "dependencies": [
           {
@@ -2073,7 +2073,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/a_2.json",
-          "src/main/java/minecraftarmorweapon/item/A2Item.java"
+          "src/main/java/minecraft_armor_weapon/item/A2Item.java"
         ]
       }
     },
@@ -2086,7 +2086,7 @@
       "registry_name": "a_2aitemuwo_shoude_chituteiru_jiannoteituku",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/A2aitemuwoShoudeChituteiruJiannoteitukuProcedure.java"
+          "src/main/java/minecraft_armor_weapon/procedures/A2aitemuwoShoudeChituteiruJiannoteitukuProcedure.java"
         ],
         "dependencies": [
           {
@@ -2202,10 +2202,11 @@
     "modName": "minecraft armor weapon",
     "version": "1.0.0",
     "author": "0526ngs",
-    "websiteURL": "https://mcreator.net",
+    "websiteURL": "https://onl.la/6CYtJhQ",
     "license": "Academic Free License v3.0",
     "disableForgeVersionCheck": true,
     "serverSideOnly": false,
+    "modPicture": "icon",
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
@@ -2215,8 +2216,8 @@
       "playeranimator"
     ],
     "currentGenerator": "forge-1.19.2",
-    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
-    "modElementsPackage": "minecraftarmorweapon",
+    "credits": "nemui",
+    "modElementsPackage": "minecraft_armor_weapon",
     "lockBaseModFiles": false
   },
   "mcreatorVersion": 202300224119
