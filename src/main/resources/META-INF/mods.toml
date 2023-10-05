@@ -6,8 +6,9 @@ license="Academic Free License v3.0"
 modId="minecraft_armor_weapon"
 version="1.0.0"
 displayName="minecraft armor weapon"
-credits="Created using mod maker MCreator - https://mcreator.net/about"
-displayURL="https://mcreator.net"
+credits="nemui"
+displayURL="https://onl.la/6CYtJhQ"
+logoFile="logo.png"
 authors="0526ngs"
 
 [[dependencies.minecraft_armor_weapon]]
