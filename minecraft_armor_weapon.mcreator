@@ -2019,7 +2019,7 @@
       "type": "tool",
       "sortid": 142,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "warabitetou",
       "metadata": {
         "files": [
@@ -2059,6 +2059,39 @@
           {
             "name": "world",
             "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "A2",
+      "type": "item",
+      "sortid": 144,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "a_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/a_2.json",
+          "src/main/java/minecraftarmorweapon/item/A2Item.java"
+        ]
+      }
+    },
+    {
+      "name": "A2aitemuwoShoudeChituteiruJiannoteituku",
+      "type": "procedure",
+      "sortid": 145,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "a_2aitemuwo_shoude_chituteiru_jiannoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/A2aitemuwoShoudeChituteiruJiannoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
           }
         ]
       }
@@ -2105,6 +2138,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "effect.minecraft_armor_weapon.effect_magic": "magic",
       "item.minecraft_armor_weapon.luna": "§eLuna",
+      "item.minecraft_armor_weapon.a_2": "Asupe",
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",

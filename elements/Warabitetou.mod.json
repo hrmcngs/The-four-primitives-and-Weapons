@@ -10,9 +10,9 @@
     "creativeTab": {
       "value": "CUSTOM:Weapon"
     },
-    "toolType": "Axe",
-    "harvestLevel": 1,
-    "efficiency": 4.0,
+    "toolType": "Sword",
+    "harvestLevel": 9,
+    "efficiency": 10.0,
     "attackSpeed": 5.0,
     "enchantability": 2,
     "damageVsEntity": 4.0,

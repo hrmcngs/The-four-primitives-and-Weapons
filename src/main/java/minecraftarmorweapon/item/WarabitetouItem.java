@@ -4,10 +4,9 @@ package minecraftarmorweapon.item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
@@ -17,7 +16,6 @@ import minecraftarmorweapon.procedures.WarabitetouYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
-import net.minecraft.world.item.SwordItem;
 
 public class WarabitetouItem extends SwordItem {
 	public WarabitetouItem() {
@@ -27,7 +25,7 @@ public class WarabitetouItem extends SwordItem {
 			}
 
 			public float getSpeed() {
-				return 4f;
+				return 10f;
 			}
 
 			public float getAttackDamageBonus() {
@@ -35,7 +33,7 @@ public class WarabitetouItem extends SwordItem {
 			}
 
 			public int getLevel() {
-				return 1;
+				return 9;
 			}
 
 			public int getEnchantmentValue() {
@@ -45,7 +43,7 @@ public class WarabitetouItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of();
 			}
-		}, 1, 1f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
+		}, 3, 1f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
 	}
 
 	@Override

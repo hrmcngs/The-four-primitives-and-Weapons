@@ -39,6 +39,7 @@ import minecraftarmorweapon.item.EnderPearlNetheriteQuiverItemItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
 import minecraftarmorweapon.item.AItem;
+import minecraftarmorweapon.item.A2Item;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -80,6 +81,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> NETHERITE_QUIVER_ITEM = REGISTRY.register("netherite_quiver_item", () -> new NetheriteQuiverItemItem());
 	public static final RegistryObject<Item> ENDER_PEARL_NETHERITE_QUIVER_ITEM = REGISTRY.register("ender_pearl_netherite_quiver_item", () -> new EnderPearlNetheriteQuiverItemItem());
 	public static final RegistryObject<Item> WARABITETOU = REGISTRY.register("warabitetou", () -> new WarabitetouItem());
+	public static final RegistryObject<Item> A_2 = REGISTRY.register("a_2", () -> new A2Item());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
