@@ -5,7 +5,7 @@
     "renderType": 1,
     "texture": "aaaaa",
     "customModelName": "warabite3d:default",
-    "name": "蕨手刀",
+    "name": "§7蕨手刀",
     "specialInfo": [],
     "creativeTab": {
       "value": "CUSTOM:Weapon"
@@ -15,7 +15,7 @@
     "efficiency": 10.0,
     "attackSpeed": 5.0,
     "enchantability": 2,
-    "damageVsEntity": 4.0,
+    "damageVsEntity": 3.0,
     "usageCount": 0,
     "blocksAffected": [],
     "hasGlow": false,

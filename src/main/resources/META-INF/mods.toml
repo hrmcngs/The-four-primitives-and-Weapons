@@ -8,6 +8,7 @@ version="1.0.0"
 displayName="minecraft armor weapon"
 credits="nemui"
 displayURL="https://onl.la/6CYtJhQ"
+logoFile="logo.png"
 authors="0526ngs"
 
 [[dependencies.minecraft_armor_weapon]]
