@@ -28,12 +28,12 @@ public class StoneKatanaItem extends SwordItem {
 			}
 
 			public int getEnchantmentValue() {
-				return 2;
+				return 4;
 			}
 
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of();
 			}
-		}, 3, -2.1f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
+		}, 3, -1.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
 	}
 }

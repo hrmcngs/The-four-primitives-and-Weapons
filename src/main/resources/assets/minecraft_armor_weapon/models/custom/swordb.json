@@ -1344,15 +1344,25 @@
     "firstperson_righthand": {
       "translation": [
         3.25,
-        4.75,
+        4.5,
         -2.25
+      ],
+      "scale": [
+        1,
+        1.2,
+        1
       ]
     },
     "firstperson_lefthand": {
       "translation": [
         -12.5,
-        4.5,
+        4.75,
         -2
+      ],
+      "scale": [
+        1,
+        1.2,
+        1
       ]
     },
     "ground": {

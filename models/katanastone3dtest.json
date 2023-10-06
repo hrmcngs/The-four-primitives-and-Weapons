@@ -1,9 +1,9 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "katanairon3d",
+	"parent": "katanastone3dtest",
 	"textures": {
-		"0": "katanairon3d",
-		"particle": "katanairon3d"
+		"0": "katanastone3dtest",
+		"particle": "katanastone3dtest"
 	},
 	"elements": [
 		{
