@@ -1,12 +1,12 @@
 {
   "item.minecraft_armor_weapon.ender_quiver_item": "Ender Quiver Item",
-  "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
-  "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
   "itemGroup.tabmagic_books": "Magic Books",
+  "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
+  "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
   "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
-  "block.minecraft_armor_weapon.cross": "Cross",
-  "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
   "itemGroup.tabyopkeinamono": "建築とかに",
+  "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+  "block.minecraft_armor_weapon.cross": "Cross",
   "effect.minecraft_armor_weapon.syugeki": "aa",
   "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
   "effect.minecraft_armor_weapon.effect_magic": "magic",
@@ -62,5 +62,6 @@
   "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
   "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
   "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
+  "item.minecraft_armor_weapon.aaa": "Aaa",
   "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"
 }
