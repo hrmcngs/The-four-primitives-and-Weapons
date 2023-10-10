@@ -37,7 +37,6 @@ import minecraftarmorweapon.item.EnderQuiverItemItem;
 import minecraftarmorweapon.item.EnderPearlNetheriteQuiverItemItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
-import minecraftarmorweapon.item.AaaItem;
 import minecraftarmorweapon.item.AItem;
 import minecraftarmorweapon.item.A2Item;
 
@@ -74,14 +73,13 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.SKELTON_MOB, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> GOMANORIKEN = REGISTRY.register("gomanoriken", () -> new GomanorikenItem());
 	public static final RegistryObject<Item> ACHROMATIC_SHIELD = REGISTRY.register("achromatic_shield", () -> new AchromaticShieldItem());
-	public static final RegistryObject<Item> GOMANORIKEN_BLOCK = block(MinecraftArmorWeaponModBlocks.GOMANORIKEN_BLOCK, MinecraftArmorWeaponModTabs.TAB_MAGIC_BOOKS);
+	public static final RegistryObject<Item> GOMANORIKEN_BLOCK = block(MinecraftArmorWeaponModBlocks.GOMANORIKEN_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> HARVEST_MOON_2023929 = REGISTRY.register("harvest_moon_2023929", () -> new HarvestMoon2023929Item());
 	public static final RegistryObject<Item> ENDER_QUIVER_ITEM = REGISTRY.register("ender_quiver_item", () -> new EnderQuiverItemItem());
 	public static final RegistryObject<Item> NETHERITE_QUIVER_ITEM = REGISTRY.register("netherite_quiver_item", () -> new NetheriteQuiverItemItem());
 	public static final RegistryObject<Item> ENDER_PEARL_NETHERITE_QUIVER_ITEM = REGISTRY.register("ender_pearl_netherite_quiver_item", () -> new EnderPearlNetheriteQuiverItemItem());
 	public static final RegistryObject<Item> WARABITETOU = REGISTRY.register("warabitetou", () -> new WarabitetouItem());
 	public static final RegistryObject<Item> A_2 = REGISTRY.register("a_2", () -> new A2Item());
-	public static final RegistryObject<Item> AAA = REGISTRY.register("aaa", () -> new AaaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

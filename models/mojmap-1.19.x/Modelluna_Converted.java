@@ -18,27 +18,27 @@ public class Modelluna_Converted<T extends Entity> extends EntityModel<T> {
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
 		PartDefinition bone = partdefinition.addOrReplaceChild("bone",
-				CubeListBuilder.create().texOffs(11, 25)
-						.addBox(-0.75F, -1.4F, 5.95F, 1.5F, 2.1F, 0.3F, new CubeDeformation(0.0F)).texOffs(6, 18)
-						.addBox(-0.35F, -0.75F, 6.25F, 0.75F, 0.8F, 5.75F, new CubeDeformation(0.0F)),
-				PartPose.offset(0.0F, 24.25F, 0.0F));
+				CubeListBuilder.create().texOffs(0, 0)
+						.addBox(-3.0F, -3.6F, 23.8F, 6.0F, 8.4F, 1.2F, new CubeDeformation(0.0F)).texOffs(53, 53)
+						.addBox(-1.4F, -1.0F, 25.0F, 3.0F, 3.2F, 23.0F, new CubeDeformation(0.0F)),
+				PartPose.offsetAndRotation(0.0F, 19.25F, 0.0F, 1.5708F, 0.0F, 0.0F));
 
 		PartDefinition bone2 = bone.addOrReplaceChild("bone2",
-				CubeListBuilder.create().texOffs(7, 7)
-						.addBox(-0.1F, -0.6F, -7.25F, 0.2F, 0.25F, 0.75F, new CubeDeformation(0.0F)).texOffs(7, 7)
-						.addBox(-0.1F, -0.5F, -7.8F, 0.2F, 0.3F, 0.55F, new CubeDeformation(0.0F)).texOffs(7, 7)
-						.addBox(-0.1F, -0.3F, -8.3F, 0.2F, 0.3F, 0.5F, new CubeDeformation(0.0F)).texOffs(29, 20)
-						.addBox(-0.2F, -0.2F, -7.8F, 0.4F, 0.2F, 0.55F, new CubeDeformation(0.0F)).texOffs(29, 20)
-						.addBox(-0.2F, -0.4F, -7.25F, 0.4F, 0.4F, 0.75F, new CubeDeformation(0.0F)),
-				PartPose.offset(0.0F, 0.0F, -0.25F));
+				CubeListBuilder.create().texOffs(0, 124)
+						.addBox(-0.4F, 11.85F, -29.0F, 0.8F, 1.0F, 3.0F, new CubeDeformation(0.0F)).texOffs(0, 124)
+						.addBox(-0.4F, 12.25F, -31.2F, 0.8F, 1.2F, 2.2F, new CubeDeformation(0.0F)).texOffs(0, 124)
+						.addBox(-0.4F, 13.05F, -33.2F, 0.8F, 1.2F, 2.0F, new CubeDeformation(0.0F)).texOffs(8, 13)
+						.addBox(-0.8F, 13.45F, -31.2F, 1.6F, 0.8F, 2.2F, new CubeDeformation(0.0F)).texOffs(118, 123)
+						.addBox(-0.8F, 12.65F, -29.0F, 1.6F, 1.6F, 3.0F, new CubeDeformation(0.0F)),
+				PartPose.offset(0.0F, -12.25F, -1.0F));
 
 		PartDefinition bone3 = bone2.addOrReplaceChild("bone3",
-				CubeListBuilder.create().texOffs(-2, -2)
-						.addBox(-0.1F, -0.75F, -6.5F, 0.2F, 0.25F, 12.75F, new CubeDeformation(0.0F)).texOffs(6, 18)
-						.addBox(-0.2F, -0.5F, -6.5F, 0.4F, 0.5F, 12.75F, new CubeDeformation(0.0F)),
+				CubeListBuilder.create().texOffs(0, 53)
+						.addBox(-0.4F, 11.25F, -26.0F, 0.8F, 1.0F, 51.0F, new CubeDeformation(0.0F)).texOffs(0, 0)
+						.addBox(-0.8F, 12.25F, -26.0F, 1.6F, 2.0F, 51.0F, new CubeDeformation(0.0F)),
 				PartPose.offset(0.0F, 0.0F, 0.0F));
 
-		return LayerDefinition.create(meshdefinition, 32, 32);
+		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
 	@Override
@@ -49,7 +49,5 @@ public class Modelluna_Converted<T extends Entity> extends EntityModel<T> {
 
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
 			float headPitch) {
-		this.bone.yRot = netHeadYaw / (180F / (float) Math.PI);
-		this.bone.xRot = headPitch / (180F / (float) Math.PI);
 	}
 }

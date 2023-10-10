@@ -77,7 +77,7 @@ public class TobiOnEffectActiveTickProcedure {
 				world.addParticle(ParticleTypes.FLAME, (entity.getPersistentData().getDouble("sx")), (entity.getPersistentData().getDouble("sy")), (entity.getPersistentData().getDouble("sz")), 0, 0, 0);
 				{
 					final Vec3 _center = new Vec3((entity.getPersistentData().getDouble("sx")), (entity.getPersistentData().getDouble("sy")), (entity.getPersistentData().getDouble("sz")));
-					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 							.collect(Collectors.toList());
 					for (Entity entityiterator : _entfound) {
 						if (entity instanceof Mob && !(entityiterator == entity && entityiterator instanceof SkeltonMobEntity)) {
@@ -154,6 +154,7 @@ public class TobiOnEffectActiveTickProcedure {
 											if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
 										}
+										entityiterator.hurt(DamageSource.GENERIC, 5);
 									} else {
 										entityiterator.hurt(DamageSource.GENERIC, 5);
 									}
