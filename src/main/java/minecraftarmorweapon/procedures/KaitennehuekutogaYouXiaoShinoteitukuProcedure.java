@@ -461,7 +461,7 @@ public class KaitennehuekutogaYouXiaoShinoteitukuProcedure {
 					}
 				}
 			}
-			loop3 = loop4 + Math.toRadians(5);
+			loop3 = loop3 + Math.toRadians(5);
 		}
 		loop = Math.toRadians(entity.getYRot());
 		xRadius = 1.5;
