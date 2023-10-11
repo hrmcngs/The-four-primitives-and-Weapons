@@ -10,6 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.effect.MobEffect;
 
+import minecraftarmorweapon.potion.WindStepEffectMobEffect;
 import minecraftarmorweapon.potion.WazaMobEffect;
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
 import minecraftarmorweapon.potion.TissokuMobEffect;
@@ -17,6 +18,7 @@ import minecraftarmorweapon.potion.ThunderHitMobEffect;
 import minecraftarmorweapon.potion.SyugekiMobEffect;
 import minecraftarmorweapon.potion.SuityuuMobEffect;
 import minecraftarmorweapon.potion.OtiruyooMobEffect;
+import minecraftarmorweapon.potion.OtiroMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KaitennMobEffect;
@@ -53,4 +55,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> EFFECT_MAGIC = REGISTRY.register("effect_magic", () -> new EffectMagicMobEffect());
 	public static final RegistryObject<MobEffect> BARRIER_EFFECT = REGISTRY.register("barrier_effect", () -> new BarrierEffectMobEffect());
 	public static final RegistryObject<MobEffect> AA = REGISTRY.register("aa", () -> new AaMobEffect());
+	public static final RegistryObject<MobEffect> OTIRO = REGISTRY.register("otiro", () -> new OtiroMobEffect());
+	public static final RegistryObject<MobEffect> WIND_STEP_EFFECT = REGISTRY.register("wind_step_effect", () -> new WindStepEffectMobEffect());
 }

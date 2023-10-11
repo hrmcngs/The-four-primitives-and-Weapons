@@ -17,6 +17,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
+import minecraftarmorweapon.entity.OtiruyoEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -27,6 +28,8 @@ public class MinecraftArmorWeaponModEntities {
 			EntityType.Builder.<SkeltonMobEntity>of(SkeltonMobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(SkeltonMobEntity::new)
 
 					.sized(0.6f, 1.5f));
+	public static final RegistryObject<EntityType<OtiruyoEntity>> OTIRUYO = register("otiruyo",
+			EntityType.Builder.<OtiruyoEntity>of(OtiruyoEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(OtiruyoEntity::new).fireImmune().sized(1.2f, 3.6f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -36,11 +39,13 @@ public class MinecraftArmorWeaponModEntities {
 	public static void init(FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			SkeltonMobEntity.init();
+			OtiruyoEntity.init();
 		});
 	}
 
 	@SubscribeEvent
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
 		event.put(SKELTON_MOB.get(), SkeltonMobEntity.createAttributes().build());
+		event.put(OTIRUYO.get(), OtiruyoEntity.createAttributes().build());
 	}
 }

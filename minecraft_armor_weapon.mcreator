@@ -2107,6 +2107,141 @@
           }
         ]
       }
+    },
+    {
+      "name": "OtiroehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 147,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otiroehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/OtiroehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Otiro",
+      "type": "potioneffect",
+      "sortid": 148,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otiro",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/OtiroMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "OtiruyoenteiteigasuponsitaShi",
+      "type": "procedure",
+      "sortid": 149,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otiruyoenteiteigasuponsita_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/OtiruyoenteiteigasuponsitaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Otiruyo",
+      "type": "livingentity",
+      "sortid": 150,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otiruyo",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/otiruyo_spawn_egg.json",
+          "src/main/java/minecraftarmorweapon/client/renderer/OtiruyoRenderer.java",
+          "src/main/java/minecraftarmorweapon/entity/OtiruyoEntity.java"
+        ]
+      }
+    },
+    {
+      "name": "OtiroposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 151,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otiroposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/OtiroposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WindStep",
+      "type": "item",
+      "sortid": 152,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wind_step",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/wind_step.json",
+          "src/main/java/minecraftarmorweapon/item/WindStepItem.java"
+        ]
+      }
+    },
+    {
+      "name": "WindStepEffect",
+      "type": "potioneffect",
+      "sortid": 153,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wind_step_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/WindStepEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "WindStepEffectehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 154,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wind_step_effectehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/WindStepEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2142,6 +2277,7 @@
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
+      "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
       "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
@@ -2151,6 +2287,7 @@
       "effect.minecraft_armor_weapon.effect_magic": "magic",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "item.minecraft_armor_weapon.a_2": "Asupe",
+      "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
@@ -2178,12 +2315,14 @@
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "block.minecraft_armor_weapon.rose": "Rose",
+      "item.minecraft_armor_weapon.wind_step": "§2Windstep",
       "item.minecraft_armor_weapon.a": "A",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
       "effect.minecraft_armor_weapon.waza": "waza",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
+      "effect.minecraft_armor_weapon.otiro": "zz",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
@@ -2200,6 +2339,7 @@
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
+      "entity.minecraft_armor_weapon.otiruyo": "Otiruyo",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"
     }
