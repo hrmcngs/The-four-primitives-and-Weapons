@@ -22,6 +22,7 @@ import minecraftarmorweapon.potion.OtiroMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KaitennMobEffect;
+import minecraftarmorweapon.potion.KaitenMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.EffectMagicMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
@@ -57,4 +58,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> AA = REGISTRY.register("aa", () -> new AaMobEffect());
 	public static final RegistryObject<MobEffect> OTIRO = REGISTRY.register("otiro", () -> new OtiroMobEffect());
 	public static final RegistryObject<MobEffect> WIND_STEP_EFFECT = REGISTRY.register("wind_step_effect", () -> new WindStepEffectMobEffect());
+	public static final RegistryObject<MobEffect> KAITEN = REGISTRY.register("kaiten", () -> new KaitenMobEffect());
 }
