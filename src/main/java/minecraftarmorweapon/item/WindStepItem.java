@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
-import minecraftarmorweapon.procedures.ThunderboltYoukuritukusitatokiProcedure;
+import minecraftarmorweapon.procedures.WindStepYoukuritukusitatokiProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
@@ -26,7 +26,7 @@ public class WindStepItem extends Item {
 		double y = entity.getY();
 		double z = entity.getZ();
 
-		ThunderboltYoukuritukusitatokiProcedure.execute(entity);
+		WindStepYoukuritukusitatokiProcedure.execute(entity);
 		return ar;
 	}
 }
