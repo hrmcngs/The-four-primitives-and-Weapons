@@ -11,7 +11,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
 import minecraftarmorweapon.procedures.KaitennposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
-import minecraftarmorweapon.procedures.KaitennehuekutogaYouXiaoShinoteitukuProcedure;
+import minecraftarmorweapon.procedures.KaitenehuekutogaYouXiaoShinoteitukuProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -32,7 +32,7 @@ public class KaitenMobEffect extends MobEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		KaitennehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
+		KaitenehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override
