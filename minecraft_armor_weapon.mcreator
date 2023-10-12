@@ -2309,6 +2309,25 @@
           }
         ]
       }
+    },
+    {
+      "name": "WindStepStaffAttribute",
+      "type": "procedure",
+      "sortid": 158,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wind_step_staff_attribute",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/WindStepStaffAttributeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2335,6 +2354,12 @@
       "type": "number",
       "scope": "player_lifetime",
       "value": "0"
+    },
+    {
+      "name": "SpeedStaff",
+      "type": "logic",
+      "scope": "player_lifetime",
+      "value": "false"
     }
   ],
   "sound_elements": [],
