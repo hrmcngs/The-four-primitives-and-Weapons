@@ -20,6 +20,7 @@ import minecraftarmorweapon.item.WindStepItem;
 import minecraftarmorweapon.item.WaterKatanaItem;
 import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
+import minecraftarmorweapon.item.StrayOuterArmorItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.QuiverItemItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
@@ -83,6 +84,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> A_2 = REGISTRY.register("a_2", () -> new A2Item());
 	public static final RegistryObject<Item> OTIRUYO_SPAWN_EGG = REGISTRY.register("otiruyo_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.OTIRUYO, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> WIND_STEP = REGISTRY.register("wind_step", () -> new WindStepItem());
+	public static final RegistryObject<Item> STRAY_OUTER_ARMOR_HELMET = REGISTRY.register("stray_outer_armor_helmet", () -> new StrayOuterArmorItem.Helmet());
+	public static final RegistryObject<Item> STRAY_OUTER_ARMOR_CHESTPLATE = REGISTRY.register("stray_outer_armor_chestplate", () -> new StrayOuterArmorItem.Chestplate());
+	public static final RegistryObject<Item> STRAY_OUTER_ARMOR_LEGGINGS = REGISTRY.register("stray_outer_armor_leggings", () -> new StrayOuterArmorItem.Leggings());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

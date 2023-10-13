@@ -10,6 +10,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 import minecraftarmorweapon.client.model.Modelswordbblock_Converted;
+import minecraftarmorweapon.client.model.Modelstray_outer_Converted;
 import minecraftarmorweapon.client.model.Modelskeleton_Converted;
 import minecraftarmorweapon.client.model.Modelpillager_Converted;
 import minecraftarmorweapon.client.model.Modelpiglin_brute_Converted;
@@ -17,6 +18,7 @@ import minecraftarmorweapon.client.model.Modelnetherite_arrow_armor_layer_1_Conv
 import minecraftarmorweapon.client.model.Modelmahouzinn;
 import minecraftarmorweapon.client.model.Modelluna_Converted;
 import minecraftarmorweapon.client.model.Modelillusioner_armor_layer_3_Converted;
+import minecraftarmorweapon.client.model.Modelhusk_Converted;
 import minecraftarmorweapon.client.model.Modelelytra_Converted;
 import minecraftarmorweapon.client.model.Modelblack_spectral_arrow_Converted;
 import minecraftarmorweapon.client.model.Modelbanner_Converted;
@@ -29,6 +31,8 @@ public class MinecraftArmorWeaponModModels {
 		event.registerLayerDefinition(Modelnetherite_arrow_armor_layer_1_Converted.LAYER_LOCATION, Modelnetherite_arrow_armor_layer_1_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelpillager_Converted.LAYER_LOCATION, Modelpillager_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelmahouzinn.LAYER_LOCATION, Modelmahouzinn::createBodyLayer);
+		event.registerLayerDefinition(Modelstray_outer_Converted.LAYER_LOCATION, Modelstray_outer_Converted::createBodyLayer);
+		event.registerLayerDefinition(Modelhusk_Converted.LAYER_LOCATION, Modelhusk_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelillusioner_armor_layer_3_Converted.LAYER_LOCATION, Modelillusioner_armor_layer_3_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelpiglin_brute_Converted.LAYER_LOCATION, Modelpiglin_brute_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelblack_spectral_arrow_Converted.LAYER_LOCATION, Modelblack_spectral_arrow_Converted::createBodyLayer);
