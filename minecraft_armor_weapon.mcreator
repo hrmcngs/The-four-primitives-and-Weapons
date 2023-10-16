@@ -2344,6 +2344,33 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/stray_outer_armor_chestplate.json"
         ]
       }
+    },
+    {
+      "name": "OtitaehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 160,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otitaehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/OtitaehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": []
+      }
+    },
+    {
+      "name": "Otita",
+      "type": "potioneffect",
+      "sortid": 161,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "otita",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/OtitaMobEffect.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2404,6 +2431,7 @@
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
+      "effect.minecraft_armor_weapon.otita": "a",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "effect.minecraft_armor_weapon.aa": "n0okku",

@@ -17,6 +17,7 @@ import minecraftarmorweapon.potion.TissokuMobEffect;
 import minecraftarmorweapon.potion.ThunderHitMobEffect;
 import minecraftarmorweapon.potion.SyugekiMobEffect;
 import minecraftarmorweapon.potion.SuityuuMobEffect;
+import minecraftarmorweapon.potion.OtitaMobEffect;
 import minecraftarmorweapon.potion.OtiruyooMobEffect;
 import minecraftarmorweapon.potion.OtiroMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
@@ -59,4 +60,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> OTIRO = REGISTRY.register("otiro", () -> new OtiroMobEffect());
 	public static final RegistryObject<MobEffect> WIND_STEP_EFFECT = REGISTRY.register("wind_step_effect", () -> new WindStepEffectMobEffect());
 	public static final RegistryObject<MobEffect> KAITEN = REGISTRY.register("kaiten", () -> new KaitenMobEffect());
+	public static final RegistryObject<MobEffect> OTITA = REGISTRY.register("otita", () -> new OtitaMobEffect());
 }
