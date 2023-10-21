@@ -2,11 +2,11 @@
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 
-public class Modelstray_outer_Converted<T extends Entity> extends EntityModel<T> {
+public class Modelstray_outer_Converted_hat<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(
-			new ResourceLocation("modid", "stray_outer_converted"), "main");
+			new ResourceLocation("modid", "stray_outer_converted_hat"), "main");
 	private final ModelPart head;
 	private final ModelPart body;
 	private final ModelPart left_arm;
@@ -14,7 +14,7 @@ public class Modelstray_outer_Converted<T extends Entity> extends EntityModel<T>
 	private final ModelPart left_leg;
 	private final ModelPart right_leg;
 
-	public Modelstray_outer_Converted(ModelPart root) {
+	public Modelstray_outer_Converted_hat(ModelPart root) {
 		this.head = root.getChild("head");
 		this.body = root.getChild("body");
 		this.left_arm = root.getChild("left_arm");
@@ -27,15 +27,15 @@ public class Modelstray_outer_Converted<T extends Entity> extends EntityModel<T>
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
 
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 34)
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(32, 32)
 				.addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F)),
 				PartPose.offset(0.0F, -0.25F, 0.0F));
 
 		PartDefinition hat = head.addOrReplaceChild("hat",
-				CubeListBuilder.create().texOffs(8, 54)
-						.addBox(-4.0F, -34.0F, -4.0F, 8.0F, 2.0F, 8.0F, new CubeDeformation(0.75F)).texOffs(4, 52)
-						.addBox(-6.0F, -31.0F, -5.75F, 12.0F, 0.0F, 12.0F, new CubeDeformation(0.75F)),
-				PartPose.offset(0.0F, 24.0F, 0.0F));
+				CubeListBuilder.create().texOffs(0, 49)
+						.addBox(-7.0F, -32.0F, -7.0F, 14.0F, 1.0F, 14.0F, new CubeDeformation(0.0F)).texOffs(4, 51)
+						.addBox(-5.0F, -35.0F, -5.0F, 10.0F, 3.0F, 10.0F, new CubeDeformation(0.0F)),
+				PartPose.offset(0.0F, 24.25F, 0.0F));
 
 		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(
 				-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)), PartPose.offset(0.0F, 0.0F, 0.0F));

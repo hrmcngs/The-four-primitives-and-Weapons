@@ -16,5 +16,9 @@ public class OtiroehuekutogaYouXiaoShinoteitukuProcedure {
 			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.OTIRO.get(), 2, 1, true, false));
 		}
+		if (entity.isOnGround()) {
+			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.OTITA.get(), 2, 1, true, false));
+		}
 	}
 }

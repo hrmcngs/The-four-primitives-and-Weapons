@@ -10,6 +10,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 import minecraftarmorweapon.client.model.Modelswordbblock_Converted;
+import minecraftarmorweapon.client.model.Modelstray_outer_Converted_hat;
 import minecraftarmorweapon.client.model.Modelstray_outer_Converted;
 import minecraftarmorweapon.client.model.Modelskeleton_Converted;
 import minecraftarmorweapon.client.model.Modelpillager_Converted;
@@ -39,6 +40,7 @@ public class MinecraftArmorWeaponModModels {
 		event.registerLayerDefinition(Modelswordbblock_Converted.LAYER_LOCATION, Modelswordbblock_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelbanner_Converted.LAYER_LOCATION, Modelbanner_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelluna_Converted.LAYER_LOCATION, Modelluna_Converted::createBodyLayer);
+		event.registerLayerDefinition(Modelstray_outer_Converted_hat.LAYER_LOCATION, Modelstray_outer_Converted_hat::createBodyLayer);
 		event.registerLayerDefinition(Modelelytra_Converted.LAYER_LOCATION, Modelelytra_Converted::createBodyLayer);
 	}
 }

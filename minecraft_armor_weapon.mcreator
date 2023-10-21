@@ -2356,7 +2356,28 @@
         "files": [
           "src/main/java/minecraftarmorweapon/procedures/OtitaehuekutogaYouXiaoShinoteitukuProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
       }
     },
     {
@@ -2369,6 +2390,20 @@
       "metadata": {
         "files": [
           "src/main/java/minecraftarmorweapon/potion/OtitaMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "MagicWand",
+      "type": "item",
+      "sortid": 162,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magic_wand",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/magic_wand.json",
+          "src/main/java/minecraftarmorweapon/item/MagicWandItem.java"
         ]
       }
     }
@@ -2443,6 +2478,7 @@
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
+      "item.minecraft_armor_weapon.magic_wand": "Magic Wand",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "item.minecraft_armor_weapon.quiver_item": "Quiver Item",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
