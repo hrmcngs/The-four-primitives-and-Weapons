@@ -35,7 +35,7 @@ public class Modelstray_outer_Converted_hat<T extends Entity> extends EntityMode
 				CubeListBuilder.create().texOffs(0, 49)
 						.addBox(-7.0F, -32.0F, -7.0F, 14.0F, 1.0F, 14.0F, new CubeDeformation(0.0F)).texOffs(4, 51)
 						.addBox(-5.0F, -35.0F, -5.0F, 10.0F, 3.0F, 10.0F, new CubeDeformation(0.0F)),
-				PartPose.offset(0.0F, 24.25F, 0.0F));
+				PartPose.offset(0.0F, 25.25F, 0.0F));
 
 		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(
 				-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)), PartPose.offset(0.0F, 0.0F, 0.0F));

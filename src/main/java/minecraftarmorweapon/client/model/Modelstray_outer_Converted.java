@@ -41,10 +41,7 @@ public class Modelstray_outer_Converted<T extends Entity> extends EntityModel<T>
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
-		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 34).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F)), PartPose.offset(0.0F, -0.25F, 0.0F));
-		PartDefinition hat = head.addOrReplaceChild("hat",
-				CubeListBuilder.create().texOffs(8, 54).addBox(-4.0F, -34.0F, -4.0F, 8.0F, 2.0F, 8.0F, new CubeDeformation(0.75F)).texOffs(4, 52).addBox(-6.0F, -31.0F, -5.75F, 12.0F, 0.0F, 12.0F, new CubeDeformation(0.75F)),
-				PartPose.offset(0.0F, 24.0F, 0.0F));
+		PartDefinition head = partdefinition.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)), PartPose.offset(0.0F, 0.0F, 0.0F));
 		PartDefinition left_arm = partdefinition.addOrReplaceChild("left_arm", CubeListBuilder.create().texOffs(40, 16).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false),
 				PartPose.offset(5.0F, 2.0F, 0.0F));

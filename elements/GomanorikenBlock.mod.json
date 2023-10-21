@@ -63,7 +63,7 @@
     "emittedRedstonePower": {
       "fixedValue": 15.0
     },
-    "colorOnMap": "AIR",
+    "colorOnMap": "DEFAULT",
     "creativePickItem": {
       "value": "CUSTOM:Gomanoriken"
     },

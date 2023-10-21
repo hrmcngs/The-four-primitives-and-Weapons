@@ -20,6 +20,7 @@ import minecraftarmorweapon.item.WindStepItem;
 import minecraftarmorweapon.item.WaterKatanaItem;
 import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
+import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.QuiverItemItem;
@@ -89,6 +90,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> STRAY_OUTER_ARMOR_CHESTPLATE = REGISTRY.register("stray_outer_armor_chestplate", () -> new StrayOuterArmorItem.Chestplate());
 	public static final RegistryObject<Item> STRAY_OUTER_ARMOR_LEGGINGS = REGISTRY.register("stray_outer_armor_leggings", () -> new StrayOuterArmorItem.Leggings());
 	public static final RegistryObject<Item> MAGIC_WAND = REGISTRY.register("magic_wand", () -> new MagicWandItem());
+	public static final RegistryObject<Item> STRAYOUTERARMORHAT_HELMET = REGISTRY.register("strayouterarmorhat_helmet", () -> new StrayouterarmorhatItem.Helmet());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
