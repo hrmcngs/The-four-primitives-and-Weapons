@@ -190,7 +190,7 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 																	|| entityiterator instanceof SkeletonHorse || entityiterator instanceof Zoglin)) {
 														entityiterator.hurt(DamageSource.GENERIC, 10);
 													}
-													if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEFINED : false) {
+													if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
 														entityiterator.hurt(DamageSource.GENERIC, 10);
 													}
 													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD
@@ -276,7 +276,7 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 											}
-											if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEFINED : false) {
+											if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
 												entityiterator.hurt(DamageSource.GENERIC, 10);
 											}
 											entityiterator.hurt(DamageSource.GENERIC, 10);

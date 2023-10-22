@@ -2420,6 +2420,18 @@
           "src/main/java/minecraftarmorweapon/item/StrayouterarmorhatItem.java"
         ]
       }
+    },
+    {
+      "name": "Mahotukai",
+      "type": "villagerprofession",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mahotukai",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/textures/entity/villager/profession/mahotukai.png.mcmeta"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2516,6 +2528,7 @@
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
+      "entity.minecraft.villager.minecraft_armor_weapon.mahotukai": "Mahotukai",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.hammer": "Hammer",
