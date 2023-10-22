@@ -1204,7 +1204,7 @@
       "type": "tool",
       "sortid": 81,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "my_test_iron_katana",
       "metadata": {
         "files": [
