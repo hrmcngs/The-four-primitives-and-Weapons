@@ -2528,6 +2528,16 @@
           }
         ]
       }
+    },
+    {
+      "name": "MinecraftArmorAndWeaponItems",
+      "type": "villagertrade",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "minecraft_armor_and_weapon_items",
+      "metadata": {
+        "files": []
+      }
     }
   ],
   "variable_elements": [
