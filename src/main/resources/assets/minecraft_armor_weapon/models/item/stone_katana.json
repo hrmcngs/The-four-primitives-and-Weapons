@@ -1,7 +1,7 @@
 {
-  "parent": "minecraft_armor_weapon:custom/katanastone3dtest",
+  "parent": "minecraft_armor_weapon:custom/katanairon3dmagic",
   "textures": {
-    "0": "minecraft_armor_weapon:blocks/katanastone3dtest",
+    "1": "minecraft_armor_weapon:blocks/katana3dmagic",
     "particle": "minecraft_armor_weapon:items/aa"
   }
 }

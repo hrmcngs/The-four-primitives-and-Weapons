@@ -4,7 +4,7 @@
   "definition": {
     "renderType": 1,
     "texture": "aa",
-    "customModelName": "katanastone3dtest:default",
+    "customModelName": "katanairon3dmagic:default",
     "name": "§7Stone Katana",
     "specialInfo": [],
     "creativeTab": {
@@ -18,7 +18,7 @@
     "damageVsEntity": 3.0,
     "usageCount": 0,
     "blocksAffected": [],
-    "hasGlow": false,
+    "hasGlow": true,
     "repairItems": [],
     "immuneToFire": false,
     "stayInGridWhenCrafting": false,

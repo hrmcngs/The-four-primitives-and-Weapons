@@ -360,7 +360,7 @@
       "name": "MagicBooksLootTable",
       "type": "loottable",
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "magic_books_loot_table",
       "metadata": {
         "files": [
@@ -2422,14 +2422,26 @@
       }
     },
     {
-      "name": "Mahotukai",
+      "name": "MinecraftArmorAndWeapon",
       "type": "villagerprofession",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "mahotukai",
+      "registry_name": "minecraft_armor_and_weapon",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "MagicMcrystal",
+      "type": "item",
+      "sortid": 164,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magic_mcrystal",
       "metadata": {
         "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/textures/entity/villager/profession/mahotukai.png.mcmeta"
+          "src/main/java/minecraftarmorweapon/item/MagicMcrystalItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/magic_mcrystal.json"
         ]
       }
     }
@@ -2475,6 +2487,7 @@
       "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
+      "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
       "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "block.minecraft_armor_weapon.cross": "Cross",
@@ -2494,6 +2507,7 @@
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "effect.minecraft_armor_weapon.otita": "a",
+      "entity.minecraft.villager.minecraft_armor_weapon.minecraft_armor_and_weapon": "Minecraft Armor And Weapon",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "effect.minecraft_armor_weapon.aa": "n0okku",
@@ -2528,7 +2542,6 @@
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
-      "entity.minecraft.villager.minecraft_armor_weapon.mahotukai": "Mahotukai",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.hammer": "Hammer",

@@ -2,15 +2,15 @@
   "_fv": 43,
   "_type": "villagerprofession",
   "definition": {
-    "displayName": "Mahotukai",
+    "displayName": "Minecraft Armor And Weapon",
     "pointOfInterest": {
       "value": "Blocks.POTTED_WITHER_ROSE"
     },
     "actionSound": {
       "value": "entity.wither.ambient"
     },
-    "hat": "Partial",
-    "professionTextureFile": "plains.png",
-    "zombifiedProfessionTextureFile": "plains.png"
+    "hat": "None",
+    "professionTextureFile": "armor_and_weapon.png",
+    "zombifiedProfessionTextureFile": "armor_and_weapon.png"
   }
 }

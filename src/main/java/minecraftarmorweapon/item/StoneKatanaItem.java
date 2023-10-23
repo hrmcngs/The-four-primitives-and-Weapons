@@ -1,9 +1,13 @@
 
 package minecraftarmorweapon.item;
 
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
+
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
@@ -35,5 +39,11 @@ public class StoneKatanaItem extends SwordItem {
 				return Ingredient.of();
 			}
 		}, 3, -1.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
+	}
+
+	@Override
+	@OnlyIn(Dist.CLIENT)
+	public boolean isFoil(ItemStack itemstack) {
+		return true;
 	}
 }
