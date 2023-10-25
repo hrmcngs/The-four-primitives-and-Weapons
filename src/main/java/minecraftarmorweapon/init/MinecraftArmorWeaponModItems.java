@@ -95,6 +95,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> STRAYOUTERARMORHAT_HELMET = REGISTRY.register("strayouterarmorhat_helmet", () -> new StrayouterarmorhatItem.Helmet());
 	public static final RegistryObject<Item> MAGIC_MCRYSTAL = REGISTRY.register("magic_mcrystal", () -> new MagicMcrystalItem());
 	public static final RegistryObject<Item> MAGICAL_KATANA = REGISTRY.register("magical_katana", () -> new MagicalKatanaItem());
+	public static final RegistryObject<Item> STONE_BRICKS_TRAP_DOOR = block(MinecraftArmorWeaponModBlocks.STONE_BRICKS_TRAP_DOOR, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

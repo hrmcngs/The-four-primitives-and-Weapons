@@ -2495,21 +2495,27 @@
       }
     },
     {
-      "name": "Doroppu",
-      "type": "procedure",
-      "sortid": 167,
+      "name": "MinecraftArmorAndWeaponItems",
+      "type": "villagertrade",
       "compiles": true,
       "locked_code": false,
-      "registry_name": "doroppu",
+      "registry_name": "minecraft_armor_and_weapon_items",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "MagicalKatanamobugaturudeGongJisaretatoki",
+      "type": "procedure",
+      "sortid": 168,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magical_katanamobugaturude_gong_jisaretatoki",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/procedures/DoroppuProcedure.java"
+          "src/main/java/minecraftarmorweapon/procedures/MagicalKatanamobugaturudeGongJisaretatokiProcedure.java"
         ],
         "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
           {
             "name": "x",
             "type": "number"
@@ -2530,13 +2536,60 @@
       }
     },
     {
-      "name": "MinecraftArmorAndWeaponItems",
-      "type": "villagertrade",
+      "name": "Enderpearlnetheritequiver",
+      "type": "recipe",
+      "sortid": 170,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "minecraft_armor_and_weapon_items",
+      "registry_name": "enderpearlnetheritequiver",
       "metadata": {
-        "files": []
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/enderpearlnetheritequiver.json"
+        ]
+      }
+    },
+    {
+      "name": "Netheritequiver",
+      "type": "recipe",
+      "sortid": 169,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "netheritequiver",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/netheritequiver.json"
+        ]
+      }
+    },
+    {
+      "name": "Enderpearlquiver",
+      "type": "recipe",
+      "sortid": 171,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "enderpearlquiver",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/enderpearlquiver.json"
+        ]
+      }
+    },
+    {
+      "name": "StoneBricksTrapDoor",
+      "type": "block",
+      "sortid": 172,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stone_bricks_trap_door",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_bricks_trap_door_top.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_bricks_trap_door_open.json",
+          "src/main/java/minecraftarmorweapon/block/StoneBricksTrapDoorBlock.java",
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_bricks_trap_door.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_bricks_trap_door.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_bricks_trap_door.json"
+        ]
       }
     }
   ],
@@ -2622,6 +2675,7 @@
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "effect.minecraft_armor_weapon.nagiharai": "aa",
+      "block.minecraft_armor_weapon.stone_bricks_trap_door": "Stone Bricks Trap Door",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "item.minecraft_armor_weapon.stray_outer_armor_leggings": "Stray Outer Armor Leggins",

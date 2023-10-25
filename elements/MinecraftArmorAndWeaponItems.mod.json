@@ -25,6 +25,24 @@
             "maxTrades": 10,
             "xp": 5,
             "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Items.SHIELD"
+            },
+            "countPrice1": 1,
+            "price2": {
+              "value": "CUSTOM:MagicMcrystal"
+            },
+            "countPrice2": 32,
+            "offer": {
+              "value": "CUSTOM:AchromaticShield"
+            },
+            "countOffer": 1,
+            "level": 2,
+            "maxTrades": 10,
+            "xp": 5,
+            "priceMultiplier": 0.09999999999999999
           }
         ]
       }

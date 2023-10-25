@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft_armor_weapon:ender_quiver_item"
+  },
+  "addition": {
+    "item": "minecraft:netherite_block"
+  },
+  "result": {
+    "item": "minecraft_armor_weapon:ender_pearl_netherite_quiver_item"
+  }
+}

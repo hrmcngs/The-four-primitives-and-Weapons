@@ -18,7 +18,7 @@ public class MinecraftArmorWeaponModTabs {
 		TAB_WEAPON = new CreativeModeTab("tabweapon") {
 			@Override
 			public ItemStack makeIcon() {
-				return new ItemStack(MinecraftArmorWeaponModItems.ITEM_WEAPONSWORD.get());
+				return new ItemStack(MinecraftArmorWeaponModItems.MAGICAL_KATANA.get());
 			}
 
 			@Override

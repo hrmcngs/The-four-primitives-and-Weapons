@@ -4,7 +4,7 @@
   "definition": {
     "name": "Weapon",
     "icon": {
-      "value": "CUSTOM:ItemWeaponsword"
+      "value": "CUSTOM:MagicalKatana"
     },
     "showSearch": false
   }

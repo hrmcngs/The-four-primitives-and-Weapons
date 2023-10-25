@@ -26,6 +26,9 @@
     "onRightClickedInAir": {
       "name": "MagicalKatanaYoukuritukusitatoki"
     },
+    "onEntityHitWith": {
+      "name": "MagicalKatanamobugaturudeGongJisaretatoki"
+    },
     "onItemInUseTick": {
       "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
     }
