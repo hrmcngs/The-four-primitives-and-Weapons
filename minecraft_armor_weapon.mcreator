@@ -2727,11 +2727,7 @@
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
-    "mcreatorDependencies": [
-      "kleidersplayerrenderer",
-      "curios_api",
-      "playeranimator"
-    ],
+    "mcreatorDependencies": [],
     "currentGenerator": "forge-1.19.2",
     "credits": "nemui",
     "modElementsPackage": "minecraftarmorweapon",
