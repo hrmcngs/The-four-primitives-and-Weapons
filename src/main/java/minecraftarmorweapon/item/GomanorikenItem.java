@@ -68,21 +68,22 @@ public class GomanorikenItem extends SwordItem {
 		super.appendHoverText(itemstack, world, list, flag);
 		list.add(Component.literal("\u00A78Sharp sword to cut off demons"));
 	}
-
-	@Override
-	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
-		super.inventoryTick(itemstack, world, entity, slot, selected);
-		if (selected)
-			IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
-	}
-
-     @Override
+	     @Override
 	public void fillItemCategory(CreativeModeTab tab,NonNullList<ItemStack>items) {
 	if (this.allowedIn(tab)) {
 		ItemStack stack = new ItemStack(this);
 		stack.enchant(Enchantments.SMITE ,5);
 		items.add(stack);
 	} }
+
+
+	@Override
+	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
+		super.inventoryTick(itemstack, world, entity, slot, selected);
+		if (selected)
+			IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(entity);
+	}
+
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public boolean isFoil(ItemStack itemstack) {

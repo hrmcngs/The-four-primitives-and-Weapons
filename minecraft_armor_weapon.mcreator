@@ -765,7 +765,7 @@
       "type": "procedure",
       "sortid": 51,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "iron_katanaturuwo_shoude_chituteiru_jiannoteituku",
       "metadata": {
         "files": [
@@ -775,22 +775,6 @@
           {
             "name": "entity",
             "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       }
@@ -1204,7 +1188,7 @@
       "type": "tool",
       "sortid": 81,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "my_test_iron_katana",
       "metadata": {
         "files": [
@@ -2517,16 +2501,12 @@
         ],
         "dependencies": [
           {
-            "name": "x",
-            "type": "number"
+            "name": "entity",
+            "type": "entity"
           },
           {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
+            "name": "sourceentity",
+            "type": "entity"
           },
           {
             "name": "world",

@@ -54,7 +54,7 @@ public class MagicalKatanaItem extends SwordItem {
 	@Override
 	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		MagicalKatanamobugaturudeGongJisaretatokiProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ());
+		MagicalKatanamobugaturudeGongJisaretatokiProcedure.execute(entity.level, entity, sourceentity);
 		return retval;
 	}
 
@@ -69,7 +69,7 @@ public class MagicalKatanaItem extends SwordItem {
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
 		if (selected)
-			IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+			IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(entity);
 	}
 
 	@Override
