@@ -13,6 +13,7 @@ public class MinecraftArmorWeaponModTabs {
 	public static CreativeModeTab TAB_MAGIC_BOOKS;
 	public static CreativeModeTab TAB_ARMOR;
 	public static CreativeModeTab TAB_YOPKEINAMONO;
+	public static CreativeModeTab TAB_EVENT;
 
 	public static void load() {
 		TAB_WEAPON = new CreativeModeTab("tabweapon") {
@@ -52,6 +53,17 @@ public class MinecraftArmorWeaponModTabs {
 			@Override
 			public ItemStack makeIcon() {
 				return new ItemStack(MinecraftArmorWeaponModBlocks.CROSS.get());
+			}
+
+			@Override
+			public boolean hasSearchBar() {
+				return false;
+			}
+		};
+		TAB_EVENT = new CreativeModeTab("tabevent") {
+			@Override
+			public ItemStack makeIcon() {
+				return new ItemStack(MinecraftArmorWeaponModItems.HARVEST_MOON_2023929.get());
 			}
 
 			@Override

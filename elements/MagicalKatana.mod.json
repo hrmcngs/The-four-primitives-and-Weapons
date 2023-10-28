@@ -5,7 +5,7 @@
     "renderType": 1,
     "texture": "luna",
     "customModelName": "katanairon3dmagic:default",
-    "name": "Magical Katana",
+    "name": "§dMagical Katana",
     "specialInfo": [],
     "creativeTab": {
       "value": "CUSTOM:Weapon"

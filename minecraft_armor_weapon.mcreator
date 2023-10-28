@@ -2571,6 +2571,56 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_bricks_trap_door.json"
         ]
       }
+    },
+    {
+      "name": "SwordProgress",
+      "type": "achievement",
+      "sortid": 174,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sword_progress",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/advancements/sword_progress.json"
+        ]
+      }
+    },
+    {
+      "name": "GoumanorikenProgress",
+      "type": "achievement",
+      "sortid": 173,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "goumanoriken_progress",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/advancements/goumanoriken_progress.json"
+        ]
+      }
+    },
+    {
+      "name": "MagicalKatanaProgress",
+      "type": "achievement",
+      "sortid": 175,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magical_katana_progress",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/advancements/magical_katana_progress.json"
+        ]
+      }
+    },
+    {
+      "name": "Event",
+      "type": "tab",
+      "sortid": 176,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "event",
+      "metadata": {
+        "files": []
+      }
     }
   ],
   "variable_elements": [
@@ -2631,12 +2681,13 @@
       "item.minecraft_armor_weapon.strayouterarmorhat_helmet": "Stray Outer Armor Hat",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
-      "item.minecraft_armor_weapon.magical_katana": "Magical Katana",
+      "item.minecraft_armor_weapon.magical_katana": "§dMagical Katana",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "effect.minecraft_armor_weapon.otita": "a",
       "entity.minecraft.villager.minecraft_armor_weapon.minecraft_armor_and_weapon": "Minecraft Armor And Weapon",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
+      "advancements.magical_katana_progress.title": "魔力の結晶大量じゃ～！",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "effect.minecraft_armor_weapon.aa": "n0okku",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
@@ -2644,6 +2695,7 @@
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
+      "advancements.sword_progress.descr": "鉄の刀を得る",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
@@ -2665,14 +2717,18 @@
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
       "effect.minecraft_armor_weapon.waza": "waza",
+      "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "effect.minecraft_armor_weapon.otiro": "zz",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
+      "advancements.goumanoriken_progress.descr": "降魔の利剣を得る",
+      "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
+      "advancements.goumanoriken_progress.title": "剣ちゃうやん刀やんけ",
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
@@ -2682,6 +2738,7 @@
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
       "itemGroup.tabweapon": "Weapon",
+      "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",

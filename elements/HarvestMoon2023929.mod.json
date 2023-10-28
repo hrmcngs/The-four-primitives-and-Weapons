@@ -8,7 +8,7 @@
     "name": "Harvest Moon 2023 9/29",
     "rarity": "COMMON",
     "creativeTab": {
-      "value": "FOOD"
+      "value": "CUSTOM:Event"
     },
     "stackSize": 64,
     "enchantability": 0,
