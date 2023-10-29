@@ -2621,6 +2621,22 @@
       "metadata": {
         "files": []
       }
+    },
+    {
+      "name": "RoseFlowerPot",
+      "type": "block",
+      "sortid": 177,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rose_flower_pot",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/rose_flower_pot.json",
+          "src/main/java/minecraftarmorweapon/block/RoseFlowerPotBlock.java",
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/rose_flower_pot.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/rose_flower_pot.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2737,6 +2753,7 @@
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
+      "block.minecraft_armor_weapon.rose_flower_pot": "Rose Flower Pot",
       "itemGroup.tabweapon": "Weapon",
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",

@@ -1,0 +1,12 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "2": "minecraft-dirt-texture",
+        "3": "bara",
+        "flowerpot": "zyuuzika"
+      },
+      "name": "default"
+    }
+  }
+}

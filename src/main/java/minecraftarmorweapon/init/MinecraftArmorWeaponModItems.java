@@ -96,6 +96,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> MAGIC_MCRYSTAL = REGISTRY.register("magic_mcrystal", () -> new MagicMcrystalItem());
 	public static final RegistryObject<Item> MAGICAL_KATANA = REGISTRY.register("magical_katana", () -> new MagicalKatanaItem());
 	public static final RegistryObject<Item> STONE_BRICKS_TRAP_DOOR = block(MinecraftArmorWeaponModBlocks.STONE_BRICKS_TRAP_DOOR, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
+	public static final RegistryObject<Item> ROSE_FLOWER_POT = block(MinecraftArmorWeaponModBlocks.ROSE_FLOWER_POT, MinecraftArmorWeaponModTabs.TAB_MAGIC_BOOKS);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

@@ -1,12 +1,14 @@
 package minecraftarmorweapon;
 
-import net.minecraftforge.fml.common.Mod;
-
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.item.ItemProperties;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
+
+import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MinecraftArmorWeaponItemProrties {

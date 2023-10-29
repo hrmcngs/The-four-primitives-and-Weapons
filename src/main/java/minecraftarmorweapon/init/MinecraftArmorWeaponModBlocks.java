@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.Block;
 import minecraftarmorweapon.block.StoneKatanaBlockBlock;
 import minecraftarmorweapon.block.StoneKatanaBlock2Block;
 import minecraftarmorweapon.block.StoneBricksTrapDoorBlock;
+import minecraftarmorweapon.block.RoseFlowerPotBlock;
 import minecraftarmorweapon.block.RoseBlock;
 import minecraftarmorweapon.block.NetheriteKatanaBlockBlock;
 import minecraftarmorweapon.block.GomanorikenBlockBlock;
@@ -29,4 +30,5 @@ public class MinecraftArmorWeaponModBlocks {
 	public static final RegistryObject<Block> CROSS = REGISTRY.register("cross", () -> new CrossBlock());
 	public static final RegistryObject<Block> GOMANORIKEN_BLOCK = REGISTRY.register("gomanoriken_block", () -> new GomanorikenBlockBlock());
 	public static final RegistryObject<Block> STONE_BRICKS_TRAP_DOOR = REGISTRY.register("stone_bricks_trap_door", () -> new StoneBricksTrapDoorBlock());
+	public static final RegistryObject<Block> ROSE_FLOWER_POT = REGISTRY.register("rose_flower_pot", () -> new RoseFlowerPotBlock());
 }
