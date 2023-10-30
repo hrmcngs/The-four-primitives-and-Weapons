@@ -2637,6 +2637,36 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/rose_flower_pot.json"
         ]
       }
+    },
+    {
+      "name": "Hrmcngs",
+      "type": "livingentity",
+      "sortid": 178,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hrmcngs",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/client/renderer/HrmcngsRenderer.java",
+          "src/main/java/minecraftarmorweapon/entity/HrmcngsEntity.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/hrmcngs_spawn_egg.json"
+        ]
+      }
+    },
+    {
+      "name": "Ruami284",
+      "type": "livingentity",
+      "sortid": 179,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ruami_284",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/entity/Ruami284Entity.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/ruami_284_spawn_egg.json",
+          "src/main/java/minecraftarmorweapon/client/renderer/Ruami284Renderer.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2691,6 +2721,7 @@
       "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
       "key.minecraft_armor_weapon.r": "R",
+      "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
@@ -2706,12 +2737,14 @@
       "advancements.magical_katana_progress.title": "魔力の結晶大量じゃ～！",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "effect.minecraft_armor_weapon.aa": "n0okku",
+      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "block.minecraft_armor_weapon.gomanoriken_block": "Gomanoriken Block",
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "advancements.sword_progress.descr": "鉄の刀を得る",
+      "item.minecraft_armor_weapon.hrmcngs_spawn_egg": "hrmcngs Spawn Egg",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
@@ -2758,6 +2791,7 @@
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
+      "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "entity.minecraft_armor_weapon.otiruyo": "Otiruyo",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",

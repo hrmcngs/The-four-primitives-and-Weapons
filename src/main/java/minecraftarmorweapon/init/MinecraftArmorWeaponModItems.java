@@ -97,6 +97,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> MAGICAL_KATANA = REGISTRY.register("magical_katana", () -> new MagicalKatanaItem());
 	public static final RegistryObject<Item> STONE_BRICKS_TRAP_DOOR = block(MinecraftArmorWeaponModBlocks.STONE_BRICKS_TRAP_DOOR, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> ROSE_FLOWER_POT = block(MinecraftArmorWeaponModBlocks.ROSE_FLOWER_POT, MinecraftArmorWeaponModTabs.TAB_MAGIC_BOOKS);
+	public static final RegistryObject<Item> HRMCNGS_SPAWN_EGG = REGISTRY.register("hrmcngs_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.HRMCNGS, -406791, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+	public static final RegistryObject<Item> RUAMI_284_SPAWN_EGG = REGISTRY.register("ruami_284_spawn_egg",
+			() -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.RUAMI_284, -14277082, -4210753, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

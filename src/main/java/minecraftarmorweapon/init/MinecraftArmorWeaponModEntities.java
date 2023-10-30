@@ -17,7 +17,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
+import minecraftarmorweapon.entity.Ruami284Entity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
+import minecraftarmorweapon.entity.HrmcngsEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -30,6 +32,14 @@ public class MinecraftArmorWeaponModEntities {
 					.sized(0.6f, 1.5f));
 	public static final RegistryObject<EntityType<OtiruyoEntity>> OTIRUYO = register("otiruyo",
 			EntityType.Builder.<OtiruyoEntity>of(OtiruyoEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(OtiruyoEntity::new).fireImmune().sized(1.2f, 3.6f));
+	public static final RegistryObject<EntityType<HrmcngsEntity>> HRMCNGS = register("hrmcngs",
+			EntityType.Builder.<HrmcngsEntity>of(HrmcngsEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(HrmcngsEntity::new)
+
+					.sized(0.9f, 0.9f));
+	public static final RegistryObject<EntityType<Ruami284Entity>> RUAMI_284 = register("ruami_284",
+			EntityType.Builder.<Ruami284Entity>of(Ruami284Entity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(Ruami284Entity::new)
+
+					.sized(0.9f, 0.9f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -40,6 +50,8 @@ public class MinecraftArmorWeaponModEntities {
 		event.enqueueWork(() -> {
 			SkeltonMobEntity.init();
 			OtiruyoEntity.init();
+			HrmcngsEntity.init();
+			Ruami284Entity.init();
 		});
 	}
 
@@ -47,5 +59,7 @@ public class MinecraftArmorWeaponModEntities {
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
 		event.put(SKELTON_MOB.get(), SkeltonMobEntity.createAttributes().build());
 		event.put(OTIRUYO.get(), OtiruyoEntity.createAttributes().build());
+		event.put(HRMCNGS.get(), HrmcngsEntity.createAttributes().build());
+		event.put(RUAMI_284.get(), Ruami284Entity.createAttributes().build());
 	}
 }

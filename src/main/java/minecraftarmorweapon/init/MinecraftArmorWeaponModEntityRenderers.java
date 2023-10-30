@@ -10,7 +10,9 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 import minecraftarmorweapon.client.renderer.SkeltonMobRenderer;
+import minecraftarmorweapon.client.renderer.Ruami284Renderer;
 import minecraftarmorweapon.client.renderer.OtiruyoRenderer;
+import minecraftarmorweapon.client.renderer.HrmcngsRenderer;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MinecraftArmorWeaponModEntityRenderers {
@@ -18,5 +20,7 @@ public class MinecraftArmorWeaponModEntityRenderers {
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.SKELTON_MOB.get(), SkeltonMobRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.OTIRUYO.get(), OtiruyoRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.HRMCNGS.get(), HrmcngsRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.RUAMI_284.get(), Ruami284Renderer::new);
 	}
 }
