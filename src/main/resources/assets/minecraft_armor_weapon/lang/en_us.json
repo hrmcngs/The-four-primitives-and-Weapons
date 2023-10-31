@@ -91,8 +91,5 @@
   "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
   "entity.minecraft_armor_weapon.otiruyo": "Otiruyo",
   "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
-  "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
-  "tooltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip.shift": "Right Click to find Valuables!",
-  "tooltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip": "Press §eSHIFT§r for more Information!",
-  ""
+  "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"
 }
