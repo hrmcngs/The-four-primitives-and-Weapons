@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 import minecraftarmorweapon.procedures.WarabitetouYoukuritukusitatokiProcedure;
@@ -20,6 +21,8 @@ import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannotei
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 public class Halloween20231031SickleItem extends SwordItem {
 	public Halloween20231031SickleItem() {
@@ -56,33 +59,28 @@ public class Halloween20231031SickleItem extends SwordItem {
 		WarabitetouYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 }
-    @Override
+    // @Override
 
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+    // public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 
-        super.appendHoverText(itemstack, world, list, flag);
+    //     super.appendHoverText(itemstack, world, list, flag);
 
-        list.add(Component.literal("This is the weapon I created to commemorate Halloween on October 31"));
-		list.add(Component.literal("2023."));
+    //     list.add(Component.literal("This is the weapon I created to commemorate Halloween on October 31"));
+	// 	list.add(Component.literal("2023."));
 
 
-    }
-//    @Override
-//public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-//
-//        if(Screen.hasShiftDown()) {
-//            pTooltipComponents.add(new TranslatableComponent("tooltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip.shift"));
-//        } else {
-//            pTooltipComponents.add(new TranslatableComponent("tooltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip"));
-//        }
-//    }
-//	@Override
-//	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-//		super.appendHoverText(itemstack, world, list, flag);
-//		list.add(Component.literal("This is the weapon I created to commemorate Halloween on October 31"));
-//		list.add(Component.literal("2023."));
-//	}
-//
+    // }
+@Override
+	public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, list<Component> pTooltipComponents, TooltipFlag pIsAbvanced){
+		if(Screen.hasAltDown()){
+			pTooltipComponents.add(new TranslatableComponent("tolltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip.shift"));
+		} else {
+			pTooltipComponents.add(new TranslatableComponent("tolltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip"));
+		}
+		}
+	
+
+
 	@Override
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
