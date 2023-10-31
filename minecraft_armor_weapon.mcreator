@@ -2667,6 +2667,20 @@
           "src/main/java/minecraftarmorweapon/client/renderer/Ruami284Renderer.java"
         ]
       }
+    },
+    {
+      "name": "Halloween20231031Sickle",
+      "type": "tool",
+      "sortid": 180,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "halloween_2023_10_31_sickle",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/Halloween20231031SickleItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/halloween_2023_10_31_sickle.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2770,6 +2784,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "effect.minecraft_armor_weapon.otiro": "zz",
+      "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",

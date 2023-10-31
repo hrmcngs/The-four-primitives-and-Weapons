@@ -65,6 +65,7 @@
   "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
   "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
   "effect.minecraft_armor_weapon.otiro": "zz",
+  "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
   "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
   "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
   "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
@@ -91,4 +92,6 @@
   "entity.minecraft_armor_weapon.otiruyo": "Otiruyo",
   "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
   "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield"
+  "tooltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip.shift": "Right Click to find Valuables!",
+  "tooltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip": "Press §eSHIFT§r for more Information!",
 }
