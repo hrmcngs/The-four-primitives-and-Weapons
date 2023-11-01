@@ -69,6 +69,7 @@ public class MinecraftArmorWeaponModVariables {
 			clone.ddd = original.ddd;
 			clone.aaa = original.aaa;
 			clone.tab = original.tab;
+			clone.yaw = original.yaw;
 			if (!event.isWasDeath()) {
 				clone.noa = original.noa;
 				clone.SpeedStaff = original.SpeedStaff;
@@ -112,6 +113,7 @@ public class MinecraftArmorWeaponModVariables {
 		public double tab = 2.0;
 		public double noa = 0;
 		public boolean SpeedStaff = false;
+		public double yaw = 0;
 
 		public void syncPlayerVariables(Entity entity) {
 			if (entity instanceof ServerPlayer serverPlayer)
@@ -125,6 +127,7 @@ public class MinecraftArmorWeaponModVariables {
 			nbt.putDouble("tab", tab);
 			nbt.putDouble("noa", noa);
 			nbt.putBoolean("SpeedStaff", SpeedStaff);
+			nbt.putDouble("yaw", yaw);
 			return nbt;
 		}
 
@@ -135,6 +138,7 @@ public class MinecraftArmorWeaponModVariables {
 			tab = nbt.getDouble("tab");
 			noa = nbt.getDouble("noa");
 			SpeedStaff = nbt.getBoolean("SpeedStaff");
+			yaw = nbt.getDouble("yaw");
 		}
 	}
 
@@ -164,6 +168,7 @@ public class MinecraftArmorWeaponModVariables {
 					variables.tab = message.data.tab;
 					variables.noa = message.data.noa;
 					variables.SpeedStaff = message.data.SpeedStaff;
+					variables.yaw = message.data.yaw;
 				}
 			});
 			context.setPacketHandled(true);

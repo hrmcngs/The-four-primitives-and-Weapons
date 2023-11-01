@@ -10,6 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.effect.MobEffect;
 
+import minecraftarmorweapon.potion.ZanngekitokubetuMobEffect;
 import minecraftarmorweapon.potion.WindStepEffectMobEffect;
 import minecraftarmorweapon.potion.WazaMobEffect;
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
@@ -61,4 +62,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> WIND_STEP_EFFECT = REGISTRY.register("wind_step_effect", () -> new WindStepEffectMobEffect());
 	public static final RegistryObject<MobEffect> KAITEN = REGISTRY.register("kaiten", () -> new KaitenMobEffect());
 	public static final RegistryObject<MobEffect> OTITA = REGISTRY.register("otita", () -> new OtitaMobEffect());
+	public static final RegistryObject<MobEffect> ZANNGEKITOKUBETU = REGISTRY.register("zanngekitokubetu", () -> new ZanngekitokubetuMobEffect());
 }

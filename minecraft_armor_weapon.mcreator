@@ -2681,6 +2681,56 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/halloween_2023_10_31_sickle.json"
         ]
       }
+    },
+    {
+      "name": "Zanngekitokubetu",
+      "type": "potioneffect",
+      "sortid": 181,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "zanngekitokubetu",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/ZanngekitokubetuMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ZanngekitokubetuposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 182,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "zanngekitokubetuposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ZanngekitokubetuposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": []
+      }
+    },
+    {
+      "name": "ZanngekitokubetuehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 183,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "zanngekitokubetuehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2713,6 +2763,12 @@
       "type": "logic",
       "scope": "player_lifetime",
       "value": "false"
+    },
+    {
+      "name": "yaw",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
     }
   ],
   "sound_elements": [],
@@ -2796,6 +2852,7 @@
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
+      "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "itemGroup.tabarmor": "Armor",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
