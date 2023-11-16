@@ -27,7 +27,7 @@ public class ZanngekitokubetuMobEffect extends MobEffect {
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		ZanngekitokubetuposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
+		ZanngekitokubetuposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity);
 	}
 
 	@Override
