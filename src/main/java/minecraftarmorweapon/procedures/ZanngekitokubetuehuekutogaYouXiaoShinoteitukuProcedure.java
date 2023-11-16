@@ -40,13 +40,13 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 		double Y = 0;
 		double Z = 0;
 		double Y_pos = 0;
-		loop = Math.toRadians(entity.getYRot());
+		loop = entity.getPersistentData().getDouble("local");
 		entity.getPersistentData().putDouble("Xpos", (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")));
 		entity.getPersistentData().putDouble("Zpos", (entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance")));
 		XRadius2 = 3;
 		ZRadius2 = 3;
 		Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
-		for (int index0 = 0; index0 < 25; index0++) {
+		for (int index0 = 0; index0 < 100; index0++) {
 			if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 				entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 				Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -54,7 +54,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 				break;
 			}
 		}
-		for (int index1 = 0; index1 < 25; index1++) {
+		for (int index1 = 0; index1 < 100; index1++) {
 			if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 				entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 				Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -63,14 +63,12 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 			entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 			Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
 		}
-		if (world instanceof ServerLevel _level)
-			_level.sendParticles(ParticleTypes.SWEEP_ATTACK, (entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1), (entity.getPersistentData().getDouble("Zpos")), 10, 0.1, 0.1, 0.1, 0);
 		world.levelEvent(2001, new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos")),
 				Block.getId((world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))))));
 		for (int index2 = 0; index2 < 36; index2++) {
-			X = entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance");
-			Y = Y_pos;
-			Z = entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance");
+			X = entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance") + Math.cos(loop) * XRadius2;
+			Y = Y_pos + 1;
+			Z = entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance") + Math.sin(loop) * ZRadius2;
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SWEEP_ATTACK, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
 			if (world instanceof ServerLevel _level)
