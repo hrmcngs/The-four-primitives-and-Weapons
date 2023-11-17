@@ -489,6 +489,7 @@ public class LunaYoukuritukusitatokiProcedure {
 					loop = loop + Math.toRadians(5);
 					Y_pos = Y_pos - 0.0555555555555556;
 				}
+				loop = Math.toRadians(entity.getYRot());
 				XRadius2 = 4;
 				ZRadius2 = 4;
 				Y_pos = y + 2;

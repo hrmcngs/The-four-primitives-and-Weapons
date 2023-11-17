@@ -43,3 +43,7 @@ local.properties
 
 .mcreator
 .DS_Store
+logs/sever
+logs/function
+
+
