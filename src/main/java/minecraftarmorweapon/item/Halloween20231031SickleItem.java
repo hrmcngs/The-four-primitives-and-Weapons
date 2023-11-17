@@ -55,34 +55,15 @@ public class Halloween20231031SickleItem extends SwordItem {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		WarabitetouYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
-}
-    @Override
+	}
 
-    public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-
-        super.appendHoverText(itemstack, world, list, flag);
-
-        list.add(Component.literal("This is the weapon I created to commemorate Halloween on October 31"));
+	@Override
+	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, world, list, flag);
+		list.add(Component.literal("This is the weapon I created to commemorate Halloween on October 31"));
 		list.add(Component.literal("2023."));
+	}
 
-
-    }
-//    @Override
-//public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-//
-//        if(Screen.hasShiftDown()) {
-//            pTooltipComponents.add(new TranslatableComponent("tooltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip.shift"));
-//        } else {
-//            pTooltipComponents.add(new TranslatableComponent("tooltip.minecraft_armor_weapon.halloween_2023_10_31_sickle.tooltip"));
-//        }
-//    }
-//	@Override
-//	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-//		super.appendHoverText(itemstack, world, list, flag);
-//		list.add(Component.literal("This is the weapon I created to commemorate Halloween on October 31"));
-//		list.add(Component.literal("2023."));
-//	}
-//
 	@Override
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
