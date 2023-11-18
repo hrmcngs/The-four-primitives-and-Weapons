@@ -1,6 +1,8 @@
 package minecraftarmorweapon.procedures;
 
 import net.minecraft.world.entity.Entity;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.Mth;
 
 public class ZanngekitokubetuposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 	public static void execute(Entity entity) {
@@ -22,5 +24,6 @@ public class ZanngekitokubetuposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure 
 		double y1pos = 0;
 		double dis1 = 0;
 		entity.getPersistentData().putDouble("local", Math.toRadians(entity.getYRot()));
+		entity.getPersistentData().putDouble("helmet", (Mth.nextDouble(RandomSource.create(), -180, 180)));
 	}
 }

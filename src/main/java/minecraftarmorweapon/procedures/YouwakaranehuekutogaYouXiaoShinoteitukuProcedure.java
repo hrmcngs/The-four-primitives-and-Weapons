@@ -66,7 +66,7 @@ public class YouwakaranehuekutogaYouXiaoShinoteitukuProcedure {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SWEEP_ATTACK, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
 			if (world instanceof ServerLevel _level)
-				_level.sendParticles(ParticleTypes.CLOUD, X, Y, Z, 5, 0.1, 0.1, 0.1, 0.2);
+				_level.sendParticles(ParticleTypes.CLOUD, X, Y, Z, 2, 0.1, 0.1, 0.1, 0.2);
 			{
 				final Vec3 _center = new Vec3(X, Y, Z);
 				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))

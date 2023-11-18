@@ -8,7 +8,7 @@ public class YouwakaranposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		entity.getPersistentData().putDouble("local", (Math.toRadians(entity.getYRot()) - Mth.nextDouble(RandomSource.create(), 0, 180)));
+		entity.getPersistentData().putDouble("local", (Math.toRadians(entity.getYRot()) - 180 * Mth.nextDouble(RandomSource.create(), 0, 1)));
 		entity.getPersistentData().putDouble("angle", (entity.getXRot()));
 	}
 }

@@ -26,6 +26,7 @@ import minecraftarmorweapon.potion.NagiharaiMobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KaitennMobEffect;
 import minecraftarmorweapon.potion.KaitenMobEffect;
+import minecraftarmorweapon.potion.GyetonzangekiMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.EffectMagicMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
@@ -65,4 +66,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> OTITA = REGISTRY.register("otita", () -> new OtitaMobEffect());
 	public static final RegistryObject<MobEffect> ZANNGEKITOKUBETU = REGISTRY.register("zanngekitokubetu", () -> new ZanngekitokubetuMobEffect());
 	public static final RegistryObject<MobEffect> YOUWAKARAN = REGISTRY.register("youwakaran", () -> new YouwakaranMobEffect());
+	public static final RegistryObject<MobEffect> GYETONZANGEKI = REGISTRY.register("gyetonzangeki", () -> new GyetonzangekiMobEffect());
 }
