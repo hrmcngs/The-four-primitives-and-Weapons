@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
+import minecraftarmorweapon.procedures.ZanngekitokubetuposiyonXiaoGuogaQieretaShiProcedure;
 import minecraftarmorweapon.procedures.GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
 import minecraftarmorweapon.procedures.GyetonzangekiehuekutogaYouXiaoShinoteitukuProcedure;
 
@@ -33,6 +34,12 @@ public class GyetonzangekiMobEffect extends MobEffect {
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
 		GyetonzangekiehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity);
+	}
+
+	@Override
+	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		super.removeAttributeModifiers(entity, attributeMap, amplifier);
+		ZanngekitokubetuposiyonXiaoGuogaQieretaShiProcedure.execute(entity);
 	}
 
 	@Override

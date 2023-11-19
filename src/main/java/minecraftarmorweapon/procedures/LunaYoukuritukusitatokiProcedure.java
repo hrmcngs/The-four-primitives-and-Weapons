@@ -73,13 +73,14 @@ public class LunaYoukuritukusitatokiProcedure {
 		double XRadius2 = 0;
 		double ZRadius2 = 0;
 		double Y_pos = 0;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.LUNA.get()) {
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.LUNA.get()
+				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.LUNA.get()) {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.WAZA.get(), 100, 1, true, false));
 				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
 					if (entity instanceof Player _player)
-						_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 100);
+						_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 100);
 				}
 				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
 					if (entity instanceof LivingEntity _entity)
@@ -95,7 +96,7 @@ public class LunaYoukuritukusitatokiProcedure {
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.WAZA.get(), 50, 1, true, false));
 				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
 					if (entity instanceof Player _player)
-						_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
+						_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 50);
 				}
 				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
 					if (entity instanceof LivingEntity _entity)
@@ -111,7 +112,7 @@ public class LunaYoukuritukusitatokiProcedure {
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
 				if (entity instanceof Player _player)
-					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
+					_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 50);
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.WAZA.get(), 50, 1, true, false));
 				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
@@ -266,7 +267,7 @@ public class LunaYoukuritukusitatokiProcedure {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.WAZA.get(), 50, 1, true, false));
 				if (entity instanceof Player _player)
-					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
+					_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 50);
 				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
@@ -404,7 +405,7 @@ public class LunaYoukuritukusitatokiProcedure {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.WAZA.get(), 50, 1, true, false));
 				if (entity instanceof Player _player)
-					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
+					_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 50);
 				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
@@ -564,8 +565,6 @@ public class LunaYoukuritukusitatokiProcedure {
 					loop = loop + Math.toRadians(5);
 					Y_pos = Y_pos - 0.0555555555555556;
 				}
-				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get(), 60, 1, true, false));
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get(), 60, 1, true, false));
 			}

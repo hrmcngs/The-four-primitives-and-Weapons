@@ -18,6 +18,9 @@
     },
     "onActiveTick": {
       "name": "GyetonzangekiehuekutogaYouXiaoShinoteituku"
+    },
+    "onExpired": {
+      "name": "ZanngekitokubetuposiyonXiaoGuogaQieretaShi"
     }
   }
 }
