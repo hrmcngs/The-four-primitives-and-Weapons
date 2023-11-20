@@ -10,20 +10,19 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
-import minecraftarmorweapon.procedures.ZanngekitokubetuposiyonXiaoGuogaQieretaShiProcedure;
-import minecraftarmorweapon.procedures.ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure;
+import minecraftarmorweapon.procedures.TobeposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
 import minecraftarmorweapon.procedures.GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-public class ZanngekitokubetuMobEffect extends MobEffect {
-	public ZanngekitokubetuMobEffect() {
+public class TobeMobEffect extends MobEffect {
+	public TobeMobEffect() {
 		super(MobEffectCategory.NEUTRAL, -1);
 	}
 
 	@Override
 	public String getDescriptionId() {
-		return "effect.minecraft_armor_weapon.zanngekitokubetu";
+		return "effect.minecraft_armor_weapon.tobe";
 	}
 
 	@Override
@@ -33,15 +32,7 @@ public class ZanngekitokubetuMobEffect extends MobEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity);
-	}
-
-	@Override
-	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		ZanngekitokubetuposiyonXiaoGuogaQieretaShiProcedure.execute(
-
-		);
+		TobeposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity.level, entity);
 	}
 
 	@Override

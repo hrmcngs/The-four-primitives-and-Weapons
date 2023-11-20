@@ -28,7 +28,7 @@ public class GyetonzangekiMobEffect extends MobEffect {
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity);
+		GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override
@@ -39,7 +39,9 @@ public class GyetonzangekiMobEffect extends MobEffect {
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		ZanngekitokubetuposiyonXiaoGuogaQieretaShiProcedure.execute(entity);
+		ZanngekitokubetuposiyonXiaoGuogaQieretaShiProcedure.execute(
+
+		);
 	}
 
 	@Override

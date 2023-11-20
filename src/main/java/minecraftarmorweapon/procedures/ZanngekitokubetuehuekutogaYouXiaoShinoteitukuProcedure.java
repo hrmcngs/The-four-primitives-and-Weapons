@@ -129,7 +129,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 				}
 			}
 			loop = loop + Math.toRadians(5);
-			Y_pos = Y_pos - 0.0555555555555556;
+			Y_pos = Y_pos - 0.5;
 		}
 		entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 	}

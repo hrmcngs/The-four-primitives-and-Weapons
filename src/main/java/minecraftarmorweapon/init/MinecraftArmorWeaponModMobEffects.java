@@ -15,6 +15,7 @@ import minecraftarmorweapon.potion.YouwakaranMobEffect;
 import minecraftarmorweapon.potion.WindStepEffectMobEffect;
 import minecraftarmorweapon.potion.WazaMobEffect;
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
+import minecraftarmorweapon.potion.TobeMobEffect;
 import minecraftarmorweapon.potion.TissokuMobEffect;
 import minecraftarmorweapon.potion.ThunderHitMobEffect;
 import minecraftarmorweapon.potion.SyugekiMobEffect;
@@ -67,4 +68,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> ZANNGEKITOKUBETU = REGISTRY.register("zanngekitokubetu", () -> new ZanngekitokubetuMobEffect());
 	public static final RegistryObject<MobEffect> YOUWAKARAN = REGISTRY.register("youwakaran", () -> new YouwakaranMobEffect());
 	public static final RegistryObject<MobEffect> GYETONZANGEKI = REGISTRY.register("gyetonzangeki", () -> new GyetonzangekiMobEffect());
+	public static final RegistryObject<MobEffect> TOBE = REGISTRY.register("tobe", () -> new TobeMobEffect());
 }

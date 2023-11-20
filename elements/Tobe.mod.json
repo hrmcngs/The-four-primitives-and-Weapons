@@ -2,8 +2,8 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "aa",
-    "icon": "bow_attack.png",
+    "effectName": "tobe",
+    "icon": "aaaa.png",
     "color": {
       "value": -1,
       "falpha": 0.0
@@ -17,10 +17,7 @@
       "name": "GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
     },
     "onActiveTick": {
-      "name": "ZanngekitokubetuehuekutogaYouXiaoShinoteituku"
-    },
-    "onExpired": {
-      "name": "ZanngekitokubetuposiyonXiaoGuogaQieretaShi"
+      "name": "TobeposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
     }
   }
 }
