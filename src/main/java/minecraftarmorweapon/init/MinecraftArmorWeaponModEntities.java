@@ -19,6 +19,7 @@ import net.minecraft.world.entity.Entity;
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.Ruami284Entity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
+import minecraftarmorweapon.entity.KillotiruEntity;
 import minecraftarmorweapon.entity.HrmcngsEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -40,6 +41,8 @@ public class MinecraftArmorWeaponModEntities {
 			EntityType.Builder.<Ruami284Entity>of(Ruami284Entity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(Ruami284Entity::new)
 
 					.sized(0.9f, 0.9f));
+	public static final RegistryObject<EntityType<KillotiruEntity>> KILLOTIRU = register("killotiru", EntityType.Builder.<KillotiruEntity>of(KillotiruEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+			.setUpdateInterval(3).setCustomClientFactory(KillotiruEntity::new).fireImmune().sized(1.2f, 3.6f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -52,6 +55,7 @@ public class MinecraftArmorWeaponModEntities {
 			OtiruyoEntity.init();
 			HrmcngsEntity.init();
 			Ruami284Entity.init();
+			KillotiruEntity.init();
 		});
 	}
 
@@ -61,5 +65,6 @@ public class MinecraftArmorWeaponModEntities {
 		event.put(OTIRUYO.get(), OtiruyoEntity.createAttributes().build());
 		event.put(HRMCNGS.get(), HrmcngsEntity.createAttributes().build());
 		event.put(RUAMI_284.get(), Ruami284Entity.createAttributes().build());
+		event.put(KILLOTIRU.get(), KillotiruEntity.createAttributes().build());
 	}
 }

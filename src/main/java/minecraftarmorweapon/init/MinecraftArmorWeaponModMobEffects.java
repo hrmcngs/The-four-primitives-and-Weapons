@@ -25,6 +25,7 @@ import minecraftarmorweapon.potion.OtiruyooMobEffect;
 import minecraftarmorweapon.potion.OtiroMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
+import minecraftarmorweapon.potion.KougekiMobEffect;
 import minecraftarmorweapon.potion.KaitennMobEffect;
 import minecraftarmorweapon.potion.KaitenMobEffect;
 import minecraftarmorweapon.potion.GyetonzangekiMobEffect;
@@ -69,4 +70,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> YOUWAKARAN = REGISTRY.register("youwakaran", () -> new YouwakaranMobEffect());
 	public static final RegistryObject<MobEffect> GYETONZANGEKI = REGISTRY.register("gyetonzangeki", () -> new GyetonzangekiMobEffect());
 	public static final RegistryObject<MobEffect> TOBE = REGISTRY.register("tobe", () -> new TobeMobEffect());
+	public static final RegistryObject<MobEffect> KOUGEKI = REGISTRY.register("kougeki", () -> new KougekiMobEffect());
 }

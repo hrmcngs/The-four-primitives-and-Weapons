@@ -20,6 +20,7 @@ import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.animal.horse.ZombieHorse;
 import net.minecraft.world.entity.animal.horse.SkeletonHorse;
 import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
@@ -35,10 +36,12 @@ import minecraftarmorweapon.network.MinecraftArmorWeaponModVariables;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
+import minecraftarmorweapon.init.MinecraftArmorWeaponModEntities;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
+import minecraftarmorweapon.entity.KillotiruEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -120,14 +123,38 @@ public class LunaYoukuritukusitatokiProcedure {
 							_entity.swing(InteractionHand.MAIN_HAND, true);
 					}
 				});
-				entity.getPersistentData().putDouble("X", x);
-				entity.getPersistentData().putDouble("Z", z);
-				entity.getPersistentData().putDouble("Ypos", y);
-				entity.getPersistentData().putDouble("yaw", (entity.getYRot()));
-				entity.getPersistentData().putDouble("distance", 3);
-				entity.getPersistentData().putDouble("beta", (entity.getXRot()));
-				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TOBE.get(), 30, 1, true, false));
+				entity.getPersistentData().putBoolean("F to the P from Shibuya city", true);
+				if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+					MinecraftArmorWeaponMod.queueServerWork(2, () -> {
+						if (world instanceof ServerLevel _level) {
+							Entity entityToSpawn = new KillotiruEntity(MinecraftArmorWeaponModEntities.KILLOTIRU.get(), _level);
+							entityToSpawn.moveTo(x, (y + 10), z, 0, 0);
+							entityToSpawn.setYBodyRot(0);
+							entityToSpawn.setYHeadRot(0);
+							if (entityToSpawn instanceof Mob _mobToSpawn)
+								_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+							world.addFreshEntity(entityToSpawn);
+						}
+						MinecraftArmorWeaponMod.queueServerWork(20, () -> {
+							entity.getPersistentData().putBoolean("F to the P from Shibuya city", false);
+						});
+					});
+				} else {
+					MinecraftArmorWeaponMod.queueServerWork(2, () -> {
+						if (world instanceof ServerLevel _level) {
+							Entity entityToSpawn = new OtiruyoEntity(MinecraftArmorWeaponModEntities.OTIRUYO.get(), _level);
+							entityToSpawn.moveTo(x, (y + 10), z, 0, 0);
+							entityToSpawn.setYBodyRot(0);
+							entityToSpawn.setYHeadRot(0);
+							if (entityToSpawn instanceof Mob _mobToSpawn)
+								_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+							world.addFreshEntity(entityToSpawn);
+						}
+						MinecraftArmorWeaponMod.queueServerWork(20, () -> {
+							entity.getPersistentData().putBoolean("F to the P from Shibuya city", false);
+						});
+					});
+				}
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 5) {
 				if (entity instanceof Player _player)

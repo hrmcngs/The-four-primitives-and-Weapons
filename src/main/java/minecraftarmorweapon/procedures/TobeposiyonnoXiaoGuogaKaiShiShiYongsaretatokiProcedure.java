@@ -58,28 +58,30 @@ public class TobeposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 		double xknockback = 0;
 		double Y_pos = 0;
 		double beta = 0;
-		beta = entity.getPersistentData().getDouble("beta");
+		beta = entity.getPersistentData().getDouble("beta") / 60;
 		entity.getPersistentData().putDouble("Xpos", (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")));
 		entity.getPersistentData().putDouble("Zpos", (entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance")));
 		for (int index0 = 0; index0 < 30; index0++) {
-			if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), (entity.getPersistentData().getDouble("Ypos") + 1) - r * Math.sin(Math.toRadians(beta)), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
-				entity.getPersistentData().putDouble("Ypos", ((entity.getPersistentData().getDouble("Ypos") + 1) - r * Math.sin(Math.toRadians(beta))));
+			if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos") + entity.getPersistentData().getDouble("beta") / 60, entity.getPersistentData().getDouble("Zpos")))
+					.canOcclude()) {
+				entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos") + entity.getPersistentData().getDouble("beta") / 60));
 			} else {
 				break;
 			}
 		}
 		for (int index1 = 0; index1 < 30; index1++) {
-			if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), (entity.getPersistentData().getDouble("Ypos") + 1) - r * Math.sin(Math.toRadians(beta)), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
-				entity.getPersistentData().putDouble("Ypos", ((entity.getPersistentData().getDouble("Ypos") + 1) - r * Math.sin(Math.toRadians(beta))));
+			if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos") + entity.getPersistentData().getDouble("beta") / 60, entity.getPersistentData().getDouble("Zpos")))
+					.canOcclude()) {
+				entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos") + entity.getPersistentData().getDouble("beta") / 60));
 				break;
 			}
-			entity.getPersistentData().putDouble("Ypos", ((entity.getPersistentData().getDouble("Ypos") + 1) - r * Math.sin(Math.toRadians(beta))));
+			entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos") + entity.getPersistentData().getDouble("beta") / 60));
 		}
 		if (world instanceof ServerLevel _level)
-			_level.sendParticles(ParticleTypes.END_ROD, (entity.getPersistentData().getDouble("Xpos")), ((entity.getPersistentData().getDouble("Ypos") + 1) - r * Math.sin(Math.toRadians(beta)) + 1), (entity.getPersistentData().getDouble("Zpos")), 10,
-					0.1, 0.1, 0.1, 0);
+			_level.sendParticles(ParticleTypes.END_ROD, (entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + entity.getPersistentData().getDouble("beta") / 60),
+					(entity.getPersistentData().getDouble("Zpos")), 10, 0.1, 0.1, 0.1, 0);
 		{
-			final Vec3 _center = new Vec3((entity.getPersistentData().getDouble("Xpos")), ((entity.getPersistentData().getDouble("Ypos") + 1) - r * Math.sin(Math.toRadians(beta)) + 1), (entity.getPersistentData().getDouble("Zpos")));
+			final Vec3 _center = new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + entity.getPersistentData().getDouble("beta") / 60), (entity.getPersistentData().getDouble("Zpos")));
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
 			for (Entity entityiterator : _entfound) {
 				if (!(entityiterator == entity)) {

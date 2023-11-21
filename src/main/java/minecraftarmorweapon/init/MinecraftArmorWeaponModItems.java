@@ -102,6 +102,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> RUAMI_284_SPAWN_EGG = REGISTRY.register("ruami_284_spawn_egg",
 			() -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.RUAMI_284, -14277082, -4210753, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> HALLOWEEN_2023_10_31_SICKLE = REGISTRY.register("halloween_2023_10_31_sickle", () -> new Halloween20231031SickleItem());
+	public static final RegistryObject<Item> KILLOTIRU_SPAWN_EGG = REGISTRY.register("killotiru_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.KILLOTIRU, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

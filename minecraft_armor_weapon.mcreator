@@ -1326,7 +1326,12 @@
         "files": [
           "src/main/java/minecraftarmorweapon/procedures/LunaenteiteigaaitemuwoZhentutaShiProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
       }
     },
     {
@@ -2079,9 +2084,6 @@
       "locked_code": false,
       "registry_name": "otiroehuekutoga_you_xiao_shinoteituku",
       "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/OtiroehuekutogaYouXiaoShinoteitukuProcedure.java"
-        ],
         "dependencies": [
           {
             "name": "entity",
@@ -2887,6 +2889,79 @@
           }
         ]
       }
+    },
+    {
+      "name": "KougekiehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 193,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kougekiehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/KougekiehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": []
+      }
+    },
+    {
+      "name": "Kougeki",
+      "type": "potioneffect",
+      "sortid": 194,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kougeki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/KougekiMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "KougekiposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 195,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kougekiposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/KougekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Killotiru",
+      "type": "livingentity",
+      "sortid": 196,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "killotiru",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/entity/KillotiruEntity.java",
+          "src/main/java/minecraftarmorweapon/client/renderer/KillotiruRenderer.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/killotiru_spawn_egg.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -2949,8 +3024,8 @@
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
-      "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
+      "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "advancements.sword_progress.descr": "鉄の刀を得る",
       "item.minecraft_armor_weapon.hrmcngs_spawn_egg": "hrmcngs Spawn Egg",
@@ -2958,8 +3033,8 @@
       "item.minecraft_armor_weapon.magic_wand": "Magic Wand",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
-      "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "block.minecraft_armor_weapon.stone_bricks_trap_door": "Stone Bricks Trap Door",
+      "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "item.minecraft_armor_weapon.stray_outer_armor_leggings": "Stray Outer Armor Leggins",
       "item.minecraft_armor_weapon.wind_step": "§2Windstep",
@@ -2968,6 +3043,7 @@
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
+      "entity.minecraft_armor_weapon.killotiru": "Otiruyo",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
@@ -2978,6 +3054,7 @@
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "effect.minecraft_armor_weapon.tobe": "tobe",
       "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
+      "effect.minecraft_armor_weapon.kougeki": "a",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
@@ -3013,6 +3090,7 @@
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "advancements.goumanoriken_progress.descr": "降魔の利剣を得る",
+      "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "advancements.goumanoriken_progress.title": "剣ちゃうやん刀やんけ",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",

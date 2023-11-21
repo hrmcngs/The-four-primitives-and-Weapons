@@ -61,7 +61,7 @@ public class LunaItem extends SwordItem {
 	@Override
 	public boolean onEntitySwing(ItemStack itemstack, LivingEntity entity) {
 		boolean retval = super.onEntitySwing(itemstack, entity);
-		LunaenteiteigaaitemuwoZhentutaShiProcedure.execute();
+		LunaenteiteigaaitemuwoZhentutaShiProcedure.execute(entity);
 		return retval;
 	}
 

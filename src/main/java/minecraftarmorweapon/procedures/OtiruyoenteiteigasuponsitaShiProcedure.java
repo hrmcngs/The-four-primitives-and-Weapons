@@ -16,7 +16,7 @@ public class OtiruyoenteiteigasuponsitaShiProcedure {
 			return;
 		if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.OTIRO.get()) : false)) {
 			for (int index0 = 0; index0 < 10; index0++) {
-				MinecraftArmorWeaponMod.queueServerWork(10, () -> {
+				MinecraftArmorWeaponMod.queueServerWork(5, () -> {
 					entity.setDeltaMovement(new Vec3(0, 0, 0));
 				});
 				entity.setDeltaMovement(new Vec3(0, 0, 0));
