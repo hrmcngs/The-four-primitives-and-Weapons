@@ -60,6 +60,11 @@ public class GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 			entity.getPersistentData().putDouble("Z", z);
 			entity.getPersistentData().putDouble("dis", 0);
 			entity.getPersistentData().putDouble("yaw", (entity.getYRot()));
+			if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.ZANNGEKIKAI.get()) : false) {
+				entity.getPersistentData().putDouble("random", 0.1666666666666667);
+			} else {
+				entity.getPersistentData().putDouble("random", 0.0555555555555556);
+			}
 			entity.getPersistentData().putDouble("distance", 3);
 		} else if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TOBE.get()) : false) {
 			if (entity instanceof LivingEntity _entity)

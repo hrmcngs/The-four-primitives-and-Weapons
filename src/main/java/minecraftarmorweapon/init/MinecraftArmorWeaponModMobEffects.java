@@ -11,6 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraft.world.effect.MobEffect;
 
 import minecraftarmorweapon.potion.ZanngekitokubetuMobEffect;
+import minecraftarmorweapon.potion.ZanngekikaiMobEffect;
 import minecraftarmorweapon.potion.YouwakaranMobEffect;
 import minecraftarmorweapon.potion.WindStepEffectMobEffect;
 import minecraftarmorweapon.potion.WazaMobEffect;
@@ -71,4 +72,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> GYETONZANGEKI = REGISTRY.register("gyetonzangeki", () -> new GyetonzangekiMobEffect());
 	public static final RegistryObject<MobEffect> TOBE = REGISTRY.register("tobe", () -> new TobeMobEffect());
 	public static final RegistryObject<MobEffect> KOUGEKI = REGISTRY.register("kougeki", () -> new KougekiMobEffect());
+	public static final RegistryObject<MobEffect> ZANNGEKIKAI = REGISTRY.register("zanngekikai", () -> new ZanngekikaiMobEffect());
 }
