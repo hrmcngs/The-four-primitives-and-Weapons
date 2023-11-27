@@ -3,7 +3,6 @@ package minecraftarmorweapon.procedures;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
@@ -459,9 +458,10 @@ public class LunaYoukuritukusitatokiProcedure {
 					loop = loop + Math.toRadians(5);
 					Y_pos = Y_pos - 0.0555555555555556;
 				}
-				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.SWEEPING_EDGE, new ItemStack(MinecraftArmorWeaponModItems.LUNA.get())) != 0) {
+				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.LUNA.get()
+						&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.LUNA.get()) {
 					if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKIKAI.get(), 60, 1, true, false));
+						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get(), 60, 2, true, false));
 				} else {
 					if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get(), 60, 1, true, false));

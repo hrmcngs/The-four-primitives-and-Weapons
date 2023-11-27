@@ -18,6 +18,7 @@ import minecraftarmorweapon.client.model.Modelpillager_Converted;
 import minecraftarmorweapon.client.model.Modelpiglin_brute_Converted;
 import minecraftarmorweapon.client.model.Modelnetherite_arrow_armor_layer_1_Converted;
 import minecraftarmorweapon.client.model.Modelmahouzinn;
+import minecraftarmorweapon.client.model.Modelluna_Converted2;
 import minecraftarmorweapon.client.model.Modelluna_Converted;
 import minecraftarmorweapon.client.model.Modelillusioner_armor_layer_3_Converted;
 import minecraftarmorweapon.client.model.Modelhusk_Converted;
@@ -35,6 +36,7 @@ public class MinecraftArmorWeaponModModels {
 		event.registerLayerDefinition(Modelmahouzinn.LAYER_LOCATION, Modelmahouzinn::createBodyLayer);
 		event.registerLayerDefinition(Modelplayer_slim__Converted.LAYER_LOCATION, Modelplayer_slim__Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelstray_outer_Converted.LAYER_LOCATION, Modelstray_outer_Converted::createBodyLayer);
+		event.registerLayerDefinition(Modelluna_Converted2.LAYER_LOCATION, Modelluna_Converted2::createBodyLayer);
 		event.registerLayerDefinition(Modelhusk_Converted.LAYER_LOCATION, Modelhusk_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelillusioner_armor_layer_3_Converted.LAYER_LOCATION, Modelillusioner_armor_layer_3_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelpiglin_brute_Converted.LAYER_LOCATION, Modelpiglin_brute_Converted::createBodyLayer);

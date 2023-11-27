@@ -13,6 +13,7 @@ import minecraftarmorweapon.client.renderer.SkeltonMobRenderer;
 import minecraftarmorweapon.client.renderer.Ruami284Renderer;
 import minecraftarmorweapon.client.renderer.OtiruyoRenderer;
 import minecraftarmorweapon.client.renderer.KillotiruRenderer;
+import minecraftarmorweapon.client.renderer.KatanaTobuRenderer;
 import minecraftarmorweapon.client.renderer.HrmcngsRenderer;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -24,5 +25,6 @@ public class MinecraftArmorWeaponModEntityRenderers {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.HRMCNGS.get(), HrmcngsRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.RUAMI_284.get(), Ruami284Renderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.KILLOTIRU.get(), KillotiruRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.KATANA_TOBU.get(), KatanaTobuRenderer::new);
 	}
 }

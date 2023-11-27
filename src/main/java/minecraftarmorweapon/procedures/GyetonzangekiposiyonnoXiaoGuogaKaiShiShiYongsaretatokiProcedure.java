@@ -37,6 +37,8 @@ public class GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 			entity.getPersistentData().putDouble("distance", 3);
 		} else if (MinecraftArmorWeaponModItems.MY_TEST_IRON_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 			if (entity instanceof LivingEntity _entity)
+				_entity.removeEffect(MinecraftArmorWeaponModMobEffects.ZANNGEKIKAI.get());
+			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get());
 			entity.getPersistentData().putDouble("local", Math.toRadians(entity.getYRot()));
 			entity.getPersistentData().putDouble("local1", Math.toRadians(entity.getYRot() + 180));
@@ -55,18 +57,20 @@ public class GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 			entity.getPersistentData().putDouble("local", Math.toRadians(entity.getYRot()));
 			entity.getPersistentData().putDouble("local1", Math.toRadians(entity.getYRot() + 180));
 			entity.getPersistentData().putDouble("helmet", (Mth.nextDouble(RandomSource.create(), -180, 180)));
+			entity.getPersistentData().putDouble("X1", x);
 			entity.getPersistentData().putDouble("X", x);
+			entity.getPersistentData().putDouble("Ypos1", y);
 			entity.getPersistentData().putDouble("Ypos", y);
+			entity.getPersistentData().putDouble("Z1", z);
 			entity.getPersistentData().putDouble("Z", z);
 			entity.getPersistentData().putDouble("dis", 0);
+			entity.getPersistentData().putDouble("yaw1", (entity.getYRot()));
 			entity.getPersistentData().putDouble("yaw", (entity.getYRot()));
-			if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.ZANNGEKIKAI.get()) : false) {
-				entity.getPersistentData().putDouble("random", 0.1666666666666667);
-			} else {
-				entity.getPersistentData().putDouble("random", 0.0555555555555556);
-			}
+			entity.getPersistentData().putDouble("distance1", 3);
 			entity.getPersistentData().putDouble("distance", 3);
 		} else if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TOBE.get()) : false) {
+			if (entity instanceof LivingEntity _entity)
+				_entity.removeEffect(MinecraftArmorWeaponModMobEffects.ZANNGEKIKAI.get());
 			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(MinecraftArmorWeaponModMobEffects.GYETONZANGEKI.get());
 			if (entity instanceof LivingEntity _entity)

@@ -11,7 +11,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
 import minecraftarmorweapon.procedures.ZanngekitokubetuposiyonXiaoGuogaQieretaShiProcedure;
-import minecraftarmorweapon.procedures.ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure;
+import minecraftarmorweapon.procedures.ZanngekikaiehuekutogaYouXiaoShinoteitukuProcedure;
 import minecraftarmorweapon.procedures.GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -33,7 +33,7 @@ public class ZanngekikaiMobEffect extends MobEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity);
+		ZanngekikaiehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity);
 	}
 
 	@Override
