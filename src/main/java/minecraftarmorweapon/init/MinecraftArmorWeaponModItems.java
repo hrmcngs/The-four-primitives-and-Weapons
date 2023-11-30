@@ -43,6 +43,7 @@ import minecraftarmorweapon.item.GomanorikenItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.EnderQuiverItemItem;
 import minecraftarmorweapon.item.EnderPearlNetheriteQuiverItemItem;
+import minecraftarmorweapon.item.DragonArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
 import minecraftarmorweapon.item.AItem;
@@ -105,6 +106,10 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> HALLOWEEN_2023_10_31_SICKLE = REGISTRY.register("halloween_2023_10_31_sickle", () -> new Halloween20231031SickleItem());
 	public static final RegistryObject<Item> KILLOTIRU_SPAWN_EGG = REGISTRY.register("killotiru_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.KILLOTIRU, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 	public static final RegistryObject<Item> KATANA_TOBU = REGISTRY.register("katana_tobu", () -> new KatanaTobuItem());
+	public static final RegistryObject<Item> DRAGON_ARMOR_HELMET = REGISTRY.register("dragon_armor_helmet", () -> new DragonArmorItem.Helmet());
+	public static final RegistryObject<Item> DRAGON_ARMOR_CHESTPLATE = REGISTRY.register("dragon_armor_chestplate", () -> new DragonArmorItem.Chestplate());
+	public static final RegistryObject<Item> DRAGON_ARMOR_LEGGINGS = REGISTRY.register("dragon_armor_leggings", () -> new DragonArmorItem.Leggings());
+	public static final RegistryObject<Item> DRAGON_ARMOR_BOOTS = REGISTRY.register("dragon_armor_boots", () -> new DragonArmorItem.Boots());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

@@ -23,6 +23,7 @@ import minecraftarmorweapon.client.model.Modelluna_Converted;
 import minecraftarmorweapon.client.model.Modelillusioner_armor_layer_3_Converted;
 import minecraftarmorweapon.client.model.Modelhusk_Converted;
 import minecraftarmorweapon.client.model.Modelelytra_Converted;
+import minecraftarmorweapon.client.model.Modeldoragon_leprica_armor_layer_3;
 import minecraftarmorweapon.client.model.Modelblack_spectral_arrow_Converted;
 import minecraftarmorweapon.client.model.Modelbanner_Converted;
 
@@ -45,6 +46,7 @@ public class MinecraftArmorWeaponModModels {
 		event.registerLayerDefinition(Modelbanner_Converted.LAYER_LOCATION, Modelbanner_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelluna_Converted.LAYER_LOCATION, Modelluna_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelstray_outer_Converted_hat.LAYER_LOCATION, Modelstray_outer_Converted_hat::createBodyLayer);
+		event.registerLayerDefinition(Modeldoragon_leprica_armor_layer_3.LAYER_LOCATION, Modeldoragon_leprica_armor_layer_3::createBodyLayer);
 		event.registerLayerDefinition(Modelelytra_Converted.LAYER_LOCATION, Modelelytra_Converted::createBodyLayer);
 	}
 }
