@@ -55,7 +55,7 @@ public class GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(MinecraftArmorWeaponModMobEffects.GYETONZANGEKI.get());
 			entity.getPersistentData().putDouble("local", Math.toRadians(entity.getYRot()));
-			entity.getPersistentData().putDouble("local1", Math.toRadians(entity.getYRot() + 180));
+			entity.getPersistentData().putDouble("local1", Math.toRadians(entity.getYRot()));
 			entity.getPersistentData().putDouble("helmet", (Mth.nextDouble(RandomSource.create(), -180, 180)));
 			entity.getPersistentData().putDouble("X1", x);
 			entity.getPersistentData().putDouble("X", x);
