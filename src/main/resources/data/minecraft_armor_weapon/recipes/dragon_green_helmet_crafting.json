@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft_armor_weapon:dragon_armor_helmet"
+  },
+  "addition": {
+    "item": "minecraft:green_dye"
+  },
+  "result": {
+    "item": "minecraft_armor_weapon:dragon_green_armor_helmet"
+  }
+}

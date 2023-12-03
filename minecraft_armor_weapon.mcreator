@@ -3030,6 +3030,124 @@
           "src/main/java/minecraftarmorweapon/item/DragonArmorItem.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_armor_boots.json"
         ]
+      },
+      "path": "~/doragon armor"
+    },
+    {
+      "name": "DragonArmorTab",
+      "type": "tab",
+      "sortid": 201,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_armor_tab",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/doragon armor"
+    },
+    {
+      "name": "DragonGreenArmor",
+      "type": "armor",
+      "sortid": 202,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_green_armor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_green_armor_helmet.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_green_armor_chestplate.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_green_armor_boots.json",
+          "src/main/java/minecraftarmorweapon/item/DragonGreenArmorItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_green_armor_leggings.json"
+        ]
+      },
+      "path": "~/doragon armor/green"
+    },
+    {
+      "name": "DragonGreenHelmetCrafting",
+      "type": "recipe",
+      "sortid": 203,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_green_helmet_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_green_helmet_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/green"
+    },
+    {
+      "name": "DragonGreenChestplateCrafting",
+      "type": "recipe",
+      "sortid": 204,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_green_chestplate_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_green_chestplate_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/green"
+    },
+    {
+      "name": "DragonGreenLeggingsCrafting",
+      "type": "recipe",
+      "sortid": 205,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_green_leggings_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_green_leggings_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/green"
+    },
+    {
+      "name": "DragonGreenBootsCrafting",
+      "type": "recipe",
+      "sortid": 206,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_green_boots_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_green_boots_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/green"
+    },
+    {
+      "name": "DragonBlackArmor",
+      "type": "armor",
+      "sortid": 207,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_black_armor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_black_armor_leggings.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_black_armor_chestplate.json",
+          "src/main/java/minecraftarmorweapon/item/DragonBlackArmorItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_black_armor_boots.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_black_armor_helmet.json"
+        ]
+      },
+      "path": "~/doragon armor/black"
+    },
+    {
+      "name": "Kasari",
+      "type": "function",
+      "sortid": 208,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kasari",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/kasari.mcfunction"
+        ]
       }
     }
   ],
@@ -3081,6 +3199,7 @@
       "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
+      "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
@@ -3105,16 +3224,18 @@
       "block.minecraft_armor_weapon.stone_bricks_trap_door": "Stone Bricks Trap Door",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
+      "item.minecraft_armor_weapon.dragon_black_armor_helmet": "§8Dragon black helmet",
       "item.minecraft_armor_weapon.stray_outer_armor_leggings": "Stray Outer Armor Leggins",
       "item.minecraft_armor_weapon.wind_step": "§2Windstep",
       "item.minecraft_armor_weapon.a": "A",
       "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
+      "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
       "entity.minecraft_armor_weapon.killotiru": "Otiruyo",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
-      "item.minecraft_armor_weapon.dragon_armor_chestplate": "§5Dragon Chestplate",
+      "item.minecraft_armor_weapon.dragon_armor_chestplate": "§5Dragon chestplate",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
@@ -3123,6 +3244,8 @@
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "effect.minecraft_armor_weapon.tobe": "tobe",
+      "item.minecraft_armor_weapon.dragon_black_armor_chestplate": "§8Dragon black chestplate",
+      "itemGroup.tabdragon_armor_tab": "§5Dragon Armor Tab",
       "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
       "effect.minecraft_armor_weapon.kougeki": "a",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
@@ -3133,13 +3256,13 @@
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
       "block.minecraft_armor_weapon.cross": "Cross",
-      "item.minecraft_armor_weapon.dragon_armor_boots": "§5Dragon Boots",
+      "item.minecraft_armor_weapon.dragon_armor_boots": "§5Dragon boots",
       "effect.minecraft_armor_weapon.effect_magic": "magic",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
       "key.minecraft_armor_weapon.r": "R",
-      "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon Leggins",
+      "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "effect.minecraft_armor_weapon.otita": "a",
@@ -3148,14 +3271,18 @@
       "effect.minecraft_armor_weapon.aa": "n0okku",
       "effect.minecraft_armor_weapon.zanngekikai": "aa",
       "block.minecraft_armor_weapon.gomanoriken_block": "Gomanoriken Block",
+      "item.minecraft_armor_weapon.dragon_green_armor_chestplate": "§2Dragon green chestplate",
+      "item.minecraft_armor_weapon.dragon_black_armor_leggings": "§8Dragon black leggings",
       "item.minecraft_armor_weapon.katana_tobu": "Katana Tobu",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
       "item.minecraft_armor_weapon.quiver_item": "Quiver Item",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
+      "item.minecraft_armor_weapon.dragon_black_armor_boots": "§8Dragon Black boots",
       "key.minecraft_armor_weapon.n": "N",
       "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
+      "item.minecraft_armor_weapon.dragon_green_armor_leggings": "§2Dragon green leggings",
       "block.minecraft_armor_weapon.rose": "Rose",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "effect.minecraft_armor_weapon.waza": "waza",
@@ -3178,13 +3305,35 @@
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
-      "item.minecraft_armor_weapon.dragon_armor_helmet": "§5Dragon Helmet",
+      "item.minecraft_armor_weapon.dragon_armor_helmet": "§5Dragon helmet",
       "entity.minecraft_armor_weapon.otiruyo": "Otiruyo"
     }
   },
   "foldersRoot": {
     "name": "~",
-    "children": []
+    "children": [
+      {
+        "name": "doragon armor",
+        "children": [
+          {
+            "name": "green",
+            "children": []
+          },
+          {
+            "name": "black",
+            "children": []
+          },
+          {
+            "name": "red",
+            "children": []
+          },
+          {
+            "name": "blue",
+            "children": []
+          }
+        ]
+      }
+    ]
   },
   "workspaceSettings": {
     "modid": "minecraft_armor_weapon",

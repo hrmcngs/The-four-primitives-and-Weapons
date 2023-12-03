@@ -3,7 +3,7 @@
   "_type": "armor",
   "definition": {
     "enableHelmet": true,
-    "textureHelmet": "dragon_helmet",
+    "textureHelmet": "dragon_black_helmet",
     "enableBody": true,
     "textureBody": "dragon_chestplate",
     "enableLeggings": true,
@@ -13,18 +13,18 @@
     "creativeTab": {
       "value": "CUSTOM:DragonArmorTab"
     },
-    "armorTextureFile": "doragon_leprica_armor_",
-    "helmetName": "§5Dragon helmet",
-    "bodyName": "§5Dragon chestplate",
-    "leggingsName": "§5Dragon leggings",
-    "bootsName": "§5Dragon boots",
+    "armorTextureFile": "doragon_leprica_black_armor_",
+    "helmetName": "§8Dragon black helmet",
+    "bodyName": "§8Dragon black chestplate",
+    "leggingsName": "§8Dragon black leggings",
+    "bootsName": "§8Dragon Black boots",
     "helmetSpecialInfo": [],
     "bodySpecialInfo": [],
     "leggingsSpecialInfo": [],
     "bootsSpecialInfo": [],
     "helmetModelName": "Modeldoragon_leprica_armor_layer_3",
     "helmetModelPart": "head",
-    "helmetModelTexture": "doragon_leprica_dragon_helmet_3d.png",
+    "helmetModelTexture": "doragon_leprica_black_helmet_3d.png",
     "bodyModelName": "Default",
     "bodyModelPart": "Body",
     "armsModelPartL": "Arms L",
@@ -59,7 +59,7 @@
     "toughness": 2.0,
     "knockbackResistance": 0.1,
     "equipSound": {
-      "value": "item.armor.equip_netherite"
+      "value": ""
     },
     "repairItems": []
   }

@@ -26,8 +26,8 @@ import java.util.function.Consumer;
 import java.util.Map;
 import java.util.Collections;
 
-public abstract class DragonArmorItem extends ArmorItem {
-	public DragonArmorItem(EquipmentSlot slot, Item.Properties properties) {
+public abstract class DragonBlackArmorItem extends ArmorItem {
+	public DragonBlackArmorItem(EquipmentSlot slot, Item.Properties properties) {
 		super(new ArmorMaterial() {
 			@Override
 			public int getDurabilityForSlot(EquipmentSlot slot) {
@@ -46,7 +46,7 @@ public abstract class DragonArmorItem extends ArmorItem {
 
 			@Override
 			public SoundEvent getEquipSound() {
-				return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.armor.equip_netherite"));
+				return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(""));
 			}
 
 			@Override
@@ -56,7 +56,7 @@ public abstract class DragonArmorItem extends ArmorItem {
 
 			@Override
 			public String getName() {
-				return "dragon_armor";
+				return "dragon_black_armor";
 			}
 
 			@Override
@@ -71,7 +71,7 @@ public abstract class DragonArmorItem extends ArmorItem {
 		}, slot, properties);
 	}
 
-	public static class Helmet extends DragonArmorItem {
+	public static class Helmet extends DragonBlackArmorItem {
 		public Helmet() {
 			super(EquipmentSlot.HEAD, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_DRAGON_ARMOR_TAB).fireResistant());
 		}
@@ -96,40 +96,40 @@ public abstract class DragonArmorItem extends ArmorItem {
 
 		@Override
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "minecraft_armor_weapon:textures/entities/doragon_leprica_dragon_helmet_3d.png";
+			return "minecraft_armor_weapon:textures/entities/doragon_leprica_black_helmet_3d.png";
 		}
 	}
 
-	public static class Chestplate extends DragonArmorItem {
+	public static class Chestplate extends DragonBlackArmorItem {
 		public Chestplate() {
 			super(EquipmentSlot.CHEST, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_DRAGON_ARMOR_TAB).fireResistant());
 		}
 
 		@Override
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "minecraft_armor_weapon:textures/models/armor/doragon_leprica_armor__layer_1.png";
+			return "minecraft_armor_weapon:textures/models/armor/doragon_leprica_black_armor__layer_1.png";
 		}
 	}
 
-	public static class Leggings extends DragonArmorItem {
+	public static class Leggings extends DragonBlackArmorItem {
 		public Leggings() {
 			super(EquipmentSlot.LEGS, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_DRAGON_ARMOR_TAB).fireResistant());
 		}
 
 		@Override
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "minecraft_armor_weapon:textures/models/armor/doragon_leprica_armor__layer_2.png";
+			return "minecraft_armor_weapon:textures/models/armor/doragon_leprica_black_armor__layer_2.png";
 		}
 	}
 
-	public static class Boots extends DragonArmorItem {
+	public static class Boots extends DragonBlackArmorItem {
 		public Boots() {
 			super(EquipmentSlot.FEET, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_DRAGON_ARMOR_TAB).fireResistant());
 		}
 
 		@Override
 		public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlot slot, String type) {
-			return "minecraft_armor_weapon:textures/models/armor/doragon_leprica_armor__layer_1.png";
+			return "minecraft_armor_weapon:textures/models/armor/doragon_leprica_black_armor__layer_1.png";
 		}
 	}
 }
