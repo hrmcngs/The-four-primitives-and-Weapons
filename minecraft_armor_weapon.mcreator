@@ -3149,6 +3149,154 @@
           "src/main/resources/data/minecraft_armor_weapon/functions/kasari.mcfunction"
         ]
       }
+    },
+    {
+      "name": "DragonRedArmor",
+      "type": "armor",
+      "sortid": 209,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_red_armor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_red_armor_leggings.json",
+          "src/main/java/minecraftarmorweapon/item/DragonRedArmorItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_red_armor_boots.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_red_armor_chestplate.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_red_armor_helmet.json"
+        ]
+      },
+      "path": "~/doragon armor/red"
+    },
+    {
+      "name": "DragonRedHelmetCrafting",
+      "type": "recipe",
+      "sortid": 210,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_red_helmet_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_red_helmet_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/red"
+    },
+    {
+      "name": "DragonRedChestplateCrafting",
+      "type": "recipe",
+      "sortid": 211,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_red_chestplate_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_red_chestplate_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/red"
+    },
+    {
+      "name": "DragonRedLeggingsCrafting",
+      "type": "recipe",
+      "sortid": 212,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_red_leggings_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_red_leggings_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/red"
+    },
+    {
+      "name": "DragonRedBootsCrafting",
+      "type": "recipe",
+      "sortid": 213,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_red_boots_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_red_boots_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/red"
+    },
+    {
+      "name": "DragonBlueArmor",
+      "type": "armor",
+      "sortid": 214,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_blue_armor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_blue_armor_boots.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_blue_armor_chestplate.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_blue_armor_leggings.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/dragon_blue_armor_helmet.json",
+          "src/main/java/minecraftarmorweapon/item/DragonBlueArmorItem.java"
+        ]
+      },
+      "path": "~/doragon armor/blue"
+    },
+    {
+      "name": "DragonBlueHelmetCrafting",
+      "type": "recipe",
+      "sortid": 215,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_blue_helmet_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_blue_helmet_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/blue"
+    },
+    {
+      "name": "DragonBlueChestplateCrafting",
+      "type": "recipe",
+      "sortid": 216,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_blue_chestplate_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_blue_chestplate_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/blue"
+    },
+    {
+      "name": "DragonBlueLeggingsCrafting",
+      "type": "recipe",
+      "sortid": 217,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_blue_leggings_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_blue_leggings_crafting.json"
+        ]
+      },
+      "path": "~/doragon armor/blue"
+    },
+    {
+      "name": "DragonBlueBoots",
+      "type": "recipe",
+      "sortid": 218,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dragon_blue_boots",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/dragon_blue_boots.json"
+        ]
+      },
+      "path": "~/doragon armor/blue"
     }
   ],
   "variable_elements": [
@@ -3209,6 +3357,7 @@
       "item.minecraft_armor_weapon.magical_katana": "§dMagical Katana",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
+      "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
@@ -3217,6 +3366,7 @@
       "advancements.sword_progress.descr": "鉄の刀を得る",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "item.minecraft_armor_weapon.hrmcngs_spawn_egg": "hrmcngs Spawn Egg",
+      "item.minecraft_armor_weapon.dragon_red_armor_boots": "§4Dragon red boots",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "item.minecraft_armor_weapon.magic_wand": "Magic Wand",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
@@ -3243,6 +3393,7 @@
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
+      "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",
       "effect.minecraft_armor_weapon.tobe": "tobe",
       "item.minecraft_armor_weapon.dragon_black_armor_chestplate": "§8Dragon black chestplate",
       "itemGroup.tabdragon_armor_tab": "§5Dragon Armor Tab",
@@ -3266,6 +3417,7 @@
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "effect.minecraft_armor_weapon.otita": "a",
+      "item.minecraft_armor_weapon.dragon_blue_armor_chestplate": "§1Dragon blue chestplate",
       "entity.minecraft.villager.minecraft_armor_weapon.minecraft_armor_and_weapon": "Minecraft Armor And Weapon",
       "advancements.magical_katana_progress.title": "魔力の結晶大量じゃ～！",
       "effect.minecraft_armor_weapon.aa": "n0okku",
@@ -3289,18 +3441,22 @@
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "effect.minecraft_armor_weapon.otiro": "zz",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
+      "item.minecraft_armor_weapon.dragon_blue_armor_leggings": "§1Dragon blue leggings",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
+      "item.minecraft_armor_weapon.dragon_blue_armor_boots": "§1Dragon blue boots",
       "advancements.goumanoriken_progress.descr": "降魔の利剣を得る",
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "advancements.goumanoriken_progress.title": "剣ちゃうやん刀やんけ",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
+      "item.minecraft_armor_weapon.dragon_red_armor_helmet": "§4Dragon red helmet",
       "itemGroup.tabarmor": "Armor",
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
       "block.minecraft_armor_weapon.rose_flower_pot": "Rose Flower Pot",
       "effect.minecraft_armor_weapon.gyetonzangeki": "gyaton",
+      "item.minecraft_armor_weapon.dragon_red_armor_leggings": "§4Dragon red leggings",
       "itemGroup.tabweapon": "Weapon",
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",

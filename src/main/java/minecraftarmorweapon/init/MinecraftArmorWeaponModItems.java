@@ -43,7 +43,9 @@ import minecraftarmorweapon.item.GomanorikenItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.EnderQuiverItemItem;
 import minecraftarmorweapon.item.EnderPearlNetheriteQuiverItemItem;
+import minecraftarmorweapon.item.DragonRedArmorItem;
 import minecraftarmorweapon.item.DragonGreenArmorItem;
+import minecraftarmorweapon.item.DragonBlueArmorItem;
 import minecraftarmorweapon.item.DragonBlackArmorItem;
 import minecraftarmorweapon.item.DragonArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
@@ -120,6 +122,14 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DRAGON_BLACK_ARMOR_CHESTPLATE = REGISTRY.register("dragon_black_armor_chestplate", () -> new DragonBlackArmorItem.Chestplate());
 	public static final RegistryObject<Item> DRAGON_BLACK_ARMOR_LEGGINGS = REGISTRY.register("dragon_black_armor_leggings", () -> new DragonBlackArmorItem.Leggings());
 	public static final RegistryObject<Item> DRAGON_BLACK_ARMOR_BOOTS = REGISTRY.register("dragon_black_armor_boots", () -> new DragonBlackArmorItem.Boots());
+	public static final RegistryObject<Item> DRAGON_RED_ARMOR_HELMET = REGISTRY.register("dragon_red_armor_helmet", () -> new DragonRedArmorItem.Helmet());
+	public static final RegistryObject<Item> DRAGON_RED_ARMOR_CHESTPLATE = REGISTRY.register("dragon_red_armor_chestplate", () -> new DragonRedArmorItem.Chestplate());
+	public static final RegistryObject<Item> DRAGON_RED_ARMOR_LEGGINGS = REGISTRY.register("dragon_red_armor_leggings", () -> new DragonRedArmorItem.Leggings());
+	public static final RegistryObject<Item> DRAGON_RED_ARMOR_BOOTS = REGISTRY.register("dragon_red_armor_boots", () -> new DragonRedArmorItem.Boots());
+	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_HELMET = REGISTRY.register("dragon_blue_armor_helmet", () -> new DragonBlueArmorItem.Helmet());
+	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_CHESTPLATE = REGISTRY.register("dragon_blue_armor_chestplate", () -> new DragonBlueArmorItem.Chestplate());
+	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_LEGGINGS = REGISTRY.register("dragon_blue_armor_leggings", () -> new DragonBlueArmorItem.Leggings());
+	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_BOOTS = REGISTRY.register("dragon_blue_armor_boots", () -> new DragonBlueArmorItem.Boots());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

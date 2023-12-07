@@ -1,0 +1,25 @@
+{
+  "_fv": 43,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Smithing",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "MISC",
+    "recipeShapeless": false,
+    "smithingInputStack": {
+      "value": "CUSTOM:DragonArmor.legs"
+    },
+    "smithingInputAdditionStack": {
+      "value": "Items.DYE#18"
+    },
+    "smithingReturnStack": {
+      "value": "CUSTOM:DragonBlueArmor.legs"
+    },
+    "name": "dragon_blue_leggings_crafting",
+    "namespace": "mod"
+  }
+}
