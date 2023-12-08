@@ -28,6 +28,7 @@ import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteQuiverItemItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
+import minecraftarmorweapon.item.MyMagicKatanaItem;
 import minecraftarmorweapon.item.MagicalKatanaItem;
 import minecraftarmorweapon.item.MagicWandItem;
 import minecraftarmorweapon.item.MagicMcrystalItem;
@@ -130,6 +131,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_CHESTPLATE = REGISTRY.register("dragon_blue_armor_chestplate", () -> new DragonBlueArmorItem.Chestplate());
 	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_LEGGINGS = REGISTRY.register("dragon_blue_armor_leggings", () -> new DragonBlueArmorItem.Leggings());
 	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_BOOTS = REGISTRY.register("dragon_blue_armor_boots", () -> new DragonBlueArmorItem.Boots());
+	public static final RegistryObject<Item> MY_MAGIC_KATANA = REGISTRY.register("my_magic_katana", () -> new MyMagicKatanaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

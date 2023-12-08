@@ -8,7 +8,7 @@
     "name": "Magic Mcrystal",
     "rarity": "RARE",
     "creativeTab": {
-      "value": "CUSTOM:MagicBooks"
+      "value": "MATERIALS"
     },
     "stackSize": 64,
     "enchantability": 0,

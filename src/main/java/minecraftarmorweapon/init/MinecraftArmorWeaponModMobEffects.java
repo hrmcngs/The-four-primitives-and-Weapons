@@ -19,12 +19,14 @@ import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
 import minecraftarmorweapon.potion.TobeMobEffect;
 import minecraftarmorweapon.potion.TissokuMobEffect;
 import minecraftarmorweapon.potion.ThunderHitMobEffect;
+import minecraftarmorweapon.potion.SyugekinanozeeMobEffect;
 import minecraftarmorweapon.potion.SyugekiMobEffect;
 import minecraftarmorweapon.potion.SuityuuMobEffect;
 import minecraftarmorweapon.potion.OtitaMobEffect;
 import minecraftarmorweapon.potion.OtiruyooMobEffect;
 import minecraftarmorweapon.potion.OtiroMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
+import minecraftarmorweapon.potion.Nagiharai2MobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KougekiMobEffect;
 import minecraftarmorweapon.potion.KaitennMobEffect;
@@ -73,4 +75,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> TOBE = REGISTRY.register("tobe", () -> new TobeMobEffect());
 	public static final RegistryObject<MobEffect> KOUGEKI = REGISTRY.register("kougeki", () -> new KougekiMobEffect());
 	public static final RegistryObject<MobEffect> ZANNGEKIKAI = REGISTRY.register("zanngekikai", () -> new ZanngekikaiMobEffect());
+	public static final RegistryObject<MobEffect> SYUGEKINANOZEE = REGISTRY.register("syugekinanozee", () -> new SyugekinanozeeMobEffect());
+	public static final RegistryObject<MobEffect> NAGIHARAI_2 = REGISTRY.register("nagiharai_2", () -> new Nagiharai2MobEffect());
 }
