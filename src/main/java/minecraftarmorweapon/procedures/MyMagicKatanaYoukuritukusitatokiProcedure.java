@@ -230,7 +230,7 @@ public class MyMagicKatanaYoukuritukusitatokiProcedure {
 						_entity.swing(InteractionHand.MAIN_HAND, true);
 					{
 						final Vec3 _center = new Vec3(x, y, z);
-						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(5 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 								.collect(Collectors.toList());
 						for (Entity entityiterator : _entfound) {
 							if (!(entityiterator == entity)) {
@@ -294,7 +294,7 @@ public class MyMagicKatanaYoukuritukusitatokiProcedure {
 					entity.getPersistentData().putDouble("yaw", (entity.getYRot()));
 					entity.getPersistentData().putDouble("distance", 3);
 					if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get(), 30, 1, true, false));
+						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TOKUBETUSOUNAZANGEKI.get(), 30, 1, true, false));
 					if (entity instanceof Player _player)
 						_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
 				}
