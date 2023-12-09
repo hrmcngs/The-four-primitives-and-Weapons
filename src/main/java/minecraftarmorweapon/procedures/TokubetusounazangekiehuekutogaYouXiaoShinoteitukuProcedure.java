@@ -52,32 +52,39 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 		double b = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
 			loop = entity.getPersistentData().getDouble("local");
-			Radius = 3;
-			Ypos = entity.getPersistentData().getDouble("Ypos") + 1;
 			entity.getPersistentData().putDouble("Xpos", (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")));
 			entity.getPersistentData().putDouble("Zpos", (entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance")));
-			for (int index0 = 0; index0 < 15; index0++) {
+			XRadius2 = 3;
+			ZRadius2 = 3;
+			random = entity.getPersistentData().getDouble("random");
+			Y_pos = entity.getPersistentData().getDouble("Ypos") - 1;
+			for (int index0 = 0; index0 < 50; index0++) {
 				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
-					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
-					Ypos = entity.getPersistentData().getDouble("Ypos") + 3;
+					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos") - 1));
+					Y_pos = entity.getPersistentData().getDouble("Ypos") - 1;
 				} else {
 					break;
 				}
 			}
-			for (int index1 = 0; index1 < 15; index1++) {
+			for (int index1 = 0; index1 < 50; index1++) {
 				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
-					Ypos = entity.getPersistentData().getDouble("Ypos") + 1;
+					Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
 					break;
 				}
 				entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
-				Ypos = entity.getPersistentData().getDouble("Ypos") + 1;
+				Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
 			}
-			entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
-			r = 3;
-			a = entity.getPersistentData().getDouble("local");
-			b = -80;
-			for (int index2 = 0; index2 < 200; index2++) {
+			world.levelEvent(2001, new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos")),
+					Block.getId((world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))))));
+			for (int index2 = 0; index2 < 10; index2++) {
+				X = entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance");
+				Y = Y_pos - 1;
+				Z = entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance");
+				if (world instanceof ServerLevel _level)
+					_level.sendParticles(ParticleTypes.SWEEP_ATTACK, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
+				if (world instanceof ServerLevel _level)
+					_level.sendParticles(ParticleTypes.POOF, X, Y, Z, 3, 0.5, 0.5, 0.5, 0);
 				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
 					if (world instanceof ServerLevel _level)
 						_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
@@ -99,17 +106,8 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 						_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 								"particle firework ~ ~ ~ 0.5 0.1 .0 20 force @p");
 				}
-				if (world instanceof ServerLevel _level)
-					_level.sendParticles(ParticleTypes.POOF, (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")),
-							((Ypos + 1) - r * Math.sin(Math.toRadians(b))), (entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance")), 1,
-							0.5, 0.1, 0.5, 0);
-				if (world instanceof ServerLevel _level)
-					_level.sendParticles(ParticleTypes.SWEEP_ATTACK, (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")),
-							((Ypos + 1) - r * Math.sin(Math.toRadians(b))), (entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance")), 5,
-							0.1, 0.1, 0.1, 0);
 				{
-					final Vec3 _center = new Vec3((entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")),
-							((Ypos + 1) - r * Math.sin(Math.toRadians(b))), (entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance")));
+					final Vec3 _center = new Vec3(X, Y, Z);
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 							.collect(Collectors.toList());
 					for (Entity entityiterator : _entfound) {
@@ -118,8 +116,9 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 										if (entityiterator instanceof Mob) {
+											entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 120, 2, true, false));
+												_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 2, true, false));
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -137,8 +136,13 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									} else {
 										if (entityiterator instanceof Mob) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 120, 2, true, false));
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 2, true, false));
+												entityiterator.hurt(DamageSource.GENERIC, 10);
+											} else {
+												entityiterator.hurt(DamageSource.GENERIC, 20);
+											}
 										}
 									}
 								}
@@ -146,8 +150,10 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 						}
 					}
 				}
-				b = b + 1;
+				loop = loop + Math.toRadians(5);
+				Y_pos = Y_pos + 1;
 			}
+			entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 		} else {
 			loop = entity.getPersistentData().getDouble("local");
 			entity.getPersistentData().putDouble("Xpos", (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")));
