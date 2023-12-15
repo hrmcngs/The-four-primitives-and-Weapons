@@ -268,8 +268,8 @@ public class MyMagicKatanaYoukuritukusitatokiProcedure {
 													}
 													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
 														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-															_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 30, 1, true, false));
-														entityiterator.hurt(DamageSource.GENERIC, 10);
+															_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 1, true, false));
+														entityiterator.hurt(DamageSource.GENERIC, 5);
 													}
 													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
 														entityiterator.hurt(DamageSource.GENERIC, 20);

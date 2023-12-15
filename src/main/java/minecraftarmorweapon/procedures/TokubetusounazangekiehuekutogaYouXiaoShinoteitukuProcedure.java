@@ -108,7 +108,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 				}
 				{
 					final Vec3 _center = new Vec3(X, Y, Z);
-					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(4 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 							.collect(Collectors.toList());
 					for (Entity entityiterator : _entfound) {
 						if (!(entityiterator == entity)) {
@@ -138,8 +138,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 										if (entityiterator instanceof Mob) {
 											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
 												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-													_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 2, true, false));
-												entityiterator.hurt(DamageSource.GENERIC, 10);
+													_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 80, 2, true, false));
 											} else {
 												entityiterator.hurt(DamageSource.GENERIC, 20);
 											}
@@ -151,7 +150,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 					}
 				}
 				loop = loop + Math.toRadians(5);
-				Y_pos = Y_pos + 1;
+				Y_pos = Y_pos + 1.2;
 			}
 			entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 		} else {
