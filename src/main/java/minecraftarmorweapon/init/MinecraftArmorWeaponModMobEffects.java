@@ -30,6 +30,7 @@ import minecraftarmorweapon.potion.NagiharaiMobEffect;
 import minecraftarmorweapon.potion.Nagiharai2MobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KougekiMobEffect;
+import minecraftarmorweapon.potion.KarikarisiterunemaidomaidoMobEffect;
 import minecraftarmorweapon.potion.KaminariyadeMobEffect;
 import minecraftarmorweapon.potion.KaitennMobEffect;
 import minecraftarmorweapon.potion.KaitenMobEffect;
@@ -81,4 +82,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> NAGIHARAI_2 = REGISTRY.register("nagiharai_2", () -> new Nagiharai2MobEffect());
 	public static final RegistryObject<MobEffect> KAMINARIYADE = REGISTRY.register("kaminariyade", () -> new KaminariyadeMobEffect());
 	public static final RegistryObject<MobEffect> TOKUBETUSOUNAZANGEKI = REGISTRY.register("tokubetusounazangeki", () -> new TokubetusounazangekiMobEffect());
+	public static final RegistryObject<MobEffect> KARIKARISITERUNEMAIDOMAIDO = REGISTRY.register("karikarisiterunemaidomaido", () -> new KarikarisiterunemaidomaidoMobEffect());
 }

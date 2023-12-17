@@ -226,9 +226,13 @@ public class MyMagicKatanaYoukuritukusitatokiProcedure {
 					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 6) {
+				if (entity instanceof LivingEntity _entity)
+					_entity.swing(InteractionHand.MAIN_HAND, true);
+				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+					if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KARIKARISITERUNEMAIDOMAIDO.get(), 20, 1, true, false));
+				}
 				if (!((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get())) {
-					if (entity instanceof LivingEntity _entity)
-						_entity.swing(InteractionHand.MAIN_HAND, true);
 					{
 						final Vec3 _center = new Vec3(x, y, z);
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(5 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
@@ -276,11 +280,6 @@ public class MyMagicKatanaYoukuritukusitatokiProcedure {
 														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 1, true, false));
 													}
-													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-														entityiterator.hurt(DamageSource.GENERIC, 20);
-														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 1, true, false));
-													}
 												} else {
 													entityiterator.hurt(DamageSource.GENERIC, 20);
 												}
@@ -298,9 +297,9 @@ public class MyMagicKatanaYoukuritukusitatokiProcedure {
 					entity.getPersistentData().putDouble("distance", 3);
 					if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TOKUBETUSOUNAZANGEKI.get(), 30, 1, true, false));
-					if (entity instanceof Player _player)
-						_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
 				}
+				if (entity instanceof Player _player)
+					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
 			}
 		}
 	}

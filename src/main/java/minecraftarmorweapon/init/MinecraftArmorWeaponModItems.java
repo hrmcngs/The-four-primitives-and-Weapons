@@ -132,6 +132,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_LEGGINGS = REGISTRY.register("dragon_blue_armor_leggings", () -> new DragonBlueArmorItem.Leggings());
 	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_BOOTS = REGISTRY.register("dragon_blue_armor_boots", () -> new DragonBlueArmorItem.Boots());
 	public static final RegistryObject<Item> MAGISCHES_FEEN_KATANA = REGISTRY.register("magisches_feen_katana", () -> new MagischesFeenKatanaItem());
+	public static final RegistryObject<Item> SAMURAI_SKELTON_SPAWN_EGG = REGISTRY.register("samurai_skelton_spawn_egg",
+			() -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.SAMURAI_SKELTON, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

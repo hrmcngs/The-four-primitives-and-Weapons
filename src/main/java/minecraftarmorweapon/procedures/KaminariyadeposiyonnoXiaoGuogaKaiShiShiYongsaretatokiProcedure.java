@@ -20,7 +20,7 @@ public class KaminariyadeposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 			return;
 		if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 			_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 300, 10, true, false));
-		MinecraftArmorWeaponMod.queueServerWork(20, () -> {
+		MinecraftArmorWeaponMod.queueServerWork(30, () -> {
 			for (int index0 = 0; index0 < 14; index0++) {
 				entity.hurt(DamageSource.GENERIC, 100);
 				if (world instanceof ServerLevel _level) {

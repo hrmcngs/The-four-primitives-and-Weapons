@@ -17,6 +17,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
+import minecraftarmorweapon.entity.SamuraiSkeltonEntity;
 import minecraftarmorweapon.entity.Ruami284Entity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
 import minecraftarmorweapon.entity.KillotiruEntity;
@@ -46,6 +47,10 @@ public class MinecraftArmorWeaponModEntities {
 			.setUpdateInterval(3).setCustomClientFactory(KillotiruEntity::new).fireImmune().sized(1.2f, 3.6f));
 	public static final RegistryObject<EntityType<KatanaTobuEntity>> KATANA_TOBU = register("projectile_katana_tobu",
 			EntityType.Builder.<KatanaTobuEntity>of(KatanaTobuEntity::new, MobCategory.MISC).setCustomClientFactory(KatanaTobuEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<SamuraiSkeltonEntity>> SAMURAI_SKELTON = register("samurai_skelton",
+			EntityType.Builder.<SamuraiSkeltonEntity>of(SamuraiSkeltonEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(SamuraiSkeltonEntity::new)
+
+					.sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -59,6 +64,7 @@ public class MinecraftArmorWeaponModEntities {
 			HrmcngsEntity.init();
 			Ruami284Entity.init();
 			KillotiruEntity.init();
+			SamuraiSkeltonEntity.init();
 		});
 	}
 
@@ -69,5 +75,6 @@ public class MinecraftArmorWeaponModEntities {
 		event.put(HRMCNGS.get(), HrmcngsEntity.createAttributes().build());
 		event.put(RUAMI_284.get(), Ruami284Entity.createAttributes().build());
 		event.put(KILLOTIRU.get(), KillotiruEntity.createAttributes().build());
+		event.put(SAMURAI_SKELTON.get(), SamuraiSkeltonEntity.createAttributes().build());
 	}
 }
