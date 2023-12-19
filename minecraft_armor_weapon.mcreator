@@ -2891,20 +2891,6 @@
       }
     },
     {
-      "name": "KougekiehuekutogaYouXiaoShinoteituku",
-      "type": "procedure",
-      "sortid": 193,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "kougekiehuekutoga_you_xiao_shinoteituku",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/KougekiehuekutogaYouXiaoShinoteitukuProcedure.java"
-        ],
-        "dependencies": []
-      }
-    },
-    {
       "name": "Kougeki",
       "type": "potioneffect",
       "sortid": 194,
@@ -3641,6 +3627,52 @@
           "src/main/java/minecraftarmorweapon/potion/KarikarisiterunemaidomaidoMobEffect.java"
         ]
       }
+    },
+    {
+      "name": "YouHaveBecomeAVampire",
+      "type": "achievement",
+      "sortid": 238,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "you_have_become_a_vampire",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/advancements/you_have_become_a_vampire.json"
+        ]
+      }
+    },
+    {
+      "name": "BloodBottlepureiyagaaitemuwoShiiZhongwaru",
+      "type": "procedure",
+      "sortid": 239,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blood_bottlepureiyagaaitemuwo_shii_zhongwaru",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BloodBottlepureiyagaaitemuwoShiiZhongwaruProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BloodBottle",
+      "type": "item",
+      "sortid": 240,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blood_bottle",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/blood_bottle.json",
+          "src/main/java/minecraftarmorweapon/item/BloodBottleItem.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -3690,8 +3722,8 @@
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
-      "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
+      "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
@@ -3702,16 +3734,17 @@
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
-      "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "entity.minecraft_armor_weapon.ruami_284": "ruami284",
+      "effect.minecraft_armor_weapon.suityuu": "suityuu",
+      "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
-      "advancements.sword_progress.descr": "鉄の刀を得る",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
+      "advancements.sword_progress.descr": "鉄の刀を得る",
       "item.minecraft_armor_weapon.hrmcngs_spawn_egg": "hrmcngs Spawn Egg",
-      "item.minecraft_armor_weapon.dragon_red_armor_boots": "§4Dragon red boots",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
+      "item.minecraft_armor_weapon.dragon_red_armor_boots": "§4Dragon red boots",
       "item.minecraft_armor_weapon.magic_wand": "Magic Wand",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
@@ -3730,6 +3763,7 @@
       "entity.minecraft_armor_weapon.killotiru": "Otiruyo",
       "item.minecraft_armor_weapon.gomanoriken": "§5降魔の利剣",
       "item.minecraft_armor_weapon.dragon_armor_chestplate": "§5Dragon chestplate",
+      "advancements.you_have_become_a_vampire.title": "You have become a vampire.",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
       "item.minecraft_armor_weapon.samurai_skelton_spawn_egg": "Samurai Skelton Spawn Egg",
@@ -3814,6 +3848,7 @@
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
       "item.minecraft_armor_weapon.dragon_armor_helmet": "§5Dragon helmet",
+      "item.minecraft_armor_weapon.blood_bottle": "Blood Bottle",
       "entity.minecraft_armor_weapon.otiruyo": "Otiruyo"
     }
   },

@@ -7,6 +7,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.network.chat.Component;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -34,6 +35,22 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 					_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
 							_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "particle minecraft:enchant ~ ~1 ~ 0.5 0.5 0.5 0.1 1 normal @s");
 				}
+			}
+			if (entity.getPersistentData().getBoolean("\u00A79\u00A7kMagisches Feen Katana") == false && entity.getPersistentData().getBoolean("\u00A74\u00A7kMagisches Feen Katana") == false
+					&& entity.getPersistentData().getBoolean("\u00A7e\u00A7kMagisches Feen Katana") == false && entity.getPersistentData().getBoolean("\u00A72\u00A7kMagisches Feen Katana") == false) {
+				((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).setHoverName(Component.literal("\u00A7dMagisches Feen Katana"));
+			}
+			if (entity.getPersistentData().getBoolean("\u00A79\u00A7kMagisches Feen Katana") == true) {
+				((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).setHoverName(Component.literal("\u00A79\u00A7kMagisches Feen Katana"));
+			}
+			if (entity.getPersistentData().getBoolean("\u00A74\u00A7kMagisches Feen Katana") == true) {
+				((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).setHoverName(Component.literal("\u00A74\u00A7kMagisches Feen Katana"));
+			}
+			if (entity.getPersistentData().getBoolean("\u00A7e\u00A7kMagisches Feen Katana") == true) {
+				((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).setHoverName(Component.literal("\u00A7e\u00A7kMagisches Feen Katana"));
+			}
+			if (entity.getPersistentData().getBoolean("\u00A72\u00A7kMagisches Feen Katana") == true) {
+				((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).setHoverName(Component.literal("\u00A72\u00A7kMagisches Feen Katana"));
 			}
 			if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.DEMONIZED.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
