@@ -3547,21 +3547,6 @@
       }
     },
     {
-      "name": "SamuraiSkelton",
-      "type": "livingentity",
-      "sortid": 233,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "samurai_skelton",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/client/renderer/SamuraiSkeltonRenderer.java",
-          "src/main/java/minecraftarmorweapon/entity/SamuraiSkeltonEntity.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/samurai_skelton_spawn_egg.json"
-        ]
-      }
-    },
-    {
       "name": "KarikarisiterunemaidomaidoehuekutogaYouXiaoShinoteituku",
       "type": "procedure",
       "sortid": 234,
@@ -3766,7 +3751,6 @@
       "advancements.you_have_become_a_vampire.title": "You have become a vampire.",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
-      "item.minecraft_armor_weapon.samurai_skelton_spawn_egg": "Samurai Skelton Spawn Egg",
       "block.minecraft_armor_weapon.netherite_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
@@ -3837,7 +3821,6 @@
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "item.minecraft_armor_weapon.dragon_red_armor_helmet": "§4Dragon red helmet",
       "itemGroup.tabarmor": "Armor",
-      "entity.minecraft_armor_weapon.samurai_skelton": "Samurai Skelton",
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
       "block.minecraft_armor_weapon.rose_flower_pot": "Rose Flower Pot",
