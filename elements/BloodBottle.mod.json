@@ -10,9 +10,9 @@
     "creativeTab": {
       "value": "FOOD"
     },
-    "stackSize": 64,
+    "stackSize": 16,
     "enchantability": 0,
-    "useDuration": 32,
+    "useDuration": 16,
     "toolType": 1.0,
     "damageCount": 0,
     "recipeRemainder": {

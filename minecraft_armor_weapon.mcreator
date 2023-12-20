@@ -2084,6 +2084,9 @@
       "locked_code": false,
       "registry_name": "otiroehuekutoga_you_xiao_shinoteituku",
       "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/OtiroehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
