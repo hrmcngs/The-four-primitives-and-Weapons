@@ -26,8 +26,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
-import minecraftarmorweapon.network.MinecraftArmorWeaponModVariables;
-
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
@@ -45,7 +43,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 			return;
 		entity.getPersistentData().putDouble("Xpos", (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")));
 		entity.getPersistentData().putDouble("Zpos", (entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance")));
-		if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KATANA_BLOOD.get()) {
 			for (int index0 = 0; index0 < 50; index0++) {
 				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
@@ -60,7 +58,10 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 				}
 				entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 			}
-			entity.setDeltaMovement(new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1), (entity.getPersistentData().getDouble("Zpos"))));
+			if (world instanceof ServerLevel _level)
+				_level.getServer().getCommands()
+						.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
+								Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "/particle dust 0.639 0.169 0.169 1 ~ ~0.5 ~ 0.3 0.1 0.3 0.1 10 force");
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands()
 						.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
@@ -69,42 +70,6 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 				_level.getServer().getCommands()
 						.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
 								Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle minecraft:item iron_ingot ~ ~1 ~ 0.5 0.5 0.5 .0 20 force @p");
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands()
-							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
-									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle flame ~ ~1 ~ 0.5 0.5 0.5 .0 20 force @p");
-			}
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands()
-							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
-									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle firework ~ ~1 ~ 0.5 0.5 0.5 .0 20 force @p");
-			}
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands()
-							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
-									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle falling_dust ~ ~1 ~ 0.5 0.5 0.5 .0 20 force @p");
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands()
-							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
-									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle sneeze ~ ~1 ~ 0.5 0.5 0.5 .0 20 force @p");
-			}
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands()
-							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
-									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle block lapis_block ~ ~1 ~ 0.5 0.5 0.5 .0 20 force @p");
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands()
-							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
-									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle bubble ~ ~1 ~ 0.5 0.5 0.5 .0 50 force @p");
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands()
-							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
-									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle dolphin ~ ~1 ~ 0.5 0.5 0.5 .0 50 force @p");
-			}
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SWEEP_ATTACK, (entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1), (entity.getPersistentData().getDouble("Zpos")), 10, 0.1, 0.1, 0.1, 0);
 			{
@@ -135,30 +100,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 									}
 								} else {
 									if (entityiterator instanceof Mob) {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												entityiterator.setSecondsOnFire(30);
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 40);
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 6, true, false));
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
-											}
-										} else {
-											entityiterator.hurt(DamageSource.GENERIC, 20);
-										}
+										entityiterator.hurt(DamageSource.GENERIC, 20);
 									}
 								}
 							}
@@ -194,30 +136,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 									}
 								} else {
 									if (entityiterator instanceof Mob) {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												entityiterator.setSecondsOnFire(30);
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 40);
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 6, true, false));
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
-											}
-										} else {
-											entityiterator.hurt(DamageSource.GENERIC, 20);
-										}
+										entityiterator.hurt(DamageSource.GENERIC, 20);
 									}
 								}
 							}
@@ -253,30 +172,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 									}
 								} else {
 									if (entityiterator instanceof Mob) {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												entityiterator.setSecondsOnFire(30);
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 40);
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 6, true, false));
-											}
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-												entityiterator.hurt(DamageSource.GENERIC, 20);
-												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
-											}
-										} else {
-											entityiterator.hurt(DamageSource.GENERIC, 20);
-										}
+										entityiterator.hurt(DamageSource.GENERIC, 20);
 									}
 								}
 							}

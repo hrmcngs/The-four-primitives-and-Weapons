@@ -3661,6 +3661,91 @@
           "src/main/java/minecraftarmorweapon/item/BloodBottleItem.java"
         ]
       }
+    },
+    {
+      "name": "KatanaBlood",
+      "type": "tool",
+      "sortid": 241,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "katana_blood",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/katana_blood.json",
+          "src/main/java/minecraftarmorweapon/item/KatanaBloodItem.java"
+        ]
+      }
+    },
+    {
+      "name": "KatanaBloodYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 242,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "katana_blood_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/KatanaBloodYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DevourBloodehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 243,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "devour_bloodehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/DevourBloodehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DevourBlood",
+      "type": "potioneffect",
+      "sortid": 244,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "devour_blood",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/DevourBloodMobEffect.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -3806,6 +3891,7 @@
       "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.dragon_green_armor_leggings": "§2Dragon green leggings",
+      "effect.minecraft_armor_weapon.devour_blood": "devour blood",
       "block.minecraft_armor_weapon.rose": "Rose",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
       "effect.minecraft_armor_weapon.waza": "waza",
@@ -3814,6 +3900,7 @@
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.dragon_blue_armor_leggings": "§1Dragon blue leggings",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
+      "item.minecraft_armor_weapon.katana_blood": "§4§lRivers of Blood",
       "item.minecraft_armor_weapon.dragon_blue_armor_boots": "§1Dragon blue boots",
       "advancements.goumanoriken_progress.descr": "降魔の利剣を得る",
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",

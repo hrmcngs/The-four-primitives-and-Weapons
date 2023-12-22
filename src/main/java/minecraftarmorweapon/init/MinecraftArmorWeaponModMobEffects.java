@@ -37,6 +37,7 @@ import minecraftarmorweapon.potion.KaitenMobEffect;
 import minecraftarmorweapon.potion.GyetonzangekiMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.EffectMagicMobEffect;
+import minecraftarmorweapon.potion.DevourBloodMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
 import minecraftarmorweapon.potion.BarrierEffectMobEffect;
@@ -83,4 +84,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> KAMINARIYADE = REGISTRY.register("kaminariyade", () -> new KaminariyadeMobEffect());
 	public static final RegistryObject<MobEffect> TOKUBETUSOUNAZANGEKI = REGISTRY.register("tokubetusounazangeki", () -> new TokubetusounazangekiMobEffect());
 	public static final RegistryObject<MobEffect> KARIKARISITERUNEMAIDOMAIDO = REGISTRY.register("karikarisiterunemaidomaido", () -> new KarikarisiterunemaidomaidoMobEffect());
+	public static final RegistryObject<MobEffect> DEVOUR_BLOOD = REGISTRY.register("devour_blood", () -> new DevourBloodMobEffect());
 }
