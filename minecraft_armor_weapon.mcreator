@@ -3661,54 +3661,6 @@
           "src/main/java/minecraftarmorweapon/item/BloodBottleItem.java"
         ]
       }
-    },
-    {
-      "name": "TossinkamosirenehuekutogaYouXiaoShinoteituku",
-      "type": "procedure",
-      "sortid": 241,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tossinkamosirenehuekutoga_you_xiao_shinoteituku",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/TossinkamosirenehuekutogaYouXiaoShinoteitukuProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
-      "name": "Tossinkamosiren",
-      "type": "potioneffect",
-      "sortid": 243,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "tossinkamosiren",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/potion/TossinkamosirenMobEffect.java"
-        ]
-      }
     }
   ],
   "variable_elements": [
@@ -3770,17 +3722,17 @@
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
-      "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "entity.minecraft_armor_weapon.ruami_284": "ruami284",
+      "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
-      "advancements.sword_progress.descr": "鉄の刀を得る",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
+      "advancements.sword_progress.descr": "鉄の刀を得る",
       "item.minecraft_armor_weapon.hrmcngs_spawn_egg": "hrmcngs Spawn Egg",
-      "item.minecraft_armor_weapon.dragon_red_armor_boots": "§4Dragon red boots",
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
+      "item.minecraft_armor_weapon.dragon_red_armor_boots": "§4Dragon red boots",
       "item.minecraft_armor_weapon.magic_wand": "Magic Wand",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
@@ -3816,7 +3768,6 @@
       "effect.minecraft_armor_weapon.kougeki": "a",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
-      "effect.minecraft_armor_weapon.tossinkamosiren": "t",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
       "item.minecraft_armor_weapon.ender_quiver_item": "Ender Quiver Item",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
