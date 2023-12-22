@@ -16,6 +16,7 @@ import minecraftarmorweapon.potion.YouwakaranMobEffect;
 import minecraftarmorweapon.potion.WindStepEffectMobEffect;
 import minecraftarmorweapon.potion.WazaMobEffect;
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
+import minecraftarmorweapon.potion.TossinkamosirenMobEffect;
 import minecraftarmorweapon.potion.TokubetusounazangekiMobEffect;
 import minecraftarmorweapon.potion.TobeMobEffect;
 import minecraftarmorweapon.potion.TissokuMobEffect;
@@ -83,4 +84,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> KAMINARIYADE = REGISTRY.register("kaminariyade", () -> new KaminariyadeMobEffect());
 	public static final RegistryObject<MobEffect> TOKUBETUSOUNAZANGEKI = REGISTRY.register("tokubetusounazangeki", () -> new TokubetusounazangekiMobEffect());
 	public static final RegistryObject<MobEffect> KARIKARISITERUNEMAIDOMAIDO = REGISTRY.register("karikarisiterunemaidomaido", () -> new KarikarisiterunemaidomaidoMobEffect());
+	public static final RegistryObject<MobEffect> TOSSINKAMOSIREN = REGISTRY.register("tossinkamosiren", () -> new TossinkamosirenMobEffect());
 }
