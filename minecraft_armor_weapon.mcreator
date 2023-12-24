@@ -3746,6 +3746,102 @@
           "src/main/java/minecraftarmorweapon/item/RiversOfBloodItem.java"
         ]
       }
+    },
+    {
+      "name": "EffectBloodTp",
+      "type": "potioneffect",
+      "sortid": 246,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "effect_blood_tp",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/EffectBloodTpMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "BloodTpposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 247,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blood_tpposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BloodTpposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BloodTpehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 248,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blood_tpehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BloodTpehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BloodTp",
+      "type": "potioneffect",
+      "sortid": 249,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blood_tp",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/BloodTpMobEffect.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -3804,6 +3900,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "item.minecraft_armor_weapon.magical_katana": "§dMagical Katana",
+      "effect.minecraft_armor_weapon.effect_blood_tp": "a",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
@@ -3829,6 +3926,7 @@
       "item.minecraft_armor_weapon.wind_step": "§2Windstep",
       "item.minecraft_armor_weapon.a": "A",
       "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
+      "effect.minecraft_armor_weapon.blood_tp": "bloodtp",
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",

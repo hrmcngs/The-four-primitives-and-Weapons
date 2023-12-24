@@ -37,9 +37,11 @@ import minecraftarmorweapon.potion.KaitenMobEffect;
 import minecraftarmorweapon.potion.GyetonzangekiMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.EffectMagicMobEffect;
+import minecraftarmorweapon.potion.EffectBloodTpMobEffect;
 import minecraftarmorweapon.potion.DevourBloodMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
+import minecraftarmorweapon.potion.BloodTpMobEffect;
 import minecraftarmorweapon.potion.BarrierEffectMobEffect;
 import minecraftarmorweapon.potion.AttackBowMobEffect;
 import minecraftarmorweapon.potion.Arrow1MobEffect;
@@ -85,4 +87,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> TOKUBETUSOUNAZANGEKI = REGISTRY.register("tokubetusounazangeki", () -> new TokubetusounazangekiMobEffect());
 	public static final RegistryObject<MobEffect> KARIKARISITERUNEMAIDOMAIDO = REGISTRY.register("karikarisiterunemaidomaido", () -> new KarikarisiterunemaidomaidoMobEffect());
 	public static final RegistryObject<MobEffect> DEVOUR_BLOOD = REGISTRY.register("devour_blood", () -> new DevourBloodMobEffect());
+	public static final RegistryObject<MobEffect> EFFECT_BLOOD_TP = REGISTRY.register("effect_blood_tp", () -> new EffectBloodTpMobEffect());
+	public static final RegistryObject<MobEffect> BLOOD_TP = REGISTRY.register("blood_tp", () -> new BloodTpMobEffect());
 }
