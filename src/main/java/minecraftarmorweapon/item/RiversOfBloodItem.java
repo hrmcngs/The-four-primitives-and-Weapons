@@ -17,8 +17,8 @@ import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannotei
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
-public class KatanaBloodItem extends SwordItem {
-	public KatanaBloodItem() {
+public class RiversOfBloodItem extends SwordItem {
+	public RiversOfBloodItem() {
 		super(new Tier() {
 			public int getUses() {
 				return 0;

@@ -52,7 +52,7 @@ public class GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 			entity.getPersistentData().putDouble("distance", 3);
 		} else if (MinecraftArmorWeaponModItems.LUNA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.MAGISCHES_FEEN_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
-				|| MinecraftArmorWeaponModItems.KATANA_BLOOD.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
+				|| MinecraftArmorWeaponModItems.RIVERS_OF_BLOOD.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
 			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(MinecraftArmorWeaponModMobEffects.TOBE.get());
 			if (entity instanceof LivingEntity _entity)

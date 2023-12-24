@@ -23,6 +23,7 @@ import minecraftarmorweapon.item.ThunderboltItem;
 import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
+import minecraftarmorweapon.item.RiversOfBloodItem;
 import minecraftarmorweapon.item.QuiverItemItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteQuiverItemItem;
@@ -34,7 +35,6 @@ import minecraftarmorweapon.item.MagicWandItem;
 import minecraftarmorweapon.item.MagicMcrystalItem;
 import minecraftarmorweapon.item.LunaItem;
 import minecraftarmorweapon.item.KatanaTobuItem;
-import minecraftarmorweapon.item.KatanaBloodItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.IronKatanaItem;
 import minecraftarmorweapon.item.IllusionerArmorItem;
@@ -135,7 +135,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DRAGON_BLUE_ARMOR_BOOTS = REGISTRY.register("dragon_blue_armor_boots", () -> new DragonBlueArmorItem.Boots());
 	public static final RegistryObject<Item> MAGISCHES_FEEN_KATANA = REGISTRY.register("magisches_feen_katana", () -> new MagischesFeenKatanaItem());
 	public static final RegistryObject<Item> BLOOD_BOTTLE = REGISTRY.register("blood_bottle", () -> new BloodBottleItem());
-	public static final RegistryObject<Item> KATANA_BLOOD = REGISTRY.register("katana_blood", () -> new KatanaBloodItem());
+	public static final RegistryObject<Item> RIVERS_OF_BLOOD = REGISTRY.register("rivers_of_blood", () -> new RiversOfBloodItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
