@@ -11,12 +11,10 @@ import net.minecraft.world.effect.MobEffectInstance;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 
-import java.util.stream.Collectors;
-import java.util.List;
 import java.util.Comparator;
 
 public class SwordOfNightYoukuritukusitatokiProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
 		double r = 0;
@@ -25,16 +23,6 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 		double r1 = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get()) {
 			r = 1;
-			{
-				final Vec3 _center = new Vec3(x, y, z);
-				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(50 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
-						.collect(Collectors.toList());
-				for (Entity entityiterator : _entfound) {
-					if (entity.getPersistentData().getDouble("gyamigyapitonndeyaru") == 1) {
-						entity.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
-					}
-				}
-			}
 			for (int index0 = 0; index0 < 20; index0++) {
 				if (!world.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(new Vec3((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z)), 0.5, 0.5, 0.5),
 						e -> true).isEmpty()) {

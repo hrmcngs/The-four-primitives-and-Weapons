@@ -81,7 +81,7 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 								if (_ent instanceof ServerPlayer _serverPlayer)
 									_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
 							}
-							entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 1);
+							entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
 						}
 					}
 				}

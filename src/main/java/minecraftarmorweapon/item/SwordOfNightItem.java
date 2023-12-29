@@ -47,7 +47,7 @@ public class SwordOfNightItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		SwordOfNightYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		SwordOfNightYoukuritukusitatokiProcedure.execute(world, entity);
 		return ar;
 	}
 }
