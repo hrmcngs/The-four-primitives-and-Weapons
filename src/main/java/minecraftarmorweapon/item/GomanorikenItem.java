@@ -81,7 +81,7 @@ public class GomanorikenItem extends SwordItem {
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
 		if (selected)
-			IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(entity);
+			// IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(world, attackDamage, attackDamage, attackDamage, entity);
 	}
 
 	@Override
