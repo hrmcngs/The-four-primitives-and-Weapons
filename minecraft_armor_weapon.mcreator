@@ -3940,6 +3940,43 @@
           }
         ]
       }
+    },
+    {
+      "name": "SwordOfNight",
+      "type": "tool",
+      "sortid": 254,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sword_of_night",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/sword_of_night.json",
+          "src/main/java/minecraftarmorweapon/item/SwordOfNightItem.java"
+        ]
+      }
+    },
+    {
+      "name": "SwordOfNightYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 255,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sword_of_night_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/SwordOfNightYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4015,6 +4052,7 @@
       "item.minecraft_armor_weapon.bubbleshot": "§9Bubbleshot",
       "item.minecraft_armor_weapon.magic_wand": "Magic Wand",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
+      "item.minecraft_armor_weapon.sword_of_night": "§6Sword of Night",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "block.minecraft_armor_weapon.stone_bricks_trap_door": "Stone Bricks Trap Door",

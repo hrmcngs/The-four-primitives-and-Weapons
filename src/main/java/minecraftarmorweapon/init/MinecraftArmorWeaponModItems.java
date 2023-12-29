@@ -20,6 +20,7 @@ import minecraftarmorweapon.item.WindStepItem;
 import minecraftarmorweapon.item.WaterKatanaItem;
 import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
+import minecraftarmorweapon.item.SwordOfNightItem;
 import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
@@ -140,6 +141,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> RIVERS_OF_BLOOD = REGISTRY.register("rivers_of_blood", () -> new RiversOfBloodItem());
 	public static final RegistryObject<Item> RESET_MAX = REGISTRY.register("reset_max", () -> new ResetMaxItem());
 	public static final RegistryObject<Item> RESET_1 = REGISTRY.register("reset_1", () -> new Reset1Item());
+	public static final RegistryObject<Item> SWORD_OF_NIGHT = REGISTRY.register("sword_of_night", () -> new SwordOfNightItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

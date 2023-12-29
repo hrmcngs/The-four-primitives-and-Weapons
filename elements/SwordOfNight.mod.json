@@ -1,0 +1,30 @@
+{
+  "_fv": 43,
+  "_type": "tool",
+  "definition": {
+    "renderType": 1,
+    "texture": "swordofnight",
+    "customModelName": "swordofnight:default",
+    "name": "§6Sword of Night",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:Weapon"
+    },
+    "toolType": "Sword",
+    "harvestLevel": 9,
+    "efficiency": 10.0,
+    "attackSpeed": 4.0,
+    "enchantability": 2,
+    "damageVsEntity": 3.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "SwordOfNightYoukuritukusitatoki"
+    }
+  }
+}
