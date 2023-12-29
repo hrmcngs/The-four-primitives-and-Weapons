@@ -24,6 +24,8 @@ import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.RiversOfBloodItem;
+import minecraftarmorweapon.item.ResetMaxItem;
+import minecraftarmorweapon.item.Reset1Item;
 import minecraftarmorweapon.item.QuiverItemItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteQuiverItemItem;
@@ -136,6 +138,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> MAGISCHES_FEEN_KATANA = REGISTRY.register("magisches_feen_katana", () -> new MagischesFeenKatanaItem());
 	public static final RegistryObject<Item> BLOOD_BOTTLE = REGISTRY.register("blood_bottle", () -> new BloodBottleItem());
 	public static final RegistryObject<Item> RIVERS_OF_BLOOD = REGISTRY.register("rivers_of_blood", () -> new RiversOfBloodItem());
+	public static final RegistryObject<Item> RESET_MAX = REGISTRY.register("reset_max", () -> new ResetMaxItem());
+	public static final RegistryObject<Item> RESET_1 = REGISTRY.register("reset_1", () -> new Reset1Item());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

@@ -3842,6 +3842,104 @@
           "src/main/java/minecraftarmorweapon/potion/BloodTpMobEffect.java"
         ]
       }
+    },
+    {
+      "name": "ResetMaxYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 250,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "reset_max_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ResetMaxYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ResetMax",
+      "type": "item",
+      "sortid": 251,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "reset_max",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/reset_max.json",
+          "src/main/java/minecraftarmorweapon/item/ResetMaxItem.java"
+        ]
+      }
+    },
+    {
+      "name": "Reset1",
+      "type": "item",
+      "sortid": 252,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "reset_1",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/reset_1.json",
+          "src/main/java/minecraftarmorweapon/item/Reset1Item.java"
+        ]
+      }
+    },
+    {
+      "name": "Reset1Youkuritukusitatoki",
+      "type": "procedure",
+      "sortid": 253,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "reset_1_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/Reset1YoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -3928,6 +4026,7 @@
       "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
       "effect.minecraft_armor_weapon.blood_tp": "bloodtp",
       "itemGroup.tabevent": "Event",
+      "item.minecraft_armor_weapon.reset_1": "Reset Damege",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
@@ -3950,6 +4049,7 @@
       "itemGroup.tabdragon_armor_tab": "§5Dragon Armor Tab",
       "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
       "effect.minecraft_armor_weapon.kougeki": "a",
+      "item.minecraft_armor_weapon.reset_max": "Reset Max",
       "effect.minecraft_armor_weapon.kaitenn": "kaitenn",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
