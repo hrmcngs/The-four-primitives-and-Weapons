@@ -12,7 +12,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -56,6 +58,15 @@ public class Kill1Procedure {
 								_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "particle item redstone ~ ~1 ~ 0.3 0.1 0.3 0.1 100 force");
 					}
 				}
+			}
+		}
+		if (!world.isClientSide()) {
+			if (sourceentity instanceof ServerPlayer _plr7 && _plr7.level instanceof ServerLevel
+					&& _plr7.getAdvancements().getOrStartProgress(_plr7.server.getAdvancements().getAdvancement(new ResourceLocation("minecraft_armor_weapon:you_have_become_a_vampire"))).isDone()) {
+				if (sourceentity instanceof LivingEntity _entity)
+					_entity.setHealth((float) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) + 1));
+				if (sourceentity instanceof Player _player)
+					_player.getFoodData().setFoodLevel((int) ((sourceentity instanceof Player _plr ? _plr.getFoodData().getFoodLevel() : 0) + 1));
 			}
 		}
 		if (!world.isClientSide()) {

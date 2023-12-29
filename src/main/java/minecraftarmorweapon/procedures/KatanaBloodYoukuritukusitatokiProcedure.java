@@ -5,6 +5,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
@@ -44,9 +45,14 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KAITENN.get(), 1, 1, true, false));
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KAITEN.get(), 1, 1, true, false));
-				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+				if (!(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false)) {
 					if (entity instanceof LivingEntity _entity)
 						_entity.hurt(new DamageSource("\u00A74\u00A7ldevour blood").bypassArmor(), 5);
+				} else if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false) {
+					if (entity instanceof Player _player) {
+						ItemStack _stktoremove = new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get());
+						_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+					}
 				}
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 3) {
@@ -59,9 +65,14 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 				entity.getPersistentData().putDouble("distance", 3);
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.NAGIHARAI.get(), 2, 1, true, false));
-				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+				if (!(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false)) {
 					if (entity instanceof LivingEntity _entity)
 						_entity.hurt(new DamageSource("\u00A74\u00A7ldevour blood").bypassArmor(), 6);
+				} else if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false) {
+					if (entity instanceof Player _player) {
+						ItemStack _stktoremove = new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get());
+						_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+					}
 				}
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
@@ -91,9 +102,14 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 												_entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 150, 255, true, false));
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.EFFECT_BLOOD_TP.get(), 150, 1, true, false));
-											if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+											if (!(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false)) {
 												if (entity instanceof LivingEntity _entity)
 													_entity.hurt(new DamageSource("\u00A74\u00A7ldevour blood").bypassArmor(), 7);
+											} else if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false) {
+												if (entity instanceof Player _player) {
+													ItemStack _stktoremove = new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get());
+													_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+												}
 											}
 										}
 									}
@@ -149,8 +165,15 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 				entity.getPersistentData().putDouble("distance", 3);
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SYUGEKINANOZEE.get(), 30, 1, true, false));
-				if (entity instanceof LivingEntity _entity)
-					_entity.hurt(new DamageSource("\u00A74\u00A7ldevour blood").bypassArmor(), 5);
+				if (!(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false)) {
+					if (entity instanceof LivingEntity _entity)
+						_entity.hurt(new DamageSource("\u00A74\u00A7ldevour blood").bypassArmor(), 5);
+				} else if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false) {
+					if (entity instanceof Player _player) {
+						ItemStack _stktoremove = new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get());
+						_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+					}
+				}
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 6) {
 				if (entity instanceof LivingEntity _entity)
@@ -198,8 +221,15 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 				entity.getPersistentData().putDouble("distance", 3);
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TOKUBETUSOUNAZANGEKI.get(), 30, 1, true, false));
-				if (entity instanceof LivingEntity _entity)
-					_entity.hurt(new DamageSource("\u00A74\u00A7ldevour blood").bypassArmor(), 5);
+				if (!(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false)) {
+					if (entity instanceof LivingEntity _entity)
+						_entity.hurt(new DamageSource("\u00A74\u00A7ldevour blood").bypassArmor(), 5);
+				} else if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false) {
+					if (entity instanceof Player _player) {
+						ItemStack _stktoremove = new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get());
+						_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+					}
+				}
 			}
 		}
 	}
