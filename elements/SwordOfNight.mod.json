@@ -18,13 +18,19 @@
     "damageVsEntity": 3.0,
     "usageCount": 0,
     "blocksAffected": [],
-    "hasGlow": false,
+    "hasGlow": true,
+    "glowCondition": {
+      "name": "SwordOfNightMakeItemGlow"
+    },
     "repairItems": [],
     "immuneToFire": false,
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
       "name": "SwordOfNightYoukuritukusitatoki"
+    },
+    "onItemInUseTick": {
+      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
     }
   }
 }

@@ -22,10 +22,12 @@ import minecraftarmorweapon.potion.TissokuMobEffect;
 import minecraftarmorweapon.potion.ThunderHitMobEffect;
 import minecraftarmorweapon.potion.SyugekinanozeeMobEffect;
 import minecraftarmorweapon.potion.SyugekiMobEffect;
+import minecraftarmorweapon.potion.SwordOfNightEffectMobEffect;
 import minecraftarmorweapon.potion.SuityuuMobEffect;
 import minecraftarmorweapon.potion.OtitaMobEffect;
 import minecraftarmorweapon.potion.OtiruyooMobEffect;
 import minecraftarmorweapon.potion.OtiroMobEffect;
+import minecraftarmorweapon.potion.NgsMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
 import minecraftarmorweapon.potion.Nagiharai2MobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
@@ -89,4 +91,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> DEVOUR_BLOOD = REGISTRY.register("devour_blood", () -> new DevourBloodMobEffect());
 	public static final RegistryObject<MobEffect> EFFECT_BLOOD_TP = REGISTRY.register("effect_blood_tp", () -> new EffectBloodTpMobEffect());
 	public static final RegistryObject<MobEffect> BLOOD_TP = REGISTRY.register("blood_tp", () -> new BloodTpMobEffect());
+	public static final RegistryObject<MobEffect> NGS = REGISTRY.register("ngs", () -> new NgsMobEffect());
+	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_EFFECT = REGISTRY.register("sword_of_night_effect", () -> new SwordOfNightEffectMobEffect());
 }
