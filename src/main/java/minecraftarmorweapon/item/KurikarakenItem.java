@@ -27,8 +27,8 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.enchantment.Enchantments;
 
-public class GomanorikenItem extends SwordItem {
-	public GomanorikenItem() {
+public class KurikarakenItem extends SwordItem {
+	public KurikarakenItem() {
 		super(new Tier() {
 			public int getUses() {
 				return 0;
@@ -68,11 +68,11 @@ public class GomanorikenItem extends SwordItem {
 		super.appendHoverText(itemstack, world, list, flag);
 		list.add(Component.literal("\u00A78Sharp sword to cut off demons"));
 	}
-	     @Override
+	@Override
 	public void fillItemCategory(CreativeModeTab tab,NonNullList<ItemStack>items) {
 	if (this.allowedIn(tab)) {
 		ItemStack stack = new ItemStack(this);
-		stack.enchant(Enchantments.SMITE ,5);
+		stack.enchant(Enchantments.SMITE, 5);
 		items.add(stack);
 	} }
 
@@ -81,7 +81,7 @@ public class GomanorikenItem extends SwordItem {
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
 		if (selected)
-		IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+			IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override

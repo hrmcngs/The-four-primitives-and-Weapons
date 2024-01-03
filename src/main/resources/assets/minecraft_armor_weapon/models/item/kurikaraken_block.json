@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft_armor_weapon:block/gomanoriken_block",
+  "parent": "minecraft_armor_weapon:block/kurikaraken_block",
   "display": {
     "thirdperson": {
       "rotation": [

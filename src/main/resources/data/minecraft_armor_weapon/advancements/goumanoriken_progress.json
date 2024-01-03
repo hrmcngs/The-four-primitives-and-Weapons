@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft_armor_weapon:gomanoriken"
+      "item": "minecraft_armor_weapon:kurikaraken"
     },
     "title": {
       "translate": "advancements.goumanoriken_progress.title"
@@ -21,7 +21,7 @@
         "items": [
           {
             "items": [
-              "minecraft_armor_weapon:gomanoriken"
+              "minecraft_armor_weapon:kurikaraken"
             ],
             "count": {
               "min": 1,

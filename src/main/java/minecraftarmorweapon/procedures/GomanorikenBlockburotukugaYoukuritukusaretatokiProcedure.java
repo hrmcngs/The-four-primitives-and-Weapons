@@ -14,7 +14,7 @@ public class GomanorikenBlockburotukugaYoukuritukusaretatokiProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (world instanceof ServerLevel _level)
 			_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-					"give @p minecraft_armor_weapon:gomanoriken");
+					"give @p minecraft_armor_weapon:gomanoriken{Enchantments:[{id:smite,lvl:5}]}");
 		world.setBlock(new BlockPos(x, y, z), Blocks.AIR.defaultBlockState(), 3);
 	}
 }

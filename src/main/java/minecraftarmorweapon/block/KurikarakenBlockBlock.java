@@ -36,10 +36,10 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import java.util.List;
 import java.util.Collections;
 
-public class GomanorikenBlockBlock extends Block {
+public class KurikarakenBlockBlock extends Block {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-	public GomanorikenBlockBlock() {
+	public KurikarakenBlockBlock() {
 		super(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.METAL).strength(-1, 3600000).noCollission().noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 	}
@@ -96,7 +96,7 @@ public class GomanorikenBlockBlock extends Block {
 
 	@Override
 	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
-		return new ItemStack(MinecraftArmorWeaponModItems.GOMANORIKEN.get());
+		return new ItemStack(MinecraftArmorWeaponModItems.KURIKARAKEN.get());
 	}
 
 	@Override

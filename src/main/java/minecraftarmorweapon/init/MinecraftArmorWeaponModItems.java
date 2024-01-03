@@ -37,6 +37,7 @@ import minecraftarmorweapon.item.MagicalKatanaItem;
 import minecraftarmorweapon.item.MagicWandItem;
 import minecraftarmorweapon.item.MagicMcrystalItem;
 import minecraftarmorweapon.item.LunaItem;
+import minecraftarmorweapon.item.KurikarakenItem;
 import minecraftarmorweapon.item.KatanaTobuItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.IronKatanaItem;
@@ -44,7 +45,6 @@ import minecraftarmorweapon.item.IllusionerArmorItem;
 import minecraftarmorweapon.item.HarvestMoon2023929Item;
 import minecraftarmorweapon.item.HammerItem;
 import minecraftarmorweapon.item.Halloween20231031SickleItem;
-import minecraftarmorweapon.item.GomanorikenItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.EnderQuiverItemItem;
 import minecraftarmorweapon.item.EnderPearlNetheriteQuiverItemItem;
@@ -90,9 +90,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
 	public static final RegistryObject<Item> QUIVER_ITEM = REGISTRY.register("quiver_item", () -> new QuiverItemItem());
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.SKELTON_MOB, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
-	public static final RegistryObject<Item> GOMANORIKEN = REGISTRY.register("gomanoriken", () -> new GomanorikenItem());
 	public static final RegistryObject<Item> ACHROMATIC_SHIELD = REGISTRY.register("achromatic_shield", () -> new AchromaticShieldItem());
-	public static final RegistryObject<Item> GOMANORIKEN_BLOCK = block(MinecraftArmorWeaponModBlocks.GOMANORIKEN_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> HARVEST_MOON_2023929 = REGISTRY.register("harvest_moon_2023929", () -> new HarvestMoon2023929Item());
 	public static final RegistryObject<Item> ENDER_QUIVER_ITEM = REGISTRY.register("ender_quiver_item", () -> new EnderQuiverItemItem());
 	public static final RegistryObject<Item> NETHERITE_QUIVER_ITEM = REGISTRY.register("netherite_quiver_item", () -> new NetheriteQuiverItemItem());
@@ -142,6 +140,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> RESET_MAX = REGISTRY.register("reset_max", () -> new ResetMaxItem());
 	public static final RegistryObject<Item> RESET_1 = REGISTRY.register("reset_1", () -> new Reset1Item());
 	public static final RegistryObject<Item> SWORD_OF_NIGHT = REGISTRY.register("sword_of_night", () -> new SwordOfNightItem());
+	public static final RegistryObject<Item> KURIKARAKEN = REGISTRY.register("kurikaraken", () -> new KurikarakenItem());
+	public static final RegistryObject<Item> KURIKARAKEN_BLOCK = block(MinecraftArmorWeaponModBlocks.KURIKARAKEN_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
