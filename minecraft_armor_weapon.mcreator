@@ -4156,12 +4156,7 @@
         "files": [
           "src/main/java/minecraftarmorweapon/procedures/SwordOfNightEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
         ],
-        "dependencies": [
-          {
-            "name": "sourceentity",
-            "type": "entity"
-          }
-        ]
+        "dependencies": []
       }
     }
   ],

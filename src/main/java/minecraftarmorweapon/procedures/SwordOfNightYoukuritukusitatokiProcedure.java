@@ -24,6 +24,10 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 		double alpha = 0;
 		double beta = 0;
 		double r1 = 0;
+		double zknockback = 0;
+		double yknockback = 0;
+		double xknockback = 0;
+		double dis = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get()) {
 			{
 				final Vec3 _center = new Vec3(x, y, z);
