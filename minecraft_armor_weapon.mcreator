@@ -4158,6 +4158,88 @@
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/kurikaraken_block.json"
         ]
       }
+    },
+    {
+      "name": "Mana",
+      "type": "attribute",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mana",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "PrototypeKatana",
+      "type": "tool",
+      "sortid": 265,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prototype_katana",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/prototype_katana.json",
+          "src/main/java/minecraftarmorweapon/item/PrototypeKatanaItem.java"
+        ]
+      }
+    },
+    {
+      "name": "PrototypeKatanaYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 266,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prototype_katana_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/PrototypeKatanaYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PrototypeKatanamobugaturudeGongJisaretatoki",
+      "type": "procedure",
+      "sortid": 267,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "prototype_katanamobugaturude_gong_jisaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/PrototypeKatanamobugaturudeGongJisaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4201,6 +4283,7 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
+      "item.minecraft_armor_weapon.prototype_katana": "§8§l§oPrototype Katana",
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
@@ -4281,6 +4364,7 @@
       "effect.minecraft_armor_weapon.effect_magic": "magic",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "effect.minecraft_armor_weapon.kaminariyade": "kaminari",
+      "attribute.minecraft_armor_weapon.mana": "Mana",
       "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
       "key.minecraft_armor_weapon.r": "R",

@@ -28,6 +28,7 @@ import minecraftarmorweapon.item.RiversOfBloodItem;
 import minecraftarmorweapon.item.ResetMaxItem;
 import minecraftarmorweapon.item.Reset1Item;
 import minecraftarmorweapon.item.QuiverItemItem;
+import minecraftarmorweapon.item.PrototypeKatanaItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.NetheriteQuiverItemItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
@@ -142,6 +143,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> SWORD_OF_NIGHT = REGISTRY.register("sword_of_night", () -> new SwordOfNightItem());
 	public static final RegistryObject<Item> KURIKARAKEN = REGISTRY.register("kurikaraken", () -> new KurikarakenItem());
 	public static final RegistryObject<Item> KURIKARAKEN_BLOCK = block(MinecraftArmorWeaponModBlocks.KURIKARAKEN_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
+	public static final RegistryObject<Item> PROTOTYPE_KATANA = REGISTRY.register("prototype_katana", () -> new PrototypeKatanaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

@@ -1,0 +1,16 @@
+{
+  "_fv": 43,
+  "_type": "attribute",
+  "definition": {
+    "description": "Mana",
+    "minValue": 0.0,
+    "maxValue": 2.0E9,
+    "defaultValue": 0.0,
+    "isPersistent": false,
+    "entities": [
+      {
+        "value": "EntityPlayer"
+      }
+    ]
+  }
+}

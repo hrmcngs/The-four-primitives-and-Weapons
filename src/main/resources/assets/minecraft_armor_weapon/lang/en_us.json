@@ -1,4 +1,5 @@
 {
+  "item.minecraft_armor_weapon.prototype_katana": "§8§l§oPrototype Katana",
   "itemGroup.tabmagic_books": "Magic Books",
   "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
   "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
@@ -18,8 +19,8 @@
   "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
   "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
   "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
-  "effect.minecraft_armor_weapon.suityuu": "suityuu",
   "entity.minecraft_armor_weapon.ruami_284": "ruami284",
+  "effect.minecraft_armor_weapon.suityuu": "suityuu",
   "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
   "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
   "item.minecraft_armor_weapon.fireball": "§cFireball",
@@ -79,6 +80,7 @@
   "effect.minecraft_armor_weapon.effect_magic": "magic",
   "item.minecraft_armor_weapon.luna": "§eLuna",
   "effect.minecraft_armor_weapon.kaminariyade": "kaminari",
+  "attribute.minecraft_armor_weapon.mana": "Mana",
   "item.minecraft_armor_weapon.a_2": "Asupe",
   "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
   "key.minecraft_armor_weapon.r": "R",
