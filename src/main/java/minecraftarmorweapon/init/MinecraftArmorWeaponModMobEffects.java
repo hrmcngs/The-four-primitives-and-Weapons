@@ -30,6 +30,7 @@ import minecraftarmorweapon.potion.OtiroMobEffect;
 import minecraftarmorweapon.potion.NgsMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
 import minecraftarmorweapon.potion.Nagiharai2MobEffect;
+import minecraftarmorweapon.potion.LongRangeWeaponCutMobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KougekiMobEffect;
 import minecraftarmorweapon.potion.KarikarisiterunemaidomaidoMobEffect;
@@ -93,4 +94,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> BLOOD_TP = REGISTRY.register("blood_tp", () -> new BloodTpMobEffect());
 	public static final RegistryObject<MobEffect> NGS = REGISTRY.register("ngs", () -> new NgsMobEffect());
 	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_EFFECT = REGISTRY.register("sword_of_night_effect", () -> new SwordOfNightEffectMobEffect());
+	public static final RegistryObject<MobEffect> LONG_RANGE_WEAPON_CUT = REGISTRY.register("long_range_weapon_cut", () -> new LongRangeWeaponCutMobEffect());
 }

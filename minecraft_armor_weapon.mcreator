@@ -4240,6 +4240,54 @@
           }
         ]
       }
+    },
+    {
+      "name": "LongRangeWeaponCutehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 268,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "long_range_weapon_cutehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LongRangeWeaponCut",
+      "type": "potioneffect",
+      "sortid": 269,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "long_range_weapon_cut",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/LongRangeWeaponCutMobEffect.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4303,8 +4351,8 @@
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
-      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
+      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
@@ -4331,6 +4379,7 @@
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
+      "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
       "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
