@@ -85,6 +85,10 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 								if (_ent instanceof ServerPlayer _serverPlayer)
 									_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
 							}
+							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SWORD_OF_NIGHT_EFFECT.get(), 60, 1, true, false));
+							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+								_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 4, true, false));
 							entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
 						}
 					}

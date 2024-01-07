@@ -13,8 +13,14 @@
     "isBenefitical": false,
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
+    "onStarted": {
+      "name": "WindStepEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
+    },
     "onActiveTick": {
       "name": "WindStepEffectehuekutogaYouXiaoShinoteituku"
+    },
+    "onExpired": {
+      "name": "WindStepEffectposiyonXiaoGuogaQieretaShi"
     }
   }
 }

@@ -2265,25 +2265,6 @@
       }
     },
     {
-      "name": "WindStepStaffAttribute",
-      "type": "procedure",
-      "sortid": 158,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "wind_step_staff_attribute",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/WindStepStaffAttributeProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      }
-    },
-    {
       "name": "StrayOuterArmor",
       "type": "armor",
       "sortid": 159,
@@ -4126,7 +4107,12 @@
         "files": [
           "src/main/java/minecraftarmorweapon/procedures/SwordOfNightEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
         ],
-        "dependencies": []
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
       }
     },
     {
@@ -4286,6 +4272,63 @@
       "metadata": {
         "files": [
           "src/main/java/minecraftarmorweapon/potion/LongRangeWeaponCutMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "SwordOfNightEffectposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 270,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sword_of_night_effectposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/SwordOfNightEffectposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WindStepEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 272,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wind_step_effectposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/WindStepEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WindStepEffectposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 273,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wind_step_effectposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/WindStepEffectposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
         ]
       }
     }
