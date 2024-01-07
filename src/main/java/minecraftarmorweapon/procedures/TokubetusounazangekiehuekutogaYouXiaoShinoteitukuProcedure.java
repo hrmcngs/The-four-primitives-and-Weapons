@@ -291,7 +291,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
 						if (world instanceof ServerLevel _level)
 							_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-									"particle firework ~ ~ ~ 0.5 0.1 .0 20 force @p");
+									"particle firework ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
 					}
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
 						if (world instanceof ServerLevel _level)
