@@ -8,5 +8,6 @@ public class WindStepEffectposiyonXiaoGuogaQieretaShiProcedure {
 		if (entity == null)
 			return;
 		((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MOVEMENT_SPEED).setBaseValue((entity.getPersistentData().getDouble("windstepmovementspeed")));
+		((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_SPEED).setBaseValue((entity.getPersistentData().getDouble("windstepattackspeed")));
 	}
 }

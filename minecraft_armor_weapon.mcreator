@@ -4331,6 +4331,51 @@
           }
         ]
       }
+    },
+    {
+      "name": "AaaYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 274,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aaa_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/AaaYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Aaa",
+      "type": "item",
+      "sortid": 275,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "aaa",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/AaaItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/aaa.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4517,7 +4562,8 @@
       "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
       "item.minecraft_armor_weapon.dragon_armor_helmet": "§5Dragon helmet",
       "item.minecraft_armor_weapon.blood_bottle": "Blood Bottle",
-      "entity.minecraft_armor_weapon.otiruyo": "Otiruyo"
+      "entity.minecraft_armor_weapon.otiruyo": "Otiruyo",
+      "item.minecraft_armor_weapon.aaa": "Aaa"
     }
   },
   "foldersRoot": {

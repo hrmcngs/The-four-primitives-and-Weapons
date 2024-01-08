@@ -57,6 +57,7 @@ import minecraftarmorweapon.item.DragonArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BloodBottleItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
+import minecraftarmorweapon.item.AaaItem;
 import minecraftarmorweapon.item.AItem;
 import minecraftarmorweapon.item.A2Item;
 
@@ -144,6 +145,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> KURIKARAKEN = REGISTRY.register("kurikaraken", () -> new KurikarakenItem());
 	public static final RegistryObject<Item> KURIKARAKEN_BLOCK = block(MinecraftArmorWeaponModBlocks.KURIKARAKEN_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> PROTOTYPE_KATANA = REGISTRY.register("prototype_katana", () -> new PrototypeKatanaItem());
+	public static final RegistryObject<Item> AAA = REGISTRY.register("aaa", () -> new AaaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
