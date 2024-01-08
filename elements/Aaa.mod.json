@@ -8,7 +8,7 @@
     "name": "Aaa",
     "rarity": "COMMON",
     "creativeTab": {
-      "value": "CUSTOM:MagicBooks"
+      "value": "CUSTOM:Yopkeinamono"
     },
     "stackSize": 64,
     "enchantability": 0,
@@ -29,7 +29,7 @@
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
-    "onRightClickedInAir": {
+    "onItemInUseTick": {
       "name": "AaaYoukuritukusitatoki"
     },
     "isFood": false,
