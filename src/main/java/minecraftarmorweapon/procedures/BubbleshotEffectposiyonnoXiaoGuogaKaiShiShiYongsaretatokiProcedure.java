@@ -10,6 +10,6 @@ public class BubbleshotEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure 
 		if (entity == null)
 			return;
 		entity.getPersistentData().putDouble("bubbleshoteswimspeed", ((LivingEntity) entity).getAttribute(ForgeMod.SWIM_SPEED.get()).getBaseValue());
-		((LivingEntity) entity).getAttribute(ForgeMod.SWIM_SPEED.get()).setBaseValue((((LivingEntity) entity).getAttribute(ForgeMod.SWIM_SPEED.get()).getBaseValue() + 0.5));
+		((LivingEntity) entity).getAttribute(ForgeMod.SWIM_SPEED.get()).setBaseValue((((LivingEntity) entity).getAttribute(ForgeMod.SWIM_SPEED.get()).getBaseValue() + 9.5));
 	}
 }

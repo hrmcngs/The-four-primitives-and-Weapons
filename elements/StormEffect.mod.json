@@ -2,10 +2,10 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "tunderboltattack",
-    "icon": "fireballeffect.png",
+    "effectName": "stormeffect",
+    "icon": "arrow_1.png",
     "color": {
-      "value": -852224,
+      "value": -16717923,
       "falpha": 0.0
     },
     "isInstant": false,
@@ -14,13 +14,13 @@
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
     "onStarted": {
-      "name": "TunderbolteffrctposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
+      "name": "StormEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
     },
     "onActiveTick": {
-      "name": "TunderbolteffrctehuekutogaYouXiaoShinoteituku"
+      "name": "StormEffectehuekutogaYouXiaoShinoteituku"
     },
     "onExpired": {
-      "name": "TunderbolteffrctposiyonXiaoGuogaQieretaShi"
+      "name": "StormEffectposiyonXiaoGuogaQieretaShi"
     }
   }
 }

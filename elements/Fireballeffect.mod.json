@@ -11,8 +11,8 @@
     "isInstant": false,
     "isBad": false,
     "isBenefitical": false,
-    "renderStatusInInventory": true,
-    "renderStatusInHUD": true,
+    "renderStatusInInventory": false,
+    "renderStatusInHUD": false,
     "onActiveTick": {
       "name": "FireballeffectehuekutogaYouXiaoShinoteituku"
     }

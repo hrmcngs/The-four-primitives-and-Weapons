@@ -23,6 +23,7 @@ import minecraftarmorweapon.item.ThunderboltItem;
 import minecraftarmorweapon.item.SwordOfNightItem;
 import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
+import minecraftarmorweapon.item.StormItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.RiversOfBloodItem;
 import minecraftarmorweapon.item.ResetMaxItem;
@@ -146,6 +147,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> KURIKARAKEN_BLOCK = block(MinecraftArmorWeaponModBlocks.KURIKARAKEN_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> PROTOTYPE_KATANA = REGISTRY.register("prototype_katana", () -> new PrototypeKatanaItem());
 	public static final RegistryObject<Item> AAA = REGISTRY.register("aaa", () -> new AaaItem());
+	public static final RegistryObject<Item> STORM = REGISTRY.register("storm", () -> new StormItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

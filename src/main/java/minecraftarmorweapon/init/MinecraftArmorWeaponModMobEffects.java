@@ -24,6 +24,7 @@ import minecraftarmorweapon.potion.SyugekinanozeeMobEffect;
 import minecraftarmorweapon.potion.SyugekiMobEffect;
 import minecraftarmorweapon.potion.SwordOfNightEffectMobEffect;
 import minecraftarmorweapon.potion.SuityuuMobEffect;
+import minecraftarmorweapon.potion.StormEffectMobEffect;
 import minecraftarmorweapon.potion.OtitaMobEffect;
 import minecraftarmorweapon.potion.OtiruyooMobEffect;
 import minecraftarmorweapon.potion.OtiroMobEffect;
@@ -95,4 +96,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> NGS = REGISTRY.register("ngs", () -> new NgsMobEffect());
 	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_EFFECT = REGISTRY.register("sword_of_night_effect", () -> new SwordOfNightEffectMobEffect());
 	public static final RegistryObject<MobEffect> LONG_RANGE_WEAPON_CUT = REGISTRY.register("long_range_weapon_cut", () -> new LongRangeWeaponCutMobEffect());
+	public static final RegistryObject<MobEffect> STORM_EFFECT = REGISTRY.register("storm_effect", () -> new StormEffectMobEffect());
 }

@@ -10,36 +10,36 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
-import minecraftarmorweapon.procedures.TunderbolteffrctposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
-import minecraftarmorweapon.procedures.TunderbolteffrctposiyonXiaoGuogaQieretaShiProcedure;
-import minecraftarmorweapon.procedures.TunderbolteffrctehuekutogaYouXiaoShinoteitukuProcedure;
+import minecraftarmorweapon.procedures.StormEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
+import minecraftarmorweapon.procedures.StormEffectposiyonXiaoGuogaQieretaShiProcedure;
+import minecraftarmorweapon.procedures.StormEffectehuekutogaYouXiaoShinoteitukuProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-public class TunderbolteffrctMobEffect extends MobEffect {
-	public TunderbolteffrctMobEffect() {
-		super(MobEffectCategory.NEUTRAL, -852224);
+public class StormEffectMobEffect extends MobEffect {
+	public StormEffectMobEffect() {
+		super(MobEffectCategory.NEUTRAL, -16717923);
 	}
 
 	@Override
 	public String getDescriptionId() {
-		return "effect.minecraft_armor_weapon.tunderbolteffrct";
+		return "effect.minecraft_armor_weapon.storm_effect";
 	}
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		TunderbolteffrctposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity);
+		StormEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity);
 	}
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		TunderbolteffrctehuekutogaYouXiaoShinoteitukuProcedure.execute(entity);
+		StormEffectehuekutogaYouXiaoShinoteitukuProcedure.execute(entity);
 	}
 
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		TunderbolteffrctposiyonXiaoGuogaQieretaShiProcedure.execute(entity);
+		StormEffectposiyonXiaoGuogaQieretaShiProcedure.execute(entity);
 	}
 
 	@Override
