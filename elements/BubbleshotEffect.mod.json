@@ -13,8 +13,14 @@
     "isBenefitical": false,
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
+    "onStarted": {
+      "name": "BubbleshotEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
+    },
     "onActiveTick": {
       "name": "BubbleshotEffectehuekutogaYouXiaoShinoteituku"
+    },
+    "onExpired": {
+      "name": "BubbleshotEffectposiyonXiaoGuogaQieretaShi"
     }
   }
 }

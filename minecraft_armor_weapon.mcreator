@@ -4364,6 +4364,44 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/aaa.json"
         ]
       }
+    },
+    {
+      "name": "BubbleshotEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 276,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bubbleshot_effectposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BubbleshotEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BubbleshotEffectposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 277,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bubbleshot_effectposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BubbleshotEffectposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4427,8 +4465,8 @@
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
-      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
+      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
