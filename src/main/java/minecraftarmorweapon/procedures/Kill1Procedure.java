@@ -123,5 +123,13 @@ public class Kill1Procedure {
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ATTACK_BOW.get(), 1, 1, true, false));
 			}
 		}
+		if (!world.isClientSide()) {
+			if (sourceentity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.STORM_EFFECT.get()) : false) {
+				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
+				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 6, true, false));
+			}
+		}
 	}
 }
