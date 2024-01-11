@@ -47,7 +47,7 @@ public class NetheriteKatanaItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		NetheriteKatanaYoukuritukusitatokiProcedure.execute(entity);
+		NetheriteKatanaYoukuritukusitatokiProcedure.execute();
 		return ar;
 	}
 }

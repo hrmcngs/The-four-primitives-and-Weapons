@@ -13,6 +13,6 @@ public class KaitennposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 			return;
 		if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 			_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,
-					(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KAITENN.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.KAITENN.get()).getDuration() : 0) + 20), 1, true, false));
+					(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KAITEN.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.KAITEN.get()).getDuration() : 0) + 20), 1, true, false));
 	}
 }

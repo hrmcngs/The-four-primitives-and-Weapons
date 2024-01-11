@@ -36,7 +36,6 @@ import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KougekiMobEffect;
 import minecraftarmorweapon.potion.KarikarisiterunemaidomaidoMobEffect;
 import minecraftarmorweapon.potion.KaminariyadeMobEffect;
-import minecraftarmorweapon.potion.KaitennMobEffect;
 import minecraftarmorweapon.potion.KaitenMobEffect;
 import minecraftarmorweapon.potion.GyetonzangekiMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
@@ -61,7 +60,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> TUNDERBOLTEFFRCT = REGISTRY.register("tunderbolteffrct", () -> new TunderbolteffrctMobEffect());
 	public static final RegistryObject<MobEffect> BOW_ATTACK = REGISTRY.register("bow_attack", () -> new BowAttackMobEffect());
 	public static final RegistryObject<MobEffect> ATTACK_BOW = REGISTRY.register("attack_bow", () -> new AttackBowMobEffect());
-	public static final RegistryObject<MobEffect> KAITENN = REGISTRY.register("kaitenn", () -> new KaitennMobEffect());
 	public static final RegistryObject<MobEffect> OTIRUYOO = REGISTRY.register("otiruyoo", () -> new OtiruyooMobEffect());
 	public static final RegistryObject<MobEffect> AAAA = REGISTRY.register("aaaa", () -> new AaaaMobEffect());
 	public static final RegistryObject<MobEffect> SYUGEKI = REGISTRY.register("syugeki", () -> new SyugekiMobEffect());
