@@ -59,10 +59,6 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 					for (Entity entityiterator : _entfound) {
 						if (entityiterator.getPersistentData().getDouble("gyamigyapitonndeyaru") == 1) {
 							entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
-							if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
-								if (entity instanceof Player _player)
-									_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get(), 40);
-							}
 						}
 					}
 				}
@@ -70,26 +66,35 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 				for (int index0 = 0; index0 < 20; index0++) {
 					if (!world.getEntitiesOfClass(LivingEntity.class,
 							AABB.ofSize(new Vec3((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z)), 0.5, 0.5, 0.5), e -> true).isEmpty()) {
-						((Entity) world
+						if (!(entity == ((Entity) world
 								.getEntitiesOfClass(LivingEntity.class,
 										AABB.ofSize(new Vec3((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z)), 0.5, 0.5, 0.5), e -> true)
 								.stream().sorted(new Object() {
 									Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 										return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 									}
-								}.compareDistOf((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z))).findFirst().orElse(null)).getPersistentData()
-								.putDouble("gyamigyapitonndeyaru", 1);
-						if (((Entity) world
-								.getEntitiesOfClass(LivingEntity.class,
-										AABB.ofSize(new Vec3((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z)), 0.5, 0.5, 0.5), e -> true)
-								.stream().sorted(new Object() {
-									Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-										return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-									}
-								}.compareDistOf((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z))).findFirst()
-								.orElse(null)) instanceof LivingEntity _entity && !_entity.level.isClientSide())
-							_entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 2, 1, true, false));
-						break;
+								}.compareDistOf((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z))).findFirst().orElse(null)))) {
+							((Entity) world
+									.getEntitiesOfClass(LivingEntity.class,
+											AABB.ofSize(new Vec3((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z)), 0.5, 0.5, 0.5), e -> true)
+									.stream().sorted(new Object() {
+										Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+											return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+										}
+									}.compareDistOf((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z))).findFirst().orElse(null)).getPersistentData()
+									.putDouble("gyamigyapitonndeyaru", 1);
+							if (((Entity) world
+									.getEntitiesOfClass(LivingEntity.class,
+											AABB.ofSize(new Vec3((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z)), 0.5, 0.5, 0.5), e -> true)
+									.stream().sorted(new Object() {
+										Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+											return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+										}
+									}.compareDistOf((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z))).findFirst()
+									.orElse(null)) instanceof LivingEntity _entity && !_entity.level.isClientSide())
+								_entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 2, 1, true, false));
+							break;
+						}
 					}
 					r = r + 1;
 				}

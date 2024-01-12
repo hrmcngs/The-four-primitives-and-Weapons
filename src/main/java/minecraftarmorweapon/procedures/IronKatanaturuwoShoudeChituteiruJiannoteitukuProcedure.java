@@ -5,6 +5,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
@@ -78,18 +79,24 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(50 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 							.collect(Collectors.toList());
 					for (Entity entityiterator : _entfound) {
-						if (entityiterator.getPersistentData().getDouble("gyamigyapitonndeyaru") == 1) {
-							{
-								Entity _ent = entity;
-								_ent.teleportTo((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()));
-								if (_ent instanceof ServerPlayer _serverPlayer)
-									_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
+						if (!(entity == entityiterator)) {
+							if (entityiterator.getPersistentData().getDouble("gyamigyapitonndeyaru") == 1) {
+								{
+									Entity _ent = entity;
+									_ent.teleportTo((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()));
+									if (_ent instanceof ServerPlayer _serverPlayer)
+										_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
+								}
+								if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+									if (entity instanceof Player _player)
+										_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get(), 40);
+								}
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SWORD_OF_NIGHT_EFFECT.get(), 60, 1, true, false));
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 4, true, false));
+								entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
 							}
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SWORD_OF_NIGHT_EFFECT.get(), 60, 1, true, false));
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 4, true, false));
-							entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
 						}
 					}
 				}

@@ -37,5 +37,6 @@ public class StormEffectehuekutogaYouXiaoShinoteitukuProcedure {
 				}
 			}
 		}
+		entity.fallDistance = 0;
 	}
 }
