@@ -23,5 +23,8 @@ public class BubbleshotEffectehuekutogaYouXiaoShinoteitukuProcedure {
 				}
 			}
 		}
+		if (entity.getAirSupply() < 21) {
+			entity.setAirSupply((int) (entity.getAirSupply() + 1));
+		}
 	}
 }
