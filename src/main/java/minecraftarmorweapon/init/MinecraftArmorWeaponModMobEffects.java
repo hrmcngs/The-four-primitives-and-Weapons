@@ -34,6 +34,7 @@ import minecraftarmorweapon.potion.Nagiharai2MobEffect;
 import minecraftarmorweapon.potion.LongRangeWeaponCutMobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KougekiMobEffect;
+import minecraftarmorweapon.potion.KitterukitteruMobEffect;
 import minecraftarmorweapon.potion.KarikarisiterunemaidomaidoMobEffect;
 import minecraftarmorweapon.potion.KaminariyadeMobEffect;
 import minecraftarmorweapon.potion.KaitenMobEffect;
@@ -95,4 +96,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_EFFECT = REGISTRY.register("sword_of_night_effect", () -> new SwordOfNightEffectMobEffect());
 	public static final RegistryObject<MobEffect> LONG_RANGE_WEAPON_CUT = REGISTRY.register("long_range_weapon_cut", () -> new LongRangeWeaponCutMobEffect());
 	public static final RegistryObject<MobEffect> STORM_EFFECT = REGISTRY.register("storm_effect", () -> new StormEffectMobEffect());
+	public static final RegistryObject<MobEffect> KITTERUKITTERU = REGISTRY.register("kitterukitteru", () -> new KitterukitteruMobEffect());
 }
