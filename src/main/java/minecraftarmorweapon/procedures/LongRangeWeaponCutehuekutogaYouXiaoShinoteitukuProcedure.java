@@ -14,8 +14,6 @@ import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.util.RandomSource;
-import net.minecraft.util.Mth;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
@@ -47,9 +45,6 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 		double a = 0;
 		double r = 0;
 		double b = 0;
-		loop = Math.toRadians(entity.getYRot());
-		Radius = 1;
-		rad_now = Mth.nextDouble(RandomSource.create(), -90, 90);
 		{
 			final Vec3 _center = new Vec3(x, y, z);
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
@@ -64,39 +59,41 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 						} else {
 							entityiterator.getPersistentData().putBoolean("My arrow", false);
 						}
-						if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
-							entityiterator.getPersistentData().putBoolean("Check2", true);
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
+							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
+								entityiterator.getPersistentData().putBoolean("Check2", true);
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
 								}
-							}
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
 								}
-							}
-						} else {
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+							} else {
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
 								}
-							}
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
 								}
 							}
 						}
@@ -118,39 +115,41 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 						} else {
 							entityiterator.getPersistentData().putBoolean("My arrow", false);
 						}
-						if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
-							entityiterator.getPersistentData().putBoolean("Check2", true);
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
+							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
+								entityiterator.getPersistentData().putBoolean("Check2", true);
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
 								}
-							}
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
 								}
-							}
-						} else {
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+							} else {
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
 								}
-							}
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
 								}
 							}
 						}
@@ -172,39 +171,41 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 						} else {
 							entityiterator.getPersistentData().putBoolean("My arrow", false);
 						}
-						if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
-							entityiterator.getPersistentData().putBoolean("Check2", true);
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
+							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
+								entityiterator.getPersistentData().putBoolean("Check2", true);
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
 								}
-							}
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
 								}
-							}
-						} else {
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+							} else {
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
 								}
-							}
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
 								}
 							}
 						}
@@ -220,45 +221,103 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 						|| entityiterator instanceof Snowball || entityiterator instanceof ThrownEgg || entityiterator instanceof SmallFireball) {
 					if (entityiterator.getPersistentData().getBoolean("Check") == false) {
 						entityiterator.getPersistentData().putBoolean("Check", true);
-						dis3 = Math.sqrt(Math.pow(entityiterator.getX() - entity.getX(), 1.2) + Math.pow(entityiterator.getY() - entity.getY(), 1.2) + Math.pow(entityiterator.getZ() - entity.getZ(), 1.2));
-						if (dis3 <= 1.6) {
+						dis4 = Math.sqrt(Math.pow(entityiterator.getX() - entity.getX(), 1.6) + Math.pow(entityiterator.getY() - entity.getY(), 1.6) + Math.pow(entityiterator.getZ() - entity.getZ(), 1.6));
+						if (dis4 <= 1.6) {
 							entityiterator.getPersistentData().putBoolean("My arrow", true);
 						} else {
 							entityiterator.getPersistentData().putBoolean("My arrow", false);
 						}
-						if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
-							entityiterator.getPersistentData().putBoolean("Check2", true);
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
+							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
+								entityiterator.getPersistentData().putBoolean("Check2", true);
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
+								}
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
+								}
+							} else {
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
+								}
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
 								}
 							}
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
-								}
-							}
+						}
+					}
+				}
+			}
+		}
+		{
+			final Vec3 _center = new Vec3(x, y, z);
+			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(5 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
+			for (Entity entityiterator : _entfound) {
+				if (entityiterator instanceof Arrow || entityiterator instanceof SpectralArrow || entityiterator instanceof ThrownTrident || entityiterator instanceof LargeFireball || entityiterator instanceof DragonFireball
+						|| entityiterator instanceof Snowball || entityiterator instanceof ThrownEgg || entityiterator instanceof SmallFireball) {
+					if (entityiterator.getPersistentData().getBoolean("Check") == false) {
+						entityiterator.getPersistentData().putBoolean("Check", true);
+						dis4 = Math.sqrt(Math.pow(entityiterator.getX() - entity.getX(), 1.6) + Math.pow(entityiterator.getY() - entity.getY(), 1.6) + Math.pow(entityiterator.getZ() - entity.getZ(), 1.6));
+						if (dis4 <= 2) {
+							entityiterator.getPersistentData().putBoolean("My arrow", true);
 						} else {
-							if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+							entityiterator.getPersistentData().putBoolean("My arrow", false);
+						}
+						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
+							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
+								entityiterator.getPersistentData().putBoolean("Check2", true);
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
 								}
-							}
-							{
-								Entity _ent = entityiterator;
-								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
+								}
+							} else {
+								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KITTERUKITTERU.get(), 2, 1, true, false));
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "kill");
+									}
+								}
+								{
+									Entity _ent = entityiterator;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+									}
 								}
 							}
 						}

@@ -42,10 +42,10 @@ public class KitterukitteruehuekutogaYouXiaoShinoteitukuProcedure {
 		double dis1 = 0;
 		double dis = 0;
 		r = 1;
-		s = 5;
+		s = 3;
 		a = Mth.nextDouble(RandomSource.create(), -179, 180) + 90;
 		c = 0;
-		b = Mth.nextDouble(RandomSource.create(), -90, 90) + 80;
+		b = Mth.nextDouble(RandomSource.create(), -179, 180) + 80;
 		for (int index0 = 0; index0 < 30; index0++) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.FLAME,
@@ -53,14 +53,14 @@ public class KitterukitteruehuekutogaYouXiaoShinoteitukuProcedure {
 								+ s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
 						((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))), (z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a))
 								+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-						10, 0.5, 0.02, 0.5, 0);
+						10, 0.02, 0.02, 0.02, 0);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.FIREWORK,
 						(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a))
 								+ s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
 						((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))), (z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a))
 								+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-						5, 0.4, 0.02, 0.4, 0.01);
+						5, 0.02, 0.02, 0.02, 0.01);
 			if (world instanceof ServerLevel _level)
 				_level.getServer().getCommands().performPrefixedCommand(
 						new CommandSourceStack(CommandSource.NULL,
