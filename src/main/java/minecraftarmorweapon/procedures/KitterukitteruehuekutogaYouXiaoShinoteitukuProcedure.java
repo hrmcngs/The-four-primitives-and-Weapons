@@ -6,6 +6,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.entity.projectile.ThrownEgg;
 import net.minecraft.world.entity.projectile.SpectralArrow;
@@ -14,6 +15,7 @@ import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.entity.projectile.DragonFireball;
 import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
@@ -22,6 +24,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
+
+import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -47,31 +51,187 @@ public class KitterukitteruehuekutogaYouXiaoShinoteitukuProcedure {
 		c = 0;
 		b = Mth.nextDouble(RandomSource.create(), -179, 180) + 80;
 		for (int index0 = 0; index0 < 30; index0++) {
-			if (world instanceof ServerLevel _level)
-				_level.sendParticles(ParticleTypes.FLAME,
-						(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a))
-								+ s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-						((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))), (z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a))
-								+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-						10, 0.02, 0.02, 0.02, 0);
-			if (world instanceof ServerLevel _level)
-				_level.sendParticles(ParticleTypes.FIREWORK,
-						(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a))
-								+ s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-						((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))), (z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a))
-								+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-						5, 0.02, 0.02, 0.02, 0.01);
-			if (world instanceof ServerLevel _level)
-				_level.getServer().getCommands().performPrefixedCommand(
-						new CommandSourceStack(CommandSource.NULL,
-								new Vec3(
-										(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
-												+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-										((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
-										(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
-												+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
-								Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-						"particle dust 0.839 0.369 0.369 1 ~ ~ ~ 0.3 0.02 0.3 0.2 5");
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
+					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
+					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
+					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()
+					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()) {
+				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle dust 0.839 0.369 0.369 1 ~ ~ ~ 0.3 0.02 0.3 0.2 5");
+					if (world instanceof ServerLevel _level)
+						_level.sendParticles(ParticleTypes.FLAME,
+								(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a))
+										+ s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))), (z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a))
+										+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								10, 0.02, 0.02, 0.02, 0);
+				}
+				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"/particle dust 0.129 0.780 0.000 1 ~ ~ ~ 0.1 0.1 0.1 1 25");
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle falling_dust ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle sneeze ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
+				}
+				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle dolphin ~ ~ ~ 0.5 0.1 0.5 .0 25 force @p");
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle bubble ~ ~ ~ 0.5 0.1 0.5 .0 25 force @p");
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle block lapis_block ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
+				}
+				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+					if (world instanceof ServerLevel _level)
+						_level.sendParticles(ParticleTypes.FIREWORK,
+								(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a))
+										+ s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))), (z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a))
+										+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								5, 0.02, 0.02, 0.02, 0.01);
+				}
+				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()) {
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle dolphin ~ ~ ~ 0.5 0.1 0.5 .0 25 force @p");
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle bubble ~ ~ ~ 0.5 0.1 0.5 .0 25 force @p");
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle falling_dust ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"particle sneeze ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
+					if (world instanceof ServerLevel _level)
+						_level.getServer().getCommands().performPrefixedCommand(
+								new CommandSourceStack(CommandSource.NULL,
+										new Vec3(
+												(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+														+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+												((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+												(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+														+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+										Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+								"/particle dust 0.129 0.780 0.000 1 ~ ~ ~ 0.1 0.1 0.1 1 25");
+					if (world instanceof ServerLevel _level)
+						_level.sendParticles(ParticleTypes.FIREWORK,
+								(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a))
+										+ s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))), (z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a))
+										+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								5, 0.02, 0.02, 0.02, 0.01);
+				}
+			} else {
+				if (world instanceof ServerLevel _level)
+					_level.getServer().getCommands().performPrefixedCommand(
+							new CommandSourceStack(CommandSource.NULL,
+									new Vec3(
+											(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a))
+													+ s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a)) + s * Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+											((y + 1.5) - (r * Math.sin(Math.toRadians(b)) + s * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b - 90)))),
+											(z + r * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.cos(Math.toRadians(a))
+													+ s * Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90)))),
+									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+							"particle minecraft:dust 1 1 1 1 ~ ~ ~ 0.1 0.1 0.1 0 5");
+			}
 			{
 				final Vec3 _center = new Vec3(
 						(x - (r * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + s * Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b - 90)) * Math.sin(Math.toRadians(a))
