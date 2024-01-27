@@ -110,9 +110,12 @@ public class PrototypeKatanaYoukuritukusitatokiProcedure {
 															entityiterator.setSecondsOnFire(30);
 														}
 														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
+															entityiterator.hurt(DamageSource.GENERIC, 40);
+														}
+														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+															entityiterator.hurt(DamageSource.GENERIC, 20);
 															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 1, true, false));
-															entityiterator.hurt(DamageSource.GENERIC, 5);
+																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 1, true, false));
 														}
 														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
 															entityiterator.hurt(DamageSource.GENERIC, 20);
@@ -122,9 +125,7 @@ public class PrototypeKatanaYoukuritukusitatokiProcedure {
 														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()) {
 															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 1, true, false));
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 1, true, false));
-															entityiterator.hurt(DamageSource.GENERIC, 20);
+															entityiterator.hurt(DamageSource.GENERIC, 40);
 														}
 													} else {
 														entityiterator.hurt(DamageSource.GENERIC, 20);
@@ -177,9 +178,7 @@ public class PrototypeKatanaYoukuritukusitatokiProcedure {
 															entityiterator.setSecondsOnFire(30);
 														}
 														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 1, true, false));
-															entityiterator.hurt(DamageSource.GENERIC, 5);
+															entityiterator.hurt(DamageSource.GENERIC, 40);
 														}
 														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
 															entityiterator.hurt(DamageSource.GENERIC, 20);

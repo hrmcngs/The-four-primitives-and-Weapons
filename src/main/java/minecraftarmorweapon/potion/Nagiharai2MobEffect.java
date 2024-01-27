@@ -10,7 +10,6 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
-import minecraftarmorweapon.procedures.NagiharaiehuekutogaYouXiaoShinoteitukuProcedure;
 import minecraftarmorweapon.procedures.Nagiharai2posiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -28,11 +27,6 @@ public class Nagiharai2MobEffect extends MobEffect {
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		Nagiharai2posiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity.level, entity);
-	}
-
-	@Override
-	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		NagiharaiehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity);
 	}
 
 	@Override

@@ -31,6 +31,7 @@ import minecraftarmorweapon.item.Reset1Item;
 import minecraftarmorweapon.item.QuiverItemItem;
 import minecraftarmorweapon.item.PrototypeKatanaItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
+import minecraftarmorweapon.item.OninomenItem;
 import minecraftarmorweapon.item.NetheriteQuiverItemItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
@@ -148,6 +149,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> PROTOTYPE_KATANA = REGISTRY.register("prototype_katana", () -> new PrototypeKatanaItem());
 	public static final RegistryObject<Item> AAA = REGISTRY.register("aaa", () -> new AaaItem());
 	public static final RegistryObject<Item> STORM = REGISTRY.register("storm", () -> new StormItem());
+	public static final RegistryObject<Item> ONINOMEN_HELMET = REGISTRY.register("oninomen_helmet", () -> new OninomenItem.Helmet());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

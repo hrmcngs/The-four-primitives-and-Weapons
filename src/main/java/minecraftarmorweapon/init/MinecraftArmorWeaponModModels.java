@@ -16,6 +16,7 @@ import minecraftarmorweapon.client.model.Modelskeleton_Converted;
 import minecraftarmorweapon.client.model.Modelplayer_slim__Converted;
 import minecraftarmorweapon.client.model.Modelpillager_Converted;
 import minecraftarmorweapon.client.model.Modelpiglin_brute_Converted;
+import minecraftarmorweapon.client.model.Modeloninomen;
 import minecraftarmorweapon.client.model.Modelnetherite_arrow_armor_layer_1_Converted;
 import minecraftarmorweapon.client.model.Modelmahouzinn;
 import minecraftarmorweapon.client.model.Modelluna_Converted2;
@@ -44,6 +45,7 @@ public class MinecraftArmorWeaponModModels {
 		event.registerLayerDefinition(Modelblack_spectral_arrow_Converted.LAYER_LOCATION, Modelblack_spectral_arrow_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelswordbblock_Converted.LAYER_LOCATION, Modelswordbblock_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelbanner_Converted.LAYER_LOCATION, Modelbanner_Converted::createBodyLayer);
+		event.registerLayerDefinition(Modeloninomen.LAYER_LOCATION, Modeloninomen::createBodyLayer);
 		event.registerLayerDefinition(Modelluna_Converted.LAYER_LOCATION, Modelluna_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelstray_outer_Converted_hat.LAYER_LOCATION, Modelstray_outer_Converted_hat::createBodyLayer);
 		event.registerLayerDefinition(Modeldoragon_leprica_armor_layer_3.LAYER_LOCATION, Modeldoragon_leprica_armor_layer_3::createBodyLayer);

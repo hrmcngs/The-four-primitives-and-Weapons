@@ -16,6 +16,7 @@ import minecraftarmorweapon.potion.YouwakaranMobEffect;
 import minecraftarmorweapon.potion.WindStepEffectMobEffect;
 import minecraftarmorweapon.potion.WazaMobEffect;
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
+import minecraftarmorweapon.potion.TpAttackMobEffect;
 import minecraftarmorweapon.potion.TokubetusounazangekiMobEffect;
 import minecraftarmorweapon.potion.TobeMobEffect;
 import minecraftarmorweapon.potion.TissokuMobEffect;
@@ -97,4 +98,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> LONG_RANGE_WEAPON_CUT = REGISTRY.register("long_range_weapon_cut", () -> new LongRangeWeaponCutMobEffect());
 	public static final RegistryObject<MobEffect> STORM_EFFECT = REGISTRY.register("storm_effect", () -> new StormEffectMobEffect());
 	public static final RegistryObject<MobEffect> KITTERUKITTERU = REGISTRY.register("kitterukitteru", () -> new KitterukitteruMobEffect());
+	public static final RegistryObject<MobEffect> TP_ATTACK = REGISTRY.register("tp_attack", () -> new TpAttackMobEffect());
 }

@@ -4,18 +4,23 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.Difficulty;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
+import net.minecraft.client.Minecraft;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
@@ -90,6 +95,30 @@ public class KaitenehuekutogaYouXiaoShinoteitukuProcedure {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
 										if (entityiterator instanceof Mob) {
+											if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
+												public boolean checkGamemode(Entity _ent) {
+													if (_ent instanceof ServerPlayer _serverPlayer) {
+														return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+													} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+														return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+																&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+													}
+													return false;
+												}
+											}.checkGamemode(entity)) && !(new Object() {
+												public boolean checkGamemode(Entity _ent) {
+													if (_ent instanceof ServerPlayer _serverPlayer) {
+														return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
+													} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+														return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+																&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.SPECTATOR;
+													}
+													return false;
+												}
+											}.checkGamemode(entity))) {
+												if (entityiterator instanceof Mob _entity && entity instanceof LivingEntity _ent)
+													_entity.setTarget(_ent);
+											}
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
@@ -205,6 +234,30 @@ public class KaitenehuekutogaYouXiaoShinoteitukuProcedure {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
 										if (entityiterator instanceof Mob) {
+											if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
+												public boolean checkGamemode(Entity _ent) {
+													if (_ent instanceof ServerPlayer _serverPlayer) {
+														return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+													} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+														return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+																&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+													}
+													return false;
+												}
+											}.checkGamemode(entity)) && !(new Object() {
+												public boolean checkGamemode(Entity _ent) {
+													if (_ent instanceof ServerPlayer _serverPlayer) {
+														return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
+													} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+														return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+																&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.SPECTATOR;
+													}
+													return false;
+												}
+											}.checkGamemode(entity))) {
+												if (entityiterator instanceof Mob _entity && entity instanceof LivingEntity _ent)
+													_entity.setTarget(_ent);
+											}
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())

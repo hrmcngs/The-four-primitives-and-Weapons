@@ -2,19 +2,22 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "aa",
-    "icon": "bow_attack.png",
+    "effectName": "tp",
+    "icon": "barrier_effect.png",
     "color": {
       "value": -1,
       "falpha": 0.0
     },
-    "isInstant": false,
+    "isInstant": true,
     "isBad": false,
     "isBenefitical": false,
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
     "onStarted": {
-      "name": "Nagiharai2posiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
+      "name": "TpAttackposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
+    },
+    "onExpired": {
+      "name": "TpAttackposiyonXiaoGuogaQieretaShi"
     }
   }
 }
