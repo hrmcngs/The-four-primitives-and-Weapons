@@ -2461,19 +2461,6 @@
       }
     },
     {
-      "name": "GoumanorikenProgress",
-      "type": "achievement",
-      "sortid": 173,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "goumanoriken_progress",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/minecraft_armor_weapon/advancements/goumanoriken_progress.json"
-        ]
-      }
-    },
-    {
       "name": "MagicalKatanaProgress",
       "type": "achievement",
       "sortid": 175,
@@ -4575,6 +4562,19 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/oninomen_helmet.json"
         ]
       }
+    },
+    {
+      "name": "KurikarakenProgress",
+      "type": "achievement",
+      "sortid": 292,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kurikaraken_progress",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/advancements/kurikaraken_progress.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4622,6 +4622,7 @@
       "itemGroup.tabmagic_books": "Magic Books",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
+      "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
       "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
@@ -4705,6 +4706,7 @@
       "attribute.minecraft_armor_weapon.mana": "Mana",
       "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
+      "advancements.kurikaraken_progress.descr": "倶利伽羅剣を得る",
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.kurikaraken": "§5倶利伽羅剣",
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
@@ -4743,11 +4745,9 @@
       "item.minecraft_armor_weapon.dragon_blue_armor_leggings": "§1Dragon blue leggings",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.dragon_blue_armor_boots": "§1Dragon blue boots",
-      "advancements.goumanoriken_progress.descr": "倶利伽羅剣を得る",
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
-      "advancements.goumanoriken_progress.title": "剣ちゃうやん刀やんけ",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "item.minecraft_armor_weapon.dragon_red_armor_helmet": "§4Dragon red helmet",

@@ -4,10 +4,10 @@
       "item": "minecraft_armor_weapon:kurikaraken"
     },
     "title": {
-      "translate": "advancements.goumanoriken_progress.title"
+      "translate": "advancements.kurikaraken_progress.title"
     },
     "description": {
-      "translate": "advancements.goumanoriken_progress.descr"
+      "translate": "advancements.kurikaraken_progress.descr"
     },
     "frame": "challenge",
     "show_toast": true,
@@ -15,7 +15,7 @@
     "hidden": false
   },
   "criteria": {
-    "goumanoriken_progress": {
+    "kurikaraken_progress": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
