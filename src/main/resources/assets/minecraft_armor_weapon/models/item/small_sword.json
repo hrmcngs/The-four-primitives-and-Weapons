@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/kodachiiron3d",
+  "textures": {
+    "2": "minecraft_armor_weapon:blocks/kodachiiron3d",
+    "particle": "minecraft_armor_weapon:items/kodachiiron3d"
+  }
+}

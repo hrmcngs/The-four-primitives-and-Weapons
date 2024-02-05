@@ -54,11 +54,6 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 					if (entityiterator.getPersistentData().getBoolean("Check") == false) {
 						entityiterator.getPersistentData().putBoolean("Check", true);
 						dis1 = Math.sqrt(Math.pow(entityiterator.getX() - entity.getX(), 0.4) + Math.pow(entityiterator.getY() - entity.getY(), 0.4) + Math.pow(entityiterator.getZ() - entity.getZ(), 0.4));
-						if (dis1 <= 0.4) {
-							entityiterator.getPersistentData().putBoolean("My arrow", true);
-						} else {
-							entityiterator.getPersistentData().putBoolean("My arrow", false);
-						}
 						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
 							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
 								entityiterator.getPersistentData().putBoolean("Check2", true);
@@ -110,11 +105,6 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 					if (entityiterator.getPersistentData().getBoolean("Check") == false) {
 						entityiterator.getPersistentData().putBoolean("Check", true);
 						dis2 = Math.sqrt(Math.pow(entityiterator.getX() - entity.getX(), 0.8) + Math.pow(entityiterator.getY() - entity.getY(), 0.8) + Math.pow(entityiterator.getZ() - entity.getZ(), 0.8));
-						if (dis2 <= 0.8) {
-							entityiterator.getPersistentData().putBoolean("My arrow", true);
-						} else {
-							entityiterator.getPersistentData().putBoolean("My arrow", false);
-						}
 						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
 							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
 								entityiterator.getPersistentData().putBoolean("Check2", true);
@@ -166,11 +156,6 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 					if (entityiterator.getPersistentData().getBoolean("Check") == false) {
 						entityiterator.getPersistentData().putBoolean("Check", true);
 						dis3 = Math.sqrt(Math.pow(entityiterator.getX() - entity.getX(), 1.2) + Math.pow(entityiterator.getY() - entity.getY(), 1.2) + Math.pow(entityiterator.getZ() - entity.getZ(), 1.2));
-						if (dis3 <= 1.2) {
-							entityiterator.getPersistentData().putBoolean("My arrow", true);
-						} else {
-							entityiterator.getPersistentData().putBoolean("My arrow", false);
-						}
 						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
 							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
 								entityiterator.getPersistentData().putBoolean("Check2", true);
@@ -222,11 +207,6 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 					if (entityiterator.getPersistentData().getBoolean("Check") == false) {
 						entityiterator.getPersistentData().putBoolean("Check", true);
 						dis4 = Math.sqrt(Math.pow(entityiterator.getX() - entity.getX(), 1.6) + Math.pow(entityiterator.getY() - entity.getY(), 1.6) + Math.pow(entityiterator.getZ() - entity.getZ(), 1.6));
-						if (dis4 <= 1.6) {
-							entityiterator.getPersistentData().putBoolean("My arrow", true);
-						} else {
-							entityiterator.getPersistentData().putBoolean("My arrow", false);
-						}
 						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
 							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
 								entityiterator.getPersistentData().putBoolean("Check2", true);
@@ -278,11 +258,6 @@ public class LongRangeWeaponCutehuekutogaYouXiaoShinoteitukuProcedure {
 					if (entityiterator.getPersistentData().getBoolean("Check") == false) {
 						entityiterator.getPersistentData().putBoolean("Check", true);
 						dis4 = Math.sqrt(Math.pow(entityiterator.getX() - entity.getX(), 1.6) + Math.pow(entityiterator.getY() - entity.getY(), 1.6) + Math.pow(entityiterator.getZ() - entity.getZ(), 1.6));
-						if (dis4 <= 2) {
-							entityiterator.getPersistentData().putBoolean("My arrow", true);
-						} else {
-							entityiterator.getPersistentData().putBoolean("My arrow", false);
-						}
 						if (entityiterator.getPersistentData().getBoolean("My arrow") == false) {
 							if (entityiterator.getPersistentData().getBoolean("Check2") == false) {
 								entityiterator.getPersistentData().putBoolean("Check2", true);

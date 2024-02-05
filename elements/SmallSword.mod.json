@@ -1,0 +1,33 @@
+{
+  "_fv": 43,
+  "_type": "tool",
+  "definition": {
+    "renderType": 1,
+    "texture": "kodachiiron3d",
+    "customModelName": "kodachiiron3d:default",
+    "name": "Small sword",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:Weapon"
+    },
+    "toolType": "Sword",
+    "harvestLevel": 9,
+    "efficiency": 10.0,
+    "attackSpeed": 3.4,
+    "enchantability": 9,
+    "damageVsEntity": 7.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "SmallSwordYoukuritukusitatoki"
+    },
+    "onItemInUseTick": {
+      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
+    }
+  }
+}

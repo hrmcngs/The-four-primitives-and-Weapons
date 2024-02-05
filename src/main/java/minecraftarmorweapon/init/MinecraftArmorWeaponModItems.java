@@ -25,6 +25,7 @@ import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
 import minecraftarmorweapon.item.StormItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
+import minecraftarmorweapon.item.SmallSwordItem;
 import minecraftarmorweapon.item.RiversOfBloodItem;
 import minecraftarmorweapon.item.ResetMaxItem;
 import minecraftarmorweapon.item.Reset1Item;
@@ -150,6 +151,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> AAA = REGISTRY.register("aaa", () -> new AaaItem());
 	public static final RegistryObject<Item> STORM = REGISTRY.register("storm", () -> new StormItem());
 	public static final RegistryObject<Item> ONINOMEN_HELMET = REGISTRY.register("oninomen_helmet", () -> new OninomenItem.Helmet());
+	public static final RegistryObject<Item> SMALL_SWORD = REGISTRY.register("small_sword", () -> new SmallSwordItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
