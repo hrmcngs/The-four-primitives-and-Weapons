@@ -21,7 +21,7 @@
     "hasGlow": false,
     "repairItems": [],
     "immuneToFire": false,
-    "stayInGridWhenCrafting": true,
+    "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
       "name": "KatanaNiguHumerusYoukuritukusitatoki"
