@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/katananiguzyouwankotu3d",
+  "textures": {
+    "1": "minecraft_armor_weapon:blocks/katananiguzyouwannkotu3d",
+    "particle": "minecraft_armor_weapon:items/katananiguzyouwankotu3d"
+  }
+}

@@ -32,6 +32,10 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 		double a = 0;
 		double r = 0;
 		double b = 0;
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KATANA_NIGU_HUMERUS.get()) {
+			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.LONG_RANGE_WEAPON_CUT.get(), 2, 1, true, false));
+		}
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.SMALL_SWORD.get()) {
 			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.LONG_RANGE_WEAPON_CUT.get(), 2, 1, true, false));

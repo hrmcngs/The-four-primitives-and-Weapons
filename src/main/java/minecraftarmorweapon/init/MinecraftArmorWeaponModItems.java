@@ -43,6 +43,7 @@ import minecraftarmorweapon.item.MagicMcrystalItem;
 import minecraftarmorweapon.item.LunaItem;
 import minecraftarmorweapon.item.KurikarakenItem;
 import minecraftarmorweapon.item.KatanaTobuItem;
+import minecraftarmorweapon.item.KatanaNiguHumerusItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.IronKatanaItem;
 import minecraftarmorweapon.item.IllusionerArmorItem;
@@ -152,6 +153,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> STORM = REGISTRY.register("storm", () -> new StormItem());
 	public static final RegistryObject<Item> ONINOMEN_HELMET = REGISTRY.register("oninomen_helmet", () -> new OninomenItem.Helmet());
 	public static final RegistryObject<Item> SMALL_SWORD = REGISTRY.register("small_sword", () -> new SmallSwordItem());
+	public static final RegistryObject<Item> KATANA_NIGU_HUMERUS = REGISTRY.register("katana_nigu_humerus", () -> new KatanaNiguHumerusItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

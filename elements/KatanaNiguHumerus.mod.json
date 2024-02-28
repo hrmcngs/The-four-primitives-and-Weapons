@@ -1,0 +1,33 @@
+{
+  "_fv": 43,
+  "_type": "tool",
+  "definition": {
+    "renderType": 1,
+    "texture": "katananiguzyouwankotu3d",
+    "customModelName": "katananiguzyouwankotu3d:default",
+    "name": "§eKatana Nigu Humerus",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:Nigu"
+    },
+    "toolType": "Sword",
+    "harvestLevel": 1,
+    "efficiency": 4.0,
+    "attackSpeed": 2.6,
+    "enchantability": 9,
+    "damageVsEntity": 9.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": true,
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "KatanaNiguHumerusYoukuritukusitatoki"
+    },
+    "onItemInUseTick": {
+      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
+    }
+  }
+}
