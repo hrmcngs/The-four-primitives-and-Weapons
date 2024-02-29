@@ -19,6 +19,7 @@ public class MinecraftArmorWeaponModScreens {
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
 			MenuScreens.register(MinecraftArmorWeaponModMenus.QUIVERINVENTORY.get(), QuiverinventoryScreen::new);
+			MenuScreens.register(MinecraftArmorWeaponModMenus.RPG_BOOK_GUI.get(), RpgBookGuiScreen::new);
 		});
 	}
 }

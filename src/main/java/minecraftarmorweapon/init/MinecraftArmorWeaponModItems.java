@@ -26,6 +26,7 @@ import minecraftarmorweapon.item.StrayOuterArmorItem;
 import minecraftarmorweapon.item.StormItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.SmallSwordItem;
+import minecraftarmorweapon.item.RpgBookItem;
 import minecraftarmorweapon.item.RiversOfBloodItem;
 import minecraftarmorweapon.item.ResetMaxItem;
 import minecraftarmorweapon.item.Reset1Item;
@@ -59,6 +60,7 @@ import minecraftarmorweapon.item.DragonBlueArmorItem;
 import minecraftarmorweapon.item.DragonBlackArmorItem;
 import minecraftarmorweapon.item.DragonArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
+import minecraftarmorweapon.item.BoggedOuterQuiverItem;
 import minecraftarmorweapon.item.BloodBottleItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
 import minecraftarmorweapon.item.AaaItem;
@@ -154,6 +156,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> ONINOMEN_HELMET = REGISTRY.register("oninomen_helmet", () -> new OninomenItem.Helmet());
 	public static final RegistryObject<Item> SMALL_SWORD = REGISTRY.register("small_sword", () -> new SmallSwordItem());
 	public static final RegistryObject<Item> KATANA_NIGU_HUMERUS = REGISTRY.register("katana_nigu_humerus", () -> new KatanaNiguHumerusItem());
+	public static final RegistryObject<Item> RPG_BOOK = REGISTRY.register("rpg_book", () -> new RpgBookItem());
+	public static final RegistryObject<Item> BOGGED_OUTER_QUIVER = REGISTRY.register("bogged_outer_quiver", () -> new BoggedOuterQuiverItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

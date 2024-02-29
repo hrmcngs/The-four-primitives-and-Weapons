@@ -18,4 +18,5 @@ import minecraftarmorweapon.MinecraftArmorWeaponMod;
 public class MinecraftArmorWeaponModMenus {
 	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MinecraftArmorWeaponMod.MODID);
 	public static final RegistryObject<MenuType<QuiverinventoryMenu>> QUIVERINVENTORY = REGISTRY.register("quiverinventory", () -> IForgeMenuType.create(QuiverinventoryMenu::new));
+	public static final RegistryObject<MenuType<RpgBookGuiMenu>> RPG_BOOK_GUI = REGISTRY.register("rpg_book_gui", () -> IForgeMenuType.create(RpgBookGuiMenu::new));
 }

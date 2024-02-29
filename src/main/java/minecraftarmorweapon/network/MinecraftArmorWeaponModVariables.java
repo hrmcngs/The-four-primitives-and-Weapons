@@ -31,6 +31,8 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MinecraftArmorWeaponModVariables {
+	public static boolean rpghazimenogui = false;
+
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
 		MinecraftArmorWeaponMod.addNetworkMessage(PlayerVariablesSyncMessage.class, PlayerVariablesSyncMessage::buffer, PlayerVariablesSyncMessage::new, PlayerVariablesSyncMessage::handler);

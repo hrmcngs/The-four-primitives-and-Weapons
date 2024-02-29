@@ -973,8 +973,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 				}
 				quiverSlot = quiverSlot + 1;
 			}
-		} else if ((entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.QUIVER_ITEM.get())) : false)
-				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.NETHERITE_QUIVER_ITEM.get())) : false)) {
+		} else if (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BOGGED_OUTER_QUIVER.get())) : false) {
 			quiverSlot = 0;
 			for (int index15 = 0; index15 < 9; index15++) {
 				if ((new Object() {
@@ -985,7 +984,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.ARROW && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
+				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.TIPPED_ARROW && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -1053,7 +1052,14 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 						}
 						playerSlot = playerSlot + 1;
 					}
-				} else if ((new Object() {
+				}
+				quiverSlot = quiverSlot + 1;
+			}
+		} else if ((entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.QUIVER_ITEM.get())) : false)
+				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.NETHERITE_QUIVER_ITEM.get())) : false)) {
+			quiverSlot = 0;
+			for (int index17 = 0; index17 < 9; index17++) {
+				if ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -1061,83 +1067,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.SPECTRAL_ARROW && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
-					public ItemStack getItemStack(int sltid, ItemStack _isc) {
-						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-							_retval.set(capability.getStackInSlot(sltid).copy());
-						});
-						return _retval.get();
-					}
-				}.getItemStack((int) quiverSlot, itemstack))) : false)) {
-					playerSlot = 0;
-					for (int index17 = 0; index17 < 36; index17++) {
-						if (((new Object() {
-							public ItemStack getItemStack(int sltid, Entity entity) {
-								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-								entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-									_retval.set(capability.getStackInSlot(sltid).copy());
-								});
-								return _retval.get();
-							}
-						}.getItemStack((int) playerSlot, entity))).getCount() == 0) {
-							{
-								final int _slotid = (int) playerSlot;
-								final ItemStack _setstack = (new Object() {
-									public ItemStack getItemStack(int sltid, ItemStack _isc) {
-										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-											_retval.set(capability.getStackInSlot(sltid).copy());
-										});
-										return _retval.get();
-									}
-								}.getItemStack((int) quiverSlot, itemstack));
-								_setstack.setCount(1);
-								entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-									if (capability instanceof IItemHandlerModifiable _modHandler)
-										_modHandler.setStackInSlot(_slotid, _setstack);
-								});
-							}
-							{
-								ItemStack _isc = itemstack;
-								final ItemStack _setstack = (new Object() {
-									public ItemStack getItemStack(int sltid, ItemStack _isc) {
-										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-											_retval.set(capability.getStackInSlot(sltid).copy());
-										});
-										return _retval.get();
-									}
-								}.getItemStack((int) quiverSlot, itemstack));
-								final int _sltid = (int) quiverSlot;
-								_setstack.setCount((int) (((new Object() {
-									public ItemStack getItemStack(int sltid, ItemStack _isc) {
-										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-											_retval.set(capability.getStackInSlot(sltid).copy());
-										});
-										return _retval.get();
-									}
-								}.getItemStack((int) quiverSlot, itemstack))).getCount() - 1));
-								_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-									if (capability instanceof IItemHandlerModifiable) {
-										((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
-									}
-								});
-							}
-							break;
-						}
-						playerSlot = playerSlot + 1;
-					}
-				} else if ((new Object() {
-					public ItemStack getItemStack(int sltid, ItemStack _isc) {
-						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-							_retval.set(capability.getStackInSlot(sltid).copy());
-						});
-						return _retval.get();
-					}
-				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.TIPPED_ARROW && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
+				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.ARROW && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -1213,7 +1143,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.FIREWORK_ROCKET && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
+				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.SPECTRAL_ARROW && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -1289,7 +1219,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.SNOWBALL && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
+				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.TIPPED_ARROW && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -1300,6 +1230,158 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 				}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
 					for (int index20 = 0; index20 < 36; index20++) {
+						if (((new Object() {
+							public ItemStack getItemStack(int sltid, Entity entity) {
+								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+								entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									_retval.set(capability.getStackInSlot(sltid).copy());
+								});
+								return _retval.get();
+							}
+						}.getItemStack((int) playerSlot, entity))).getCount() == 0) {
+							{
+								final int _slotid = (int) playerSlot;
+								final ItemStack _setstack = (new Object() {
+									public ItemStack getItemStack(int sltid, ItemStack _isc) {
+										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_retval.set(capability.getStackInSlot(sltid).copy());
+										});
+										return _retval.get();
+									}
+								}.getItemStack((int) quiverSlot, itemstack));
+								_setstack.setCount(1);
+								entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									if (capability instanceof IItemHandlerModifiable _modHandler)
+										_modHandler.setStackInSlot(_slotid, _setstack);
+								});
+							}
+							{
+								ItemStack _isc = itemstack;
+								final ItemStack _setstack = (new Object() {
+									public ItemStack getItemStack(int sltid, ItemStack _isc) {
+										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_retval.set(capability.getStackInSlot(sltid).copy());
+										});
+										return _retval.get();
+									}
+								}.getItemStack((int) quiverSlot, itemstack));
+								final int _sltid = (int) quiverSlot;
+								_setstack.setCount((int) (((new Object() {
+									public ItemStack getItemStack(int sltid, ItemStack _isc) {
+										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_retval.set(capability.getStackInSlot(sltid).copy());
+										});
+										return _retval.get();
+									}
+								}.getItemStack((int) quiverSlot, itemstack))).getCount() - 1));
+								_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									if (capability instanceof IItemHandlerModifiable) {
+										((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
+									}
+								});
+							}
+							break;
+						}
+						playerSlot = playerSlot + 1;
+					}
+				} else if ((new Object() {
+					public ItemStack getItemStack(int sltid, ItemStack _isc) {
+						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+							_retval.set(capability.getStackInSlot(sltid).copy());
+						});
+						return _retval.get();
+					}
+				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.FIREWORK_ROCKET && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
+					public ItemStack getItemStack(int sltid, ItemStack _isc) {
+						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+							_retval.set(capability.getStackInSlot(sltid).copy());
+						});
+						return _retval.get();
+					}
+				}.getItemStack((int) quiverSlot, itemstack))) : false)) {
+					playerSlot = 0;
+					for (int index21 = 0; index21 < 36; index21++) {
+						if (((new Object() {
+							public ItemStack getItemStack(int sltid, Entity entity) {
+								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+								entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									_retval.set(capability.getStackInSlot(sltid).copy());
+								});
+								return _retval.get();
+							}
+						}.getItemStack((int) playerSlot, entity))).getCount() == 0) {
+							{
+								final int _slotid = (int) playerSlot;
+								final ItemStack _setstack = (new Object() {
+									public ItemStack getItemStack(int sltid, ItemStack _isc) {
+										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_retval.set(capability.getStackInSlot(sltid).copy());
+										});
+										return _retval.get();
+									}
+								}.getItemStack((int) quiverSlot, itemstack));
+								_setstack.setCount(1);
+								entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									if (capability instanceof IItemHandlerModifiable _modHandler)
+										_modHandler.setStackInSlot(_slotid, _setstack);
+								});
+							}
+							{
+								ItemStack _isc = itemstack;
+								final ItemStack _setstack = (new Object() {
+									public ItemStack getItemStack(int sltid, ItemStack _isc) {
+										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_retval.set(capability.getStackInSlot(sltid).copy());
+										});
+										return _retval.get();
+									}
+								}.getItemStack((int) quiverSlot, itemstack));
+								final int _sltid = (int) quiverSlot;
+								_setstack.setCount((int) (((new Object() {
+									public ItemStack getItemStack(int sltid, ItemStack _isc) {
+										AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+										_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+											_retval.set(capability.getStackInSlot(sltid).copy());
+										});
+										return _retval.get();
+									}
+								}.getItemStack((int) quiverSlot, itemstack))).getCount() - 1));
+								_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+									if (capability instanceof IItemHandlerModifiable) {
+										((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
+									}
+								});
+							}
+							break;
+						}
+						playerSlot = playerSlot + 1;
+					}
+				} else if ((new Object() {
+					public ItemStack getItemStack(int sltid, ItemStack _isc) {
+						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+							_retval.set(capability.getStackInSlot(sltid).copy());
+						});
+						return _retval.get();
+					}
+				}.getItemStack((int) quiverSlot, itemstack)).getItem() == Items.SNOWBALL && !(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains((new Object() {
+					public ItemStack getItemStack(int sltid, ItemStack _isc) {
+						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+							_retval.set(capability.getStackInSlot(sltid).copy());
+						});
+						return _retval.get();
+					}
+				}.getItemStack((int) quiverSlot, itemstack))) : false)) {
+					playerSlot = 0;
+					for (int index22 = 0; index22 < 36; index22++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1377,7 +1459,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 							}
 						}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
-					for (int index21 = 0; index21 < 36; index21++) {
+					for (int index23 = 0; index23 < 36; index23++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1438,7 +1520,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 							}
 						}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
-					for (int index22 = 0; index22 < 36; index22++) {
+					for (int index24 = 0; index24 < 36; index24++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1499,7 +1581,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 							}
 						}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
-					for (int index23 = 0; index23 < 36; index23++) {
+					for (int index25 = 0; index25 < 36; index25++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1560,7 +1642,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 							}
 						}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
-					for (int index24 = 0; index24 < 36; index24++) {
+					for (int index26 = 0; index26 < 36; index26++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1621,7 +1703,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 							}
 						}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
-					for (int index25 = 0; index25 < 36; index25++) {
+					for (int index27 = 0; index27 < 36; index27++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1682,7 +1764,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 							}
 						}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
-					for (int index26 = 0; index26 < 36; index26++) {
+					for (int index28 = 0; index28 < 36; index28++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1743,7 +1825,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 							}
 						}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
-					for (int index27 = 0; index27 < 36; index27++) {
+					for (int index29 = 0; index29 < 36; index29++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1804,7 +1886,7 @@ public class QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure {
 							}
 						}.getItemStack((int) quiverSlot, itemstack))) : false)) {
 					playerSlot = 0;
-					for (int index28 = 0; index28 < 36; index28++) {
+					for (int index30 = 0; index30 < 36; index30++) {
 						if (((new Object() {
 							public ItemStack getItemStack(int sltid, Entity entity) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
