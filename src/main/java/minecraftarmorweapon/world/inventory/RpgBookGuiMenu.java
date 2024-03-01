@@ -19,7 +19,7 @@ import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 
-public class HazimeGuiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
+public class RpgBookGuiMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
 	public final Player entity;
@@ -28,8 +28,8 @@ public class HazimeGuiMenu extends AbstractContainerMenu implements Supplier<Map
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
 
-	public HazimeGuiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-		super(MinecraftArmorWeaponModMenus.HAZIME_GUI.get(), id);
+	public RpgBookGuiMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
+		super(MinecraftArmorWeaponModMenus.RPG_BOOK_GUI.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level;
 		this.internal = new ItemStackHandler(0);

@@ -5,12 +5,12 @@
     "renderType": 0,
     "texture": "rpgbook",
     "customModelName": "Normal",
-    "name": "Rpg Book",
-    "rarity": "RARE",
+    "name": "RPG Book",
+    "rarity": "UNCOMMON",
     "creativeTab": {
       "value": "CUSTOM:MagicBooks"
     },
-    "stackSize": 1,
+    "stackSize": 64,
     "enchantability": 0,
     "useDuration": 0,
     "toolType": 1.0,
@@ -26,9 +26,12 @@
     "damageVsEntity": 0.0,
     "specialInfo": [],
     "hasGlow": false,
-    "guiBoundTo": "HazimeGui",
+    "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
+    "onRightClickedInAir": {
+      "name": "RpgBookYoukuritukusitatoki"
+    },
     "isFood": false,
     "nutritionalValue": 4,
     "saturation": 0.3,

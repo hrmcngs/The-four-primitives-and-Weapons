@@ -3,7 +3,7 @@
   "_type": "gui",
   "definition": {
     "type": 0,
-    "width": 144,
+    "width": 170,
     "height": 195,
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
@@ -14,14 +14,11 @@
         "type": "button",
         "data": {
           "name": "button_bogged_outer",
-          "text": "bogged outer",
-          "onClick": {
-            "name": "HazimeBoggedOuterTap"
-          },
+          "text": "Bogged Outer",
           "width": 87,
           "height": 20,
           "x": 171,
-          "y": 181
+          "y": 166
         }
       }
     ],

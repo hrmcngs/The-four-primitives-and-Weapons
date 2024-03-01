@@ -1,9 +1,0 @@
-{
-  "_fv": 43,
-  "_type": "function",
-  "definition": {
-    "code": "/summon armor_stand ~ ~-0.5 ~ {ShowArms:1b,Pose:{RightLeg:[0f,0f,0f],LeftArm:[0f,0f,0f],RightArm:[0f,0f,0f]}}\n/fill ~ ~ ~ ~ ~2 ~ air\n/fill ~ ~ ~ ~ ~2 ~ glass",
-    "name": "kasari",
-    "namespace": "mod"
-  }
-}
