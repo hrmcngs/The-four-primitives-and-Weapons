@@ -22,6 +22,9 @@
         }
       }
     ],
+    "onClosed": {
+      "name": "RpgBookGuiGUIgaBiziraretatoki"
+    },
     "gridSettings": {
       "sx": 15,
       "sy": 15,

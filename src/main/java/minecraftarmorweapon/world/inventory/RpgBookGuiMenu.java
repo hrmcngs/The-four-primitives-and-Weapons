@@ -13,6 +13,8 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
+import minecraftarmorweapon.procedures.RpgBookGuiGUIgaBiziraretatokiProcedure;
+
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMenus;
 
 import java.util.function.Supplier;
@@ -50,6 +52,12 @@ public class RpgBookGuiMenu extends AbstractContainerMenu implements Supplier<Ma
 	@Override
 	public ItemStack quickMoveStack(Player playerIn, int index) {
 		return ItemStack.EMPTY;
+	}
+
+	@Override
+	public void removed(Player playerIn) {
+		super.removed(playerIn);
+		RpgBookGuiGUIgaBiziraretatokiProcedure.execute(entity);
 	}
 
 	public Map<Integer, Slot> get() {

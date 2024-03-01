@@ -4801,6 +4801,25 @@
           "src/main/java/minecraftarmorweapon/item/RpgBookItem.java"
         ]
       }
+    },
+    {
+      "name": "RpgBookGuiGUIgaBiziraretatoki",
+      "type": "procedure",
+      "sortid": 307,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rpg_book_gui_gu_iga_biziraretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/RpgBookGuiGUIgaBiziraretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
