@@ -61,6 +61,7 @@ import minecraftarmorweapon.item.DragonBlackArmorItem;
 import minecraftarmorweapon.item.DragonArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BoggedOuterQuiverItem;
+import minecraftarmorweapon.item.BoggedOuterItem;
 import minecraftarmorweapon.item.BloodBottleItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
 import minecraftarmorweapon.item.AaaItem;
@@ -156,8 +157,12 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> ONINOMEN_HELMET = REGISTRY.register("oninomen_helmet", () -> new OninomenItem.Helmet());
 	public static final RegistryObject<Item> SMALL_SWORD = REGISTRY.register("small_sword", () -> new SmallSwordItem());
 	public static final RegistryObject<Item> KATANA_NIGU_HUMERUS = REGISTRY.register("katana_nigu_humerus", () -> new KatanaNiguHumerusItem());
-	public static final RegistryObject<Item> RPG_BOOK = REGISTRY.register("rpg_book", () -> new RpgBookItem());
 	public static final RegistryObject<Item> BOGGED_OUTER_QUIVER = REGISTRY.register("bogged_outer_quiver", () -> new BoggedOuterQuiverItem());
+	public static final RegistryObject<Item> BOGGED_OUTER_HELMET = REGISTRY.register("bogged_outer_helmet", () -> new BoggedOuterItem.Helmet());
+	public static final RegistryObject<Item> BOGGED_OUTER_CHESTPLATE = REGISTRY.register("bogged_outer_chestplate", () -> new BoggedOuterItem.Chestplate());
+	public static final RegistryObject<Item> BOGGED_OUTER_LEGGINGS = REGISTRY.register("bogged_outer_leggings", () -> new BoggedOuterItem.Leggings());
+	public static final RegistryObject<Item> BOGGED_OUTER_BOOTS = REGISTRY.register("bogged_outer_boots", () -> new BoggedOuterItem.Boots());
+	public static final RegistryObject<Item> RPG_BOOK = REGISTRY.register("rpg_book", () -> new RpgBookItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

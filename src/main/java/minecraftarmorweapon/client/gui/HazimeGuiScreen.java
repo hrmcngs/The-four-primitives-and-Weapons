@@ -6,33 +6,39 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.Minecraft;
 
-import minecraftarmorweapon.world.inventory.RpgBookGuiMenu;
+import minecraftarmorweapon.world.inventory.HazimeGuiMenu;
+
+import minecraftarmorweapon.network.HazimeGuiButtonMessage;
+
+import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
 import java.util.HashMap;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 
-public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
-	private final static HashMap<String, Object> guistate = RpgBookGuiMenu.guistate;
+public class HazimeGuiScreen extends AbstractContainerScreen<HazimeGuiMenu> {
+	private final static HashMap<String, Object> guistate = HazimeGuiMenu.guistate;
 	private final Level world;
 	private final int x, y, z;
 	private final Player entity;
+	Button button_bogged_outer;
 
-	public RpgBookGuiScreen(RpgBookGuiMenu container, Inventory inventory, Component text) {
+	public HazimeGuiScreen(HazimeGuiMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
 		this.world = container.world;
 		this.x = container.x;
 		this.y = container.y;
 		this.z = container.z;
 		this.entity = container.entity;
-		this.imageWidth = 185;
-		this.imageHeight = 235;
+		this.imageWidth = 144;
+		this.imageHeight = 195;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("minecraft_armor_weapon:textures/screens/rpg_book_gui.png");
+	private static final ResourceLocation texture = new ResourceLocation("minecraft_armor_weapon:textures/screens/hazime_gui.png");
 
 	@Override
 	public void render(PoseStack ms, int mouseX, int mouseY, float partialTicks) {
@@ -79,5 +85,13 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	public void init() {
 		super.init();
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
+		button_bogged_outer = new Button(this.leftPos + 29, this.topPos + 158, 87, 20, Component.translatable("gui.minecraft_armor_weapon.hazime_gui.button_bogged_outer"), e -> {
+			if (true) {
+				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new HazimeGuiButtonMessage(0, x, y, z));
+				HazimeGuiButtonMessage.handleButtonAction(entity, 0, x, y, z);
+			}
+		});
+		guistate.put("button:button_bogged_outer", button_bogged_outer);
+		this.addRenderableWidget(button_bogged_outer);
 	}
 }

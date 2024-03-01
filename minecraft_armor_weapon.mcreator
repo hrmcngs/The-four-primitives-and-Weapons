@@ -4702,25 +4702,6 @@
       }
     },
     {
-      "name": "Itemseetor",
-      "type": "procedure",
-      "sortid": 299,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "itemseetor",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/ItemseetorProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
-        ]
-      }
-    },
-    {
       "name": "KatanaNiguHumerusturugainbentoriniaruJiannoteituku",
       "type": "procedure",
       "sortid": 299,
@@ -4740,20 +4721,6 @@
       }
     },
     {
-      "name": "RpgBook",
-      "type": "item",
-      "sortid": 300,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rpg_book",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/rpg_book.json",
-          "src/main/java/minecraftarmorweapon/item/RpgBookItem.java"
-        ]
-      }
-    },
-    {
       "name": "BoggedOuterQuiver",
       "type": "item",
       "sortid": 301,
@@ -4769,16 +4736,68 @@
       }
     },
     {
-      "name": "RpgBookGui",
-      "type": "gui",
-      "sortid": 302,
+      "name": "BoggedOuter",
+      "type": "armor",
+      "sortid": 303,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "rpg_book_gui",
+      "registry_name": "bogged_outer",
       "metadata": {
         "files": [
-          "src/main/java/minecraftarmorweapon/world/inventory/RpgBookGuiMenu.java",
-          "src/main/java/minecraftarmorweapon/client/gui/RpgBookGuiScreen.java"
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bogged_outer_leggings.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bogged_outer_chestplate.json",
+          "src/main/java/minecraftarmorweapon/item/BoggedOuterItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bogged_outer_helmet.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bogged_outer_boots.json"
+        ]
+      }
+    },
+    {
+      "name": "HazimeGui",
+      "type": "gui",
+      "sortid": 304,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hazime_gui",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/world/inventory/HazimeGuiMenu.java",
+          "src/main/java/minecraftarmorweapon/network/HazimeGuiButtonMessage.java",
+          "src/main/java/minecraftarmorweapon/client/gui/HazimeGuiScreen.java"
+        ]
+      }
+    },
+    {
+      "name": "HazimeBoggedOuterTap",
+      "type": "procedure",
+      "sortid": 305,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hazime_bogged_outer_tap",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/HazimeBoggedOuterTapProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RpgBook",
+      "type": "item",
+      "sortid": 306,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rpg_book",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/rpg_book.json",
+          "src/main/java/minecraftarmorweapon/item/inventory/RpgBookInventoryCapability.java",
+          "src/main/java/minecraftarmorweapon/item/RpgBookItem.java"
         ]
       }
     }
@@ -4883,6 +4902,7 @@
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
+      "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
       "item.minecraft_armor_weapon.oninomen_helmet": "鬼の面",
@@ -4890,6 +4910,7 @@
       "entity.minecraft_armor_weapon.killotiru": "Otiruyo",
       "effect.minecraft_armor_weapon.kitterukitteru": "subetekirisuteru",
       "item.minecraft_armor_weapon.dragon_armor_chestplate": "§5Dragon chestplate",
+      "item.minecraft_armor_weapon.bogged_outer_leggings": "Bogged Outer Leggings",
       "advancements.you_have_become_a_vampire.title": "You have become a vampire.",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
@@ -4914,6 +4935,7 @@
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
       "block.minecraft_armor_weapon.cross": "Cross",
       "item.minecraft_armor_weapon.dragon_armor_boots": "§5Dragon boots",
+      "item.minecraft_armor_weapon.bogged_outer_boots": "Bogged Outer Boots",
       "effect.minecraft_armor_weapon.effect_magic": "magic",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "effect.minecraft_armor_weapon.kaminariyade": "kaminari",
@@ -4926,7 +4948,7 @@
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
-      "item.minecraft_armor_weapon.rpg_book": "RPG Book",
+      "item.minecraft_armor_weapon.rpg_book": "Rpg Book",
       "effect.minecraft_armor_weapon.otita": "a",
       "item.minecraft_armor_weapon.dragon_blue_armor_chestplate": "§1Dragon blue chestplate",
       "entity.minecraft.villager.minecraft_armor_weapon.minecraft_armor_and_weapon": "Minecraft Armor And Weapon",
@@ -4950,6 +4972,7 @@
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.dragon_green_armor_leggings": "§2Dragon green leggings",
       "effect.minecraft_armor_weapon.devour_blood": "devour blood",
+      "gui.minecraft_armor_weapon.hazime_gui.button_bogged_outer": "bogged outer",
       "block.minecraft_armor_weapon.rose": "Rose",
       "effect.minecraft_armor_weapon.ngs": "ngs1",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
@@ -4964,6 +4987,7 @@
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
+      "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "item.minecraft_armor_weapon.dragon_red_armor_helmet": "§4Dragon red helmet",
@@ -5039,6 +5063,7 @@
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
       "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
+      "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
       "item.minecraft_armor_weapon.oninomen_helmet": "鬼の面",
@@ -5046,6 +5071,7 @@
       "entity.minecraft_armor_weapon.killotiru": "Otiruyo",
       "effect.minecraft_armor_weapon.kitterukitteru": "subetekirisuteru",
       "item.minecraft_armor_weapon.dragon_armor_chestplate": "§5Dragon chestplate",
+      "item.minecraft_armor_weapon.bogged_outer_leggings": "Bogged Outer Leggings",
       "advancements.you_have_become_a_vampire.title": "You have become a vampire.",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
@@ -5070,6 +5096,7 @@
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
       "block.minecraft_armor_weapon.cross": "Cross",
       "item.minecraft_armor_weapon.dragon_armor_boots": "§5Dragon boots",
+      "item.minecraft_armor_weapon.bogged_outer_boots": "Bogged Outer Boots",
       "effect.minecraft_armor_weapon.effect_magic": "magic",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "effect.minecraft_armor_weapon.kaminariyade": "kaminari",
@@ -5082,7 +5109,7 @@
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
-      "item.minecraft_armor_weapon.rpg_book": "RPG Book",
+      "item.minecraft_armor_weapon.rpg_book": "Rpg Book",
       "effect.minecraft_armor_weapon.otita": "a",
       "item.minecraft_armor_weapon.dragon_blue_armor_chestplate": "§1Dragon blue chestplate",
       "entity.minecraft.villager.minecraft_armor_weapon.minecraft_armor_and_weapon": "Minecraft Armor And Weapon",
@@ -5106,6 +5133,7 @@
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
       "item.minecraft_armor_weapon.dragon_green_armor_leggings": "§2Dragon green leggings",
       "effect.minecraft_armor_weapon.devour_blood": "devour blood",
+      "gui.minecraft_armor_weapon.hazime_gui.button_bogged_outer": "bogged outer",
       "block.minecraft_armor_weapon.rose": "Rose",
       "effect.minecraft_armor_weapon.ngs": "ngs1",
       "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
@@ -5120,6 +5148,7 @@
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
+      "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "item.minecraft_armor_weapon.dragon_red_armor_helmet": "§4Dragon red helmet",

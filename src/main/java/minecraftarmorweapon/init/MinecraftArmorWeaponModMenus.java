@@ -12,11 +12,12 @@ import net.minecraftforge.common.extensions.IForgeMenuType;
 import net.minecraft.world.inventory.MenuType;
 
 import minecraftarmorweapon.world.inventory.QuiverinventoryMenu;
+import minecraftarmorweapon.world.inventory.HazimeGuiMenu;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
 public class MinecraftArmorWeaponModMenus {
 	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.MENU_TYPES, MinecraftArmorWeaponMod.MODID);
 	public static final RegistryObject<MenuType<QuiverinventoryMenu>> QUIVERINVENTORY = REGISTRY.register("quiverinventory", () -> IForgeMenuType.create(QuiverinventoryMenu::new));
-	public static final RegistryObject<MenuType<RpgBookGuiMenu>> RPG_BOOK_GUI = REGISTRY.register("rpg_book_gui", () -> IForgeMenuType.create(RpgBookGuiMenu::new));
+	public static final RegistryObject<MenuType<HazimeGuiMenu>> HAZIME_GUI = REGISTRY.register("hazime_gui", () -> IForgeMenuType.create(HazimeGuiMenu::new));
 }

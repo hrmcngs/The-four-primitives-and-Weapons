@@ -5,8 +5,8 @@
     "renderType": 0,
     "texture": "rpgbook",
     "customModelName": "Normal",
-    "name": "RPG Book",
-    "rarity": "COMMON",
+    "name": "Rpg Book",
+    "rarity": "RARE",
     "creativeTab": {
       "value": "CUSTOM:MagicBooks"
     },
@@ -26,7 +26,7 @@
     "damageVsEntity": 0.0,
     "specialInfo": [],
     "hasGlow": false,
-    "guiBoundTo": "<NONE>",
+    "guiBoundTo": "HazimeGui",
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "isFood": false,

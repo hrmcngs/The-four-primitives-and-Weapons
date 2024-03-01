@@ -5,3 +5,4 @@
 
 // 	public static final Rarity NIGU = Rarity.create( "NIGU", textFormatting.RED );
 // }
+//BoggedOuterQuiverInventory

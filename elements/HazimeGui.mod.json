@@ -1,0 +1,36 @@
+{
+  "_fv": 43,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 144,
+    "height": 195,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_bogged_outer",
+          "text": "bogged outer",
+          "onClick": {
+            "name": "HazimeBoggedOuterTap"
+          },
+          "width": 87,
+          "height": 20,
+          "x": 171,
+          "y": 181
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 15,
+      "sy": 15,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}
