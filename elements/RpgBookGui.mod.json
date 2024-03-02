@@ -15,10 +15,27 @@
         "data": {
           "name": "button_bogged_outer",
           "text": "Bogged Outer",
+          "onClick": {
+            "name": "RpgBookGuiBoggedOuterTap"
+          },
           "width": 87,
           "height": 20,
-          "x": 171,
-          "y": 166
+          "x": 166,
+          "y": 181
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_nigu",
+          "text": "nigu",
+          "onClick": {
+            "name": "RpgBookGuiNiguTap"
+          },
+          "width": 46,
+          "height": 20,
+          "x": 186,
+          "y": 151
         }
       }
     ],
@@ -26,7 +43,7 @@
       "name": "RpgBookGuiGUIgaBiziraretatoki"
     },
     "gridSettings": {
-      "sx": 15,
+      "sx": 10,
       "sy": 15,
       "ox": 11,
       "oy": 15,

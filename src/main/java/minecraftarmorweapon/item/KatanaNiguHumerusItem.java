@@ -3,6 +3,7 @@ package minecraftarmorweapon.item;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ItemStack;
@@ -11,11 +12,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.network.chat.Component;
 
 import minecraftarmorweapon.procedures.KatanaNiguHumerusYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
+
+import java.util.List;
 
 public class KatanaNiguHumerusItem extends SwordItem {
 	public KatanaNiguHumerusItem() {
@@ -51,6 +55,13 @@ public class KatanaNiguHumerusItem extends SwordItem {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		KatanaNiguHumerusYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, world, list, flag);
+		list.add(Component.literal("\u3053\u306E\u5200\u5B9F\u306F\u2026\u2026"));
+		list.add(Component.literal("\u67C4\u306E\u90E8\u5206\u304C\u4E8C\u30B0\u69D8\u306E\u4E0A\u8155\u9AA8\u3067\u3067\u304D\u3066\u308B\u3093\u3060"));
 	}
 
 	@Override

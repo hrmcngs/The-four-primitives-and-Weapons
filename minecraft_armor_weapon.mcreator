@@ -4749,7 +4749,8 @@
       "metadata": {
         "files": [
           "src/main/java/minecraftarmorweapon/world/inventory/RpgBookGuiMenu.java",
-          "src/main/java/minecraftarmorweapon/client/gui/RpgBookGuiScreen.java"
+          "src/main/java/minecraftarmorweapon/client/gui/RpgBookGuiScreen.java",
+          "src/main/java/minecraftarmorweapon/network/RpgBookGuiButtonMessage.java"
         ]
       }
     },
@@ -4820,6 +4821,44 @@
           }
         ]
       }
+    },
+    {
+      "name": "RpgBookGuiBoggedOuterTap",
+      "type": "procedure",
+      "sortid": 308,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rpg_book_gui_bogged_outer_tap",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/RpgBookGuiBoggedOuterTapProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RpgBookGuiNiguTap",
+      "type": "procedure",
+      "sortid": 309,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rpg_book_gui_nigu_tap",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/RpgBookGuiNiguTapProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4874,8 +4913,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -4999,6 +5038,7 @@
       "effect.minecraft_armor_weapon.waza": "waza",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "effect.minecraft_armor_weapon.otiro": "zz",
+      "gui.minecraft_armor_weapon.rpg_book_gui.button_nigu": "nigu",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.katana_nigu_humerus": "§eKatana Nigu Humerus",
       "item.minecraft_armor_weapon.dragon_blue_armor_leggings": "§1Dragon blue leggings",
@@ -5035,8 +5075,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5160,6 +5200,7 @@
       "effect.minecraft_armor_weapon.waza": "waza",
       "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
       "effect.minecraft_armor_weapon.otiro": "zz",
+      "gui.minecraft_armor_weapon.rpg_book_gui.button_nigu": "nigu",
       "item.minecraft_armor_weapon.item_weaponsword": "Item Weaponsword",
       "item.minecraft_armor_weapon.katana_nigu_humerus": "§eKatana Nigu Humerus",
       "item.minecraft_armor_weapon.dragon_blue_armor_leggings": "§1Dragon blue leggings",

@@ -6,7 +6,10 @@
     "texture": "katananiguzyouwankotu3d",
     "customModelName": "katananiguzyouwankotu3d:default",
     "name": "§eKatana Nigu Humerus",
-    "specialInfo": [],
+    "specialInfo": [
+      "この刀実は……",
+      "柄の部分が二グ様の上腕骨でできてるんだ"
+    ],
     "creativeTab": {
       "value": "CUSTOM:Nigu"
     },

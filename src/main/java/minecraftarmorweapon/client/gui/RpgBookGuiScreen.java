@@ -11,6 +11,10 @@ import net.minecraft.client.Minecraft;
 
 import minecraftarmorweapon.world.inventory.RpgBookGuiMenu;
 
+import minecraftarmorweapon.network.RpgBookGuiButtonMessage;
+
+import minecraftarmorweapon.MinecraftArmorWeaponMod;
+
 import java.util.HashMap;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -22,6 +26,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	private final int x, y, z;
 	private final Player entity;
 	Button button_bogged_outer;
+	Button button_nigu;
 
 	public RpgBookGuiScreen(RpgBookGuiMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -81,9 +86,21 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	public void init() {
 		super.init();
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-		button_bogged_outer = new Button(this.leftPos + 42, this.topPos + 143, 87, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_bogged_outer"), e -> {
+		button_bogged_outer = new Button(this.leftPos + 37, this.topPos + 158, 87, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_bogged_outer"), e -> {
+			if (true) {
+				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(0, x, y, z));
+				RpgBookGuiButtonMessage.handleButtonAction(entity, 0, x, y, z);
+			}
 		});
 		guistate.put("button:button_bogged_outer", button_bogged_outer);
 		this.addRenderableWidget(button_bogged_outer);
+		button_nigu = new Button(this.leftPos + 57, this.topPos + 128, 46, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_nigu"), e -> {
+			if (true) {
+				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(1, x, y, z));
+				RpgBookGuiButtonMessage.handleButtonAction(entity, 1, x, y, z);
+			}
+		});
+		guistate.put("button:button_nigu", button_nigu);
+		this.addRenderableWidget(button_nigu);
 	}
 }
