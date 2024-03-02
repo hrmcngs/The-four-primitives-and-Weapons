@@ -10,6 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.effect.MobEffect;
 
+import minecraftarmorweapon.potion.ZokuseizanngekiMobEffect;
 import minecraftarmorweapon.potion.ZanngekitokubetuMobEffect;
 import minecraftarmorweapon.potion.ZanngekikaiMobEffect;
 import minecraftarmorweapon.potion.YouwakaranMobEffect;
@@ -99,4 +100,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> STORM_EFFECT = REGISTRY.register("storm_effect", () -> new StormEffectMobEffect());
 	public static final RegistryObject<MobEffect> KITTERUKITTERU = REGISTRY.register("kitterukitteru", () -> new KitterukitteruMobEffect());
 	public static final RegistryObject<MobEffect> TP_ATTACK = REGISTRY.register("tp_attack", () -> new TpAttackMobEffect());
+	public static final RegistryObject<MobEffect> ZOKUSEIZANNGEKI = REGISTRY.register("zokuseizanngeki", () -> new ZokuseizanngekiMobEffect());
 }

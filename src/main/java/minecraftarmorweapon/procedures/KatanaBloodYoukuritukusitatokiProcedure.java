@@ -218,7 +218,7 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 				entity.getPersistentData().putDouble("yaw", (entity.getYRot()));
 				entity.getPersistentData().putDouble("distance", 3);
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TOKUBETUSOUNAZANGEKI.get(), 30, 1, true, false));
+					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZOKUSEIZANNGEKI.get(), 30, 1, true, false));
 				if (!(entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(MinecraftArmorWeaponModItems.BLOOD_BOTTLE.get())) : false)) {
 					if (entity instanceof LivingEntity _entity)
 						_entity.hurt(new DamageSource("\u00A74\u00A7ldevour blood").bypassArmor(), 5);

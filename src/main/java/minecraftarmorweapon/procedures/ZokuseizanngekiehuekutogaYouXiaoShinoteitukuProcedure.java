@@ -5,20 +5,25 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.Difficulty;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
+import net.minecraft.client.Minecraft;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
@@ -31,7 +36,7 @@ import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Comparator;
 
-public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
+public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
@@ -45,18 +50,10 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 		double loop1 = 0;
 		double Y_pos = 0;
 		double Y_pos1 = 0;
-		double Radius = 0;
-		double Ypos = 0;
-		double a = 0;
-		double r = 0;
-		double b = 0;
-		double ZRadius3 = 0;
-		double XRadius3 = 0;
-		double Y_pos3 = 0;
-		double X1 = 0;
-		double Z1 = 0;
-		double Y1 = 0;
-		double loop2 = 0;
+		double zknockback = 0;
+		double yknockback = 0;
+		double xknockback = 0;
+		double dis = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.RIVERS_OF_BLOOD.get()) {
 			loop = entity.getPersistentData().getDouble("local");
 			entity.getPersistentData().putDouble("Xpos", (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")));
@@ -65,7 +62,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 			ZRadius2 = 3;
 			random = entity.getPersistentData().getDouble("random");
 			Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
-			for (int index0 = 0; index0 < 100; index0++) {
+			for (int index0 = 0; index0 < 75; index0++) {
 				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 					Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -73,7 +70,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 					break;
 				}
 			}
-			for (int index1 = 0; index1 < 100; index1++) {
+			for (int index1 = 0; index1 < 75; index1++) {
 				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 					Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -106,6 +103,30 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator == entity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
+									if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
+										public boolean checkGamemode(Entity _ent) {
+											if (_ent instanceof ServerPlayer _serverPlayer) {
+												return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+											} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+												return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+														&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+											}
+											return false;
+										}
+									}.checkGamemode(entity)) && !(new Object() {
+										public boolean checkGamemode(Entity _ent) {
+											if (_ent instanceof ServerPlayer _serverPlayer) {
+												return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
+											} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+												return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+														&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.SPECTATOR;
+											}
+											return false;
+										}
+									}.checkGamemode(entity))) {
+										if (entityiterator instanceof Mob _entity && entity instanceof LivingEntity _ent)
+											_entity.setTarget(_ent);
+									}
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 										if (entityiterator instanceof Mob) {
 											entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
@@ -149,7 +170,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 				ZRadius2 = 3;
 				random = entity.getPersistentData().getDouble("random");
 				Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
-				for (int index3 = 0; index3 < 100; index3++) {
+				for (int index3 = 0; index3 < 50; index3++) {
 					if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 						entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 						Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -157,7 +178,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 						break;
 					}
 				}
-				for (int index4 = 0; index4 < 100; index4++) {
+				for (int index4 = 0; index4 < 50; index4++) {
 					if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 						entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 						Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -242,6 +263,30 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
+										if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
+											public boolean checkGamemode(Entity _ent) {
+												if (_ent instanceof ServerPlayer _serverPlayer) {
+													return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+												} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+													return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+															&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+												}
+												return false;
+											}
+										}.checkGamemode(entity)) && !(new Object() {
+											public boolean checkGamemode(Entity _ent) {
+												if (_ent instanceof ServerPlayer _serverPlayer) {
+													return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
+												} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+													return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+															&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.SPECTATOR;
+												}
+												return false;
+											}
+										}.checkGamemode(entity))) {
+											if (entityiterator instanceof Mob _entity && entity instanceof LivingEntity _ent)
+												_entity.setTarget(_ent);
+										}
 										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											if (entityiterator instanceof Mob) {
 												entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
@@ -291,7 +336,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 				ZRadius2 = 3;
 				random = entity.getPersistentData().getDouble("random");
 				Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
-				for (int index6 = 0; index6 < 100; index6++) {
+				for (int index6 = 0; index6 < 75; index6++) {
 					if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 						entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 						Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -299,7 +344,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 						break;
 					}
 				}
-				for (int index7 = 0; index7 < 100; index7++) {
+				for (int index7 = 0; index7 < 75; index7++) {
 					if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 						entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 						Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -458,7 +503,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 				ZRadius2 = 3;
 				random = entity.getPersistentData().getDouble("random");
 				Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
-				for (int index9 = 0; index9 < 100; index9++) {
+				for (int index9 = 0; index9 < 30; index9++) {
 					if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 						entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 						Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -466,7 +511,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 						break;
 					}
 				}
-				for (int index10 = 0; index10 < 100; index10++) {
+				for (int index10 = 0; index10 < 30; index10++) {
 					if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 						entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 						Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -648,10 +693,6 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 					X = entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance") + Math.cos(loop) * XRadius2;
 					Y = Y_pos + 1;
 					Z = entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance") + Math.sin(loop) * ZRadius2;
-					if (world instanceof ServerLevel _level)
-						_level.sendParticles(ParticleTypes.SWEEP_ATTACK, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
-					if (world instanceof ServerLevel _level)
-						_level.sendParticles(ParticleTypes.CLOUD, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
 						if (world instanceof ServerLevel _level)
 							_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),

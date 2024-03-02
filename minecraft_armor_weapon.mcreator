@@ -4859,6 +4859,42 @@
           }
         ]
       }
+    },
+    {
+      "name": "Zokuseizanngeki",
+      "type": "potioneffect",
+      "sortid": 310,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "zokuseizanngeki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/ZokuseizanngekiMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ZokuseizanngekiehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 311,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "zokuseizanngekiehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5007,6 +5043,7 @@
       "item.minecraft_armor_weapon.kurikaraken": "§5倶利伽羅剣",
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
+      "effect.minecraft_armor_weapon.zokuseizanngeki": "zannfgeki",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "item.minecraft_armor_weapon.rpg_book": "RPG Book",
       "effect.minecraft_armor_weapon.otita": "a",
@@ -5169,6 +5206,7 @@
       "item.minecraft_armor_weapon.kurikaraken": "§5倶利伽羅剣",
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
+      "effect.minecraft_armor_weapon.zokuseizanngeki": "zannfgeki",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "item.minecraft_armor_weapon.rpg_book": "RPG Book",
       "effect.minecraft_armor_weapon.otita": "a",
