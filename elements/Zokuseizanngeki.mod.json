@@ -15,6 +15,9 @@
     "renderStatusInHUD": false,
     "onStarted": {
       "name": "GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
+    },
+    "onActiveTick": {
+      "name": "ZokuseizanngekiehuekutogaYouXiaoShinoteituku"
     }
   }
 }

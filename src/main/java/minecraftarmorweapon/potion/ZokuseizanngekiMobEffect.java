@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
+import minecraftarmorweapon.procedures.ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure;
 import minecraftarmorweapon.procedures.GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -27,6 +28,11 @@ public class ZokuseizanngekiMobEffect extends MobEffect {
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity.getX(), entity.getY(), entity.getZ(), entity);
+	}
+
+	@Override
+	public void applyEffectTick(LivingEntity entity, int amplifier) {
+		ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity);
 	}
 
 	@Override
