@@ -4930,6 +4930,25 @@
           }
         ]
       }
+    },
+    {
+      "name": "RpgBookGuiMagicSwordsmanTap",
+      "type": "procedure",
+      "sortid": 313,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rpg_book_gui_magic_swordsman_tap",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/RpgBookGuiMagicSwordsmanTapProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -4984,8 +5003,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5133,6 +5152,7 @@
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
+      "gui.minecraft_armor_weapon.rpg_book_gui.button_magic_swordsman": "magic swordsman",
       "itemGroup.tabnigu": "§5二グ",
       "item.minecraft_armor_weapon.dragon_armor_helmet": "§5Dragon helmet",
       "item.minecraft_armor_weapon.blood_bottle": "Blood Bottle",
@@ -5147,8 +5167,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5296,6 +5316,7 @@
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
+      "gui.minecraft_armor_weapon.rpg_book_gui.button_magic_swordsman": "magic swordsman",
       "itemGroup.tabnigu": "二グ",
       "item.minecraft_armor_weapon.dragon_armor_helmet": "§5Dragon helmet",
       "item.minecraft_armor_weapon.blood_bottle": "Blood Bottle",

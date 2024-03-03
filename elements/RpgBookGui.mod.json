@@ -20,7 +20,7 @@
           },
           "width": 87,
           "height": 20,
-          "x": 166,
+          "x": 171,
           "y": 181
         }
       },
@@ -34,8 +34,22 @@
           },
           "width": 46,
           "height": 20,
-          "x": 186,
+          "x": 191,
           "y": 151
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_magic_swordsman",
+          "text": "magic swordsman",
+          "onClick": {
+            "name": "RpgBookGuiMagicSwordsmanTap"
+          },
+          "width": 103,
+          "height": 20,
+          "x": 161,
+          "y": 121
         }
       }
     ],

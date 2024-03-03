@@ -32,21 +32,40 @@ public class BowMultishotProcedure {
 			return;
 		if ((entity instanceof Projectile _projEnt ? _projEnt.getDeltaMovement().length() : 0) > 2) {
 			if ((entity instanceof Projectile _projEnt ? _projEnt.getDeltaMovement().length() : 0) < 4) {
-				for (int index0 = 0; index0 < 3; index0++) {
-					if (world instanceof ServerLevel projectileLevel) {
-						Projectile _entityToSpawn = new Object() {
-							public Projectile getArrow(Level level, float damage, int knockback) {
-								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-								entityToSpawn.setBaseDamage(damage);
-								entityToSpawn.setKnockback(knockback);
-								entityToSpawn.setSecondsOnFire(100);
-								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-								return entityToSpawn;
-							}
-						}.getArrow(projectileLevel, 5, 1);
-						_entityToSpawn.setPos(x, y, z);
-						_entityToSpawn.shoot((entity.getDeltaMovement().x() + Math.random() + -0.5), (entity.getDeltaMovement().y() + Math.random() + -0.5), (entity.getDeltaMovement().z() + Math.random() + -0.5), 5, 0);
-						projectileLevel.addFreshEntity(_entityToSpawn);
+				if (entity.isOnFire()) {
+					for (int index0 = 0; index0 < 3; index0++) {
+						if (world instanceof ServerLevel projectileLevel) {
+							Projectile _entityToSpawn = new Object() {
+								public Projectile getArrow(Level level, float damage, int knockback) {
+									AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+									entityToSpawn.setBaseDamage(damage);
+									entityToSpawn.setKnockback(knockback);
+									entityToSpawn.setSecondsOnFire(100);
+									entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+									return entityToSpawn;
+								}
+							}.getArrow(projectileLevel, 5, 1);
+							_entityToSpawn.setPos(x, y, z);
+							_entityToSpawn.shoot((entity.getDeltaMovement().x() + Math.random() - 0.001), (entity.getDeltaMovement().y() + Math.random() - 0.001), (entity.getDeltaMovement().z() + Math.random() - 0.001), 5, 0);
+							projectileLevel.addFreshEntity(_entityToSpawn);
+						}
+					}
+				} else {
+					for (int index1 = 0; index1 < 3; index1++) {
+						if (world instanceof ServerLevel projectileLevel) {
+							Projectile _entityToSpawn = new Object() {
+								public Projectile getArrow(Level level, float damage, int knockback) {
+									AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+									entityToSpawn.setBaseDamage(damage);
+									entityToSpawn.setKnockback(knockback);
+									entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+									return entityToSpawn;
+								}
+							}.getArrow(projectileLevel, 5, 1);
+							_entityToSpawn.setPos(x, y, z);
+							_entityToSpawn.shoot((entity.getDeltaMovement().x() + Math.random() - 0.001), (entity.getDeltaMovement().y() + Math.random() - 0.001), (entity.getDeltaMovement().z() + Math.random() - 0.001), 5, 0);
+							projectileLevel.addFreshEntity(_entityToSpawn);
+						}
 					}
 				}
 			}

@@ -14,6 +14,7 @@ import net.minecraft.core.BlockPos;
 import minecraftarmorweapon.world.inventory.RpgBookGuiMenu;
 
 import minecraftarmorweapon.procedures.RpgBookGuiNiguTapProcedure;
+import minecraftarmorweapon.procedures.RpgBookGuiMagicSwordsmanTapProcedure;
 import minecraftarmorweapon.procedures.RpgBookGuiBoggedOuterTapProcedure;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -72,6 +73,10 @@ public class RpgBookGuiButtonMessage {
 		if (buttonID == 1) {
 
 			RpgBookGuiNiguTapProcedure.execute(entity);
+		}
+		if (buttonID == 2) {
+
+			RpgBookGuiMagicSwordsmanTapProcedure.execute(entity);
 		}
 	}
 

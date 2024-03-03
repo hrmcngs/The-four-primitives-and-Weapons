@@ -27,6 +27,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	private final Player entity;
 	Button button_bogged_outer;
 	Button button_nigu;
+	Button button_magic_swordsman;
 
 	public RpgBookGuiScreen(RpgBookGuiMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -86,7 +87,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	public void init() {
 		super.init();
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-		button_bogged_outer = new Button(this.leftPos + 37, this.topPos + 158, 87, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_bogged_outer"), e -> {
+		button_bogged_outer = new Button(this.leftPos + 42, this.topPos + 158, 87, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_bogged_outer"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(0, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 0, x, y, z);
@@ -94,7 +95,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		});
 		guistate.put("button:button_bogged_outer", button_bogged_outer);
 		this.addRenderableWidget(button_bogged_outer);
-		button_nigu = new Button(this.leftPos + 57, this.topPos + 128, 46, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_nigu"), e -> {
+		button_nigu = new Button(this.leftPos + 62, this.topPos + 128, 46, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_nigu"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(1, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 1, x, y, z);
@@ -102,5 +103,13 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		});
 		guistate.put("button:button_nigu", button_nigu);
 		this.addRenderableWidget(button_nigu);
+		button_magic_swordsman = new Button(this.leftPos + 32, this.topPos + 98, 103, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_magic_swordsman"), e -> {
+			if (true) {
+				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(2, x, y, z));
+				RpgBookGuiButtonMessage.handleButtonAction(entity, 2, x, y, z);
+			}
+		});
+		guistate.put("button:button_magic_swordsman", button_magic_swordsman);
+		this.addRenderableWidget(button_magic_swordsman);
 	}
 }

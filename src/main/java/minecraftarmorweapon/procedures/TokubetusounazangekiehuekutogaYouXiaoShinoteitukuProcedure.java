@@ -140,6 +140,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 			entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 		} else {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
+					&& !((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KATANA_NIGU_HUMERUS.get())
 					&& !((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.SMALL_SWORD.get())
 					&& !((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get())) {
 				loop = entity.getPersistentData().getDouble("local");
@@ -149,7 +150,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 				ZRadius2 = 3;
 				random = entity.getPersistentData().getDouble("random");
 				Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
-				for (int index3 = 0; index3 < 100; index3++) {
+				for (int index3 = 0; index3 < 25; index3++) {
 					if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 						entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 						Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -157,7 +158,7 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 						break;
 					}
 				}
-				for (int index4 = 0; index4 < 100; index4++) {
+				for (int index4 = 0; index4 < 25; index4++) {
 					if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 						entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 						Y_pos = entity.getPersistentData().getDouble("Ypos") + 1;
@@ -168,72 +169,14 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 				}
 				world.levelEvent(2001, new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos")),
 						Block.getId((world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))))));
-				for (int index5 = 0; index5 < 36; index5++) {
-					X = entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance") + Math.cos(loop) * XRadius2;
-					Y = Y_pos + 1;
-					Z = entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance") + Math.sin(loop) * ZRadius2;
+				for (int index5 = 0; index5 < 10; index5++) {
+					X = entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance");
+					Y = Y_pos + 8;
+					Z = entity.getPersistentData().getDouble("Z") + Math.cos(Math.toRadians(entity.getPersistentData().getDouble("yaw"))) * entity.getPersistentData().getDouble("distance");
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.SWEEP_ATTACK, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
 					if (world instanceof ServerLevel _level)
-						_level.sendParticles(ParticleTypes.CLOUD, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
-					if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.DEMONIZED.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-						if (world instanceof ServerLevel _level)
-							_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-									"particle item redstone ~ ~0.5 ~ 0.3 0.1 0.3 0.1 100 force");
-						if (world instanceof ServerLevel _level)
-							_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-									"/particle dust 0.639 0.169 0.169 1 ~ ~0.5 ~ 0.3 0.1 0.3 0.1 10 force");
-					} else {
-						if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle flame ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
-						}
-						if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()) {
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle block lapis_block ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle bubble ~ ~ ~ 0.5 0.1 0.5 .0 50 force @p");
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle dolphin ~ ~ ~ 0.5 0.1 0.5 .0 50 force @p");
-						}
-						if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle firework ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
-						}
-						if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle falling_dust ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle sneeze ~ ~ ~ 0.5 0.1 0.5 .0 20 force @p");
-						}
-						if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()) {
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle block lapis_block ~ ~ ~ 0.5 0.1 0.5 .0 10 force @p");
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle bubble ~ ~ ~ 0.5 0.1 0.5 .0 25 force @p");
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle dolphin ~ ~ ~ 0.5 0.1 0.5 .0 25 force @p");
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle falling_dust ~ ~ ~ 0.5 0.1 0.5 .0 10 force @p");
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle sneeze ~ ~ ~ 0.5 0.1 0.5 .0 10 force @p");
-							if (world instanceof ServerLevel _level)
-								_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(X, Y, Z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-										"particle firework ~ ~ ~ 0.5 0.1 0.5 .0 10 force @p");
-						}
-					}
+						_level.sendParticles(ParticleTypes.CLOUD, X, Y, Z, 3, 0.5, 0.5, 0.5, 0);
 					{
 						final Vec3 _center = new Vec3(X, Y, Z);
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
@@ -278,8 +221,8 @@ public class TokubetusounazangekiehuekutogaYouXiaoShinoteitukuProcedure {
 							}
 						}
 					}
-					loop = loop + Math.toRadians(5);
-					Y_pos = Y_pos - 0.0555555555555556;
+					loop = loop;
+					Y_pos = Y_pos - 1;
 				}
 				entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()
