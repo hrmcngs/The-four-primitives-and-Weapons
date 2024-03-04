@@ -34,6 +34,7 @@ import minecraftarmorweapon.item.QuiverItemItem;
 import minecraftarmorweapon.item.PrototypeKatanaItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.OninomenItem;
+import minecraftarmorweapon.item.NiguShieldItem;
 import minecraftarmorweapon.item.NetheriteQuiverItemItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
@@ -163,6 +164,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> BOGGED_OUTER_LEGGINGS = REGISTRY.register("bogged_outer_leggings", () -> new BoggedOuterItem.Leggings());
 	public static final RegistryObject<Item> BOGGED_OUTER_BOOTS = REGISTRY.register("bogged_outer_boots", () -> new BoggedOuterItem.Boots());
 	public static final RegistryObject<Item> RPG_BOOK = REGISTRY.register("rpg_book", () -> new RpgBookItem());
+	public static final RegistryObject<Item> NIGU_SHIELD = REGISTRY.register("nigu_shield", () -> new NiguShieldItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
