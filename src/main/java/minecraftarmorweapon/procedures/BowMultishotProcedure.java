@@ -55,6 +55,17 @@ public class BowMultishotProcedure {
 									(EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))));
 						}
 					}
+					if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)) != 0
+							&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.BOW) {
+						(entityiterator instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower",
+								(entity instanceof Projectile _projEnt ? _projEnt.getDeltaMovement().length() : 0));
+						if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)) <= 10) {
+							(entityiterator instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 10);
+						} else {
+							(entityiterator instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber",
+									(EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY))));
+						}
+					}
 				}
 			}
 		}

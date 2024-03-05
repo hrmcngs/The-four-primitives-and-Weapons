@@ -34,8 +34,29 @@ public class BowMultishotMamotProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower") > 2) {
+			for (int index0 = 0; index0 < (int) ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbownumber")); index0++) {
+				if (world instanceof ServerLevel projectileLevel) {
+					Projectile _entityToSpawn = new Object() {
+						public Projectile getArrow(Level level, float damage, int knockback) {
+							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+							entityToSpawn.setBaseDamage(damage);
+							entityToSpawn.setKnockback(knockback);
+							entityToSpawn.setSecondsOnFire(100);
+							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+							return entityToSpawn;
+						}
+					}.getArrow(projectileLevel, 5, 1);
+					_entityToSpawn.setPos(x, y, z);
+					_entityToSpawn.shoot((entity.getLookAngle().x + Math.random() - 0.001), (entity.getLookAngle().y + Math.random() - 0.001), (entity.getLookAngle().z + Math.random() - 0.001), 5, 0);
+					projectileLevel.addFreshEntity(_entityToSpawn);
+				}
+			}
+			(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
+			(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
+		}
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower") > 2) {
-			for (int index0 = 0; index0 < (int) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbownumber")); index0++) {
+			for (int index1 = 0; index1 < (int) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbownumber")); index1++) {
 				if (world instanceof ServerLevel projectileLevel) {
 					Projectile _entityToSpawn = new Object() {
 						public Projectile getArrow(Level level, float damage, int knockback) {
