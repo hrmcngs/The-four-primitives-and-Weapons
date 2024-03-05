@@ -5,16 +5,24 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.entity.projectile.SpectralArrow;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.Arrow;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerLevel;
 
 import javax.annotation.Nullable;
+
+import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Comparator;
 
 @Mod.EventBusSubscriber
 public class BowMultishotProcedure {
@@ -30,41 +38,21 @@ public class BowMultishotProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity instanceof Projectile _projEnt ? _projEnt.getDeltaMovement().length() : 0) > 2) {
-			if ((entity instanceof Projectile _projEnt ? _projEnt.getDeltaMovement().length() : 0) < 4) {
-				if (entity.isOnFire()) {
-					for (int index0 = 0; index0 < 3; index0++) {
-						if (world instanceof ServerLevel projectileLevel) {
-							Projectile _entityToSpawn = new Object() {
-								public Projectile getArrow(Level level, float damage, int knockback) {
-									AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-									entityToSpawn.setBaseDamage(damage);
-									entityToSpawn.setKnockback(knockback);
-									entityToSpawn.setSecondsOnFire(100);
-									entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-									return entityToSpawn;
-								}
-							}.getArrow(projectileLevel, 5, 1);
-							_entityToSpawn.setPos(x, y, z);
-							_entityToSpawn.shoot((entity.getDeltaMovement().x() + Math.random() - 0.001), (entity.getDeltaMovement().y() + Math.random() - 0.001), (entity.getDeltaMovement().z() + Math.random() - 0.001), 5, 0);
-							projectileLevel.addFreshEntity(_entityToSpawn);
-						}
-					}
-				} else {
-					for (int index1 = 0; index1 < 3; index1++) {
-						if (world instanceof ServerLevel projectileLevel) {
-							Projectile _entityToSpawn = new Object() {
-								public Projectile getArrow(Level level, float damage, int knockback) {
-									AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-									entityToSpawn.setBaseDamage(damage);
-									entityToSpawn.setKnockback(knockback);
-									entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-									return entityToSpawn;
-								}
-							}.getArrow(projectileLevel, 5, 1);
-							_entityToSpawn.setPos(x, y, z);
-							_entityToSpawn.shoot((entity.getDeltaMovement().x() + Math.random() - 0.001), (entity.getDeltaMovement().y() + Math.random() - 0.001), (entity.getDeltaMovement().z() + Math.random() - 0.001), 5, 0);
-							projectileLevel.addFreshEntity(_entityToSpawn);
+		if (entity instanceof Arrow || entity instanceof SpectralArrow) {
+			{
+				final Vec3 _center = new Vec3(x, y, z);
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						.collect(Collectors.toList());
+				for (Entity entityiterator : _entfound) {
+					if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0
+							&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BOW) {
+						(entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower",
+								(entity instanceof Projectile _projEnt ? _projEnt.getDeltaMovement().length() : 0));
+						if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) <= 10) {
+							(entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 10);
+						} else {
+							(entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber",
+									(EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MULTISHOT, (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))));
 						}
 					}
 				}
