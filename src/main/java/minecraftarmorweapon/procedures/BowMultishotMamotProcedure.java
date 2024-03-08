@@ -14,9 +14,12 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
+
+import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 
 import javax.annotation.Nullable;
 
@@ -39,186 +42,194 @@ public class BowMultishotMamotProcedure {
 		double a = 0;
 		double b = 0;
 		double c = 0;
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower") > 0) {
-			if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)) != 0) {
-				a = entity.getYRot();
-				b = entity.getXRot();
-				c = 10;
-				if (world instanceof ServerLevel projectileLevel) {
-					Projectile _entityToSpawn = new Object() {
-						public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-							entityToSpawn.setOwner(shooter);
-							entityToSpawn.setBaseDamage(damage);
-							entityToSpawn.setKnockback(knockback);
-							entityToSpawn.setSecondsOnFire(100);
-							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-							return entityToSpawn;
-						}
-					}.getArrow(projectileLevel, entity, 5, 1);
-					_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
-					_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-							((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
-							(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-							(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
-					projectileLevel.addFreshEntity(_entityToSpawn);
+		if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BOGGED_OUTER_HELMET.get()
+				&& (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BOGGED_OUTER_CHESTPLATE.get()
+				&& (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BOGGED_OUTER_LEGGINGS.get()
+				&& (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BOGGED_OUTER_BOOTS.get()
+				|| (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STRAY_OUTER_ARMOR_HELMET.get()
+						&& (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STRAY_OUTER_ARMOR_CHESTPLATE.get()
+						&& (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STRAY_OUTER_ARMOR_LEGGINGS.get()) {
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower") > 0) {
+				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY)) != 0) {
+					a = entity.getYRot();
+					b = entity.getXRot();
+					c = 10;
+					if (world instanceof ServerLevel projectileLevel) {
+						Projectile _entityToSpawn = new Object() {
+							public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
+								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+								entityToSpawn.setOwner(shooter);
+								entityToSpawn.setBaseDamage(damage);
+								entityToSpawn.setKnockback(knockback);
+								entityToSpawn.setSecondsOnFire(100);
+								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+								return entityToSpawn;
+							}
+						}.getArrow(projectileLevel, entity, 5, 1);
+						_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
+						_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
+								(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
+						projectileLevel.addFreshEntity(_entityToSpawn);
+					}
+					c = (-1) * c;
+					if (world instanceof ServerLevel projectileLevel) {
+						Projectile _entityToSpawn = new Object() {
+							public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
+								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+								entityToSpawn.setOwner(shooter);
+								entityToSpawn.setBaseDamage(damage);
+								entityToSpawn.setKnockback(knockback);
+								entityToSpawn.setSecondsOnFire(100);
+								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+								return entityToSpawn;
+							}
+						}.getArrow(projectileLevel, entity, 5, 1);
+						_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
+						_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
+								(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
+						projectileLevel.addFreshEntity(_entityToSpawn);
+					}
+					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
+					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
+				} else {
+					a = entity.getYRot();
+					b = entity.getXRot();
+					c = 10;
+					if (world instanceof ServerLevel projectileLevel) {
+						Projectile _entityToSpawn = new Object() {
+							public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
+								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+								entityToSpawn.setOwner(shooter);
+								entityToSpawn.setBaseDamage(damage);
+								entityToSpawn.setKnockback(knockback);
+								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+								return entityToSpawn;
+							}
+						}.getArrow(projectileLevel, entity, 5, 1);
+						_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
+						_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
+								(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
+						projectileLevel.addFreshEntity(_entityToSpawn);
+					}
+					c = (-1) * c;
+					if (world instanceof ServerLevel projectileLevel) {
+						Projectile _entityToSpawn = new Object() {
+							public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
+								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+								entityToSpawn.setOwner(shooter);
+								entityToSpawn.setBaseDamage(damage);
+								entityToSpawn.setKnockback(knockback);
+								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+								return entityToSpawn;
+							}
+						}.getArrow(projectileLevel, entity, 5, 1);
+						_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
+						_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
+								(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
+						projectileLevel.addFreshEntity(_entityToSpawn);
+					}
+					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
+					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
 				}
-				c = (-1) * c;
-				if (world instanceof ServerLevel projectileLevel) {
-					Projectile _entityToSpawn = new Object() {
-						public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-							entityToSpawn.setOwner(shooter);
-							entityToSpawn.setBaseDamage(damage);
-							entityToSpawn.setKnockback(knockback);
-							entityToSpawn.setSecondsOnFire(100);
-							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-							return entityToSpawn;
-						}
-					}.getArrow(projectileLevel, entity, 5, 1);
-					_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
-					_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-							((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
-							(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-							(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
-					projectileLevel.addFreshEntity(_entityToSpawn);
-				}
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
-			} else {
-				a = entity.getYRot();
-				b = entity.getXRot();
-				c = 10;
-				if (world instanceof ServerLevel projectileLevel) {
-					Projectile _entityToSpawn = new Object() {
-						public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-							entityToSpawn.setOwner(shooter);
-							entityToSpawn.setBaseDamage(damage);
-							entityToSpawn.setKnockback(knockback);
-							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-							return entityToSpawn;
-						}
-					}.getArrow(projectileLevel, entity, 5, 1);
-					_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
-					_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-							((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
-							(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-							(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
-					projectileLevel.addFreshEntity(_entityToSpawn);
-				}
-				c = (-1) * c;
-				if (world instanceof ServerLevel projectileLevel) {
-					Projectile _entityToSpawn = new Object() {
-						public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-							entityToSpawn.setOwner(shooter);
-							entityToSpawn.setBaseDamage(damage);
-							entityToSpawn.setKnockback(knockback);
-							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-							return entityToSpawn;
-						}
-					}.getArrow(projectileLevel, entity, 5, 1);
-					_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
-					_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-							((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
-							(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-							(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
-					projectileLevel.addFreshEntity(_entityToSpawn);
-				}
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
 			}
-		}
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower") > 0) {
-			if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-				a = entity.getYRot();
-				b = entity.getXRot();
-				c = 10;
-				if (world instanceof ServerLevel projectileLevel) {
-					Projectile _entityToSpawn = new Object() {
-						public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-							entityToSpawn.setOwner(shooter);
-							entityToSpawn.setBaseDamage(damage);
-							entityToSpawn.setKnockback(knockback);
-							entityToSpawn.setSecondsOnFire(100);
-							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-							return entityToSpawn;
-						}
-					}.getArrow(projectileLevel, entity, 5, 1);
-					_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
-					_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-							((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
-							(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-							(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
-					projectileLevel.addFreshEntity(_entityToSpawn);
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower") > 0) {
+				if (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+					a = entity.getYRot();
+					b = entity.getXRot();
+					c = 10;
+					if (world instanceof ServerLevel projectileLevel) {
+						Projectile _entityToSpawn = new Object() {
+							public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
+								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+								entityToSpawn.setOwner(shooter);
+								entityToSpawn.setBaseDamage(damage);
+								entityToSpawn.setKnockback(knockback);
+								entityToSpawn.setSecondsOnFire(100);
+								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+								return entityToSpawn;
+							}
+						}.getArrow(projectileLevel, entity, 5, 1);
+						_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
+						_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
+								(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
+						projectileLevel.addFreshEntity(_entityToSpawn);
+					}
+					c = (-1) * c;
+					if (world instanceof ServerLevel projectileLevel) {
+						Projectile _entityToSpawn = new Object() {
+							public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
+								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+								entityToSpawn.setOwner(shooter);
+								entityToSpawn.setBaseDamage(damage);
+								entityToSpawn.setKnockback(knockback);
+								entityToSpawn.setSecondsOnFire(100);
+								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+								return entityToSpawn;
+							}
+						}.getArrow(projectileLevel, entity, 5, 1);
+						_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
+						_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
+								(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
+						projectileLevel.addFreshEntity(_entityToSpawn);
+					}
+					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
+					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
+				} else {
+					a = entity.getYRot();
+					b = entity.getXRot();
+					c = 10;
+					if (world instanceof ServerLevel projectileLevel) {
+						Projectile _entityToSpawn = new Object() {
+							public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
+								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+								entityToSpawn.setOwner(shooter);
+								entityToSpawn.setBaseDamage(damage);
+								entityToSpawn.setKnockback(knockback);
+								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+								return entityToSpawn;
+							}
+						}.getArrow(projectileLevel, entity, 5, 1);
+						_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
+						_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
+								(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
+						projectileLevel.addFreshEntity(_entityToSpawn);
+					}
+					c = (-1) * c;
+					if (world instanceof ServerLevel projectileLevel) {
+						Projectile _entityToSpawn = new Object() {
+							public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
+								AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
+								entityToSpawn.setOwner(shooter);
+								entityToSpawn.setBaseDamage(damage);
+								entityToSpawn.setKnockback(knockback);
+								entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+								return entityToSpawn;
+							}
+						}.getArrow(projectileLevel, entity, 5, 1);
+						_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
+						_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
+								((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
+								(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
+								(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
+						projectileLevel.addFreshEntity(_entityToSpawn);
+					}
+					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
+					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
 				}
-				c = (-1) * c;
-				if (world instanceof ServerLevel projectileLevel) {
-					Projectile _entityToSpawn = new Object() {
-						public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-							entityToSpawn.setOwner(shooter);
-							entityToSpawn.setBaseDamage(damage);
-							entityToSpawn.setKnockback(knockback);
-							entityToSpawn.setSecondsOnFire(100);
-							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-							return entityToSpawn;
-						}
-					}.getArrow(projectileLevel, entity, 5, 1);
-					_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
-					_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-							((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
-							(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-							(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
-					projectileLevel.addFreshEntity(_entityToSpawn);
-				}
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
-			} else {
-				a = entity.getYRot();
-				b = entity.getXRot();
-				c = 10;
-				if (world instanceof ServerLevel projectileLevel) {
-					Projectile _entityToSpawn = new Object() {
-						public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-							entityToSpawn.setOwner(shooter);
-							entityToSpawn.setBaseDamage(damage);
-							entityToSpawn.setKnockback(knockback);
-							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-							return entityToSpawn;
-						}
-					}.getArrow(projectileLevel, entity, 5, 1);
-					_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
-					_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-							((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
-							(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-							(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
-					projectileLevel.addFreshEntity(_entityToSpawn);
-				}
-				c = (-1) * c;
-				if (world instanceof ServerLevel projectileLevel) {
-					Projectile _entityToSpawn = new Object() {
-						public Projectile getArrow(Level level, Entity shooter, float damage, int knockback) {
-							AbstractArrow entityToSpawn = new Arrow(EntityType.ARROW, level);
-							entityToSpawn.setOwner(shooter);
-							entityToSpawn.setBaseDamage(damage);
-							entityToSpawn.setKnockback(knockback);
-							entityToSpawn.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-							return entityToSpawn;
-						}
-					}.getArrow(projectileLevel, entity, 5, 1);
-					_entityToSpawn.setPos((entity.getX()), (entity.getY() + 1.5), (entity.getZ()));
-					_entityToSpawn.shoot(((-1) * (Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.sin(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.sin(Math.toRadians(a - 90)))),
-							((-1) * Math.cos(Math.toRadians(c)) * Math.sin(Math.toRadians(b))),
-							(Math.cos(Math.toRadians(c)) * Math.cos(Math.toRadians(b)) * Math.cos(Math.toRadians(a)) + Math.sin(Math.toRadians(c)) * Math.cos(Math.toRadians(a - 90))),
-							(float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("minecraft_armor_weapon:multishotbowpower")), 0);
-					projectileLevel.addFreshEntity(_entityToSpawn);
-				}
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbowpower", 0);
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("minecraft_armor_weapon:multishotbownumber", 0);
 			}
 		}
 	}
