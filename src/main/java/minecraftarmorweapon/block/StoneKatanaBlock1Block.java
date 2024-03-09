@@ -30,10 +30,10 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import java.util.List;
 import java.util.Collections;
 
-public class StoneKatanaBlock2Block extends Block {
+public class StoneKatanaBlock1Block extends Block {
 	public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
 
-	public StoneKatanaBlock2Block() {
+	public StoneKatanaBlock1Block() {
 		super(BlockBehaviour.Properties.of(Material.METAL).sound(SoundType.METAL).strength(0f, 10f).lightLevel(s -> 5).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.Y));
 	}

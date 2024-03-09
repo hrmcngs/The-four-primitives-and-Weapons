@@ -2,7 +2,7 @@
   "_fv": 43,
   "_type": "block",
   "definition": {
-    "texture": "stonekatana",
+    "texture": "katana3dstoneblock",
     "textureTop": "",
     "textureLeft": "",
     "textureFront": "",
@@ -14,7 +14,7 @@
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
-    "itemTexture": "aa",
+    "itemTexture": "",
     "particleTexture": "aa",
     "tintType": "No tint",
     "isItemTinted": false,

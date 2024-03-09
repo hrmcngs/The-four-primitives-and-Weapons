@@ -600,22 +600,6 @@
       }
     },
     {
-      "name": "StoneKatanaBlock",
-      "type": "block",
-      "sortid": 43,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "stone_katana_block",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block.json",
-          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_katana_block.json",
-          "src/main/java/minecraftarmorweapon/block/StoneKatanaBlockBlock.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block.json"
-        ]
-      }
-    },
-    {
       "name": "StoneKatana",
       "type": "tool",
       "sortid": 44,
@@ -675,22 +659,6 @@
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/a.json",
           "src/main/java/minecraftarmorweapon/item/AItem.java"
-        ]
-      }
-    },
-    {
-      "name": "StoneKatanaBlock2",
-      "type": "block",
-      "sortid": 47,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "stone_katana_block_2",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_katana_block_2.json",
-          "src/main/java/minecraftarmorweapon/block/StoneKatanaBlock2Block.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block_2.json",
-          "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block_2.json"
         ]
       }
     },
@@ -5003,6 +4971,38 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/item/das_herz_einer_fee_armor_boots.json"
         ]
       }
+    },
+    {
+      "name": "StoneKatanaBlock",
+      "type": "block",
+      "sortid": 317,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stone_katana_block",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_katana_block.json",
+          "src/main/java/minecraftarmorweapon/block/StoneKatanaBlockBlock.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block.json"
+        ]
+      }
+    },
+    {
+      "name": "StoneKatanaBlock1",
+      "type": "block",
+      "sortid": 318,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stone_katana_block_1",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/block/StoneKatanaBlock1Block.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_katana_block_1.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/stone_katana_block_1.json",
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/stone_katana_block_1.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5080,7 +5080,6 @@
       "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
-      "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "advancements.sword_progress.descr": "鉄の刀を得る",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_leggings": "das herz einer fee armor leggings",
@@ -5095,6 +5094,7 @@
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "block.minecraft_armor_weapon.stone_bricks_trap_door": "Stone Bricks Trap Door",
+      "block.minecraft_armor_weapon.stone_katana_block_1": "Netherite Katana Block",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "item.minecraft_armor_weapon.dragon_black_armor_helmet": "§8Dragon black helmet",
       "item.minecraft_armor_weapon.stray_outer_armor_leggings": "Stray Outer Armor Leggins",
@@ -5249,7 +5249,6 @@
       "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
-      "block.minecraft_armor_weapon.stone_katana_block_2": "Netherite Katana Block",
       "advancements.sword_progress.descr": "鉄の刀を得る",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_leggings": "das herz einer fee armor leggings",
@@ -5264,6 +5263,7 @@
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
       "block.minecraft_armor_weapon.stone_bricks_trap_door": "Stone Bricks Trap Door",
+      "block.minecraft_armor_weapon.stone_katana_block_1": "Netherite Katana Block",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
       "item.minecraft_armor_weapon.dragon_black_armor_helmet": "§8Dragon black helmet",
       "item.minecraft_armor_weapon.stray_outer_armor_leggings": "Stray Outer Armor Leggins",

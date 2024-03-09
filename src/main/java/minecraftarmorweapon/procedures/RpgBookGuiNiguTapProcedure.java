@@ -18,6 +18,11 @@ public class RpgBookGuiNiguTapProcedure {
 			ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 		}
 		if (entity instanceof Player _player) {
+			ItemStack _setstack = new ItemStack(MinecraftArmorWeaponModItems.NIGU_SHIELD.get());
+			_setstack.setCount(1);
+			ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+		}
+		if (entity instanceof Player _player) {
 			ItemStack _stktoremove = new ItemStack(MinecraftArmorWeaponModItems.RPG_BOOK.get());
 			_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
 		}

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft_armor_weapon:block/stone_katana_block",
+  "parent": "minecraft_armor_weapon:block/stone_katana_block_1",
   "display": {
     "thirdperson": {
       "rotation": [

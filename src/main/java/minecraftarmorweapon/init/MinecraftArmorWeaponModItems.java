@@ -89,10 +89,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> ILLUSIONER_ARMOR_LEGGINGS = REGISTRY.register("illusioner_armor_leggings", () -> new IllusionerArmorItem.Leggings());
 	public static final RegistryObject<Item> ILLUSIONER_ARMOR_BOOTS = REGISTRY.register("illusioner_armor_boots", () -> new IllusionerArmorItem.Boots());
 	public static final RegistryObject<Item> NETHERITE_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.NETHERITE_KATANA_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
-	public static final RegistryObject<Item> STONE_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> STONE_KATANA = REGISTRY.register("stone_katana", () -> new StoneKatanaItem());
 	public static final RegistryObject<Item> A = REGISTRY.register("a", () -> new AItem());
-	public static final RegistryObject<Item> STONE_KATANA_BLOCK_2 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_2, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Item> HAMMER = REGISTRY.register("hammer", () -> new HammerItem());
 	public static final RegistryObject<Item> IRON_KATANA = REGISTRY.register("iron_katana", () -> new IronKatanaItem());
 	public static final RegistryObject<Item> CROSS = block(MinecraftArmorWeaponModBlocks.CROSS, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
@@ -170,6 +168,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_CHESTPLATE = REGISTRY.register("das_herz_einer_fee_armor_chestplate", () -> new DasHerzEinerFeeArmorItem.Chestplate());
 	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_LEGGINGS = REGISTRY.register("das_herz_einer_fee_armor_leggings", () -> new DasHerzEinerFeeArmorItem.Leggings());
 	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_BOOTS = REGISTRY.register("das_herz_einer_fee_armor_boots", () -> new DasHerzEinerFeeArmorItem.Boots());
+	public static final RegistryObject<Item> STONE_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
+	public static final RegistryObject<Item> STONE_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_1, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

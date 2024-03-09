@@ -1,9 +1,9 @@
 {
   "parent": "minecraft_armor_weapon:custom/stonekatanablock",
   "textures": {
-    "all": "minecraft_armor_weapon:blocks/stonekatana",
+    "all": "minecraft_armor_weapon:blocks/katana3dstoneblock",
     "particle": "minecraft_armor_weapon:blocks/aa",
-    "3": "minecraft_armor_weapon:blocks/stonekatana"
+    "0": "minecraft_armor_weapon:blocks/katana3dstoneblock"
   },
   "render_type": "cutout"
 }
