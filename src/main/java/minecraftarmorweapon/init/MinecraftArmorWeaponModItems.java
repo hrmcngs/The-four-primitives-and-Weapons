@@ -60,6 +60,7 @@ import minecraftarmorweapon.item.DragonGreenArmorItem;
 import minecraftarmorweapon.item.DragonBlueArmorItem;
 import minecraftarmorweapon.item.DragonBlackArmorItem;
 import minecraftarmorweapon.item.DragonArmorItem;
+import minecraftarmorweapon.item.DasHerzEinerFeeArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BoggedOuterQuiverItem;
 import minecraftarmorweapon.item.BoggedOuterItem;
@@ -165,6 +166,10 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> BOGGED_OUTER_BOOTS = REGISTRY.register("bogged_outer_boots", () -> new BoggedOuterItem.Boots());
 	public static final RegistryObject<Item> RPG_BOOK = REGISTRY.register("rpg_book", () -> new RpgBookItem());
 	public static final RegistryObject<Item> NIGU_SHIELD = REGISTRY.register("nigu_shield", () -> new NiguShieldItem());
+	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_HELMET = REGISTRY.register("das_herz_einer_fee_armor_helmet", () -> new DasHerzEinerFeeArmorItem.Helmet());
+	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_CHESTPLATE = REGISTRY.register("das_herz_einer_fee_armor_chestplate", () -> new DasHerzEinerFeeArmorItem.Chestplate());
+	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_LEGGINGS = REGISTRY.register("das_herz_einer_fee_armor_leggings", () -> new DasHerzEinerFeeArmorItem.Leggings());
+	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_BOOTS = REGISTRY.register("das_herz_einer_fee_armor_boots", () -> new DasHerzEinerFeeArmorItem.Boots());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
