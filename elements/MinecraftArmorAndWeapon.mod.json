@@ -4,7 +4,7 @@
   "definition": {
     "displayName": "Minecraft Armor And Weapon",
     "pointOfInterest": {
-      "value": "Blocks.POTTED_WITHER_ROSE"
+      "value": "CUSTOM:RoseFlowerPot"
     },
     "actionSound": {
       "value": "entity.wither.ambient"
