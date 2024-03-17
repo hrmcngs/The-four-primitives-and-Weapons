@@ -21,6 +21,7 @@ import minecraftarmorweapon.client.model.Modelnetherite_arrow_armor_layer_1_Conv
 import minecraftarmorweapon.client.model.Modelmahouzinn;
 import minecraftarmorweapon.client.model.Modelluna_Converted2;
 import minecraftarmorweapon.client.model.Modelluna_Converted;
+import minecraftarmorweapon.client.model.Modelkagamiyotei;
 import minecraftarmorweapon.client.model.Modelillusioner_armor_layer_3_Converted;
 import minecraftarmorweapon.client.model.Modelhusk_Converted;
 import minecraftarmorweapon.client.model.Modelelytra_Converted;
@@ -32,6 +33,7 @@ import minecraftarmorweapon.client.model.Modelbanner_Converted;
 public class MinecraftArmorWeaponModModels {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+		event.registerLayerDefinition(Modelkagamiyotei.LAYER_LOCATION, Modelkagamiyotei::createBodyLayer);
 		event.registerLayerDefinition(Modelnetherite_arrow_armor_layer_1_Converted.LAYER_LOCATION, Modelnetherite_arrow_armor_layer_1_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelplayer_slim__Converted.LAYER_LOCATION, Modelplayer_slim__Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelluna_Converted2.LAYER_LOCATION, Modelluna_Converted2::createBodyLayer);

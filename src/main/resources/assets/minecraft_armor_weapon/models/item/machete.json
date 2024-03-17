@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/natatekina",
+  "textures": {
+    "0": "minecraft_armor_weapon:blocks/natatekina",
+    "particle": "minecraft_armor_weapon:items/natatekinaitem"
+  }
+}

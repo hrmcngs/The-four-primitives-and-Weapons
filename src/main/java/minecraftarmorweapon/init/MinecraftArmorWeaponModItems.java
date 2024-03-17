@@ -38,10 +38,12 @@ import minecraftarmorweapon.item.NiguShieldItem;
 import minecraftarmorweapon.item.NetheriteQuiverItemItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
+import minecraftarmorweapon.item.MahouzinmitameItem;
 import minecraftarmorweapon.item.MagischesFeenKatanaItem;
 import minecraftarmorweapon.item.MagicalKatanaItem;
 import minecraftarmorweapon.item.MagicWandItem;
 import minecraftarmorweapon.item.MagicMcrystalItem;
+import minecraftarmorweapon.item.MacheteItem;
 import minecraftarmorweapon.item.LunaItem;
 import minecraftarmorweapon.item.KurikarakenItem;
 import minecraftarmorweapon.item.KatanaTobuItem;
@@ -170,6 +172,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_BOOTS = REGISTRY.register("das_herz_einer_fee_armor_boots", () -> new DasHerzEinerFeeArmorItem.Boots());
 	public static final RegistryObject<Item> STONE_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> STONE_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_1, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Item> MACHETE = REGISTRY.register("machete", () -> new MacheteItem());
+	public static final RegistryObject<Item> MAHOUZINMITAME = REGISTRY.register("mahouzinmitame", () -> new MahouzinmitameItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
