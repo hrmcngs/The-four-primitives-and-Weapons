@@ -15,23 +15,26 @@
       "value": ""
     },
     "shootConstantly": false,
-    "usageCount": 100,
+    "usageCount": 0,
     "actionSound": {
-      "value": "entity.arrow.shoot"
+      "value": ""
     },
     "hasGlow": false,
     "animation": "bow",
     "enableMeleeDamage": false,
     "damageVsEntity": 0.0,
-    "bulletPower": 1.0,
-    "bulletDamage": 5.0,
-    "bulletKnockback": 5,
+    "bulletPower": 0.1,
+    "bulletDamage": 0.0,
+    "bulletKnockback": 0,
     "bulletParticles": false,
     "bulletIgnitesFire": false,
     "bulletItemTexture": {
       "value": "Blocks.AIR"
     },
-    "bulletModel": "Default",
-    "customBulletModelTexture": ""
+    "bulletModel": "Modelkagamiyotei",
+    "customBulletModelTexture": "kagaminoyotei.png",
+    "onBulletFlyingTick": {
+      "name": "MahouzinmitameFeibiDaoJugaFeindeiruJian"
+    }
   }
 }

@@ -18,7 +18,7 @@ import minecraftarmorweapon.entity.MahouzinmitameEntity;
 
 public class MahouzinmitameItem extends Item {
 	public MahouzinmitameItem() {
-		super(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT).durability(100));
+		super(new Item.Properties().tab(CreativeModeTab.TAB_COMBAT).stacksTo(1));
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class MahouzinmitameItem extends Item {
 			double y = entity.getY();
 			double z = entity.getZ();
 			if (true) {
-				MahouzinmitameEntity entityarrow = MahouzinmitameEntity.shoot(world, entity, world.getRandom(), 1f, 5, 5);
+				MahouzinmitameEntity entityarrow = MahouzinmitameEntity.shoot(world, entity, world.getRandom(), 0.1f, 0, 0);
 				itemstack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
 				entityarrow.pickup = AbstractArrow.Pickup.DISALLOWED;
 			}

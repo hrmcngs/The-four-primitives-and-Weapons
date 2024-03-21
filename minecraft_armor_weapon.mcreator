@@ -5029,7 +5029,31 @@
         "files": [
           "src/main/java/minecraftarmorweapon/entity/MahouzinmitameEntity.java",
           "src/main/java/minecraftarmorweapon/item/MahouzinmitameItem.java",
+          "src/main/java/minecraftarmorweapon/client/renderer/MahouzinmitameRenderer.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/mahouzinmitame.json"
+        ]
+      }
+    },
+    {
+      "name": "MahouzinmitameFeibiDaoJugaFeindeiruJian",
+      "type": "procedure",
+      "sortid": 321,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mahouzinmitame_feibi_dao_juga_feindeiru_jian",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/MahouzinmitameFeibiDaoJugaFeindeiruJianProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "immediatesourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
         ]
       }
     }
