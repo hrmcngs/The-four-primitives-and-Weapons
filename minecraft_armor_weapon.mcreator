@@ -5019,45 +5019,6 @@
       }
     },
     {
-      "name": "Mahouzinmitame",
-      "type": "rangeditem",
-      "sortid": 320,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "mahouzinmitame",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/entity/MahouzinmitameEntity.java",
-          "src/main/java/minecraftarmorweapon/item/MahouzinmitameItem.java",
-          "src/main/java/minecraftarmorweapon/client/renderer/MahouzinmitameRenderer.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/mahouzinmitame.json"
-        ]
-      }
-    },
-    {
-      "name": "MahouzinmitameFeibiDaoJugaFeindeiruJian",
-      "type": "procedure",
-      "sortid": 321,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "mahouzinmitame_feibi_dao_juga_feindeiru_jian",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/MahouzinmitameFeibiDaoJugaFeindeiruJianProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "immediatesourceentity",
-            "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
       "name": "Makiwaridai",
       "type": "block",
       "sortid": 322,
@@ -5198,7 +5159,6 @@
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
       "effect.minecraft_armor_weapon.tokubetusounazangeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
-      "item.minecraft_armor_weapon.mahouzinmitame": "Mahouzinmitame",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",
       "effect.minecraft_armor_weapon.tobe": "tobe",
@@ -5370,7 +5330,6 @@
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
       "effect.minecraft_armor_weapon.tokubetusounazangeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
-      "item.minecraft_armor_weapon.mahouzinmitame": "Mahouzinmitame",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",
       "effect.minecraft_armor_weapon.tobe": "tobe",
