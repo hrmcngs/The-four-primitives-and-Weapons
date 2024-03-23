@@ -5056,6 +5056,22 @@
           }
         ]
       }
+    },
+    {
+      "name": "Makiwaridai",
+      "type": "block",
+      "sortid": 322,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "makiwaridai",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/makiwaridai.json",
+          "src/main/java/minecraftarmorweapon/block/MakiwaridaiBlock.java",
+          "src/main/resources/assets/minecraft_armor_weapon/blockstates/makiwaridai.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/block/makiwaridai.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5116,6 +5132,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
+      "block.minecraft_armor_weapon.makiwaridai": "Makiwaridai",
       "item.minecraft_armor_weapon.bogged_outer_quiver": "Bogged Outer Quiver Item",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
@@ -5287,6 +5304,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
+      "block.minecraft_armor_weapon.makiwaridai": "Makiwaridai",
       "item.minecraft_armor_weapon.bogged_outer_quiver": "Quiver Item",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",

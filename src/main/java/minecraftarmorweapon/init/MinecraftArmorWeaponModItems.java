@@ -174,6 +174,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> STONE_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_1, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Item> MACHETE = REGISTRY.register("machete", () -> new MacheteItem());
 	public static final RegistryObject<Item> MAHOUZINMITAME = REGISTRY.register("mahouzinmitame", () -> new MahouzinmitameItem());
+	public static final RegistryObject<Item> MAKIWARIDAI = block(MinecraftArmorWeaponModBlocks.MAKIWARIDAI, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
