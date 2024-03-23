@@ -12,7 +12,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import minecraftarmorweapon.client.renderer.SkeltonMobRenderer;
 import minecraftarmorweapon.client.renderer.Ruami284Renderer;
 import minecraftarmorweapon.client.renderer.OtiruyoRenderer;
-import minecraftarmorweapon.client.renderer.MahouzinmitameRenderer;
 import minecraftarmorweapon.client.renderer.KillotiruRenderer;
 import minecraftarmorweapon.client.renderer.KatanaTobuRenderer;
 import minecraftarmorweapon.client.renderer.HrmcngsRenderer;
@@ -27,6 +26,5 @@ public class MinecraftArmorWeaponModEntityRenderers {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.RUAMI_284.get(), Ruami284Renderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.KILLOTIRU.get(), KillotiruRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.KATANA_TOBU.get(), KatanaTobuRenderer::new);
-		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.MAHOUZINMITAME.get(), MahouzinmitameRenderer::new);
 	}
 }

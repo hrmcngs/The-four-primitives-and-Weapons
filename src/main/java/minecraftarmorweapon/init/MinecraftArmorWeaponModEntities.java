@@ -19,7 +19,6 @@ import net.minecraft.world.entity.Entity;
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.Ruami284Entity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
-import minecraftarmorweapon.entity.MahouzinmitameEntity;
 import minecraftarmorweapon.entity.KillotiruEntity;
 import minecraftarmorweapon.entity.KatanaTobuEntity;
 import minecraftarmorweapon.entity.HrmcngsEntity;
@@ -47,8 +46,6 @@ public class MinecraftArmorWeaponModEntities {
 			.setUpdateInterval(3).setCustomClientFactory(KillotiruEntity::new).fireImmune().sized(1.2f, 3.6f));
 	public static final RegistryObject<EntityType<KatanaTobuEntity>> KATANA_TOBU = register("projectile_katana_tobu",
 			EntityType.Builder.<KatanaTobuEntity>of(KatanaTobuEntity::new, MobCategory.MISC).setCustomClientFactory(KatanaTobuEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
-	public static final RegistryObject<EntityType<MahouzinmitameEntity>> MAHOUZINMITAME = register("projectile_mahouzinmitame",
-			EntityType.Builder.<MahouzinmitameEntity>of(MahouzinmitameEntity::new, MobCategory.MISC).setCustomClientFactory(MahouzinmitameEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
