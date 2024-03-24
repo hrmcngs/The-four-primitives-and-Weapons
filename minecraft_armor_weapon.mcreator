@@ -5033,6 +5033,55 @@
           "src/main/resources/assets/minecraft_armor_weapon/models/block/makiwaridai.json"
         ]
       }
+    },
+    {
+      "name": "DecorationPotWithArrowsYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 323,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "decoration_pot_with_arrows_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/DecorationPotWithArrowsYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DecorationPotWithArrows",
+      "type": "item",
+      "sortid": 324,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "decoration_pot_with_arrows",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/DecorationPotWithArrowsItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/decoration_pot_with_arrows.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5083,6 +5132,7 @@
   "language_map": {
     "en_us": {
       "item.minecraft_armor_weapon.prototype_katana": "§8§l§oPrototype Katana",
+      "item.minecraft_armor_weapon.decoration_pot_with_arrows": "Decoration Pot With Arrows",
       "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
@@ -5254,6 +5304,7 @@
     },
     "ja_jp": {
       "item.minecraft_armor_weapon.prototype_katana": "§8§l§oPrototype Katana",
+      "item.minecraft_armor_weapon.decoration_pot_with_arrows": "Decoration Pot With Arrows",
       "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
@@ -5459,6 +5510,7 @@
     "license": "Academic Free License v3.0",
     "disableForgeVersionCheck": true,
     "serverSideOnly": false,
+    "updateURL": "https://curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons/files/all?page\u003d1\u0026pageSize\u003d20",
     "modPicture": "katanairon3d2024-1.3",
     "requiredMods": [],
     "dependencies": [],

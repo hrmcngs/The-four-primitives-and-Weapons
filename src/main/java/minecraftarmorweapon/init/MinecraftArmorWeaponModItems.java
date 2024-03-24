@@ -61,6 +61,7 @@ import minecraftarmorweapon.item.DragonGreenArmorItem;
 import minecraftarmorweapon.item.DragonBlueArmorItem;
 import minecraftarmorweapon.item.DragonBlackArmorItem;
 import minecraftarmorweapon.item.DragonArmorItem;
+import minecraftarmorweapon.item.DecorationPotWithArrowsItem;
 import minecraftarmorweapon.item.DasHerzEinerFeeArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BoggedOuterQuiverItem;
@@ -173,6 +174,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> STONE_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_1, CreativeModeTab.TAB_BUILDING_BLOCKS);
 	public static final RegistryObject<Item> MACHETE = REGISTRY.register("machete", () -> new MacheteItem());
 	public static final RegistryObject<Item> MAKIWARIDAI = block(MinecraftArmorWeaponModBlocks.MAKIWARIDAI, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
+	public static final RegistryObject<Item> DECORATION_POT_WITH_ARROWS = REGISTRY.register("decoration_pot_with_arrows", () -> new DecorationPotWithArrowsItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

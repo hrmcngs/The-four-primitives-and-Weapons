@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/decorated_pot_-_converted",
+  "textures": {
+    "0": "minecraft_armor_weapon:blocks/tubo",
+    "particle": "minecraft_armor_weapon:items/black_spesyal_arrow"
+  }
+}
