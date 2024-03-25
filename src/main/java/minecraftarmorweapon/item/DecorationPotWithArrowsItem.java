@@ -32,7 +32,7 @@ public class DecorationPotWithArrowsItem extends Item {
 		double y = entity.getY();
 		double z = entity.getZ();
 
-		DecorationPotWithArrowsYoukuritukusitatokiProcedure.execute(world, x, y, z, entity);
+		DecorationPotWithArrowsYoukuritukusitatokiProcedure.execute(entity);
 		return ar;
 	}
 }
