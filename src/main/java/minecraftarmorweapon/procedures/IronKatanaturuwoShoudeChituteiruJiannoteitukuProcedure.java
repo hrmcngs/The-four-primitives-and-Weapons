@@ -95,14 +95,26 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 									if (_ent instanceof ServerPlayer _serverPlayer)
 										_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
 								}
+								{
+									Entity _ent = entity;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.beacon.activate neutral @a ~ ~ ~ 2 2");
+									}
+								}
+								{
+									Entity _ent = entity;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:entity.enderman.teleport player @a ~ ~ ~ 2 1");
+									}
+								}
 								if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
 									if (entity instanceof Player _player)
 										_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get(), 40);
 								}
 								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SWORD_OF_NIGHT_EFFECT.get(), 60, 1, true, false));
-								if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-									_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 4, true, false));
+									_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SWORD_OF_NIGHT_EFFECT.get(), 20, 1, true, false));
 								entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
 							}
 						}

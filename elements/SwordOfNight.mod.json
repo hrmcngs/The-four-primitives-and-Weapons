@@ -29,6 +29,9 @@
     "onRightClickedInAir": {
       "name": "SwordOfNightYoukuritukusitatoki"
     },
+    "onEntityHitWith": {
+      "name": "SwordOfNightEffectehuekutogaYouXiaoShinoteituku"
+    },
     "onItemInUseTick": {
       "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
     }

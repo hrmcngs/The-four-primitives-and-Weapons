@@ -8,5 +8,6 @@ public class SwordOfNightEffectposiyonXiaoGuogaQieretaShiProcedure {
 		if (entity == null)
 			return;
 		((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_KNOCKBACK).setBaseValue((entity.getPersistentData().getDouble("attackknockbackswordofnight")));
+		((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).setBaseValue((entity.getPersistentData().getDouble("attackdamegeswordofnight")));
 	}
 }

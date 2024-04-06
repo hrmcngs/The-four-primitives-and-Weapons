@@ -4014,6 +4014,7 @@
     {
       "name": "Mana",
       "type": "attribute",
+      "sortid": 328,
       "compiles": true,
       "locked_code": false,
       "registry_name": "mana",
@@ -5100,6 +5101,20 @@
             "type": "world"
           }
         ]
+      }
+    },
+    {
+      "name": "SwordOfNightEffectehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 326,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sword_of_night_effectehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/SwordOfNightEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": []
       }
     }
   ],
