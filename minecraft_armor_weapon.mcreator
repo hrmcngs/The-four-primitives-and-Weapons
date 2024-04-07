@@ -5116,6 +5116,19 @@
         ],
         "dependencies": []
       }
+    },
+    {
+      "name": "SwordOfNightReload",
+      "type": "potioneffect",
+      "sortid": 329,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sword_of_night_reload",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/SwordOfNightReloadMobEffect.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5171,8 +5184,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5313,6 +5326,7 @@
       "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
       "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
+      "effect.minecraft_armor_weapon.sword_of_night_reload": "sword of night shot reload",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "item.minecraft_armor_weapon.dragon_red_armor_helmet": "§4Dragon red helmet",
@@ -5343,8 +5357,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5485,6 +5499,7 @@
       "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
       "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
+      "effect.minecraft_armor_weapon.sword_of_night_reload": "sword of night",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "item.minecraft_armor_weapon.dragon_red_armor_helmet": "§4Dragon red helmet",

@@ -55,18 +55,11 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 		double sword_of_night_shot_number_of_remaining_ammunition = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get()) {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
-				if (!(entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") <= 0)) {
+				if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") > 0) {
 					entity.getPersistentData().putDouble("minecraft_armor_weapon:r", 1);
 					entity.getPersistentData().putDouble("minecraft_armor_weapon:alpha", (entity.getYRot()));
 					entity.getPersistentData().putDouble("minecraft_armor_weapon:beta", (entity.getXRot()));
 					entity.getPersistentData().putDouble("minecraft_armor_weapon:caunt", 100);
-					{
-						Entity _ent = entity;
-						if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:entity.arrow.hit_player neutral @s ~ ~ ~ 1 1.5");
-						}
-					}
 					for (int index0 = 0; index0 < (int) entity.getPersistentData().getDouble("minecraft_armor_weapon:caunt"); index0++) {
 						if (!(!world.getEntitiesOfClass(OtiruyoEntity.class,
 								AABB.ofSize(new Vec3(
@@ -432,160 +425,287 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 							break;
 						}
 					}
-				}
-				entity.getPersistentData().putDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2", (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") - 1));
-				if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 0) {
+					if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 1) {
+						{
+							Entity _ent = entity;
+							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
+										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:ui.button.click player @a ~ ~ ~ 1 1.5");
+							}
+						}
+						{
+							Entity _ent = entity;
+							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
+										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.piston.contract player @a ~ ~ ~ 1 1.5");
+							}
+						}
+					}
 					{
 						Entity _ent = entity;
 						if (!_ent.level.isClientSide() && _ent.getServer() != null) {
 							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading... |\",\"color\":\"gray\"}");
+									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:entity.ghast.shoot player @a ~ ~ ~ 1 2");
 						}
 					}
-					entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_1", true);
-					entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_3", false);
-					MinecraftArmorWeaponMod.queueServerWork(10, () -> {
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading.. |\",\"color\":\"gray\"}");
-							}
-						}
-					});
-					MinecraftArmorWeaponMod.queueServerWork(20, () -> {
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading. |\",\"color\":\"gray\"}");
-							}
-						}
-					});
-					MinecraftArmorWeaponMod.queueServerWork(20, () -> {
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading |\",\"color\":\"gray\"}");
-							}
-						}
-					});
-					MinecraftArmorWeaponMod.queueServerWork(40, () -> {
-						entity.getPersistentData().putDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2", 4);
-						entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_1", false);
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| 4 |\",\"color\":\"aqua\"}");
-							}
-						}
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.piston.extend player @a ~ ~ ~ 1 1.5");
-							}
-						}
-					});
-					if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
-						if (entity instanceof Player _player)
-							_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get(), 40);
-					}
-				}
-				if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 3) {
 					{
 						Entity _ent = entity;
 						if (!_ent.level.isClientSide() && _ent.getServer() != null) {
 							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| 3 |\",\"color\":\"green\"}");
+									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:entity.arrow.shoot player @a ~ ~ ~ 1 1.2");
 						}
 					}
-				}
-				if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 2) {
 					{
 						Entity _ent = entity;
 						if (!_ent.level.isClientSide() && _ent.getServer() != null) {
 							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| 2 |\",\"color\":\"yellow\"}");
+									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:entity.player.attack.sweep player @a ~ ~ ~ 1 1.2");
 						}
 					}
-				}
-				if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 1) {
 					{
 						Entity _ent = entity;
 						if (!_ent.level.isClientSide() && _ent.getServer() != null) {
 							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| 1 |\",\"color\":\"red\"}");
+									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:entity.experience_orb.pickup player @a ~ ~ ~ 1 2");
 						}
 					}
-				}
-				if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") <= -1) {
+				} else {
 					{
 						Entity _ent = entity;
 						if (!_ent.level.isClientSide() && _ent.getServer() != null) {
 							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading... |\",\"color\":\"gray\"}");
+									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.iron_trapdoor.close player @a ~ ~ ~ 1 1.5");
 						}
 					}
-					entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_1", true);
-					entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_3", false);
-					MinecraftArmorWeaponMod.queueServerWork(10, () -> {
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading.. |\",\"color\":\"gray\"}");
-							}
+					{
+						Entity _ent = entity;
+						if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+							_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
+									_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.iron_trapdoor.open player @a ~ ~ ~ 1 1.5");
 						}
-					});
-					MinecraftArmorWeaponMod.queueServerWork(20, () -> {
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading. |\",\"color\":\"gray\"}");
-							}
-						}
-					});
-					MinecraftArmorWeaponMod.queueServerWork(20, () -> {
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading |\",\"color\":\"gray\"}");
-							}
-						}
-					});
-					MinecraftArmorWeaponMod.queueServerWork(40, () -> {
-						entity.getPersistentData().putDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2", 4);
-						entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_1", false);
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| 4 |\",\"color\":\"aqua\"}");
-							}
-						}
-						{
-							Entity _ent = entity;
-							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-								_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-										_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.piston.extend player @a ~ ~ ~ 1 1.5");
-							}
-						}
-					});
+					}
 				}
-				{
-					Entity _ent = entity;
-					if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
-								_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.piston.extend player @a ~ ~ ~ 1 1.5");
+				if (!(entity.getPersistentData().getBoolean("sword_of_night_shot_number_of_remaining_ammunition_reload") == true)) {
+					entity.getPersistentData().putDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2", (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") - 1));
+					if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 0) {
+						if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+							if (!(entity.getPersistentData().getBoolean("sword_of_night_shot_number_of_remaining_ammunition_reload") == true)) {
+								{
+									Entity _ent = entity;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading... |\",\"color\":\"gray\"}");
+									}
+								}
+								entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_reload", true);
+								entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_3", false);
+								{
+									Entity _ent = entity;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.piston.extend player @a ~ ~ ~ 1 1.5");
+									}
+								}
+								MinecraftArmorWeaponMod.queueServerWork(10, () -> {
+									{
+										Entity _ent = entity;
+										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+											_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+													_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+													"title @s actionbar {\"text\":\"| Reloading.. |\",\"color\":\"gray\"}");
+										}
+									}
+								});
+								MinecraftArmorWeaponMod.queueServerWork(20, () -> {
+									{
+										Entity _ent = entity;
+										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+											_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+													_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+													"title @s actionbar {\"text\":\"| Reloading. |\",\"color\":\"gray\"}");
+										}
+									}
+								});
+								MinecraftArmorWeaponMod.queueServerWork(30, () -> {
+									{
+										Entity _ent = entity;
+										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+											_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+													_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+													"title @s actionbar {\"text\":\"| Reloading |\",\"color\":\"gray\"}");
+										}
+									}
+								});
+								MinecraftArmorWeaponMod.queueServerWork(40, () -> {
+									entity.getPersistentData().putDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2", 4);
+									entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_reload", false);
+									{
+										Entity _ent = entity;
+										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+											_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+													_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+													"title @s actionbar {\"text\":\"| 4 |\",\"color\":\"aqua\"}");
+										}
+									}
+								});
+							}
+						} else {
+							entity.getPersistentData().putDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2", 4);
+							entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_1", false);
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(
+											new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(),
+													_ent.getDisplayName(), _ent.level.getServer(), _ent),
+											"title @s actionbar {\"text\":\"| \",\"color\":\"aqua\"},{\"text\":\"i\",\"color\":\"dark_blue\"},{\"text\":\"n\",\"color\":\"dark_green\"},{\"text\":\"f\",\"color\":\"dark_aqua\"},{\"text\":\"i\",\"color\":\"dark_red\"},{\"text\":\"n\",\"color\":\"dark_purple\"},{\"text\":\"i\",\"color\":\"gold\"},{\"text\":\"t\",\"color\":\"blue\"},{\"text\":\"y\",\"color\":\"green\"},{\"text\":\"|\",\"color\":\"red\"}");
+								}
+							}
+						}
+					}
+					if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 3) {
+						if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
+											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| 3 |\",\"color\":\"green\"}");
+								}
+							}
+						} else {
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(
+											new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(),
+													_ent.getDisplayName(), _ent.level.getServer(), _ent),
+											"title @s actionbar {\"text\":\"| \"},{\"text\":\"i\",\"color\":\"dark_green\"},{\"text\":\"n\",\"color\":\"dark_aqua\"},{\"text\":\"f\",\"color\":\"dark_red\"},{\"text\":\"i\",\"color\":\"dark_purple\"},{\"text\":\"n\",\"color\":\"gold\"},{\"text\":\"i\",\"color\":\"blue\"},{\"text\":\"t\",\"color\":\"green\"},{\"text\":\"y\",\"color\":\"aqua\"},{\"text\":\" |\",\"color\":\"red\"}");
+								}
+							}
+						}
+					}
+					if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 2) {
+						if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
+											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| 2 |\",\"color\":\"yellow\"}");
+								}
+							}
+						} else {
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(
+											new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(),
+													_ent.getDisplayName(), _ent.level.getServer(), _ent),
+											"title @s actionbar {\"text\":\"| \",\"color\":\"dark_green\"},{\"text\":\"i\",\"color\":\"dark_aqua\"},{\"text\":\"n\",\"color\":\"dark_red\"},{\"text\":\"f\",\"color\":\"dark_purple\"},{\"text\":\"i\",\"color\":\"gold\"},{\"text\":\"n\",\"color\":\"blue\"},{\"text\":\"i\",\"color\":\"green\"},{\"text\":\"t\",\"color\":\"aqua\"},{\"text\":\"y\",\"color\":\"red\"},{\"text\":\" |\",\"color\":\"light_purple\"}");
+								}
+							}
+						}
+					}
+					if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") == 1) {
+						if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
+											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| 1 |\",\"color\":\"red\"}");
+								}
+							}
+						} else {
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(
+											new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(),
+													_ent.getDisplayName(), _ent.level.getServer(), _ent),
+											"title @s actionbar {\"text\":\"| \",\"color\":\"dark_aqua\"},{\"text\":\"i\",\"color\":\"dark_red\"},{\"text\":\"n\",\"color\":\"dark_purple\"},{\"text\":\"f\",\"color\":\"gold\"},{\"text\":\"i\",\"color\":\"blue\"},{\"text\":\"n\",\"color\":\"green\"},{\"text\":\"i\",\"color\":\"aqua\"},{\"text\":\"t\",\"color\":\"red\"},{\"text\":\"y\",\"color\"},{\"text\":\" |\",\"color\":\"light_purple\"}");
+								}
+							}
+						}
+					}
+					if (entity.getPersistentData().getDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2") <= -1) {
+						if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+							if (!(entity.getPersistentData().getBoolean("sword_of_night_shot_number_of_remaining_ammunition_reload") == true)) {
+								{
+									Entity _ent = entity;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "title @s actionbar {\"text\":\"| Reloading... |\",\"color\":\"gray\"}");
+									}
+								}
+								entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_reload", true);
+								entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_3", false);
+								{
+									Entity _ent = entity;
+									if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+										_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null,
+												4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "playsound minecraft:block.piston.extend player @a ~ ~ ~ 1 1.5");
+									}
+								}
+								MinecraftArmorWeaponMod.queueServerWork(10, () -> {
+									{
+										Entity _ent = entity;
+										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+											_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+													_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+													"title @s actionbar {\"text\":\"| Reloading.. |\",\"color\":\"gray\"}");
+										}
+									}
+								});
+								MinecraftArmorWeaponMod.queueServerWork(20, () -> {
+									{
+										Entity _ent = entity;
+										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+											_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+													_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+													"title @s actionbar {\"text\":\"| Reloading. |\",\"color\":\"gray\"}");
+										}
+									}
+								});
+								MinecraftArmorWeaponMod.queueServerWork(30, () -> {
+									{
+										Entity _ent = entity;
+										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+											_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+													_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+													"title @s actionbar {\"text\":\"| Reloading |\",\"color\":\"gray\"}");
+										}
+									}
+								});
+								MinecraftArmorWeaponMod.queueServerWork(40, () -> {
+									entity.getPersistentData().putDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2", 4);
+									entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_reload", false);
+									{
+										Entity _ent = entity;
+										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+											_ent.getServer().getCommands().performPrefixedCommand(
+													new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(),
+															_ent.getDisplayName(), _ent.level.getServer(), _ent),
+													"title @s actionbar {\"text\":\"| \",\"color\":\"aqua\"},{\"text\":\"i\",\"color\":\"dark_blue\"},{\"text\":\"n\",\"color\":\"dark_green\"},{\"text\":\"f\",\"color\":\"dark_aqua\"},{\"text\":\"i\",\"color\":\"dark_red\"},{\"text\":\"n\",\"color\":\"dark_purple\"},{\"text\":\"i\",\"color\":\"gold\"},{\"text\":\"t\",\"color\":\"blue\"},{\"text\":\"y\",\"color\":\"green\"},{\"text\":\" |\",\"color\":\"reset\"}");
+										}
+									}
+								});
+							}
+						} else {
+							entity.getPersistentData().putDouble("sword_of_night_shot_number_of_remaining_ammunition_score_2", 4);
+							entity.getPersistentData().putBoolean("sword_of_night_shot_number_of_remaining_ammunition_score_1", false);
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(
+											new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(),
+													_ent.getDisplayName(), _ent.level.getServer(), _ent),
+											"title @s actionbar {\"text\":\"| \",\"color\":\"aqua\"},{\"text\":\"i\",\"color\":\"dark_blue\"},{\"text\":\"n\",\"color\":\"dark_green\"},{\"text\":\"f\",\"color\":\"dark_aqua\"},{\"text\":\"i\",\"color\":\"dark_red\"},{\"text\":\"n\",\"color\":\"dark_purple\"},{\"text\":\"i\",\"color\":\"gold\"},{\"text\":\"t\",\"color\":\"blue\"},{\"text\":\"y\",\"color\":\"green\"},{\"text\":\"|\",\"color\":\"red\"}");
+								}
+							}
+						}
 					}
 				}
 			}
-			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
+			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 3) {
 				{
 					final Vec3 _center = new Vec3(x, y, z);
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(50 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
@@ -631,6 +751,21 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 							break;
 						}
 					}
+				}
+			}
+			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
+				if (entity instanceof LivingEntity _entity)
+					_entity.swing(InteractionHand.MAIN_HAND, true);
+				entity.getPersistentData().putDouble("X", x);
+				entity.getPersistentData().putDouble("Z", z);
+				entity.getPersistentData().putDouble("Ypos", y);
+				entity.getPersistentData().putDouble("yaw", (entity.getYRot()));
+				entity.getPersistentData().putDouble("distance", 3);
+				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.NAGIHARAI.get(), 2, 1, true, false));
+				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+					if (entity instanceof Player _player)
+						_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get(), 40);
 				}
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 5) {
@@ -754,21 +889,6 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SYUGEKI.get(), 30, 1, true, false));
 				if (entity instanceof Player _player)
 					_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get(), 40);
-			}
-			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 3) {
-				if (entity instanceof LivingEntity _entity)
-					_entity.swing(InteractionHand.MAIN_HAND, true);
-				entity.getPersistentData().putDouble("X", x);
-				entity.getPersistentData().putDouble("Z", z);
-				entity.getPersistentData().putDouble("Ypos", y);
-				entity.getPersistentData().putDouble("yaw", (entity.getYRot()));
-				entity.getPersistentData().putDouble("distance", 3);
-				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.NAGIHARAI.get(), 2, 1, true, false));
-				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
-					if (entity instanceof Player _player)
-						_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get(), 40);
-				}
 			}
 		}
 	}
