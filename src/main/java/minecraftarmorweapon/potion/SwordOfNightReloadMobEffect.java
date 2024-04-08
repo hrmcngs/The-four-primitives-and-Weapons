@@ -26,7 +26,9 @@ public class SwordOfNightReloadMobEffect extends MobEffect {
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		SwordOfNightReloadakuteibunateitukuTiaoJianProcedure.execute(entity);
+		SwordOfNightReloadakuteibunateitukuTiaoJianProcedure.execute(
+
+		);
 	}
 
 	@Override
