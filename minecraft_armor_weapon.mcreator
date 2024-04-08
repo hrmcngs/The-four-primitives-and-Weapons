@@ -5129,6 +5129,25 @@
           "src/main/java/minecraftarmorweapon/potion/SwordOfNightReloadMobEffect.java"
         ]
       }
+    },
+    {
+      "name": "SwordOfNightReloadakuteibunateitukuTiaoJian",
+      "type": "procedure",
+      "sortid": 330,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sword_of_night_reloadakuteibunateituku_tiao_jian",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/SwordOfNightReloadakuteibunateitukuTiaoJianProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [

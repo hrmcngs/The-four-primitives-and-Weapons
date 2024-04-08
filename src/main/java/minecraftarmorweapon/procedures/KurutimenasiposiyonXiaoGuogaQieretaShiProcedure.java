@@ -5,6 +5,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 
+import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
+
 public class KurutimenasiposiyonXiaoGuogaQieretaShiProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
@@ -19,5 +21,7 @@ public class KurutimenasiposiyonXiaoGuogaQieretaShiProcedure {
 			_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 60, 2, true, false));
 		if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 			_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20, 1, true, false));
+		if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+			_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SWORD_OF_NIGHT_RELOAD.get(), 20, 1, true, false));
 	}
 }
