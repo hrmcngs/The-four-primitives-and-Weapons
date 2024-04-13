@@ -119,12 +119,6 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 								if (entityiterator.getPersistentData().getDouble("gyamigyapitonndeyaru") == 1) {
 									{
 										Entity _ent = entity;
-										_ent.teleportTo((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()));
-										if (_ent instanceof ServerPlayer _serverPlayer)
-											_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
-									}
-									{
-										Entity _ent = entity;
 										if (!_ent.level.isClientSide() && _ent.getServer() != null) {
 											_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
 													_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
@@ -146,6 +140,12 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 									if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 										_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.SWORD_OF_NIGHT_EFFECT.get(), 20, 1, true, false));
 									entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
+									{
+										Entity _ent = entity;
+										_ent.teleportTo((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()));
+										if (_ent instanceof ServerPlayer _serverPlayer)
+											_serverPlayer.connection.teleport((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), _ent.getYRot(), _ent.getXRot());
+									}
 								}
 							}
 						}
@@ -154,16 +154,13 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 					for (int index0 = 0; index0 < 20; index0++) {
 						if (!world.getEntitiesOfClass(LivingEntity.class,
 								AABB.ofSize(new Vec3((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z)), 0.5, 0.5, 0.5), e -> true).isEmpty()) {
-							if (((Entity) world
-									.getEntitiesOfClass(LivingEntity.class,
-											AABB.ofSize(new Vec3((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z)), 0.5, 0.5, 0.5), e -> true)
-									.stream().sorted(new Object() {
-										Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-											return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-										}
-									}.compareDistOf((entity.getX() + r * entity.getLookAngle().x), (entity.getY() + 1.5 + r * entity.getLookAngle().y), (entity.getZ() + r * entity.getLookAngle().z))).findFirst()
-									.orElse(null)) instanceof LivingEntity _entity && !_entity.level.isClientSide())
-								_entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 2, 1, true, false));
+							{
+								Entity _ent = entity;
+								if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+									_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
+											_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "particle minecraft:dust 0.7 0.17 1 0.25 ~ ~1.5 ~ 0 0 0 0 1");
+								}
+							}
 							break;
 						}
 						r = r + 1;

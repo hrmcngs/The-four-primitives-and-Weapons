@@ -44,6 +44,8 @@ import minecraftarmorweapon.item.MagicWandItem;
 import minecraftarmorweapon.item.MagicMcrystalItem;
 import minecraftarmorweapon.item.MacheteItem;
 import minecraftarmorweapon.item.LunaItem;
+import minecraftarmorweapon.item.KurikarakenutigatanaItem;
+import minecraftarmorweapon.item.KurikarakenswordItem;
 import minecraftarmorweapon.item.KurikarakenItem;
 import minecraftarmorweapon.item.KatanaTobuItem;
 import minecraftarmorweapon.item.KatanaNiguHumerusItem;
@@ -175,6 +177,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> MACHETE = REGISTRY.register("machete", () -> new MacheteItem());
 	public static final RegistryObject<Item> MAKIWARIDAI = block(MinecraftArmorWeaponModBlocks.MAKIWARIDAI, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> DECORATION_POT_WITH_ARROWS = REGISTRY.register("decoration_pot_with_arrows", () -> new DecorationPotWithArrowsItem());
+	public static final RegistryObject<Item> KURIKARAKENSWORD = REGISTRY.register("kurikarakensword", () -> new KurikarakenswordItem());
+	public static final RegistryObject<Item> KURIKARAKENUTIGATANA = REGISTRY.register("kurikarakenutigatana", () -> new KurikarakenutigatanaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

@@ -24,15 +24,12 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
 import java.util.List;
 import net.minecraft.world.item.CreativeModeTab;
-import javax.annotation.Nonnull;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.Items;
-import it.unimi.dsi.fastutil.Stack;
 import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 
-public class KurikarakenItem extends SwordItem {
-	public KurikarakenItem() {
+public class KurikarakenutigatanaItem extends SwordItem {
+	public KurikarakenutigatanaItem() {
 		super(new Tier() {
 			public int getUses() {
 				return 0;
@@ -67,11 +64,11 @@ public class KurikarakenItem extends SwordItem {
 		return ar;
 	}
 	@Override
-	public void fillItemCategory(CreativeModeTab tab,NonNullList<ItemStack>Item) {
+	public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack>Items) {
 	if (this.allowedIn(tab)) {
-		ItemStack Stack = new ItemStack(this);
-		Stack.enchant(Enchantments.SMITE, 5);
-		Item.add(Stack);
+		ItemStack stack = new ItemStack(this);
+		stack.enchant(Enchantments.SMITE, 5);
+		Items.add(stack);
 	} }
 
 	@Override
@@ -92,6 +89,4 @@ public class KurikarakenItem extends SwordItem {
 	public boolean isFoil(ItemStack itemstack) {
 		return true;
 	}
-
-
 }
