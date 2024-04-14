@@ -4553,7 +4553,7 @@
       "type": "tool",
       "sortid": 293,
       "compiles": true,
-      "locked_code": false,
+      "locked_code": true,
       "registry_name": "small_sword",
       "metadata": {
         "files": [

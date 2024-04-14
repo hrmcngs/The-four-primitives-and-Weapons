@@ -31,6 +31,7 @@ public class SmallSwordItem extends SwordItem {
 			public float getAttackDamageBonus() {
 				return 5f;
 			}
+			
 
 			public int getLevel() {
 				return 9;
