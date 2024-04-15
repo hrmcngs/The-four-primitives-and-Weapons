@@ -5249,6 +5249,19 @@
           "src/main/resources/data/minecraft_armor_weapon/recipes/kurikaratyokuto_2.json"
         ]
       }
+    },
+    {
+      "name": "SwordOfNightTameeee",
+      "type": "potioneffect",
+      "sortid": 339,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sword_of_night_tameeee",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/SwordOfNightTameeeeMobEffect.java"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5304,8 +5317,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5339,6 +5352,7 @@
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "item.minecraft_armor_weapon.machete": "Machete",
       "item.minecraft_armor_weapon.sword_of_night": "§6Sword of Night",
+      "effect.minecraft_armor_weapon.sword_of_night_tameeee": "tameteruyo",
       "item.minecraft_armor_weapon.storm": "§8Storm",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",
@@ -5479,8 +5493,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5514,6 +5528,7 @@
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "item.minecraft_armor_weapon.machete": "Machete",
       "item.minecraft_armor_weapon.sword_of_night": "§6Sword of Night",
+      "effect.minecraft_armor_weapon.sword_of_night_tameeee": "tameteruyo",
       "item.minecraft_armor_weapon.storm": "§8Storm",
       "effect.minecraft_armor_weapon.tunderbolteffrct": "tunderboltattack",
       "item.minecraft_armor_weapon.netherite_katana": "§8Netherite Katana",

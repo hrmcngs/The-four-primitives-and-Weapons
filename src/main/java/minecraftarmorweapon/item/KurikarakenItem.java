@@ -23,13 +23,6 @@ import minecraftarmorweapon.procedures.GomanorikenYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
 import java.util.List;
-import net.minecraft.world.item.CreativeModeTab;
-import javax.annotation.Nonnull;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.Items;
-import it.unimi.dsi.fastutil.Stack;
-import net.minecraft.core.NonNullList;
 
 public class KurikarakenItem extends SwordItem {
 	public KurikarakenItem() {
@@ -66,13 +59,6 @@ public class KurikarakenItem extends SwordItem {
 		GomanorikenYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
-	@Override
-	public void fillItemCategory(CreativeModeTab tab,NonNullList<ItemStack>Item) {
-	if (this.allowedIn(tab)) {
-		ItemStack Stack = new ItemStack(this);
-		Stack.enchant(Enchantments.SMITE, 5);
-		Item.add(Stack);
-	} }
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
@@ -92,6 +78,4 @@ public class KurikarakenItem extends SwordItem {
 	public boolean isFoil(ItemStack itemstack) {
 		return true;
 	}
-
-
 }

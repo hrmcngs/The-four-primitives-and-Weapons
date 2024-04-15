@@ -627,8 +627,10 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(50 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 							.collect(Collectors.toList());
 					for (Entity entityiterator : _entfound) {
-						if (entityiterator.getPersistentData().getDouble("gyamigyapitonndeyaru") == 1) {
-							entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
+						if (!(entityiterator == entity)) {
+							if (entityiterator.getPersistentData().getDouble("gyamigyapitonndeyaru") == 1) {
+								entityiterator.getPersistentData().putDouble("gyamigyapitonndeyaru", 0);
+							}
 						}
 					}
 				}
@@ -657,6 +659,10 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 							break;
 						}
 					}
+				}
+				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
+					if (entity instanceof Player _player)
+						_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get(), 40);
 				}
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
