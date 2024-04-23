@@ -22,6 +22,7 @@ import minecraftarmorweapon.potion.TokubetusounazangekiMobEffect;
 import minecraftarmorweapon.potion.TobeMobEffect;
 import minecraftarmorweapon.potion.TissokuMobEffect;
 import minecraftarmorweapon.potion.ThunderHitMobEffect;
+import minecraftarmorweapon.potion.TestMobEffect;
 import minecraftarmorweapon.potion.SyugekinanozeeMobEffect;
 import minecraftarmorweapon.potion.SyugekiMobEffect;
 import minecraftarmorweapon.potion.SwordOfNightTameeeeMobEffect;
@@ -105,4 +106,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> ZOKUSEIZANNGEKI = REGISTRY.register("zokuseizanngeki", () -> new ZokuseizanngekiMobEffect());
 	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_RELOAD = REGISTRY.register("sword_of_night_reload", () -> new SwordOfNightReloadMobEffect());
 	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_TAMEEEE = REGISTRY.register("sword_of_night_tameeee", () -> new SwordOfNightTameeeeMobEffect());
+	public static final RegistryObject<MobEffect> TEST = REGISTRY.register("test", () -> new TestMobEffect());
 }
