@@ -154,7 +154,7 @@ public class MagicWandYoukuritukusitatokiProcedure {
 								((y + 1) - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))),
 								(z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 										* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha"))))),
-								1, 1, 1),
+								2, 2, 2),
 						e -> true).isEmpty())
 						&& !(!world.getEntitiesOfClass(KillotiruEntity.class,
 								AABB.ofSize(new Vec3(
@@ -163,7 +163,7 @@ public class MagicWandYoukuritukusitatokiProcedure {
 										((y + 1) - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))),
 										(z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 												* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha"))))),
-										1, 1, 1),
+										2, 2, 2),
 								e -> true).isEmpty())
 						&& !(!world.getEntitiesOfClass(SkeltonMobEntity.class,
 								AABB.ofSize(new Vec3(
@@ -172,7 +172,7 @@ public class MagicWandYoukuritukusitatokiProcedure {
 										((y + 1) - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))),
 										(z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 												* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha"))))),
-										1, 1, 1),
+										2, 2, 2),
 								e -> true).isEmpty())
 						&& !world.getEntitiesOfClass(Mob.class,
 								AABB.ofSize(new Vec3(
@@ -181,7 +181,7 @@ public class MagicWandYoukuritukusitatokiProcedure {
 										((y + 1) - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))),
 										(z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 												* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha"))))),
-										0.1, 0.1, 0.1),
+										2, 2, 2),
 								e -> true).isEmpty())) {
 					entity.getPersistentData().putDouble("minecraft_armor_weapon:r", (entity.getPersistentData().getDouble("minecraft_armor_weapon:r") + 0.2));
 				} else {
@@ -276,10 +276,10 @@ public class MagicWandYoukuritukusitatokiProcedure {
 					break;
 				}
 				if (world.getBlockState(new BlockPos(
-						x - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
+						x - (entity.getPersistentData().getDouble("minecraft_armor_weapon:r") + 1) * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 								* Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha"))),
-						(y + 1) - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta"))),
-						z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
+						(y + 1) - (entity.getPersistentData().getDouble("minecraft_armor_weapon:r") + 1) * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta"))),
+						z + (entity.getPersistentData().getDouble("minecraft_armor_weapon:r") + 1) * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 								* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))))
 						.canOcclude()) {
 					{

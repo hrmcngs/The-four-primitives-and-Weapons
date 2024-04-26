@@ -34,6 +34,7 @@ import minecraftarmorweapon.item.QuiverItemItem;
 import minecraftarmorweapon.item.PrototypeKatanaItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.OninomenItem;
+import minecraftarmorweapon.item.NinjatouItem;
 import minecraftarmorweapon.item.NiguShieldItem;
 import minecraftarmorweapon.item.NetheriteQuiverItemItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
@@ -179,6 +180,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DECORATION_POT_WITH_ARROWS = REGISTRY.register("decoration_pot_with_arrows", () -> new DecorationPotWithArrowsItem());
 	public static final RegistryObject<Item> KURIKARAKENSWORD = REGISTRY.register("kurikarakensword", () -> new KurikarakenswordItem());
 	public static final RegistryObject<Item> KURIKARAKENUTIGATANA = REGISTRY.register("kurikarakenutigatana", () -> new KurikarakenutigatanaItem());
+	public static final RegistryObject<Item> NINJATOU = REGISTRY.register("ninjatou", () -> new NinjatouItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
