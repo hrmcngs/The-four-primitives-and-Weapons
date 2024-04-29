@@ -35,11 +35,6 @@ public class RpgBookGuiBoggedOuterTapProcedure {
 			_setstack.setCount(1);
 			ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 		}
-		if (entity instanceof Player _player) {
-			ItemStack _setstack = new ItemStack(MinecraftArmorWeaponModItems.BOGGED_OUTER_QUIVER.get());
-			_setstack.setCount(1);
-			ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
-		}
 		{
 			Entity _ent = entity;
 			if (!_ent.level.isClientSide() && _ent.getServer() != null) {

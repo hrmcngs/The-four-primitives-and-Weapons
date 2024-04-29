@@ -1331,59 +1331,6 @@
       }
     },
     {
-      "name": "Quiverinventory",
-      "type": "gui",
-      "sortid": 128,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "quiverinventory",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/client/gui/QuiverinventoryScreen.java",
-          "src/main/java/minecraftarmorweapon/world/inventory/QuiverinventoryMenu.java",
-          "src/main/java/minecraftarmorweapon/network/QuiverinventoryButtonMessage.java"
-        ]
-      }
-    },
-    {
-      "name": "QuiverItemaitemugainbentoriniaruJiannoteituku",
-      "type": "procedure",
-      "sortid": 106,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "quiver_itemaitemugainbentoriniaru_jiannoteituku",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/QuiverItemaitemugainbentoriniaruJiannoteitukuProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "itemstack",
-            "type": "itemstack"
-          }
-        ]
-      }
-    },
-    {
-      "name": "QuiverItem",
-      "type": "item",
-      "sortid": 107,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "quiver_item",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/item/QuiverItemItem.java",
-          "src/main/java/minecraftarmorweapon/item/inventory/QuiverItemInventoryCapability.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/quiver_item.json"
-        ]
-      }
-    },
-    {
       "name": "Toziru",
       "type": "procedure",
       "sortid": 108,
@@ -1400,16 +1347,6 @@
             "type": "entity"
           }
         ]
-      }
-    },
-    {
-      "name": "QuiverItems",
-      "type": "itemextension",
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "quiver_items",
-      "metadata": {
-        "files": []
       }
     },
     {
@@ -1797,51 +1734,6 @@
             "name": "world",
             "type": "world"
           }
-        ]
-      }
-    },
-    {
-      "name": "EnderQuiverItem",
-      "type": "item",
-      "sortid": 139,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ender_quiver_item",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/item/inventory/EnderQuiverItemInventoryCapability.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/ender_quiver_item.json",
-          "src/main/java/minecraftarmorweapon/item/EnderQuiverItemItem.java"
-        ]
-      }
-    },
-    {
-      "name": "NetheriteQuiverItem",
-      "type": "item",
-      "sortid": 140,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "netherite_quiver_item",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/item/NetheriteQuiverItemItem.java",
-          "src/main/java/minecraftarmorweapon/item/inventory/NetheriteQuiverItemInventoryCapability.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/netherite_quiver_item.json"
-        ]
-      }
-    },
-    {
-      "name": "EnderPearlNetheriteQuiverItem",
-      "type": "item",
-      "sortid": 141,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "ender_pearl_netherite_quiver_item",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/ender_pearl_netherite_quiver_item.json",
-          "src/main/java/minecraftarmorweapon/item/inventory/EnderPearlNetheriteQuiverItemInventoryCapability.java",
-          "src/main/java/minecraftarmorweapon/item/EnderPearlNetheriteQuiverItemItem.java"
         ]
       }
     },
@@ -2355,45 +2247,6 @@
             "name": "world",
             "type": "world"
           }
-        ]
-      }
-    },
-    {
-      "name": "Enderpearlnetheritequiver",
-      "type": "recipe",
-      "sortid": 170,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "enderpearlnetheritequiver",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/minecraft_armor_weapon/recipes/enderpearlnetheritequiver.json"
-        ]
-      }
-    },
-    {
-      "name": "Netheritequiver",
-      "type": "recipe",
-      "sortid": 169,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "netheritequiver",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/minecraft_armor_weapon/recipes/netheritequiver.json"
-        ]
-      }
-    },
-    {
-      "name": "Enderpearlquiver",
-      "type": "recipe",
-      "sortid": 171,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "enderpearlquiver",
-      "metadata": {
-        "files": [
-          "src/main/resources/data/minecraft_armor_weapon/recipes/enderpearlquiver.json"
         ]
       }
     },
@@ -4677,21 +4530,6 @@
       }
     },
     {
-      "name": "BoggedOuterQuiver",
-      "type": "item",
-      "sortid": 301,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "bogged_outer_quiver",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/item/BoggedOuterQuiverItem.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/bogged_outer_quiver.json",
-          "src/main/java/minecraftarmorweapon/item/inventory/BoggedOuterQuiverInventoryCapability.java"
-        ]
-      }
-    },
-    {
       "name": "BoggedOuter",
       "type": "armor",
       "sortid": 303,
@@ -5324,6 +5162,44 @@
           }
         ]
       }
+    },
+    {
+      "name": "TestposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 343,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "testposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TestposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TestposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 344,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "testposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TestposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5386,7 +5262,6 @@
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
       "block.minecraft_armor_weapon.makiwaridai": "Makiwaridai",
-      "item.minecraft_armor_weapon.bogged_outer_quiver": "Bogged Outer Quiver Item",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
@@ -5431,7 +5306,6 @@
       "effect.minecraft_armor_weapon.sword_of_night_effect": "sword of night",
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
-      "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
       "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
@@ -5464,7 +5338,6 @@
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
-      "item.minecraft_armor_weapon.ender_quiver_item": "Ender Quiver Item",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
@@ -5499,7 +5372,6 @@
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
       "item.minecraft_armor_weapon.magisches_feen_katana": "§dMagisches Feen Katana",
-      "item.minecraft_armor_weapon.quiver_item": "Quiver Item",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_boots": "§8Dragon Black boots",
       "key.minecraft_armor_weapon.n": "N",
@@ -5538,7 +5410,6 @@
       "itemGroup.tabweapon": "Weapon",
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
-      "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_magic_swordsman": "magic swordsman",
       "itemGroup.tabnigu": "§5二グ",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_chestplate": "das herz einer fee armor chestplate",
@@ -5564,7 +5435,6 @@
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
       "block.minecraft_armor_weapon.makiwaridai": "Makiwaridai",
-      "item.minecraft_armor_weapon.bogged_outer_quiver": "Quiver Item",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
@@ -5609,7 +5479,6 @@
       "effect.minecraft_armor_weapon.sword_of_night_effect": "sword of night",
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
-      "item.minecraft_armor_weapon.netherite_quiver_item": "Netherite Quiver Item",
       "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
       "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
@@ -5642,7 +5511,6 @@
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
-      "item.minecraft_armor_weapon.ender_quiver_item": "Ender Quiver Item",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
@@ -5677,7 +5545,6 @@
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
       "item.minecraft_armor_weapon.magisches_feen_katana": "§dMagisches Feen Katana",
-      "item.minecraft_armor_weapon.quiver_item": "Quiver Item",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_boots": "§8Dragon Black boots",
       "key.minecraft_armor_weapon.n": "N",
@@ -5716,7 +5583,6 @@
       "itemGroup.tabweapon": "Weapon",
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
-      "item.minecraft_armor_weapon.ender_pearl_netherite_quiver_item": "Ender Quiver Item",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_magic_swordsman": "magic swordsman",
       "itemGroup.tabnigu": "二グ",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_chestplate": "das herz einer fee armor chestplate",

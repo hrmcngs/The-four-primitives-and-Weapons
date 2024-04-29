@@ -87,7 +87,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	public void init() {
 		super.init();
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-		button_bogged_outer = new Button(this.leftPos + 42, this.topPos + 158, 87, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_bogged_outer"), e -> {
+		button_bogged_outer = new Button(this.leftPos + 42, this.topPos + 150, 87, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_bogged_outer"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(0, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 0, x, y, z);

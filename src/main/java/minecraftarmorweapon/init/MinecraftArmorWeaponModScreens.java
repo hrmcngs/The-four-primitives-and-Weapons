@@ -12,14 +12,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.client.gui.screens.MenuScreens;
 
 import minecraftarmorweapon.client.gui.RpgBookGuiScreen;
-import minecraftarmorweapon.client.gui.QuiverinventoryScreen;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MinecraftArmorWeaponModScreens {
 	@SubscribeEvent
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
-			MenuScreens.register(MinecraftArmorWeaponModMenus.QUIVERINVENTORY.get(), QuiverinventoryScreen::new);
 			MenuScreens.register(MinecraftArmorWeaponModMenus.RPG_BOOK_GUI.get(), RpgBookGuiScreen::new);
 		});
 	}

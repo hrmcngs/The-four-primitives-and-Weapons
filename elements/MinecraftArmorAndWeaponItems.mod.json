@@ -10,24 +10,6 @@
         "entries": [
           {
             "price1": {
-              "value": "Items.ARROW"
-            },
-            "countPrice1": 3,
-            "price2": {
-              "value": "Items.RABBIT_HIDE"
-            },
-            "countPrice2": 20,
-            "offer": {
-              "value": "CUSTOM:QuiverItem"
-            },
-            "countOffer": 1,
-            "level": 1,
-            "maxTrades": 10,
-            "xp": 5,
-            "priceMultiplier": 0.05
-          },
-          {
-            "price1": {
               "value": "Items.SHIELD"
             },
             "countPrice1": 1,
