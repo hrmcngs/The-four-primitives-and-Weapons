@@ -15,34 +15,27 @@ import net.minecraft.core.BlockPos;
 
 import minecraftarmorweapon.world.inventory.RpgBookGuiMenu;
 
-import minecraftarmorweapon.MinecraftArmorWeaponMod;
-
 import io.netty.buffer.Unpooled;
 
 public class RpgBookYoukuritukusitatokiProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (!(entity.getPersistentData().getBoolean("minecraft_armor_weapon:QuiverItemsyorisunna") == true)) {
-			entity.getPersistentData().putBoolean("minecraft_armor_weapon:QuiverItemsyorisunna", true);
-			MinecraftArmorWeaponMod.queueServerWork(10, () -> {
-				{
-					if (entity instanceof ServerPlayer _ent) {
-						BlockPos _bpos = new BlockPos(x, y, z);
-						NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
-							@Override
-							public Component getDisplayName() {
-								return Component.literal("RpgBookGui");
-							}
-
-							@Override
-							public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-								return new RpgBookGuiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
-							}
-						}, _bpos);
+		{
+			if (entity instanceof ServerPlayer _ent) {
+				BlockPos _bpos = new BlockPos(x, y, z);
+				NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
+					@Override
+					public Component getDisplayName() {
+						return Component.literal("RpgBookGui");
 					}
-				}
-			});
+
+					@Override
+					public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+						return new RpgBookGuiMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
+					}
+				}, _bpos);
+			}
 		}
 	}
 }
