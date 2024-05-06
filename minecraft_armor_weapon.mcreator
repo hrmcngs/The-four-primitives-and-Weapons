@@ -4606,6 +4606,7 @@
       "metadata": {
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/rpg_book.json",
+          "src/main/java/minecraftarmorweapon/item/inventory/RpgBookInventoryCapability.java",
           "src/main/java/minecraftarmorweapon/item/RpgBookItem.java"
         ]
       }
@@ -5200,6 +5201,82 @@
           }
         ]
       }
+    },
+    {
+      "name": "WaordRpgBookGive",
+      "type": "procedure",
+      "sortid": 345,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "waord_rpg_book_give",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/WaordRpgBookGiveProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WordsparnRpgBookGive",
+      "type": "procedure",
+      "sortid": 346,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wordsparn_rpg_book_give",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/WordsparnRpgBookGiveProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RogBookGuiKakusiTap",
+      "type": "procedure",
+      "sortid": 347,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rog_book_gui_kakusi_tap",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/RogBookGuiKakusiTapProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RpgBookGuiNinjaTap",
+      "type": "procedure",
+      "sortid": 348,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rpg_book_gui_ninja_tap",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/RpgBookGuiNinjaTapProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5243,6 +5320,12 @@
       "name": "rpghazimenogui",
       "type": "logic",
       "scope": "global",
+      "value": "false"
+    },
+    {
+      "name": "rpgbookgive",
+      "type": "logic",
+      "scope": "player_persistent",
       "value": "false"
     }
   ],
@@ -5328,6 +5411,7 @@
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
       "effect.minecraft_armor_weapon.tokubetusounazangeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
+      "gui.minecraft_armor_weapon.rpg_book_gui.button_ninja": "ninja",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",
       "effect.minecraft_armor_weapon.tobe": "tobe",
@@ -5501,6 +5585,7 @@
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
       "effect.minecraft_armor_weapon.tokubetusounazangeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
+      "gui.minecraft_armor_weapon.rpg_book_gui.button_ninja": "ninja",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
       "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",
       "effect.minecraft_armor_weapon.tobe": "tobe",

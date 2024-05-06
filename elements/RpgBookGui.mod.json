@@ -51,6 +51,33 @@
           "x": 161,
           "y": 121
         }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_tapmimit",
+          "image": "tapmimit.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RogBookGuiKakusiTap"
+          },
+          "x": 131,
+          "y": 196
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_ninja",
+          "text": "ninja",
+          "onClick": {
+            "name": "RpgBookGuiNinjaTap"
+          },
+          "width": 51,
+          "height": 20,
+          "x": 186,
+          "y": 98
+        }
       }
     ],
     "onClosed": {

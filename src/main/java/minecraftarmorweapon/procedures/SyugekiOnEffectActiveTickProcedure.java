@@ -12,7 +12,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -102,7 +101,7 @@ public class SyugekiOnEffectActiveTickProcedure {
 					if (!(entityiterator == entity)) {
 						if (!(entityiterator instanceof OtiruyoEntity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 										{
 											Entity _ent = entityiterator;
@@ -135,7 +134,7 @@ public class SyugekiOnEffectActiveTickProcedure {
 					if (!(entityiterator == entity)) {
 						if (!(entityiterator instanceof OtiruyoEntity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
@@ -215,7 +214,7 @@ public class SyugekiOnEffectActiveTickProcedure {
 					if (!(entityiterator == entity)) {
 						if (!(entityiterator instanceof OtiruyoEntity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 										{
 											Entity _ent = entityiterator;
@@ -248,7 +247,7 @@ public class SyugekiOnEffectActiveTickProcedure {
 					if (!(entityiterator == entity)) {
 						if (!(entityiterator instanceof OtiruyoEntity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 										{
 											Entity _ent = entityiterator;
@@ -281,7 +280,7 @@ public class SyugekiOnEffectActiveTickProcedure {
 					if (!(entityiterator == entity)) {
 						if (!(entityiterator instanceof OtiruyoEntity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 										{
 											Entity _ent = entityiterator;

@@ -26,12 +26,9 @@
     "damageVsEntity": 0.0,
     "specialInfo": [],
     "hasGlow": false,
-    "guiBoundTo": "<NONE>",
-    "inventorySize": 9,
+    "guiBoundTo": "RpgBookGui",
+    "inventorySize": 0,
     "inventoryStackSize": 64,
-    "onRightClickedInAir": {
-      "name": "RpgBookYoukuritukusitatoki"
-    },
     "isFood": false,
     "nutritionalValue": 4,
     "saturation": 0.3,

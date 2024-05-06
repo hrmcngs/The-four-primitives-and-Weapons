@@ -6,6 +6,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.Minecraft;
 
@@ -28,6 +29,8 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	Button button_bogged_outer;
 	Button button_nigu;
 	Button button_magic_swordsman;
+	Button button_ninja;
+	ImageButton imagebutton_tapmimit;
 
 	public RpgBookGuiScreen(RpgBookGuiMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -111,5 +114,21 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		});
 		guistate.put("button:button_magic_swordsman", button_magic_swordsman);
 		this.addRenderableWidget(button_magic_swordsman);
+		button_ninja = new Button(this.leftPos + 57, this.topPos + 75, 51, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_ninja"), e -> {
+			if (true) {
+				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(3, x, y, z));
+				RpgBookGuiButtonMessage.handleButtonAction(entity, 3, x, y, z);
+			}
+		});
+		guistate.put("button:button_ninja", button_ninja);
+		this.addRenderableWidget(button_ninja);
+		imagebutton_tapmimit = new ImageButton(this.leftPos + 2, this.topPos + 173, 16, 16, 0, 0, 16, new ResourceLocation("minecraft_armor_weapon:textures/screens/atlas/imagebutton_tapmimit.png"), 16, 32, e -> {
+			if (true) {
+				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(4, x, y, z));
+				RpgBookGuiButtonMessage.handleButtonAction(entity, 4, x, y, z);
+			}
+		});
+		guistate.put("button:imagebutton_tapmimit", imagebutton_tapmimit);
+		this.addRenderableWidget(imagebutton_tapmimit);
 	}
 }

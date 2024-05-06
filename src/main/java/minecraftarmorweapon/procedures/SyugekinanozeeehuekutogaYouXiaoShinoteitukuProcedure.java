@@ -12,7 +12,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -85,7 +84,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 										{
 											Entity _ent = entityiterator;
@@ -103,7 +102,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entityiterator.hurt(DamageSource.GENERIC, 20);
 									}
 								}
@@ -121,7 +120,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 										{
 											Entity _ent = entityiterator;
@@ -139,7 +138,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entityiterator.hurt(DamageSource.GENERIC, 20);
 									}
 								}
@@ -157,7 +156,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 										{
 											Entity _ent = entityiterator;
@@ -175,7 +174,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entityiterator.hurt(DamageSource.GENERIC, 20);
 									}
 								}
@@ -299,7 +298,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 										{
 											Entity _ent = entityiterator;
@@ -317,7 +316,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -358,7 +357,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 										{
 											Entity _ent = entityiterator;
@@ -376,7 +375,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -417,7 +416,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 										{
 											Entity _ent = entityiterator;
@@ -435,7 +434,7 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
