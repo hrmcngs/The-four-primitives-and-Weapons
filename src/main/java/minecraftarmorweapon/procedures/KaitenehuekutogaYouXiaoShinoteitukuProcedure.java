@@ -124,11 +124,6 @@ public class KaitenehuekutogaYouXiaoShinoteitukuProcedure {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 												}
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-												}
 												{
 													Entity _ent = entityiterator;
 													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -145,11 +140,6 @@ public class KaitenehuekutogaYouXiaoShinoteitukuProcedure {
 													}
 												}
 											} else {
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-												}
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
@@ -265,11 +255,6 @@ public class KaitenehuekutogaYouXiaoShinoteitukuProcedure {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 												}
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-												}
 												{
 													Entity _ent = entityiterator;
 													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -286,11 +271,6 @@ public class KaitenehuekutogaYouXiaoShinoteitukuProcedure {
 													}
 												}
 											} else {
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-												}
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));

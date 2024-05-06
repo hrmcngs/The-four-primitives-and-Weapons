@@ -17,7 +17,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.BlockItem;
 
 import minecraftarmorweapon.item.WindStepItem;
-import minecraftarmorweapon.item.WaterKatanaItem;
 import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
 import minecraftarmorweapon.item.SwordOfNightItem;
@@ -94,7 +93,6 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> HAMMER = REGISTRY.register("hammer", () -> new HammerItem());
 	public static final RegistryObject<Item> IRON_KATANA = REGISTRY.register("iron_katana", () -> new IronKatanaItem());
 	public static final RegistryObject<Item> CROSS = block(MinecraftArmorWeaponModBlocks.CROSS, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
-	public static final RegistryObject<Item> WATER_KATANA = REGISTRY.register("water_katana", () -> new WaterKatanaItem());
 	public static final RegistryObject<Item> MY_TEST_IRON_KATANA = REGISTRY.register("my_test_iron_katana", () -> new MyTestIronKatanaItem());
 	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.SKELTON_MOB, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));

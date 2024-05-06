@@ -875,55 +875,6 @@
       }
     },
     {
-      "name": "WaterKatana",
-      "type": "tool",
-      "sortid": 67,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "water_katana",
-      "metadata": {
-        "files": [
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/water_katana.json",
-          "src/main/java/minecraftarmorweapon/item/WaterKatanaItem.java"
-        ]
-      }
-    },
-    {
-      "name": "WaterKatanaYoukuritukusitatoki",
-      "type": "procedure",
-      "sortid": 68,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "water_katana_youkuritukusitatoki",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/WaterKatanaYoukuritukusitatokiProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
       "name": "SuityuuehuekutogaYouXiaoShinoteituku",
       "type": "procedure",
       "sortid": 70,
@@ -5338,15 +5289,14 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
       "block.minecraft_armor_weapon.makiwaridai": "Makiwaridai",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
-      "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
       "item.minecraft_armor_weapon.strayouterarmorhat_helmet": "Stray Outer Armor Hat",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
@@ -5512,15 +5462,14 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
       "block.minecraft_armor_weapon.makiwaridai": "Makiwaridai",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
-      "item.minecraft_armor_weapon.water_katana": "§9Water Katana",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
       "item.minecraft_armor_weapon.strayouterarmorhat_helmet": "Stray Outer Armor Hat",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
