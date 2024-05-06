@@ -131,7 +131,7 @@ public class Nagiharai2posiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 				if (!(entityiterator == entity)) {
 					if (!(entityiterator instanceof OtiruyoEntity)) {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
-							if (entityiterator instanceof Mob) {
+							if (entityiterator instanceof LivingEntity) {
 								if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
 									public boolean checkGamemode(Entity _ent) {
 										if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -247,7 +247,7 @@ public class Nagiharai2posiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 				if (!(entityiterator == entity)) {
 					if (!(entityiterator instanceof OtiruyoEntity)) {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
-							if (entityiterator instanceof Mob) {
+							if (entityiterator instanceof LivingEntity) {
 								if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
 									public boolean checkGamemode(Entity _ent) {
 										if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -363,7 +363,7 @@ public class Nagiharai2posiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 				if (!(entityiterator == entity)) {
 					if (!(entityiterator instanceof OtiruyoEntity)) {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
-							if (entityiterator instanceof Mob) {
+							if (entityiterator instanceof LivingEntity) {
 								if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
 									public boolean checkGamemode(Entity _ent) {
 										if (_ent instanceof ServerPlayer _serverPlayer) {
