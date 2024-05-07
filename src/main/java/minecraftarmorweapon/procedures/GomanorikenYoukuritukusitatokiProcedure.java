@@ -9,7 +9,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -27,8 +26,6 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
-
-import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -100,82 +97,42 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 							entity.getPersistentData().putDouble("zknockback", (entityiterator.getZ() - entity.getZ()));
 							entity.getPersistentData().putDouble("dis",
 									(Math.abs(entity.getPersistentData().getDouble("xknockback")) + Math.abs(entity.getPersistentData().getDouble("yknockback")) + Math.abs(entity.getPersistentData().getDouble("zknockback"))));
-							if (entity.getPersistentData().getDouble("dis") != 0) {
-								entity.getPersistentData().putDouble("xknockback", ((entity.getPersistentData().getDouble("xknockback") / entity.getPersistentData().getDouble("dis")) * 5));
-								entity.getPersistentData().putDouble("yknockback", Math.min((entity.getPersistentData().getDouble("yknockback") / entity.getPersistentData().getDouble("dis")) * 13, 9.8));
-								entity.getPersistentData().putDouble("zknockback", ((entity.getPersistentData().getDouble("zknockback") / entity.getPersistentData().getDouble("dis")) * 5));
-							} else {
-								entity.getPersistentData().putDouble("xknockback", 0);
-								entity.getPersistentData().putDouble("yknockback", 0);
-								entity.getPersistentData().putDouble("zknockback", 0);
-							}
-							MinecraftArmorWeaponMod.queueServerWork(5, () -> {
-								if (!(entityiterator == entity)) {
-									if (!(entityiterator instanceof OtiruyoEntity)) {
-										if (!(entityiterator instanceof SkeltonMobEntity)) {
-											if (entityiterator instanceof Mob) {
-												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-													if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-													}
-													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD
-															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.ACHROMATIC_SHIELD.get()) {
-														entityiterator.setDeltaMovement(
-																new Vec3((entity.getPersistentData().getDouble("xknockback")), (entity.getPersistentData().getDouble("yknockback")), (entity.getPersistentData().getDouble("zknockback"))));
-														{
-															Entity _ent = entityiterator;
-															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-																_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																		_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
-															}
-														}
-														{
-															Entity _ent = entityiterator;
-															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-																_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																		_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
-																		"/deta merge entity @s (Health:0)");
-															}
-														}
-													} else {
-														{
-															Entity _ent = entityiterator;
-															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-																_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																		_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
-															}
-														}
-														{
-															Entity _ent = entityiterator;
-															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-																_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																		_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
-																		"/deta merge entity @s (Health:0)");
-															}
-														}
-													}
-												} else {
-													if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
-														entityiterator.hurt(DamageSource.GENERIC, 10);
-													}
-													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.SHIELD
-															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.ACHROMATIC_SHIELD.get()) {
-														entityiterator.setDeltaMovement(
-																new Vec3((entity.getPersistentData().getDouble("xknockback")), (entity.getPersistentData().getDouble("yknockback")), (entity.getPersistentData().getDouble("zknockback"))));
-														entityiterator.hurt(DamageSource.GENERIC, 10);
-													} else {
-														entityiterator.hurt(DamageSource.GENERIC, 10);
+							if (!(entityiterator == entity)) {
+								if (!(entityiterator instanceof OtiruyoEntity)) {
+									if (!(entityiterator instanceof SkeltonMobEntity)) {
+										if (entityiterator instanceof LivingEntity) {
+											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
+													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
+												}
+												{
+													Entity _ent = entityiterator;
+													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
 													}
 												}
+												{
+													Entity _ent = entityiterator;
+													if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+																"/deta merge entity @s (Health:0)");
+													}
+												}
+											} else {
+												if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
+													entityiterator.hurt(DamageSource.GENERIC, 10);
+												}
+												entityiterator.hurt(DamageSource.GENERIC, 10);
 											}
 										}
 									}
 								}
-							});
+							}
 						}
 					}
-					r = r + 0.2;
 				}
 				entity.setDeltaMovement(new Vec3(
 						(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(3)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()
@@ -207,7 +164,7 @@ public class GomanorikenYoukuritukusitatokiProcedure {
 						if (!(entityiterator == entity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											{
 												Entity _ent = entityiterator;

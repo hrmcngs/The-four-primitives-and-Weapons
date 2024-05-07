@@ -12,7 +12,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.commands.CommandSourceStack;
@@ -28,8 +27,6 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
 import minecraftarmorweapon.entity.KillotiruEntity;
-
-import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -63,19 +60,11 @@ public class LunaYoukuritukusitatokiProcedure {
 		double Y_pos = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.LUNA.get()
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.LUNA.get()) {
-			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.WAZA.get(), 100, 1, true, false));
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
 				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
 					if (entity instanceof Player _player)
 						_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 100);
 				}
-				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
-					if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.WAZA.get()) : false) {
-						if (entity instanceof LivingEntity _entity)
-							_entity.swing(InteractionHand.MAIN_HAND, true);
-					}
-				});
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KAITEN.get(), 1, 1, true, false));
 			}
@@ -84,12 +73,6 @@ public class LunaYoukuritukusitatokiProcedure {
 					if (entity instanceof Player _player)
 						_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 50);
 				}
-				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
-					if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.WAZA.get()) : false) {
-						if (entity instanceof LivingEntity _entity)
-							_entity.swing(InteractionHand.MAIN_HAND, true);
-					}
-				});
 				entity.getPersistentData().putDouble("X", x);
 				entity.getPersistentData().putDouble("Z", z);
 				entity.getPersistentData().putDouble("Ypos", y);
@@ -101,54 +84,32 @@ public class LunaYoukuritukusitatokiProcedure {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
 				if (entity instanceof Player _player)
 					_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 60);
-				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
-					if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.WAZA.get()) : false) {
-						if (entity instanceof LivingEntity _entity)
-							_entity.swing(InteractionHand.MAIN_HAND, true);
-					}
-				});
 				entity.getPersistentData().putBoolean("F to the P from Shibuya city", true);
 				if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-					MinecraftArmorWeaponMod.queueServerWork(2, () -> {
-						if (world instanceof ServerLevel _level) {
-							Entity entityToSpawn = new KillotiruEntity(MinecraftArmorWeaponModEntities.KILLOTIRU.get(), _level);
-							entityToSpawn.moveTo(x, (y + 10), z, 0, 0);
-							entityToSpawn.setYBodyRot(0);
-							entityToSpawn.setYHeadRot(0);
-							if (entityToSpawn instanceof Mob _mobToSpawn)
-								_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
-							world.addFreshEntity(entityToSpawn);
-						}
-						MinecraftArmorWeaponMod.queueServerWork(20, () -> {
-							entity.getPersistentData().putBoolean("F to the P from Shibuya city", false);
-						});
-					});
+					if (world instanceof ServerLevel _level) {
+						Entity entityToSpawn = new KillotiruEntity(MinecraftArmorWeaponModEntities.KILLOTIRU.get(), _level);
+						entityToSpawn.moveTo(x, (y + 10), z, 0, 0);
+						entityToSpawn.setYBodyRot(0);
+						entityToSpawn.setYHeadRot(0);
+						if (entityToSpawn instanceof Mob _mobToSpawn)
+							_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+						world.addFreshEntity(entityToSpawn);
+					}
 				} else {
-					MinecraftArmorWeaponMod.queueServerWork(2, () -> {
-						if (world instanceof ServerLevel _level) {
-							Entity entityToSpawn = new OtiruyoEntity(MinecraftArmorWeaponModEntities.OTIRUYO.get(), _level);
-							entityToSpawn.moveTo(x, (y + 10), z, 0, 0);
-							entityToSpawn.setYBodyRot(0);
-							entityToSpawn.setYHeadRot(0);
-							if (entityToSpawn instanceof Mob _mobToSpawn)
-								_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
-							world.addFreshEntity(entityToSpawn);
-						}
-						MinecraftArmorWeaponMod.queueServerWork(20, () -> {
-							entity.getPersistentData().putBoolean("F to the P from Shibuya city", false);
-						});
-					});
+					if (world instanceof ServerLevel _level) {
+						Entity entityToSpawn = new OtiruyoEntity(MinecraftArmorWeaponModEntities.OTIRUYO.get(), _level);
+						entityToSpawn.moveTo(x, (y + 10), z, 0, 0);
+						entityToSpawn.setYBodyRot(0);
+						entityToSpawn.setYHeadRot(0);
+						if (entityToSpawn instanceof Mob _mobToSpawn)
+							_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+						world.addFreshEntity(entityToSpawn);
+					}
 				}
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 5) {
 				if (entity instanceof Player _player)
 					_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 50);
-				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
-					if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.WAZA.get()) : false) {
-						if (entity instanceof LivingEntity _entity)
-							_entity.swing(InteractionHand.MAIN_HAND, true);
-					}
-				});
 				if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.WIND_STEP_EFFECT.get()) : false) {
 					{
 						final Vec3 _center = new Vec3(x, y, z);
@@ -158,7 +119,7 @@ public class LunaYoukuritukusitatokiProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												{
 													Entity _ent = entityiterator;
@@ -194,7 +155,7 @@ public class LunaYoukuritukusitatokiProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												{
 													Entity _ent = entityiterator;
@@ -233,12 +194,6 @@ public class LunaYoukuritukusitatokiProcedure {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 6) {
 				if (entity instanceof Player _player)
 					_player.getCooldowns().addCooldown(MinecraftArmorWeaponModItems.LUNA.get(), 50);
-				MinecraftArmorWeaponMod.queueServerWork(2, () -> {
-					if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.WAZA.get()) : false) {
-						if (entity instanceof LivingEntity _entity)
-							_entity.swing(InteractionHand.MAIN_HAND, true);
-					}
-				});
 				entity.getPersistentData().putDouble("X", x);
 				entity.getPersistentData().putDouble("Z", z);
 				entity.getPersistentData().putDouble("Ypos", y);
@@ -267,7 +222,7 @@ public class LunaYoukuritukusitatokiProcedure {
 								if (!(entityiterator == entity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
 										if (!(entityiterator instanceof SkeltonMobEntity)) {
-											if (entityiterator instanceof Mob) {
+											if (entityiterator instanceof LivingEntity) {
 												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 													{
 														Entity _ent = entityiterator;
@@ -320,7 +275,7 @@ public class LunaYoukuritukusitatokiProcedure {
 								if (!(entityiterator == entity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
 										if (!(entityiterator instanceof SkeltonMobEntity)) {
-											if (entityiterator instanceof Mob) {
+											if (entityiterator instanceof LivingEntity) {
 												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 													{
 														Entity _ent = entityiterator;

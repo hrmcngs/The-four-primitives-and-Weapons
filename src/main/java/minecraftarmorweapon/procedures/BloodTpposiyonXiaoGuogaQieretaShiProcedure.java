@@ -8,7 +8,6 @@ import net.minecraft.world.level.GameType;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
@@ -50,7 +49,7 @@ public class BloodTpposiyonXiaoGuogaQieretaShiProcedure {
 						if (!(entityiterator instanceof OtiruyoEntity)) {
 							if (!(entityiterator instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.EFFECT_BLOOD_TP.get()) : false)) {
 								if (!(entityiterator instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MobEffects.GLOWING) : false)) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										if (world instanceof ServerLevel _level)
 											_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ())), Vec2.ZERO, _level, 4,
 													"", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle item redstone ~ ~1 ~ 0.3 0.1 0.3 0.1 100 force");
@@ -64,7 +63,7 @@ public class BloodTpposiyonXiaoGuogaQieretaShiProcedure {
 											_level.sendParticles(ParticleTypes.SWEEP_ATTACK, (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 3, 0.1, 0.1, 0.1, 0.2);
 									}
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 											{
 												Entity _ent = entityiterator;
@@ -84,7 +83,7 @@ public class BloodTpposiyonXiaoGuogaQieretaShiProcedure {
 												_entity.setHealth((float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) + 1));
 										}
 									} else {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (entity instanceof LivingEntity _entity)
 												_entity.setHealth((float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) + 1));
 											entityiterator.hurt(DamageSource.GENERIC, 75);

@@ -7,7 +7,6 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -25,8 +24,6 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
-
-import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -73,53 +70,41 @@ public class WarabitetouYoukuritukusitatokiProcedure {
 							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 									.collect(Collectors.toList());
 							for (Entity entityiterator : _entfound) {
-								MinecraftArmorWeaponMod.queueServerWork(5, () -> {
-									if (!(entityiterator == entity)) {
-										if (!(entityiterator instanceof OtiruyoEntity)) {
-											if (!(entityiterator instanceof SkeltonMobEntity)) {
-												if (entityiterator instanceof Mob) {
-													if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-														if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-														}
-														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-																|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-														}
-														{
-															Entity _ent = entityiterator;
-															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-																_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																		_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
-															}
-														}
-														{
-															Entity _ent = entityiterator;
-															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-																_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																		_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
-																		"/deta merge entity @s (Health:0)");
-															}
-														}
-													} else {
-														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-																|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-														}
-														if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-														}
-														entityiterator.hurt(DamageSource.GENERIC, 10);
+								if (!(entityiterator == entity)) {
+									if (!(entityiterator instanceof OtiruyoEntity)) {
+										if (!(entityiterator instanceof SkeltonMobEntity)) {
+											if (entityiterator instanceof LivingEntity) {
+												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+													if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
+														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 													}
+													{
+														Entity _ent = entityiterator;
+														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																	_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+														}
+													}
+													{
+														Entity _ent = entityiterator;
+														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																	_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+																	"/deta merge entity @s (Health:0)");
+														}
+													}
+												} else {
+													if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
+														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
+													}
+													entityiterator.hurt(DamageSource.GENERIC, 10);
 												}
 											}
 										}
 									}
-								});
+								}
 							}
 						}
 					} else {
@@ -129,53 +114,41 @@ public class WarabitetouYoukuritukusitatokiProcedure {
 							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 									.collect(Collectors.toList());
 							for (Entity entityiterator : _entfound) {
-								MinecraftArmorWeaponMod.queueServerWork(5, () -> {
-									if (!(entityiterator == entity)) {
-										if (!(entityiterator instanceof OtiruyoEntity)) {
-											if (!(entityiterator instanceof SkeltonMobEntity)) {
-												if (entityiterator instanceof Mob) {
-													if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-														if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-														}
-														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-																|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-														}
-														{
-															Entity _ent = entityiterator;
-															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-																_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																		_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
-															}
-														}
-														{
-															Entity _ent = entityiterator;
-															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-																_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																		_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
-																		"/deta merge entity @s (Health:0)");
-															}
-														}
-													} else {
-														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-																|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-														}
-														if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-															if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-														}
-														entityiterator.hurt(DamageSource.GENERIC, 10);
+								if (!(entityiterator == entity)) {
+									if (!(entityiterator instanceof OtiruyoEntity)) {
+										if (!(entityiterator instanceof SkeltonMobEntity)) {
+											if (entityiterator instanceof LivingEntity) {
+												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+													if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
+														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 													}
+													{
+														Entity _ent = entityiterator;
+														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																	_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+														}
+													}
+													{
+														Entity _ent = entityiterator;
+														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+																	_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent),
+																	"/deta merge entity @s (Health:0)");
+														}
+													}
+												} else {
+													if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
+														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
+													}
+													entityiterator.hurt(DamageSource.GENERIC, 10);
 												}
 											}
 										}
 									}
-								});
+								}
 							}
 						}
 					}
@@ -214,16 +187,11 @@ public class WarabitetouYoukuritukusitatokiProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-												}
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
 												}
 												{
 													Entity _ent = entityiterator;
@@ -241,11 +209,6 @@ public class WarabitetouYoukuritukusitatokiProcedure {
 													}
 												}
 											} else {
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-												}
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
@@ -268,16 +231,11 @@ public class WarabitetouYoukuritukusitatokiProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-												}
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
 												}
 												{
 													Entity _ent = entityiterator;
@@ -295,18 +253,12 @@ public class WarabitetouYoukuritukusitatokiProcedure {
 													}
 												}
 											} else {
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-												}
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 												}
 												entityiterator.hurt(DamageSource.GENERIC, 10);
 											}
-											dis = Math.abs(xknockback) + Math.abs(yknockback) + Math.abs(zknockback);
 										}
 									}
 								}

@@ -75,7 +75,7 @@ public class TpAttackposiyonXiaoGuogaQieretaShiProcedure {
 					if (!(entityiterator == entity)) {
 						if (!(entityiterator instanceof OtiruyoEntity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
 										public boolean checkGamemode(Entity _ent) {
 											if (_ent instanceof ServerPlayer _serverPlayer) {
@@ -105,11 +105,6 @@ public class TpAttackposiyonXiaoGuogaQieretaShiProcedure {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -125,11 +120,6 @@ public class TpAttackposiyonXiaoGuogaQieretaShiProcedure {
 											}
 										}
 									} else {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));

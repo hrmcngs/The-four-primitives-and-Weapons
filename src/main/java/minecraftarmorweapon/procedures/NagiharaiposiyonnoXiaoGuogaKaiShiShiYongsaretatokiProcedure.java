@@ -103,20 +103,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 						new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY()), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						"/particle dust 0.639 0.169 0.169 1 ^ ^1 ^ 3 3 3 0.1 10 force");
 		}
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()) {
-			if (world instanceof ServerLevel _level)
-				_level.getServer().getCommands().performPrefixedCommand(
-						new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY()), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-						"/particle block lapis_block ^ ^1 ^ 3 3 3 .0 20 force @p");
-			if (world instanceof ServerLevel _level)
-				_level.getServer().getCommands().performPrefixedCommand(
-						new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY()), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-						"particle minecraft:dolphin ^ ^1 ^ 3 3 3 .0 20 force @p");
-			if (world instanceof ServerLevel _level)
-				_level.getServer().getCommands().performPrefixedCommand(
-						new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY()), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-						"particle minecraft:underwater ^ ^1 ^ 3 3 3 .0 20 force @p");
-		}
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.SWEEP_ATTACK, (entity.getX()), (entity.getY() + 1), (entity.getZ()), 10, 0.1, 0.1, 0.1, 0);
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WARABITETOU.get()) {
@@ -134,11 +120,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -154,11 +135,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											}
 										}
 									} else {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
@@ -189,11 +165,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -209,11 +180,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											}
 										}
 									} else {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
@@ -245,11 +211,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -265,11 +226,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											}
 										}
 									} else {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
@@ -300,11 +256,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -320,11 +271,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											}
 										}
 									} else {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
@@ -355,11 +301,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
 										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -375,11 +316,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											}
 										}
 									} else {
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-										}
 										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));

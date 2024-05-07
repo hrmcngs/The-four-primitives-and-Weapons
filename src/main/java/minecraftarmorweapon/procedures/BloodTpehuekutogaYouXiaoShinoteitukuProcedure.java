@@ -8,7 +8,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
@@ -44,7 +43,7 @@ public class BloodTpehuekutogaYouXiaoShinoteitukuProcedure {
 					if (!(entityiterator == entity)) {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MobEffects.GLOWING) : false) {
 										if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.EFFECT_BLOOD_TP.get()) : false) {
 											{
@@ -80,7 +79,7 @@ public class BloodTpehuekutogaYouXiaoShinoteitukuProcedure {
 					if (!(entityiterator == entity)) {
 						if (!(entityiterator instanceof SkeltonMobEntity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if (entityiterator instanceof LivingEntity _entity)
 										_entity.removeEffect(MinecraftArmorWeaponModMobEffects.EFFECT_BLOOD_TP.get());
 									if (entityiterator instanceof LivingEntity _entity)

@@ -8,7 +8,6 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
@@ -96,8 +95,8 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 								if (!(entityiterator == entity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
 										if (!(entityiterator instanceof OtiruyoEntity)) {
-											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-												if (entityiterator instanceof Mob) {
+											if (entityiterator instanceof LivingEntity) {
+												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 													entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 													{
 														Entity _ent = entityiterator;
@@ -114,9 +113,7 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 																	"/deta merge entity @s (Health:0)");
 														}
 													}
-												}
-											} else {
-												if (entityiterator instanceof Mob) {
+												} else {
 													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -166,8 +163,8 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 								if (!(entityiterator == entity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
 										if (!(entityiterator instanceof OtiruyoEntity)) {
-											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-												if (entityiterator instanceof Mob) {
+											if (entityiterator instanceof LivingEntity) {
+												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 													entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 													{
 														Entity _ent = entityiterator;
@@ -184,9 +181,7 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 																	"/deta merge entity @s (Health:0)");
 														}
 													}
-												}
-											} else {
-												if (entityiterator instanceof Mob) {
+												} else {
 													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -250,8 +245,8 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 						if (!(entityiterator == entity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
-									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
+										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 											{
 												Entity _ent = entityiterator;
@@ -267,9 +262,7 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 															_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
 												}
 											}
-										}
-									} else {
-										if (entityiterator instanceof Mob) {
+										} else {
 											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -330,8 +323,8 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 						if (!(entityiterator == entity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
-									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
+										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 											{
 												Entity _ent = entityiterator;
@@ -347,9 +340,7 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 															_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
 												}
 											}
-										}
-									} else {
-										if (entityiterator instanceof Mob) {
+										} else {
 											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -474,8 +465,8 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
-										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-											if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
+											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 												{
 													Entity _ent = entityiterator;
@@ -492,9 +483,7 @@ public class SmallSwordYoukuritukusitatokiProcedure {
 																"/deta merge entity @s (Health:0)");
 													}
 												}
-											}
-										} else {
-											if (entityiterator instanceof Mob) {
+											} else {
 												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()

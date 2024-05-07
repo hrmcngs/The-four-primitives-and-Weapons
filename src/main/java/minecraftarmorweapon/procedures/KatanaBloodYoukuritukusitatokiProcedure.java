@@ -6,7 +6,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
@@ -76,7 +75,7 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-				if (!world.getEntitiesOfClass(Mob.class, AABB.ofSize(new Vec3(x, y, z), 50, 50, 50), e -> true).isEmpty()) {
+				if (!world.getEntitiesOfClass(LivingEntity.class, AABB.ofSize(new Vec3(x, y, z), 50, 50, 50), e -> true).isEmpty()) {
 					entity.getPersistentData().putBoolean("tp", true);
 					entity.getPersistentData().putDouble("X", x);
 					entity.getPersistentData().putDouble("Y", y);
@@ -95,7 +94,7 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 												_entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 150, 255, true, false));
 											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
@@ -129,7 +128,7 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 											{
 												Entity _ent = entityiterator;
@@ -147,7 +146,7 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 											}
 										}
 									} else {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											entityiterator.hurt(DamageSource.GENERIC, 20);
 										}
 									}
@@ -185,7 +184,7 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 											{
 												Entity _ent = entityiterator;
@@ -203,7 +202,7 @@ public class KatanaBloodYoukuritukusitatokiProcedure {
 											}
 										}
 									} else {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											entityiterator.hurt(DamageSource.GENERIC, 20);
 										}
 									}

@@ -394,7 +394,7 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 										if (!(entityiterator instanceof SkeltonMobEntity)) {
 											if (!(entityiterator instanceof OtiruyoEntity)) {
 												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-													if (entityiterator instanceof Mob) {
+													if (entityiterator instanceof LivingEntity) {
 														{
 															Entity _ent = entityiterator;
 															if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -412,7 +412,7 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 														}
 													}
 												} else {
-													if (entityiterator instanceof Mob) {
+													if (entityiterator instanceof LivingEntity) {
 														entityiterator.hurt(DamageSource.GENERIC, 7);
 													}
 												}
@@ -692,16 +692,11 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-												}
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
 												}
 												{
 													Entity _ent = entityiterator;
@@ -719,11 +714,6 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 													}
 												}
 											} else {
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-												}
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
@@ -746,16 +736,11 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-												}
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
 												}
 												{
 													Entity _ent = entityiterator;
@@ -773,11 +758,6 @@ public class SwordOfNightYoukuritukusitatokiProcedure {
 													}
 												}
 											} else {
-												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WATER_KATANA.get()
-														|| (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.BUBBLESHOT_EFFECT.get()) : false)) {
-													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 100, 2, true, false));
-												}
 												if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));

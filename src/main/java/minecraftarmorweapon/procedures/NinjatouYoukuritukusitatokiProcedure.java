@@ -79,8 +79,8 @@ public class NinjatouYoukuritukusitatokiProcedure {
 								if (!(entityiterator == entity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
 										if (!(entityiterator instanceof OtiruyoEntity)) {
-											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-												if (entityiterator instanceof Mob) {
+											if (entityiterator instanceof LivingEntity) {
+												if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 													{
 														Entity _ent = entityiterator;
 														if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -96,9 +96,7 @@ public class NinjatouYoukuritukusitatokiProcedure {
 																	"/deta merge entity @s (Health:0)");
 														}
 													}
-												}
-											} else {
-												if (entityiterator instanceof Mob) {
+												} else {
 													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -229,8 +227,8 @@ public class NinjatouYoukuritukusitatokiProcedure {
 						if (!(entityiterator == entity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
-									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
+										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -245,9 +243,7 @@ public class NinjatouYoukuritukusitatokiProcedure {
 															_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
 												}
 											}
-										}
-									} else {
-										if (entityiterator instanceof Mob) {
+										} else {
 											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
