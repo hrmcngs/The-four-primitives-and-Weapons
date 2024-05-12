@@ -10,42 +10,8 @@
     "damageModifier": 0,
     "compatibleEnchantments": [],
     "excludeEnchantments": false,
-    "compatibleItems": [
-      {
-        "value": "Items.IRON_SWORD"
-      },
-      {
-        "value": "Items.WOODEN_SWORD"
-      },
-      {
-        "value": "Items.STONE_SWORD"
-      },
-      {
-        "value": "Items.GOLDEN_SWORD"
-      },
-      {
-        "value": "Items.DIAMOND_SWORD"
-      },
-      {
-        "value": "Items.NETHERITE_SWORD"
-      },
-      {
-        "value": "Items.TRIDENT"
-      },
-      {
-        "value": "Items.BOW"
-      },
-      {
-        "value": "Items.CROSSBOW"
-      },
-      {
-        "value": "CUSTOM:NetheriteKatana"
-      },
-      {
-        "value": "CUSTOM:ItemWeaponsword"
-      }
-    ],
-    "excludeItems": false,
+    "compatibleItems": [],
+    "excludeItems": true,
     "isTreasureEnchantment": false,
     "isCurse": false,
     "isAllowedOnBooks": true,
