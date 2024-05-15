@@ -19,9 +19,18 @@ public class GuardehuekutogaYouXiaoShinoteitukuProcedure {
 					"execute as @e[tag=minecraft_armor_weapon_guard_bind] at @s run tp @s ~ ~ ~ ~40 ~");
 		{
 			Entity _ent = entity;
-			_ent.teleportTo(x, y, z);
+			if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+				_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4,
+						_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "data modify entity @s Motion[1] set value -10");
+			}
+		}
+		{
+			Entity _ent = entity;
+			_ent.teleportTo((entity.getPersistentData().getDouble("minecraft_armor_weapon:muteki_x_chuzume")), (entity.getPersistentData().getDouble("minecraft_armor_weapon:muteki_y_chuzume")),
+					(entity.getPersistentData().getDouble("minecraft_armor_weapon:muteki_z_chuzume")));
 			if (_ent instanceof ServerPlayer _serverPlayer)
-				_serverPlayer.connection.teleport(x, y, z, _ent.getYRot(), _ent.getXRot());
+				_serverPlayer.connection.teleport((entity.getPersistentData().getDouble("minecraft_armor_weapon:muteki_x_chuzume")), (entity.getPersistentData().getDouble("minecraft_armor_weapon:muteki_y_chuzume")),
+						(entity.getPersistentData().getDouble("minecraft_armor_weapon:muteki_z_chuzume")), _ent.getYRot(), _ent.getXRot());
 		}
 	}
 }

@@ -5400,6 +5400,29 @@
           }
         ]
       }
+    },
+    {
+      "name": "Kizutuku",
+      "type": "procedure",
+      "sortid": 361,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kizutuku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/KizutukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
