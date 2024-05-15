@@ -44,6 +44,7 @@ import minecraftarmorweapon.potion.KarikarisiterunemaidomaidoMobEffect;
 import minecraftarmorweapon.potion.KaminariyadeMobEffect;
 import minecraftarmorweapon.potion.KaitenMobEffect;
 import minecraftarmorweapon.potion.GyetonzangekiMobEffect;
+import minecraftarmorweapon.potion.GuardMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.EffectMagicMobEffect;
 import minecraftarmorweapon.potion.EffectBloodTpMobEffect;
@@ -107,4 +108,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_RELOAD = REGISTRY.register("sword_of_night_reload", () -> new SwordOfNightReloadMobEffect());
 	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_TAMEEEE = REGISTRY.register("sword_of_night_tameeee", () -> new SwordOfNightTameeeeMobEffect());
 	public static final RegistryObject<MobEffect> TEST = REGISTRY.register("test", () -> new TestMobEffect());
+	public static final RegistryObject<MobEffect> GUARD = REGISTRY.register("guard", () -> new GuardMobEffect());
 }

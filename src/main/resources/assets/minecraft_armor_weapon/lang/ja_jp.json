@@ -1,6 +1,7 @@
 {
   "item.minecraft_armor_weapon.prototype_katana": "§8§l§oPrototype Katana",
   "item.minecraft_armor_weapon.decoration_pot_with_arrows": "Decoration Pot With Arrows",
+  "effect.minecraft_armor_weapon.guard": "guard",
   "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
   "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
   "itemGroup.tabmagic_books": "Magic Books",
@@ -57,6 +58,7 @@
   "item.minecraft_armor_weapon.reset_1": "Reset Damege",
   "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
   "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
+  "item.minecraft_armor_weapon.golden_katana": "§6Golden Katana",
   "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
   "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
   "item.minecraft_armor_weapon.oninomen_helmet": "鬼の面",
@@ -134,6 +136,7 @@
   "block.minecraft_armor_weapon.rose": "Rose",
   "effect.minecraft_armor_weapon.ngs": "ngs1",
   "effect.minecraft_armor_weapon.arrow_1": "arrowkill",
+  "item.minecraft_armor_weapon.naihazuno_ring": "Ring",
   "effect.minecraft_armor_weapon.waza": "waza",
   "item.minecraft_armor_weapon.illusioner_armor_leggings": "Illusioner Armor Leggins",
   "effect.minecraft_armor_weapon.otiro": "zz",

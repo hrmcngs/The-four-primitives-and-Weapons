@@ -35,6 +35,7 @@ import minecraftarmorweapon.item.OninomenItem;
 import minecraftarmorweapon.item.NinjatouItem;
 import minecraftarmorweapon.item.NiguShieldItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
+import minecraftarmorweapon.item.NaihazunoRingItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
 import minecraftarmorweapon.item.MagischesFeenKatanaItem;
 import minecraftarmorweapon.item.MagicalKatanaItem;
@@ -53,6 +54,7 @@ import minecraftarmorweapon.item.IllusionerArmorItem;
 import minecraftarmorweapon.item.HarvestMoon2023929Item;
 import minecraftarmorweapon.item.HammerItem;
 import minecraftarmorweapon.item.Halloween20231031SickleItem;
+import minecraftarmorweapon.item.GoldenKatanaItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.DragonRedArmorItem;
 import minecraftarmorweapon.item.DragonGreenArmorItem;
@@ -169,6 +171,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> KURIKARAKENSWORD = REGISTRY.register("kurikarakensword", () -> new KurikarakenswordItem());
 	public static final RegistryObject<Item> KURIKARAKENUTIGATANA = REGISTRY.register("kurikarakenutigatana", () -> new KurikarakenutigatanaItem());
 	public static final RegistryObject<Item> NINJATOU = REGISTRY.register("ninjatou", () -> new NinjatouItem());
+	public static final RegistryObject<Item> NAIHAZUNO_RING = REGISTRY.register("naihazuno_ring", () -> new NaihazunoRingItem());
+	public static final RegistryObject<Item> GOLDEN_KATANA = REGISTRY.register("golden_katana", () -> new GoldenKatanaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
