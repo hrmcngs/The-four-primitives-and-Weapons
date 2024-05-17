@@ -1,6 +1,4 @@
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=hrmcngs&show_icons=true&theme=dark)
+my mod link 
+https://legacy.curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=hrmcngs&layout=compact)
-
-https://github.com/GitPois1x/DragonLoot/tree/1.20/src/main/resources/assets/dragonloot/textures
 dorago Armorのtextureはここからダウンロードしました
