@@ -7,18 +7,14 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.InteractionHand;
 
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
-import minecraftarmorweapon.procedures.GoldenKatanaYoukuritukusitatokiProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
-public class GoldenKatanaItem extends SwordItem {
-	public GoldenKatanaItem() {
+public class ReplicaSwordOfLightItem extends SwordItem {
+	public ReplicaSwordOfLightItem() {
 		super(new Tier() {
 			public int getUses() {
 				return 0;
@@ -44,13 +40,6 @@ public class GoldenKatanaItem extends SwordItem {
 				return Ingredient.of();
 			}
 		}, 3, -2.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
-	}
-
-	@Override
-	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
-		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		GoldenKatanaYoukuritukusitatokiProcedure.execute(entity);
-		return ar;
 	}
 
 	@Override
