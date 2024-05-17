@@ -27,6 +27,7 @@ public class GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 				|| MinecraftArmorWeaponModItems.LUNA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
 						&& MinecraftArmorWeaponModItems.MY_TEST_IRON_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
+				|| MinecraftArmorWeaponModItems.REPLICA_SWORD_OF_LIGHT.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.SMALL_SWORD.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.KATANA_NIGU_HUMERUS.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.MAGISCHES_FEEN_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {

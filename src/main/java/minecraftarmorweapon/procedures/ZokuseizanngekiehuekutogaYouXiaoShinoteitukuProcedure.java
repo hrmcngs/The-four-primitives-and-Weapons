@@ -103,32 +103,32 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator == entity)) {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
-									if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
-										public boolean checkGamemode(Entity _ent) {
-											if (_ent instanceof ServerPlayer _serverPlayer) {
-												return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-											} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
-												return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-														&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+									if (entityiterator instanceof LivingEntity) {
+										if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
+											public boolean checkGamemode(Entity _ent) {
+												if (_ent instanceof ServerPlayer _serverPlayer) {
+													return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+												} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+													return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+															&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+												}
+												return false;
 											}
-											return false;
-										}
-									}.checkGamemode(entity)) && !(new Object() {
-										public boolean checkGamemode(Entity _ent) {
-											if (_ent instanceof ServerPlayer _serverPlayer) {
-												return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
-											} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
-												return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-														&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.SPECTATOR;
+										}.checkGamemode(entity)) && !(new Object() {
+											public boolean checkGamemode(Entity _ent) {
+												if (_ent instanceof ServerPlayer _serverPlayer) {
+													return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
+												} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+													return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+															&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.SPECTATOR;
+												}
+												return false;
 											}
-											return false;
+										}.checkGamemode(entity))) {
+											if (entityiterator instanceof Mob _entity && entity instanceof LivingEntity _ent)
+												_entity.setTarget(_ent);
 										}
-									}.checkGamemode(entity))) {
-										if (entityiterator instanceof Mob _entity && entity instanceof LivingEntity _ent)
-											_entity.setTarget(_ent);
-									}
-									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entityiterator instanceof Mob) {
+										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 											{
 												Entity _ent = entityiterator;
@@ -144,9 +144,7 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 															_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
 												}
 											}
-										}
-									} else {
-										if (entityiterator instanceof Mob) {
+										} else {
 											entityiterator.hurt(DamageSource.GENERIC, 20);
 										}
 									}
@@ -263,33 +261,32 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
-										if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
-											public boolean checkGamemode(Entity _ent) {
-												if (_ent instanceof ServerPlayer _serverPlayer) {
-													return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-												} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
-													return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-															&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+										if (entityiterator instanceof LivingEntity) {
+											if (!(world.getDifficulty() == Difficulty.PEACEFUL) && !(new Object() {
+												public boolean checkGamemode(Entity _ent) {
+													if (_ent instanceof ServerPlayer _serverPlayer) {
+														return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+													} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+														return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+																&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+													}
+													return false;
 												}
-												return false;
-											}
-										}.checkGamemode(entity)) && !(new Object() {
-											public boolean checkGamemode(Entity _ent) {
-												if (_ent instanceof ServerPlayer _serverPlayer) {
-													return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
-												} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
-													return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-															&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.SPECTATOR;
+											}.checkGamemode(entity)) && !(new Object() {
+												public boolean checkGamemode(Entity _ent) {
+													if (_ent instanceof ServerPlayer _serverPlayer) {
+														return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.SPECTATOR;
+													} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
+														return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+																&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.SPECTATOR;
+													}
+													return false;
 												}
-												return false;
+											}.checkGamemode(entity))) {
+												if (entityiterator instanceof Mob _entity && entity instanceof LivingEntity _ent)
+													_entity.setTarget(_ent);
 											}
-										}.checkGamemode(entity))) {
-											if (entityiterator instanceof Mob _entity && entity instanceof LivingEntity _ent)
-												_entity.setTarget(_ent);
-										}
-										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-											if (entityiterator instanceof Mob) {
-												entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
+											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 													_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 2, true, false));
 												{
@@ -307,9 +304,7 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 																"/deta merge entity @s (Health:0)");
 													}
 												}
-											}
-										} else {
-											if (entityiterator instanceof Mob) {
+											} else {
 												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()) {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 80, 2, true, false));
@@ -328,6 +323,7 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 				}
 				entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()
+					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.REPLICA_SWORD_OF_LIGHT.get()
 					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KATANA_NIGU_HUMERUS.get()) {
 				loop = entity.getPersistentData().getDouble("local");
 				entity.getPersistentData().putDouble("Xpos", (entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance")));
@@ -429,8 +425,8 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
-										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-											if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
+											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 												{
 													Entity _ent = entityiterator;
@@ -447,9 +443,7 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 																"/deta merge entity @s (Health:0)");
 													}
 												}
-											}
-										} else {
-											if (entityiterator instanceof Mob) {
+											} else {
 												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -596,8 +590,8 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
-										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-											if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
+											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 												{
 													Entity _ent = entityiterator;
@@ -614,9 +608,7 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 																"/deta merge entity @s (Health:0)");
 													}
 												}
-											}
-										} else {
-											if (entityiterator instanceof Mob) {
+											} else {
 												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
@@ -722,8 +714,8 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
 									if (!(entityiterator instanceof OtiruyoEntity)) {
-										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-											if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
+											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 												{
 													Entity _ent = entityiterator;
@@ -740,9 +732,7 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 																"/deta merge entity @s (Health:0)");
 													}
 												}
-											}
-										} else {
-											if (entityiterator instanceof Mob) {
+											} else {
 												if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 														|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()

@@ -5,7 +5,7 @@
     "renderType": 1,
     "texture": "aa",
     "customModelName": "goldenkatana3d:default",
-    "name": "Replica Sword Of Light",
+    "name": "§6Replica Sword Of Light",
     "specialInfo": [],
     "creativeTab": {
       "value": "CUSTOM:Weapon"
@@ -23,6 +23,9 @@
     "immuneToFire": false,
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "ReplicaSwordOfLightYoukuritukusitatoki"
+    },
     "onItemInUseTick": {
       "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
     }

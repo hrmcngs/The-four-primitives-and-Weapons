@@ -5422,10 +5422,6 @@
           {
             "name": "sourceentity",
             "type": "entity"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       }
@@ -5466,6 +5462,41 @@
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/gold_katana.json",
           "src/main/java/minecraftarmorweapon/item/GoldKatanaItem.java"
+        ]
+      }
+    },
+    {
+      "name": "ReplicaSwordOfLightYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 364,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "replica_sword_of_light_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ReplicaSwordOfLightYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
         ]
       }
     }
@@ -5530,8 +5561,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "This\u0027s not a sword, this\u0027s a katana!",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5614,7 +5645,7 @@
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "gamerule.rpgBookGive.description": "Give RPG Book when respawning or at initial spawn or",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
-      "item.minecraft_armor_weapon.replica_sword_of_light": "Replica Sword Of Light",
+      "item.minecraft_armor_weapon.replica_sword_of_light": "§6Replica Sword of Light",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
@@ -5709,8 +5740,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5793,7 +5824,7 @@
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
       "gamerule.rpgBookGive.description": "リスポーンしたときや初期スポーンの時にRPG Bookを与えるか",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
-      "item.minecraft_armor_weapon.replica_sword_of_light": "Replica Sword Of Light",
+      "item.minecraft_armor_weapon.replica_sword_of_light": "§6Replica Sword of Light",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
