@@ -39,7 +39,7 @@ public class GuardMobEffect extends MobEffect {
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		GuardposiyonXiaoGuogaQieretaShiProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
+		GuardposiyonXiaoGuogaQieretaShiProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ());
 	}
 
 	@Override

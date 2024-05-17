@@ -5168,6 +5168,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
@@ -5298,10 +5302,6 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
             "name": "x",
             "type": "number"
           },
@@ -5420,8 +5420,23 @@
           {
             "name": "sourceentity",
             "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
+      }
+    },
+    {
+      "name": "RpgBookGive",
+      "type": "gamerule",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "rpg_book_give",
+      "metadata": {
+        "files": [],
+        "type": "logic"
       }
     }
   ],
@@ -5485,8 +5500,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5568,6 +5583,7 @@
       "effect.minecraft_armor_weapon.kougeki": "a",
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
+      "gamerule.rpgBookGive.description": "リスポーンしたときや最初のスポーンの時にRPG Bookを与えるか",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
@@ -5598,6 +5614,7 @@
       "effect.minecraft_armor_weapon.zanngekikai": "aa",
       "item.minecraft_armor_weapon.dragon_green_armor_chestplate": "§2Dragon green chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_leggings": "§8Dragon black leggings",
+      "gamerule.rpgBookGive": "RPG book give",
       "effect.minecraft_armor_weapon.karikarisiterunemaidomaido": "doka-nn",
       "item.minecraft_armor_weapon.katana_tobu": "Katana Tobu",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
@@ -5661,8 +5678,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5744,6 +5761,7 @@
       "effect.minecraft_armor_weapon.kougeki": "a",
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
+      "gamerule.rpgBookGive.description": "リスポーンしたときや最初のスポーンの時にRPG Bookを与えるか",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
@@ -5774,6 +5792,7 @@
       "effect.minecraft_armor_weapon.zanngekikai": "aa",
       "item.minecraft_armor_weapon.dragon_green_armor_chestplate": "§2Dragon green chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_leggings": "§8Dragon black leggings",
+      "gamerule.rpgBookGive": "RPG book give",
       "effect.minecraft_armor_weapon.karikarisiterunemaidomaido": "doka-nn",
       "item.minecraft_armor_weapon.katana_tobu": "Katana Tobu",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
