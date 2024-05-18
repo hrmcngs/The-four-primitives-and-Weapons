@@ -1,0 +1,11 @@
+{
+  "_fv": 43,
+  "_type": "tab",
+  "definition": {
+    "name": "Chuzume Tab",
+    "icon": {
+      "value": "CUSTOM:SwordOfNight"
+    },
+    "showSearch": false
+  }
+}

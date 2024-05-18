@@ -16,6 +16,7 @@ public class MinecraftArmorWeaponModTabs {
 	public static CreativeModeTab TAB_EVENT;
 	public static CreativeModeTab TAB_DRAGON_ARMOR_TAB;
 	public static CreativeModeTab TAB_NIGU;
+	public static CreativeModeTab TAB_CHUZUME_TAB;
 
 	public static void load() {
 		TAB_WEAPON = new CreativeModeTab("tabweapon") {
@@ -88,6 +89,17 @@ public class MinecraftArmorWeaponModTabs {
 			@Override
 			public ItemStack makeIcon() {
 				return new ItemStack(MinecraftArmorWeaponModItems.KATANA_NIGU_HUMERUS.get());
+			}
+
+			@Override
+			public boolean hasSearchBar() {
+				return false;
+			}
+		};
+		TAB_CHUZUME_TAB = new CreativeModeTab("tabchuzume_tab") {
+			@Override
+			public ItemStack makeIcon() {
+				return new ItemStack(MinecraftArmorWeaponModItems.SWORD_OF_NIGHT.get());
 			}
 
 			@Override

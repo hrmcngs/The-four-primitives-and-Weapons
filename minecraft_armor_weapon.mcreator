@@ -5499,6 +5499,17 @@
           }
         ]
       }
+    },
+    {
+      "name": "ChuzumeTab",
+      "type": "tab",
+      "sortid": 365,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chuzume_tab",
+      "metadata": {
+        "files": []
+      }
     }
   ],
   "variable_elements": [
@@ -5689,6 +5700,7 @@
       "effect.minecraft_armor_weapon.syugekinanozee": "aa",
       "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
+      "itemGroup.tabchuzume_tab": "Chuzume Tab",
       "item.minecraft_armor_weapon.dragon_green_armor_leggings": "§2Dragon green leggings",
       "effect.minecraft_armor_weapon.devour_blood": "devour blood",
       "block.minecraft_armor_weapon.rose": "Rose",
@@ -5868,6 +5880,7 @@
       "effect.minecraft_armor_weapon.syugekinanozee": "aa",
       "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
+      "itemGroup.tabchuzume_tab": "Chuzume Tab",
       "item.minecraft_armor_weapon.dragon_green_armor_leggings": "§2Dragon green leggings",
       "effect.minecraft_armor_weapon.devour_blood": "devour blood",
       "block.minecraft_armor_weapon.rose": "Rose",
