@@ -67,6 +67,7 @@ import minecraftarmorweapon.item.DasHerzEinerFeeArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BoggedOuterItem;
 import minecraftarmorweapon.item.BloodBottleItem;
+import minecraftarmorweapon.item.BlackElytraItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
 import minecraftarmorweapon.item.AaaItem;
 import minecraftarmorweapon.item.AItem;
@@ -175,6 +176,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> NAIHAZUNO_RING = REGISTRY.register("naihazuno_ring", () -> new NaihazunoRingItem());
 	public static final RegistryObject<Item> REPLICA_SWORD_OF_LIGHT = REGISTRY.register("replica_sword_of_light", () -> new ReplicaSwordOfLightItem());
 	public static final RegistryObject<Item> GOLD_KATANA = REGISTRY.register("gold_katana", () -> new GoldKatanaItem());
+	public static final RegistryObject<Item> BLACK_ELYTRA = REGISTRY.register("black_elytra", () -> new BlackElytraItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
