@@ -39,6 +39,8 @@ public class ReplicaSwordOfLightYoukuritukusitatokiProcedure {
 		double r = 0;
 		double alpha = 0;
 		double beta = 0;
+		double speed = 0;
+		double spread = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.REPLICA_SWORD_OF_LIGHT.get()) {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 2) {
 				if (Screen.hasShiftDown()) {
