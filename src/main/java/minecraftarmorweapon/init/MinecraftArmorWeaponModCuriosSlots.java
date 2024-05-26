@@ -13,6 +13,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class MinecraftArmorWeaponModCuriosSlots {
 	@SubscribeEvent
 	public static void enqueueIMC(final InterModEnqueueEvent event) {
-		InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.RING.getMessageBuilder().size(3).build());
+		InterModComms.sendTo(CuriosApi.MODID, SlotTypeMessage.REGISTER_TYPE, () -> SlotTypePreset.RING.getMessageBuilder().size(2).build());
 	}
 }

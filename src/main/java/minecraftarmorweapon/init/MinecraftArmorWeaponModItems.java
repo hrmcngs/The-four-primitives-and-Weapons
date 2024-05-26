@@ -19,7 +19,6 @@ import net.minecraft.world.item.BlockItem;
 import minecraftarmorweapon.item.WindStepItem;
 import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
-import minecraftarmorweapon.item.SyabondamaItem;
 import minecraftarmorweapon.item.SwordOfNightItem;
 import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
@@ -178,7 +177,6 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> REPLICA_SWORD_OF_LIGHT = REGISTRY.register("replica_sword_of_light", () -> new ReplicaSwordOfLightItem());
 	public static final RegistryObject<Item> GOLD_KATANA = REGISTRY.register("gold_katana", () -> new GoldKatanaItem());
 	public static final RegistryObject<Item> KENTI = REGISTRY.register("kenti", () -> new KentiItem());
-	public static final RegistryObject<Item> SYABONDAMA = REGISTRY.register("syabondama", () -> new SyabondamaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
