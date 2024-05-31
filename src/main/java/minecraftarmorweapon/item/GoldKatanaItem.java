@@ -13,7 +13,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
-import minecraftarmorweapon.procedures.GoldenKatanaYoukuritukusitatokiProcedure;
+import minecraftarmorweapon.procedures.IronKatanaYoukuritukusitatokiProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
@@ -49,7 +49,7 @@ public class GoldKatanaItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		GoldenKatanaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		IronKatanaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
 

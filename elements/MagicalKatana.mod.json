@@ -24,7 +24,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
-      "name": "MagicalKatanaYoukuritukusitatoki"
+      "name": "IronKatanaYoukuritukusitatoki"
     },
     "onEntityHitWith": {
       "name": "MagicalKatanamobugaturudeGongJisaretatoki"

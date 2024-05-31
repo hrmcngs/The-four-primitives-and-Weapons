@@ -2130,41 +2130,6 @@
       }
     },
     {
-      "name": "MagicalKatanaYoukuritukusitatoki",
-      "type": "procedure",
-      "sortid": 166,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "magical_katana_youkuritukusitatoki",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/MagicalKatanaYoukuritukusitatokiProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
       "name": "MinecraftArmorAndWeaponItems",
       "type": "villagertrade",
       "compiles": true,
@@ -2643,7 +2608,7 @@
       "type": "rangeditem",
       "sortid": 199,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "katana_tobu",
       "metadata": {
         "files": [
@@ -4357,7 +4322,7 @@
       "type": "tool",
       "sortid": 293,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "small_sword",
       "metadata": {
         "files": [
@@ -4458,25 +4423,6 @@
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/katana_nigu_humerus.json",
           "src/main/java/minecraftarmorweapon/item/KatanaNiguHumerusItem.java"
-        ]
-      }
-    },
-    {
-      "name": "KatanaNiguHumerusturugainbentoriniaruJiannoteituku",
-      "type": "procedure",
-      "sortid": 299,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "katana_nigu_humerusturugainbentoriniaru_jiannoteituku",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/KatanaNiguHumerusturugainbentoriniaruJiannoteitukuProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          }
         ]
       }
     },
@@ -5369,41 +5315,6 @@
       }
     },
     {
-      "name": "GoldenKatanaYoukuritukusitatoki",
-      "type": "procedure",
-      "sortid": 360,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "golden_katana_youkuritukusitatoki",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/GoldenKatanaYoukuritukusitatokiProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
       "name": "Kizutuku",
       "type": "procedure",
       "sortid": 361,
@@ -5462,41 +5373,6 @@
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/models/item/gold_katana.json",
           "src/main/java/minecraftarmorweapon/item/GoldKatanaItem.java"
-        ]
-      }
-    },
-    {
-      "name": "ReplicaSwordOfLightYoukuritukusitatoki",
-      "type": "procedure",
-      "sortid": 364,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "replica_sword_of_light_youkuritukusitatoki",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/ReplicaSwordOfLightYoukuritukusitatokiProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
         ]
       }
     },
@@ -5562,6 +5438,181 @@
           }
         ]
       }
+    },
+    {
+      "name": "Zokuseiritokutyuwaza",
+      "type": "procedure",
+      "sortid": 369,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "zokuseiritokutyuwaza",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ZokuseiritokutyuwazaProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Nomalwaza",
+      "type": "procedure",
+      "sortid": 370,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nomalwaza",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/NomalwazaProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Magicwaza",
+      "type": "procedure",
+      "sortid": 371,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "magicwaza",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/MagicwazaProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Mytestkatanawaza",
+      "type": "procedure",
+      "sortid": 372,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "mytestkatanawaza",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/MytestkatanawazaProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tyokutou",
+      "type": "procedure",
+      "sortid": 373,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tyokutou",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TyokutouProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5624,8 +5675,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "This\u0027s not a sword, this\u0027s a katana!",
-      "itemGroup.tabyopkeinamono": "建築とかに",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5805,8 +5856,8 @@
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
-      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "itemGroup.tabyopkeinamono": "建築とかに",
+      "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",

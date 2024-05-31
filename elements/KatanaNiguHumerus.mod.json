@@ -27,7 +27,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
-      "name": "KatanaNiguHumerusYoukuritukusitatoki"
+      "name": "PrototypeKatanaYoukuritukusitatoki"
     },
     "onItemInUseTick": {
       "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"

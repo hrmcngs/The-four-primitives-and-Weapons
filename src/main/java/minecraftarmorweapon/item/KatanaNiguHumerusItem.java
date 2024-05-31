@@ -14,7 +14,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.network.chat.Component;
 
-import minecraftarmorweapon.procedures.KatanaNiguHumerusYoukuritukusitatokiProcedure;
+import minecraftarmorweapon.procedures.PrototypeKatanaYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
@@ -53,7 +53,7 @@ public class KatanaNiguHumerusItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		KatanaNiguHumerusYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		PrototypeKatanaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
 

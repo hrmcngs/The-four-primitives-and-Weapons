@@ -20,16 +20,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.Packet;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEntities;
-import net.minecraft.network.syncher.EntityDataAccessor;
-
-
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class KatanaTobuEntity extends AbstractArrow implements ItemSupplier {
-
-
 	public KatanaTobuEntity(PlayMessages.SpawnEntity packet, Level world) {
-		this(MinecraftArmorWeaponModEntities.KATANA_TOBU.get(), world);
+		super(MinecraftArmorWeaponModEntities.KATANA_TOBU.get(), world);
 	}
 
 	public KatanaTobuEntity(EntityType<? extends KatanaTobuEntity> type, Level world) {

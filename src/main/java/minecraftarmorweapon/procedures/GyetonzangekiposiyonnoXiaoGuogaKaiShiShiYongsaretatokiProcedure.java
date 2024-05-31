@@ -23,9 +23,12 @@ public class GyetonzangekiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 		double X2 = 0;
 		double loop1 = 0;
 		if (MinecraftArmorWeaponModItems.MY_TEST_IRON_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
-				&& MinecraftArmorWeaponModItems.LUNA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()
+				|| MinecraftArmorWeaponModItems.KURIKARAKEN.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
+				|| MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
+				|| MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
+				|| MinecraftArmorWeaponModItems.LUNA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.LUNA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
-						&& MinecraftArmorWeaponModItems.MY_TEST_IRON_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()
+				|| MinecraftArmorWeaponModItems.MY_TEST_IRON_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.REPLICA_SWORD_OF_LIGHT.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()
 				|| MinecraftArmorWeaponModItems.SMALL_SWORD.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()

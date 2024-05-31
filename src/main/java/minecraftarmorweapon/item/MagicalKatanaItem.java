@@ -17,8 +17,8 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
 import minecraftarmorweapon.procedures.MagicalKatanamobugaturudeGongJisaretatokiProcedure;
-import minecraftarmorweapon.procedures.MagicalKatanaYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
+import minecraftarmorweapon.procedures.IronKatanaYoukuritukusitatokiProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
@@ -61,7 +61,7 @@ public class MagicalKatanaItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		MagicalKatanaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		IronKatanaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
 

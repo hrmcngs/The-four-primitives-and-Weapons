@@ -24,7 +24,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
-      "name": "GoldenKatanaYoukuritukusitatoki"
+      "name": "IronKatanaYoukuritukusitatoki"
     },
     "onItemInUseTick": {
       "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
