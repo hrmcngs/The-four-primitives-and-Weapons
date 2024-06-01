@@ -16,6 +16,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
@@ -84,7 +85,12 @@ public class TyokutouProcedure {
 				r = 1;
 				alpha = entity.getYRot();
 				beta = entity.getXRot();
-				for (int index0 = 0; index0 < 100; index0++) {
+				for (int index0 = 0; index0 < 50; index0++) {
+					if (world
+							.getBlockState(new BlockPos(x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha)), (y + 1) - r * Math.sin(Math.toRadians(beta)), z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))))
+							.canOcclude()) {
+						break;
+					}
 					if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.WIND_STEP_EFFECT.get()) : false) {
 						{
 							final Vec3 _center = new Vec3((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))),
@@ -122,7 +128,7 @@ public class TyokutouProcedure {
 															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 150, 2, true, false));
 													}
 													if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
-														entityiterator.hurt(DamageSource.GENERIC, 5);
+														entityiterator.hurt(DamageSource.GENERIC, 15);
 													}
 													entityiterator.hurt(DamageSource.GENERIC, 5);
 												}
@@ -169,7 +175,7 @@ public class TyokutouProcedure {
 															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 150, 2, true, false));
 													}
 													if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
-														entityiterator.hurt(DamageSource.GENERIC, 5);
+														entityiterator.hurt(DamageSource.GENERIC, 15);
 													}
 													entityiterator.hurt(DamageSource.GENERIC, 5);
 												}
@@ -180,16 +186,19 @@ public class TyokutouProcedure {
 							}
 						}
 					}
+					if (world instanceof ServerLevel _level)
+						_level.sendParticles(ParticleTypes.CRIT, (x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))),
+								(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))), 2, 0.1, 0.1, 0.1, 0.1);
 					r = r + 0.2;
 				}
 				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
 							|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()) {
 						if (entity instanceof Player _player)
-							_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 20);
+							_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 10);
 					} else {
 						if (entity instanceof Player _player)
-							_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
+							_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 20);
 					}
 				}
 			}
@@ -226,7 +235,7 @@ public class TyokutouProcedure {
 													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 150, 2, true, false));
 											}
 											if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
-												entityiterator.hurt(DamageSource.GENERIC, 5);
+												entityiterator.hurt(DamageSource.GENERIC, 15);
 											} else {
 												entityiterator.hurt(DamageSource.GENERIC, 5);
 											}
@@ -265,8 +274,6 @@ public class TyokutouProcedure {
 						_level.sendParticles(ParticleTypes.SWEEP_ATTACK, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.CLOUD, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
-					if (world instanceof ServerLevel _level)
-						_level.sendParticles(ParticleTypes.TOTEM_OF_UNDYING, X, Y, Z, 3, 0.1, 0.1, 0.1, 0);
 					{
 						final Vec3 _center = new Vec3(X, Y, Z);
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
@@ -316,7 +323,7 @@ public class TyokutouProcedure {
 																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 150, 2, true, false));
 														}
 														if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
-															entityiterator.hurt(DamageSource.GENERIC, 5);
+															entityiterator.hurt(DamageSource.GENERIC, 15);
 														} else {
 															entityiterator.hurt(DamageSource.GENERIC, 5);
 														}
@@ -395,7 +402,7 @@ public class TyokutouProcedure {
 																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 150, 2, true, false));
 														}
 														if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
-															entityiterator.hurt(DamageSource.GENERIC, 5);
+															entityiterator.hurt(DamageSource.GENERIC, 15);
 														} else {
 															entityiterator.hurt(DamageSource.GENERIC, 5);
 														}
@@ -411,8 +418,18 @@ public class TyokutouProcedure {
 					loop = loop + Math.toRadians(5);
 					Y_pos = Y_pos - 0.0555555555555556;
 				}
-				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get(), 60, 2, true, false));
+				if (((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
+						|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
+						|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())
+						&& ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
+								|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
+								|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())) {
+					if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get(), 60, 2, true, false));
+				} else {
+					if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+						_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ZANNGEKITOKUBETU.get(), 60, 1, true, false));
+				}
 				if (entity instanceof Player _player)
 					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 50);
 			}
@@ -701,7 +718,15 @@ public class TyokutouProcedure {
 				r = 1;
 				alpha = entity.getYRot();
 				beta = entity.getXRot();
-				for (int index5 = 0; index5 < 100; index5++) {
+				for (int index5 = 0; index5 < 50; index5++) {
+					if (world
+							.getBlockState(new BlockPos(x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha)), (y + 1) - r * Math.sin(Math.toRadians(beta)), z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))))
+							.canOcclude()) {
+						break;
+					}
+					if (world instanceof ServerLevel _level)
+						_level.sendParticles(ParticleTypes.CRIT, (x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))),
+								(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))), 5, 0.1, 0.1, 0.1, 1);
 					{
 						final Vec3 _center = new Vec3((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))),
 								(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))));

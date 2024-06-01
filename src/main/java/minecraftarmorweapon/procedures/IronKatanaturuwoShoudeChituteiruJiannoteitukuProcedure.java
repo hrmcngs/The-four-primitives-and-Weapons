@@ -82,7 +82,7 @@ public class IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure {
 		} else {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
 				{
-					String _setval = "\u7A81\u9032";
+					String _setval = "\u7A81\u304D";
 					entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).ifPresent(capability -> {
 						capability.ddd = _setval;
 						capability.syncPlayerVariables(entity);

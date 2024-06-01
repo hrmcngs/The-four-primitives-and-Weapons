@@ -116,7 +116,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())
 													&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false)) {
-												entityiterator.hurt(DamageSource.GENERIC, 5);
+												entityiterator.hurt(DamageSource.GENERIC, 15);
 											}
 											entityiterator.hurt(DamageSource.GENERIC, 5);
 										}
@@ -127,7 +127,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 					}
 				}
 				loop = loop + Math.toRadians(5);
-				Y_pos = Y_pos - 0.1666666666666667;
+				Y_pos = Y_pos - 0.0555555555555556;
 			}
 			for (int index3 = 0; index3 < 36; index3++) {
 				X = entity.getPersistentData().getDouble("X") + Math.sin(Math.toRadians(entity.getPersistentData().getDouble("yaw") + 180)) * entity.getPersistentData().getDouble("distance") + Math.cos(loop1) * XRadius2;
@@ -174,7 +174,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())
 													&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false)) {
-												entityiterator.hurt(DamageSource.GENERIC, 5);
+												entityiterator.hurt(DamageSource.GENERIC, 15);
 											}
 											entityiterator.hurt(DamageSource.GENERIC, 5);
 										}
@@ -185,7 +185,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 					}
 				}
 				loop1 = loop1 + Math.toRadians(5);
-				Y_pos1 = Y_pos1 + 0.1666666666666667;
+				Y_pos1 = Y_pos1 + 0.0555555555555556;
 			}
 			entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 		} else {
@@ -260,7 +260,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())
 													&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false)) {
-												entityiterator.hurt(DamageSource.GENERIC, 5);
+												entityiterator.hurt(DamageSource.GENERIC, 15);
 											}
 											entityiterator.hurt(DamageSource.GENERIC, 5);
 										}
