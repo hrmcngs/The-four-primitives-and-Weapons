@@ -126,7 +126,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 						}
 					}
 				}
-				loop = loop + Math.toRadians(5);
+				loop = loop - Math.toRadians(5);
 				Y_pos = Y_pos - 0.0555555555555556;
 			}
 			for (int index3 = 0; index3 < 36; index3++) {
@@ -184,8 +184,8 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 						}
 					}
 				}
-				loop1 = loop1 + Math.toRadians(5);
-				Y_pos1 = Y_pos1 + 0.0555555555555556;
+				loop = loop + Math.toRadians(5);
+				Y_pos = Y_pos - 0.0555555555555556;
 			}
 			entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 		} else {
