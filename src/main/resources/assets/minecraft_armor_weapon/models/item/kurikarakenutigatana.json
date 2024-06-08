@@ -5,9 +5,10 @@
     "particle": "minecraft_armor_weapon:items/aaaaa"
   }
 "overrides":[
-    "parent":{"kurikarakenutigatana_model_kaminari":1},"model": "minecraft_armor_weapon:custom/kurikarakatana3d",
+    "custom_model_data":{"kurikarakenutigatana_model_kaminari":1},"model": "kurikarakatana3dkaminari",
   "textures": {
-    "1": "minecraft_armor_weapon:blocks/kurikarakatana3d",
+    "1": "minecraft_armor_weapon:blocks/kurikata3dutigatanaugokukaminari",
     "particle": "minecraft_armor_weapon:items/aaaaa"
   }]
+
 }
