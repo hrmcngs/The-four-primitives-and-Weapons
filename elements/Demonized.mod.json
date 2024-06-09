@@ -2,7 +2,7 @@
   "_fv": 43,
   "_type": "enchantment",
   "definition": {
-    "name": "§4§kDemonized",
+    "name": "§4§kDemonized §4",
     "type": "WEAPON",
     "rarity": "RARE",
     "minLevel": 1,
@@ -10,59 +10,7 @@
     "damageModifier": 0,
     "compatibleEnchantments": [],
     "excludeEnchantments": false,
-    "compatibleItems": [
-      {
-        "value": "CUSTOM:NetheriteKatana"
-      },
-      {
-        "value": "Items.WOODEN_SWORD"
-      },
-      {
-        "value": "Items.STONE_SWORD"
-      },
-      {
-        "value": "Items.IRON_SWORD"
-      },
-      {
-        "value": "Items.GOLDEN_SWORD"
-      },
-      {
-        "value": "Items.DIAMOND_SWORD"
-      },
-      {
-        "value": "Items.NETHERITE_SWORD"
-      },
-      {
-        "value": "Items.WOODEN_AXE"
-      },
-      {
-        "value": "Items.STONE_AXE"
-      },
-      {
-        "value": "Items.IRON_AXE"
-      },
-      {
-        "value": "Items.GOLDEN_AXE"
-      },
-      {
-        "value": "Items.DIAMOND_AXE"
-      },
-      {
-        "value": "Items.NETHERITE_AXE"
-      },
-      {
-        "value": "Items.TRIDENT"
-      },
-      {
-        "value": "Items.BOW"
-      },
-      {
-        "value": "Items.CROSSBOW"
-      },
-      {
-        "value": "CUSTOM:ItemWeaponsword"
-      }
-    ],
+    "compatibleItems": [],
     "excludeItems": false,
     "isTreasureEnchantment": false,
     "isCurse": false,

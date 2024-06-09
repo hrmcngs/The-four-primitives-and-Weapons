@@ -11,6 +11,11 @@ public class KillEnchantment extends Enchantment {
 	}
 
 	@Override
+	public boolean isTreasureOnly() {
+		return true;
+	}
+
+	@Override
 	public boolean isTradeable() {
 		return false;
 	}
