@@ -8,7 +8,7 @@ dorago Armorのtextureはここからダウンロードしました
 # my mod link
 
 
-![]([https://cf.way2muchnoise.eu/mods/short_the-four-primitives-and-weapons.svg])
+![]([https://cf.way2muchnoise.eu/mods/the-four-primitives-and-weapons.svg])
 https://www.curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons
 
 https://www.curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons
