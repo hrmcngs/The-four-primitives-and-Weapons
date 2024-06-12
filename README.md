@@ -5,5 +5,5 @@
 [![Link Check](https://github.com/janosh/awesome-normalizing-flows/actions/workflows/link-check.yml/badge.svg)](https://github.com/GitPois1x/DragonLoot/tree/1.20/src/main/resources/assets/dragonloot/textures)
 dorago Armorのtextureはここからダウンロードしました
 
-# my mod link 
-[![](https://cf.way2muchnoise.eu/title/240630_%20_Is%20Awesome!.svg)](https://legacy.curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons)
+# my mod link
+[![](https://cf.way2muchnoise.eu/title/the-four-primitives-and-weapons_%20_Is%20Awesome!.svg)](https://legacy.curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons)
