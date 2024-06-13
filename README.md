@@ -2,8 +2,9 @@
 
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=hrmcngs&layout=compact)
 
-# [![Link Check](https://github.com/janosh/awesome-normalizing-flows/actions/workflows/link-check.yml/badge.svg)](https://github.com/GitPois1x/DragonLoot/tree/1.20/src/main/resources/assets/dragonloot/textures)
-## dorago Armorのtextureはここからダウンロードしました
+# dorago Armorのtextureはここからダウンロードしました
+### [![Link Check](https://github.com/janosh/awesome-normalizing-flows/actions/workflows/link-check.yml/badge.svg)](https://github.com/GitPois1x/DragonLoot/tree/1.20/src/main/resources/assets/dragonloot/textures)
+
 
 # my mod link
 
