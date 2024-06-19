@@ -1,7 +1,5 @@
 package minecraftarmorweapon.procedures;
 
-import top.theillusivec4.curios.api.CuriosApi;
-
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -11,7 +9,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
-import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 
 import minecraftarmorweapon.entity.BlackholeEntity;
 
@@ -39,11 +36,6 @@ public class MukoukaGuardProcedure {
 			}
 		}
 		if (entity instanceof BlackholeEntity) {
-			if (event != null && event.isCancelable()) {
-				event.setCanceled(true);
-			}
-		}
-		if (!(CuriosApi.getCuriosHelper().getCurioTags(MinecraftArmorWeaponModItems.NAIHAZUNO_RING.get())).isEmpty()) {
 			if (event != null && event.isCancelable()) {
 				event.setCanceled(true);
 			}
