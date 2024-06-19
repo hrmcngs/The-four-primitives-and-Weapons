@@ -13,6 +13,8 @@ public class NaihazunoRingWhileBaubleIsEquippedTickProcedure {
 			return;
 		if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 			_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get(), 60, 1, true, false));
+		if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+			_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.BLACK_HOLE_EFFECT.get(), 5, 1, true, false));
 		entity.setTicksFrozen(0);
 		entity.fallDistance = 0;
 		entity.setSecondsOnFire(0);

@@ -15,6 +15,7 @@ import minecraftarmorweapon.client.renderer.OtiruyoRenderer;
 import minecraftarmorweapon.client.renderer.KillotiruRenderer;
 import minecraftarmorweapon.client.renderer.KatanaTobuRenderer;
 import minecraftarmorweapon.client.renderer.HrmcngsRenderer;
+import minecraftarmorweapon.client.renderer.BlackholeRenderer;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class MinecraftArmorWeaponModEntityRenderers {
@@ -26,5 +27,6 @@ public class MinecraftArmorWeaponModEntityRenderers {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.RUAMI_284.get(), Ruami284Renderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.KILLOTIRU.get(), KillotiruRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.KATANA_TOBU.get(), KatanaTobuRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.BLACKHOLE.get(), BlackholeRenderer::new);
 	}
 }

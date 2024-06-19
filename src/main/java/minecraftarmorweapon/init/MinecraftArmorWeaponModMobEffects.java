@@ -52,6 +52,7 @@ import minecraftarmorweapon.potion.DevourBloodMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
 import minecraftarmorweapon.potion.BloodTpMobEffect;
+import minecraftarmorweapon.potion.BlackHoleEffectMobEffect;
 import minecraftarmorweapon.potion.BarrierEffectMobEffect;
 import minecraftarmorweapon.potion.AttackBowMobEffect;
 import minecraftarmorweapon.potion.Arrow1MobEffect;
@@ -109,4 +110,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> SWORD_OF_NIGHT_TAMEEEE = REGISTRY.register("sword_of_night_tameeee", () -> new SwordOfNightTameeeeMobEffect());
 	public static final RegistryObject<MobEffect> TEST = REGISTRY.register("test", () -> new TestMobEffect());
 	public static final RegistryObject<MobEffect> GUARD = REGISTRY.register("guard", () -> new GuardMobEffect());
+	public static final RegistryObject<MobEffect> BLACK_HOLE_EFFECT = REGISTRY.register("black_hole_effect", () -> new BlackHoleEffectMobEffect());
 }

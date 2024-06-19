@@ -63,6 +63,7 @@ import minecraftarmorweapon.item.DragonGreenArmorItem;
 import minecraftarmorweapon.item.DragonBlueArmorItem;
 import minecraftarmorweapon.item.DragonBlackArmorItem;
 import minecraftarmorweapon.item.DragonArmorItem;
+import minecraftarmorweapon.item.DespornKentiItem;
 import minecraftarmorweapon.item.DecorationPotWithArrowsItem;
 import minecraftarmorweapon.item.DasHerzEinerFeeArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
@@ -177,6 +178,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> REPLICA_SWORD_OF_LIGHT = REGISTRY.register("replica_sword_of_light", () -> new ReplicaSwordOfLightItem());
 	public static final RegistryObject<Item> GOLD_KATANA = REGISTRY.register("gold_katana", () -> new GoldKatanaItem());
 	public static final RegistryObject<Item> KENTI = REGISTRY.register("kenti", () -> new KentiItem());
+	public static final RegistryObject<Item> BLACKHOLE_SPAWN_EGG = REGISTRY.register("blackhole_spawn_egg",
+			() -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.BLACKHOLE, -16777216, -16777216, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO)));
+	public static final RegistryObject<Item> DESPORN_KENTI = REGISTRY.register("desporn_kenti", () -> new DespornKentiItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

@@ -22,6 +22,7 @@ import minecraftarmorweapon.entity.OtiruyoEntity;
 import minecraftarmorweapon.entity.KillotiruEntity;
 import minecraftarmorweapon.entity.KatanaTobuEntity;
 import minecraftarmorweapon.entity.HrmcngsEntity;
+import minecraftarmorweapon.entity.BlackholeEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -46,6 +47,8 @@ public class MinecraftArmorWeaponModEntities {
 			.setUpdateInterval(3).setCustomClientFactory(KillotiruEntity::new).fireImmune().sized(1.2f, 3.6f));
 	public static final RegistryObject<EntityType<KatanaTobuEntity>> KATANA_TOBU = register("projectile_katana_tobu",
 			EntityType.Builder.<KatanaTobuEntity>of(KatanaTobuEntity::new, MobCategory.MISC).setCustomClientFactory(KatanaTobuEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<BlackholeEntity>> BLACKHOLE = register("blackhole",
+			EntityType.Builder.<BlackholeEntity>of(BlackholeEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).setCustomClientFactory(BlackholeEntity::new).fireImmune().sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -59,6 +62,7 @@ public class MinecraftArmorWeaponModEntities {
 			HrmcngsEntity.init();
 			Ruami284Entity.init();
 			KillotiruEntity.init();
+			BlackholeEntity.init();
 		});
 	}
 
@@ -69,5 +73,6 @@ public class MinecraftArmorWeaponModEntities {
 		event.put(HRMCNGS.get(), HrmcngsEntity.createAttributes().build());
 		event.put(RUAMI_284.get(), Ruami284Entity.createAttributes().build());
 		event.put(KILLOTIRU.get(), KillotiruEntity.createAttributes().build());
+		event.put(BLACKHOLE.get(), BlackholeEntity.createAttributes().build());
 	}
 }
