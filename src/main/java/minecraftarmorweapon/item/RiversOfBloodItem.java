@@ -37,7 +37,7 @@ public class RiversOfBloodItem extends SwordItem {
 			}
 
 			public int getEnchantmentValue() {
-				return 9;
+				return 4;
 			}
 
 			public Ingredient getRepairIngredient() {

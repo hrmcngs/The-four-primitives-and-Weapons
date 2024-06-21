@@ -9,7 +9,7 @@ public class BlackholeenteiteigasuponsitaShiProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		MinecraftArmorWeaponMod.queueServerWork(200, () -> {
+		MinecraftArmorWeaponMod.queueServerWork(400, () -> {
 			if (!entity.level.isClientSide())
 				entity.discard();
 		});

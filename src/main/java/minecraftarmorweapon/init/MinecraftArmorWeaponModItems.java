@@ -66,6 +66,8 @@ import minecraftarmorweapon.item.DragonArmorItem;
 import minecraftarmorweapon.item.DespornKentiItem;
 import minecraftarmorweapon.item.DecorationPotWithArrowsItem;
 import minecraftarmorweapon.item.DasHerzEinerFeeArmorItem;
+import minecraftarmorweapon.item.DarknessKatanaItem;
+import minecraftarmorweapon.item.DarknessItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BoggedOuterItem;
 import minecraftarmorweapon.item.BloodBottleItem;
@@ -181,6 +183,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> BLACKHOLE_SPAWN_EGG = REGISTRY.register("blackhole_spawn_egg",
 			() -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.BLACKHOLE, -16777216, -16777216, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO)));
 	public static final RegistryObject<Item> DESPORN_KENTI = REGISTRY.register("desporn_kenti", () -> new DespornKentiItem());
+	public static final RegistryObject<Item> DARKNESS = REGISTRY.register("darkness", () -> new DarknessItem());
+	public static final RegistryObject<Item> DARKNESS_KATANA = REGISTRY.register("darkness_katana", () -> new DarknessKatanaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

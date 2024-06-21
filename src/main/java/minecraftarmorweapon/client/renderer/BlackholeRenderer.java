@@ -17,7 +17,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 public class BlackholeRenderer extends GeoEntityRenderer<BlackholeEntity> {
 	public BlackholeRenderer(EntityRendererProvider.Context renderManager) {
 		super(renderManager, new BlackholeModel());
-		this.shadowRadius = 0.5f;
+		this.shadowRadius = 0f;
 	}
 
 	@Override

@@ -5810,6 +5810,76 @@
           }
         ]
       }
+    },
+    {
+      "name": "Darkness",
+      "type": "item",
+      "sortid": 383,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "darkness",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/DarknessItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/darkness.json"
+        ]
+      }
+    },
+    {
+      "name": "DarknessYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 384,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "darkness_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/DarknessYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DarknessaitemuwoShoudeChituteiruJiannoteituku",
+      "type": "procedure",
+      "sortid": 385,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "darknessaitemuwo_shoude_chituteiru_jiannoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/DarknessaitemuwoShoudeChituteiruJiannoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DarknessKatana",
+      "type": "tool",
+      "sortid": 386,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "darkness_katana",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/DarknessKatanaItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/darkness_katana.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -5873,7 +5943,7 @@
       "itemGroup.tabmagic_books": "Magic Books",
       "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
-      "itemGroup.tabyopkeinamono": "建築とかに",
+      "itemGroup.tabyopkeinamono": "Architecture and such",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
@@ -5885,19 +5955,21 @@
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "item.minecraft_armor_weapon.magical_katana": "§dMagical Katana",
+      "item.minecraft_armor_weapon.darkness": "§5Darkness",
       "effect.minecraft_armor_weapon.effect_blood_tp": "a",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.blackhole_spawn_egg": "Blackhole Spawn Egg",
-      "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
+      "effect.minecraft_armor_weapon.kurutimenasi": "Coold time invalid",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
       "entity.minecraft_armor_weapon.blackhole": "Blackhole",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "entity.minecraft_armor_weapon.ruami_284": "ruami284",
-      "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
+      "advancements.you_have_become_a_vampire.descr": "I\u0027m a vampire.",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
-      "advancements.sword_progress.descr": "鉄の刀を得る",
+      "advancements.sword_progress.descr": "get an iron katana",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
+      "item.minecraft_armor_weapon.darkness_katana": "§5Darkness Katana",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_leggings": "das herz einer fee armor leggings",
       "item.minecraft_armor_weapon.hrmcngs_spawn_egg": "hrmcngs Spawn Egg",
       "item.minecraft_armor_weapon.small_sword": "Small sword",
@@ -5919,20 +5991,20 @@
       "item.minecraft_armor_weapon.kurikarakensword": "§5kurikaraken",
       "item.minecraft_armor_weapon.wind_step": "§2Windstep",
       "item.minecraft_armor_weapon.a": "A",
-      "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
+      "item.minecraft_armor_weapon.warabitetou": "§7Warabiteto",
       "effect.minecraft_armor_weapon.blood_tp": "bloodtp",
       "effect.minecraft_armor_weapon.sword_of_night_effect": "sword of night",
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
-      "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
+      "effect.minecraft_armor_weapon.long_range_weapon_cut": "long-range weapon cut",
       "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
-      "item.minecraft_armor_weapon.oninomen_helmet": "鬼の面",
+      "item.minecraft_armor_weapon.oninomen_helmet": "mask of an ogre",
       "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
       "entity.minecraft_armor_weapon.killotiru": "Otiruyo",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_boots": "das herz einer fee armor boots",
-      "item.minecraft_armor_weapon.ninjatou": "忍者刀",
+      "item.minecraft_armor_weapon.ninjatou": "ninjato",
       "effect.minecraft_armor_weapon.kitterukitteru": "subetekirisuteru",
       "item.minecraft_armor_weapon.dragon_armor_chestplate": "§5Dragon chestplate",
       "item.minecraft_armor_weapon.bogged_outer_leggings": "Bogged Outer Leggings",
@@ -5957,7 +6029,7 @@
       "effect.minecraft_armor_weapon.kougeki": "a",
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
       "item.minecraft_armor_weapon.pillager_armor_boots": "Pillager Armor Boots",
-      "gamerule.rpgBookGive.description": "リスポーンしたときや最初のスポーンの時にRPG Bookを与えるか",
+      "gamerule.rpgBookGive.description": "Give RPG Book at respawn or early spawn or",
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
       "item.minecraft_armor_weapon.replica_sword_of_light": "§6Replica Sword Of Light",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
@@ -5973,7 +6045,7 @@
       "attribute.minecraft_armor_weapon.mana": "Mana",
       "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
-      "advancements.kurikaraken_progress.descr": "倶利伽羅剣を得る",
+      "advancements.kurikaraken_progress.descr": "obtain a kurikara sword",
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.kurikaraken": "§5kurikaraken",
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
@@ -5984,7 +6056,7 @@
       "effect.minecraft_armor_weapon.otita": "a",
       "item.minecraft_armor_weapon.dragon_blue_armor_chestplate": "§1Dragon blue chestplate",
       "entity.minecraft.villager.minecraft_armor_weapon.minecraft_armor_and_weapon": "Minecraft Armor And Weapon",
-      "advancements.magical_katana_progress.title": "魔力の結晶大量じゃ～！",
+      "advancements.magical_katana_progress.title": "A lot of magic crystals!",
       "item.minecraft_armor_weapon.kurikarakenutigatana": "§5kurikaraken",
       "effect.minecraft_armor_weapon.aa": "n0okku",
       "effect.minecraft_armor_weapon.zanngekikai": "aa",
@@ -6021,7 +6093,7 @@
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.dragon_blue_armor_boots": "§1Dragon blue boots",
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
-      "advancements.magical_katana_progress.descr": "魔力の刀を得る",
+      "advancements.magical_katana_progress.descr": "Get a Katana of magical power!!",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
       "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
       "effect.minecraft_armor_weapon.sword_of_night_reload": "sword of night shot reload",
@@ -6039,7 +6111,7 @@
       "item.minecraft_armor_weapon.desporn_kenti": "Kenti",
       "item.minecraft_armor_weapon.skelton_mob_spawn_egg": "Skelton Mob Spawn Egg",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_magic_swordsman": "magic swordsman",
-      "itemGroup.tabnigu": "§5二グ",
+      "itemGroup.tabnigu": "§5nigu",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_chestplate": "das herz einer fee armor chestplate",
       "effect.minecraft_armor_weapon.test": "test",
       "item.minecraft_armor_weapon.dragon_armor_helmet": "§5Dragon helmet",
@@ -6070,6 +6142,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "item.minecraft_armor_weapon.magical_katana": "§dMagical Katana",
+      "item.minecraft_armor_weapon.darkness": "§5Darkness",
       "effect.minecraft_armor_weapon.effect_blood_tp": "a",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.blackhole_spawn_egg": "Blackhole Spawn Egg",
@@ -6083,6 +6156,7 @@
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "advancements.sword_progress.descr": "鉄の刀を得る",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
+      "item.minecraft_armor_weapon.darkness_katana": "§5Darkness Katana",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_leggings": "das herz einer fee armor leggings",
       "item.minecraft_armor_weapon.hrmcngs_spawn_egg": "hrmcngs Spawn Egg",
       "item.minecraft_armor_weapon.small_sword": "小太刀",

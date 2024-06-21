@@ -3,9 +3,9 @@
   "_type": "tool",
   "definition": {
     "renderType": 1,
-    "texture": "bloodkatana",
-    "customModelName": "katanairon3dblood:default",
-    "name": "§4§lRivers of Blood",
+    "texture": "katanadarkness",
+    "customModelName": "katanadarkness:default",
+    "name": "§5Darkness Katana",
     "specialInfo": [],
     "creativeTab": {
       "value": "CUSTOM:Weapon"
@@ -22,12 +22,6 @@
     "repairItems": [],
     "immuneToFire": false,
     "stayInGridWhenCrafting": false,
-    "damageOnCrafting": false,
-    "onRightClickedInAir": {
-      "name": "KatanaBloodYoukuritukusitatoki"
-    },
-    "onItemInUseTick": {
-      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
-    }
+    "damageOnCrafting": false
   }
 }

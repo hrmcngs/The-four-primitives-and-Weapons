@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/katanadarkness",
+  "textures": {
+    "1": "minecraft_armor_weapon:blocks/katanadarkness",
+    "particle": "minecraft_armor_weapon:items/katanadarkness"
+  }
+}
