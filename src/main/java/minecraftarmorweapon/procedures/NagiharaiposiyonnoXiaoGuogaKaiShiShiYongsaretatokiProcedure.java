@@ -103,9 +103,16 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 						new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY()), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 						"/particle dust 0.639 0.169 0.169 1 ^ ^1 ^ 3 3 3 0.1 10 force");
 		}
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS_KATANA.get()) {
+			if (world instanceof ServerLevel _level)
+				_level.getServer().getCommands().performPrefixedCommand(
+						new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY()), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
+						"/particle dust 0.835 0.380 1.000 1 ^ ^1 ^ 3 3 3 1 100 force");
+		}
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.SWEEP_ATTACK, (entity.getX()), (entity.getY() + 1), (entity.getZ()), 10, 0.1, 0.1, 0.1, 0);
-		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WARABITETOU.get()) {
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WARABITETOU.get()
+				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.HALLOWEEN_2023_10_31_SICKLE.get()) {
 			{
 				final Vec3 _center = new Vec3((entity.getX()), (entity.getY()), (entity.getZ()));
 				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(4 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
@@ -207,10 +214,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (entityiterator instanceof LivingEntity) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -226,15 +229,26 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											}
 										}
 									} else {
-										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
+										if (((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())
 												&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEFINED : false)) {
-											entityiterator.hurt(DamageSource.GENERIC, 10);
+											entityiterator.hurt(DamageSource.GENERIC, 5);
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
+											}
 										}
-										entityiterator.hurt(DamageSource.GENERIC, 20);
+										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS_KATANA.get()) {
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 100, 2, true, false));
+											} else {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 100, 1, true, false));
+											}
+										}
+										entityiterator.hurt(DamageSource.GENERIC, 15);
 									}
 								}
 							}
@@ -252,10 +266,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (entityiterator instanceof LivingEntity) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -271,15 +281,26 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											}
 										}
 									} else {
-										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
+										if (((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())
 												&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEFINED : false)) {
-											entityiterator.hurt(DamageSource.GENERIC, 10);
+											entityiterator.hurt(DamageSource.GENERIC, 5);
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
+											}
 										}
-										entityiterator.hurt(DamageSource.GENERIC, 20);
+										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS_KATANA.get()) {
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 100, 2, true, false));
+											} else {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 100, 1, true, false));
+											}
+										}
+										entityiterator.hurt(DamageSource.GENERIC, 15);
 									}
 								}
 							}
@@ -297,10 +318,6 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 							if (!(entityiterator instanceof SkeltonMobEntity)) {
 								if (entityiterator instanceof LivingEntity) {
 									if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-										}
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -316,15 +333,26 @@ public class NagiharaiposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 											}
 										}
 									} else {
-										if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TUNDERBOLTEFFRCT.get()) : false) {
-											if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
-												_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
-										}
-										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
+										if (((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKEN.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())
 												&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEFINED : false)) {
-											entityiterator.hurt(DamageSource.GENERIC, 10);
+											entityiterator.hurt(DamageSource.GENERIC, 5);
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 100, 2, true, false));
+											}
 										}
-										entityiterator.hurt(DamageSource.GENERIC, 20);
+										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS_KATANA.get()) {
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 100, 2, true, false));
+											} else {
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 100, 1, true, false));
+											}
+										}
+										entityiterator.hurt(DamageSource.GENERIC, 15);
 									}
 								}
 							}

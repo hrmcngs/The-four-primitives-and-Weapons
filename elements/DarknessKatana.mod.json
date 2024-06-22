@@ -22,6 +22,9 @@
     "repairItems": [],
     "immuneToFire": false,
     "stayInGridWhenCrafting": false,
-    "damageOnCrafting": false
+    "damageOnCrafting": false,
+    "onRightClickedInAir": {
+      "name": "DarknessKatanaYoukuritukusitatoki"
+    }
   }
 }

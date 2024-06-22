@@ -20,22 +20,8 @@
           },
           "width": 87,
           "height": 20,
-          "x": 171,
-          "y": 173
-        }
-      },
-      {
-        "type": "button",
-        "data": {
-          "name": "button_nigu",
-          "text": "nigu",
-          "onClick": {
-            "name": "RpgBookGuiNiguTap"
-          },
-          "width": 46,
-          "height": 20,
-          "x": 191,
-          "y": 151
+          "x": 196,
+          "y": 143
         }
       },
       {
@@ -48,8 +34,8 @@
           },
           "width": 103,
           "height": 20,
-          "x": 161,
-          "y": 121
+          "x": 181,
+          "y": 173
         }
       },
       {
@@ -61,8 +47,8 @@
           "onClick": {
             "name": "RogBookGuiKakusiTap"
           },
-          "x": 131,
-          "y": 196
+          "x": 136,
+          "y": 188
         }
       },
       {
@@ -75,8 +61,48 @@
           },
           "width": 51,
           "height": 20,
-          "x": 186,
-          "y": 98
+          "x": 231,
+          "y": 83
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_vampire",
+          "text": "vampire",
+          "onClick": {
+            "name": "RpgBookGuiVampire"
+          },
+          "width": 61,
+          "height": 20,
+          "x": 221,
+          "y": 113
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_texture1",
+          "image": "texture1.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RpgBookGuiToziru"
+          },
+          "x": 136,
+          "y": 31
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_next",
+          "image": "next.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RpgBookGuiNext"
+          },
+          "x": 266,
+          "y": 31
         }
       }
     ],

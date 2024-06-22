@@ -323,7 +323,7 @@ public class TyokutouProcedure {
 																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 150, 2, true, false));
 														}
 														if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
-															entityiterator.hurt(DamageSource.GENERIC, 15);
+															entityiterator.hurt(DamageSource.GENERIC, 10);
 														} else {
 															entityiterator.hurt(DamageSource.GENERIC, 5);
 														}
@@ -402,7 +402,7 @@ public class TyokutouProcedure {
 																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 150, 2, true, false));
 														}
 														if (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false) {
-															entityiterator.hurt(DamageSource.GENERIC, 15);
+															entityiterator.hurt(DamageSource.GENERIC, 10);
 														} else {
 															entityiterator.hurt(DamageSource.GENERIC, 5);
 														}

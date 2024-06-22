@@ -86,7 +86,7 @@ public class BloodTpposiyonXiaoGuogaQieretaShiProcedure {
 										if (entityiterator instanceof LivingEntity) {
 											if (entity instanceof LivingEntity _entity)
 												_entity.setHealth((float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) + 1));
-											entityiterator.hurt(DamageSource.GENERIC, 75);
+											entityiterator.hurt(DamageSource.GENERIC, 10);
 										}
 									}
 								}

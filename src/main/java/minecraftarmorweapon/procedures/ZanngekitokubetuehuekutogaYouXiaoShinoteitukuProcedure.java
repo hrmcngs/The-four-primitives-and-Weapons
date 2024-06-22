@@ -113,7 +113,7 @@ public class ZanngekitokubetuehuekutogaYouXiaoShinoteitukuProcedure {
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENSWORD.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get())
 												&& (entityiterator instanceof LivingEntity _livEnt ? _livEnt.getMobType() == MobType.UNDEAD : false)) {
-											entityiterator.hurt(DamageSource.GENERIC, 15);
+											entityiterator.hurt(DamageSource.GENERIC, 10);
 										}
 										entityiterator.hurt(DamageSource.GENERIC, 5);
 									}

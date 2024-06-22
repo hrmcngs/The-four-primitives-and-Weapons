@@ -184,15 +184,145 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 				}
 			}
 			entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
-		} else {
-			for (int index2 = 0; index2 < 25; index2++) {
+		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.RIVERS_OF_BLOOD.get()) {
+			for (int index2 = 0; index2 < 50; index2++) {
 				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 				} else {
 					break;
 				}
 			}
-			for (int index3 = 0; index3 < 25; index3++) {
+			for (int index3 = 0; index3 < 50; index3++) {
+				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
+					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
+					break;
+				}
+				entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
+			}
+			if (world instanceof ServerLevel _level)
+				_level.getServer().getCommands()
+						.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
+								Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "/particle dust 0.639 0.169 0.169 1 ~ ~0.5 ~ 0.3 0.1 0.3 0.1 10 force");
+			if (world instanceof ServerLevel _level)
+				_level.sendParticles(ParticleTypes.SWEEP_ATTACK, (entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1), (entity.getPersistentData().getDouble("Zpos")), 10, 0.1, 0.1, 0.1, 0);
+			{
+				final Vec3 _center = new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1), (entity.getPersistentData().getDouble("Zpos")));
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						.collect(Collectors.toList());
+				for (Entity entityiterator : _entfound) {
+					if (!(entityiterator == entity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
+							if (!(entityiterator instanceof OtiruyoEntity)) {
+								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+									if (entityiterator instanceof LivingEntity) {
+										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
+										{
+											Entity _ent = entityiterator;
+											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+												_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+														_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+											}
+										}
+										{
+											Entity _ent = entityiterator;
+											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+												_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+														_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+											}
+										}
+									}
+								} else {
+									if (entityiterator instanceof LivingEntity) {
+										entityiterator.hurt(DamageSource.GENERIC, 20);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			{
+				final Vec3 _center = new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1.5), (entity.getPersistentData().getDouble("Zpos")));
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(2 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						.collect(Collectors.toList());
+				for (Entity entityiterator : _entfound) {
+					if (!(entityiterator == entity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
+							if (!(entityiterator instanceof OtiruyoEntity)) {
+								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+									if (entityiterator instanceof LivingEntity) {
+										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
+										{
+											Entity _ent = entityiterator;
+											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+												_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+														_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+											}
+										}
+										{
+											Entity _ent = entityiterator;
+											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+												_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+														_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+											}
+										}
+									}
+								} else {
+									if (entityiterator instanceof LivingEntity) {
+										entityiterator.hurt(DamageSource.GENERIC, 20);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			{
+				final Vec3 _center = new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos")));
+				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+						.collect(Collectors.toList());
+				for (Entity entityiterator : _entfound) {
+					if (!(entityiterator == entity)) {
+						if (!(entityiterator instanceof SkeltonMobEntity)) {
+							if (!(entityiterator instanceof OtiruyoEntity)) {
+								if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+									if (entityiterator instanceof LivingEntity) {
+										entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
+										{
+											Entity _ent = entityiterator;
+											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+												_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+														_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/kill @s");
+											}
+										}
+										{
+											Entity _ent = entityiterator;
+											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+												_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
+														_ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/deta merge entity @s (Health:0)");
+											}
+										}
+									}
+								} else {
+									if (entityiterator instanceof LivingEntity) {
+										entityiterator.hurt(DamageSource.GENERIC, 20);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
+		} else {
+			for (int index4 = 0; index4 < 25; index4++) {
+				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
+					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
+				} else {
+					break;
+				}
+			}
+			for (int index5 = 0; index5 < 25; index5++) {
 				if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
 					entity.getPersistentData().putDouble("Ypos", (entity.getPersistentData().getDouble("Ypos")));
 					break;

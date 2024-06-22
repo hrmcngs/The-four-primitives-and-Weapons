@@ -16,7 +16,7 @@
     "rewardRecipes": [],
     "rewardFunction": "No function",
     "rewardXP": 0,
-    "achievementType": "challenge",
+    "achievementType": "goal",
     "parent": {
       "value": "No parent: root"
     },

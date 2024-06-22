@@ -19,6 +19,7 @@ import minecraftarmorweapon.potion.WazaMobEffect;
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
 import minecraftarmorweapon.potion.TpAttackMobEffect;
 import minecraftarmorweapon.potion.TokubetusounazangekiMobEffect;
+import minecraftarmorweapon.potion.TokubetuMobEffect;
 import minecraftarmorweapon.potion.TobeMobEffect;
 import minecraftarmorweapon.potion.TissokuMobEffect;
 import minecraftarmorweapon.potion.ThunderHitMobEffect;
@@ -49,6 +50,7 @@ import minecraftarmorweapon.potion.FireballeffectMobEffect;
 import minecraftarmorweapon.potion.EffectMagicMobEffect;
 import minecraftarmorweapon.potion.EffectBloodTpMobEffect;
 import minecraftarmorweapon.potion.DevourBloodMobEffect;
+import minecraftarmorweapon.potion.DarknessAttackEffectMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
 import minecraftarmorweapon.potion.BloodTpMobEffect;
@@ -111,4 +113,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> TEST = REGISTRY.register("test", () -> new TestMobEffect());
 	public static final RegistryObject<MobEffect> GUARD = REGISTRY.register("guard", () -> new GuardMobEffect());
 	public static final RegistryObject<MobEffect> BLACK_HOLE_EFFECT = REGISTRY.register("black_hole_effect", () -> new BlackHoleEffectMobEffect());
+	public static final RegistryObject<MobEffect> DARKNESS_ATTACK_EFFECT = REGISTRY.register("darkness_attack_effect", () -> new DarknessAttackEffectMobEffect());
+	public static final RegistryObject<MobEffect> TOKUBETU = REGISTRY.register("tokubetu", () -> new TokubetuMobEffect());
 }

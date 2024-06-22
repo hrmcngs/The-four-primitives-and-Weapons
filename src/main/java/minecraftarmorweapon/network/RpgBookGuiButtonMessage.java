@@ -13,8 +13,10 @@ import net.minecraft.core.BlockPos;
 
 import minecraftarmorweapon.world.inventory.RpgBookGuiMenu;
 
+import minecraftarmorweapon.procedures.RpgBookGuiVampireProcedure;
+import minecraftarmorweapon.procedures.RpgBookGuiToziruProcedure;
 import minecraftarmorweapon.procedures.RpgBookGuiNinjaTapProcedure;
-import minecraftarmorweapon.procedures.RpgBookGuiNiguTapProcedure;
+import minecraftarmorweapon.procedures.RpgBookGuiNextProcedure;
 import minecraftarmorweapon.procedures.RpgBookGuiMagicSwordsmanTapProcedure;
 import minecraftarmorweapon.procedures.RpgBookGuiBoggedOuterTapProcedure;
 import minecraftarmorweapon.procedures.RogBookGuiKakusiTapProcedure;
@@ -74,19 +76,27 @@ public class RpgBookGuiButtonMessage {
 		}
 		if (buttonID == 1) {
 
-			RpgBookGuiNiguTapProcedure.execute(entity);
+			RpgBookGuiMagicSwordsmanTapProcedure.execute(entity);
 		}
 		if (buttonID == 2) {
 
-			RpgBookGuiMagicSwordsmanTapProcedure.execute(entity);
+			RpgBookGuiNinjaTapProcedure.execute(entity);
 		}
 		if (buttonID == 3) {
 
-			RpgBookGuiNinjaTapProcedure.execute(entity);
+			RpgBookGuiVampireProcedure.execute(entity);
 		}
 		if (buttonID == 4) {
 
 			RogBookGuiKakusiTapProcedure.execute(entity);
+		}
+		if (buttonID == 5) {
+
+			RpgBookGuiToziruProcedure.execute(entity);
+		}
+		if (buttonID == 6) {
+
+			RpgBookGuiNextProcedure.execute(world, x, y, z, entity);
 		}
 	}
 

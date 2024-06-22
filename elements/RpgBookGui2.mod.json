@@ -1,0 +1,89 @@
+{
+  "_fv": 43,
+  "_type": "gui",
+  "definition": {
+    "type": 0,
+    "width": 170,
+    "height": 195,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "button",
+        "data": {
+          "name": "button_ninja",
+          "text": "nigu",
+          "onClick": {
+            "name": "RpgBookGuiNiguTap"
+          },
+          "width": 51,
+          "height": 20,
+          "x": 231,
+          "y": 83
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_vampire",
+          "text": "chuzume",
+          "onClick": {
+            "name": "RpgBookGuiChuzume"
+          },
+          "width": 61,
+          "height": 20,
+          "x": 221,
+          "y": 113
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_texture1",
+          "image": "texture1.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RpgBookGuiToziru"
+          },
+          "x": 136,
+          "y": 31
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_next",
+          "image": "next.png",
+          "hoveredImage": "",
+          "x": 266,
+          "y": 31
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_back",
+          "image": "back.png",
+          "hoveredImage": "",
+          "onClick": {
+            "name": "RpgBookGuiback"
+          },
+          "x": 166,
+          "y": 31
+        }
+      }
+    ],
+    "onClosed": {
+      "name": "RpgBookGuiGUIgaBiziraretatoki"
+    },
+    "gridSettings": {
+      "sx": 10,
+      "sy": 15,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": true
+    }
+  }
+}
