@@ -57,6 +57,7 @@ import minecraftarmorweapon.item.HarvestMoon2023929Item;
 import minecraftarmorweapon.item.HammerItem;
 import minecraftarmorweapon.item.Halloween20231031SickleItem;
 import minecraftarmorweapon.item.GoldKatanaItem;
+import minecraftarmorweapon.item.FireworksBlackItem;
 import minecraftarmorweapon.item.FireballItem;
 import minecraftarmorweapon.item.DragonRedArmorItem;
 import minecraftarmorweapon.item.DragonGreenArmorItem;
@@ -185,6 +186,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DESPORN_KENTI = REGISTRY.register("desporn_kenti", () -> new DespornKentiItem());
 	public static final RegistryObject<Item> DARKNESS = REGISTRY.register("darkness", () -> new DarknessItem());
 	public static final RegistryObject<Item> DARKNESS_KATANA = REGISTRY.register("darkness_katana", () -> new DarknessKatanaItem());
+	public static final RegistryObject<Item> FIREWORKS_BLACK = REGISTRY.register("fireworks_black", () -> new FireworksBlackItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

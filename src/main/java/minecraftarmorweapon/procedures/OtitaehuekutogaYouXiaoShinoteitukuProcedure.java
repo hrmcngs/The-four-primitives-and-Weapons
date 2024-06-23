@@ -6,7 +6,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.damagesource.DamageSource;
@@ -70,7 +69,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator == entity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -112,7 +111,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -156,7 +155,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -205,7 +204,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -254,7 +253,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -303,7 +302,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -352,7 +351,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -391,7 +390,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 						if (!(entityiterator == entity)) {
 							if (!(entityiterator instanceof OtiruyoEntity)) {
 								if (!(entityiterator instanceof SkeltonMobEntity)) {
-									if (entityiterator instanceof Mob) {
+									if (entityiterator instanceof LivingEntity) {
 										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 											{
 												Entity _ent = entityiterator;
@@ -437,7 +436,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												{
 													Entity _ent = entityiterator;
@@ -486,7 +485,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												{
 													Entity _ent = entityiterator;
@@ -540,7 +539,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												{
 													Entity _ent = entityiterator;
@@ -594,7 +593,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												{
 													Entity _ent = entityiterator;
@@ -648,7 +647,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												{
 													Entity _ent = entityiterator;
@@ -702,7 +701,7 @@ public class OtitaehuekutogaYouXiaoShinoteitukuProcedure {
 							if (!(entityiterator == entity)) {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof Mob) {
+										if (entityiterator instanceof LivingEntity) {
 											if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 												{
 													Entity _ent = entityiterator;

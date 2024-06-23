@@ -6156,6 +6156,39 @@
           }
         ]
       }
+    },
+    {
+      "name": "FireworksBlackYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 403,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireworks_black_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/FireworksBlackYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FireworksBlack",
+      "type": "item",
+      "sortid": 404,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fireworks_black",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/FireworksBlackItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/fireworks_black.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -6215,7 +6248,7 @@
       "effect.minecraft_armor_weapon.guard": "guard",
       "item.minecraft_armor_weapon.harvest_moon_2023929": "Harvest Moon 2023 9/29",
       "itemGroup.tabmagic_books": "Magic Books",
-      "itemGroup.tabyopkeinamono": "Architecture and such",
+      "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
@@ -6232,7 +6265,7 @@
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "advancements.dark_magic_swordsman_achievements.descr": "§5Get Darkness katana",
-      "advancements.sword_progress.descr": "get an iron katana",
+      "advancements.sword_progress.descr": "鉄の刀を得る",
       "item.minecraft_armor_weapon.hrmcngs_spawn_egg": "hrmcngs Spawn Egg",
       "item.minecraft_armor_weapon.small_sword": "Small sword",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
@@ -6246,11 +6279,11 @@
       "item.minecraft_armor_weapon.kurikarakensword": "§5kurikaraken",
       "item.minecraft_armor_weapon.wind_step": "§2Windstep",
       "item.minecraft_armor_weapon.a": "A",
-      "item.minecraft_armor_weapon.warabitetou": "§7Warabiteto",
+      "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
       "effect.minecraft_armor_weapon.blood_tp": "bloodtp",
       "effect.minecraft_armor_weapon.sword_of_night_effect": "sword of night",
       "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
-      "effect.minecraft_armor_weapon.long_range_weapon_cut": "long-range weapon cut",
+      "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_boots": "das herz einer fee armor boots",
@@ -6283,7 +6316,7 @@
       "effect.minecraft_armor_weapon.otita": "a",
       "item.minecraft_armor_weapon.dragon_blue_armor_chestplate": "§1Dragon blue chestplate",
       "entity.minecraft.villager.minecraft_armor_weapon.minecraft_armor_and_weapon": "Minecraft Armor And Weapon",
-      "advancements.magical_katana_progress.title": "A lot of magic crystals!",
+      "advancements.magical_katana_progress.title": "魔力の結晶大量じゃ～！",
       "item.minecraft_armor_weapon.kurikarakenutigatana": "§5kurikaraken",
       "effect.minecraft_armor_weapon.zanngekikai": "aa",
       "item.minecraft_armor_weapon.kenti": "Kenti",
@@ -6318,13 +6351,13 @@
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
       "advancements.sword_progress.title": "初めはこれっしょ",
       "item.minecraft_armor_weapon.desporn_kenti": "Kenti",
-      "itemGroup.tabnigu": "§5nigu",
+      "itemGroup.tabnigu": "§5二グ",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_chestplate": "das herz einer fee armor chestplate",
       "effect.minecraft_armor_weapon.storm_effect": "stormeffect",
       "item.minecraft_armor_weapon.aaa": "Aaa",
       "item.minecraft_armor_weapon.prototype_katana": "§8§l§oPrototype Katana",
       "item.minecraft_armor_weapon.thunderbolt": "§eThunderbolt",
-      "advancements.kurikaraken_progress.title": "this\u0027s not a sword, this\u0027s a katana!",
+      "advancements.kurikaraken_progress.title": "剣ちゃうやん刀やんけ",
       "item.minecraft_armor_weapon.pillager_armor_helmet": "Pillager Armor Helmet",
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "block.minecraft_armor_weapon.makiwaridai": "Makiwaridai",
@@ -6333,7 +6366,7 @@
       "item.minecraft_armor_weapon.magical_katana": "§dMagical Katana",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.effect_blood_tp": "a",
-      "effect.minecraft_armor_weapon.kurutimenasi": "Coold time invalid",
+      "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
       "advancements.rivers_of_blood_achievements.title": "Maybe... you are anemic!",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
@@ -6348,9 +6381,9 @@
       "item.minecraft_armor_weapon.stray_outer_armor_leggings": "Stray Outer Armor Leggins",
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
-      "item.minecraft_armor_weapon.oninomen_helmet": "mask of an ogre",
+      "item.minecraft_armor_weapon.oninomen_helmet": "鬼の面",
       "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
-      "item.minecraft_armor_weapon.ninjatou": "ninjato",
+      "item.minecraft_armor_weapon.ninjatou": "忍者刀",
       "advancements.you_have_become_a_vampire.title": "You have become a vampire.",
       "item.minecraft_armor_weapon.nigu_shield": "Nigu Shield",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
@@ -6366,14 +6399,14 @@
       "advancements.magical_swordsman_achievements.title": "§eYou\u0027ve become a Magical Swordsman!",
       "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
-      "gamerule.rpgBookGive.description": "Give RPG Book at respawn or early spawn or",
+      "gamerule.rpgBookGive.description": "リスポーンしたときや最初のスポーンの時にRPG Bookを与えるか",
       "effect.minecraft_armor_weapon.tokubetu": "a",
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
       "block.minecraft_armor_weapon.cross": "Cross",
       "item.minecraft_armor_weapon.bogged_outer_boots": "Bogged Outer Boots",
       "gui.minecraft_armor_weapon.rpg_book_gui_2.button_vampire": "chuzume",
       "item.minecraft_armor_weapon.luna": "§eLuna",
-      "advancements.kurikaraken_progress.descr": "obtain a kurikara sword",
+      "advancements.kurikaraken_progress.descr": "倶利伽羅剣を得る",
       "key.minecraft_armor_weapon.r": "R",
       "item.minecraft_armor_weapon.kurikaraken": "§5kurikaraken",
       "entity.minecraft_armor_weapon.skelton_mob": "Skelton Mob",
@@ -6393,10 +6426,11 @@
       "item.minecraft_armor_weapon.dragon_blue_armor_leggings": "§1Dragon blue leggings",
       "item.minecraft_armor_weapon.dragon_blue_armor_boots": "§1Dragon blue boots",
       "effect.minecraft_armor_weapon.darkness_attack_effect": "darkness",
-      "advancements.magical_katana_progress.descr": "Get a Katana of magical power!!",
+      "advancements.magical_katana_progress.descr": "魔力の刀を得る",
       "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
+      "item.minecraft_armor_weapon.fireworks_black": "Fireworks Black",
       "block.minecraft_armor_weapon.rose_flower_pot": "Rose Flower Pot",
       "effect.minecraft_armor_weapon.gyetonzangeki": "gyaton",
       "item.minecraft_armor_weapon.dragon_red_armor_leggings": "§4Dragon red leggings",
@@ -6597,6 +6631,7 @@
       "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
+      "item.minecraft_armor_weapon.fireworks_black": "Fireworks Black",
       "block.minecraft_armor_weapon.rose_flower_pot": "Rose Flower Pot",
       "effect.minecraft_armor_weapon.gyetonzangeki": "gyaton",
       "item.minecraft_armor_weapon.dragon_red_armor_leggings": "§4Dragon red leggings",
@@ -6639,10 +6674,10 @@
   },
   "workspaceSettings": {
     "modid": "minecraft_armor_weapon",
-    "modName": "minecraft armor weapon",
+    "modName": "the four primitives and weapons",
     "version": "1.0.0",
     "author": "0526ngs",
-    "websiteURL": "https://onl.la/6CYtJhQ",
+    "websiteURL": "https://curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons",
     "license": "Academic Free License v3.0",
     "disableForgeVersionCheck": true,
     "serverSideOnly": false,

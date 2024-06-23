@@ -47,7 +47,7 @@ public class KuwakuwaOverlay {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		if (KuwakuwagemuNeiniobareiwoBiaoShiProcedure.execute(entity)) {
 			RenderSystem.setShaderTexture(0, new ResourceLocation("minecraft_armor_weapon:textures/screens/kuwakuwaaaa.png"));
-			Minecraft.getInstance().gui.blit(event.getPoseStack(), posX + -258, posY + -153, 0, 0, 512, 512, 512, 512);
+			Minecraft.getInstance().gui.blit(event.getPoseStack(), posX + -3960, posY + -2551, 0, 0, 8192, 8192, 8192, 8192);
 
 		}
 		RenderSystem.depthMask(true);
