@@ -28,7 +28,7 @@ public class DarknessItem extends Item {
 		double y = entity.getY();
 		double z = entity.getZ();
 
-		DarknessYoukuritukusitatokiProcedure.execute(world, entity);
+		DarknessYoukuritukusitatokiProcedure.execute(world, entity, itemstack);
 		return ar;
 	}
 
