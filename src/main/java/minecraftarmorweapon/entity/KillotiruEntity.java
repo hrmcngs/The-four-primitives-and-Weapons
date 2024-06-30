@@ -4,9 +4,11 @@ package minecraftarmorweapon.entity;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.common.ForgeMod;
 
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -132,6 +134,21 @@ public class KillotiruEntity extends PathfinderMob {
 	}
 
 	@Override
+	public boolean canBreatheUnderwater() {
+		return true;
+	}
+
+	@Override
+	public boolean checkSpawnObstruction(LevelReader world) {
+		return world.isUnobstructed(this);
+	}
+
+	@Override
+	public boolean isPushedByFluid() {
+		return false;
+	}
+
+	@Override
 	public boolean isPushable() {
 		return false;
 	}
@@ -170,6 +187,7 @@ public class KillotiruEntity extends PathfinderMob {
 		builder = builder.add(Attributes.FOLLOW_RANGE, 16);
 		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 1000);
 		builder = builder.add(Attributes.FLYING_SPEED, 0.3);
+		builder = builder.add(ForgeMod.SWIM_SPEED.get(), 0.3);
 		return builder;
 	}
 }

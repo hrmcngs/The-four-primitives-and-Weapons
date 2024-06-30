@@ -59,7 +59,7 @@
     "followRange": 16,
     "health": 1024,
     "xpAmount": 0,
-    "waterMob": false,
+    "waterMob": true,
     "flyingMob": true,
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,

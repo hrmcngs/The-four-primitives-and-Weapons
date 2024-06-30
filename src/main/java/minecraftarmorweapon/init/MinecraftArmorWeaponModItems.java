@@ -25,6 +25,7 @@ import minecraftarmorweapon.item.StrayOuterArmorItem;
 import minecraftarmorweapon.item.StormItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.SmallSwordItem;
+import minecraftarmorweapon.item.ScytheItem;
 import minecraftarmorweapon.item.RpgBookItem;
 import minecraftarmorweapon.item.RiversOfBloodItem;
 import minecraftarmorweapon.item.ResetMaxItem;
@@ -187,6 +188,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DARKNESS = REGISTRY.register("darkness", () -> new DarknessItem());
 	public static final RegistryObject<Item> DARKNESS_KATANA = REGISTRY.register("darkness_katana", () -> new DarknessKatanaItem());
 	public static final RegistryObject<Item> FIREWORKS_BLACK = REGISTRY.register("fireworks_black", () -> new FireworksBlackItem());
+	public static final RegistryObject<Item> SCYTHE = REGISTRY.register("scythe", () -> new ScytheItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
