@@ -25,6 +25,9 @@
     "damageOnCrafting": false,
     "onRightClickedInAir": {
       "name": "LargeWeapons"
+    },
+    "onItemInUseTick": {
+      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
     }
   }
 }
