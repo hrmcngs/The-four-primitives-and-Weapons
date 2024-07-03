@@ -149,7 +149,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		});
 		guistate.put("button:imagebutton_texture1", imagebutton_texture1);
 		this.addRenderableWidget(imagebutton_texture1);
-		imagebutton_tapmimit = new ImageButton(this.leftPos + -7, this.topPos + 150, 16, 16, 0, 0, 16, new ResourceLocation("minecraft_armor_weapon:textures/screens/atlas/imagebutton_tapmimit.png"), 16, 32, e -> {
+		imagebutton_tapmimit = new ImageButton(this.leftPos + -47, this.topPos + 180, 16, 16, 0, 0, 16, new ResourceLocation("minecraft_armor_weapon:textures/screens/atlas/imagebutton_tapmimit.png"), 16, 32, e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(7, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 7, x, y, z);

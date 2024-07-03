@@ -6020,21 +6020,6 @@
       }
     },
     {
-      "name": "RpgBookGui2",
-      "type": "gui",
-      "sortid": 397,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rpg_book_gui_2",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/client/gui/RpgBookGui2Screen.java",
-          "src/main/java/minecraftarmorweapon/world/inventory/RpgBookGui2Menu.java",
-          "src/main/java/minecraftarmorweapon/network/RpgBookGui2ButtonMessage.java"
-        ]
-      }
-    },
-    {
       "name": "RpgBookGuiToziru",
       "type": "procedure",
       "sortid": 398,
@@ -6049,76 +6034,6 @@
           {
             "name": "entity",
             "type": "entity"
-          }
-        ]
-      }
-    },
-    {
-      "name": "RpgBookGuiNext",
-      "type": "procedure",
-      "sortid": 399,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rpg_book_gui_next",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/RpgBookGuiNextProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
-          }
-        ]
-      }
-    },
-    {
-      "name": "RpgBookGuiback",
-      "type": "procedure",
-      "sortid": 400,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "rpg_book_guiback",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/procedures/RpgBookGuibackProcedure.java"
-        ],
-        "dependencies": [
-          {
-            "name": "entity",
-            "type": "entity"
-          },
-          {
-            "name": "x",
-            "type": "number"
-          },
-          {
-            "name": "y",
-            "type": "number"
-          },
-          {
-            "name": "z",
-            "type": "number"
-          },
-          {
-            "name": "world",
-            "type": "world"
           }
         ]
       }
@@ -6394,7 +6309,6 @@
       "item.minecraft_armor_weapon.katana_nigu_humerus": "§eKatana Nigu Humerus",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_chuzume": "chuzume",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
-      "gui.minecraft_armor_weapon.rpg_book_gui_2.button_ninja": "nigu",
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
       "advancements.rivers_of_blood_achievements.descr": "§4Get Rivers of Blood",
@@ -6459,7 +6373,6 @@
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
       "block.minecraft_armor_weapon.cross": "Cross",
       "item.minecraft_armor_weapon.bogged_outer_boots": "Bogged Outer Boots",
-      "gui.minecraft_armor_weapon.rpg_book_gui_2.button_vampire": "chuzume",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "advancements.kurikaraken_progress.descr": "倶利伽羅剣を得る",
       "key.minecraft_armor_weapon.r": "R",
@@ -6597,7 +6510,6 @@
       "item.minecraft_armor_weapon.katana_nigu_humerus": "§eKatana Nigu Humerus",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_chuzume": "chuzume",
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
-      "gui.minecraft_armor_weapon.rpg_book_gui_2.button_ninja": "二グ",
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
       "advancements.rivers_of_blood_achievements.descr": "§4 Rivers of Bloodを得る",
@@ -6662,7 +6574,6 @@
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
       "block.minecraft_armor_weapon.cross": "十字架",
       "item.minecraft_armor_weapon.bogged_outer_boots": "Bogged Outer Boots",
-      "gui.minecraft_armor_weapon.rpg_book_gui_2.button_vampire": "chuzume",
       "item.minecraft_armor_weapon.luna": "§eLuna",
       "advancements.kurikaraken_progress.descr": "倶利伽羅剣を得る",
       "key.minecraft_armor_weapon.r": "R",
