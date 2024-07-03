@@ -7,7 +7,7 @@
     "height": 195,
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
-    "renderBgLayer": true,
+    "renderBgLayer": false,
     "doesPauseGame": false,
     "components": [
       {
@@ -20,8 +20,8 @@
           },
           "width": 87,
           "height": 20,
-          "x": 196,
-          "y": 143
+          "x": 140,
+          "y": 86
         }
       },
       {
@@ -34,21 +34,8 @@
           },
           "width": 103,
           "height": 20,
-          "x": 181,
-          "y": 173
-        }
-      },
-      {
-        "type": "imagebutton",
-        "data": {
-          "name": "imagebutton_tapmimit",
-          "image": "tapmimit.png",
-          "hoveredImage": "",
-          "onClick": {
-            "name": "RogBookGuiKakusiTap"
-          },
-          "x": 136,
-          "y": 188
+          "x": 124,
+          "y": 115
         }
       },
       {
@@ -61,8 +48,8 @@
           },
           "width": 51,
           "height": 20,
-          "x": 231,
-          "y": 83
+          "x": 176,
+          "y": 29
         }
       },
       {
@@ -75,8 +62,8 @@
           },
           "width": 61,
           "height": 20,
-          "x": 221,
-          "y": 113
+          "x": 166,
+          "y": 57
         }
       },
       {
@@ -88,21 +75,58 @@
           "onClick": {
             "name": "RpgBookGuiToziru"
           },
-          "x": 136,
+          "x": 96,
           "y": 31
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "img_0974.png",
+          "use1Xscale": false,
+          "x": 71,
+          "y": 16
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_nigu",
+          "text": "nigu",
+          "onClick": {
+            "name": "RpgBookGuiNiguTap"
+          },
+          "width": 46,
+          "height": 20,
+          "x": 181,
+          "y": 142
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "name": "button_chuzume",
+          "text": "chuzume",
+          "onClick": {
+            "name": "RpgBookGuiChuzume"
+          },
+          "width": 61,
+          "height": 20,
+          "x": 166,
+          "y": 171
         }
       },
       {
         "type": "imagebutton",
         "data": {
-          "name": "imagebutton_next",
-          "image": "next.png",
+          "name": "imagebutton_tapmimit",
+          "image": "tapmimit.png",
           "hoveredImage": "",
           "onClick": {
-            "name": "RpgBookGuiNext"
+            "name": "RogBookGuiKakusiTap"
           },
-          "x": 266,
-          "y": 31
+          "x": 121,
+          "y": 173
         }
       }
     ],

@@ -30,9 +30,10 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	Button button_magic_swordsman;
 	Button button_ninja;
 	Button button_vampire;
-	ImageButton imagebutton_tapmimit;
+	Button button_nigu;
+	Button button_chuzume;
 	ImageButton imagebutton_texture1;
-	ImageButton imagebutton_next;
+	ImageButton imagebutton_tapmimit;
 
 	public RpgBookGuiScreen(RpgBookGuiMenu container, Inventory inventory, Component text) {
 		super(container, inventory, text);
@@ -44,8 +45,6 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		this.imageWidth = 170;
 		this.imageHeight = 195;
 	}
-
-	private static final ResourceLocation texture = new ResourceLocation("minecraft_armor_weapon:textures/screens/rpg_book_gui.png");
 
 	@Override
 	public void render(PoseStack ms, int mouseX, int mouseY, float partialTicks) {
@@ -59,8 +58,10 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
-		RenderSystem.setShaderTexture(0, texture);
-		this.blit(ms, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+
+		RenderSystem.setShaderTexture(0, new ResourceLocation("minecraft_armor_weapon:textures/screens/img_0974.png"));
+		this.blit(ms, this.leftPos + -57, this.topPos + -6, 0, 0, 320, 213, 320, 213);
+
 		RenderSystem.disableBlend();
 	}
 
@@ -92,7 +93,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 	public void init() {
 		super.init();
 		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
-		button_bogged_outer = new Button(this.leftPos + 67, this.topPos + 120, 87, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_bogged_outer"), e -> {
+		button_bogged_outer = new Button(this.leftPos + 11, this.topPos + 63, 87, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_bogged_outer"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(0, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 0, x, y, z);
@@ -100,7 +101,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		});
 		guistate.put("button:button_bogged_outer", button_bogged_outer);
 		this.addRenderableWidget(button_bogged_outer);
-		button_magic_swordsman = new Button(this.leftPos + 52, this.topPos + 150, 103, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_magic_swordsman"), e -> {
+		button_magic_swordsman = new Button(this.leftPos + -4, this.topPos + 92, 103, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_magic_swordsman"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(1, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 1, x, y, z);
@@ -108,7 +109,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		});
 		guistate.put("button:button_magic_swordsman", button_magic_swordsman);
 		this.addRenderableWidget(button_magic_swordsman);
-		button_ninja = new Button(this.leftPos + 102, this.topPos + 60, 51, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_ninja"), e -> {
+		button_ninja = new Button(this.leftPos + 47, this.topPos + 6, 51, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_ninja"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(2, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 2, x, y, z);
@@ -116,7 +117,7 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		});
 		guistate.put("button:button_ninja", button_ninja);
 		this.addRenderableWidget(button_ninja);
-		button_vampire = new Button(this.leftPos + 92, this.topPos + 90, 61, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_vampire"), e -> {
+		button_vampire = new Button(this.leftPos + 37, this.topPos + 34, 61, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_vampire"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(3, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 3, x, y, z);
@@ -124,29 +125,37 @@ public class RpgBookGuiScreen extends AbstractContainerScreen<RpgBookGuiMenu> {
 		});
 		guistate.put("button:button_vampire", button_vampire);
 		this.addRenderableWidget(button_vampire);
-		imagebutton_tapmimit = new ImageButton(this.leftPos + 7, this.topPos + 165, 16, 16, 0, 0, 16, new ResourceLocation("minecraft_armor_weapon:textures/screens/atlas/imagebutton_tapmimit.png"), 16, 32, e -> {
+		button_nigu = new Button(this.leftPos + 52, this.topPos + 119, 46, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_nigu"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(4, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 4, x, y, z);
 			}
 		});
-		guistate.put("button:imagebutton_tapmimit", imagebutton_tapmimit);
-		this.addRenderableWidget(imagebutton_tapmimit);
-		imagebutton_texture1 = new ImageButton(this.leftPos + 7, this.topPos + 8, 16, 16, 0, 0, 16, new ResourceLocation("minecraft_armor_weapon:textures/screens/atlas/imagebutton_texture1.png"), 16, 32, e -> {
+		guistate.put("button:button_nigu", button_nigu);
+		this.addRenderableWidget(button_nigu);
+		button_chuzume = new Button(this.leftPos + 37, this.topPos + 148, 61, 20, Component.translatable("gui.minecraft_armor_weapon.rpg_book_gui.button_chuzume"), e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(5, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 5, x, y, z);
 			}
 		});
-		guistate.put("button:imagebutton_texture1", imagebutton_texture1);
-		this.addRenderableWidget(imagebutton_texture1);
-		imagebutton_next = new ImageButton(this.leftPos + 137, this.topPos + 8, 16, 16, 0, 0, 16, new ResourceLocation("minecraft_armor_weapon:textures/screens/atlas/imagebutton_next.png"), 16, 32, e -> {
+		guistate.put("button:button_chuzume", button_chuzume);
+		this.addRenderableWidget(button_chuzume);
+		imagebutton_texture1 = new ImageButton(this.leftPos + -32, this.topPos + 8, 16, 16, 0, 0, 16, new ResourceLocation("minecraft_armor_weapon:textures/screens/atlas/imagebutton_texture1.png"), 16, 32, e -> {
 			if (true) {
 				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(6, x, y, z));
 				RpgBookGuiButtonMessage.handleButtonAction(entity, 6, x, y, z);
 			}
 		});
-		guistate.put("button:imagebutton_next", imagebutton_next);
-		this.addRenderableWidget(imagebutton_next);
+		guistate.put("button:imagebutton_texture1", imagebutton_texture1);
+		this.addRenderableWidget(imagebutton_texture1);
+		imagebutton_tapmimit = new ImageButton(this.leftPos + -7, this.topPos + 150, 16, 16, 0, 0, 16, new ResourceLocation("minecraft_armor_weapon:textures/screens/atlas/imagebutton_tapmimit.png"), 16, 32, e -> {
+			if (true) {
+				MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new RpgBookGuiButtonMessage(7, x, y, z));
+				RpgBookGuiButtonMessage.handleButtonAction(entity, 7, x, y, z);
+			}
+		});
+		guistate.put("button:imagebutton_tapmimit", imagebutton_tapmimit);
+		this.addRenderableWidget(imagebutton_tapmimit);
 	}
 }
