@@ -3,7 +3,7 @@
   "_type": "achievement",
   "definition": {
     "achievementName": "You have become a vampire.",
-    "achievementDescription": "吸血鬼になったよ",
+    "achievementDescription": "You have become a vampire.",
     "achievementIcon": {
       "value": "CUSTOM:BloodBottle"
     },

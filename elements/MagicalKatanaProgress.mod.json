@@ -2,8 +2,8 @@
   "_fv": 43,
   "_type": "achievement",
   "definition": {
-    "achievementName": "魔力の結晶大量じゃ～！",
-    "achievementDescription": "魔力の刀を得る",
+    "achievementName": "A lot of magic crystals!",
+    "achievementDescription": "Get a katana of magical power",
     "achievementIcon": {
       "value": "CUSTOM:MagicalKatana"
     },

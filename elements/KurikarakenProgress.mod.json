@@ -2,8 +2,8 @@
   "_fv": 43,
   "_type": "achievement",
   "definition": {
-    "achievementName": "剣ちゃうやん刀やんけ",
-    "achievementDescription": "倶利伽羅剣を得る",
+    "achievementName": "This's not a sword, this's a katana!",
+    "achievementDescription": "Get an kurikaraken",
     "achievementIcon": {
       "value": "CUSTOM:Kurikaraken"
     },

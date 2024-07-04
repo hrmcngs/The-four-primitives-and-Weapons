@@ -11,7 +11,6 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
@@ -19,7 +18,6 @@ import net.minecraft.client.Minecraft;
 
 import minecraftarmorweapon.procedures.SwordOfNightYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.procedures.SwordOfNightMakeItemGlowProcedure;
-import minecraftarmorweapon.procedures.SwordOfNightEffectehuekutogaYouXiaoShinoteitukuProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
@@ -51,13 +49,6 @@ public class SwordOfNightItem extends SwordItem {
 				return Ingredient.of();
 			}
 		}, 3, 0f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_CHUZUME_TAB));
-	}
-
-	@Override
-	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
-		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		SwordOfNightEffectehuekutogaYouXiaoShinoteitukuProcedure.execute();
-		return retval;
 	}
 
 	@Override
