@@ -2,7 +2,7 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "クールタイム無効",
+    "effectName": "Coold time invalid",
     "icon": "otiruyoo.png",
     "color": {
       "value": -1,
