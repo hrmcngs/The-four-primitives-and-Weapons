@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "minecraft_armor_weapon:blocks/smithing_table_bottom",
+    "up": "minecraft_armor_weapon:blocks/smithing_table_top",
+    "north": "minecraft_armor_weapon:blocks/smithing_table_side",
+    "east": "minecraft_armor_weapon:blocks/smithing_table_back",
+    "south": "minecraft_armor_weapon:blocks/smithing_table_side_b",
+    "west": "minecraft_armor_weapon:blocks/smithing_table_front",
+    "particle": "minecraft_armor_weapon:blocks/smithing_table_bottom"
+  },
+  "render_type": "solid"
+}

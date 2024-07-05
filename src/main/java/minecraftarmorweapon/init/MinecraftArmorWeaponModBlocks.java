@@ -18,6 +18,7 @@ import minecraftarmorweapon.block.RoseBlock;
 import minecraftarmorweapon.block.NetheriteKatanaBlockBlock;
 import minecraftarmorweapon.block.MakiwaridaiBlock;
 import minecraftarmorweapon.block.KurikarakenBlockBlock;
+import minecraftarmorweapon.block.CustomSmithingTableBlock;
 import minecraftarmorweapon.block.CrossBlock;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -33,4 +34,5 @@ public class MinecraftArmorWeaponModBlocks {
 	public static final RegistryObject<Block> STONE_KATANA_BLOCK = REGISTRY.register("stone_katana_block", () -> new StoneKatanaBlockBlock());
 	public static final RegistryObject<Block> STONE_KATANA_BLOCK_1 = REGISTRY.register("stone_katana_block_1", () -> new StoneKatanaBlock1Block());
 	public static final RegistryObject<Block> MAKIWARIDAI = REGISTRY.register("makiwaridai", () -> new MakiwaridaiBlock());
+	public static final RegistryObject<Block> CUSTOM_SMITHING_TABLE = REGISTRY.register("custom_smithing_table", () -> new CustomSmithingTableBlock());
 }

@@ -17,6 +17,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.BlockItem;
 
 import minecraftarmorweapon.item.WindStepItem;
+import minecraftarmorweapon.item.WardenArmorItem;
 import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
 import minecraftarmorweapon.item.SwordOfNightItem;
@@ -189,6 +190,10 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DARKNESS_KATANA = REGISTRY.register("darkness_katana", () -> new DarknessKatanaItem());
 	public static final RegistryObject<Item> FIREWORKS_BLACK = REGISTRY.register("fireworks_black", () -> new FireworksBlackItem());
 	public static final RegistryObject<Item> SCYTHE = REGISTRY.register("scythe", () -> new ScytheItem());
+	public static final RegistryObject<Item> WARDEN_ARMOR_HELMET = REGISTRY.register("warden_armor_helmet", () -> new WardenArmorItem.Helmet());
+	public static final RegistryObject<Item> WARDEN_ARMOR_CHESTPLATE = REGISTRY.register("warden_armor_chestplate", () -> new WardenArmorItem.Chestplate());
+	public static final RegistryObject<Item> WARDEN_ARMOR_LEGGINGS = REGISTRY.register("warden_armor_leggings", () -> new WardenArmorItem.Leggings());
+	public static final RegistryObject<Item> CUSTOM_SMITHING_TABLE = block(MinecraftArmorWeaponModBlocks.CUSTOM_SMITHING_TABLE, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

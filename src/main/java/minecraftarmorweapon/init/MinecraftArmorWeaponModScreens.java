@@ -11,6 +11,7 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 
+import minecraftarmorweapon.client.gui.SmithingTableGui2Screen;
 import minecraftarmorweapon.client.gui.RpgBookGuiScreen;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -19,6 +20,7 @@ public class MinecraftArmorWeaponModScreens {
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
 			MenuScreens.register(MinecraftArmorWeaponModMenus.RPG_BOOK_GUI.get(), RpgBookGuiScreen::new);
+			MenuScreens.register(MinecraftArmorWeaponModMenus.SMITHING_TABLE_GUI_2.get(), SmithingTableGui2Screen::new);
 		});
 	}
 }
