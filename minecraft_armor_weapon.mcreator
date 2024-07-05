@@ -6171,6 +6171,7 @@
         "files": [
           "src/main/resources/assets/minecraft_armor_weapon/blockstates/custom_smithing_table.json",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/custom_smithing_table.json",
+          "src/main/java/minecraftarmorweapon/block/entity/CustomSmithingTableBlockEntity.java",
           "src/main/java/minecraftarmorweapon/block/CustomSmithingTableBlock.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/block/custom_smithing_table.json"
         ]
