@@ -1,6 +1,7 @@
 
 package minecraftarmorweapon.world.inventory;
 
+import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -36,7 +37,7 @@ public class SmithingTableGui2Menu extends AbstractContainerMenu implements Supp
 		super(MinecraftArmorWeaponModMenus.SMITHING_TABLE_GUI_2.get(), id);
 		this.entity = inv.player;
 		this.world = inv.player.level;
-		this.internal = new ItemStackHandler(0);
+		this.internal = new ItemStackHandler(4);
 		BlockPos pos = null;
 		if (extraData != null) {
 			pos = extraData.readBlockPos();
@@ -74,6 +75,30 @@ public class SmithingTableGui2Menu extends AbstractContainerMenu implements Supp
 				}
 			}
 		}
+		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 94, 41) {
+			@Override
+			public boolean mayPlace(ItemStack stack) {
+				return false;
+			}
+		}));
+		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 6, 41) {
+			@Override
+			public boolean mayPlace(ItemStack stack) {
+				return false;
+			}
+		}));
+		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 24, 41) {
+			@Override
+			public boolean mayPlace(ItemStack stack) {
+				return false;
+			}
+		}));
+		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 42, 41) {
+			@Override
+			public boolean mayPlace(ItemStack stack) {
+				return false;
+			}
+		}));
 		for (int si = 0; si < 3; ++si)
 			for (int sj = 0; sj < 9; ++sj)
 				this.addSlot(new Slot(inv, sj + (si + 1) * 9, -3 + 8 + sj * 18, -3 + 84 + si * 18));
@@ -93,16 +118,16 @@ public class SmithingTableGui2Menu extends AbstractContainerMenu implements Supp
 		if (slot != null && slot.hasItem()) {
 			ItemStack itemstack1 = slot.getItem();
 			itemstack = itemstack1.copy();
-			if (index < 0) {
-				if (!this.moveItemStackTo(itemstack1, 0, this.slots.size(), true))
+			if (index < 4) {
+				if (!this.moveItemStackTo(itemstack1, 4, this.slots.size(), true))
 					return ItemStack.EMPTY;
 				slot.onQuickCraft(itemstack1, itemstack);
-			} else if (!this.moveItemStackTo(itemstack1, 0, 0, false)) {
-				if (index < 0 + 27) {
-					if (!this.moveItemStackTo(itemstack1, 0 + 27, this.slots.size(), true))
+			} else if (!this.moveItemStackTo(itemstack1, 0, 4, false)) {
+				if (index < 4 + 27) {
+					if (!this.moveItemStackTo(itemstack1, 4 + 27, this.slots.size(), true))
 						return ItemStack.EMPTY;
 				} else {
-					if (!this.moveItemStackTo(itemstack1, 0, 0 + 27, false))
+					if (!this.moveItemStackTo(itemstack1, 4, 4 + 27, false))
 						return ItemStack.EMPTY;
 				}
 				return ItemStack.EMPTY;

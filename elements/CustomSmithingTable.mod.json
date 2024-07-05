@@ -10,7 +10,7 @@
     "textureBack": "smithing_table_back",
     "renderType": 10,
     "customModelName": "Normal",
-    "rotationMode": 4,
+    "rotationMode": 0,
     "enablePitch": false,
     "emissiveRendering": false,
     "displayFluidOverlay": false,
