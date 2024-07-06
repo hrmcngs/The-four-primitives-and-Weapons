@@ -32,7 +32,10 @@
           "disablePickup": {
             "fixedValue": false
           },
-          "dropItemsWhenNotBound": true,
+          "dropItemsWhenNotBound": false,
+          "onTakenFromSlot": {
+            "name": "Smithingtablegui2naiyoukawatta"
+          },
           "x": 223,
           "y": 80
         }
@@ -101,6 +104,9 @@
         }
       }
     ],
+    "onTick": {
+      "name": "SmithingTableGui2konoGUIgaKaikareteiruJiannoteituku"
+    },
     "gridSettings": {
       "sx": 18,
       "sy": 18,

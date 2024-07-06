@@ -4,6 +4,9 @@ package minecraftarmorweapon.world.inventory;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -18,12 +21,19 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
+import minecraftarmorweapon.procedures.SmithingTableGui2konoGUIgaKaikareteiruJiannoteitukuProcedure;
+
+import minecraftarmorweapon.network.SmithingTableGui2SlotMessage;
+
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMenus;
+
+import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
 import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 
+@Mod.EventBusSubscriber
 public class SmithingTableGui2Menu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
@@ -76,6 +86,12 @@ public class SmithingTableGui2Menu extends AbstractContainerMenu implements Supp
 			}
 		}
 		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 95, 41) {
+			@Override
+			public void onTake(Player entity, ItemStack stack) {
+				super.onTake(entity, stack);
+				slotChanged(0, 1, 0);
+			}
+
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return false;
@@ -213,17 +229,40 @@ public class SmithingTableGui2Menu extends AbstractContainerMenu implements Supp
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
 				for (int j = 0; j < internal.getSlots(); ++j) {
+					if (j == 0)
+						continue;
 					playerIn.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
 				}
 			} else {
 				for (int i = 0; i < internal.getSlots(); ++i) {
+					if (i == 0)
+						continue;
 					playerIn.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
 				}
 			}
 		}
 	}
 
+	private void slotChanged(int slotid, int ctype, int meta) {
+		if (this.world != null && this.world.isClientSide()) {
+			MinecraftArmorWeaponMod.PACKET_HANDLER.sendToServer(new SmithingTableGui2SlotMessage(slotid, x, y, z, ctype, meta));
+			SmithingTableGui2SlotMessage.handleSlotAction(entity, slotid, ctype, meta, x, y, z);
+		}
+	}
+
 	public Map<Integer, Slot> get() {
 		return customSlots;
+	}
+
+	@SubscribeEvent
+	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+		Player entity = event.player;
+		if (event.phase == TickEvent.Phase.END && entity.containerMenu instanceof SmithingTableGui2Menu) {
+			Level world = entity.level;
+			double x = entity.getX();
+			double y = entity.getY();
+			double z = entity.getZ();
+			SmithingTableGui2konoGUIgaKaikareteiruJiannoteitukuProcedure.execute(entity);
+		}
 	}
 }

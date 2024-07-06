@@ -100,7 +100,7 @@
     "unbreakable": false,
     "breakHarvestLevel": 1,
     "isBonemealable": false,
-    "hasInventory": true,
+    "hasInventory": false,
     "guiBoundTo": "SmithingTableGui2",
     "openGUIOnRightClick": true,
     "inventorySize": 9,
