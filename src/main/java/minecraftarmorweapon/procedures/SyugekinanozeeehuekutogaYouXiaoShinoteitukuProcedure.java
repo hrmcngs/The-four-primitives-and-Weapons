@@ -355,6 +355,19 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 				world.levelEvent(2001, new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos")),
 						Block.getId((world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))))));
 			}
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()
+					&& (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
+				if (world instanceof ServerLevel _level)
+					_level.getServer().getCommands()
+							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
+									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "/particle dust 0.835 0.380 1.000 1 ~ ~ ~ 0.1 0.1 0.1 1 100 force");
+			}
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
+				if (world instanceof ServerLevel _level)
+					_level.getServer().getCommands()
+							.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos")), (entity.getPersistentData().getDouble("Zpos"))),
+									Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "particle flame ~ ~1 ~ 0.5 0.5 0.5 .0 20 force @p");
+			}
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
 				if (world instanceof ServerLevel _level)
 					_level.getServer().getCommands()
@@ -450,7 +463,9 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
 											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
 												entityiterator.hurt(DamageSource.GENERIC, 20);
 												entityiterator.setSecondsOnFire(30);
@@ -467,6 +482,19 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 												entityiterator.hurt(DamageSource.GENERIC, 20);
 												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
+											}
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()) {
+												entityiterator.hurt(DamageSource.GENERIC, 40);
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 6, true, false));
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
+											}
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()
+													&& (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
+												entityiterator.hurt(DamageSource.GENERIC, 20);
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 120, 6, true, false));
 											}
 										} else {
 											entityiterator.hurt(DamageSource.GENERIC, 20);
@@ -509,7 +537,9 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
 											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
 												entityiterator.hurt(DamageSource.GENERIC, 20);
 												entityiterator.setSecondsOnFire(30);
@@ -526,6 +556,19 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 												entityiterator.hurt(DamageSource.GENERIC, 20);
 												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
+											}
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()) {
+												entityiterator.hurt(DamageSource.GENERIC, 40);
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 6, true, false));
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
+											}
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()
+													&& (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
+												entityiterator.hurt(DamageSource.GENERIC, 20);
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 120, 6, true, false));
 											}
 										} else {
 											entityiterator.hurt(DamageSource.GENERIC, 20);
@@ -568,7 +611,9 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 										if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
-												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()
+												|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
 											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()) {
 												entityiterator.hurt(DamageSource.GENERIC, 20);
 												entityiterator.setSecondsOnFire(30);
@@ -585,6 +630,19 @@ public class SyugekinanozeeehuekutogaYouXiaoShinoteitukuProcedure {
 												entityiterator.hurt(DamageSource.GENERIC, 20);
 												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
+											}
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()) {
+												entityiterator.hurt(DamageSource.GENERIC, 40);
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 6, true, false));
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
+											}
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()
+													&& (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()) {
+												entityiterator.hurt(DamageSource.GENERIC, 20);
+												if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
+													_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 120, 6, true, false));
 											}
 										} else {
 											entityiterator.hurt(DamageSource.GENERIC, 20);

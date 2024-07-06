@@ -75,29 +75,17 @@ public class SmithingTableGui2Menu extends AbstractContainerMenu implements Supp
 				}
 			}
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 94, 41) {
+		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 95, 41) {
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return false;
 			}
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 6, 41) {
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
+		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 7, 41) {
 		}));
-		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 24, 41) {
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
+		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 25, 41) {
 		}));
-		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 42, 41) {
-			@Override
-			public boolean mayPlace(ItemStack stack) {
-				return false;
-			}
+		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 43, 41) {
 		}));
 		for (int si = 0; si < 3; ++si)
 			for (int sj = 0; sj < 9; ++sj)

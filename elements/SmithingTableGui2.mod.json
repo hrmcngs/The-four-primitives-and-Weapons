@@ -11,15 +11,6 @@
     "doesPauseGame": false,
     "components": [
       {
-        "type": "image",
-        "data": {
-          "image": "smithing_table_1.20.png",
-          "use1Xscale": false,
-          "x": 128,
-          "y": 35
-        }
-      },
-      {
         "type": "label",
         "data": {
           "name": "label_upgrade_gear",
@@ -42,44 +33,71 @@
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 222,
+          "x": 223,
           "y": 80
         }
       },
       {
-        "type": "outputslot",
+        "type": "inputslot",
         "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false
+          },
           "id": 1,
           "disablePickup": {
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 134,
+          "x": 135,
           "y": 80
         }
       },
       {
-        "type": "outputslot",
+        "type": "inputslot",
         "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false
+          },
           "id": 2,
           "disablePickup": {
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 152,
+          "x": 153,
           "y": 80
         }
       },
       {
-        "type": "outputslot",
+        "type": "inputslot",
         "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false
+          },
           "id": 3,
           "disablePickup": {
             "fixedValue": false
           },
           "dropItemsWhenNotBound": true,
-          "x": 170,
+          "x": 171,
           "y": 80
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "smithing_table_1.20.png",
+          "use1Xscale": false,
+          "x": 128,
+          "y": 35
         }
       }
     ],
