@@ -40,6 +40,7 @@ import minecraftarmorweapon.item.NiguShieldItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.NaihazunoRingItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
+import minecraftarmorweapon.item.MotaseruItem;
 import minecraftarmorweapon.item.MagischesFeenKatanaItem;
 import minecraftarmorweapon.item.MagicalKatanaItem;
 import minecraftarmorweapon.item.MagicWandItem;
@@ -196,6 +197,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> WARDEN_ARMOR_LEGGINGS = REGISTRY.register("warden_armor_leggings", () -> new WardenArmorItem.Leggings());
 	public static final RegistryObject<Item> CUSTOM_SMITHING_TABLE = block(MinecraftArmorWeaponModBlocks.CUSTOM_SMITHING_TABLE, CreativeModeTab.TAB_DECORATIONS);
 	public static final RegistryObject<Item> KABUSERU = REGISTRY.register("kabuseru", () -> new KabuseruItem());
+	public static final RegistryObject<Item> MOTASERU = REGISTRY.register("motaseru", () -> new MotaseruItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

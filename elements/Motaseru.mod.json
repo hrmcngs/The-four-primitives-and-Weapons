@@ -5,7 +5,7 @@
     "renderType": 0,
     "texture": "kenti",
     "customModelName": "Normal",
-    "name": "kabuseru",
+    "name": "motaseru",
     "specialInfo": [],
     "creativeTab": {
       "value": "CUSTOM:Yopkeinamono"
@@ -24,10 +24,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onEntityHitWith": {
-      "name": "KabuserumobugaturudeGongJisaretatoki"
-    },
-    "onItemInUseTick": {
-      "name": "KabuseruturuwoShoudeChituteiruJiannoteituku"
+      "name": "MotaserumobugaturudeGongJisaretatoki"
     }
   }
 }
