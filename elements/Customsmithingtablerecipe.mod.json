@@ -2,7 +2,7 @@
   "_fv": 43,
   "_type": "recipe",
   "definition": {
-    "recipeType": "Crafting",
+    "recipeType": "Smithing",
     "recipeRetstackSize": 1,
     "group": "",
     "cookingBookCategory": "MISC",
@@ -10,36 +10,13 @@
     "cookingTime": 200,
     "craftingBookCategory": "MISC",
     "recipeShapeless": false,
-    "recipeSlots": [
-      {
-        "value": "Items.IRON_INGOT"
-      },
-      {
-        "value": "Items.IRON_INGOT"
-      },
-      {
-        "value": ""
-      },
-      {
-        "value": "Blocks.MANGROVE_PLANKS"
-      },
-      {
-        "value": "Blocks.MANGROVE_PLANKS"
-      },
-      {
-        "value": "CUSTOM:Hammer"
-      },
-      {
-        "value": "Blocks.MANGROVE_PLANKS"
-      },
-      {
-        "value": "Blocks.MANGROVE_PLANKS"
-      },
-      {
-        "value": ""
-      }
-    ],
-    "recipeReturnStack": {
+    "smithingInputStack": {
+      "value": "Blocks.SMITHING_TABLE"
+    },
+    "smithingInputAdditionStack": {
+      "value": "CUSTOM:Hammer"
+    },
+    "smithingReturnStack": {
       "value": "CUSTOM:CustomSmithingTable"
     },
     "name": "customsmithingtablerecipe",

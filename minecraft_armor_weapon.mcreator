@@ -6214,6 +6214,56 @@
           }
         ]
       }
+    },
+    {
+      "name": "Customsmithingtablerecipe",
+      "type": "recipe",
+      "sortid": 412,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "customsmithingtablerecipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/customsmithingtablerecipe.json"
+        ]
+      }
+    },
+    {
+      "name": "Kabuseru",
+      "type": "tool",
+      "sortid": 413,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kabuseru",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/kabuseru.json",
+          "src/main/java/minecraftarmorweapon/item/KabuseruItem.java"
+        ]
+      }
+    },
+    {
+      "name": "KabuserumobugaturudeGongJisaretatoki",
+      "type": "procedure",
+      "sortid": 414,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "kabuserumobugaturude_gong_jisaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/KabuserumobugaturudeGongJisaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -6444,6 +6494,7 @@
       "item.minecraft_armor_weapon.dragon_green_armor_chestplate": "§2Dragon green chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_leggings": "§8Dragon black leggings",
       "gamerule.rpgBookGive": "RPG book give",
+      "item.minecraft_armor_weapon.kabuseru": "kabuseru",
       "item.minecraft_armor_weapon.warden_armor_leggings": "§3warden leggings",
       "item.minecraft_armor_weapon.magisches_feen_katana": "§dMagisches Feen Katana",
       "key.minecraft_armor_weapon.n": "N",
@@ -6650,6 +6701,7 @@
       "item.minecraft_armor_weapon.dragon_green_armor_chestplate": "§2Dragon green chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_leggings": "§8Dragon black leggings",
       "gamerule.rpgBookGive": "RPG book give",
+      "item.minecraft_armor_weapon.kabuseru": "Kenti",
       "item.minecraft_armor_weapon.warden_armor_leggings": "warden leggings",
       "item.minecraft_armor_weapon.magisches_feen_katana": "§dMagisches Feen Katana",
       "key.minecraft_armor_weapon.n": "N",

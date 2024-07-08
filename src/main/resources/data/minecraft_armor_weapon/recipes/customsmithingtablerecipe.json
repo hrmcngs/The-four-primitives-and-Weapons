@@ -1,35 +1,24 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "01 ",
-    "345",
-    "67 "
-  ],
-  "key": {
-    "0": {
-      "item": "minecraft:iron_ingot"
-    },
-    "1": {
-      "item": "minecraft:iron_ingot"
-    },
-    "3": {
-      "item": "minecraft:mangrove_planks"
-    },
-    "4": {
-      "item": "minecraft:mangrove_planks"
-    },
-    "5": {
-      "item": "minecraft_armor_weapon:hammer"
-    },
-    "6": {
-      "item": "minecraft:mangrove_planks"
-    },
-    "7": {
-      "item": "minecraft:mangrove_planks"
-    }
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft:smithing_table"
+  },
+  "addition": {
+    "item": "minecraft_armor_weapon:hammer"
   },
   "result": {
-    "item": "minecraft_armor_weapon:custom_smithing_table",
-    "count": 1
+    "item": "minecraft_armor_weapon:custom_smithing_table"
+  }
+}
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "item": "minecraft_armor_weapon:hammer"
+  },
+  "addition": {
+    "item": "minecraft:smithing_table"
+  },
+  "result": {
+    "item": "minecraft_armor_weapon:custom_smithing_table"
   }
 }

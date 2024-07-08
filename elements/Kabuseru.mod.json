@@ -1,0 +1,30 @@
+{
+  "_fv": 43,
+  "_type": "tool",
+  "definition": {
+    "renderType": 0,
+    "texture": "kenti",
+    "customModelName": "Normal",
+    "name": "kabuseru",
+    "specialInfo": [],
+    "creativeTab": {
+      "value": "CUSTOM:Yopkeinamono"
+    },
+    "toolType": "Sword",
+    "harvestLevel": 0,
+    "efficiency": 0.0,
+    "attackSpeed": 100.0,
+    "enchantability": 0,
+    "damageVsEntity": 0.0,
+    "usageCount": 0,
+    "blocksAffected": [],
+    "hasGlow": false,
+    "repairItems": [],
+    "immuneToFire": false,
+    "stayInGridWhenCrafting": false,
+    "damageOnCrafting": false,
+    "onEntityHitWith": {
+      "name": "KabuserumobugaturudeGongJisaretatoki"
+    }
+  }
+}
