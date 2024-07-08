@@ -5,10 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-
-import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 
 import minecraftarmorweapon.entity.OtiruyoEntity;
 import minecraftarmorweapon.entity.KillotiruEntity;
@@ -32,11 +29,6 @@ public class MukoukaGuardProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.GUARD.get()) : false) {
-			if (event != null && event.isCancelable()) {
-				event.setCanceled(true);
-			}
-		}
 		if (entity instanceof BlackholeEntity) {
 			if (event != null && event.isCancelable()) {
 				event.setCanceled(true);

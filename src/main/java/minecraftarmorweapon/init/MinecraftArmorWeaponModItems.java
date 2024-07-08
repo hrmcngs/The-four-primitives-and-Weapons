@@ -193,7 +193,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> WARDEN_ARMOR_HELMET = REGISTRY.register("warden_armor_helmet", () -> new WardenArmorItem.Helmet());
 	public static final RegistryObject<Item> WARDEN_ARMOR_CHESTPLATE = REGISTRY.register("warden_armor_chestplate", () -> new WardenArmorItem.Chestplate());
 	public static final RegistryObject<Item> WARDEN_ARMOR_LEGGINGS = REGISTRY.register("warden_armor_leggings", () -> new WardenArmorItem.Leggings());
-	public static final RegistryObject<Item> CUSTOM_SMITHING_TABLE = block(MinecraftArmorWeaponModBlocks.CUSTOM_SMITHING_TABLE, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Item> CUSTOM_SMITHING_TABLE = block(MinecraftArmorWeaponModBlocks.CUSTOM_SMITHING_TABLE, CreativeModeTab.TAB_DECORATIONS);
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
