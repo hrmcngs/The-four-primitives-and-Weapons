@@ -56,6 +56,7 @@ import minecraftarmorweapon.potion.BowAttackMobEffect;
 import minecraftarmorweapon.potion.BloodTpMobEffect;
 import minecraftarmorweapon.potion.BlackHoleEffectMobEffect;
 import minecraftarmorweapon.potion.BarrierEffectMobEffect;
+import minecraftarmorweapon.potion.AttackInGuardMobEffect;
 import minecraftarmorweapon.potion.AttackBowMobEffect;
 import minecraftarmorweapon.potion.Arrow1MobEffect;
 import minecraftarmorweapon.potion.AaaaMobEffect;
@@ -115,4 +116,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> BLACK_HOLE_EFFECT = REGISTRY.register("black_hole_effect", () -> new BlackHoleEffectMobEffect());
 	public static final RegistryObject<MobEffect> DARKNESS_ATTACK_EFFECT = REGISTRY.register("darkness_attack_effect", () -> new DarknessAttackEffectMobEffect());
 	public static final RegistryObject<MobEffect> TOKUBETU = REGISTRY.register("tokubetu", () -> new TokubetuMobEffect());
+	public static final RegistryObject<MobEffect> ATTACK_IN_GUARD = REGISTRY.register("attack_in_guard", () -> new AttackInGuardMobEffect());
 }
