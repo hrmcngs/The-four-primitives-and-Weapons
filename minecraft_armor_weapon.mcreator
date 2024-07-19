@@ -6379,6 +6379,33 @@
           "src/main/java/minecraftarmorweapon/potion/AttackInGuardMobEffect.java"
         ]
       }
+    },
+    {
+      "name": "StoneSlab",
+      "type": "item",
+      "sortid": 422,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stone_slab",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/stone_slab.json",
+          "src/main/java/minecraftarmorweapon/item/StoneSlabItem.java"
+        ]
+      }
+    },
+    {
+      "name": "StoneSlabRecipe",
+      "type": "recipe",
+      "sortid": 423,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stone_slab_recipe",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/stone_slab_recipe.json"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -6486,6 +6513,7 @@
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.tokubetusounazangeki": "aa",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
+      "item.minecraft_armor_weapon.stone_slab": "Stone Slab",
       "effect.minecraft_armor_weapon.tobe": "tobe",
       "item.minecraft_armor_weapon.dragon_black_armor_chestplate": "§8Dragon black chestplate",
       "itemGroup.tabdragon_armor_tab": "§5Dragon Armor Tab",
@@ -6695,6 +6723,7 @@
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.tokubetusounazangeki": "aa",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
+      "item.minecraft_armor_weapon.stone_slab": "Stone Slab",
       "effect.minecraft_armor_weapon.tobe": "tobe",
       "item.minecraft_armor_weapon.dragon_black_armor_chestplate": "§8Dragon black chestplate",
       "itemGroup.tabdragon_armor_tab": "§5Dragon Armor Tab",
