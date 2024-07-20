@@ -74,6 +74,7 @@ import minecraftarmorweapon.item.DecorationPotWithArrowsItem;
 import minecraftarmorweapon.item.DasHerzEinerFeeArmorItem;
 import minecraftarmorweapon.item.DarknessKatanaItem;
 import minecraftarmorweapon.item.DarknessItem;
+import minecraftarmorweapon.item.ChuzumeHuskArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BoggedOuterItem;
 import minecraftarmorweapon.item.BloodBottleItem;
@@ -200,6 +201,10 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> KABUSERU = REGISTRY.register("kabuseru", () -> new KabuseruItem());
 	public static final RegistryObject<Item> MOTASERU = REGISTRY.register("motaseru", () -> new MotaseruItem());
 	public static final RegistryObject<Item> STONE_SLAB = REGISTRY.register("stone_slab", () -> new StoneSlabItem());
+	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_HELMET = REGISTRY.register("chuzume_husk_armor_helmet", () -> new ChuzumeHuskArmorItem.Helmet());
+	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_CHESTPLATE = REGISTRY.register("chuzume_husk_armor_chestplate", () -> new ChuzumeHuskArmorItem.Chestplate());
+	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_LEGGINGS = REGISTRY.register("chuzume_husk_armor_leggings", () -> new ChuzumeHuskArmorItem.Leggings());
+	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_BOOTS = REGISTRY.register("chuzume_husk_armor_boots", () -> new ChuzumeHuskArmorItem.Boots());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

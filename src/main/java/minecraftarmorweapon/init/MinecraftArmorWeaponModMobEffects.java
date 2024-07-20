@@ -51,6 +51,7 @@ import minecraftarmorweapon.potion.EffectMagicMobEffect;
 import minecraftarmorweapon.potion.EffectBloodTpMobEffect;
 import minecraftarmorweapon.potion.DevourBloodMobEffect;
 import minecraftarmorweapon.potion.DarknessAttackEffectMobEffect;
+import minecraftarmorweapon.potion.ChuzumeHuskArmorKnockBackMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
 import minecraftarmorweapon.potion.BloodTpMobEffect;
@@ -117,4 +118,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> DARKNESS_ATTACK_EFFECT = REGISTRY.register("darkness_attack_effect", () -> new DarknessAttackEffectMobEffect());
 	public static final RegistryObject<MobEffect> TOKUBETU = REGISTRY.register("tokubetu", () -> new TokubetuMobEffect());
 	public static final RegistryObject<MobEffect> ATTACK_IN_GUARD = REGISTRY.register("attack_in_guard", () -> new AttackInGuardMobEffect());
+	public static final RegistryObject<MobEffect> CHUZUME_HUSK_ARMOR_KNOCK_BACK = REGISTRY.register("chuzume_husk_armor_knock_back", () -> new ChuzumeHuskArmorKnockBackMobEffect());
 }

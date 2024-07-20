@@ -6406,6 +6406,147 @@
           "src/main/resources/data/minecraft_armor_weapon/recipes/stone_slab_recipe.json"
         ]
       }
+    },
+    {
+      "name": "ChuzumeHuskArmor",
+      "type": "armor",
+      "sortid": 424,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chuzume_husk_armor",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/chuzume_husk_armor_chestplate.json",
+          "src/main/java/minecraftarmorweapon/item/ChuzumeHuskArmorItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/chuzume_husk_armor_leggings.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/chuzume_husk_armor_boots.json",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/chuzume_husk_armor_helmet.json"
+        ]
+      }
+    },
+    {
+      "name": "ChuzumeHuskArmorKnockBack",
+      "type": "potioneffect",
+      "sortid": 425,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chuzume_husk_armor_knock_back",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/ChuzumeHuskArmorKnockBackMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ChuzumeHuskArmorKnockBackposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 426,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chuzume_husk_armor_knock_backposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ChuzumeHuskArmorKnockBackposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChuzumeHuskArmorherumetutonoMeiteitukunoibento",
+      "type": "procedure",
+      "sortid": 427,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chuzume_husk_armorherumetutono_meiteitukunoibento",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ChuzumeHuskArmorherumetutonoMeiteitukunoibentoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ChuzumeHuskArmorKnockBackposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 428,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chuzume_husk_armor_knock_backposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ChuzumeHuskArmorKnockBackposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Witherskeletonstonekatana",
+      "type": "procedure",
+      "sortid": 429,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "witherskeletonstonekatana",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/WitherskeletonstonekatanaProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Witherskeletonstonekatana2",
+      "type": "procedure",
+      "sortid": 430,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "witherskeletonstonekatana_2",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/Witherskeletonstonekatana2Procedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -6467,17 +6608,17 @@
       "itemGroup.tabmagic_books": "Magic Books",
       "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
-      "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
+      "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
-      "item.minecraft_armor_weapon.darkness": "§5Darkness",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
+      "item.minecraft_armor_weapon.darkness": "§5Darkness",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.blackhole_spawn_egg": "Blackhole Spawn Egg",
       "entity.minecraft_armor_weapon.blackhole": "Blackhole",
       "advancements.magical_swordsman_achievements.descr": "§eGet Magisches feen katana",
-      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
+      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "advancements.you_have_become_a_vampire.descr": "You have become a vampire.",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
@@ -6488,21 +6629,21 @@
       "item.minecraft_armor_weapon.small_sword": "Small sword",
       "item.minecraft_armor_weapon.iron_katana": "§7Iron Katana",
       "item.minecraft_armor_weapon.machete": "Machete",
-      "effect.minecraft_armor_weapon.sword_of_night_tameeee": "tameteruyo",
       "item.minecraft_armor_weapon.sword_of_night": "§6Sword of Night",
+      "effect.minecraft_armor_weapon.sword_of_night_tameeee": "tameteruyo",
       "item.minecraft_armor_weapon.storm": "§8Storm",
       "block.minecraft_armor_weapon.stone_bricks_trap_door": "Stone Bricks Trap Door",
-      "item.minecraft_armor_weapon.dragon_black_armor_helmet": "§8Dragon black helmet",
       "item.minecraft_armor_weapon.stone_katana": "§7Stone Katana",
+      "item.minecraft_armor_weapon.dragon_black_armor_helmet": "§8Dragon black helmet",
       "item.minecraft_armor_weapon.kurikarakensword": "§5kurikaraken",
-      "item.minecraft_armor_weapon.scythe": "Scythe",
       "item.minecraft_armor_weapon.wind_step": "§2Windstep",
+      "item.minecraft_armor_weapon.scythe": "Scythe",
       "item.minecraft_armor_weapon.a": "A",
       "item.minecraft_armor_weapon.warabitetou": "§7Warabiteto",
       "effect.minecraft_armor_weapon.blood_tp": "bloodtp",
       "effect.minecraft_armor_weapon.sword_of_night_effect": "sword of night",
-      "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
       "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
+      "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_boots": "das herz einer fee armor boots",
@@ -6522,16 +6663,18 @@
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
       "item.minecraft_armor_weapon.replica_sword_of_light": "§6Replica Sword Of Light",
       "advancements.dark_magic_swordsman_achievements.title": "§5You\u0027ve become a dark magic swordsman.",
+      "item.minecraft_armor_weapon.chuzume_husk_armor_leggings": "§gchuzume husk leggings",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.attack_in_guard": "Attack in Guard",
+      "item.minecraft_armor_weapon.chuzume_husk_armor_chestplate": "§gchuzume husk chestplate",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
-      "item.minecraft_armor_weapon.gold_katana": "§6Gold Katana",
       "item.minecraft_armor_weapon.dragon_armor_boots": "§5Dragon boots",
+      "item.minecraft_armor_weapon.gold_katana": "§6Gold Katana",
       "effect.minecraft_armor_weapon.effect_magic": "magic",
       "effect.minecraft_armor_weapon.kaminariyade": "kaminari",
       "attribute.minecraft_armor_weapon.mana": "Mana",
-      "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
+      "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "effect.minecraft_armor_weapon.otita": "a",
@@ -6544,8 +6687,8 @@
       "block.minecraft_armor_weapon.custom_smithing_table": "Custom Smithing Table",
       "effect.minecraft_armor_weapon.karikarisiterunemaidomaido": "doka-nn",
       "item.minecraft_armor_weapon.katana_tobu": "Katana Tobu",
-      "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "effect.minecraft_armor_weapon.otiruyoo": "q",
+      "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_boots": "§8Dragon Black boots",
       "effect.minecraft_armor_weapon.syugekinanozee": "aa",
@@ -6571,6 +6714,7 @@
       "itemGroup.tabarmor": "Armor",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_vampire": "vampire",
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
+      "effect.minecraft_armor_weapon.chuzume_husk_armor_knock_back": "knock back",
       "advancements.sword_progress.title": "First Steps",
       "item.minecraft_armor_weapon.desporn_kenti": "Kenti",
       "itemGroup.tabnigu": "§5Nigu",
@@ -6593,6 +6737,7 @@
       "effect.minecraft_armor_weapon.kurutimenasi": "Coold time invalid",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
       "advancements.rivers_of_blood_achievements.title": "Maybe... you are anemic!",
+      "item.minecraft_armor_weapon.chuzume_husk_armor_boots": "§gchuzume husk boots",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "item.minecraft_armor_weapon.darkness_katana": "§5Darkness Katana",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_leggings": "das herz einer fee armor leggings",
@@ -6620,6 +6765,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_ninja": "ninja",
       "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",
+      "item.minecraft_armor_weapon.chuzume_husk_armor_helmet": "§gchuzume husk helmet",
       "advancements.magical_swordsman_achievements.title": "§eYou\u0027ve become a Magical Swordsman!",
       "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
@@ -6677,17 +6823,17 @@
       "itemGroup.tabmagic_books": "Magic Books",
       "itemGroup.tabyopkeinamono": "建築とかに",
       "effect.minecraft_armor_weapon.syugeki": "aa",
-      "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
+      "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
-      "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "item.minecraft_armor_weapon.darkness": "§5Darkness",
+      "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.blackhole_spawn_egg": "Blackhole Spawn Egg",
       "entity.minecraft_armor_weapon.blackhole": "Blackhole",
       "advancements.magical_swordsman_achievements.descr": "Magisches feen katanaを得る",
-      "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "entity.minecraft_armor_weapon.ruami_284": "ruami284",
+      "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
       "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
@@ -6698,21 +6844,21 @@
       "item.minecraft_armor_weapon.small_sword": "小太刀",
       "item.minecraft_armor_weapon.iron_katana": "§7鉄の刀",
       "item.minecraft_armor_weapon.machete": "鉈",
-      "item.minecraft_armor_weapon.sword_of_night": "§6Sword of Night",
       "effect.minecraft_armor_weapon.sword_of_night_tameeee": "tameteruyo",
+      "item.minecraft_armor_weapon.sword_of_night": "§6Sword of Night",
       "item.minecraft_armor_weapon.storm": "§8Storm",
       "block.minecraft_armor_weapon.stone_bricks_trap_door": "Stone Bricks Trap Door",
-      "item.minecraft_armor_weapon.stone_katana": "§7石の刀",
       "item.minecraft_armor_weapon.dragon_black_armor_helmet": "§8Dragon black helmet",
+      "item.minecraft_armor_weapon.stone_katana": "§7石の刀",
       "item.minecraft_armor_weapon.kurikarakensword": "§5倶利伽羅剣",
-      "item.minecraft_armor_weapon.wind_step": "§2Windstep",
       "item.minecraft_armor_weapon.scythe": "Scythe",
+      "item.minecraft_armor_weapon.wind_step": "§2Windstep",
       "item.minecraft_armor_weapon.a": "A",
       "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
       "effect.minecraft_armor_weapon.blood_tp": "bloodtp",
       "effect.minecraft_armor_weapon.sword_of_night_effect": "sword of night",
-      "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
       "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
+      "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
       "item.minecraft_armor_weapon.dragon_green_armor_boots": "§2Dragon green boots",
       "item.minecraft_armor_weapon.rivers_of_blood": "§4§lRivers of Blood",
       "entity.minecraft_armor_weapon.killotiru": "Otiruyo",
@@ -6732,16 +6878,18 @@
       "item.minecraft_armor_weapon.achromatic_shield": "Achromatic Shield",
       "item.minecraft_armor_weapon.replica_sword_of_light": "§6Replica Sword of Light",
       "advancements.dark_magic_swordsman_achievements.title": "§5君は闇の魔法剣士になってしまった",
+      "item.minecraft_armor_weapon.chuzume_husk_armor_leggings": "§gchuzume husk leggings",
       "effect.minecraft_armor_weapon.wind_step_effect": "BubbleshoteEffect",
       "effect.minecraft_armor_weapon.attack_in_guard": "Attack in Guard",
+      "item.minecraft_armor_weapon.chuzume_husk_armor_chestplate": "§gchuzume husk chestplate",
       "effect.minecraft_armor_weapon.barrier_effect": "arrowkill",
-      "item.minecraft_armor_weapon.dragon_armor_boots": "§5Dragon boots",
       "item.minecraft_armor_weapon.gold_katana": "§6金の刀",
+      "item.minecraft_armor_weapon.dragon_armor_boots": "§5Dragon boots",
       "effect.minecraft_armor_weapon.effect_magic": "magic",
       "effect.minecraft_armor_weapon.kaminariyade": "kaminari",
       "attribute.minecraft_armor_weapon.mana": "Mana",
-      "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
       "item.minecraft_armor_weapon.a_2": "Asupe",
+      "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "effect.minecraft_armor_weapon.otita": "a",
@@ -6754,8 +6902,8 @@
       "block.minecraft_armor_weapon.custom_smithing_table": "Custom Smithing Table",
       "effect.minecraft_armor_weapon.karikarisiterunemaidomaido": "doka-nn",
       "item.minecraft_armor_weapon.katana_tobu": "Katana Tobu",
-      "effect.minecraft_armor_weapon.otiruyoo": "q",
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
+      "effect.minecraft_armor_weapon.otiruyoo": "q",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_boots": "§8Dragon Black boots",
       "effect.minecraft_armor_weapon.syugekinanozee": "aa",
@@ -6781,6 +6929,7 @@
       "itemGroup.tabarmor": "Armor",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_vampire": "吸血鬼",
       "effect.minecraft_armor_weapon.bubbleshot_effect": "BubbleshoteEffect",
+      "effect.minecraft_armor_weapon.chuzume_husk_armor_knock_back": "knock back",
       "advancements.sword_progress.title": "初めの一歩",
       "item.minecraft_armor_weapon.desporn_kenti": "Kenti",
       "itemGroup.tabnigu": "二グ",
@@ -6803,6 +6952,7 @@
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
       "advancements.rivers_of_blood_achievements.title": "§4もしかしたら…貧血かもしれない!",
+      "item.minecraft_armor_weapon.chuzume_husk_armor_boots": "§gchuzume husk boots",
       "effect.minecraft_armor_weapon.fireballeffect": "fireballattack",
       "item.minecraft_armor_weapon.darkness_katana": "§5Darkness Katana",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_leggings": "das herz einer fee armor leggings",
@@ -6830,6 +6980,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_ninja": "忍者",
       "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",
+      "item.minecraft_armor_weapon.chuzume_husk_armor_helmet": "§gchuzume husk helmet",
       "advancements.magical_swordsman_achievements.title": "君は魔法剣士になった",
       "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
