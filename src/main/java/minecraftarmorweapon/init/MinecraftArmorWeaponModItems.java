@@ -16,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.BlockItem;
 
+import minecraftarmorweapon.item.WitherKatanaItem;
 import minecraftarmorweapon.item.WindStepItem;
 import minecraftarmorweapon.item.WardenArmorItem;
 import minecraftarmorweapon.item.WarabitetouItem;
@@ -41,6 +42,7 @@ import minecraftarmorweapon.item.NiguShieldItem;
 import minecraftarmorweapon.item.NetheriteKatanaItem;
 import minecraftarmorweapon.item.NaihazunoRingItem;
 import minecraftarmorweapon.item.MyTestIronKatanaItem;
+import minecraftarmorweapon.item.MotoWitherKatanaItem;
 import minecraftarmorweapon.item.MotaseruItem;
 import minecraftarmorweapon.item.MagischesFeenKatanaItem;
 import minecraftarmorweapon.item.MagicalKatanaItem;
@@ -176,7 +178,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_LEGGINGS = REGISTRY.register("das_herz_einer_fee_armor_leggings", () -> new DasHerzEinerFeeArmorItem.Leggings());
 	public static final RegistryObject<Item> DAS_HERZ_EINER_FEE_ARMOR_BOOTS = REGISTRY.register("das_herz_einer_fee_armor_boots", () -> new DasHerzEinerFeeArmorItem.Boots());
 	public static final RegistryObject<Item> STONE_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
-	public static final RegistryObject<Item> STONE_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_1, CreativeModeTab.TAB_BUILDING_BLOCKS);
+	public static final RegistryObject<Item> STONE_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.STONE_KATANA_BLOCK_1, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> MACHETE = REGISTRY.register("machete", () -> new MacheteItem());
 	public static final RegistryObject<Item> MAKIWARIDAI = block(MinecraftArmorWeaponModBlocks.MAKIWARIDAI, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> DECORATION_POT_WITH_ARROWS = REGISTRY.register("decoration_pot_with_arrows", () -> new DecorationPotWithArrowsItem());
@@ -205,6 +207,11 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_CHESTPLATE = REGISTRY.register("chuzume_husk_armor_chestplate", () -> new ChuzumeHuskArmorItem.Chestplate());
 	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_LEGGINGS = REGISTRY.register("chuzume_husk_armor_leggings", () -> new ChuzumeHuskArmorItem.Leggings());
 	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_BOOTS = REGISTRY.register("chuzume_husk_armor_boots", () -> new ChuzumeHuskArmorItem.Boots());
+	public static final RegistryObject<Item> TEST_BLOCK = block(MinecraftArmorWeaponModBlocks.TEST_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
+	public static final RegistryObject<Item> MOTO_WITHER_KATANA = REGISTRY.register("moto_wither_katana", () -> new MotoWitherKatanaItem());
+	public static final RegistryObject<Item> MOTO_WITHER_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.MOTO_WITHER_KATANA_BLOCK_1, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
+	public static final RegistryObject<Item> MOTO_WITHER_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.MOTO_WITHER_KATANA_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
+	public static final RegistryObject<Item> WITHER_KATANA = REGISTRY.register("wither_katana", () -> new WitherKatanaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

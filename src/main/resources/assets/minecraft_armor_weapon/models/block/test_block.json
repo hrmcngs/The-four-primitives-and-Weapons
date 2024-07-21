@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "minecraft_armor_weapon:blocks/test",
+    "up": "minecraft_armor_weapon:blocks/test",
+    "north": "minecraft_armor_weapon:blocks/test",
+    "east": "minecraft_armor_weapon:blocks/test",
+    "south": "minecraft_armor_weapon:blocks/test",
+    "west": "minecraft_armor_weapon:blocks/test",
+    "particle": "minecraft_armor_weapon:blocks/test"
+  },
+  "render_type": "solid"
+}

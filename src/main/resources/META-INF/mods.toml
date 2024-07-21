@@ -5,7 +5,7 @@ license="Academic Free License v3.0"
 [[mods]]
 modId="minecraft_armor_weapon"
 version="1.0.0"
-displayName="the four primitives and weapons"
+displayName="minecraft armor weapon"
 credits="nemui"
 displayURL="https://curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons"
 updateJSONURL="https://curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons/files/all?page=1&pageSize=20"
@@ -21,12 +21,6 @@ authors="0526ngs"
 
 
 
-[[dependencies.minecraft_armor_weapon]]
-    modId="use_compiled_mods"
-    mandatory=false
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
 [[dependencies.minecraft_armor_weapon]]
     modId="curios_api"
     mandatory=false

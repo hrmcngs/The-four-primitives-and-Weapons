@@ -33,14 +33,14 @@
         "subtract": false
       }
     ],
-    "name": "Netherite Katana Block",
+    "name": "stone Katana Block",
     "specialInfo": [],
     "hardness": 0.0,
     "resistance": 10.0,
     "hasGravity": false,
     "isWaterloggable": false,
     "creativeTab": {
-      "value": "BUILDING_BLOCKS"
+      "value": "CUSTOM:Yopkeinamono"
     },
     "destroyTool": "Not specified",
     "customDrop": {

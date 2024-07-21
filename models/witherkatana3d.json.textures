@@ -1,0 +1,10 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "1": "witherkatana3d"
+      },
+      "name": "default"
+    }
+  }
+}
