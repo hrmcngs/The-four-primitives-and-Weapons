@@ -28,6 +28,7 @@ import minecraftarmorweapon.item.StormItem;
 import minecraftarmorweapon.item.StoneSlabItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
 import minecraftarmorweapon.item.SmallSwordItem;
+import minecraftarmorweapon.item.SkinOfDragonItem;
 import minecraftarmorweapon.item.ScytheItem;
 import minecraftarmorweapon.item.RpgBookItem;
 import minecraftarmorweapon.item.RiversOfBloodItem;
@@ -207,11 +208,12 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_CHESTPLATE = REGISTRY.register("chuzume_husk_armor_chestplate", () -> new ChuzumeHuskArmorItem.Chestplate());
 	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_LEGGINGS = REGISTRY.register("chuzume_husk_armor_leggings", () -> new ChuzumeHuskArmorItem.Leggings());
 	public static final RegistryObject<Item> CHUZUME_HUSK_ARMOR_BOOTS = REGISTRY.register("chuzume_husk_armor_boots", () -> new ChuzumeHuskArmorItem.Boots());
-	public static final RegistryObject<Item> TEST_BLOCK = block(MinecraftArmorWeaponModBlocks.TEST_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> MOTO_WITHER_KATANA = REGISTRY.register("moto_wither_katana", () -> new MotoWitherKatanaItem());
 	public static final RegistryObject<Item> MOTO_WITHER_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.MOTO_WITHER_KATANA_BLOCK_1, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> MOTO_WITHER_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.MOTO_WITHER_KATANA_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> WITHER_KATANA = REGISTRY.register("wither_katana", () -> new WitherKatanaItem());
+	public static final RegistryObject<Item> WITHER_SKELETON_SPAWNER = block(MinecraftArmorWeaponModBlocks.WITHER_SKELETON_SPAWNER, MinecraftArmorWeaponModTabs.TAB_MAGIC_BOOKS);
+	public static final RegistryObject<Item> SKIN_OF_DRAGON = REGISTRY.register("skin_of_dragon", () -> new SkinOfDragonItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

@@ -33,7 +33,7 @@ import com.google.common.collect.ImmutableSet;
 public class MinecraftArmorWeaponModVillagerProfessions {
 	private static final Map<String, ProfessionPoiType> POI_TYPES = new HashMap<>();
 	public static final DeferredRegister<VillagerProfession> PROFESSIONS = DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, MinecraftArmorWeaponMod.MODID);
-	public static final RegistryObject<VillagerProfession> MINECRAFT_ARMOR_AND_WEAPON = registerProfession("minecraft_armor_and_weapon", () -> MinecraftArmorWeaponModBlocks.ROSE_FLOWER_POT.get(),
+	public static final RegistryObject<VillagerProfession> MINECRAFT_ARMOR_AND_WEAPON = registerProfession("minecraft_armor_and_weapon", () -> MinecraftArmorWeaponModBlocks.CUSTOM_SMITHING_TABLE.get(),
 			() -> ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.wither.ambient")));
 
 	private static RegistryObject<VillagerProfession> registerProfession(String name, Supplier<Block> block, Supplier<SoundEvent> soundEvent) {

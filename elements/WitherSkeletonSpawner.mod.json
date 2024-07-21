@@ -3,11 +3,11 @@
   "_type": "block",
   "definition": {
     "texture": "test",
-    "textureTop": "",
-    "textureLeft": "",
-    "textureFront": "",
-    "textureRight": "",
-    "textureBack": "",
+    "textureTop": "test",
+    "textureLeft": "test",
+    "textureFront": "test",
+    "textureRight": "test",
+    "textureBack": "test",
     "renderType": 10,
     "customModelName": "Normal",
     "rotationMode": 0,
@@ -15,7 +15,7 @@
     "emissiveRendering": false,
     "displayFluidOverlay": false,
     "itemTexture": "",
-    "particleTexture": "",
+    "particleTexture": "aa",
     "tintType": "No tint",
     "isItemTinted": false,
     "hasTransparency": false,
@@ -33,14 +33,14 @@
         "subtract": false
       }
     ],
-    "name": "Test Block",
+    "name": "Wither Skeleton Spawner",
     "specialInfo": [],
     "hardness": 1.0,
     "resistance": 10.0,
     "hasGravity": false,
     "isWaterloggable": false,
     "creativeTab": {
-      "value": "CUSTOM:Yopkeinamono"
+      "value": "CUSTOM:MagicBooks"
     },
     "destroyTool": "Not specified",
     "customDrop": {
@@ -52,9 +52,9 @@
     "enchantPowerBonus": 0.0,
     "plantsGrowOn": false,
     "canRedstoneConnect": false,
-    "lightOpacity": 5,
+    "lightOpacity": 15,
     "material": {
-      "value": "GLASS"
+      "value": "ROCK"
     },
     "tickRate": 0,
     "tickRandomly": false,
@@ -79,7 +79,7 @@
     "isNotColidable": false,
     "isCustomSoundType": false,
     "soundOnStep": {
-      "value": "GLASS"
+      "value": "GROUND"
     },
     "breakSound": {
       "value": ""
@@ -96,7 +96,7 @@
     "stepSound": {
       "value": ""
     },
-    "luminance": 15,
+    "luminance": 0,
     "unbreakable": false,
     "breakHarvestLevel": 1,
     "isBonemealable": false,

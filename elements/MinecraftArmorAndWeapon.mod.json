@@ -4,7 +4,7 @@
   "definition": {
     "displayName": "Minecraft Armor And Weapon",
     "pointOfInterest": {
-      "value": "CUSTOM:RoseFlowerPot"
+      "value": "CUSTOM:CustomSmithingTable"
     },
     "actionSound": {
       "value": "entity.wither.ambient"

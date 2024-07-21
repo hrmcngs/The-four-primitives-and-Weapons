@@ -1,8 +1,6 @@
 
 package minecraftarmorweapon.block;
 
-import org.checkerframework.checker.units.qual.s;
-
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,14 +17,14 @@ import minecraftarmorweapon.procedures.TestBlockburotukugaYoukuritukusaretatokiP
 import java.util.List;
 import java.util.Collections;
 
-public class TestBlockBlock extends Block {
-	public TestBlockBlock() {
-		super(BlockBehaviour.Properties.of(Material.GLASS).sound(SoundType.GLASS).strength(1f, 10f).lightLevel(s -> 15));
+public class WitherSkeletonSpawnerBlock extends Block {
+	public WitherSkeletonSpawnerBlock() {
+		super(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(1f, 10f));
 	}
 
 	@Override
 	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 5;
+		return 15;
 	}
 
 	@Override

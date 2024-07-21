@@ -7,7 +7,7 @@
     "east": "minecraft_armor_weapon:blocks/test",
     "south": "minecraft_armor_weapon:blocks/test",
     "west": "minecraft_armor_weapon:blocks/test",
-    "particle": "minecraft_armor_weapon:blocks/test"
+    "particle": "minecraft_armor_weapon:blocks/aa"
   },
   "render_type": "solid"
 }

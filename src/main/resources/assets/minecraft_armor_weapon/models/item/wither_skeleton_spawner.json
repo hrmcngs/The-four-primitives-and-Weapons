@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft_armor_weapon:block/test_block",
+  "parent": "minecraft_armor_weapon:block/wither_skeleton_spawner",
   "display": {
     "thirdperson": {
       "rotation": [

@@ -10,15 +10,3 @@
     "item": "minecraft_armor_weapon:custom_smithing_table"
   }
 }
-{
-  "type": "minecraft:smithing",
-  "base": {
-    "item": "minecraft_armor_weapon:hammer"
-  },
-  "addition": {
-    "item": "minecraft:smithing_table"
-  },
-  "result": {
-    "item": "minecraft_armor_weapon:custom_smithing_table"
-  }
-}

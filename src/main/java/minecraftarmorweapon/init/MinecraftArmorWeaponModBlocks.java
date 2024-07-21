@@ -10,7 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.level.block.Block;
 
-import minecraftarmorweapon.block.TestBlockBlock;
+import minecraftarmorweapon.block.WitherSkeletonSpawnerBlock;
 import minecraftarmorweapon.block.StoneKatanaBlockBlock;
 import minecraftarmorweapon.block.StoneKatanaBlock1Block;
 import minecraftarmorweapon.block.StoneBricksTrapDoorBlock;
@@ -38,7 +38,7 @@ public class MinecraftArmorWeaponModBlocks {
 	public static final RegistryObject<Block> STONE_KATANA_BLOCK_1 = REGISTRY.register("stone_katana_block_1", () -> new StoneKatanaBlock1Block());
 	public static final RegistryObject<Block> MAKIWARIDAI = REGISTRY.register("makiwaridai", () -> new MakiwaridaiBlock());
 	public static final RegistryObject<Block> CUSTOM_SMITHING_TABLE = REGISTRY.register("custom_smithing_table", () -> new CustomSmithingTableBlock());
-	public static final RegistryObject<Block> TEST_BLOCK = REGISTRY.register("test_block", () -> new TestBlockBlock());
 	public static final RegistryObject<Block> MOTO_WITHER_KATANA_BLOCK_1 = REGISTRY.register("moto_wither_katana_block_1", () -> new MotoWitherKatanaBlock1Block());
 	public static final RegistryObject<Block> MOTO_WITHER_KATANA_BLOCK = REGISTRY.register("moto_wither_katana_block", () -> new MotoWitherKatanaBlockBlock());
+	public static final RegistryObject<Block> WITHER_SKELETON_SPAWNER = REGISTRY.register("wither_skeleton_spawner", () -> new WitherSkeletonSpawnerBlock());
 }
