@@ -19,7 +19,7 @@
       "value": ""
     },
     "destroyAnyBlock": false,
-    "immuneToFire": true,
+    "immuneToFire": false,
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "enableMeleeDamage": false,
@@ -29,9 +29,6 @@
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
-    "onDroppedByPlayer": {
-      "name": "SkinOfDragonpureiyaniyotuteaitemugadorotupusaretatoki"
-    },
     "isFood": false,
     "nutritionalValue": 4,
     "saturation": 0.3,
