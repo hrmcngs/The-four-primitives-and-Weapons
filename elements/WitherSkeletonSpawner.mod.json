@@ -40,7 +40,7 @@
     "hasGravity": false,
     "isWaterloggable": false,
     "creativeTab": {
-      "value": "CUSTOM:MagicBooks"
+      "value": "CUSTOM:Yopkeinamono"
     },
     "destroyTool": "Not specified",
     "customDrop": {
@@ -54,7 +54,7 @@
     "canRedstoneConnect": false,
     "lightOpacity": 15,
     "material": {
-      "value": "ROCK"
+      "value": "GLASS"
     },
     "tickRate": 0,
     "tickRandomly": false,
@@ -79,7 +79,7 @@
     "isNotColidable": false,
     "isCustomSoundType": false,
     "soundOnStep": {
-      "value": "GROUND"
+      "value": "GLASS"
     },
     "breakSound": {
       "value": ""

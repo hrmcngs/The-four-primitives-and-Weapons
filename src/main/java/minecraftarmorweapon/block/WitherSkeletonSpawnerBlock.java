@@ -19,7 +19,7 @@ import java.util.Collections;
 
 public class WitherSkeletonSpawnerBlock extends Block {
 	public WitherSkeletonSpawnerBlock() {
-		super(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(1f, 10f));
+		super(BlockBehaviour.Properties.of(Material.GLASS).sound(SoundType.GLASS).strength(1f, 10f));
 	}
 
 	@Override

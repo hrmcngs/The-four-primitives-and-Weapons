@@ -212,7 +212,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> MOTO_WITHER_KATANA_BLOCK_1 = block(MinecraftArmorWeaponModBlocks.MOTO_WITHER_KATANA_BLOCK_1, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> MOTO_WITHER_KATANA_BLOCK = block(MinecraftArmorWeaponModBlocks.MOTO_WITHER_KATANA_BLOCK, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> WITHER_KATANA = REGISTRY.register("wither_katana", () -> new WitherKatanaItem());
-	public static final RegistryObject<Item> WITHER_SKELETON_SPAWNER = block(MinecraftArmorWeaponModBlocks.WITHER_SKELETON_SPAWNER, MinecraftArmorWeaponModTabs.TAB_MAGIC_BOOKS);
+	public static final RegistryObject<Item> WITHER_SKELETON_SPAWNER = block(MinecraftArmorWeaponModBlocks.WITHER_SKELETON_SPAWNER, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> SKIN_OF_DRAGON = REGISTRY.register("skin_of_dragon", () -> new SkinOfDragonItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
