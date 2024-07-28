@@ -44,7 +44,7 @@ public class Kill1Procedure {
 		if (!world.isClientSide()) {
 			if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WITHER_KATANA.get()) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-					_entity.addEffect(new MobEffectInstance(MobEffects.WITHER, 120, 2, false, false));
+					_entity.addEffect(new MobEffectInstance(MobEffects.WITHER, 120, 2, false, true));
 			}
 		}
 		if (!world.isClientSide()) {
