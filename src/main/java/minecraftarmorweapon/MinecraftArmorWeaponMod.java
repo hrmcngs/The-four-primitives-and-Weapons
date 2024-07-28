@@ -33,6 +33,7 @@ import net.minecraft.network.FriendlyByteBuf;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModVillagerProfessions;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
+import minecraftarmorweapon.init.MinecraftArmorWeaponModPotions;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMenus;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
@@ -68,7 +69,7 @@ public class MinecraftArmorWeaponMod {
 		MinecraftArmorWeaponModFeatures.REGISTRY.register(bus);
 
 		MinecraftArmorWeaponModMobEffects.REGISTRY.register(bus);
-
+		MinecraftArmorWeaponModPotions.REGISTRY.register(bus);
 		MinecraftArmorWeaponModEnchantments.REGISTRY.register(bus);
 
 		MinecraftArmorWeaponModMenus.REGISTRY.register(bus);
