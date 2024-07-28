@@ -1,7 +1,7 @@
 {
   "parent": "minecraft_armor_weapon:custom/swordofnight",
   "textures": {
-    "1": "minecraft_armor_weapon:blocks/swordofnight",
+    "2": "minecraft_armor_weapon:blocks/swordofnight",
     "particle": "minecraft_armor_weapon:items/swordofnight"
   }
 }

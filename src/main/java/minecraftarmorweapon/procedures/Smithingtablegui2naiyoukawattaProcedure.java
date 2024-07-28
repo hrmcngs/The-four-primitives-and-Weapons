@@ -236,51 +236,6 @@ public class Smithingtablegui2naiyoukawattaProcedure {
 			}
 		}
 		if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
-				.getItem() == MinecraftArmorWeaponModItems.REPLICA_SWORD_OF_LIGHT.get()) {
-			if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(1)).getItem() : ItemStack.EMPTY).getItem() == Items.GOLDEN_APPLE) {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(1)).remove(8);
-					_player.containerMenu.broadcastChanges();
-				}
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(2)).remove(1);
-					_player.containerMenu.broadcastChanges();
-				}
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(3)).remove(1);
-					_player.containerMenu.broadcastChanges();
-				}
-			}
-			if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(2)).getItem() : ItemStack.EMPTY).getItem() == Items.GOLDEN_APPLE) {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(1)).remove(1);
-					_player.containerMenu.broadcastChanges();
-				}
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(2)).remove(8);
-					_player.containerMenu.broadcastChanges();
-				}
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(3)).remove(1);
-					_player.containerMenu.broadcastChanges();
-				}
-			}
-			if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(3)).getItem() : ItemStack.EMPTY).getItem() == Items.GOLDEN_APPLE) {
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(1)).remove(1);
-					_player.containerMenu.broadcastChanges();
-				}
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(2)).remove(1);
-					_player.containerMenu.broadcastChanges();
-				}
-				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
-					((Slot) _slots.get(3)).remove(8);
-					_player.containerMenu.broadcastChanges();
-				}
-			}
-		}
-		if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
 				.getItem() == MinecraftArmorWeaponModItems.WITHER_KATANA.get()) {
 			if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(1)).getItem() : ItemStack.EMPTY).getItem() == Items.WITHER_SKELETON_SKULL) {
 				if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {

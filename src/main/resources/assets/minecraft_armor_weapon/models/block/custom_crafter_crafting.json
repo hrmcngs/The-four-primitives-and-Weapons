@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft_armor_weapon:custom/crafttingblock",
+  "textures": {
+    "all": "minecraft_armor_weapon:blocks/aa",
+    "particle": "minecraft_armor_weapon:blocks/aa",
+    "1": "minecraft_armor_weapon:blocks/crafttingblock"
+  },
+  "render_type": "solid"
+}

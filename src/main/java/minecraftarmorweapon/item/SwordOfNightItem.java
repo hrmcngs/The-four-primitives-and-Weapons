@@ -34,7 +34,7 @@ public class SwordOfNightItem extends SwordItem {
 			}
 
 			public float getAttackDamageBonus() {
-				return 1f;
+				return 3f;
 			}
 
 			public int getLevel() {
@@ -48,7 +48,7 @@ public class SwordOfNightItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of();
 			}
-		}, 3, 0f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_CHUZUME_TAB));
+		}, 3, -2.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_CHUZUME_TAB));
 	}
 
 	@Override

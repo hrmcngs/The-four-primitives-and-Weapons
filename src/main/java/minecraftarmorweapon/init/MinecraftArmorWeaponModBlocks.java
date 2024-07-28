@@ -22,6 +22,7 @@ import minecraftarmorweapon.block.MotoWitherKatanaBlock1Block;
 import minecraftarmorweapon.block.MakiwaridaiBlock;
 import minecraftarmorweapon.block.KurikarakenBlockBlock;
 import minecraftarmorweapon.block.CustomSmithingTableBlock;
+import minecraftarmorweapon.block.CustomCrafterCraftingBlock;
 import minecraftarmorweapon.block.CrossBlock;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -41,4 +42,5 @@ public class MinecraftArmorWeaponModBlocks {
 	public static final RegistryObject<Block> MOTO_WITHER_KATANA_BLOCK_1 = REGISTRY.register("moto_wither_katana_block_1", () -> new MotoWitherKatanaBlock1Block());
 	public static final RegistryObject<Block> MOTO_WITHER_KATANA_BLOCK = REGISTRY.register("moto_wither_katana_block", () -> new MotoWitherKatanaBlockBlock());
 	public static final RegistryObject<Block> WITHER_SKELETON_SPAWNER = REGISTRY.register("wither_skeleton_spawner", () -> new WitherSkeletonSpawnerBlock());
+	public static final RegistryObject<Block> CUSTOM_CRAFTER_CRAFTING = REGISTRY.register("custom_crafter_crafting", () -> new CustomCrafterCraftingBlock());
 }

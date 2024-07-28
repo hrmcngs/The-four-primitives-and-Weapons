@@ -44,6 +44,7 @@ import minecraftarmorweapon.potion.KitterukitteruMobEffect;
 import minecraftarmorweapon.potion.KarikarisiterunemaidomaidoMobEffect;
 import minecraftarmorweapon.potion.KaminariyadeMobEffect;
 import minecraftarmorweapon.potion.KaitenMobEffect;
+import minecraftarmorweapon.potion.HardentityMobEffect;
 import minecraftarmorweapon.potion.GyetonzangekiMobEffect;
 import minecraftarmorweapon.potion.GuardMobEffect;
 import minecraftarmorweapon.potion.FireballeffectMobEffect;
@@ -119,4 +120,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> TOKUBETU = REGISTRY.register("tokubetu", () -> new TokubetuMobEffect());
 	public static final RegistryObject<MobEffect> ATTACK_IN_GUARD = REGISTRY.register("attack_in_guard", () -> new AttackInGuardMobEffect());
 	public static final RegistryObject<MobEffect> CHUZUME_HUSK_ARMOR_KNOCK_BACK = REGISTRY.register("chuzume_husk_armor_knock_back", () -> new ChuzumeHuskArmorKnockBackMobEffect());
+	public static final RegistryObject<MobEffect> HARDENTITY = REGISTRY.register("hardentity", () -> new HardentityMobEffect());
 }

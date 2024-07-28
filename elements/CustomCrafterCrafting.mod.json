@@ -2,14 +2,14 @@
   "_fv": 43,
   "_type": "block",
   "definition": {
-    "texture": "smithing_table_bottom",
-    "textureTop": "smithing_table_top",
-    "textureLeft": "smithing_table_side_b",
-    "textureFront": "smithing_table_front",
-    "textureRight": "smithing_table_side",
-    "textureBack": "smithing_table_back",
-    "renderType": 10,
-    "customModelName": "Normal",
+    "texture": "aa",
+    "textureTop": "",
+    "textureLeft": "",
+    "textureFront": "",
+    "textureRight": "",
+    "textureBack": "",
+    "renderType": 2,
+    "customModelName": "crafttingblock:default",
     "rotationMode": 0,
     "enablePitch": false,
     "emissiveRendering": false,
@@ -18,11 +18,20 @@
     "particleTexture": "",
     "tintType": "No tint",
     "isItemTinted": false,
-    "hasTransparency": false,
+    "hasTransparency": true,
     "connectedSides": false,
     "transparencyType": "SOLID",
     "disableOffset": false,
     "boundingBoxes": [
+      {
+        "mx": 3.0,
+        "my": 16.0,
+        "mz": 2.0,
+        "Mx": 13.0,
+        "My": 17.0,
+        "Mz": 3.0,
+        "subtract": false
+      },
       {
         "mx": 0.0,
         "my": 0.0,
@@ -31,9 +40,45 @@
         "My": 16.0,
         "Mz": 16.0,
         "subtract": false
+      },
+      {
+        "mx": 13.0,
+        "my": 16.0,
+        "mz": 2.0,
+        "Mx": 14.0,
+        "My": 17.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 2.0,
+        "my": 16.0,
+        "mz": 2.0,
+        "Mx": 3.0,
+        "My": 17.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 3.0,
+        "my": 16.0,
+        "mz": 13.0,
+        "Mx": 13.0,
+        "My": 17.0,
+        "Mz": 14.0,
+        "subtract": false
+      },
+      {
+        "mx": 3.0,
+        "my": 16.0,
+        "mz": 3.0,
+        "Mx": 13.0,
+        "My": 18.0,
+        "Mz": 13.0,
+        "subtract": false
       }
     ],
-    "name": "Custom Smithing Table",
+    "name": "Custom Crafter Crafting",
     "specialInfo": [],
     "hardness": 1.0,
     "resistance": 10.0,
@@ -54,7 +99,7 @@
     "canRedstoneConnect": false,
     "lightOpacity": 0,
     "material": {
-      "value": "ROCK"
+      "value": "WOOD"
     },
     "tickRate": 0,
     "tickRandomly": false,
@@ -100,13 +145,13 @@
     "unbreakable": false,
     "breakHarvestLevel": 1,
     "isBonemealable": false,
-    "hasInventory": false,
-    "guiBoundTo": "SmithingTableGui2",
+    "hasInventory": true,
+    "guiBoundTo": "CustomCrafterCraftinggui",
     "openGUIOnRightClick": true,
     "inventorySize": 9,
     "inventoryStackSize": 64,
     "inventoryDropWhenDestroyed": true,
-    "inventoryComparatorPower": true,
+    "inventoryComparatorPower": false,
     "inventoryOutSlotIDs": [],
     "inventoryInSlotIDs": [],
     "hasEnergyStorage": false,
@@ -117,6 +162,9 @@
     "isFluidTank": false,
     "fluidCapacity": 8000,
     "fluidRestrictions": [],
+    "onRightClicked": {
+      "name": "CustomCrafterCraftingburotukugaYoukuritukusaretatoki"
+    },
     "spawnWorldTypes": [],
     "restrictionBiomes": [],
     "blocksToReplace": [],

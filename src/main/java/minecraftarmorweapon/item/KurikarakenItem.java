@@ -23,6 +23,10 @@ import minecraftarmorweapon.procedures.GomanorikenYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
 import java.util.List;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 
 public class KurikarakenItem extends SwordItem {
 	public KurikarakenItem() {
@@ -78,4 +82,12 @@ public class KurikarakenItem extends SwordItem {
 	public boolean isFoil(ItemStack itemstack) {
 		return true;
 	}
+
+	@Override
+	public void fillItemCategory(CreativeModeTab tab,NonNullList<ItemStack>Items) {
+	if (this.allowedIn(tab)) {
+		ItemStack stack = new ItemStack(this);
+		stack.enchant(Enchantments.SMITE, 5);
+		Items.add(stack);
+	} }
 }
