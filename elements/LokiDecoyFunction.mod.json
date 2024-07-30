@@ -1,0 +1,9 @@
+{
+  "_fv": 43,
+  "_type": "function",
+  "definition": {
+    "code": "# Enter the function code here\ntag @s[scores={Decoy_Action=150}] add Decoy_Spin1\nexecute if entity @s[scores={Decoy_Action=150..}] run particle minecraft:smoke ~ ~1.8 ~ 0 0 0 0 2\nexecute if entity @s[scores={Decoy_Action=150}] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 2 1\ntag @s[scores={Decoy_Action=160}] remove Decoy_Spin1\ntag @s[scores={Decoy_Action=160}] add Decoy_Spin2\nexecute if entity @s[scores={Decoy_Action=160}] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 2 1.5\ntag @s[scores={Decoy_Action=170}] remove Decoy_Spin2\ntag @s[scores={Decoy_Action=170}] add Decoy_Spin3\nexecute if entity @s[scores={Decoy_Action=170..}] run playsound minecraft:block.note_block.pling master @a ~ ~ ~ 2 2\ntag @s[scores={Decoy_Action=160}] add Decoy_Spin2\nexecute if entity @s[scores={Decoy_Action=180}] run summon creeper ~ ~ ~ {Fuse:0s}\nexecute if entity @s[scores={Decoy_Action=180}] run kill @e[tag=Loki_Decoy_Target,limit=1,sort=nearest]\nkill @s[scores={Decoy_Action=180}]\n\n#頭くるくる\nexecute if entity @s[tag=Decoy_Spin1] store result entity @s Pose.Head[1] float -1 run scoreboard players add @s Decoy_Spin 20\nexecute if entity @s[tag=Decoy_Spin2] store result entity @s Pose.Head[1] float -1 run scoreboard players add @s Decoy_Spin 40\nexecute if entity @s[tag=Decoy_Spin3] store result entity @s Pose.Head[1] float -1 run scoreboard players add @s Decoy_Spin 60\nscoreboard players set @s[scores={Decoy_Spin=360..}] Spin 0\n",
+    "name": "loki_decoy_function",
+    "namespace": "mod"
+  }
+}

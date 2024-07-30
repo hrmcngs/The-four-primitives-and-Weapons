@@ -19,6 +19,7 @@ import net.minecraft.world.entity.Entity;
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.Ruami284Entity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
+import minecraftarmorweapon.entity.LokiDecoydasuEntity;
 import minecraftarmorweapon.entity.KillotiruEntity;
 import minecraftarmorweapon.entity.KatanaTobuEntity;
 import minecraftarmorweapon.entity.HrmcngsEntity;
@@ -49,6 +50,8 @@ public class MinecraftArmorWeaponModEntities {
 			EntityType.Builder.<KatanaTobuEntity>of(KatanaTobuEntity::new, MobCategory.MISC).setCustomClientFactory(KatanaTobuEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<BlackholeEntity>> BLACKHOLE = register("blackhole",
 			EntityType.Builder.<BlackholeEntity>of(BlackholeEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).setCustomClientFactory(BlackholeEntity::new).fireImmune().sized(0.8f, 0.8f));
+	public static final RegistryObject<EntityType<LokiDecoydasuEntity>> LOKI_DECOYDASU = register("projectile_loki_decoydasu",
+			EntityType.Builder.<LokiDecoydasuEntity>of(LokiDecoydasuEntity::new, MobCategory.MISC).setCustomClientFactory(LokiDecoydasuEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));

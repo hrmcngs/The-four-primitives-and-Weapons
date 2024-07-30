@@ -38,6 +38,7 @@ import minecraftarmorweapon.potion.NgsMobEffect;
 import minecraftarmorweapon.potion.NagiharaiMobEffect;
 import minecraftarmorweapon.potion.Nagiharai2MobEffect;
 import minecraftarmorweapon.potion.LongRangeWeaponCutMobEffect;
+import minecraftarmorweapon.potion.LokidecoyeffectMobEffect;
 import minecraftarmorweapon.potion.KurutimenasiMobEffect;
 import minecraftarmorweapon.potion.KougekiMobEffect;
 import minecraftarmorweapon.potion.KitterukitteruMobEffect;
@@ -52,6 +53,7 @@ import minecraftarmorweapon.potion.EffectMagicMobEffect;
 import minecraftarmorweapon.potion.EffectBloodTpMobEffect;
 import minecraftarmorweapon.potion.DevourBloodMobEffect;
 import minecraftarmorweapon.potion.DarknessAttackEffectMobEffect;
+import minecraftarmorweapon.potion.CustomsmithingtablecraftingMobEffect;
 import minecraftarmorweapon.potion.ChuzumeHuskArmorKnockBackMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
@@ -121,4 +123,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> ATTACK_IN_GUARD = REGISTRY.register("attack_in_guard", () -> new AttackInGuardMobEffect());
 	public static final RegistryObject<MobEffect> CHUZUME_HUSK_ARMOR_KNOCK_BACK = REGISTRY.register("chuzume_husk_armor_knock_back", () -> new ChuzumeHuskArmorKnockBackMobEffect());
 	public static final RegistryObject<MobEffect> HARDENTITY = REGISTRY.register("hardentity", () -> new HardentityMobEffect());
+	public static final RegistryObject<MobEffect> CUSTOMSMITHINGTABLECRAFTING = REGISTRY.register("customsmithingtablecrafting", () -> new CustomsmithingtablecraftingMobEffect());
+	public static final RegistryObject<MobEffect> LOKIDECOYEFFECT = REGISTRY.register("lokidecoyeffect", () -> new LokidecoyeffectMobEffect());
 }

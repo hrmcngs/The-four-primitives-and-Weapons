@@ -28,6 +28,21 @@ public class RogBookGuiKakusiTapProcedure {
 			ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 		}
 		if (entity instanceof Player _player) {
+			ItemStack _setstack = new ItemStack(MinecraftArmorWeaponModItems.DARKNESS.get());
+			_setstack.setCount(1);
+			ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+		}
+		if (entity instanceof Player _player) {
+			ItemStack _setstack = new ItemStack(MinecraftArmorWeaponModItems.FIREWORKS_BLACK.get());
+			_setstack.setCount(1);
+			ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+		}
+		if (entity instanceof Player _player) {
+			ItemStack _setstack = new ItemStack(MinecraftArmorWeaponModItems.NAIHAZUNO_RING.get());
+			_setstack.setCount(1);
+			ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
+		}
+		if (entity instanceof Player _player) {
 			ItemStack _stktoremove = new ItemStack(MinecraftArmorWeaponModItems.RPG_BOOK.get());
 			_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
 		}

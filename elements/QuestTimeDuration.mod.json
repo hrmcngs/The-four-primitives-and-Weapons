@@ -1,0 +1,12 @@
+{
+  "_fv": 43,
+  "_type": "gamerule",
+  "definition": {
+    "type": "Number",
+    "displayName": "Quest Time Duration",
+    "description": "The duration in ticks players have to complete tasks.",
+    "category": "MISC",
+    "defaultValueLogic": false,
+    "defaultValueNumber": 72000
+  }
+}

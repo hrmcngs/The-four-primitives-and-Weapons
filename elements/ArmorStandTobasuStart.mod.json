@@ -1,0 +1,9 @@
+{
+  "_fv": 43,
+  "_type": "function",
+  "definition": {
+    "code": "# say [start]\n#########################################################\n# ①の処理\n#########################################################\nsummon minecraft:armor_stand ~ ~ ~ {Tags:[AS2,AS2_INI],Small:1b}\nexecute anchored eyes as @e[tag=AS2_INI,limit=1,sort=nearest] run tp @s ^ ^ ^ ~ ~\n#########################################################\nscoreboard players set @e[tag=AS2_INI,limit=1,sort=nearest] AS2_D 80\ntag @e[tag=AS2_INI,limit=1,sort=nearest] remove AS2_INI\n#########################################################\n",
+    "name": "armor_stand_tobasu_start",
+    "namespace": "mod"
+  }
+}

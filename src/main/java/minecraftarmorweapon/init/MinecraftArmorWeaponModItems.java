@@ -35,6 +35,7 @@ import minecraftarmorweapon.item.RiversOfBloodItem;
 import minecraftarmorweapon.item.ResetMaxItem;
 import minecraftarmorweapon.item.Reset1Item;
 import minecraftarmorweapon.item.ReplicaSwordOfLightItem;
+import minecraftarmorweapon.item.QuestbookItem;
 import minecraftarmorweapon.item.PrototypeKatanaItem;
 import minecraftarmorweapon.item.PillagerArmorItem;
 import minecraftarmorweapon.item.OninomenItem;
@@ -51,6 +52,8 @@ import minecraftarmorweapon.item.MagicWandItem;
 import minecraftarmorweapon.item.MagicMcrystalItem;
 import minecraftarmorweapon.item.MacheteItem;
 import minecraftarmorweapon.item.LunaItem;
+import minecraftarmorweapon.item.LokiTheTricksterItem;
+import minecraftarmorweapon.item.LokiDecoydasuItem;
 import minecraftarmorweapon.item.KurikarakenutigatanaItem;
 import minecraftarmorweapon.item.KurikarakenswordItem;
 import minecraftarmorweapon.item.KurikarakenItem;
@@ -215,6 +218,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> WITHER_SKELETON_SPAWNER = block(MinecraftArmorWeaponModBlocks.WITHER_SKELETON_SPAWNER, MinecraftArmorWeaponModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> SKIN_OF_DRAGON = REGISTRY.register("skin_of_dragon", () -> new SkinOfDragonItem());
 	public static final RegistryObject<Item> CUSTOM_CRAFTER_CRAFTING = block(MinecraftArmorWeaponModBlocks.CUSTOM_CRAFTER_CRAFTING, CreativeModeTab.TAB_DECORATIONS);
+	public static final RegistryObject<Item> QUESTBOOK = REGISTRY.register("questbook", () -> new QuestbookItem());
+	public static final RegistryObject<Item> LOKI_DECOYDASU = REGISTRY.register("loki_decoydasu", () -> new LokiDecoydasuItem());
+	public static final RegistryObject<Item> LOKI_THE_TRICKSTER = REGISTRY.register("loki_the_trickster", () -> new LokiTheTricksterItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

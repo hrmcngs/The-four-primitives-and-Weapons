@@ -1,0 +1,9 @@
+{
+  "_fv": 43,
+  "_type": "function",
+  "definition": {
+    "code": "# Enter the function code here# say [load]\n#########################################################\nscoreboard objectives add AS2_D dummy\nscoreboard objectives add AS2_X0 dummy\nscoreboard objectives add AS2_Y0 dummy\nscoreboard objectives add AS2_Z0 dummy\nscoreboard objectives add AS2_X1 dummy\nscoreboard objectives add AS2_Y1 dummy\nscoreboard objectives add AS2_Z1 dummy\nscoreboard objectives add AS2_R minecraft.used:minecraft.carrot_on_a_stick\n#########################################################\n\n",
+    "name": "load",
+    "namespace": "mod"
+  }
+}

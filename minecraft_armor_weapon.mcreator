@@ -5294,6 +5294,7 @@
     {
       "name": "RpgBookGive",
       "type": "gamerule",
+      "sortid": 454,
       "compiles": true,
       "locked_code": false,
       "registry_name": "rpg_book_give",
@@ -6933,13 +6934,476 @@
       }
     },
     {
-      "name": "HardEntityEffectItem",
-      "type": "potion",
+      "name": "QuestTimeDuration",
+      "type": "gamerule",
+      "sortid": 453,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "hard_entity_effect_item",
+      "registry_name": "quest_time_duration",
       "metadata": {
-        "files": []
+        "files": [],
+        "type": "number"
+      },
+      "path": "~/quests"
+    },
+    {
+      "name": "Lanterntaskone",
+      "type": "procedure",
+      "sortid": 455,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lanterntaskone",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LanterntaskoneProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/quests/Tasks/Lanterns"
+    },
+    {
+      "name": "LanterTaskTwo",
+      "type": "procedure",
+      "sortid": 456,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lanter_task_two",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LanterTaskTwoProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/quests/Tasks/Lanterns"
+    },
+    {
+      "name": "CustomsmithingtablecraftingposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 459,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "customsmithingtablecraftingposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/CustomsmithingtablecraftingposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "CustomsmithingtablecraftingposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 460,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "customsmithingtablecraftingposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/CustomsmithingtablecraftingposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Customsmithingtablecrafting",
+      "type": "potioneffect",
+      "sortid": 461,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "customsmithingtablecrafting",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/CustomsmithingtablecraftingMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "Laterntaskthree",
+      "type": "procedure",
+      "sortid": 462,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "laterntaskthree",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LaterntaskthreeProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/quests/Tasks/Lanterns"
+    },
+    {
+      "name": "Questscreen",
+      "type": "gui",
+      "sortid": 463,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "questscreen",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/client/gui/QuestscreenScreen.java",
+          "src/main/java/minecraftarmorweapon/world/inventory/QuestscreenMenu.java"
+        ]
+      },
+      "path": "~/quests/Gui"
+    },
+    {
+      "name": "Questbook",
+      "type": "item",
+      "sortid": 464,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "questbook",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/inventory/QuestbookInventoryCapability.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/questbook.json",
+          "src/main/java/minecraftarmorweapon/item/QuestbookItem.java"
+        ]
+      },
+      "path": "~/quests/Gui/item"
+    },
+    {
+      "name": "Questscreennextbutton",
+      "type": "procedure",
+      "sortid": 465,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "questscreennextbutton",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/QuestscreennextbuttonProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/quests/Gui/buttons"
+    },
+    {
+      "name": "Lanterntaskfour",
+      "type": "procedure",
+      "sortid": 466,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lanterntaskfour",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LanterntaskfourProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/quests/Tasks/Lanterns"
+    },
+    {
+      "name": "LokiDecoydasuFeibiDaoJugaburotukuniDangtatutatoki",
+      "type": "procedure",
+      "sortid": 468,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "loki_decoydasu_feibi_dao_jugaburotukuni_dangtatutatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LokiDecoydasuFeibiDaoJugaburotukuniDangtatutatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LokiDecoydasu",
+      "type": "rangeditem",
+      "sortid": 469,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "loki_decoydasu",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/LokiDecoydasuItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/loki_decoydasu.json",
+          "src/main/java/minecraftarmorweapon/entity/LokiDecoydasuEntity.java"
+        ]
+      }
+    },
+    {
+      "name": "LokiTheTrickster",
+      "type": "tool",
+      "sortid": 470,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "loki_the_trickster",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/LokiTheTricksterItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/loki_the_trickster.json"
+        ]
+      }
+    },
+    {
+      "name": "LokidecoyeffectehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 471,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lokidecoyeffectehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LokidecoyeffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LokidecoyeffectposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 472,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lokidecoyeffectposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LokidecoyeffectposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Lokidecoyeffect",
+      "type": "potioneffect",
+      "sortid": 473,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lokidecoyeffect",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/LokidecoyeffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "LokiDecoyFunction",
+      "type": "function",
+      "sortid": 474,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "loki_decoy_function",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/loki_decoy_function.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "LokidecoyeffectposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 475,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lokidecoyeffectposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/LokidecoyeffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Load",
+      "type": "function",
+      "sortid": 476,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "load",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/load.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "ArmorStandTobasuMain",
+      "type": "function",
+      "sortid": 477,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_stand_tobasu_main",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/armor_stand_tobasu_main.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "ArmorStandTobasuStart",
+      "type": "function",
+      "sortid": 478,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_stand_tobasu_start",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/armor_stand_tobasu_start.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "ArmorStandTobasuTick",
+      "type": "function",
+      "sortid": 479,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_stand_tobasu_tick",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/armor_stand_tobasu_tick.mcfunction"
+        ]
       }
     }
   ],
@@ -6988,6 +7452,174 @@
     },
     {
       "name": "rpgbookgive",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "true"
+    },
+    {
+      "name": "questTimeLeft",
+      "type": "number",
+      "scope": "map",
+      "value": "0"
+    },
+    {
+      "name": "questTaskOne",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "questTaskTwo",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "questTaskThree",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "questTaskFour",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "questTaskFive",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "questGoal",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "questChallenge",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "questReward",
+      "type": "string",
+      "scope": "map",
+      "value": ""
+    },
+    {
+      "name": "playerHasCompletedQuestTaskOne",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "playerHasCompletedQuestTaskTwo",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "playerHasCompletedQuestTaskThree",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "playerHasCompletedQuestTaskFour",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "playerHasCompletedQuestTaskFive",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "playerHasCompletedQuestGoal",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "playerHasCompletedQuestChallenge",
+      "type": "logic",
+      "scope": "player_persistent",
+      "value": "false"
+    },
+    {
+      "name": "playerQuestTaskOneNumber",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "playerQuestTaskTwoNumber",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "playerQuestTaskThreeNumber",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "playerQuestTaskFourNumber",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "playerQuestTaskFiveNumber",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "playerQuestGoalNumber",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0"
+    },
+    {
+      "name": "questTimeLeftDisplay",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "questChallengeReward",
+      "type": "string",
+      "scope": "map",
+      "value": "\"\""
+    },
+    {
+      "name": "playerQuestChallengeNumber",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "0.0"
+    },
+    {
+      "name": "questScreenPage",
+      "type": "number",
+      "scope": "player_persistent",
+      "value": "1.0"
+    },
+    {
+      "name": "playerLockGoal",
+      "type": "logic",
+      "scope": "map",
+      "value": "false"
+    },
+    {
+      "name": "playerLockChallenge",
       "type": "logic",
       "scope": "player_persistent",
       "value": "false"
@@ -7046,7 +7678,6 @@
       "block.minecraft_armor_weapon.moto_wither_katana_block_1": "Moto Wither Katana Block",
       "item.minecraft_armor_weapon.dragon_armor_chestplate": "§5Dragon chestplate",
       "item.minecraft_armor_weapon.bogged_outer_leggings": "Bogged Outer Leggings",
-      "item.minecraft.splash_potion.effect.hard_entity_effect_item": "Splash Potion of True Crafter Mode Effect",
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.tokubetusounazangeki": "aa",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
@@ -7072,6 +7703,7 @@
       "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
       "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
+      "gamerule.questTimeDuration.description": "The duration in ticks players have to complete tasks.",
       "effect.minecraft_armor_weapon.hardentity": "True Crafter Mode",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "effect.minecraft_armor_weapon.otita": "a",
@@ -7105,6 +7737,7 @@
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
+      "item.minecraft_armor_weapon.loki_the_trickster": "§6Loki The Trickster",
       "advancements.rivers_of_blood_achievements.descr": "§4Get Rivers of Blood",
       "effect.minecraft_armor_weapon.sword_of_night_reload": "sword of night shot reload",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
@@ -7116,6 +7749,7 @@
       "block.minecraft_armor_weapon.moto_wither_katana_block": "Moto Wither Katana Block",
       "advancements.sword_progress.title": "First Steps",
       "item.minecraft_armor_weapon.desporn_kenti": "Kenti",
+      "item.minecraft_armor_weapon.questbook": "Quest book",
       "itemGroup.tabnigu": "§5Nigu",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_chestplate": "das herz einer fee armor chestplate",
       "effect.minecraft_armor_weapon.storm_effect": "stormeffect",
@@ -7127,7 +7761,7 @@
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "block.minecraft_armor_weapon.makiwaridai": "Makiwaridai",
       "item.minecraft_armor_weapon.motaseru": "motaseru",
-      "item.minecraft.potion.effect.hard_entity_effect_item": "Potion of True Crafter Mode Effect",
+      "effect.minecraft_armor_weapon.lokidecoyeffect": "loki_decoy",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
       "gui.minecraft_armor_weapon.smithing_table_gui_2.label_upgrade_gear": "Upgrade Gear",
       "item.minecraft_armor_weapon.strayouterarmorhat_helmet": "Stray Outer Armor Hat",
@@ -7149,14 +7783,13 @@
       "block.minecraft_armor_weapon.stone_katana_block_1": "stone Katana Block",
       "item.minecraft_armor_weapon.stray_outer_armor_leggings": "Stray Outer Armor Leggins",
       "item.minecraft_armor_weapon.skin_of_dragon": "Skin Of Dragon",
-      "item.minecraft.tipped_arrow.effect.hard_entity_effect_item": "Arrow of True Crafter Mode Effect",
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
       "item.minecraft_armor_weapon.oninomen_helmet": "oni\u0027s mask",
       "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
       "item.minecraft_armor_weapon.ninjatou": "ninjato",
+      "gamerule.questTimeDuration": "Quest Time Duration",
       "advancements.you_have_become_a_vampire.title": "You have become a vampire.",
-      "item.minecraft.lingering_potion.effect.hard_entity_effect_item": "Lingering Potion of True Crafter Mode Effect",
       "item.minecraft_armor_weapon.nigu_shield": "Nigu Shield",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
@@ -7191,6 +7824,7 @@
       "item.minecraft_armor_weapon.dragon_black_armor_leggings": "§8Dragon black leggings",
       "gamerule.rpgBookGive": "RPG book give",
       "item.minecraft_armor_weapon.kabuseru": "kabuseru",
+      "item.minecraft_armor_weapon.loki_decoydasu": "Loki Decoydasu",
       "item.minecraft_armor_weapon.warden_armor_leggings": "§3warden leggings",
       "item.minecraft_armor_weapon.magisches_feen_katana": "§dMagisches Feen Katana",
       "key.minecraft_armor_weapon.n": "N",
@@ -7205,6 +7839,7 @@
       "item.minecraft_armor_weapon.dragon_blue_armor_boots": "§1Dragon blue boots",
       "effect.minecraft_armor_weapon.darkness_attack_effect": "darkness",
       "advancements.magical_katana_progress.descr": "Get a katana of magical power",
+      "effect.minecraft_armor_weapon.customsmithingtablecrafting": "minecraft_armor_weapon:custom_smithing_table_crafting",
       "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
@@ -7274,7 +7909,6 @@
       "block.minecraft_armor_weapon.moto_wither_katana_block_1": "Moto Wither Katana Block",
       "item.minecraft_armor_weapon.dragon_armor_chestplate": "§5Dragon chestplate",
       "item.minecraft_armor_weapon.bogged_outer_leggings": "Bogged Outer Leggings",
-      "item.minecraft.splash_potion.effect.hard_entity_effect_item": "Splash Potion of Hard Entity Effect Item",
       "item.minecraft_armor_weapon.hammer": "Hammer",
       "effect.minecraft_armor_weapon.tokubetusounazangeki": "aa",
       "item.minecraft_armor_weapon.my_test_iron_katana": "§8Zero Iron Katana",
@@ -7300,6 +7934,7 @@
       "item.minecraft_armor_weapon.a_2": "Asupe",
       "item.minecraft_armor_weapon.otiruyo_spawn_egg": "Otiruyo Spawn Egg",
       "item.minecraft_armor_weapon.dragon_armor_leggings": "§5Dragon leggings",
+      "gamerule.questTimeDuration.description": "The duration in ticks players have to complete tasks.",
       "effect.minecraft_armor_weapon.hardentity": "True Crafter Mode",
       "item.minecraft_armor_weapon.stray_outer_armor_helmet": "Stray Outer Armor Helmet",
       "effect.minecraft_armor_weapon.otita": "a",
@@ -7333,6 +7968,7 @@
       "item.minecraft_armor_weapon.pillager_armor_leggings": "Pillager Armor Leggins",
       "item.minecraft_armor_weapon.killotiru_spawn_egg": "Otiruyo Spawn Egg",
       "effect.minecraft_armor_weapon.nagiharai_2": "aa",
+      "item.minecraft_armor_weapon.loki_the_trickster": "§6Loki The Trickster",
       "advancements.rivers_of_blood_achievements.descr": "§4 Rivers of Bloodを得る",
       "effect.minecraft_armor_weapon.sword_of_night_reload": "sword of night",
       "effect.minecraft_armor_weapon.tissoku": "tissoku",
@@ -7344,6 +7980,7 @@
       "block.minecraft_armor_weapon.moto_wither_katana_block": "Moto Wither Katana Block",
       "advancements.sword_progress.title": "初めの一歩",
       "item.minecraft_armor_weapon.desporn_kenti": "Kenti",
+      "item.minecraft_armor_weapon.questbook": "Quest book",
       "itemGroup.tabnigu": "二グ",
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_chestplate": "das herz einer fee armor chestplate",
       "effect.minecraft_armor_weapon.storm_effect": "stormeffect",
@@ -7355,7 +7992,7 @@
       "item.minecraft_armor_weapon.dragon_green_armor_helmet": "§2Dragon green helmet",
       "block.minecraft_armor_weapon.makiwaridai": "薪割り台",
       "item.minecraft_armor_weapon.motaseru": "motaseru",
-      "item.minecraft.potion.effect.hard_entity_effect_item": "Potion of Hard Entity Effect Item",
+      "effect.minecraft_armor_weapon.lokidecoyeffect": "loki_decoy",
       "item.minecraft_armor_weapon.pillager_armor_chestplate": "Pillager Armor Chestplate",
       "gui.minecraft_armor_weapon.smithing_table_gui_2.label_upgrade_gear": "装備の強化",
       "item.minecraft_armor_weapon.strayouterarmorhat_helmet": "Stray Outer Armor Hat",
@@ -7377,14 +8014,13 @@
       "block.minecraft_armor_weapon.stone_katana_block_1": "Netherite Katana Block",
       "item.minecraft_armor_weapon.stray_outer_armor_leggings": "Stray Outer Armor Leggins",
       "item.minecraft_armor_weapon.skin_of_dragon": "Skin Of Dragon",
-      "item.minecraft.tipped_arrow.effect.hard_entity_effect_item": "Arrow of Hard Entity Effect Item",
       "itemGroup.tabevent": "Event",
       "item.minecraft_armor_weapon.reset_1": "Reset Damege",
       "item.minecraft_armor_weapon.oninomen_helmet": "鬼の面",
       "item.minecraft_armor_weapon.halloween_2023_10_31_sickle": "§6Sickle",
       "item.minecraft_armor_weapon.ninjatou": "忍者刀",
+      "gamerule.questTimeDuration": "Quest Time Duration",
       "advancements.you_have_become_a_vampire.title": "You have become a vampire.",
-      "item.minecraft.lingering_potion.effect.hard_entity_effect_item": "Lingering Potion of Hard Entity Effect Item",
       "item.minecraft_armor_weapon.nigu_shield": "二グ盾",
       "effect.minecraft_armor_weapon.youwakaran": "youwakaran",
       "effect.minecraft_armor_weapon.attack_bow": "bow attack",
@@ -7419,6 +8055,7 @@
       "item.minecraft_armor_weapon.dragon_black_armor_leggings": "§8Dragon black leggings",
       "gamerule.rpgBookGive": "RPG book give",
       "item.minecraft_armor_weapon.kabuseru": "kabuseru",
+      "item.minecraft_armor_weapon.loki_decoydasu": "Loki Decoydasu",
       "item.minecraft_armor_weapon.warden_armor_leggings": "warden leggings",
       "item.minecraft_armor_weapon.magisches_feen_katana": "§dMagisches Feen Katana",
       "key.minecraft_armor_weapon.n": "N",
@@ -7433,6 +8070,7 @@
       "item.minecraft_armor_weapon.dragon_blue_armor_boots": "§1Dragon blue boots",
       "effect.minecraft_armor_weapon.darkness_attack_effect": "darkness",
       "advancements.magical_katana_progress.descr": "魔力の刀を得る",
+      "effect.minecraft_armor_weapon.customsmithingtablecrafting": "minecraft_armor_weapon:custom_smithing_table_crafting",
       "item.minecraft_armor_weapon.bogged_outer_helmet": "Bogged Outer Helmet",
       "effect.minecraft_armor_weapon.zanngekitokubetu": "aa",
       "effect.minecraft_armor_weapon.thunder_hit": "a",
@@ -7472,6 +8110,49 @@
           },
           {
             "name": "blue",
+            "children": []
+          }
+        ]
+      },
+      {
+        "name": "quests",
+        "children": [
+          {
+            "name": "Tasks",
+            "children": [
+              {
+                "name": "Lanterns",
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "Goals",
+            "children": []
+          },
+          {
+            "name": "Challenges",
+            "children": []
+          },
+          {
+            "name": "Gui",
+            "children": [
+              {
+                "name": "item",
+                "children": []
+              },
+              {
+                "name": "buttons",
+                "children": []
+              },
+              {
+                "name": "conditions",
+                "children": []
+              }
+            ]
+          },
+          {
+            "name": "Script",
             "children": []
           }
         ]

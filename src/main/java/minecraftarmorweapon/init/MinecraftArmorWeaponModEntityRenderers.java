@@ -9,6 +9,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+
 import minecraftarmorweapon.client.renderer.SkeltonMobRenderer;
 import minecraftarmorweapon.client.renderer.Ruami284Renderer;
 import minecraftarmorweapon.client.renderer.OtiruyoRenderer;
@@ -28,5 +30,6 @@ public class MinecraftArmorWeaponModEntityRenderers {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.KILLOTIRU.get(), KillotiruRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.KATANA_TOBU.get(), KatanaTobuRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.BLACKHOLE.get(), BlackholeRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.LOKI_DECOYDASU.get(), ThrownItemRenderer::new);
 	}
 }
