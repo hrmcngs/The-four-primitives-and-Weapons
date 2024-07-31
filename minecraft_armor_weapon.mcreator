@@ -6733,6 +6733,22 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
           }
         ]
       }
@@ -7405,6 +7421,153 @@
           "src/main/resources/data/minecraft_armor_weapon/functions/armor_stand_tobasu_tick.mcfunction"
         ]
       }
+    },
+    {
+      "name": "Disarm",
+      "type": "function",
+      "sortid": 480,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "disarm",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/disarm.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "Disarmwimd",
+      "type": "function",
+      "sortid": 481,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "disarmwimd",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/disarmwimd.mcfunction"
+        ]
+      },
+      "path": "~/projectile"
+    },
+    {
+      "name": "Move",
+      "type": "function",
+      "sortid": 482,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "move",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/move.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "Lokidisarmmode",
+      "type": "function",
+      "sortid": 483,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lokidisarmmode",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/loki_disarm_mode.mcfunction"
+        ]
+      },
+      "path": "~/projectile"
+    },
+    {
+      "name": "ArmorStandTobasuEffectehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 484,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_stand_tobasu_effectehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ArmorStandTobasuEffectehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ArmorStandTobasuEffect",
+      "type": "potioneffect",
+      "sortid": 485,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_stand_tobasu_effect",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/ArmorStandTobasuEffectMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ArmorStandTobasuEffectposiyonXiaoGuogaQieretaShi",
+      "type": "procedure",
+      "sortid": 486,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_stand_tobasu_effectposiyon_xiao_guoga_qiereta_shi",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ArmorStandTobasuEffectposiyonXiaoGuogaQieretaShiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Armorstandtobasueffectkill",
+      "type": "potioneffect",
+      "sortid": 488,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armorstandtobasueffectkill",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/potion/ArmorstandtobasueffectkillMobEffect.java"
+        ]
+      }
+    },
+    {
+      "name": "ArmorStandTobasuStartKill",
+      "type": "function",
+      "sortid": 489,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_stand_tobasu_start_kill",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/armor_stand_tobasu_start_kill.mcfunction"
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -7721,6 +7884,7 @@
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_boots": "§8Dragon Black boots",
+      "effect.minecraft_armor_weapon.armorstandtobasueffectkill": "armor stand effect",
       "effect.minecraft_armor_weapon.syugekinanozee": "aa",
       "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized §4",
@@ -7806,6 +7970,7 @@
       "advancements.magical_swordsman_achievements.title": "§eYou\u0027ve become a Magical Swordsman!",
       "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
+      "effect.minecraft_armor_weapon.armor_stand_tobasu_effect": "armor stand effect",
       "gamerule.rpgBookGive.description": "Give RPG Book when respawning or at initial spawn or",
       "effect.minecraft_armor_weapon.tokubetu": "a",
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
@@ -7952,6 +8117,7 @@
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_boots": "§8Dragon Black boots",
+      "effect.minecraft_armor_weapon.armorstandtobasueffectkill": "armor stand effect",
       "effect.minecraft_armor_weapon.syugekinanozee": "aa",
       "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized",
@@ -8037,6 +8203,7 @@
       "advancements.magical_swordsman_achievements.title": "君は魔法剣士になった",
       "entity.minecraft_armor_weapon.hrmcngs": "hrmcngs",
       "item.minecraft_armor_weapon.reset_max": "Reset Max",
+      "effect.minecraft_armor_weapon.armor_stand_tobasu_effect": "armor stand effect",
       "gamerule.rpgBookGive.description": "リスポーンしたときや初期スポーンの時にRPG Bookを与えるか",
       "effect.minecraft_armor_weapon.tokubetu": "a",
       "item.minecraft_armor_weapon.magic_mcrystal": "Magic Mcrystal",
@@ -8156,6 +8323,10 @@
             "children": []
           }
         ]
+      },
+      {
+        "name": "projectile",
+        "children": []
       }
     ]
   },

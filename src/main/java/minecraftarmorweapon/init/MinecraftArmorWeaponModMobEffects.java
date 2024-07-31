@@ -63,6 +63,8 @@ import minecraftarmorweapon.potion.BarrierEffectMobEffect;
 import minecraftarmorweapon.potion.AttackInGuardMobEffect;
 import minecraftarmorweapon.potion.AttackBowMobEffect;
 import minecraftarmorweapon.potion.Arrow1MobEffect;
+import minecraftarmorweapon.potion.ArmorstandtobasueffectkillMobEffect;
+import minecraftarmorweapon.potion.ArmorStandTobasuEffectMobEffect;
 import minecraftarmorweapon.potion.AaaaMobEffect;
 import minecraftarmorweapon.potion.AaMobEffect;
 
@@ -125,4 +127,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> HARDENTITY = REGISTRY.register("hardentity", () -> new HardentityMobEffect());
 	public static final RegistryObject<MobEffect> CUSTOMSMITHINGTABLECRAFTING = REGISTRY.register("customsmithingtablecrafting", () -> new CustomsmithingtablecraftingMobEffect());
 	public static final RegistryObject<MobEffect> LOKIDECOYEFFECT = REGISTRY.register("lokidecoyeffect", () -> new LokidecoyeffectMobEffect());
+	public static final RegistryObject<MobEffect> ARMOR_STAND_TOBASU_EFFECT = REGISTRY.register("armor_stand_tobasu_effect", () -> new ArmorStandTobasuEffectMobEffect());
+	public static final RegistryObject<MobEffect> ARMORSTANDTOBASUEFFECTKILL = REGISTRY.register("armorstandtobasueffectkill", () -> new ArmorstandtobasueffectkillMobEffect());
 }
