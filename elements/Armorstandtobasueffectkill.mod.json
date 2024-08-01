@@ -2,7 +2,7 @@
   "_fv": 43,
   "_type": "potioneffect",
   "definition": {
-    "effectName": "armor stand effect",
+    "effectName": "armor stand effect kill",
     "icon": "black_hole_effect.png",
     "color": {
       "value": -1,
@@ -14,7 +14,7 @@
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
     "onActiveTick": {
-      "name": "ArmorStandTobasuEffectehuekutogaYouXiaoShinoteituku"
+      "name": "ArmorstandtobasueffectkillehuekutogaYouXiaoShinoteituku"
     },
     "onExpired": {
       "name": "ArmorStandTobasuEffectposiyonXiaoGuogaQieretaShi"

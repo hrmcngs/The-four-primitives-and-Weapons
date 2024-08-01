@@ -10,8 +10,8 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
+import minecraftarmorweapon.procedures.ArmorstandtobasueffectkillehuekutogaYouXiaoShinoteitukuProcedure;
 import minecraftarmorweapon.procedures.ArmorStandTobasuEffectposiyonXiaoGuogaQieretaShiProcedure;
-import minecraftarmorweapon.procedures.ArmorStandTobasuEffectehuekutogaYouXiaoShinoteitukuProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
@@ -27,7 +27,7 @@ public class ArmorstandtobasueffectkillMobEffect extends MobEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		ArmorStandTobasuEffectehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
+		ArmorstandtobasueffectkillehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override

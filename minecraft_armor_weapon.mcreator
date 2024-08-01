@@ -7557,9 +7557,57 @@
       }
     },
     {
+      "name": "ArmorStandTobasuTickKill",
+      "type": "function",
+      "sortid": 490,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armor_stand_tobasu_tick_kill",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/armor_stand_tobasu_tick_kill.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "ArmorstandtobasueffectkillehuekutogaYouXiaoShinoteituku",
+      "type": "procedure",
+      "sortid": 492,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "armorstandtobasueffectkillehuekutoga_you_xiao_shinoteituku",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/ArmorstandtobasueffectkillehuekutogaYouXiaoShinoteitukuProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
       "name": "ArmorStandTobasuStartKill",
       "type": "function",
-      "sortid": 489,
+      "sortid": 493,
       "compiles": true,
       "locked_code": false,
       "registry_name": "armor_stand_tobasu_start_kill",
@@ -7884,7 +7932,7 @@
       "enchantment.minecraft_armor_weapon.kill": "§8§l§oKill",
       "item.minecraft_armor_weapon.stray_outer_armor_chestplate": "Stray Outer Armor Chestplate",
       "item.minecraft_armor_weapon.dragon_black_armor_boots": "§8Dragon Black boots",
-      "effect.minecraft_armor_weapon.armorstandtobasueffectkill": "armor stand effect",
+      "effect.minecraft_armor_weapon.armorstandtobasueffectkill": "armor stand effect kill",
       "effect.minecraft_armor_weapon.syugekinanozee": "aa",
       "effect.minecraft_armor_weapon.nagiharai": "aa",
       "enchantment.minecraft_armor_weapon.demonized": "§4§kDemonized §4",
