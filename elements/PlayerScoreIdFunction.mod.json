@@ -1,0 +1,9 @@
+{
+  "_fv": 43,
+  "_type": "function",
+  "definition": {
+    "code": "# Enter the function code here\n#プレイヤーのID\nexecute if entity @a[tag=!HasID_Player,limit=1] run scoreboard players add #PlayerID_Core PlayerID_Core 1\nexecute as @a[tag=!HasID_Player,limit=1] run scoreboard players operation @s PlayerID = #PlayerID_Core PlayerID_Core\ntag @a[tag=!HasID_Player,limit=1,scores={PlayerID=0..}] add HasID_Player\n\n#\"NeedID\"タグ持ちにプレイヤーと同じIDを付与\n#\"ScoreID2\"はプレイヤー由来のエンティティ限定\nexecute as @e[tag=NeedID] at @s run scoreboard players operation @s ScoreID2 = @p PlayerID\ntag @e[tag=NeedID] remove NeedID\n",
+    "name": "player_score_id_function",
+    "namespace": "mod"
+  }
+}

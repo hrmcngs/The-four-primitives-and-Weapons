@@ -61,5 +61,15 @@ public class SkinOfDragonTickProcedure {
 					_level.getServer().getFunctions().execute(_fopt.get(), new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null));
 			}
 		}
+		if (world instanceof ServerLevel _level && _level.getServer() != null) {
+			Optional<CommandFunction> _fopt = _level.getServer().getFunctions().get(new ResourceLocation("minecraft_armor_weapon:player_score_id_funtion"));
+			if (_fopt.isPresent())
+				_level.getServer().getFunctions().execute(_fopt.get(), new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null));
+		}
+		if (world instanceof ServerLevel _level && _level.getServer() != null) {
+			Optional<CommandFunction> _fopt = _level.getServer().getFunctions().get(new ResourceLocation("minecraft_armor_weapon:disarm_main"));
+			if (_fopt.isPresent())
+				_level.getServer().getFunctions().execute(_fopt.get(), new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null));
+		}
 	}
 }

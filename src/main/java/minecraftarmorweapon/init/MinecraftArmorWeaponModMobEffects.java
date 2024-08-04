@@ -31,6 +31,7 @@ import minecraftarmorweapon.potion.SwordOfNightReloadMobEffect;
 import minecraftarmorweapon.potion.SwordOfNightEffectMobEffect;
 import minecraftarmorweapon.potion.SuityuuMobEffect;
 import minecraftarmorweapon.potion.StormEffectMobEffect;
+import minecraftarmorweapon.potion.PlayerScoreIdMobEffect;
 import minecraftarmorweapon.potion.OtitaMobEffect;
 import minecraftarmorweapon.potion.OtiruyooMobEffect;
 import minecraftarmorweapon.potion.OtiroMobEffect;
@@ -129,4 +130,5 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> LOKIDECOYEFFECT = REGISTRY.register("lokidecoyeffect", () -> new LokidecoyeffectMobEffect());
 	public static final RegistryObject<MobEffect> ARMOR_STAND_TOBASU_EFFECT = REGISTRY.register("armor_stand_tobasu_effect", () -> new ArmorStandTobasuEffectMobEffect());
 	public static final RegistryObject<MobEffect> ARMORSTANDTOBASUEFFECTKILL = REGISTRY.register("armorstandtobasueffectkill", () -> new ArmorstandtobasueffectkillMobEffect());
+	public static final RegistryObject<MobEffect> PLAYER_SCORE_ID = REGISTRY.register("player_score_id", () -> new PlayerScoreIdMobEffect());
 }

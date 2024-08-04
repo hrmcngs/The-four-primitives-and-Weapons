@@ -1,5 +1,4 @@
 # Enter the function code here
-
 #タツマキ発動
 execute if entity @s[scores={Loki_Charge=10..,Loki_Sneak=0,FoodLevel=6..}] run playsound minecraft:entity.bat.takeoff neutral @a ~ ~ ~ 2 1
 execute if entity @s[scores={Loki_Charge=10..,Loki_Sneak=0,FoodLevel=6..}] run playsound minecraft:entity.wither.shoot player @a ~ ~ ~ 2 2

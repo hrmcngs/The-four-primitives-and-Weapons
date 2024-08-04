@@ -1,0 +1,9 @@
+{
+  "_fv": 43,
+  "_type": "function",
+  "definition": {
+    "code": "# Enter the function code here\nscoreboard objectives remove PlayerID\nscoreboard objectives remove PlayerID_Core\ntag @a remove HasID_Player",
+    "name": "reset_player_id_function",
+    "namespace": "mod"
+  }
+}

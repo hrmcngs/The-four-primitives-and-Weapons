@@ -17,7 +17,7 @@ public class MinecraftArmorWeaponModTrades {
 	@SubscribeEvent
 	public static void registerTrades(VillagerTradesEvent event) {
 		if (event.getType() == MinecraftArmorWeaponModVillagerProfessions.MINECRAFT_ARMOR_AND_WEAPON.get()) {
-			event.getTrades().get(2).add(new BasicItemListing(new ItemStack(Items.SHIELD), new ItemStack(MinecraftArmorWeaponModItems.MAGIC_MCRYSTAL.get(), 32), new ItemStack(MinecraftArmorWeaponModItems.ACHROMATIC_SHIELD.get()), 10, 5, 0.1f));
+			event.getTrades().get(1).add(new BasicItemListing(new ItemStack(Items.SHIELD), new ItemStack(MinecraftArmorWeaponModItems.MAGIC_MCRYSTAL.get(), 32), new ItemStack(MinecraftArmorWeaponModItems.ACHROMATIC_SHIELD.get()), 10, 5, 0.1f));
 		}
 	}
 }
