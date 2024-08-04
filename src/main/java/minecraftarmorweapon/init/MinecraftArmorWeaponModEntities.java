@@ -16,6 +16,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 
+import minecraftarmorweapon.entity.TyokusenArrowEntity;
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.Ruami284Entity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
@@ -52,6 +53,8 @@ public class MinecraftArmorWeaponModEntities {
 			EntityType.Builder.<BlackholeEntity>of(BlackholeEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(1).setUpdateInterval(3).setCustomClientFactory(BlackholeEntity::new).fireImmune().sized(0.8f, 0.8f));
 	public static final RegistryObject<EntityType<LokiDecoydasuEntity>> LOKI_DECOYDASU = register("projectile_loki_decoydasu",
 			EntityType.Builder.<LokiDecoydasuEntity>of(LokiDecoydasuEntity::new, MobCategory.MISC).setCustomClientFactory(LokiDecoydasuEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<TyokusenArrowEntity>> TYOKUSEN_ARROW = register("tyokusen_arrow", EntityType.Builder.<TyokusenArrowEntity>of(TyokusenArrowEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
+			.setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(TyokusenArrowEntity::new).fireImmune().sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -66,6 +69,7 @@ public class MinecraftArmorWeaponModEntities {
 			Ruami284Entity.init();
 			KillotiruEntity.init();
 			BlackholeEntity.init();
+			TyokusenArrowEntity.init();
 		});
 	}
 
@@ -77,5 +81,6 @@ public class MinecraftArmorWeaponModEntities {
 		event.put(RUAMI_284.get(), Ruami284Entity.createAttributes().build());
 		event.put(KILLOTIRU.get(), KillotiruEntity.createAttributes().build());
 		event.put(BLACKHOLE.get(), BlackholeEntity.createAttributes().build());
+		event.put(TYOKUSEN_ARROW.get(), TyokusenArrowEntity.createAttributes().build());
 	}
 }

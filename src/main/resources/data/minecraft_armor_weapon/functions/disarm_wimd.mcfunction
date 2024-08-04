@@ -17,7 +17,7 @@ execute as @e[type=item,distance=..2] at @s run tp @s @e[tag=Loki_Disarm,limit=1
 
 #戻ってくる
 tag @s[scores={BulletRemain=15..}] add Loki_Disarm_Return
-execute if entity @s[tag=Loki_Disarm_Return] at @s if entity @a[distance=..1.25] run kill @s
+#execute if entity @s[tag=Loki_Disarm_Return] at @s if entity @a[distance=..1.25] run kill @s
 
 #ヒット
 execute if entity @s[tag=!Loki_Disarm_Return,scores={BulletRemain=5..}] as @e[distance=..2,type=!item,tag=!Loki_Disarm,type=!area_effect_cloud] at @s run function minecraft_armor_weapon:disarm_disarm

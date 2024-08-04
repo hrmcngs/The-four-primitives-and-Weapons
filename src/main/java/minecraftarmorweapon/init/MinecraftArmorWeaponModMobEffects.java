@@ -16,6 +16,7 @@ import minecraftarmorweapon.potion.ZanngekikaiMobEffect;
 import minecraftarmorweapon.potion.YouwakaranMobEffect;
 import minecraftarmorweapon.potion.WindStepEffectMobEffect;
 import minecraftarmorweapon.potion.WazaMobEffect;
+import minecraftarmorweapon.potion.TyokutouArrowEffectMobEffect;
 import minecraftarmorweapon.potion.TunderbolteffrctMobEffect;
 import minecraftarmorweapon.potion.TpAttackMobEffect;
 import minecraftarmorweapon.potion.TokubetusounazangekiMobEffect;
@@ -55,6 +56,7 @@ import minecraftarmorweapon.potion.EffectBloodTpMobEffect;
 import minecraftarmorweapon.potion.DevourBloodMobEffect;
 import minecraftarmorweapon.potion.DarknessAttackEffectMobEffect;
 import minecraftarmorweapon.potion.CustomsmithingtablecraftingMobEffect;
+import minecraftarmorweapon.potion.CoolDown1MobEffect;
 import minecraftarmorweapon.potion.ChuzumeHuskArmorKnockBackMobEffect;
 import minecraftarmorweapon.potion.BubbleshotEffectMobEffect;
 import minecraftarmorweapon.potion.BowAttackMobEffect;
@@ -131,4 +133,6 @@ public class MinecraftArmorWeaponModMobEffects {
 	public static final RegistryObject<MobEffect> ARMOR_STAND_TOBASU_EFFECT = REGISTRY.register("armor_stand_tobasu_effect", () -> new ArmorStandTobasuEffectMobEffect());
 	public static final RegistryObject<MobEffect> ARMORSTANDTOBASUEFFECTKILL = REGISTRY.register("armorstandtobasueffectkill", () -> new ArmorstandtobasueffectkillMobEffect());
 	public static final RegistryObject<MobEffect> PLAYER_SCORE_ID = REGISTRY.register("player_score_id", () -> new PlayerScoreIdMobEffect());
+	public static final RegistryObject<MobEffect> COOL_DOWN_1 = REGISTRY.register("cool_down_1", () -> new CoolDown1MobEffect());
+	public static final RegistryObject<MobEffect> TYOKUTOU_ARROW_EFFECT = REGISTRY.register("tyokutou_arrow_effect", () -> new TyokutouArrowEffectMobEffect());
 }

@@ -11,6 +11,7 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import minecraftarmorweapon.client.model.Modelwitchmagichat;
 import minecraftarmorweapon.client.model.Modelwarden_armor_layer_3;
+import minecraftarmorweapon.client.model.Modeltyokusenarrowonverted;
 import minecraftarmorweapon.client.model.Modelswordbconverted;
 import minecraftarmorweapon.client.model.Modelswordbblock_Converted;
 import minecraftarmorweapon.client.model.Modelstray_outer_Converted_hat;
@@ -49,6 +50,7 @@ public class MinecraftArmorWeaponModModels {
 		event.registerLayerDefinition(Modeloninomen.LAYER_LOCATION, Modeloninomen::createBodyLayer);
 		event.registerLayerDefinition(Modelskeleton_Converted.LAYER_LOCATION, Modelskeleton_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelpillager_Converted.LAYER_LOCATION, Modelpillager_Converted::createBodyLayer);
+		event.registerLayerDefinition(Modeltyokusenarrowonverted.LAYER_LOCATION, Modeltyokusenarrowonverted::createBodyLayer);
 		event.registerLayerDefinition(Modelmahouzinn.LAYER_LOCATION, Modelmahouzinn::createBodyLayer);
 		event.registerLayerDefinition(Modelstray_outer_Converted.LAYER_LOCATION, Modelstray_outer_Converted::createBodyLayer);
 		event.registerLayerDefinition(Modelillusioner_armor_layer_3_Converted.LAYER_LOCATION, Modelillusioner_armor_layer_3_Converted::createBodyLayer);

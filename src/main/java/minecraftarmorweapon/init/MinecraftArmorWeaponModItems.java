@@ -21,6 +21,7 @@ import minecraftarmorweapon.item.WindStepItem;
 import minecraftarmorweapon.item.WardenArmorItem;
 import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
+import minecraftarmorweapon.item.TestBowItem;
 import minecraftarmorweapon.item.SwordOfNightItem;
 import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
@@ -221,6 +222,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> QUESTBOOK = REGISTRY.register("questbook", () -> new QuestbookItem());
 	public static final RegistryObject<Item> LOKI_DECOYDASU = REGISTRY.register("loki_decoydasu", () -> new LokiDecoydasuItem());
 	public static final RegistryObject<Item> LOKI_THE_TRICKSTER = REGISTRY.register("loki_the_trickster", () -> new LokiTheTricksterItem());
+	public static final RegistryObject<Item> TEST_BOW = REGISTRY.register("test_bow", () -> new TestBowItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
