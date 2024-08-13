@@ -2,7 +2,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "minecraft_armor_weapon:items/dream_bow"
+        "layer0": "minecraft_armor_weapon:items/dream_bow_arrow_0"
     },
     "display": {
         "thirdperson_righthand": {
@@ -26,12 +26,4 @@
             "scale": [ 0.68, 0.68, 0.68 ]
         }
     },
-    "overrides": [
-        {"predicate": {"custom_model_data":1 }, "model":
-        "minecraft_armor_weapon:items/test_bow_arrow_0"},
-        {"predicate": {"custom_model_data":2 }, "model": 
-        "minecraft_armor_weapon:items/test_bow_arrow_1"},
-        {"predicate": {"custom_model_data":3 }, "model": 
-        "minecraft_armor_weapon:items/test_bow_arrow_2"}
-    ]
 }
