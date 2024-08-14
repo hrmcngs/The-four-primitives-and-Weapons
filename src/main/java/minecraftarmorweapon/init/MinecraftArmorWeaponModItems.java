@@ -22,6 +22,9 @@ import minecraftarmorweapon.item.WardenArmorItem;
 import minecraftarmorweapon.item.WarabitetouItem;
 import minecraftarmorweapon.item.ThunderboltItem;
 import minecraftarmorweapon.item.TestBowItem;
+import minecraftarmorweapon.item.TestBowArrow2Item;
+import minecraftarmorweapon.item.TestBowArrow1Item;
+import minecraftarmorweapon.item.TestBowArrow0Item;
 import minecraftarmorweapon.item.SwordOfNightItem;
 import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
@@ -223,6 +226,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> LOKI_DECOYDASU = REGISTRY.register("loki_decoydasu", () -> new LokiDecoydasuItem());
 	public static final RegistryObject<Item> LOKI_THE_TRICKSTER = REGISTRY.register("loki_the_trickster", () -> new LokiTheTricksterItem());
 	public static final RegistryObject<Item> TEST_BOW = REGISTRY.register("test_bow", () -> new TestBowItem());
+	public static final RegistryObject<Item> TEST_BOW_ARROW_0 = REGISTRY.register("test_bow_arrow_0", () -> new TestBowArrow0Item());
+	public static final RegistryObject<Item> TEST_BOW_ARROW_1 = REGISTRY.register("test_bow_arrow_1", () -> new TestBowArrow1Item());
+	public static final RegistryObject<Item> TEST_BOW_ARROW_2 = REGISTRY.register("test_bow_arrow_2", () -> new TestBowArrow2Item());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

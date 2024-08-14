@@ -7995,6 +7995,71 @@
           "src/main/java/minecraftarmorweapon/potion/TameteruMobEffect.java"
         ]
       }
+    },
+    {
+      "name": "TestBowArrow0",
+      "type": "item",
+      "sortid": 521,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "test_bow_arrow_0",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/TestBowArrow0Item.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/test_bow_arrow_0.json"
+        ]
+      }
+    },
+    {
+      "name": "TestBowArrow1",
+      "type": "item",
+      "sortid": 522,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "test_bow_arrow_1",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/TestBowArrow1Item.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/test_bow_arrow_1.json"
+        ]
+      }
+    },
+    {
+      "name": "TestBowArrow2",
+      "type": "item",
+      "sortid": 523,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "test_bow_arrow_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/test_bow_arrow_2.json",
+          "src/main/java/minecraftarmorweapon/item/TestBowArrow2Item.java"
+        ]
+      }
+    },
+    {
+      "name": "TameteruposiyonnoXiaoGuogaKaiShiShiYongsaretatoki",
+      "type": "procedure",
+      "sortid": 524,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tameteruposiyonno_xiao_guoga_kai_shi_shi_yongsaretatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TameteruposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -8361,6 +8426,9 @@
       "item.minecraft_armor_weapon.magical_katana": "§dMagical Katana",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.effect_blood_tp": "a",
+      "item.minecraft_armor_weapon.test_bow_arrow_0": "Test Bow",
+      "item.minecraft_armor_weapon.test_bow_arrow_2": "Test Bow",
+      "item.minecraft_armor_weapon.test_bow_arrow_1": "Test Bow",
       "effect.minecraft_armor_weapon.kurutimenasi": "Coold time invalid",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
       "advancements.rivers_of_blood_achievements.title": "Maybe... you are anemic!",
@@ -8599,6 +8667,9 @@
       "item.minecraft_armor_weapon.magical_katana": "§dMagical Katana",
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.effect_blood_tp": "a",
+      "item.minecraft_armor_weapon.test_bow_arrow_0": "Test Bow",
+      "item.minecraft_armor_weapon.test_bow_arrow_2": "Test Bow",
+      "item.minecraft_armor_weapon.test_bow_arrow_1": "Test Bow",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
       "item.minecraft_armor_weapon.dragon_red_armor_chestplate": "§4Dragon red chestplate",
       "advancements.rivers_of_blood_achievements.title": "§4もしかしたら…貧血かもしれない!",

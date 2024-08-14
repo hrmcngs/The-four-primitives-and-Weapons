@@ -1,9 +1,8 @@
-
 {
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "minecraft_armor_weapon:items/dream_bow_arrow_1"
-    },
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "minecraft_armor_weapon:items/dream_bow_arrow_1"
+  },
     "display": {
         "thirdperson_righthand": {
             "rotation": [ -80, 260, -40 ],
@@ -25,4 +24,5 @@
             "translation": [ 1.13, 3.2, 1.13],
             "scale": [ 0.68, 0.68, 0.68 ]
         }
-    },}
+    }
+}

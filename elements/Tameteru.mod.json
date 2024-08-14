@@ -13,6 +13,9 @@
     "isBenefitical": false,
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
+    "onStarted": {
+      "name": "TameteruposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
+    },
     "onActiveTick": {
       "name": "TameteruehuekutogaYouXiaoShinoteituku"
     },

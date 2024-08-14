@@ -14,20 +14,10 @@ public class TestBowYoukuritukusitatokiProcedure {
 		if (entity == null)
 			return;
 		entity.getPersistentData().putBoolean("minecraft_armor_weapon:armor_stand_tobasu_kill_off", true);
-		if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TAMETERU.get()) : false)) {
-			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TAMETERU.get(), 20, 1, true, false));
-		} else {
-			if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
-				_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TAMETERU.get(),
-						(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TAMETERU.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.TAMETERU.get()).getDuration() : 0) + 20), 1, true,
-						false));
-		}
-		if (entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TAMETERU.get()) : false) {
-			entity.getPersistentData().putDouble("minecraft_armor_weapon:test_bow_tameteru", (entity.getPersistentData().getDouble("minecraft_armor_weapon:test_bow_tameteru") + 0.05));
-		}
+		if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
+			_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TAMETERU.get(), 20, 1, true, false));
 		entity.getPersistentData().putBoolean("minecraft_armor_weapon:test_bow_tameteru_true_or_false", true);
-		MinecraftArmorWeaponMod.queueServerWork(2, () -> {
+		MinecraftArmorWeaponMod.queueServerWork(5, () -> {
 			if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.TAMETERU.get()) : false)) {
 				entity.getPersistentData().putBoolean("minecraft_armor_weapon:test_bow_tameteru_true_or_false", false);
 			}

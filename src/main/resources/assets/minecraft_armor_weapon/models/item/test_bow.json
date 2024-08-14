@@ -28,10 +28,10 @@
     },
     "overrides": [
         {"predicate": {"custom_model_data":1 }, "model":
-        "minecraft_armor_weapon:items/test_bow_arrow_0"},
+        "minecraft_armor_weapon:item/test_bow_arrow_0"},
         {"predicate": {"custom_model_data":2 }, "model": 
-        "minecraft_armor_weapon:items/test_bow_arrow_1"},
+        "minecraft_armor_weapon:item/test_bow_arrow_1"},
         {"predicate": {"custom_model_data":3 }, "model": 
-        "minecraft_armor_weapon:items/test_bow_arrow_2"}
+        "minecraft_armor_weapon:item/test_bow_arrow_2"}
     ]
 }

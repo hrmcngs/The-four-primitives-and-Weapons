@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
+import minecraftarmorweapon.procedures.TameteruposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
 import minecraftarmorweapon.procedures.TameteruposiyonXiaoGuogaQieretaShiProcedure;
 import minecraftarmorweapon.procedures.TameteruehuekutogaYouXiaoShinoteitukuProcedure;
 
@@ -23,6 +24,11 @@ public class TameteruMobEffect extends MobEffect {
 	@Override
 	public String getDescriptionId() {
 		return "effect.minecraft_armor_weapon.tameteru";
+	}
+
+	@Override
+	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		TameteruposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity.level, entity);
 	}
 
 	@Override
