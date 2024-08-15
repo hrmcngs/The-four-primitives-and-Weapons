@@ -7729,20 +7729,6 @@
       "path": "~/dummy"
     },
     {
-      "name": "TestBow",
-      "type": "item",
-      "sortid": 505,
-      "compiles": true,
-      "locked_code": true,
-      "registry_name": "test_bow",
-      "metadata": {
-        "files": [
-          "src/main/java/minecraftarmorweapon/item/TestBowItem.java",
-          "src/main/resources/assets/minecraft_armor_weapon/models/item/test_bow.json"
-        ]
-      }
-    },
-    {
       "name": "Tame",
       "type": "procedure",
       "sortid": 507,
@@ -7764,6 +7750,7 @@
       "locked_code": false,
       "registry_name": "test_bow_youkuritukusitatoki",
       "metadata": {
+        "return_type": "logic",
         "files": [
           "src/main/java/minecraftarmorweapon/procedures/TestBowYoukuritukusitatokiProcedure.java"
         ],
@@ -8060,6 +8047,55 @@
           }
         ]
       }
+    },
+    {
+      "name": "TestBowAnimetion",
+      "type": "procedure",
+      "sortid": 526,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "test_bow_animetion",
+      "metadata": {
+        "return_type": "logic",
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TestBowAnimetionProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TestBow",
+      "type": "item",
+      "sortid": 527,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "test_bow",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/TestBowItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/test_bow.json"
+        ]
+      }
+    },
+    {
+      "name": "ArrowHead",
+      "type": "item",
+      "sortid": 528,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "arrow_head",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/arrow_head.json",
+          "src/main/java/minecraftarmorweapon/item/ArrowHeadItem.java"
+        ]
+      },
+      "path": "~/arrow"
     }
   ],
   "variable_elements": [
@@ -8460,6 +8496,7 @@
       "effect.minecraft_armor_weapon.black_hole_effect": "blackhole",
       "gui.minecraft_armor_weapon.rpg_book_gui_2.button_magic_swordsman": "magic swordsman",
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
+      "item.minecraft_armor_weapon.arrow_head": "Arrow Head",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_ninja": "ninja",
       "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",
@@ -8701,6 +8738,7 @@
       "effect.minecraft_armor_weapon.black_hole_effect": "blackhole",
       "gui.minecraft_armor_weapon.rpg_book_gui_2.button_magic_swordsman": "magic swordsman",
       "effect.minecraft_armor_weapon.kaiten": "kaitenn",
+      "item.minecraft_armor_weapon.arrow_head": "Arrow Head",
       "item.minecraft_armor_weapon.illusioner_armor_chestplate": "Illusioner Armor Chestplate",
       "gui.minecraft_armor_weapon.rpg_book_gui.button_ninja": "忍者",
       "item.minecraft_armor_weapon.dragon_blue_armor_helmet": "§1Dragon blue helmet",

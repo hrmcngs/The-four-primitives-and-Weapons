@@ -20,7 +20,7 @@
       "value": ""
     },
     "hasGlow": false,
-    "animation": "spear",
+    "animation": "bow",
     "enableMeleeDamage": false,
     "damageVsEntity": 0.0,
     "bulletPower": 1.0,

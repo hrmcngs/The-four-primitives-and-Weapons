@@ -29,7 +29,7 @@ public class KatanaTobuItem extends Item {
 
 	@Override
 	public UseAnim getUseAnimation(ItemStack itemstack) {
-		return UseAnim.SPEAR;
+		return UseAnim.BOW;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package minecraftarmorweapon.procedures;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerLevel;
@@ -18,5 +19,7 @@ public class TameteruehuekutogaYouXiaoShinoteitukuProcedure {
 			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(MinecraftArmorWeaponModMobEffects.TAMETERU.get());
 		}
+		TestBowAnimetionProcedure.execute(entity);
+		entity.setPose(Pose.FALL_FLYING);
 	}
 }

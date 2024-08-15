@@ -2,13 +2,13 @@
   "_fv": 43,
   "_type": "item",
   "definition": {
-    "renderType": 0,
-    "texture": "dream_bow",
-    "customModelName": "Normal",
-    "name": "Test Bow",
-    "rarity": "COMMON",
+    "renderType": 1,
+    "texture": "arrow",
+    "customModelName": "arrowitem:default",
+    "name": "Arrow Head",
+    "rarity": "EPIC",
     "creativeTab": {
-      "value": "CUSTOM:Weapon"
+      "value": "CUSTOM:Yopkeinamono"
     },
     "stackSize": 1,
     "enchantability": 0,
@@ -19,8 +19,8 @@
       "value": ""
     },
     "destroyAnyBlock": false,
-    "immuneToFire": false,
-    "stayInGridWhenCrafting": false,
+    "immuneToFire": true,
+    "stayInGridWhenCrafting": true,
     "damageOnCrafting": false,
     "enableMeleeDamage": false,
     "damageVsEntity": 0.0,
@@ -29,9 +29,6 @@
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
-    "onRightClickedInAir": {
-      "name": "TestBowYoukuritukusitatoki"
-    },
     "isFood": false,
     "nutritionalValue": 4,
     "saturation": 0.3,
@@ -40,6 +37,6 @@
     },
     "isMeat": false,
     "isAlwaysEdible": false,
-    "animation": "bow"
+    "animation": "spear"
   }
 }

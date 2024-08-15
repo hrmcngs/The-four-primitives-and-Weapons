@@ -16,8 +16,9 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
 public class TestBowItem extends Item {
 	public TestBowItem() {
-		super(new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON).stacksTo(1).rarity(Rarity.EPIC));
+		super(new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON).stacksTo(1).rarity(Rarity.COMMON));
 	}
+
 
 	@Override
 	public UseAnim getUseAnimation(ItemStack itemstack) {
@@ -28,9 +29,9 @@ public class TestBowItem extends Item {
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		ItemStack itemstack = ar.getObject();
-		double x = entity.getX();
-		double y = entity.getY();
-		double z = entity.getZ();
+		double x = entity.getX(1f);
+		double y = entity.getY(5);
+		double z = entity.getZ(5);
 
 		TestBowYoukuritukusitatokiProcedure.execute(world, entity);
 		return ar;

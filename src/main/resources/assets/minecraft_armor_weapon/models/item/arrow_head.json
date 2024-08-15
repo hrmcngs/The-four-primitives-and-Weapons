@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/arrowitem",
+  "textures": {
+    "0": "minecraft_armor_weapon:blocks/arrow",
+    "particle": "minecraft_armor_weapon:items/arrow"
+  }
+}
