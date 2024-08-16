@@ -1,45 +1,37 @@
 {
   "_fv": 43,
-  "_type": "item",
+  "_type": "rangeditem",
   "definition": {
     "renderType": 0,
     "texture": "dream_bow",
     "customModelName": "Normal",
     "name": "Test Bow",
-    "rarity": "COMMON",
+    "specialInfo": [],
     "creativeTab": {
       "value": "CUSTOM:Weapon"
     },
     "stackSize": 1,
-    "enchantability": 0,
-    "useDuration": 0,
-    "toolType": 1.0,
-    "damageCount": 0,
-    "recipeRemainder": {
+    "ammoItem": {
       "value": ""
     },
-    "destroyAnyBlock": false,
-    "immuneToFire": false,
-    "stayInGridWhenCrafting": false,
-    "damageOnCrafting": false,
+    "shootConstantly": false,
+    "usageCount": 0,
+    "actionSound": {
+      "value": ""
+    },
+    "hasGlow": false,
+    "animation": "bow",
     "enableMeleeDamage": false,
     "damageVsEntity": 0.0,
-    "specialInfo": [],
-    "hasGlow": false,
-    "guiBoundTo": "<NONE>",
-    "inventorySize": 9,
-    "inventoryStackSize": 64,
-    "onRightClickedInAir": {
-      "name": "TestBowYoukuritukusitatoki"
+    "bulletPower": 1.0,
+    "bulletDamage": 0.0,
+    "bulletKnockback": 0,
+    "bulletParticles": false,
+    "bulletIgnitesFire": false,
+    "bulletItemTexture": {
+      "value": "Blocks.AIR"
     },
-    "isFood": false,
-    "nutritionalValue": 4,
-    "saturation": 0.3,
-    "eatResultItem": {
-      "value": ""
-    },
-    "isMeat": false,
-    "isAlwaysEdible": false,
-    "animation": "bow"
+    "bulletModel": "Default",
+    "customBulletModelTexture": ""
   }
 }

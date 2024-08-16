@@ -229,8 +229,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> TEST_BOW_ARROW_0 = REGISTRY.register("test_bow_arrow_0", () -> new TestBowArrow0Item());
 	public static final RegistryObject<Item> TEST_BOW_ARROW_1 = REGISTRY.register("test_bow_arrow_1", () -> new TestBowArrow1Item());
 	public static final RegistryObject<Item> TEST_BOW_ARROW_2 = REGISTRY.register("test_bow_arrow_2", () -> new TestBowArrow2Item());
-	public static final RegistryObject<Item> TEST_BOW = REGISTRY.register("test_bow", () -> new TestBowItem());
 	public static final RegistryObject<Item> ARROW_HEAD = REGISTRY.register("arrow_head", () -> new ArrowHeadItem());
+	public static final RegistryObject<Item> TEST_BOW = REGISTRY.register("test_bow", () -> new TestBowItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

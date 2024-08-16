@@ -1,9 +1,0 @@
-{
-  "_fv": 43,
-  "_type": "function",
-  "definition": {
-    "code": "#########################################################\nexecute as @a[scores={AS2_R=1..}] at @s run function minecraft_armor_weapon:tyokusen_arrow_start\nscoreboard players set @a[scores={AS2_R=1..}] AS2_R 0\n#########################################################\n\n#########################################################\nscoreboard players remove @e[scores={AS2_D=1..}] AS2_D 1\nkill @e[scores={AS2_D=0}]\n#########################################################\n\n#########################################################\nexecute as @e[tag=AS2] at @s run function minecraft_armor_weapon:tyokusen_arrow_main\n#########################################################",
-    "name": "tyokusen_arrow_tick",
-    "namespace": "mod"
-  }
-}

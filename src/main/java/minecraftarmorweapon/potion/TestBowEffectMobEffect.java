@@ -10,30 +10,36 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
-import minecraftarmorweapon.procedures.TyokutouArrowEffectposiyonXiaoGuogaQieretaShiProcedure;
-import minecraftarmorweapon.procedures.TyokutouArrowEffectehuekutogaYouXiaoShinoteitukuProcedure;
+import minecraftarmorweapon.procedures.TestBowEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
+import minecraftarmorweapon.procedures.TestBowEffectposiyonXiaoGuogaQieretaShiProcedure;
+import minecraftarmorweapon.procedures.TestBowEffectehuekutogaYouXiaoShinoteitukuProcedure;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
-public class TyokutouArrowEffectMobEffect extends MobEffect {
-	public TyokutouArrowEffectMobEffect() {
+public class TestBowEffectMobEffect extends MobEffect {
+	public TestBowEffectMobEffect() {
 		super(MobEffectCategory.NEUTRAL, -1);
 	}
 
 	@Override
 	public String getDescriptionId() {
-		return "effect.minecraft_armor_weapon.tyokutou_arrow_effect";
+		return "effect.minecraft_armor_weapon.test_bow_effect";
+	}
+
+	@Override
+	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
+		TestBowEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity);
 	}
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		TyokutouArrowEffectehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
+		TestBowEffectehuekutogaYouXiaoShinoteitukuProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		TyokutouArrowEffectposiyonXiaoGuogaQieretaShiProcedure.execute(entity);
+		TestBowEffectposiyonXiaoGuogaQieretaShiProcedure.execute(entity);
 	}
 
 	@Override
