@@ -45,7 +45,7 @@
                 "pulling": 1,
                 "pull": 1
             },
-            "model": "minecraft_armor_weapon:itemtest_bow_arrow_2"
+            "model": "minecraft_armor_weapon:item/test_bow_arrow_2"
         }
     ]
 }

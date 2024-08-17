@@ -13,6 +13,8 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.server.level.ServerPlayer;
 
+import minecraftarmorweapon.procedures.TestBowRangedItemUsedProcedure;
+
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
 import minecraftarmorweapon.entity.TestBowEntity;
@@ -48,6 +50,7 @@ public class TestBowItem extends Item {
 				TestBowEntity entityarrow = TestBowEntity.shoot(world, entity, world.getRandom(), 1f, 0, 0);
 				itemstack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
 				entityarrow.pickup = AbstractArrow.Pickup.DISALLOWED;
+				TestBowRangedItemUsedProcedure.execute(entity);
 			}
 		}
 	}

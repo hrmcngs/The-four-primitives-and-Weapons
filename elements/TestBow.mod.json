@@ -23,6 +23,9 @@
     "animation": "bow",
     "enableMeleeDamage": false,
     "damageVsEntity": 0.0,
+    "onRangedItemUsed": {
+      "name": "TestBowRangedItemUsed"
+    },
     "bulletPower": 1.0,
     "bulletDamage": 0.0,
     "bulletKnockback": 0,

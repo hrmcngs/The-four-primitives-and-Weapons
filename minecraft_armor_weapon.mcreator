@@ -1593,6 +1593,7 @@
     {
       "name": "MinecraftArmorWeaponItemProrties",
       "type": "code",
+      "sortid": 538,
       "compiles": true,
       "locked_code": true,
       "registry_name": "minecraft_armor_weapon_item_prorties",
@@ -8100,6 +8101,51 @@
           "src/main/java/minecraftarmorweapon/item/TestBowItem.java",
           "src/main/java/minecraftarmorweapon/entity/TestBowEntity.java",
           "src/main/resources/assets/minecraft_armor_weapon/models/item/test_bow.json"
+        ]
+      }
+    },
+    {
+      "name": "TestBowItemsProperties",
+      "type": "code",
+      "sortid": 537,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "test_bow_items_properties",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/TestBowItemsProperties.java"
+        ]
+      }
+    },
+    {
+      "name": "CustomSetupManager",
+      "type": "code",
+      "sortid": 539,
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "custom_setup_manager",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/CustomSetupManager.java"
+        ]
+      }
+    },
+    {
+      "name": "TestBowRangedItemUsed",
+      "type": "procedure",
+      "sortid": 540,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "test_bow_ranged_item_used",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TestBowRangedItemUsedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
         ]
       }
     }
