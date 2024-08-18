@@ -24,6 +24,8 @@ import minecraftarmorweapon.entity.LokiDecoydasuEntity;
 import minecraftarmorweapon.entity.KillotiruEntity;
 import minecraftarmorweapon.entity.KatanaTobuEntity;
 import minecraftarmorweapon.entity.HrmcngsEntity;
+import minecraftarmorweapon.entity.CometKillEntity;
+import minecraftarmorweapon.entity.CometEntity;
 import minecraftarmorweapon.entity.BlackholeEntity;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
@@ -55,6 +57,10 @@ public class MinecraftArmorWeaponModEntities {
 			EntityType.Builder.<LokiDecoydasuEntity>of(LokiDecoydasuEntity::new, MobCategory.MISC).setCustomClientFactory(LokiDecoydasuEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<TestBowEntity>> TEST_BOW = register("projectile_test_bow",
 			EntityType.Builder.<TestBowEntity>of(TestBowEntity::new, MobCategory.MISC).setCustomClientFactory(TestBowEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
+	public static final RegistryObject<EntityType<CometEntity>> COMET = register("comet",
+			EntityType.Builder.<CometEntity>of(CometEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(0).setUpdateInterval(3).setCustomClientFactory(CometEntity::new).fireImmune().sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<CometKillEntity>> COMET_KILL = register("comet_kill",
+			EntityType.Builder.<CometKillEntity>of(CometKillEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(0).setUpdateInterval(3).setCustomClientFactory(CometKillEntity::new).fireImmune().sized(0.6f, 1.8f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -69,6 +75,8 @@ public class MinecraftArmorWeaponModEntities {
 			Ruami284Entity.init();
 			KillotiruEntity.init();
 			BlackholeEntity.init();
+			CometEntity.init();
+			CometKillEntity.init();
 		});
 	}
 
@@ -80,5 +88,7 @@ public class MinecraftArmorWeaponModEntities {
 		event.put(RUAMI_284.get(), Ruami284Entity.createAttributes().build());
 		event.put(KILLOTIRU.get(), KillotiruEntity.createAttributes().build());
 		event.put(BLACKHOLE.get(), BlackholeEntity.createAttributes().build());
+		event.put(COMET.get(), CometEntity.createAttributes().build());
+		event.put(COMET_KILL.get(), CometKillEntity.createAttributes().build());
 	}
 }

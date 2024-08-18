@@ -3,7 +3,7 @@
   "textures": {
     "layer0": "minecraft_armor_weapon:items/dream_bow_arrow_1"
   },
-    "display": {
+      "display": {
         "thirdperson_righthand": {
             "rotation": [ -80, 260, -40 ],
             "translation": [ -1, -2, 2.5 ],

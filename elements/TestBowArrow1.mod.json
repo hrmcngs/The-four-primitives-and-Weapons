@@ -8,7 +8,7 @@
     "name": "Test Bow",
     "rarity": "EPIC",
     "creativeTab": {
-      "value": "CUSTOM:Weapon"
+      "value": "No creative tab entry"
     },
     "stackSize": 1,
     "enchantability": 0,

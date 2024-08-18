@@ -50,7 +50,7 @@ public class TestBowItem extends Item {
 				TestBowEntity entityarrow = TestBowEntity.shoot(world, entity, world.getRandom(), 1f, 0, 0);
 				itemstack.hurtAndBreak(1, entity, e -> e.broadcastBreakEvent(entity.getUsedItemHand()));
 				entityarrow.pickup = AbstractArrow.Pickup.DISALLOWED;
-				TestBowRangedItemUsedProcedure.execute(entity);
+				TestBowRangedItemUsedProcedure.execute(world, x, y, z, entity);
 			}
 		}
 	}

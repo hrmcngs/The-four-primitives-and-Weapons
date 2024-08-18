@@ -17,6 +17,8 @@ import minecraftarmorweapon.client.renderer.OtiruyoRenderer;
 import minecraftarmorweapon.client.renderer.KillotiruRenderer;
 import minecraftarmorweapon.client.renderer.KatanaTobuRenderer;
 import minecraftarmorweapon.client.renderer.HrmcngsRenderer;
+import minecraftarmorweapon.client.renderer.CometRenderer;
+import minecraftarmorweapon.client.renderer.CometKillRenderer;
 import minecraftarmorweapon.client.renderer.BlackholeRenderer;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -32,5 +34,7 @@ public class MinecraftArmorWeaponModEntityRenderers {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.BLACKHOLE.get(), BlackholeRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.LOKI_DECOYDASU.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.TEST_BOW.get(), ThrownItemRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.COMET.get(), CometRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.COMET_KILL.get(), CometKillRenderer::new);
 	}
 }

@@ -13,9 +13,6 @@
     "isBenefitical": false,
     "renderStatusInInventory": false,
     "renderStatusInHUD": false,
-    "onStarted": {
-      "name": "TestBowEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatoki"
-    },
     "onActiveTick": {
       "name": "TestBowEffectehuekutogaYouXiaoShinoteituku"
     },

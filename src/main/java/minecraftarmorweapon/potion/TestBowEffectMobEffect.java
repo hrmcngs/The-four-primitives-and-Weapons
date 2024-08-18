@@ -10,7 +10,6 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 
-import minecraftarmorweapon.procedures.TestBowEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure;
 import minecraftarmorweapon.procedures.TestBowEffectposiyonXiaoGuogaQieretaShiProcedure;
 import minecraftarmorweapon.procedures.TestBowEffectehuekutogaYouXiaoShinoteitukuProcedure;
 
@@ -24,11 +23,6 @@ public class TestBowEffectMobEffect extends MobEffect {
 	@Override
 	public String getDescriptionId() {
 		return "effect.minecraft_armor_weapon.test_bow_effect";
-	}
-
-	@Override
-	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		TestBowEffectposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure.execute(entity);
 	}
 
 	@Override

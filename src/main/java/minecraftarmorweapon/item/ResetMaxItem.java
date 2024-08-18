@@ -32,7 +32,7 @@ public class ResetMaxItem extends Item {
 		double y = entity.getY();
 		double z = entity.getZ();
 
-		ResetMaxYoukuritukusitatokiProcedure.execute(world, x, y, z, entity);
+		ResetMaxYoukuritukusitatokiProcedure.execute(world, x, y, z, entity, itemstack);
 		return ar;
 	}
 }
