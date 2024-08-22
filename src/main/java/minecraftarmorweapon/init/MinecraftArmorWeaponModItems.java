@@ -87,6 +87,9 @@ import minecraftarmorweapon.item.DarknessItem;
 import minecraftarmorweapon.item.ChuzumeHuskArmorItem;
 import minecraftarmorweapon.item.BubbleshotItem;
 import minecraftarmorweapon.item.BoggedOuterItem;
+import minecraftarmorweapon.item.BluepurgeUtigatanaItem;
+import minecraftarmorweapon.item.BluepurgeTyokutouItem;
+import minecraftarmorweapon.item.BluepurgeItem;
 import minecraftarmorweapon.item.BloodBottleItem;
 import minecraftarmorweapon.item.ArrowHeadItem;
 import minecraftarmorweapon.item.AchromaticShieldItem;
@@ -231,6 +234,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> TEST_BOW_ARROW_2 = REGISTRY.register("test_bow_arrow_2", () -> new TestBowArrow2Item());
 	public static final RegistryObject<Item> ARROW_HEAD = REGISTRY.register("arrow_head", () -> new ArrowHeadItem());
 	public static final RegistryObject<Item> TEST_BOW = REGISTRY.register("test_bow", () -> new TestBowItem());
+	public static final RegistryObject<Item> BLUEPURGE = REGISTRY.register("bluepurge", () -> new BluepurgeItem());
+	public static final RegistryObject<Item> BLUEPURGE_UTIGATANA = REGISTRY.register("bluepurge_utigatana", () -> new BluepurgeUtigatanaItem());
+	public static final RegistryObject<Item> BLUEPURGE_TYOKUTOU = REGISTRY.register("bluepurge_tyokutou", () -> new BluepurgeTyokutouItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

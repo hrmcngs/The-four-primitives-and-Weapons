@@ -8515,6 +8515,66 @@
         ]
       },
       "path": "~/arrow"
+    },
+    {
+      "name": "Bluepurge",
+      "type": "tool",
+      "sortid": 559,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bluepurge",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bluepurge.json",
+          "src/main/java/minecraftarmorweapon/item/BluepurgeItem.java"
+        ]
+      },
+      "path": "~/bluepurge"
+    },
+    {
+      "name": "BluepurgeUtigatana",
+      "type": "tool",
+      "sortid": 560,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bluepurge_utigatana",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/BluepurgeUtigatanaItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bluepurge_utigatana.json"
+        ]
+      },
+      "path": "~/bluepurge"
+    },
+    {
+      "name": "BluepurgeTyokutou",
+      "type": "tool",
+      "sortid": 561,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bluepurge_tyokutou",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/item/BluepurgeTyokutouItem.java",
+          "src/main/resources/assets/minecraft_armor_weapon/models/item/bluepurge_tyokutou.json"
+        ]
+      },
+      "path": "~/bluepurge"
+    },
+    {
+      "name": "BluepurgeYoukuritukusitatoki",
+      "type": "procedure",
+      "sortid": 562,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "bluepurge_youkuritukusitatoki",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/BluepurgeYoukuritukusitatokiProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/bluepurge"
     }
   ],
   "variable_elements": [
@@ -8748,18 +8808,18 @@
       "item.minecraft_armor_weapon.das_herz_einer_fee_armor_helmet": "das herz einer fee armor helmet",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "entity.minecraft_armor_weapon.comet": "Comet",
-      "entity.minecraft_armor_weapon.comet_kill": "Comet",
-      "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
       "item.minecraft_armor_weapon.darkness": "§5Darkness",
+      "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
+      "entity.minecraft_armor_weapon.comet_kill": "Comet",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.blackhole_spawn_egg": "Blackhole Spawn Egg",
       "entity.minecraft_armor_weapon.blackhole": "Blackhole",
       "advancements.magical_swordsman_achievements.descr": "§eGet Magisches feen katana",
-      "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "entity.minecraft_armor_weapon.ruami_284": "ruami284",
+      "effect.minecraft_armor_weapon.suityuu": "suityuu",
       "advancements.you_have_become_a_vampire.descr": "You have become a vampire.",
-      "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "effect.minecraft_armor_weapon.bakuhatu": "explosion",
+      "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "advancements.dark_magic_swordsman_achievements.descr": "§5Get Darkness katana",
       "item.minecraft_armor_weapon.warden_armor_helmet": "§3warden helmet",
@@ -8780,6 +8840,7 @@
       "item.minecraft_armor_weapon.a": "A",
       "item.minecraft_armor_weapon.warabitetou": "§7Warabiteto",
       "effect.minecraft_armor_weapon.blood_tp": "bloodtp",
+      "item.minecraft_armor_weapon.bluepurge_utigatana": "§9Bluepurge",
       "effect.minecraft_armor_weapon.sword_of_night_effect": "sword of night",
       "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
       "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
@@ -8887,6 +8948,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.effect_blood_tp": "a",
       "item.minecraft_armor_weapon.test_bow_arrow_0": "Test Bow",
+      "item.minecraft_armor_weapon.bluepurge": "§9Bluepurge",
       "item.minecraft_armor_weapon.test_bow_arrow_2": "Test Bow",
       "item.minecraft_armor_weapon.test_bow_arrow_1": "Test Bow",
       "effect.minecraft_armor_weapon.kurutimenasi": "Coold time invalid",
@@ -8953,6 +9015,7 @@
       "item.minecraft_armor_weapon.loki_decoydasu": "Loki Decoydasu",
       "item.minecraft_armor_weapon.warden_armor_leggings": "§3warden leggings",
       "item.minecraft_armor_weapon.magisches_feen_katana": "§dMagisches Feen Katana",
+      "item.minecraft_armor_weapon.bluepurge_tyokutou": "§9Bluepurge",
       "key.minecraft_armor_weapon.n": "N",
       "block.minecraft_armor_weapon.kurikaraken_block": "Gomanoriken Block",
       "item.minecraft_armor_weapon.wither_katana": "§8Wither Katana",
@@ -8995,18 +9058,18 @@
       "item.minecraft_armor_weapon.illusioner_armor_boots": "Illusioner Armor Boots",
       "item.minecraft_armor_weapon.ruami_284_spawn_egg": "ruami284 Spawn Egg",
       "entity.minecraft_armor_weapon.comet": "Comet",
-      "entity.minecraft_armor_weapon.comet_kill": "Comet",
-      "item.minecraft_armor_weapon.darkness": "§5Darkness",
       "effect.minecraft_armor_weapon.bow_attack": "illusioner_armor_effect",
+      "item.minecraft_armor_weapon.darkness": "§5Darkness",
+      "entity.minecraft_armor_weapon.comet_kill": "Comet",
       "block.minecraft_armor_weapon.stone_katana_block": "Netherite Katana Block",
       "item.minecraft_armor_weapon.blackhole_spawn_egg": "Blackhole Spawn Egg",
       "entity.minecraft_armor_weapon.blackhole": "Blackhole",
       "advancements.magical_swordsman_achievements.descr": "Magisches feen katanaを得る",
-      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "effect.minecraft_armor_weapon.suityuu": "suityuu",
+      "entity.minecraft_armor_weapon.ruami_284": "ruami284",
       "advancements.you_have_become_a_vampire.descr": "吸血鬼になったよ",
-      "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "effect.minecraft_armor_weapon.bakuhatu": "explosion",
+      "effect.minecraft_armor_weapon.aaaa": "bunnsinn",
       "item.minecraft_armor_weapon.fireball": "§cFireball",
       "advancements.dark_magic_swordsman_achievements.descr": "§5Darkness katanaを得る",
       "item.minecraft_armor_weapon.warden_armor_helmet": "warden helmet",
@@ -9027,6 +9090,7 @@
       "item.minecraft_armor_weapon.a": "A",
       "item.minecraft_armor_weapon.warabitetou": "§7蕨手刀",
       "effect.minecraft_armor_weapon.blood_tp": "bloodtp",
+      "item.minecraft_armor_weapon.bluepurge_utigatana": "§9Bluepurge",
       "effect.minecraft_armor_weapon.sword_of_night_effect": "sword of night",
       "item.minecraft_armor_weapon.bogged_outer_chestplate": "Bogged Outer Chestplate",
       "effect.minecraft_armor_weapon.long_range_weapon_cut": "遠距離武器斬る",
@@ -9134,6 +9198,7 @@
       "item.minecraft_armor_weapon.illusioner_armor_helmet": "Illusioner Armor Helmet",
       "effect.minecraft_armor_weapon.effect_blood_tp": "a",
       "item.minecraft_armor_weapon.test_bow_arrow_0": "Test Bow",
+      "item.minecraft_armor_weapon.bluepurge": "§9Bluepurge",
       "item.minecraft_armor_weapon.test_bow_arrow_2": "Test Bow",
       "item.minecraft_armor_weapon.test_bow_arrow_1": "Test Bow",
       "effect.minecraft_armor_weapon.kurutimenasi": "クールタイム無効",
@@ -9200,6 +9265,7 @@
       "item.minecraft_armor_weapon.loki_decoydasu": "Loki Decoydasu",
       "item.minecraft_armor_weapon.warden_armor_leggings": "warden leggings",
       "item.minecraft_armor_weapon.magisches_feen_katana": "§dMagisches Feen Katana",
+      "item.minecraft_armor_weapon.bluepurge_tyokutou": "§9Bluepurge",
       "key.minecraft_armor_weapon.n": "N",
       "block.minecraft_armor_weapon.kurikaraken_block": "kurikaraken Block",
       "item.minecraft_armor_weapon.wither_katana": "§8Wither Katana",
@@ -9305,6 +9371,10 @@
       },
       {
         "name": "arrow",
+        "children": []
+      },
+      {
+        "name": "bluepurge",
         "children": []
       }
     ]

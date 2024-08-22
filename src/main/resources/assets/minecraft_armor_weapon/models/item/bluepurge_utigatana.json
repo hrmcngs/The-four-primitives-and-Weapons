@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/bluepurgeutigatana",
+  "textures": {
+    "1": "minecraft_armor_weapon:blocks/bluepurgeutigatana",
+    "particle": "minecraft_armor_weapon:items/bluepurgeutigatanaimage"
+  }
+}

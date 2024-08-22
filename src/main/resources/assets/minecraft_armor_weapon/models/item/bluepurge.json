@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft_armor_weapon:custom/bluepurgesword",
+  "textures": {
+    "0": "minecraft_armor_weapon:blocks/bluepurgesword",
+    "particle": "minecraft_armor_weapon:items/bluepurgeswordimage"
+  }
+}
