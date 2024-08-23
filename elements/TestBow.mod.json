@@ -35,6 +35,9 @@
       "value": "Blocks.AIR"
     },
     "bulletModel": "Default",
-    "customBulletModelTexture": ""
+    "customBulletModelTexture": "",
+    "onBulletFlyingTick": {
+      "name": "TestBowFeibiDaoJugaFeindeiruJian"
+    }
   }
 }

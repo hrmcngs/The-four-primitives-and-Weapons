@@ -8575,6 +8575,29 @@
         "dependencies": []
       },
       "path": "~/bluepurge"
+    },
+    {
+      "name": "TestBowFeibiDaoJugaFeindeiruJian",
+      "type": "procedure",
+      "sortid": 563,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "test_bow_feibi_dao_juga_feindeiru_jian",
+      "metadata": {
+        "files": [
+          "src/main/java/minecraftarmorweapon/procedures/TestBowFeibiDaoJugaFeindeiruJianProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "immediatesourceentity",
+            "type": "entity"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [

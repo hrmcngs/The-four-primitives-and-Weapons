@@ -20,7 +20,7 @@ public class BluepurgeTyokutouItem extends SwordItem {
 			}
 
 			public float getAttackDamageBonus() {
-				return 11f;
+				return 6f;
 			}
 
 			public int getLevel() {
@@ -34,6 +34,6 @@ public class BluepurgeTyokutouItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of();
 			}
-		}, 3, -2.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
+		}, 3, -1.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
 	}
 }

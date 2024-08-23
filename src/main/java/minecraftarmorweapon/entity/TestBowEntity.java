@@ -19,6 +19,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.Packet;
 
+import minecraftarmorweapon.procedures.TestBowFeibiDaoJugaFeindeiruJianProcedure;
+
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEntities;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
@@ -64,6 +66,7 @@ public class TestBowEntity extends AbstractArrow implements ItemSupplier {
 	@Override
 	public void tick() {
 		super.tick();
+		TestBowFeibiDaoJugaFeindeiruJianProcedure.execute(this.getOwner(), this);
 		if (this.inGround)
 			this.discard();
 	}
