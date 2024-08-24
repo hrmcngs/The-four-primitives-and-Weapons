@@ -12,7 +12,7 @@ public class TunderbolteffrctposiyonXiaoGuogaQieretaShiProcedure {
 			return;
 		((LivingEntity) entity).getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ATTACK_DAMAGE).setBaseValue((entity.getPersistentData().getDouble("tunderboltattackdamege")));
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get()) {
-			new ItemStack(MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get()).getOrCreateTag().putDouble("kurikarakenutigatana_model_kaminari", 0);
+			new ItemStack(MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get()).getOrCreateTag().putDouble("CustomModelData", 0);
 		}
 	}
 }

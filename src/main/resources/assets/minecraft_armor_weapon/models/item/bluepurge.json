@@ -3,5 +3,19 @@
   "textures": {
     "0": "minecraft_armor_weapon:blocks/bluepurgesword",
     "particle": "minecraft_armor_weapon:items/bluepurgeswordimage"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "minecraft_armor_weapon:item/bluepurge_utigatana"
+    },
+    {
+      "predicate": {
+        "custom_model_data": 2
+      },
+      "model": "minecraft_armor_weapon:item/bluepurge_tyokutou"
+    }
+  ]
 }

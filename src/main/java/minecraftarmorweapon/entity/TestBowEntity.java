@@ -66,7 +66,7 @@ public class TestBowEntity extends AbstractArrow implements ItemSupplier {
 	@Override
 	public void tick() {
 		super.tick();
-		TestBowFeibiDaoJugaFeindeiruJianProcedure.execute(this.getOwner(), this);
+		TestBowFeibiDaoJugaFeindeiruJianProcedure.execute();
 		if (this.inGround)
 			this.discard();
 	}

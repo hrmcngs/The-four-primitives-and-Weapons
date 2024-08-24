@@ -194,10 +194,8 @@ public class TestBowRangedItemUsedProcedure {
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 4) {
 				if (entity instanceof LivingEntity _entity && !_entity.level.isClientSide())
 					_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.ONAZITAKASA_ARROW.get(), 60, 1, true, false));
-				if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.KURUTIMENASI.get()) : false)) {
-					if (entity instanceof Player _player)
-						_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 20);
-				}
+				if (entity instanceof Player _player)
+					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 60);
 			}
 			if ((entity.getCapability(MinecraftArmorWeaponModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new MinecraftArmorWeaponModVariables.PlayerVariables())).aaa == 5) {
 				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.TEST_BOW.get()
@@ -639,46 +637,24 @@ public class TestBowRangedItemUsedProcedure {
 				r = 1;
 				alpha = entity.getYRot();
 				beta = entity.getXRot();
-				entity.getPersistentData().putDouble("minecraft_armor_weapon:count", 0);
 				entity.getPersistentData().putDouble("minecraft_armor_weapon:r", 1);
 				entity.getPersistentData().putDouble("minecraft_armor_weapon:alpha", (entity.getYRot()));
 				entity.getPersistentData().putDouble("minecraft_armor_weapon:beta", (entity.getXRot()));
-				for (int index6 = 0; index6 < (int) (entity.getPersistentData().getDouble("mineraft_armor_weapon:test_bow_pulling") * 500); index6++) {
-					if (world
-							.getBlockState(new BlockPos(x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha)), (y + 1) - r * Math.sin(Math.toRadians(beta)), z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))))
+				for (int index6 = 0; index6 < 500; index6++) {
+					if (world.getBlockState(new BlockPos(
+							x - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
+									* Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha"))),
+							(y - 0) - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta"))),
+							z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
+									* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))))
 							.canOcclude()) {
-						if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-							if (world instanceof ServerLevel _level) {
-								Entity entityToSpawn = new CometEntity(MinecraftArmorWeaponModEntities.COMET.get(), _level);
-								entityToSpawn.moveTo((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 100) - r * Math.sin(Math.toRadians(beta))),
-										(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))), 0, 0);
-								entityToSpawn.setYBodyRot(0);
-								entityToSpawn.setYHeadRot(0);
-								if (entityToSpawn instanceof Mob _mobToSpawn)
-									_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
-								world.addFreshEntity(entityToSpawn);
-							}
-						} else {
-							if (world instanceof ServerLevel _level) {
-								Entity entityToSpawn = new CometKillEntity(MinecraftArmorWeaponModEntities.COMET_KILL.get(), _level);
-								entityToSpawn.moveTo((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 100) - r * Math.sin(Math.toRadians(beta))),
-										(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))), 0, 0);
-								entityToSpawn.setYBodyRot(0);
-								entityToSpawn.setYHeadRot(0);
-								if (entityToSpawn instanceof Mob _mobToSpawn)
-									_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
-								world.addFreshEntity(entityToSpawn);
-							}
-						}
-						break;
-					} else if (entity.getPersistentData().getDouble("minecraft_armor_weapon:r") >= entity.getPersistentData().getDouble("mineraft_armor_weapon:test_bow_pulling") * 100) {
 						if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 							if (world instanceof ServerLevel _level) {
 								Entity entityToSpawn = new CometKillEntity(MinecraftArmorWeaponModEntities.COMET_KILL.get(), _level);
 								entityToSpawn.moveTo(
 										(x - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 												* Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))),
-										((y + 100) - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))),
+										(y - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta"))) + 100),
 										(z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 												* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))),
 										0, 0);
@@ -688,13 +664,51 @@ public class TestBowRangedItemUsedProcedure {
 									_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
 								world.addFreshEntity(entityToSpawn);
 							}
+							break;
 						} else {
 							if (world instanceof ServerLevel _level) {
 								Entity entityToSpawn = new CometEntity(MinecraftArmorWeaponModEntities.COMET.get(), _level);
 								entityToSpawn.moveTo(
 										(x - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 												* Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))),
-										((y + 100) - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))),
+										(y - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta"))) + 100),
+										(z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
+												* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))),
+										0, 0);
+								entityToSpawn.setYBodyRot(0);
+								entityToSpawn.setYHeadRot(0);
+								if (entityToSpawn instanceof Mob _mobToSpawn)
+									_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+								world.addFreshEntity(entityToSpawn);
+							}
+							break;
+						}
+					}
+					if (r >= 100) {
+						if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+							if (world instanceof ServerLevel _level) {
+								Entity entityToSpawn = new CometKillEntity(MinecraftArmorWeaponModEntities.COMET_KILL.get(), _level);
+								entityToSpawn.moveTo(
+										(x - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
+												* Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))),
+										(y - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta"))) + 100),
+										(z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
+												* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))),
+										0, 0);
+								entityToSpawn.setYBodyRot(0);
+								entityToSpawn.setYHeadRot(0);
+								if (entityToSpawn instanceof Mob _mobToSpawn)
+									_mobToSpawn.finalizeSpawn(_level, world.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+								world.addFreshEntity(entityToSpawn);
+							}
+							break;
+						} else {
+							if (world instanceof ServerLevel _level) {
+								Entity entityToSpawn = new CometEntity(MinecraftArmorWeaponModEntities.COMET.get(), _level);
+								entityToSpawn.moveTo(
+										(x - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
+												* Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))),
+										(y - entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.sin(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta"))) + 100),
 										(z + entity.getPersistentData().getDouble("minecraft_armor_weapon:r") * Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:beta")))
 												* Math.cos(Math.toRadians(entity.getPersistentData().getDouble("minecraft_armor_weapon:alpha")))),
 										0, 0);

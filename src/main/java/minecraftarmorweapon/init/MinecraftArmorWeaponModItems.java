@@ -64,9 +64,12 @@ import minecraftarmorweapon.item.KurikarakenItem;
 import minecraftarmorweapon.item.KentiItem;
 import minecraftarmorweapon.item.KatanaTobuItem;
 import minecraftarmorweapon.item.KatanaNiguHumerusItem;
+import minecraftarmorweapon.item.KaminariKurikarakenUtigatanaItem;
+import minecraftarmorweapon.item.KamianariKurikaraItem;
 import minecraftarmorweapon.item.KabuseruItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
 import minecraftarmorweapon.item.IronKatanaItem;
+import minecraftarmorweapon.item.ImitationItem;
 import minecraftarmorweapon.item.IllusionerArmorItem;
 import minecraftarmorweapon.item.HarvestMoon2023929Item;
 import minecraftarmorweapon.item.HammerItem;
@@ -237,6 +240,9 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> BLUEPURGE = REGISTRY.register("bluepurge", () -> new BluepurgeItem());
 	public static final RegistryObject<Item> BLUEPURGE_UTIGATANA = REGISTRY.register("bluepurge_utigatana", () -> new BluepurgeUtigatanaItem());
 	public static final RegistryObject<Item> BLUEPURGE_TYOKUTOU = REGISTRY.register("bluepurge_tyokutou", () -> new BluepurgeTyokutouItem());
+	public static final RegistryObject<Item> KAMIANARI_KURIKARA = REGISTRY.register("kamianari_kurikara", () -> new KamianariKurikaraItem());
+	public static final RegistryObject<Item> IMITATION = REGISTRY.register("imitation", () -> new ImitationItem());
+	public static final RegistryObject<Item> KAMINARI_KURIKARAKEN_UTIGATANA = REGISTRY.register("kaminari_kurikaraken_utigatana", () -> new KaminariKurikarakenUtigatanaItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

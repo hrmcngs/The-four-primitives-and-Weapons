@@ -24,10 +24,6 @@ public class TunderbolteffrctehuekutogaYouXiaoShinoteitukuProcedure {
 							_ent.getName().getString(), _ent.getDisplayName(), _ent.level.getServer(), _ent), "/particle dust 1.000 0.969 0.059 1 ~ ~1 ~ 0.1 0.1 0.1 1 25");
 				}
 			}
-		} else {
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.KURIKARAKENUTIGATANA.get()) {
-				(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("kurikarakenutigatana_model_kaminari", 1);
-			}
 		}
 	}
 }
