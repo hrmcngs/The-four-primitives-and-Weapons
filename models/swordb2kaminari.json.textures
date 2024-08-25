@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "swordb",
+        "3": "kurikarakaminari"
+      },
+      "name": "default"
+    }
+  }
+}

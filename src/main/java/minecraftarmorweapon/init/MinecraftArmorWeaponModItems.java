@@ -65,6 +65,8 @@ import minecraftarmorweapon.item.KentiItem;
 import minecraftarmorweapon.item.KatanaTobuItem;
 import minecraftarmorweapon.item.KatanaNiguHumerusItem;
 import minecraftarmorweapon.item.KaminariKurikarakenUtigatanaItem;
+import minecraftarmorweapon.item.KaminariKurikarakenTyokutouItem;
+import minecraftarmorweapon.item.KaminariKurikarakenSwordItem;
 import minecraftarmorweapon.item.KamianariKurikaraItem;
 import minecraftarmorweapon.item.KabuseruItem;
 import minecraftarmorweapon.item.ItemWeaponswordItem;
@@ -243,6 +245,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> KAMIANARI_KURIKARA = REGISTRY.register("kamianari_kurikara", () -> new KamianariKurikaraItem());
 	public static final RegistryObject<Item> IMITATION = REGISTRY.register("imitation", () -> new ImitationItem());
 	public static final RegistryObject<Item> KAMINARI_KURIKARAKEN_UTIGATANA = REGISTRY.register("kaminari_kurikaraken_utigatana", () -> new KaminariKurikarakenUtigatanaItem());
+	public static final RegistryObject<Item> KAMINARI_KURIKARAKEN_SWORD = REGISTRY.register("kaminari_kurikaraken_sword", () -> new KaminariKurikarakenSwordItem());
+	public static final RegistryObject<Item> KAMINARI_KURIKARAKEN_TYOKUTOU = REGISTRY.register("kaminari_kurikaraken_tyokutou", () -> new KaminariKurikarakenTyokutouItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

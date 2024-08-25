@@ -1,0 +1,11 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "0": "katanab",
+        "4": "kurikarakaminari"
+      },
+      "name": "default"
+    }
+  }
+}

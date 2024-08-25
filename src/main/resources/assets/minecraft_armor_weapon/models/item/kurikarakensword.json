@@ -3,5 +3,13 @@
   "textures": {
     "0": "minecraft_armor_weapon:blocks/swordb",
     "particle": "minecraft_armor_weapon:items/aaaaa"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "minecraft_armor_weapon:item/kaminari_kurikaraken_sword"
+    }
+  ]
 }
