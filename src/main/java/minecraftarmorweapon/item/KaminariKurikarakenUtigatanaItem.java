@@ -6,8 +6,6 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Item;
 
-import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
-
 public class KaminariKurikarakenUtigatanaItem extends SwordItem {
 	public KaminariKurikarakenUtigatanaItem() {
 		super(new Tier() {
@@ -34,6 +32,6 @@ public class KaminariKurikarakenUtigatanaItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of();
 			}
-		}, 3, -3f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
+		}, 3, -3f, new Item.Properties().tab(null));
 	}
 }

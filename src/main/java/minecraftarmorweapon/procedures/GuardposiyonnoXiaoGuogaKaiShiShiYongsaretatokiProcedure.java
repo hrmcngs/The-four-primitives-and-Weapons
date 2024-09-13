@@ -1,6 +1,7 @@
 package minecraftarmorweapon.procedures;
 
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.effect.MobEffects;
@@ -11,6 +12,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
+import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 
 import minecraftarmorweapon.MinecraftArmorWeaponMod;
 
@@ -18,13 +20,26 @@ public class GuardposiyonnoXiaoGuogaKaiShiShiYongsaretatokiProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		{
-			Entity _ent = entity;
-			if (!_ent.level.isClientSide() && _ent.getServer() != null) {
-				_ent.getServer().getCommands().performPrefixedCommand(
-						new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(),
-								_ent.level.getServer(), _ent),
-						"summon minecraft:armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:[\"minecraft_armor_weapon_guard_bind\"],Pose:{LeftArm:[0f,90f,-90f],RightArm:[0f,-90f,90f]},DisabledSlots:4144959,HandItems:[{id:\"minecraft:yellow_stained_glass_pane\",Count:1b},{id:\"minecraft:yellow_stained_glass_pane\",Count:1b}]}");
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.REPLICA_SWORD_OF_LIGHT.get()) {
+			{
+				Entity _ent = entity;
+				if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+					_ent.getServer().getCommands().performPrefixedCommand(
+							new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(),
+									_ent.level.getServer(), _ent),
+							"summon minecraft:armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:[\"minecraft_armor_weapon_guard_bind\"],Pose:{LeftArm:[0f,90f,-90f],RightArm:[0f,-90f,90f]},DisabledSlots:4144959,HandItems:[{id:\"minecraft:yellow_stained_glass_pane\",Count:1b},{id:\"minecraft:yellow_stained_glass_pane\",Count:1b}]}");
+				}
+			}
+		}
+		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.LOKI_THE_TRICKSTER.get()) {
+			{
+				Entity _ent = entity;
+				if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+					_ent.getServer().getCommands().performPrefixedCommand(
+							new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level instanceof ServerLevel ? (ServerLevel) _ent.level : null, 4, _ent.getName().getString(), _ent.getDisplayName(),
+									_ent.level.getServer(), _ent),
+							"summon minecraft:armor_stand ~ ~ ~ {NoGravity:1b,Invisible:1b,Tags:[\"minecraft_armor_weapon_guard_bind\"],Pose:{LeftArm:[0f,90f,-90f],RightArm:[0f,-90f,90f]},DisabledSlots:4144959,HandItems:[{id:\"minecraft:yellow_stained_glass_pane\",Count:1b},{id:\"minecraft:light_gray_stained_glass_pane\",Count:1b}]}");
+				}
 			}
 		}
 		if (entity.getPersistentData().getBoolean("minecraft_armor_weapon:muteki_weakenss_chuzume_copy") == true) {
