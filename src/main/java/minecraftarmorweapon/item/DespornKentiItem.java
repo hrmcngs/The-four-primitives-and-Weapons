@@ -44,7 +44,7 @@ public class DespornKentiItem extends SwordItem {
 	@Override
 	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		DespornKentimobugaturudeGongJisaretatokiProcedure.execute(entity);
+		DespornKentimobugaturudeGongJisaretatokiProcedure.execute(entity, sourceentity);
 		return retval;
 	}
 }

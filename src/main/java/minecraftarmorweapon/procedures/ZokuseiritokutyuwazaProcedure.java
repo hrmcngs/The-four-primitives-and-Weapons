@@ -26,6 +26,7 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
+import minecraftarmorweapon.entity.BlackholeEntity;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -108,6 +109,12 @@ public class ZokuseiritokutyuwazaProcedure {
 																	"/deta merge entity @s (Health:0)");
 														}
 													}
+													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()) {
+														if (entityiterator instanceof BlackholeEntity) {
+															if (!entityiterator.level.isClientSide())
+																entityiterator.discard();
+														}
+													}
 												} else {
 													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
@@ -144,7 +151,19 @@ public class ZokuseiritokutyuwazaProcedure {
 																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 1, true, false));
 															entityiterator.hurt(DamageSource.GENERIC, 10);
 														}
+														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()) {
+															if (entityiterator instanceof BlackholeEntity) {
+																if (!entityiterator.level.isClientSide())
+																	entityiterator.discard();
+															}
+														}
 													} else {
+														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()) {
+															if (entityiterator instanceof BlackholeEntity) {
+																if (!entityiterator.level.isClientSide())
+																	entityiterator.discard();
+															}
+														}
 														entityiterator.hurt(DamageSource.GENERIC, 5);
 													}
 												}
@@ -158,7 +177,7 @@ public class ZokuseiritokutyuwazaProcedure {
 						{
 							final Vec3 _center = new Vec3((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))),
 									(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))));
-							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+							List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(3 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 									.collect(Collectors.toList());
 							for (Entity entityiterator : _entfound) {
 								if (!(entityiterator == entity)) {
@@ -181,6 +200,12 @@ public class ZokuseiritokutyuwazaProcedure {
 																	"/deta merge entity @s (Health:0)");
 														}
 													}
+													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()) {
+														if (entityiterator instanceof BlackholeEntity) {
+															if (!entityiterator.level.isClientSide())
+																entityiterator.discard();
+														}
+													}
 												} else {
 													if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 															|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
@@ -217,7 +242,19 @@ public class ZokuseiritokutyuwazaProcedure {
 																_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.TISSOKU.get(), 120, 1, true, false));
 															entityiterator.hurt(DamageSource.GENERIC, 10);
 														}
+														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()) {
+															if (entityiterator instanceof BlackholeEntity) {
+																if (!entityiterator.level.isClientSide())
+																	entityiterator.discard();
+															}
+														}
 													} else {
+														if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.PROTOTYPE_KATANA.get()) {
+															if (entityiterator instanceof BlackholeEntity) {
+																if (!entityiterator.level.isClientSide())
+																	entityiterator.discard();
+															}
+														}
 														entityiterator.hurt(DamageSource.GENERIC, 5);
 													}
 												}
@@ -268,7 +305,9 @@ public class ZokuseiritokutyuwazaProcedure {
 												}
 											}
 										} else {
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()
+													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
+													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
@@ -335,6 +374,10 @@ public class ZokuseiritokutyuwazaProcedure {
 								if (!(entityiterator instanceof OtiruyoEntity)) {
 									if (entityiterator instanceof LivingEntity) {
 										if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
+											if (entityiterator instanceof BlackholeEntity) {
+												if (!entityiterator.level.isClientSide())
+													entityiterator.discard();
+											}
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level.isClientSide() && _ent.getServer() != null) {
@@ -350,7 +393,9 @@ public class ZokuseiritokutyuwazaProcedure {
 												}
 											}
 										} else {
-											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
+											if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DARKNESS.get()
+													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
+													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.STORM.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
 													|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.THUNDERBOLT.get()) {
@@ -384,7 +429,15 @@ public class ZokuseiritokutyuwazaProcedure {
 													if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 														_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.DARKNESS_ATTACK_EFFECT.get(), 100, 1, true, false));
 												}
+												if (entityiterator instanceof BlackholeEntity) {
+													if (!entityiterator.level.isClientSide())
+														entityiterator.discard();
+												}
 											} else {
+												if (entityiterator instanceof BlackholeEntity) {
+													if (!entityiterator.level.isClientSide())
+														entityiterator.discard();
+												}
 												entityiterator.hurt(DamageSource.GENERIC, 10);
 											}
 										}

@@ -43,7 +43,7 @@ public class LokiTheTricksterItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of();
 			}
-		}, 3, -2.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_CHUZUME_TAB));
+		}, 3, -1.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_CHUZUME_TAB));
 	}
 
 	@Override

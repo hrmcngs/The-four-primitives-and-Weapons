@@ -6,7 +6,7 @@
     "displayName": "RPG book give",
     "description": "Give RPG Book when respawning or at initial spawn or",
     "category": "PLAYER",
-    "defaultValueLogic": false,
+    "defaultValueLogic": true,
     "defaultValueNumber": 0
   }
 }

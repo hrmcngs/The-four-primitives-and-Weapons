@@ -31,53 +31,53 @@ public class HardentityehuekutogaYouXiaoShinoteitukuProcedure {
 		if (entity == null)
 			return;
 		if (entity instanceof WitherSkeleton || entity instanceof Stray || entity instanceof Skeleton) {
-			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem() == Items.IRON_HELMET)) {
+			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_HELMET.get())) {
 				{
 					Entity _entity = entity;
 					if (_entity instanceof Player _player) {
-						_player.getInventory().armor.set(3, new ItemStack(Items.IRON_HELMET));
+						_player.getInventory().armor.set(3, new ItemStack(MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_HELMET.get()));
 						_player.getInventory().setChanged();
 					} else if (_entity instanceof LivingEntity _living) {
-						_living.setItemSlot(EquipmentSlot.HEAD, new ItemStack(Items.IRON_HELMET));
+						_living.setItemSlot(EquipmentSlot.HEAD, new ItemStack(MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_HELMET.get()));
 					}
 				}
 				((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY)).enchant(Enchantments.ALL_DAMAGE_PROTECTION,
 						entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);
 			}
-			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem() == Items.IRON_CHESTPLATE)) {
+			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_CHESTPLATE.get())) {
 				{
 					Entity _entity = entity;
 					if (_entity instanceof Player _player) {
-						_player.getInventory().armor.set(2, new ItemStack(Items.IRON_CHESTPLATE));
+						_player.getInventory().armor.set(2, new ItemStack(MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_CHESTPLATE.get()));
 						_player.getInventory().setChanged();
 					} else if (_entity instanceof LivingEntity _living) {
-						_living.setItemSlot(EquipmentSlot.CHEST, new ItemStack(Items.IRON_CHESTPLATE));
+						_living.setItemSlot(EquipmentSlot.CHEST, new ItemStack(MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_CHESTPLATE.get()));
 					}
 				}
 				((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY)).enchant(Enchantments.ALL_DAMAGE_PROTECTION,
 						entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);
 			}
-			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY).getItem() == Items.IRON_LEGGINGS)) {
+			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_LEGGINGS.get())) {
 				{
 					Entity _entity = entity;
 					if (_entity instanceof Player _player) {
-						_player.getInventory().armor.set(1, new ItemStack(Items.IRON_LEGGINGS));
+						_player.getInventory().armor.set(1, new ItemStack(MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_LEGGINGS.get()));
 						_player.getInventory().setChanged();
 					} else if (_entity instanceof LivingEntity _living) {
-						_living.setItemSlot(EquipmentSlot.LEGS, new ItemStack(Items.IRON_LEGGINGS));
+						_living.setItemSlot(EquipmentSlot.LEGS, new ItemStack(MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_LEGGINGS.get()));
 					}
 				}
 				((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY)).enchant(Enchantments.ALL_DAMAGE_PROTECTION,
 						entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);
 			}
-			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == Items.IRON_BOOTS)) {
+			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_BOOTS.get())) {
 				{
 					Entity _entity = entity;
 					if (_entity instanceof Player _player) {
-						_player.getInventory().armor.set(0, new ItemStack(Items.IRON_BOOTS));
+						_player.getInventory().armor.set(0, new ItemStack(MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_BOOTS.get()));
 						_player.getInventory().setChanged();
 					} else if (_entity instanceof LivingEntity _living) {
-						_living.setItemSlot(EquipmentSlot.FEET, new ItemStack(Items.IRON_BOOTS));
+						_living.setItemSlot(EquipmentSlot.FEET, new ItemStack(MinecraftArmorWeaponModItems.DAS_HERZ_EINER_FEE_ARMOR_BOOTS.get()));
 					}
 				}
 				((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY)).enchant(Enchantments.ALL_DAMAGE_PROTECTION,
@@ -140,6 +140,11 @@ public class HardentityehuekutogaYouXiaoShinoteitukuProcedure {
 								if (_entity instanceof Player _player)
 									_player.getInventory().setChanged();
 							}
+							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("Unbreakable", true);
+							if (entity instanceof WitherSkeleton) {
+								((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).enchant(Enchantments.FLAMING_ARROWS,
+										entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);
+							}
 							((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).enchant(Enchantments.POWER_ARROWS,
 									entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);
 						}
@@ -174,6 +179,11 @@ public class HardentityehuekutogaYouXiaoShinoteitukuProcedure {
 							if (_entity instanceof Player _player)
 								_player.getInventory().setChanged();
 						}
+						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("Unbreakable", true);
+						if (entity instanceof WitherSkeleton) {
+							((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).enchant(Enchantments.FLAMING_ARROWS,
+									entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);
+						}
 						((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).enchant(Enchantments.POWER_ARROWS,
 								entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);
 					}
@@ -206,6 +216,11 @@ public class HardentityehuekutogaYouXiaoShinoteitukuProcedure {
 							_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
 							if (_entity instanceof Player _player)
 								_player.getInventory().setChanged();
+						}
+						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("Unbreakable", true);
+						if (entity instanceof WitherSkeleton) {
+							((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).enchant(Enchantments.FLAMING_ARROWS,
+									entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);
 						}
 						((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).enchant(Enchantments.POWER_ARROWS,
 								entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()) ? _livEnt.getEffect(MinecraftArmorWeaponModMobEffects.HARDENTITY.get()).getAmplifier() : 0);

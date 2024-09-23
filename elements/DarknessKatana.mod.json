@@ -25,6 +25,9 @@
     "damageOnCrafting": false,
     "onRightClickedInAir": {
       "name": "DarknessKatanaYoukuritukusitatoki"
+    },
+    "onItemInUseTick": {
+      "name": "IronKatanaturuwoShoudeChituteiruJiannoteituku"
     }
   }
 }

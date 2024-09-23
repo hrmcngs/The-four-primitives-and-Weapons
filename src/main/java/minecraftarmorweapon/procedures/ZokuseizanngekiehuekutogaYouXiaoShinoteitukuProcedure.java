@@ -30,6 +30,7 @@ import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
+import minecraftarmorweapon.entity.BlackholeEntity;
 
 import java.util.stream.Collectors;
 import java.util.List;
@@ -590,7 +591,15 @@ public class ZokuseizanngekiehuekutogaYouXiaoShinoteitukuProcedure {
 														if (entityiterator instanceof LivingEntity _entity && !_entity.level.isClientSide())
 															_entity.addEffect(new MobEffectInstance(MinecraftArmorWeaponModMobEffects.THUNDER_HIT.get(), 120, 6, true, false));
 													}
+													if (entityiterator instanceof BlackholeEntity) {
+														if (!entityiterator.level.isClientSide())
+															entityiterator.discard();
+													}
 												} else {
+													if (entityiterator instanceof BlackholeEntity) {
+														if (!entityiterator.level.isClientSide())
+															entityiterator.discard();
+													}
 													entityiterator.hurt(DamageSource.GENERIC, 20);
 												}
 											}

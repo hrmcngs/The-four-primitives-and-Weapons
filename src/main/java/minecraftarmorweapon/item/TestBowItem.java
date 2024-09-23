@@ -32,17 +32,17 @@ public class TestBowItem extends Item {
 
 	@Override
 	public UseAnim getUseAnimation(ItemStack itemstack) {
-		return UseAnim.BOW;
+    return UseAnim.BOW;
 	}
 
 	@Override
 	public int getUseDuration(ItemStack itemstack) {
-		return 72000;
+    return 72000;
 	}
-
+	
 	@Override
 	public void releaseUsing(ItemStack itemstack, Level world, LivingEntity entityLiving, int timeLeft) {
-		if (!world.isClientSide() && entityLiving instanceof ServerPlayer entity) {
+    	if (!world.isClientSide() && entityLiving instanceof ServerPlayer entity) {
 			double x = entity.getX();
 			double y = entity.getY();
 			double z = entity.getZ();

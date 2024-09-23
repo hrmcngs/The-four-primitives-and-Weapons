@@ -14,7 +14,7 @@
             },
             "countPrice1": 1,
             "price2": {
-              "value": "CUSTOM:MagicMcrystal"
+              "value": "Items.IRON_INGOT"
             },
             "countPrice2": 32,
             "offer": {
@@ -22,9 +22,34 @@
             },
             "countOffer": 1,
             "level": 1,
-            "maxTrades": 10,
+            "maxTrades": 72000,
             "xp": 5,
-            "priceMultiplier": 0.09999999999999999
+            "priceMultiplier": 1.0
+          }
+        ]
+      },
+      {
+        "villagerProfession": {
+          "value": "CUSTOM:MinecraftArmorAndWeapon"
+        },
+        "entries": [
+          {
+            "price1": {
+              "value": "Blocks.DROPPER"
+            },
+            "countPrice1": 1,
+            "price2": {
+              "value": "Blocks.CRAFTING_TABLE"
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "CUSTOM:CustomCrafterCrafting"
+            },
+            "countOffer": 1,
+            "level": 1,
+            "maxTrades": 72000,
+            "xp": 5,
+            "priceMultiplier": 0.0
           }
         ]
       }

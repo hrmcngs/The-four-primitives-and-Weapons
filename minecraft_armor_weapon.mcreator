@@ -1274,7 +1274,7 @@
       "type": "function",
       "sortid": 97,
       "compiles": true,
-      "locked_code": true,
+      "locked_code": false,
       "registry_name": "arrows_kill",
       "metadata": {
         "files": [
@@ -5744,6 +5744,10 @@
           {
             "name": "entity",
             "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
           }
         ]
       }
@@ -8663,6 +8667,58 @@
         ]
       },
       "path": "~/kurikaraken"
+    },
+    {
+      "name": "HammerCraft",
+      "type": "recipe",
+      "sortid": 569,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hammer_craft",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/recipes/hammer_craft.json"
+        ]
+      }
+    },
+    {
+      "name": "HardentityFunction",
+      "type": "function",
+      "sortid": 570,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hardentity_function",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/hardentity_function.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "HardentityFunctionStray",
+      "type": "function",
+      "sortid": 571,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hardentity_function_stray",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/hardentity_function_stray.mcfunction"
+        ]
+      }
+    },
+    {
+      "name": "HardentityFunctionWitherSkeleton",
+      "type": "function",
+      "sortid": 572,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hardentity_function_wither_skeleton",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/minecraft_armor_weapon/functions/hardentity_function_wither_skeleton.mcfunction"
+        ]
+      }
     }
   ],
   "variable_elements": [

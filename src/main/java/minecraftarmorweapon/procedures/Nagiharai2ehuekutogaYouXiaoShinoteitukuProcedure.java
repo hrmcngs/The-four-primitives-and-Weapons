@@ -113,7 +113,7 @@ public class Nagiharai2ehuekutogaYouXiaoShinoteitukuProcedure {
 					if (!(entityiterator instanceof SkeltonMobEntity)) {
 						if (!(entityiterator instanceof OtiruyoEntity)) {
 							if (EnchantmentHelper.getItemEnchantmentLevel(MinecraftArmorWeaponModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									entity.getPersistentData().putBoolean("enchantmagickatanadamege", true);
 									{
 										Entity _ent = entityiterator;
@@ -131,7 +131,7 @@ public class Nagiharai2ehuekutogaYouXiaoShinoteitukuProcedure {
 									}
 								}
 							} else {
-								if (entityiterator instanceof Mob) {
+								if (entityiterator instanceof LivingEntity) {
 									if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.FIREBALL.get()
 											|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.WIND_STEP.get()
 											|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == MinecraftArmorWeaponModItems.BUBBLESHOT.get()
