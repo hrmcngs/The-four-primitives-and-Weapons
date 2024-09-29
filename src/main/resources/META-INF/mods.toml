@@ -33,4 +33,10 @@ authors="0526ngs"
     versionRange="[0,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.minecraft_armor_weapon]]
+    modId="jei"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
 

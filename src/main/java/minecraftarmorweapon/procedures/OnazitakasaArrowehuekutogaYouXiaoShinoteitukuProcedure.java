@@ -3,6 +3,7 @@ package minecraftarmorweapon.procedures;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.Blocks;
@@ -17,11 +18,12 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
+import minecraftarmorweapon.init.MinecraftArmorWeaponModMobEffects;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModEnchantments;
 
 import minecraftarmorweapon.entity.SkeltonMobEntity;
@@ -70,7 +72,9 @@ public class OnazitakasaArrowehuekutogaYouXiaoShinoteitukuProcedure {
 					Block.getId((world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos"), entity.getPersistentData().getDouble("Zpos"))))));
 		}
 		if (world instanceof ServerLevel _level)
-			_level.sendParticles(ParticleTypes.CLOUD, (entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1), (entity.getPersistentData().getDouble("Zpos")), 10, 0.1, 0.1, 0.1, 0);
+			_level.getServer().getCommands()
+					.performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1), (entity.getPersistentData().getDouble("Zpos"))),
+							Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(), "/particle explosion ~ ~ ~ 0.1 0.1 0.1 1.5 1 normal");
 		{
 			final Vec3 _center = new Vec3((entity.getPersistentData().getDouble("Xpos")), (entity.getPersistentData().getDouble("Ypos") + 1), (entity.getPersistentData().getDouble("Zpos")));
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(1 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).collect(Collectors.toList());
@@ -95,13 +99,17 @@ public class OnazitakasaArrowehuekutogaYouXiaoShinoteitukuProcedure {
 										}
 									}
 								} else {
-									entityiterator.hurt(DamageSource.GENERIC, 10);
+									entityiterator.hurt(DamageSource.GENERIC, 15);
 								}
 							}
 						}
 					}
 				}
 			}
+		}
+		if (world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("Xpos"), entity.getPersistentData().getDouble("Ypos") + 1, entity.getPersistentData().getDouble("Zpos"))).canOcclude()) {
+			if (entity instanceof LivingEntity _entity)
+				_entity.removeEffect(MinecraftArmorWeaponModMobEffects.ONAZITAKASA_ARROW.get());
 		}
 		entity.getPersistentData().putDouble("distance", (entity.getPersistentData().getDouble("distance") + 0.8));
 	}

@@ -17,6 +17,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.BlockItem;
 
 import minecraftarmorweapon.item.WitherKatanaItem;
+import minecraftarmorweapon.item.WitherBoneItem;
 import minecraftarmorweapon.item.WindStepItem;
 import minecraftarmorweapon.item.WardenArmorItem;
 import minecraftarmorweapon.item.WarabitetouItem;
@@ -28,6 +29,7 @@ import minecraftarmorweapon.item.TestBowArrow0Item;
 import minecraftarmorweapon.item.SwordOfNightItem;
 import minecraftarmorweapon.item.StrayouterarmorhatItem;
 import minecraftarmorweapon.item.StrayOuterArmorItem;
+import minecraftarmorweapon.item.StrayBoneItem;
 import minecraftarmorweapon.item.StormItem;
 import minecraftarmorweapon.item.StoneSlabItem;
 import minecraftarmorweapon.item.StoneKatanaItem;
@@ -247,6 +249,8 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> KAMINARI_KURIKARAKEN_UTIGATANA = REGISTRY.register("kaminari_kurikaraken_utigatana", () -> new KaminariKurikarakenUtigatanaItem());
 	public static final RegistryObject<Item> KAMINARI_KURIKARAKEN_SWORD = REGISTRY.register("kaminari_kurikaraken_sword", () -> new KaminariKurikarakenSwordItem());
 	public static final RegistryObject<Item> KAMINARI_KURIKARAKEN_TYOKUTOU = REGISTRY.register("kaminari_kurikaraken_tyokutou", () -> new KaminariKurikarakenTyokutouItem());
+	public static final RegistryObject<Item> STRAY_BONE = REGISTRY.register("stray_bone", () -> new StrayBoneItem());
+	public static final RegistryObject<Item> WITHER_BONE = REGISTRY.register("wither_bone", () -> new WitherBoneItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
