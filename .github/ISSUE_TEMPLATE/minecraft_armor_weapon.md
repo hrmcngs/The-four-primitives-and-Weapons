@@ -1,7 +1,7 @@
 ---
 name: minecraft_armor_weapon
 about: Links about me
-title: ''
+title: the-four-primitives-and-weapons
 labels: ''
 assignees: hrmcngs
 
