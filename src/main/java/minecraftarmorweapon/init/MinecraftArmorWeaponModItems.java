@@ -251,6 +251,7 @@ public class MinecraftArmorWeaponModItems {
 	public static final RegistryObject<Item> KAMINARI_KURIKARAKEN_TYOKUTOU = REGISTRY.register("kaminari_kurikaraken_tyokutou", () -> new KaminariKurikarakenTyokutouItem());
 	public static final RegistryObject<Item> STRAY_BONE = REGISTRY.register("stray_bone", () -> new StrayBoneItem());
 	public static final RegistryObject<Item> WITHER_BONE = REGISTRY.register("wither_bone", () -> new WitherBoneItem());
+	public static final RegistryObject<Item> METEOR_ARROW_SPAWN_EGG = REGISTRY.register("meteor_arrow_spawn_egg", () -> new ForgeSpawnEggItem(MinecraftArmorWeaponModEntities.METEOR_ARROW, -1, -1, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block, CreativeModeTab tab) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));

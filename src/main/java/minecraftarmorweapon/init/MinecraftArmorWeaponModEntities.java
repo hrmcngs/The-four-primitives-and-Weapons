@@ -20,6 +20,7 @@ import minecraftarmorweapon.entity.TestBowEntity;
 import minecraftarmorweapon.entity.SkeltonMobEntity;
 import minecraftarmorweapon.entity.Ruami284Entity;
 import minecraftarmorweapon.entity.OtiruyoEntity;
+import minecraftarmorweapon.entity.MeteorArrowEntity;
 import minecraftarmorweapon.entity.LokiDecoydasuEntity;
 import minecraftarmorweapon.entity.KillotiruEntity;
 import minecraftarmorweapon.entity.KatanaTobuEntity;
@@ -61,6 +62,8 @@ public class MinecraftArmorWeaponModEntities {
 			EntityType.Builder.<CometEntity>of(CometEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(0).setUpdateInterval(3).setCustomClientFactory(CometEntity::new).fireImmune().sized(0.6f, 1.8f));
 	public static final RegistryObject<EntityType<CometKillEntity>> COMET_KILL = register("comet_kill",
 			EntityType.Builder.<CometKillEntity>of(CometKillEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(0).setUpdateInterval(3).setCustomClientFactory(CometKillEntity::new).fireImmune().sized(0.6f, 1.8f));
+	public static final RegistryObject<EntityType<MeteorArrowEntity>> METEOR_ARROW = register("meteor_arrow", EntityType.Builder.<MeteorArrowEntity>of(MeteorArrowEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
+			.setTrackingRange(0).setUpdateInterval(3).setCustomClientFactory(MeteorArrowEntity::new).fireImmune().sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
@@ -77,6 +80,7 @@ public class MinecraftArmorWeaponModEntities {
 			BlackholeEntity.init();
 			CometEntity.init();
 			CometKillEntity.init();
+			MeteorArrowEntity.init();
 		});
 	}
 
@@ -90,5 +94,6 @@ public class MinecraftArmorWeaponModEntities {
 		event.put(BLACKHOLE.get(), BlackholeEntity.createAttributes().build());
 		event.put(COMET.get(), CometEntity.createAttributes().build());
 		event.put(COMET_KILL.get(), CometKillEntity.createAttributes().build());
+		event.put(METEOR_ARROW.get(), MeteorArrowEntity.createAttributes().build());
 	}
 }

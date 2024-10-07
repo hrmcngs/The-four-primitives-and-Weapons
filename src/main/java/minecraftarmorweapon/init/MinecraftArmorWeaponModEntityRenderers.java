@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import minecraftarmorweapon.client.renderer.SkeltonMobRenderer;
 import minecraftarmorweapon.client.renderer.Ruami284Renderer;
 import minecraftarmorweapon.client.renderer.OtiruyoRenderer;
+import minecraftarmorweapon.client.renderer.MeteorArrowRenderer;
 import minecraftarmorweapon.client.renderer.KillotiruRenderer;
 import minecraftarmorweapon.client.renderer.KatanaTobuRenderer;
 import minecraftarmorweapon.client.renderer.HrmcngsRenderer;
@@ -36,5 +37,6 @@ public class MinecraftArmorWeaponModEntityRenderers {
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.TEST_BOW.get(), ThrownItemRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.COMET.get(), CometRenderer::new);
 		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.COMET_KILL.get(), CometKillRenderer::new);
+		event.registerEntityRenderer(MinecraftArmorWeaponModEntities.METEOR_ARROW.get(), MeteorArrowRenderer::new);
 	}
 }
