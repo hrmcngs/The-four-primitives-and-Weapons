@@ -8,7 +8,7 @@
     "name": "§8§l§oPrototype Katana",
     "specialInfo": [],
     "creativeTab": {
-      "value": "CUSTOM:Weapon"
+      "value": "No creative tab entry"
     },
     "toolType": "Sword",
     "harvestLevel": 1,
@@ -24,7 +24,7 @@
     "stayInGridWhenCrafting": false,
     "damageOnCrafting": false,
     "onRightClickedInAir": {
-      "name": "PrototypeKatanaYoukuritukusitatoki"
+      "name": "Zokuseiritokutyuwaza"
     },
     "onEntityHitWith": {
       "name": "PrototypeKatanamobugaturudeGongJisaretatoki"

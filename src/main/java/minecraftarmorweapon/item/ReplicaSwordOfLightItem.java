@@ -12,7 +12,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
-import minecraftarmorweapon.procedures.ReplicaSwordOfLightYoukuritukusitatokiProcedure;
+import minecraftarmorweapon.procedures.NomalwazaProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
@@ -49,7 +49,7 @@ public class ReplicaSwordOfLightItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		ReplicaSwordOfLightYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		NomalwazaProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
 

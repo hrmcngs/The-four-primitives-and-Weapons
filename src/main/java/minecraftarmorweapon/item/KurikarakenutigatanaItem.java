@@ -17,16 +17,16 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.network.chat.Component;
 
+import minecraftarmorweapon.procedures.TyokutouProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
-import minecraftarmorweapon.procedures.GomanorikenYoukuritukusitatokiProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
 import java.util.List;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.core.NonNullList;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.Items;
 
 public class KurikarakenutigatanaItem extends SwordItem {
 	public KurikarakenutigatanaItem() {
@@ -60,16 +60,9 @@ public class KurikarakenutigatanaItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		GomanorikenYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		TyokutouProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
-	@Override
-	public void fillItemCategory(CreativeModeTab tab, NonNullList<ItemStack>Items) {
-	if (this.allowedIn(tab)) {
-		ItemStack stack = new ItemStack(this);
-		stack.enchant(Enchantments.SMITE, 5);
-		Items.add(stack);
-	} }
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
@@ -89,4 +82,12 @@ public class KurikarakenutigatanaItem extends SwordItem {
 	public boolean isFoil(ItemStack itemstack) {
 		return true;
 	}
+	    @Override
+    public void fillItemCategory(CreativeModeTab tab,NonNullList<ItemStack>Items) {
+    if (this.allowedIn(tab)) {
+        ItemStack stack = new ItemStack(this);
+        stack.enchant(Enchantments.SMITE, 5);
+        Items.add(stack);
+    } }
+
 }

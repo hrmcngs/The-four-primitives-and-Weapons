@@ -16,8 +16,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
+import minecraftarmorweapon.procedures.TyokutouProcedure;
 import minecraftarmorweapon.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure;
-import minecraftarmorweapon.procedures.LunaYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
 
 import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
@@ -54,7 +54,7 @@ public class LunaItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		LunaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		TyokutouProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
 

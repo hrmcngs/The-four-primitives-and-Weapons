@@ -13,11 +13,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionHand;
 
+import minecraftarmorweapon.procedures.ZokuseiritokutyuwazaProcedure;
 import minecraftarmorweapon.procedures.PrototypeKatanamobugaturudeGongJisaretatokiProcedure;
-import minecraftarmorweapon.procedures.PrototypeKatanaYoukuritukusitatokiProcedure;
 import minecraftarmorweapon.procedures.IronKatanaturuwoShoudeChituteiruJiannoteitukuProcedure;
-
-import minecraftarmorweapon.init.MinecraftArmorWeaponModTabs;
 
 public class PrototypeKatanaItem extends SwordItem {
 	public PrototypeKatanaItem() {
@@ -45,7 +43,7 @@ public class PrototypeKatanaItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of();
 			}
-		}, 3, -1.4f, new Item.Properties().tab(MinecraftArmorWeaponModTabs.TAB_WEAPON));
+		}, 3, -1.4f, new Item.Properties().tab(null));
 	}
 
 	@Override
@@ -58,7 +56,7 @@ public class PrototypeKatanaItem extends SwordItem {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
-		PrototypeKatanaYoukuritukusitatokiProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
+		ZokuseiritokutyuwazaProcedure.execute(world, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return ar;
 	}
 

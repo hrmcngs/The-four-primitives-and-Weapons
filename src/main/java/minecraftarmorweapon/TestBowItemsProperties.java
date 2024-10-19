@@ -1,6 +1,8 @@
 package minecraftarmorweapon;
 
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.DistExecutor;
 import minecraftarmorweapon.init.MinecraftArmorWeaponModItems;
 import net.minecraft.world.item.Item;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -10,9 +12,11 @@ import net.minecraft.resources.ResourceLocation;
 
 public class TestBowItemsProperties {
 	public static void addCustomItemProperties() {
-		makeBow(MinecraftArmorWeaponModItems.TEST_BOW.get());
+		// クライアント側のみで実行するように変更
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+			makeBow(MinecraftArmorWeaponModItems.TEST_BOW.get());
+		});
 	}
-
 
 	private static void makeBow(Item item) {
 		ItemProperties.register(item, new ResourceLocation("pull"), (p_343014_, p_343015_, p_343016_, p_343017_) -> {
@@ -20,8 +24,7 @@ public class TestBowItemsProperties {
 				return 0.0F;
 			} else {
 				return p_343016_.getUseItem() != p_343014_ ? 0.0F
-						: (float) (p_343014_.getUseDuration() -
-								p_343016_.getUseItemRemainingTicks()) / 20.0F;
+						: (float) (p_343014_.getUseDuration() - p_343016_.getUseItemRemainingTicks()) / 20.0F;
 			}
 		});
 		ItemProperties.register(item, new ResourceLocation("pulling"), (p_343010_, p_343011_, p_343012_, p_343013_) -> {
