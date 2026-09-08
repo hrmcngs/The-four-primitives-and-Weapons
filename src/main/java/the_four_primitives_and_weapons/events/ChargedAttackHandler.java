@@ -384,7 +384,8 @@ public class ChargedAttackHandler {
         performChargedThrust(player, world, lookVec, playerPos, chargePercent, false);
     }
 
-    private static void performChargedThrust(Player player, Level world, Vec3 lookVec, Vec3 playerPos, float chargePercent, boolean isCooldown) {
+    private static void performChargedThrust(Player player, Level world, Vec3 unusedLookVec, Vec3 playerPos, float chargePercent, boolean isCooldown) {
+        Vec3 lookVec = player.getLookAngle().normalize();
         // Luna専用の強化突き攻撃処理
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         String itemName = mainHand.getItem().getClass().getSimpleName();
@@ -429,7 +430,7 @@ public class ChargedAttackHandler {
                 serverWorld.sendParticles(
                     ParticleTypes.ELECTRIC_SPARK,
                     playerPos.x + lookVec.x * d,
-                    playerPos.y + 1,
+                    player.getEyeY() + lookVec.y * d,
                     playerPos.z + lookVec.z * d,
                     5, 0.2, 0.2, 0.2, 0.05
                 );
@@ -438,7 +439,7 @@ public class ChargedAttackHandler {
                     serverWorld.sendParticles(
                         ParticleTypes.END_ROD,
                         playerPos.x + lookVec.x * d,
-                        playerPos.y + 1,
+                        player.getEyeY() + lookVec.y * d,
                         playerPos.z + lookVec.z * d,
                         2, 0.1, 0.1, 0.1, 0
                     );
@@ -446,18 +447,14 @@ public class ChargedAttackHandler {
             }
         }
         
-        // 貫通攻撃（直線上の全ての敵）
-        Vec3 endPos = playerPos.add(lookVec.scale(range));
-        AABB searchArea = new AABB(playerPos, endPos).inflate(1.0);
-        
+        // 視点から狙った方向へ細い直線判定を出す。
+        Vec3 hitStart = player.getEyePosition();
+        Vec3 endPos = hitStart.add(lookVec.scale(range));
+        AABB searchArea = the_four_primitives_and_weapons.util.ThrustHitbox.bounds(hitStart, endPos);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            entity -> {
-                if (entity == player) return false;
-                Vec3 toEntity = entity.position().subtract(playerPos);
-                double dot = lookVec.dot(toEntity.normalize());
-                return dot > 0.8 && toEntity.length() <= range;
-            });
-        
+            entity -> entity != player
+                && the_four_primitives_and_weapons.util.ThrustHitbox.intersects(entity, hitStart, endPos));
+
         for (LivingEntity target : targets) {
             ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
             float actualDamage = DamageCalculator.dealDamage(player, target, baseDamage, weapon);

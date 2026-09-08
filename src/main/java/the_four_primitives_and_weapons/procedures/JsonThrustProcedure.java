@@ -9,6 +9,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import the_four_primitives_and_weapons.util.ThrustHitbox;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * JSON ( weapon_stats の "thrust" ) 駆動の「突き連撃」チャージ攻撃。
  *
- * <p>短い前方への踏み込み＋前方コーン内の敵へ {@code hits} 回の多段ヒット。
+ * <p>短い前方への踏み込み＋前方の細い直線上の敵へ {@code hits} 回の多段ヒット。
  * {@code range} を小さくすると「奥行きの短い突き」になる ( ダガー向け )。
  * 既存の直刀突き ( {@link TyokutouThrustAttackProcedure} ) には触れない独立実装。</p>
  */
@@ -120,11 +121,11 @@ public final class JsonThrustProcedure {
 
     private static void doHit(Player player, ComboSession session) {
         Level world = player.level();
-        Vec3 look = the_four_primitives_and_weapons.skill.MotionExecutor.horizontalLook(player);
-        Vec3 eye = player.position().add(0, player.getEyeHeight() * 0.6, 0);
-        Vec3 origin = player.position();
+        Vec3 look = player.getLookAngle().normalize();
+        Vec3 eye = player.getEyePosition();
+        Vec3 origin = player.getEyePosition();
         Vec3 end = origin.add(look.scale(session.range));
-        AABB area = new AABB(origin, end).inflate(1.0, 1.0, 1.0);
+        AABB area = ThrustHitbox.bounds(origin, end);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, area,
                 e -> e != player && e.isAlive() && !e.isSpectator() && !e.isAlliedTo(player));
 
@@ -136,9 +137,7 @@ public final class JsonThrustProcedure {
 
         int hitIndex = session.doneHits;
         for (LivingEntity target : targets) {
-            Vec3 to = target.position().add(0, target.getBbHeight() * 0.5, 0).subtract(eye);
-            if (to.length() > session.range + 1.0) continue;
-            if (to.normalize().dot(look) < 0.4) continue; // 前方コーンのみ
+            if (!ThrustHitbox.intersects(target, origin, end)) continue;
 
             target.invulnerableTime = 0; // 多段ヒットを通す
             target.hurt(world.damageSources().playerAttack(player), session.damage);

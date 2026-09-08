@@ -3,10 +3,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"texture_size": [4, 4],
-	"textures": {
-		"habaki": "the_four_primitives_and_weapons:straight_katana_fitting/tsuba/tuba_template",
-		"particle": "the_four_primitives_and_weapons:block/bloodkatana"
-	},
+	"textures": {"habaki": "the_four_primitives_and_weapons:katana_fitting/kasira/kasira_gray", "particle": "the_four_primitives_and_weapons:block/bloodkatana"},
 	"elements": [
 		{
 			"from": [-0.2, 13.75, 15.8],
@@ -279,52 +276,24 @@
 			"to": [0.1, 8.75, 16.4],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0.1, 0, 0]},
 			"faces": {
-				"north": {"uv": [0, 0, 0.125, 0.125], "texture": "#habaki", "tintindex": 5},
-				"east": {"uv": [0, 0, 0.125, 0.125], "texture": "#habaki", "tintindex": 5},
-				"south": {"uv": [0, 0, 0.125, 0.125], "texture": "#habaki", "tintindex": 5},
-				"west": {"uv": [0, 0, 0.125, 0.125], "texture": "#habaki", "tintindex": 5},
-				"up": {"uv": [0, 0, 0.125, 0.125], "texture": "#habaki", "tintindex": 5},
-				"down": {"uv": [0, 0, 0.125, 0.125], "texture": "#habaki", "tintindex": 5}
+				"north": {"uv": [0, 0, 3, 1], "texture": "#habaki", "tintindex": 5},
+				"east": {"uv": [0, 0, 3, 1], "texture": "#habaki", "tintindex": 5},
+				"south": {"uv": [0, 0, 3, 1], "texture": "#habaki", "tintindex": 5},
+				"west": {"uv": [0, 0, 3, 1], "texture": "#habaki", "tintindex": 5},
+				"up": {"uv": [0, 0, 3, 1], "texture": "#habaki", "tintindex": 5},
+				"down": {"uv": [0, 0, 3, 1], "texture": "#habaki", "tintindex": 5}
 			}
 		}
 	],
 	"display": {
-		"thirdperson_righthand": {
-			"translation": [8, 0.75, -7.25],
-			"scale": [1, 1.5, 1]
-		},
-		"thirdperson_lefthand": {
-			"translation": [-8.25, 0.75, -7.25],
-			"scale": [1, 1.5, 1]
-		},
-		"firstperson_righthand": {
-			"translation": [3.25, 4.5, -2.25],
-			"scale": [1, 1.2, 1]
-		},
-		"firstperson_lefthand": {
-			"translation": [-13, 4.75, -2],
-			"scale": [1, 1.2, 1]
-		},
-		"ground": {
-			"rotation": [-180, 0, 0],
-			"translation": [7.75, 3.5, 7.75],
-			"scale": [1, 1.5, 1]
-		},
-		"gui": {
-			"rotation": [-90, 130, 90],
-			"translation": [-10.25, 1.75, 1.3],
-			"scale": [1, 1.3, 1]
-		},
-		"head": {
-			"rotation": [-90, 40, -90],
-			"translation": [-10.25, -2.75, 14.5],
-			"scale": [1, 1.5, 1]
-		},
-		"fixed": {
-			"rotation": [-90, -130, -90],
-			"translation": [14, 3, 11.25],
-			"scale": [1.4, 1.65, 1.4]
-		}
+		"thirdperson_righthand": {"translation": [8, 0.75, -7.25], "scale": [1, 1.5, 1]},
+		"thirdperson_lefthand": {"translation": [-8.25, 0.75, -7.25], "scale": [1, 1.5, 1]},
+		"firstperson_righthand": {"translation": [3.25, 4.5, -2.25], "scale": [1, 1.2, 1]},
+		"firstperson_lefthand": {"translation": [-13, 4.75, -2], "scale": [1, 1.2, 1]},
+		"ground": {"rotation": [-180, 0, 0], "translation": [7.75, 3.5, 7.75], "scale": [1, 1.5, 1]},
+		"gui": {"rotation": [-90, 130, 90], "translation": [-10.25, 1.75, 1.3], "scale": [1, 1.3, 1]},
+		"head": {"rotation": [-90, 40, -90], "translation": [-10.25, -2.75, 14.5], "scale": [1, 1.5, 1]},
+		"fixed": {"rotation": [-90, -130, -90], "translation": [14, 3, 11.25], "scale": [1.4, 1.65, 1.4]}
 	},
 	"groups": [
 		{
@@ -345,60 +314,24 @@
 							"scope": 0,
 							"color": 0,
 							"children": [
-								{
-									"name": "group",
-									"origin": [3.9, 7.4, 12.5],
-									"scope": 0,
-									"color": 0,
-									"children": [0, 1]
-								},
-								{
-									"name": "group",
-									"origin": [3.9, 7.4, 12.5],
-									"scope": 0,
-									"color": 0,
-									"children": [2, 3, 4]
-								},
+								{"name": "group", "origin": [3.9, 7.4, 12.5], "scope": 0, "color": 0, "children": [0, 1]},
+								{"name": "group", "origin": [3.9, 7.4, 12.5], "scope": 0, "color": 0, "children": [2, 3, 4]},
 								{
 									"name": "group",
 									"origin": [8, 8, 8],
 									"scope": 0,
 									"color": 0,
 									"children": [
-										{
-											"name": "group",
-											"origin": [3.9, 7.4, 12.5],
-											"scope": 0,
-											"color": 0,
-											"children": [5, 6]
-										},
-										{
-											"name": "group",
-											"origin": [3.9, 7.4, 12.5],
-											"scope": 0,
-											"color": 0,
-											"children": [7, 8]
-										},
-										{
-											"name": "group",
-											"origin": [3.9, 7.4, 12.5],
-											"scope": 0,
-											"color": 0,
-											"children": [9, 10, 11, 12, 13]
-										}
+										{"name": "group", "origin": [3.9, 7.4, 12.5], "scope": 0, "color": 0, "children": [5, 6]},
+										{"name": "group", "origin": [3.9, 7.4, 12.5], "scope": 0, "color": 0, "children": [7, 8]},
+										{"name": "group", "origin": [3.9, 7.4, 12.5], "scope": 0, "color": 0, "children": [9, 10, 11, 12, 13]}
 									]
 								}
 							]
 						}
 					]
 				},
-				{
-					"name": "group",
-					"origin": [3, 6.4, 10.45],
-					"scope": 0,
-					"color": 0,
-					"children": [14]
-				}
+				{"name": "group", "origin": [3, 6.4, 10.45], "scope": 0, "color": 0, "children": [14]}
 			]
 		},
 		{
@@ -407,35 +340,11 @@
 			"scope": 0,
 			"color": 0,
 			"children": [
-				{
-					"name": "main",
-					"origin": [8, 8, 8],
-					"scope": 0,
-					"color": 0,
-					"children": [15, 16, 17]
-				},
-				{
-					"name": "tuba",
-					"origin": [3, 6.4, 10.45],
-					"scope": 0,
-					"color": 0,
-					"children": [18]
-				},
-				{
-					"name": "kasira",
-					"origin": [3.4, 5.3, 10.2],
-					"scope": 0,
-					"color": 0,
-					"children": [19]
-				}
+				{"name": "main", "origin": [8, 8, 8], "scope": 0, "color": 0, "children": [15, 16, 17]},
+				{"name": "tuba", "origin": [3, 6.4, 10.45], "scope": 0, "color": 0, "children": [18]},
+				{"name": "kasira", "origin": [3.4, 5.3, 10.2], "scope": 0, "color": 0, "children": [19]}
 			]
 		},
-		{
-			"name": "habaki",
-			"origin": [-0.1, 8.05, 16],
-			"scope": 0,
-			"color": 0,
-			"children": [20]
-		}
+		{"name": "habaki", "origin": [-0.1, 8.05, 16], "scope": 0, "color": 0, "children": [20]}
 	]
 }

@@ -72,7 +72,7 @@ public class EvasionHandler {
 
         boolean canReflect = value > 100.0 && !REFLECTING.get();
 
-        if (source.getDirectEntity() instanceof Projectile projectile && projectile != target) {
+        if (source.getDirectEntity() instanceof Projectile projectile) {
             double speed = projectile.getDeltaMovement().length();
             pushOutOfHitbox(projectile, target);
             if (canReflect && reflectProjectile(projectile, target, source, reflectRatio(value), speed)) {

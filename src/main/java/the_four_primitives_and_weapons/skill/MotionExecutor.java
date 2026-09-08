@@ -6,6 +6,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
+import the_four_primitives_and_weapons.util.ThrustHitbox;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.core.particles.ParticleTypes;
@@ -137,7 +138,7 @@ public class MotionExecutor {
                 case "magic_katana_special" -> MagicKatanaSpecialChargeProcedure.execute(world, player.getX(), player.getY(), player.getZ(), player, chargePercent);
                 // スキル画面で設定した一撃目/二撃目/三撃目を高速で連続発動する。
                 case "thrust_combo" -> the_four_primitives_and_weapons.procedures.SkillComboProcedure.execute(player, chargePercent);
-                default -> performThrust(player, world, lookVec, playerPos, chargePercent);
+                default -> performThrust(player, world, player.getLookAngle().normalize(), playerPos, chargePercent);
             }
         } finally {
             // ※ ここで得意な突きだけ resetAttackStrengthTicker() していたが削除。
@@ -187,15 +188,15 @@ public class MotionExecutor {
         // 突きは扇ではなく線。 ここも扇のままだと せっかく thrustLine を線にしても
         // 属性粒子が扇を描いてしまい、 見た目が斬撃と区別できない。
         if ("thrust".equals(motionId)) {
-            Vec3 look = horizontalLook(player);
+            Vec3 look = player.getLookAngle().normalize();
             Vec3 pos = player.position();
             double end = thrustVisualRange(player);
-            double y = pos.y + 1.2;
+            double y = player.getEyeY();
             int steps = (int) Math.round((end - 0.6) / 0.25);
             for (int i = 0; i <= steps; i++) {
                 double d = 0.6 + (end - 0.6) * i / steps;
                 the_four_primitives_and_weapons.damage.ElementalParticles.spawnWide(
-                        sl, elem, pos.x + look.x * d, y, pos.z + look.z * d, 1, 0.05, 0.05);
+                        sl, elem, pos.x + look.x * d, y + look.y * d, pos.z + look.z * d, 1, 0.05, 0.05);
             }
             return;
         }
@@ -235,21 +236,14 @@ public class MotionExecutor {
             }
         }
 
-        // ターゲット検索
-        double horizontalWidth = isCharged ? 1.0 : 2.5;
-        Vec3 rightVec = new Vec3(-lookVec.z, 0, lookVec.x).normalize();
+        // 通常・チャージともに演出と同じ高さの細い直線で判定する。
+        Vec3 hitStart = player.getEyePosition();
+        Vec3 hitEnd = hitStart.add(lookVec.scale(range));
+        AABB searchArea = ThrustHitbox.bounds(hitStart, hitEnd);
+        List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
+            entity -> entity != player && ThrustHitbox.intersects(entity, hitStart, hitEnd));
 
         if (isCharged) {
-            // チャージ版: 直線貫通
-            Vec3 endPos = playerPos.add(lookVec.scale(range));
-            AABB searchArea = new AABB(playerPos, endPos).inflate(1.0);
-            List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-                entity -> {
-                    if (entity == player) return false;
-                    Vec3 toEntity = entity.position().subtract(playerPos);
-                    double dot = lookVec.dot(toEntity.normalize());
-                    return dot > 0.8 && toEntity.length() <= range;
-                });
             for (LivingEntity target : targets) {
                 ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
                 DamageCalculator.dealDamage(player, target, baseDamage, weapon);
@@ -259,12 +253,6 @@ public class MotionExecutor {
                 }
             }
         } else {
-            // 通常版: 横広範囲
-			Vec3 endPos = playerPos.add(lookVec.scale(range));
-			AABB attackBox = new AABB(playerPos, endPos).inflate(horizontalWidth, 1.5, horizontalWidth);
-            List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, attackBox,
-				entity -> entity != player && isInsideAttackLane(entity, playerPos, lookVec, rightVec,
-						-0.5, range, horizontalWidth, 2.5));
             for (LivingEntity target : targets) {
                 ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
                 DamageCalculator.dealDamage(player, target, baseDamage, weapon);
@@ -556,12 +544,12 @@ public class MotionExecutor {
         net.minecraft.core.particles.ParticleOptions dust = slashDust(player);
         double start = 0.6;                       // プレイヤーの中に湧かせない
         double end = Math.max(start + 0.5, range);
-        double y = playerPos.y + 1.2;             // 扇 ( fanPoints ) と同じ高さ
+        double y = player.getEyeY();              // 当たり判定と同じ視点位置
         int steps = (int) Math.round((end - start) / 0.25);
         for (int i = 0; i <= steps; i++) {
             double d = start + (end - start) * i / steps;
             the_four_primitives_and_weapons.damage.ElementalParticles.sendForced(sw, dust,
-                    playerPos.x + look.x * d, y, playerPos.z + look.z * d,
+                    playerPos.x + look.x * d, y + look.y * d, playerPos.z + look.z * d,
                     3, 0.05, 0.05, 0.05, 0.0);
         }
     }

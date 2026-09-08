@@ -2,6 +2,7 @@ package the_four_primitives_and_weapons.procedures;
 
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
+import the_four_primitives_and_weapons.util.ThrustHitbox;
 
 import the_four_primitives_and_weapons.damage.SpecialDebuffHandler;
 import net.minecraft.world.level.LevelAccessor;
@@ -102,10 +103,8 @@ public class TyokutouThrustAttackProcedure {
                 .attackRangeBonus(player.getMainHandItem()));
         double damage = 18.0;  // 他の刀と同じダメージ
 
-        // Lunaは空撃ちでも上下を含む視点方向へ飛ばす。他の直刀は従来の水平突き。
-        Vec3 lookVec = isLunaItem(player.getMainHandItem())
-                ? player.getLookAngle().normalize()
-                : the_four_primitives_and_weapons.skill.MotionExecutor.horizontalLook(player);
+        // 突きは上下を含む視点方向へ出す。
+        Vec3 lookVec = player.getLookAngle().normalize();
 
         // 全ての突き共通の見た目 ( 前方へ伸びる線 )。 斬撃の扇と区別が付くようにする。
         if (world instanceof ServerLevel serverLevel) {
@@ -125,19 +124,13 @@ public class TyokutouThrustAttackProcedure {
             player.setDeltaMovement(player.getDeltaMovement().add(lookVec.scale(lunge)));
         }
 
-        // 前方の敵を検索（他の刀と同じ判定）
-        Vec3 playerPos = player.position();
-        Vec3 endPos = playerPos.add(lookVec.scale(range));
-        AABB searchArea = new AABB(playerPos.add(-2, -1, -2), endPos.add(2, 2, 2));
-
+        // 演出と同じ高さの細い直線で判定する。
+        Vec3 hitStart = player.getEyePosition();
+        Vec3 hitEnd = hitStart.add(lookVec.scale(range));
+        AABB searchArea = ThrustHitbox.bounds(hitStart, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            target -> {
-                if (target == player || !target.isAttackable()) return false;
-                // 前方180度の広い範囲で判定（他の刀と同じ）
-                Vec3 toEntity = target.position().subtract(playerPos).normalize();
-                double dot = lookVec.dot(toEntity);
-                return dot > -0.2 && target.distanceTo(player) <= range;
-            });
+            target -> target != player && target.isAttackable()
+                && ThrustHitbox.intersects(target, hitStart, hitEnd));
 
         // 敵にダメージ
         for (LivingEntity target : targets) {
@@ -201,10 +194,8 @@ public class TyokutouThrustAttackProcedure {
         double damage = 35.0 + chargePercent * 20.0;  // 35.0～55.0
         double thrustPower = 0.8 + chargePercent * 0.4;  // 0.8～1.2（他の刀と同程度）
 
-        // Lunaの空撃ち曲線は水平固定にせず、上下を含めてカメラの向きへ飛ばす。
-        Vec3 lookVec = isLunaItem(player.getMainHandItem())
-                ? player.getLookAngle().normalize()
-                : the_four_primitives_and_weapons.skill.MotionExecutor.horizontalLook(player);
+        // チャージ突きも上下を含めてカメラの向きへ出す。
+        Vec3 lookVec = player.getLookAngle().normalize();
         Vec3 startPos = player.position().add(0, player.getEyeHeight(), 0);
 
         // Lunaのビーム発射音。曲線自体は下の元実装 createCurvingBeams* だけで生成する。
@@ -267,26 +258,12 @@ public class TyokutouThrustAttackProcedure {
         // 超強力な突進移動
         player.setDeltaMovement(player.getDeltaMovement().add(lookVec.scale(thrustPower)));
 
-        // 広めの判定で貫通攻撃
-        AABB searchArea = new AABB(
-            startPos.x - 1.5, startPos.y - 1.5, startPos.z - 1.5,
-            startPos.x + lookVec.x * range + 1.5,
-            startPos.y + lookVec.y * range + 1.5,
-            startPos.z + lookVec.z * range + 1.5
-        ).expandTowards(lookVec.scale(range));
-
+        // 距離やチャージ率で横へ広がらない直線判定。
+        Vec3 hitEnd = startPos.add(lookVec.scale(range));
+        AABB searchArea = ThrustHitbox.bounds(startPos, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            target -> {
-                if (target == player || !target.isAttackable()) return false;
-
-                Vec3 toTarget = target.position().add(0, target.getBbHeight() / 2, 0)
-                    .subtract(startPos).normalize();
-                double dot = lookVec.dot(toTarget);
-
-                // チャージ率に応じて判定を少し広げる
-                double angleThreshold = 0.95 - chargePercent * 0.05;  // 0.95～0.90
-                return dot > angleThreshold && target.distanceTo(player) <= range;
-            });
+            target -> target != player && target.isAttackable()
+                && ThrustHitbox.intersects(target, startPos, hitEnd));
 
         // 全ての敵を貫通
         ItemStack weapon = player.getMainHandItem();
@@ -389,7 +366,7 @@ public class TyokutouThrustAttackProcedure {
         double range = 4.0;
         double damage = 12.0;
 
-        Vec3 lookVec = the_four_primitives_and_weapons.skill.MotionExecutor.horizontalLook(player);
+        Vec3 lookVec = player.getLookAngle().normalize();
         Vec3 startPos = player.position().add(0, player.getEyeHeight(), 0);
 
         // エフェクト（小さいDustパーティクル）
@@ -409,24 +386,12 @@ public class TyokutouThrustAttackProcedure {
             }
         }
 
-        // 敵を検索
-        AABB searchArea = new AABB(
-            startPos.x - 0.5, startPos.y - 0.5, startPos.z - 0.5,
-            startPos.x + lookVec.x * range + 0.5,
-            startPos.y + lookVec.y * range + 0.5,
-            startPos.z + lookVec.z * range + 0.5
-        );
-
+        // 距離やチャージ率で横へ広がらない直線判定。
+        Vec3 hitEnd = startPos.add(lookVec.scale(range));
+        AABB searchArea = ThrustHitbox.bounds(startPos, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            target -> {
-                if (target == player) return false;
-
-                Vec3 toTarget = target.position().add(0, target.getBbHeight() / 2, 0)
-                    .subtract(startPos).normalize();
-                double dot = lookVec.dot(toTarget);
-
-                return dot > 0.9 && target.distanceTo(player) <= range;
-            });
+            target -> target != player && target.isAttackable()
+                && ThrustHitbox.intersects(target, startPos, hitEnd));
 
         if (!targets.isEmpty()) {
             LivingEntity target = targets.get(0);
