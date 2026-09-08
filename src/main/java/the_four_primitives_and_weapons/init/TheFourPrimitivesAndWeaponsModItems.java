@@ -264,6 +264,7 @@ public class TheFourPrimitivesAndWeaponsModItems {
 	public static final RegistryObject<Item> GOLD_TYOKUTO = REGISTRY.register("gold_tyokuto", () -> new the_four_primitives_and_weapons.item.GoldTyokutoItem());
 	public static final RegistryObject<Item> STONE_TYOKUTO = REGISTRY.register("stone_tyokuto", () -> new the_four_primitives_and_weapons.item.StoneTyokutoItem());
 	public static final RegistryObject<Item> SAYA = REGISTRY.register("saya", () -> new SayaItem());
+	public static final RegistryObject<Item> NINJATO_SAYA = REGISTRY.register("ninjato_saya", () -> new SayaItem());
 	public static final RegistryObject<Item> TYOKUTO_SAYA = REGISTRY.register("tyokuto_saya", () -> new TyokutoSayaItem());
 	public static final RegistryObject<Item> SWORD_SAYA = REGISTRY.register("sword_saya", () -> new SwordSayaItem());
 	public static final RegistryObject<Item> ICE_BOOK = REGISTRY.register("ice_book", () -> new IceBookItem());

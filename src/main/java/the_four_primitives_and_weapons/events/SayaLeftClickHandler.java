@@ -96,7 +96,7 @@ public class SayaLeftClickHandler {
         if (weaponStack.isEmpty()) return false;
 
         // 鞘から武器の情報を削除 (空の鞘にする)
-        tag.remove(storedKey);
+        the_four_primitives_and_weapons.util.CuriosScabbardHelper.clearWeaponFromScabbard(sheathStack);
 
         // 封印鞘 / 霊刀スタイル等の特殊 NBT に応じた predicate 値を維持
         // (見た目本体は SayaModelWrapper が NBT を読み解いて差し替えるので

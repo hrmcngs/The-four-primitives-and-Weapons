@@ -32,6 +32,7 @@ public class SayaColorClient {
 			return fittingRgb(stack, tintIndex);
 		},
 				TheFourPrimitivesAndWeaponsModItems.SAYA.get(),
+				TheFourPrimitivesAndWeaponsModItems.NINJATO_SAYA.get(),
 				TheFourPrimitivesAndWeaponsModItems.TYOKUTO_SAYA.get(),
 				TheFourPrimitivesAndWeaponsModItems.SWORD_SAYA.get(),
 				TheFourPrimitivesAndWeaponsModItems.RAPIER_SAYA.get(),

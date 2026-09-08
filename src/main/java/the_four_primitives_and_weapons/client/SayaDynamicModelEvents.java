@@ -109,6 +109,8 @@ public final class SayaDynamicModelEvents {
         // ----- (2) 本体4種の saya アイテムモデルを SayaModelWrapper で包む -----
         wrapSaya(event, MRL_SAYA, SayaRegistry.SayaType.KATANA);
         wrapSaya(event, MRL_SWORD_SAYA, SayaRegistry.SayaType.SWORD);
+        wrapSaya(event, new ModelResourceLocation(new ResourceLocation(
+                TheFourPrimitivesAndWeaponsMod.MODID, "ninjato_saya"), "inventory"), SayaRegistry.SayaType.KATANA);
         wrapSaya(event, MRL_TYOKUTO_SAYA, SayaRegistry.SayaType.TYOKUTO);
         wrapSaya(event, MRL_RAPIER_SAYA, SayaRegistry.SayaType.RAPIER);
         wrapSaya(event, MRL_DAGGER_SAYA, SayaRegistry.SayaType.DAGGER);

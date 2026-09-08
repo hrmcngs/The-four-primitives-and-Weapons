@@ -231,7 +231,7 @@ public class CuriosScabbardHelper {
         player.setItemInHand(targetHand, weaponStack);
 
         // 鞘を空にする
-        tag.remove(storedKey);
+        clearWeaponFromScabbard(sheathStack);
         tag.putInt("CustomModelData", 0);
         sheathStack.setTag(tag);
 
@@ -455,6 +455,13 @@ public class CuriosScabbardHelper {
      */
     public static void clearWeaponFromScabbard(ItemStack scabbard) {
         CompoundTag tag = scabbard.getOrCreateTag();
+        // 抜刀後も最後に納めた刀の種類を残し、専用の空鞘を選べるようにする。
+        for (String key : STORED_KEYS) {
+            if (tag.contains(key)) {
+                tag.putString("LastSheathedWeapon", tag.getCompound(key).getString("id"));
+                break;
+            }
+        }
         for (String key : STORED_KEYS) {
             if (tag.contains(key)) tag.remove(key);
         }

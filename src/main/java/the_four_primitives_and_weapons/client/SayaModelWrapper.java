@@ -100,6 +100,14 @@ public class SayaModelWrapper implements BakedModel {
                     if (custom != null) return custom;
                 }
             }
+            if (stored.isEmpty() && outer.sayaType == SayaRegistry.SayaType.KATANA
+                    && stack.hasTag() && "the_four_primitives_and_weapons:ninjatou".equals(
+                            stack.getTag().getString("LastSheathedWeapon"))) {
+                BakedModel empty = resolveCachedModel(new ResourceLocation(
+                        "the_four_primitives_and_weapons", "custom/saya/ninjato/ninzyatousayakara"),
+                        stack, level, entity, seed);
+                if (empty != null) return empty;
+            }
             // カスタムモデル未指定 or 解決失敗 → 元の overrides (custom_model_data 用) に委譲
             ItemOverrides orig = outer.wrapped.getOverrides();
             if (orig != null) {

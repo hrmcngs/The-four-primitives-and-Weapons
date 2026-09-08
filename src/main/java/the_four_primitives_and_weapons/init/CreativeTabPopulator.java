@@ -264,6 +264,7 @@ public class CreativeTabPopulator {
 			event.accept(KoshiraeInit.ITEM);
 			// 素の鞘
 			event.accept(TheFourPrimitivesAndWeaponsModItems.SAYA);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.NINJATO_SAYA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.TYOKUTO_SAYA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.SWORD_SAYA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.RAPIER_SAYA);
