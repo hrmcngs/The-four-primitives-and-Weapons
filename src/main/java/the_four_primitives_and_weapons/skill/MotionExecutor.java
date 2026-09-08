@@ -97,6 +97,7 @@ public class MotionExecutor {
             }
         }
 
+        the_four_primitives_and_weapons.util.NinjatoTetherCutRule.beginSkill();
         try {
             // 外部登録されたハンドラーを優先的にチェック
             ISkillAction handler = SkillRegistry.getHandler(motionId);
@@ -141,6 +142,7 @@ public class MotionExecutor {
                 default -> performThrust(player, world, player.getLookAngle().normalize(), playerPos, chargePercent);
             }
         } finally {
+            the_four_primitives_and_weapons.util.NinjatoTetherCutRule.endSkill();
             // ※ ここで得意な突きだけ resetAttackStrengthTicker() していたが削除。
             //    このメソッドはゲージを 0 にする ( = 次の一撃の cooldownScale が 0 になる ) ので、
             //    「即連発可能にする」というコメントとは逆に 得意技ほど次撃が弱くなっていた。

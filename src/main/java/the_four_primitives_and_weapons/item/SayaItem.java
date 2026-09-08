@@ -61,7 +61,9 @@ public class SayaItem extends Item implements ICurioItem {
 	public void appendHoverText(ItemStack stack, Level world, List<Component> list, net.minecraft.world.item.TooltipFlag flag) {
 		super.appendHoverText(stack, world, list, flag);
         if (stack.hasTag() && stack.getTag().getBoolean(the_four_primitives_and_weapons.util.NinjatoVault.TETHERED))
-            list.add(Component.translatable("tooltip.the_four_primitives_and_weapons.ninjato_tethered"));
+            list.add(Component.translatable(the_four_primitives_and_weapons.util.NinjatoVault.isChain(stack)
+                ? "tooltip.the_four_primitives_and_weapons.ninjato_chain"
+                : "tooltip.the_four_primitives_and_weapons.ninjato_tethered"));
         if (the_four_primitives_and_weapons.util.NinjatoVault.isLoaded(stack))
             list.add(Component.translatable("tooltip.the_four_primitives_and_weapons.ninjato_vault"));
 

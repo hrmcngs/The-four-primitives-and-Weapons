@@ -62,6 +62,13 @@ public class TheFourPrimitivesAndWeaponsModCustomEntities {
                     .sized(0.25f, 0.25f)
                     .build("seed_projectile"));
 
+    public static final RegistryObject<EntityType<the_four_primitives_and_weapons.entity.NinjatoTetherSegmentEntity>> NINJATO_TETHER_SEGMENT =
+        REGISTRY.register("ninjato_tether_segment", () -> EntityType.Builder
+            .<the_four_primitives_and_weapons.entity.NinjatoTetherSegmentEntity>of(
+                the_four_primitives_and_weapons.entity.NinjatoTetherSegmentEntity::new, MobCategory.MISC)
+            .sized(0.4F, 0.4F).setTrackingRange(32).setUpdateInterval(1)
+            .noSave().noSummon().fireImmune().build("ninjato_tether_segment"));
+
     /** 地面に突き刺さった武器 ( 戦場の建築用 )。 */
     public static final RegistryObject<EntityType<StabbedWeaponEntity>> STABBED_WEAPON = REGISTRY.register("stabbed_weapon",
             () -> EntityType.Builder.<StabbedWeaponEntity>of(StabbedWeaponEntity::new, MobCategory.MISC)

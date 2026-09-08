@@ -125,6 +125,15 @@ public class TheFourPrimitivesAndWeaponsMod {
 	private static final Collection<AbstractMap.SimpleEntry<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
 
 	public static void queueServerWork(int tick, Runnable action) {
+        // 遅延発動する武器スキルも、通常攻撃と区別できるよう実行文脈を引き継ぐ。
+        if (the_four_primitives_and_weapons.util.NinjatoTetherCutRule.inSkill()) {
+            Runnable skillAction = action;
+            action = () -> {
+                the_four_primitives_and_weapons.util.NinjatoTetherCutRule.beginSkill();
+                try { skillAction.run(); }
+                finally { the_four_primitives_and_weapons.util.NinjatoTetherCutRule.endSkill(); }
+            };
+        }
 		workQueue.add(new AbstractMap.SimpleEntry(action, tick));
 	}
 

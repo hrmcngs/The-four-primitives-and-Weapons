@@ -17,7 +17,7 @@ import the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod;
 import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems;
 import the_four_primitives_and_weapons.util.NinjatoVault;
 
-/** 忍者刀の鞘 + 糸1個。納刀中の刀・染色・名前を含むNBTを保持する。 */
+/** 忍者刀の鞘 + 糸または鎖1個。納刀中の刀・染色・名前を含むNBTを保持する。 */
 public class NinjatoCordRecipe extends CustomRecipe {
     public NinjatoCordRecipe(ResourceLocation id, CraftingBookCategory category) { super(id, category); }
 
@@ -31,7 +31,7 @@ public class NinjatoCordRecipe extends CustomRecipe {
                 if (!saya.isEmpty() || (stack.hasTag() && stack.getTag().getBoolean(NinjatoVault.TETHERED)))
                     return ItemStack.EMPTY;
                 saya = stack;
-            } else if (stack.is(Items.STRING) && !string) {
+            } else if ((stack.is(Items.STRING) || stack.is(Items.CHAIN)) && !string) {
                 string = true;
             } else return ItemStack.EMPTY;
         }
@@ -48,6 +48,10 @@ public class NinjatoCordRecipe extends CustomRecipe {
         ItemStack result = saya.copy();
         result.setCount(1);
         result.getOrCreateTag().putBoolean(NinjatoVault.TETHERED, true);
+        for (int i = 0; i < inv.getContainerSize(); i++) {
+            if (inv.getItem(i).is(Items.CHAIN)) result.getOrCreateTag().putString(NinjatoVault.MATERIAL, "chain");
+            else if (inv.getItem(i).is(Items.STRING)) result.getOrCreateTag().putString(NinjatoVault.MATERIAL, "string");
+        }
         return result;
     }
 

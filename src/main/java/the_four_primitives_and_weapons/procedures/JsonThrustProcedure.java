@@ -139,6 +139,10 @@ public final class JsonThrustProcedure {
         for (LivingEntity target : targets) {
             if (!ThrustHitbox.intersects(target, origin, end)) continue;
 
+            if (target instanceof the_four_primitives_and_weapons.entity.NinjatoTetherSegmentEntity segment) {
+                segment.hurtFromSkill(player, session.damage);
+                continue;
+            }
             target.invulnerableTime = 0; // 多段ヒットを通す
             target.hurt(world.damageSources().playerAttack(player), session.damage);
             target.knockback((float) session.knockback, -look.x, -look.z);

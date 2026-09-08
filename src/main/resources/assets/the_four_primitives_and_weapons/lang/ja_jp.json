@@ -1,6 +1,8 @@
 {
+  "item.the_four_primitives_and_weapons.ninjato_recall_chain": "忍者刀の回収鎖",
+  "tooltip.the_four_primitives_and_weapons.ninjato_chain": "鎖付き：右クリック／10ブロックで回収。20ダメージ以上の武器スキルで切断される。",
   "item.the_four_primitives_and_weapons.ninjato_recall_cord": "忍者刀の回収紐",
-  "tooltip.the_four_primitives_and_weapons.ninjato_tethered": "紐付き：紐を右クリックで回収。10ブロック以上離れると自動回収。",
+  "tooltip.the_four_primitives_and_weapons.ninjato_tethered": "紐付き：右クリック／10ブロックで回収。通常攻撃で切断される。",
   "tooltip.the_four_primitives_and_weapons.ninjato_vault": "利き手で右クリックを押しながら、上から下へ素早く振って跳躍。",
   "item.the_four_primitives_and_weapons.ninjato_saya": "忍者刀の鞘",
   "item.the_four_primitives_and_weapons.undead_army_banish": "聖なる鐘",

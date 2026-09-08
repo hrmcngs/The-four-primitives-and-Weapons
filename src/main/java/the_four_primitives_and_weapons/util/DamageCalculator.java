@@ -325,6 +325,10 @@ public class DamageCalculator {
         // ダメージ計算
         float actualDamage = calculateDamage(attacker, target, baseDamage, weapon);
 
+        if (target instanceof the_four_primitives_and_weapons.entity.NinjatoTetherSegmentEntity segment) {
+            return attacker instanceof Player player && segment.hurtFromSkill(player, actualDamage) ? actualDamage : 0;
+        }
+
         // ダメージを与える
         DamageSource source = attacker instanceof Player player ?
             player.damageSources().playerAttack(player) : attacker.damageSources().mobAttack(attacker);

@@ -68,6 +68,8 @@ public class CustomEntityRenderers {
                 ctx -> new net.minecraft.client.renderer.entity.ThrownItemRenderer<>(ctx));
 
         // 地面に突き刺さった武器
+        event.registerEntityRenderer(TheFourPrimitivesAndWeaponsModCustomEntities.NINJATO_TETHER_SEGMENT.get(),
+            context -> new net.minecraft.client.renderer.entity.NoopRenderer<>(context));
         event.registerEntityRenderer(TheFourPrimitivesAndWeaponsModCustomEntities.STABBED_WEAPON.get(),
                 the_four_primitives_and_weapons.client.renderer.StabbedWeaponRenderer::new);
     }

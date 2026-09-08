@@ -29,12 +29,88 @@ import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModCustom
 public class StabbedWeaponEntity extends Entity {
 	/** 0より大きい間は回収不能な次元移動演出。サーバー側だけで寿命を数える。 */
 	private int ritualLifetime;
+    private final java.util.List<NinjatoTetherSegmentEntity> tetherSegments = new java.util.ArrayList<>();
+
+    /** 切断しても刀は返さず、地面に残す。紐・鎖の再取り付けは再クラフトする。 */
+    public boolean cutTether(Player attacker, boolean skill, float damage) {
+        if (level().isClientSide || isRemoved() || !vaultTethered
+                || !the_four_primitives_and_weapons.util.NinjatoTetherCutRule.canCut(isChainTether(), skill, damage)) return false;
+        vaultTethered = false;
+        entityData.set(DATA_TETHER_OWNER, java.util.Optional.empty());
+        ItemStack sheath = getItem().copy();
+        sheath.getOrCreateTag().remove(the_four_primitives_and_weapons.util.NinjatoVault.TETHERED);
+        sheath.getOrCreateTag().remove(the_four_primitives_and_weapons.util.NinjatoVault.MATERIAL);
+        setItem(sheath);
+        Player owner = level().getServer().getPlayerList().getPlayer(vaultOwner);
+        if (owner != null) {
+            for (int i = 0; i < owner.getInventory().getContainerSize(); i++) {
+                if (isMatchingCord(owner.getInventory().getItem(i))) owner.getInventory().setItem(i, ItemStack.EMPTY);
+            }
+            owner.getInventory().setChanged();
+            owner.containerMenu.broadcastChanges();
+        }
+        clearTetherSegments();
+        level().playSound(null, blockPosition(), isChainTether() ? SoundEvents.CHAIN_BREAK : SoundEvents.WOOL_BREAK,
+            SoundSource.PLAYERS, 1.0F, 1.0F);
+        return true;
+    }
+
+    private boolean isMatchingCord(ItemStack stack) {
+        return the_four_primitives_and_weapons.util.NinjatoVault.isRecallItem(stack) && stack.hasTag()
+            && stack.getTag().hasUUID("PlantedWeapon") && getUUID().equals(stack.getTag().getUUID("PlantedWeapon"));
+    }
+
+    private void clearTetherSegments() {
+        for (NinjatoTetherSegmentEntity segment : tetherSegments) segment.discard();
+        tetherSegments.clear();
+    }
+
+    private void updateTetherSegments() {
+        Player owner = vaultOwner == null ? null : level().getPlayerByUUID(vaultOwner);
+        if (!vaultTethered || isRemoved() || owner == null || !owner.isAlive()) {
+            clearTetherSegments(); return;
+        }
+        boolean main = isMatchingCord(owner.getMainHandItem());
+        if (!main && !isMatchingCord(owner.getOffhandItem())) { clearTetherSegments(); return; }
+        int arm = owner.getMainArm() == net.minecraft.world.entity.HumanoidArm.RIGHT ? 1 : -1;
+        if (!main) arm = -arm;
+        double yaw = Math.toRadians(owner.yBodyRot);
+        net.minecraft.world.phys.Vec3 hand = owner.getEyePosition().add(
+            -Math.cos(yaw) * arm * 0.35 - Math.sin(yaw) * 0.4,
+            (owner.isCrouching() ? -0.1875 : 0) - 0.55,
+            -Math.sin(yaw) * arm * 0.35 + Math.cos(yaw) * 0.4);
+        net.minecraft.world.phys.Vec3 anchor = weaponSegment()[0];
+        net.minecraft.world.phys.Vec3 line = hand.subtract(anchor);
+        int count = Math.max(1, Math.min(48, (int)Math.ceil(line.length() / 0.3)));
+        while (tetherSegments.size() > count) tetherSegments.remove(tetherSegments.size() - 1).discard();
+        while (tetherSegments.size() < count) {
+            NinjatoTetherSegmentEntity segment = new NinjatoTetherSegmentEntity(
+                the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModCustomEntities.NINJATO_TETHER_SEGMENT.get(), level());
+            segment.attach(this);
+            net.minecraft.world.phys.Vec3 point = anchor.add(line.scale((tetherSegments.size() + 0.5) / count));
+            segment.setPos(point.x, point.y - 0.2, point.z);
+            if (!level().addFreshEntity(segment)) break;
+            tetherSegments.add(segment);
+        }
+        for (int i = 0; i < tetherSegments.size(); i++) {
+            net.minecraft.world.phys.Vec3 point = anchor.add(line.scale((i + 0.5) / count));
+            tetherSegments.get(i).setPos(point.x, point.y - 0.2, point.z);
+        }
+    }
+
     private java.util.UUID vaultOwner;
     private boolean vaultTethered;
 
     public void setVaultOwner(java.util.UUID owner, boolean tethered) {
         vaultOwner = owner;
         vaultTethered = tethered;
+        entityData.set(DATA_TETHER_CHAIN, the_four_primitives_and_weapons.util.NinjatoVault.isChain(getItem()));
+        entityData.set(DATA_TETHER_OWNER, tethered ? java.util.Optional.of(owner) : java.util.Optional.empty());
+    }
+
+    /** 描画用の持ち主。UUIDを同期し、追跡開始・再ログイン後も接続できるようにする。 */
+    public java.util.Optional<java.util.UUID> getTetherOwner() {
+        return entityData.get(DATA_TETHER_OWNER);
     }
 
     /** 紐の実体を鞘に置き換える。実体を先に消して二重回収を防ぐ。 */
@@ -45,7 +121,7 @@ public class StabbedWeaponEntity extends Entity {
         int cordSlot = -1;
         for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
             ItemStack cord = player.getInventory().getItem(i);
-            if (cord.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get())
+            if (the_four_primitives_and_weapons.util.NinjatoVault.isRecallItem(cord)
                     && cord.hasTag() && cord.getTag().hasUUID("PlantedWeapon")
                     && getUUID().equals(cord.getTag().getUUID("PlantedWeapon"))) {
                 if (cordSlot < 0) cordSlot = i;
@@ -58,7 +134,7 @@ public class StabbedWeaponEntity extends Entity {
             // クリエイティブ等で複製された古い紐も無効化する。
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack cord = player.getInventory().getItem(i);
-                if (cord.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get())
+                if (the_four_primitives_and_weapons.util.NinjatoVault.isRecallItem(cord)
                         && cord.hasTag() && cord.getTag().hasUUID("PlantedWeapon")
                         && getUUID().equals(cord.getTag().getUUID("PlantedWeapon")))
                     player.getInventory().setItem(i, ItemStack.EMPTY);
@@ -72,6 +148,13 @@ public class StabbedWeaponEntity extends Entity {
         return true;
     }
 
+    private static final EntityDataAccessor<Boolean> DATA_TETHER_CHAIN =
+        SynchedEntityData.defineId(StabbedWeaponEntity.class, EntityDataSerializers.BOOLEAN);
+
+    public boolean isChainTether() { return entityData.get(DATA_TETHER_CHAIN); }
+
+    private static final EntityDataAccessor<java.util.Optional<java.util.UUID>> DATA_TETHER_OWNER =
+        SynchedEntityData.defineId(StabbedWeaponEntity.class, EntityDataSerializers.OPTIONAL_UUID);
 	private static final EntityDataAccessor<ItemStack> DATA_ITEM =
 			SynchedEntityData.defineId(StabbedWeaponEntity.class, EntityDataSerializers.ITEM_STACK);
 	private static final EntityDataAccessor<Float> DATA_YAW =
@@ -99,6 +182,8 @@ public class StabbedWeaponEntity extends Entity {
 
 	@Override
 	protected void defineSynchedData() {
+        this.entityData.define(DATA_TETHER_CHAIN, false);
+        this.entityData.define(DATA_TETHER_OWNER, java.util.Optional.empty());
 		this.entityData.define(DATA_ITEM, ItemStack.EMPTY);
 		this.entityData.define(DATA_YAW, 0f);
 		this.entityData.define(DATA_TILT, 12f);
@@ -211,6 +296,7 @@ public class StabbedWeaponEntity extends Entity {
 	@Override
 	public void tick() {
 		super.tick();
+        if (!level().isClientSide) updateTetherSegments();
         if (!level().isClientSide && vaultTethered && vaultOwner != null && !isRemoved()) {
             net.minecraft.server.level.ServerPlayer owner = level().getServer().getPlayerList().getPlayer(vaultOwner);
             if (owner != null && owner.isAlive()
@@ -339,7 +425,10 @@ public class StabbedWeaponEntity extends Entity {
 	protected void readAdditionalSaveData(CompoundTag tag) {
         if (tag.hasUUID("VaultOwner")) vaultOwner = tag.getUUID("VaultOwner");
         vaultTethered = tag.getBoolean("VaultTethered");
+        entityData.set(DATA_TETHER_OWNER, vaultTethered && vaultOwner != null
+            ? java.util.Optional.of(vaultOwner) : java.util.Optional.empty());
 		if (tag.contains("StabItem")) setItem(ItemStack.of(tag.getCompound("StabItem")));
+        entityData.set(DATA_TETHER_CHAIN, the_four_primitives_and_weapons.util.NinjatoVault.isChain(getItem()));
 		setStabYaw(tag.getFloat("StabYaw"));
 		if (tag.contains("StabTilt")) setTilt(tag.getFloat("StabTilt"));
 		if (tag.contains("StabRadius")) setRadius(tag.getFloat("StabRadius"));

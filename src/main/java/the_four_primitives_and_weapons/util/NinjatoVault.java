@@ -17,6 +17,16 @@ import the_four_primitives_and_weapons.item.SayaItem;
 
 public final class NinjatoVault {
     public static final String TETHERED = "NinjatoTethered";
+    public static final String MATERIAL = "NinjatoTetherMaterial";
+
+    public static boolean isChain(ItemStack stack) {
+        return stack.hasTag() && "chain".equals(stack.getTag().getString(MATERIAL));
+    }
+
+    public static boolean isRecallItem(ItemStack stack) {
+        return stack.is(TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get())
+            || stack.is(TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CHAIN.get());
+    }
     private static final Map<Player, NinjatoVaultGesture> GESTURES = new WeakHashMap<>();
     private NinjatoVault() {}
 
@@ -65,7 +75,8 @@ public final class NinjatoVault {
 
         ItemStack inHand = ItemStack.EMPTY;
         if (stack.getOrCreateTag().getBoolean(TETHERED)) {
-            inHand = new ItemStack(TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get());
+            inHand = new ItemStack(isChain(stack) ? TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CHAIN.get()
+                : TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get());
             inHand.getOrCreateTag().putUUID("PlantedWeapon", planted.getUUID());
             inHand.getOrCreateTag().putUUID("CordOwner", player.getUUID());
         }

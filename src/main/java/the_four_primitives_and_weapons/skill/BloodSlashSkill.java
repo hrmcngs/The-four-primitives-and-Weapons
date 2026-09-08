@@ -170,6 +170,10 @@ public final class BloodSlashSkill {
                 elem.setElementType(ElementType.BLOOD);
                 elem.setElementLevel(w.elemLevel);
             } catch (Throwable ignored) {}
+            if (target instanceof the_four_primitives_and_weapons.entity.NinjatoTetherSegmentEntity segment) {
+                segment.hurtFromSkill(owner, DAMAGE);
+                continue;
+            }
             target.hurt(ds, DAMAGE);
             SpecialDebuffHandler.applyBleed(target, BLEED_DURATION, BLEED_PER_TICK);
 

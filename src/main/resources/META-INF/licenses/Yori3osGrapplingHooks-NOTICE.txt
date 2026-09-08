@@ -1,0 +1,9 @@
+NinjatoTetherRenderer.java and textures/entity/ninjato_tether.png adapt the
+chain renderer and hook_rope.png from Yori3o's Grappling Hooks.
+Source: https://github.com/yori3o/Yori3osGrapplingHooks
+Revision: 7e6ba92f6958a6dd49b96fe2d1ea716ba2a3973b (26.2)
+Original files: HookRenderer.java, HookCustomGeometryRenderer.java,
+assets/yo_hooks/textures/entity/hook_rope.png
+Copyright (c) 2026 yori3o. Licensed under MIT (see adjacent license file).
+Changes: Forge 1.20.1 rendering API port, planted-sheath attachment,
+synchronized owner UUID, per-cord UUID matching, two-sided rendering.

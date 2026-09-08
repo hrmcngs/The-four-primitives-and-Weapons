@@ -33,6 +33,13 @@ public class StabbedWeaponRenderer extends EntityRenderer<StabbedWeaponEntity> {
 		super(ctx);
 	}
 
+    @Override
+    public boolean shouldRender(StabbedWeaponEntity entity, net.minecraft.client.renderer.culling.Frustum frustum,
+                                double x, double y, double z) {
+        // 鞘が画面外でも手元へ伸びる鎖は描画する（参考元と同じカリング方針）。
+        return entity.getTetherOwner().isPresent() || super.shouldRender(entity, frustum, x, y, z);
+    }
+
 	@Override
 	public void render(StabbedWeaponEntity entity, float entityYaw, float partialTick,
 	                   PoseStack pose, MultiBufferSource buffer, int packedLight) {
@@ -65,6 +72,7 @@ public class StabbedWeaponRenderer extends EntityRenderer<StabbedWeaponEntity> {
 			drawSphereGizmo(pose, buffer, entity.getRadius());
 		}
 
+        NinjatoTetherRenderer.render(entity, partialTick, pose, buffer, entityRenderDispatcher);
 		super.render(entity, entityYaw, partialTick, pose, buffer, packedLight);
 	}
 
