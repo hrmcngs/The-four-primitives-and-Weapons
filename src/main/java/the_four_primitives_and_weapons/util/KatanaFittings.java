@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 刀の拵え ( こしらえ ): 柄 ( つか ) と 鍔 ( つば ) の色を NBT に保存するヘルパー。
+ * 刀の拵え ( こしらえ ): 柄・鍔・頭・はばきの色を NBT に保存するヘルパー。
  *
  * <p>モデルでは 柄の面に tintindex 1、 鍔の面に tintindex 2 を付けてある。
  * {@link the_four_primitives_and_weapons.client.KatanaColorClient} がその番号で
@@ -203,6 +203,8 @@ public final class KatanaFittings {
 	public static final String TSUBA_KEY = "TsubaColor";
 	/** 頭 ( かしら ) の色。 */
 	public static final String KASHIRA_KEY = "KashiraColor";
+	/** はばきの色。整数 RGB または文字列 #RRGGBB / 0xRRGGBB。 */
+	public static final String HABAKI_KEY = "HabakiColor";
 	/** 縁 ( ふち ) の色。 */
 	public static final String FUCHI_KEY = "FuchiColor";
 	/** 柄巻きの巻き方 ( デザイン )。 */
@@ -295,6 +297,38 @@ public final class KatanaFittings {
 	public static int kashiraRgb(ItemStack stack) { int c = rgb(stack, KASHIRA_KEY); return c >= 0 ? c : displayColor(stack); }
 	public static int fuchiRgb(ItemStack stack)   { return rgb(stack, FUCHI_KEY); }
 
+	/** はばき: 個別指定 → display.color → 武器ごとの初期色。 */
+	public static int habakiRgb(ItemStack stack) {
+		int color = rgb(stack, HABAKI_KEY);
+		if (color >= 0) return color;
+		color = displayColor(stack);
+		return color >= 0 ? color : defaultHabakiRgb(stack.getItem());
+	}
+
+	/** はばきの初期色は、ここを 0xRRGGBB で編集する。 */
+	public static int defaultHabakiRgb(Item item) {
+		ResourceLocation id = ForgeRegistries.ITEMS.getKey(item);
+		if (id == null || !id.getNamespace().equals(the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod.MODID))
+			return 0xFFFFFF;
+		return switch (id.getPath()) {
+			case "iron_katana" -> 0xFEF364;
+			case "iron_tyokuto" -> 0xFFE052;
+			case "gold_katana", "gold_tyokuto", "gate", "convergent_gate" -> 0x96ACB3;
+			case "diamond_katana", "diamond_tyokuto" -> 0x2C2031;
+			case "netherite_katana", "netherite_tyokuto" -> 0x63575B;
+			case "wooden_tyokuto", "stone_katana", "old_katana" -> 0x564118;
+			case "stone_tyokuto" -> 0x7E7465;
+			case "ninjatou" -> 0x303030;
+			case "darkness_katana" -> 0x422C61;
+			case "rivers_of_blood" -> 0x0F0000;
+			case "wither_katana" -> 0x3F3A2F;
+			case "reitou" -> 0x4F3B25;
+			case "my_test_iron_katana", "magisches_feen_katana" -> 0x3A3A3A;
+			case "prototype_katana" -> 0xCDCDCD;
+			default -> 0xFEF364;
+		};
+	}
+
 	/** /give …{display:{color:N}} で入れた色 ( 革装備方式 )。 無ければ -1。 */
 	private static int displayColor(ItemStack stack) {
 		CompoundTag t = stack.getTag();
@@ -307,13 +341,22 @@ public final class KatanaFittings {
 
 	private static int rgb(ItemStack stack, String key) {
 		CompoundTag t = stack.getTag();
-		return (t != null && t.contains(key)) ? (t.getInt(key) & 0xFFFFFF) : -1;
+		if (t == null) return -1;
+		if (t.contains(key, 99)) return t.getInt(key) & 0xFFFFFF;
+		if (t.contains(key, 8)) {
+			String value = t.getString(key).trim();
+			if (value.startsWith("#")) value = value.substring(1);
+			else if (value.startsWith("0x") || value.startsWith("0X")) value = value.substring(2);
+			if (value.matches("[0-9a-fA-F]{6}")) return Integer.parseInt(value, 16);
+		}
+		return -1;
 	}
 
 	public static void setTsuka(ItemStack stack, int rgb) { stack.getOrCreateTag().putInt(TSUKA_KEY, rgb & 0xFFFFFF); }
 	public static void setTsuba(ItemStack stack, int rgb) { stack.getOrCreateTag().putInt(TSUBA_KEY, rgb & 0xFFFFFF); }
 	public static void setKashira(ItemStack stack, int rgb) { stack.getOrCreateTag().putInt(KASHIRA_KEY, rgb & 0xFFFFFF); }
 	public static void setFuchi(ItemStack stack, int rgb) { stack.getOrCreateTag().putInt(FUCHI_KEY, rgb & 0xFFFFFF); }
+	public static void setHabaki(ItemStack stack, int rgb) { stack.getOrCreateTag().putInt(HABAKI_KEY, rgb & 0xFFFFFF); }
 
 	/** 色が「ほぼ黒」か。 黒染め時に 乗算tintで潰れるのを避け、 専用の黒テクスチャへ差し替える判定用。 */
 	public static boolean isNearBlack(int rgb) {

@@ -10,8 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
- * 刀の 柄 ( tintindex 1 ) と 鍔 ( tintindex 2 ) を、 {@link KatanaFittings} に保存した色で着色する。
- * 未設定 ( 染色前 ) は白 ( = 無着色 ) を返してテクスチャそのまま。 まずは IRON_KATANA で試験。
+ * 柄(1)・鍔(2)・頭(3)は保存色、はばき(5)は保存色または武器別の初期色で着色する。
  */
 @Mod.EventBusSubscriber(modid = TheFourPrimitivesAndWeaponsMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class KatanaColorClient {
@@ -19,6 +18,8 @@ public class KatanaColorClient {
 	@SubscribeEvent
 	public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
 		event.register((stack, tintIndex) -> {
+			// はばきは無彩色の地に直接乗算する。暗色でも指定 RGB をそのまま使う。
+			if (tintIndex == 5) return 0xFF000000 | KatanaFittings.habakiRgb(stack);
 			if (!KatanaFittings.isFittingWeapon(stack)) return 0xFFFFFFFF;
 			// 色を設定した部位は モデル側で グレー版(tint) か 暗版(模様入りの黒、tintなし) に差し替わる。
 			// 暗版(ほぼ黒)のときは 乗算で潰れないよう tint を掛けない ( テクスチャに任せる )。
