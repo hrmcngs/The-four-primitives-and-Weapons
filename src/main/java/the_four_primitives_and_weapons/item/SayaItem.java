@@ -27,6 +27,12 @@ public class SayaItem extends Item implements ICurioItem {
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
+        if (hand == InteractionHand.MAIN_HAND
+                && the_four_primitives_and_weapons.util.NinjatoVault.isLoaded(entity.getItemInHand(hand))) {
+            entity.startUsingItem(hand);
+            the_four_primitives_and_weapons.util.NinjatoVault.begin(entity);
+            return InteractionResultHolder.consume(entity.getItemInHand(hand));
+        }
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		ItemStack itemstack = ar.getObject();
 		double x = entity.getX();
@@ -37,9 +43,27 @@ public class SayaItem extends Item implements ICurioItem {
 		return ar;
 	}
 
+    @Override
+    public int getUseDuration(ItemStack stack) { return 72000; }
+
+    @Override
+    public void onUseTick(Level level, net.minecraft.world.entity.LivingEntity living, ItemStack stack, int remaining) {
+        if (living instanceof Player player) the_four_primitives_and_weapons.util.NinjatoVault.tick(player, stack);
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, net.minecraft.world.entity.LivingEntity living, int remaining) {
+        if (living instanceof Player player && !level.isClientSide)
+            the_four_primitives_and_weapons.util.NinjatoVault.end(player);
+    }
+
 	@Override
 	public void appendHoverText(ItemStack stack, Level world, List<Component> list, net.minecraft.world.item.TooltipFlag flag) {
 		super.appendHoverText(stack, world, list, flag);
+        if (stack.hasTag() && stack.getTag().getBoolean(the_four_primitives_and_weapons.util.NinjatoVault.TETHERED))
+            list.add(Component.translatable("tooltip.the_four_primitives_and_weapons.ninjato_tethered"));
+        if (the_four_primitives_and_weapons.util.NinjatoVault.isLoaded(stack))
+            list.add(Component.translatable("tooltip.the_four_primitives_and_weapons.ninjato_vault"));
 
 		String sayaHex = the_four_primitives_and_weapons.util.SayaDesign.getBaseHex(stack);
 		if (sayaHex != null) {

@@ -99,6 +99,7 @@ public class TheFourPrimitivesAndWeaponsMod {
 		the_four_primitives_and_weapons.item.MagicalKatanaUnlockRecipe.Registrar.SERIALIZERS.register(bus);
 		// 鞘の染色クラフトレシピのシリアライザ
 		the_four_primitives_and_weapons.item.SayaDyeRecipe.Registrar.SERIALIZERS.register(bus);
+        the_four_primitives_and_weapons.item.NinjatoCordRecipe.Registrar.SERIALIZERS.register(bus);
 		// 鞘のスタイル ( 塗/木目/着せ/刻 ) クラフトレシピのシリアライザ
 		the_four_primitives_and_weapons.item.SayaStyleRecipe.Registrar.SERIALIZERS.register(bus);
 		// 鞘クラフト ( 使った木を木目鞘に ) のシリアライザ

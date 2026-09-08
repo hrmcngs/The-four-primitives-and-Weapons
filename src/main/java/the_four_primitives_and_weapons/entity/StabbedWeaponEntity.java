@@ -29,6 +29,48 @@ import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModCustom
 public class StabbedWeaponEntity extends Entity {
 	/** 0より大きい間は回収不能な次元移動演出。サーバー側だけで寿命を数える。 */
 	private int ritualLifetime;
+    private java.util.UUID vaultOwner;
+    private boolean vaultTethered;
+
+    public void setVaultOwner(java.util.UUID owner, boolean tethered) {
+        vaultOwner = owner;
+        vaultTethered = tethered;
+    }
+
+    /** 紐の実体を鞘に置き換える。実体を先に消して二重回収を防ぐ。 */
+    public boolean recallVault(Player player) {
+        if (level().isClientSide || isRemoved() || vaultOwner == null || !vaultOwner.equals(player.getUUID()))
+            return false;
+        if (!vaultTethered || getItem().isEmpty()) return false;
+        int cordSlot = -1;
+        for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+            ItemStack cord = player.getInventory().getItem(i);
+            if (cord.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get())
+                    && cord.hasTag() && cord.getTag().hasUUID("PlantedWeapon")
+                    && getUUID().equals(cord.getTag().getUUID("PlantedWeapon"))) {
+                if (cordSlot < 0) cordSlot = i;
+            }
+        }
+        if (cordSlot < 0 && player.getInventory().getFreeSlot() < 0) return false;
+        ItemStack result = getItem().copy();
+        discard();
+        if (cordSlot >= 0) {
+            // クリエイティブ等で複製された古い紐も無効化する。
+            for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+                ItemStack cord = player.getInventory().getItem(i);
+                if (cord.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get())
+                        && cord.hasTag() && cord.getTag().hasUUID("PlantedWeapon")
+                        && getUUID().equals(cord.getTag().getUUID("PlantedWeapon")))
+                    player.getInventory().setItem(i, ItemStack.EMPTY);
+            }
+            player.getInventory().setItem(cordSlot, result);
+        } else {
+            player.getInventory().add(result);
+        }
+        player.getInventory().setChanged();
+        player.containerMenu.broadcastChanges();
+        return true;
+    }
 
 	private static final EntityDataAccessor<ItemStack> DATA_ITEM =
 			SynchedEntityData.defineId(StabbedWeaponEntity.class, EntityDataSerializers.ITEM_STACK);
@@ -169,6 +211,11 @@ public class StabbedWeaponEntity extends Entity {
 	@Override
 	public void tick() {
 		super.tick();
+        if (!level().isClientSide && vaultTethered && vaultOwner != null && !isRemoved()) {
+            net.minecraft.server.level.ServerPlayer owner = level().getServer().getPlayerList().getPlayer(vaultOwner);
+            if (owner != null && owner.isAlive()
+                    && (owner.level() != level() || distanceToSqr(owner) >= 100.0)) recallVault(owner);
+        }
 		// 静止エンティティなので毎tickの速度・AABB再計算は不要。向き/半径変更時にだけ更新する。
 		if (!this.level().isClientSide && ritualLifetime > 0 && --ritualLifetime == 0) this.discard();
 	}
@@ -177,17 +224,18 @@ public class StabbedWeaponEntity extends Entity {
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
 		if (ritualLifetime > 0) return InteractionResult.PASS;
-		if (!lookHitsWeapon(player, 6.0)) return InteractionResult.PASS; // 武器に当たっていない
-		if (!this.level().isClientSide) {
-			retrieveTo(player);
-		}
+		if (vaultOwner == null && !lookHitsWeapon(player, 6.0)) return InteractionResult.PASS; // 武器に当たっていない
+        if (!this.level().isClientSide) {
+            if (vaultOwner != null && vaultTethered) recallVault(player);
+            else retrieveTo(player);
+        }
 		return InteractionResult.sidedSuccess(this.level().isClientSide);
 	}
 
 	/** 攻撃でも回収 ( 視線が実際に武器に当たっている時だけ )。 */
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
-		if (ritualLifetime > 0) return false;
+		if (ritualLifetime > 0 || vaultOwner != null) return false;
 		if (this.level().isClientSide || this.isRemoved()) return false;
 		if (source.getEntity() instanceof Player player) {
 			if (!lookHitsWeapon(player, 7.0)) return false; // 武器に当たっていない → 無視
@@ -271,7 +319,8 @@ public class StabbedWeaponEntity extends Entity {
 	}
 
 	private void retrieveTo(Player player) {
-		ItemStack drop = getItem();
+        if (isRemoved()) return;
+        ItemStack drop = getItem();
 		if (!drop.isEmpty()) {
 			ItemStack give = drop.copy();
 			if (!player.addItem(give)) player.drop(give, false);
@@ -288,6 +337,8 @@ public class StabbedWeaponEntity extends Entity {
 
 	@Override
 	protected void readAdditionalSaveData(CompoundTag tag) {
+        if (tag.hasUUID("VaultOwner")) vaultOwner = tag.getUUID("VaultOwner");
+        vaultTethered = tag.getBoolean("VaultTethered");
 		if (tag.contains("StabItem")) setItem(ItemStack.of(tag.getCompound("StabItem")));
 		setStabYaw(tag.getFloat("StabYaw"));
 		if (tag.contains("StabTilt")) setTilt(tag.getFloat("StabTilt"));
@@ -298,6 +349,8 @@ public class StabbedWeaponEntity extends Entity {
 
 	@Override
 	protected void addAdditionalSaveData(CompoundTag tag) {
+        if (vaultOwner != null) tag.putUUID("VaultOwner", vaultOwner);
+        tag.putBoolean("VaultTethered", vaultTethered);
 		if (!getItem().isEmpty()) tag.put("StabItem", getItem().save(new CompoundTag()));
 		tag.putFloat("StabYaw", getStabYaw());
 		tag.putFloat("StabTilt", getTilt());
