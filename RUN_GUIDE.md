@@ -51,11 +51,11 @@ run_client_windows.bat offline keepdaemon
 
 `bash run_client_mac.sh` の外部MOD確認で `y` を選ぶと、続けて選択できます。
 
-1. 「軽量化MODのみで起動しますか?」→ Enter / `y` で **Embeddiumのみ**。
-2. 上で `n` を選ぶと「負荷の大きいMODも入れますか?」→ Enter / `n` で Embeddium + chuzume-addon / extra_video_settings / RPGish-HPDisplay。
+1. 「軽量化MODのみで起動しますか?」→ Enter / `y` で **Embeddium + Oculus（VanillaLiteを選択可能）**。
+2. 上で `n` を選ぶと「負荷の大きいMODも入れますか?」→ Enter / `n` で Embeddium + Oculus + chuzume-addon / extra_video_settings / RPGish-HPDisplay。
 3. 重いMODの質問で `y` を選ぶと TACZ / Gun and Weapon / Backpack Arsenal / Mekanism / Sophisticated も追加。
 
-EmbeddiumのJARは `libs/local/` に配置します。選択したMODは毎回 `libs/runtime_selected/` に同期され、前回の重いMODは残りません。軽量化MODのみの場合、`libs/external/` の任意MODも取り込みません。それ以外では従来どおり取り込みます。同期に失敗した場合は起動を中止します。
+EmbeddiumとOculusのJARは `libs/local/` に配置します。選択したMODは毎回 `libs/runtime_selected/` に同期され、前回の重いMODは残りません。軽量化MODのみの場合、`libs/external/` の任意MODも取り込みません。それ以外では従来どおり取り込みます。同期に失敗した場合は起動を中止します。
 
 ```bash
 # 対話なしで軽量化MODのみ
@@ -67,6 +67,27 @@ WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=0 bash run_client_mac.sh
 ```
 
 `PERFORMANCE_ONLY_MODS=0` は軽量化MODのみの質問を省略し、重いMODの質問へ進みます。`PERFORMANCE_ONLY_MODS=1` は `LIGHT_EXTERNAL_MODS` より優先されます。外部MODを有効にした非対話実行でどちらも未指定なら、軽量化MODのみになります。
+
+## 軽量化MOD使用時のシェーダー
+
+macOS版で外部MODを有効にすると、軽量化MODのみ・追加機能MODあり・全部入りのいずれでも、EmbeddiumとOculusを読み込みます。
+`/Users/hiromichi/Documents/github/mods/VanillaLite/dist/` 内のZIPを、起動時に `run/shaderpacks/` へコピーします。別の場所を使う場合は `VANILLA_LITE_DIST=/path/to/dist` を指定できます。
+
+ゲーム内の **設定 → ビデオ設定 → シェーダーパック** でVanillaLiteを選び、シェーダーを有効にして適用してください。同じ画面でOFFや別パックへの切り替えもできます。起動スクリプトはゲーム内で選んだ設定を上書きしません。
+
+前提JARは `libs/local/` に配置します。現在の組み合わせは Embeddium `0.3.31+mc1.20.1` と [Oculus `1.20.1-1.8.0`](https://modrinth.com/mod/oculus/version/1.20.1-1.8.0) です。起動スクリプト自体はダウンロードを行わず、配置済みのJARとZIPをオフラインで同期します。
+
+### オフラインでシェーダーを使う
+
+```bash
+WITH_EXTERNAL_MODS=1 PERFORMANCE_ONLY_MODS=1 bash run_client_mac.sh offline
+```
+
+対話で選ぶ場合は `bash run_client_mac.sh offline` で外部MODを `y` にします。
+Oculus・EmbeddiumとVanillaLiteはローカルのファイルを使用するため、シェーダーの選択・ON/OFFにネット接続は不要です。
+配布元の `dist/` がない場合も、`run/shaderpacks/VanillaLite*.zip` があれば保存済みパックを使って起動します。ゲーム内で選んだ設定は維持します。
+OculusとEmbeddiumの配布JARは `libs/offline-performance/` にも保存します。`libs/local/` にJARがない場合はこのキャッシュ、または前回の `libs/runtime_selected/` から再利用します。同期先を消す前に保存するため、繰り返しオフライン起動できます。
+初回に必要なMODのJAR・Gradle依存キャッシュとシェーダーZIPは、この端末に配置済みです。
 
 ## Windows版の外部 mod ( libs/local/ )
 

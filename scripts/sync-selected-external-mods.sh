@@ -4,8 +4,8 @@
 # 使い方:
 #   bash scripts/sync-selected-external-mods.sh                 全部入り
 #   bash scripts/sync-selected-external-mods.sh --offline       全部入り・オフライン
-#   bash scripts/sync-selected-external-mods.sh --performance-only  Embeddiumのみ
-#   bash scripts/sync-selected-external-mods.sh --light         Embeddium + 軽量3MOD
+#   bash scripts/sync-selected-external-mods.sh --performance-only  Embeddium + Oculus + VanillaLite
+#   bash scripts/sync-selected-external-mods.sh --light         Embeddium + Oculus + VanillaLite + 軽量3MOD
 #   bash scripts/sync-selected-external-mods.sh --offline --light
 #
 # --light で残すもの:
@@ -26,6 +26,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 MODS_ROOT="/Users/hiromichi/Documents/github/mods"
 DATAPACK_ROOT="/Users/hiromichi/Documents/github/datapack"
+VANILLA_LITE_DIST="${VANILLA_LITE_DIST:-$MODS_ROOT/VanillaLite/dist}"
 DEST="$ROOT/libs/runtime_selected"
 # 自前ビルドではない、手で置く外部 mod jar ( DuMmmMmmy 等 ) の置き場
 EXTERNAL_DIR="$ROOT/libs/external"
@@ -41,6 +42,30 @@ for arg in "$@"; do
     esac
 done
 
+# runtime_selectedを消す前に、シェーダー用MODを専用のローカルキャッシュへ保存する。
+# キャッシュには配布JARだけを保存し、Gradleのリマップ済みJARは使わない。
+PERFORMANCE_CACHE="$ROOT/libs/offline-performance"
+cache_performance_mod() {
+    local name="$1" dir jar="" cached candidate
+    for dir in "$ROOT/libs/local" "$PERFORMANCE_CACHE" "$DEST"; do
+        [ -d "$dir" ] || continue
+        while IFS= read -r -d '' candidate; do
+            if [ -z "$jar" ] || [ "$candidate" -nt "$jar" ]; then jar="$candidate"; fi
+        done < <(find "$dir" -maxdepth 3 -type f -name "$name-*.jar" \
+            ! -name '*-sources.jar' ! -name '*-dev.jar' -print0)
+        [ -n "$jar" ] && [ -f "$jar" ] && break
+    done
+    if [ -z "$jar" ] || [ ! -f "$jar" ]; then
+        echo "[error] $name の配布JARがありません。libs/local/ に配置してください。" >&2
+        return 1
+    fi
+    mkdir -p "$PERFORMANCE_CACHE"
+    cached="$PERFORMANCE_CACHE/$(basename "$jar")"
+    if [ "$jar" != "$cached" ]; then cp "$jar" "$cached"; fi
+    echo "$cached"
+}
+PERFORMANCE_JAR="$(cache_performance_mod embeddium)"
+OCULUS_JAR="$(cache_performance_mod oculus)"
 mkdir -p "$DEST"
 find "$DEST" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
 
@@ -68,17 +93,38 @@ install_jar() {
 
 echo "=== 指定外部Modを同期 ==="
 
-# libs/local は任意のMODも置けるため、軽量化MODは名前を限定して取り込む。
-# フラット配置とGradleが生成するMaven配置の重複を避け、最新の1個を使う。
-PERFORMANCE_JAR="$(find "$ROOT/libs/local" -maxdepth 3 -type f -name 'embeddium-*.jar' \
-    ! -name '*-sources.jar' ! -name '*-dev.jar' -print0 2>/dev/null \
-    | xargs -0 ls -1t 2>/dev/null | sed -n '1p')" || PERFORMANCE_JAR=""
-if [ -n "$PERFORMANCE_JAR" ] && [ -f "$PERFORMANCE_JAR" ]; then
-    install_jar "$PERFORMANCE_JAR"
-else
-    echo "[error] 軽量化MODがありません。Embeddiumのjarを libs/local/ に配置してください。" >&2
+# オンライン・オフラインともにローカルの配布JARだけを同期する。
+install_jar "$PERFORMANCE_JAR"
+install_jar "$OCULUS_JAR"
+if [ "$OFFLINE_ARG" = "--offline" ]; then
+    echo "==> Oculus / Embeddium: 保存済みJARでオフライン読み込み (ダウンロードなし)"
+fi
+
+# distの配布ZIPをそのまま配置する。別パックやゲーム内の選択・ON/OFF設定は保持。
+SHADER_COUNT=0
+if [ -d "$VANILLA_LITE_DIST" ]; then
+    mkdir -p "$ROOT/run/shaderpacks"
+    while IFS= read -r -d '' pack; do
+        cp "$pack" "$ROOT/run/shaderpacks/$(basename "$pack")"
+        echo "  + shaderpack: $(basename "$pack")"
+        SHADER_COUNT=$((SHADER_COUNT + 1))
+    done < <(find "$VANILLA_LITE_DIST" -maxdepth 1 -type f -name '*.zip' -print0)
+fi
+# オフラインでは配布元distが利用できなくても、前回配置したVanillaLiteを再利用する。
+if [ "$SHADER_COUNT" -eq 0 ] && [ "$OFFLINE_ARG" = "--offline" ] \
+        && [ -d "$ROOT/run/shaderpacks" ]; then
+    while IFS= read -r -d '' pack; do
+        echo "  → 保存済みshaderpackを使用: $(basename "$pack")"
+        SHADER_COUNT=$((SHADER_COUNT + 1))
+    done < <(find "$ROOT/run/shaderpacks" -maxdepth 1 -type f -name 'VanillaLite*.zip' -print0)
+fi
+if [ "$SHADER_COUNT" -eq 0 ]; then
+    echo "[error] シェーダーZIPがありません: $VANILLA_LITE_DIST" >&2
+    echo "        VanillaLiteのZIPを run/shaderpacks/ に配置すればofflineで使用できます。" >&2
     exit 1
 fi
+echo "==> シェーダー切り替え: 設定 → ビデオ設定 → シェーダーパック → VanillaLite を選択・適用"
+
 if [ "$PERFORMANCE_ONLY" = "yes" ]; then
     echo "==> 軽量化MODのみ: 追加機能MOD・重いMOD・libs/external/ は取り込みません"
     exit 0
