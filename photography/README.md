@@ -69,5 +69,5 @@ F1でHUDを隠し、F2で撮影します。FOVは50〜65程度から調整する
 配布用 `blade-gallery-world.zip` は展開して中のワールドフォルダをMinecraftの `saves` に入れます。
 `blade_gallery/` が編集可能なデータパックです。変更後は対象ワールドのdatapacksにもコピーし、
 `/reload` → `/function blade_gallery:setup` を実行してください。
-再生成用スクリプトは `python3 tools/create_photo_world.py --world <新しい保存先>` です。
-既存の保存先は上書きしません。Python標準ライブラリだけで動作します。
+書き出しは `bash sh/generate/generate-photo-world.sh --world <新しい保存先>` です。詳しい使い方はsh内にあります。
+既存の保存先は上書きしません。Common Lisp（SBCL）とgzip・zipで動作します。景観の編集元は `blade_gallery/` 内のmcfunctionで、Pythonからの再生成は不要です。

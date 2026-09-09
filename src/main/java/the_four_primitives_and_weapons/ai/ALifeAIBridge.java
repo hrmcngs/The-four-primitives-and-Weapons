@@ -20,8 +20,8 @@ import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems;
 /**
  * ALife AIシステムとJavaの橋渡しクラス
  *
- * PythonのAIロジックとMinecraftのエンティティを連携させます
- * (現在はPython連携の代わりにJavaで直接実装)
+ * Minecraftのエンティティ情報からJava側の戦闘アクションを決定します。
+ * 外部プロセスは使いません。Lispゲノムの実行系は ai.lisp 側で管理します。
  */
 public class ALifeAIBridge {
 

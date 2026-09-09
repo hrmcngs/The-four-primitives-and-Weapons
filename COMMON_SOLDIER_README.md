@@ -108,7 +108,7 @@ public static AttributeSupplier.Builder createAttributes() {
 }
 ```
 
-AIの挙動をカスタマイズする場合は、`src/main/python/ai/CommonSoldier.py`を編集します（現在はJavaで直接実装）。
+AIの挙動はJavaの `ALifeAIBridge` と `PlayerLikeAIGoal`、Lispゲノムを使う経路では `data/the_four_primitives_and_weapons/ai_genomes/common_soldier.lisp` を確認します。旧Pythonプロトタイプは廃止しました。
 
 ## ビルドと実行
 
@@ -166,7 +166,7 @@ MCreatorから「クライアントを実行」を選択するか、手動でMin
 
 - `PLAYER_LIKE_AI_README.md` - AI システムの詳細
 - `ExamplePlayerLikeMob.java` - 実装例
-- `src/main/python/ai/` - Python AIファイル（将来の拡張用）
+- `src/main/resources/data/the_four_primitives_and_weapons/ai_genomes/` - Lisp AIゲノム
 
 ---
 
