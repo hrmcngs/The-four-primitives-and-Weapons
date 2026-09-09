@@ -34,6 +34,17 @@ import java.util.List;
 import java.util.Comparator;
 
 public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
+    /** Lunaの通常突き・変更した通常技で共通の命中処理。 */
+    public static void damageNormalTarget(ItemStack weapon, Entity target) {
+        if (target.level().isClientSide || !(target instanceof LivingEntity)
+                || target instanceof SkeltonMobEntity) return;
+        if (EnchantmentHelper.getItemEnchantmentLevel(TheFourPrimitivesAndWeaponsModEnchantments.KILL.get(), weapon) != 0) {
+            target.kill();
+        } else {
+            target.hurt(target.damageSources().generic(), 1.0F);
+        }
+    }
+
 	/** 召喚Luna用。プレイヤー通常技と同じ直線END_RODレーザーを発射する。 */
 	public static void fireSummonedStraightLaser(ServerLevel level, Entity source, LivingEntity target,
 			@javax.annotation.Nullable ServerPlayer viewer) {
@@ -121,34 +132,10 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
 								(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))));
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(0.5 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
 								.collect(Collectors.toList());
-						for (Entity entityiterator : _entfound) {
-							if (!(entityiterator == entity)) {
-								if (true) {
-									if (!(entityiterator instanceof SkeltonMobEntity)) {
-										if (entityiterator instanceof LivingEntity) {
-											if (EnchantmentHelper.getItemEnchantmentLevel(TheFourPrimitivesAndWeaponsModEnchantments.KILL.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
-												{
-													Entity _ent = entityiterator;
-													if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																VersionHelper.getLevel(_ent) instanceof ServerLevel ? (ServerLevel) VersionHelper.getLevel(_ent) : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "/kill @s");
-													}
-												}
-												{
-													Entity _ent = entityiterator;
-													if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																VersionHelper.getLevel(_ent) instanceof ServerLevel ? (ServerLevel) VersionHelper.getLevel(_ent) : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
-																"/deta merge entity @s (Health:0)");
-													}
-												}
-											} else {
-												entityiterator.hurt(entityiterator.damageSources().generic(), 1);
-											}
-										}
-									}
-								}
-							}
+						for (Entity target : _entfound) {
+							if (target != entity) damageNormalTarget(
+									entity instanceof LivingEntity living ? living.getMainHandItem() : ItemStack.EMPTY,
+									target);
 						}
 					}
 					if (world instanceof ServerLevel _level) {

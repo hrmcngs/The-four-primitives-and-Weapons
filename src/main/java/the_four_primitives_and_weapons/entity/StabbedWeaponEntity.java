@@ -102,6 +102,7 @@ public class StabbedWeaponEntity extends Entity {
             net.minecraft.world.phys.Vec3 point = anchor.add(line.scale((i + 0.5) / count));
             tetherSegments.get(i).setPos(point.x, point.y - 0.2, point.z);
         }
+        the_four_primitives_and_weapons.util.NinjatoChainPower.tick(this, owner, anchor, hand);
     }
 
     private java.util.UUID vaultOwner;
@@ -322,6 +323,8 @@ public class StabbedWeaponEntity extends Entity {
 	public void tick() {
 		super.tick();
         if (!level().isClientSide) updateTetherSegments();
+        if (!level().isClientSide) the_four_primitives_and_weapons.util.NinjatoChainPower.tickBlade(this,
+                vaultOwner == null ? null : level().getPlayerByUUID(vaultOwner));
         if (!level().isClientSide && vaultTethered && vaultOwner != null && !isRemoved()) {
             net.minecraft.server.level.ServerPlayer owner = level().getServer().getPlayerList().getPlayer(vaultOwner);
             if (owner != null && owner.isAlive()

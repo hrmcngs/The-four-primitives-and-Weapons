@@ -14,7 +14,7 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 /**
- * サーバー → クライアント: 指定エンティティの編集GUIを開く ( /stabedit から )。
+ * サーバー → クライアント: 指定エンティティの編集GUIを開く ( /weaponedit・/stabedit・/rackedit から )。
  */
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class OpenStabEditMessage {
@@ -36,7 +36,7 @@ public class OpenStabEditMessage {
 	public static void handler(OpenStabEditMessage m, Supplier<NetworkEvent.Context> ctxSupplier) {
 		NetworkEvent.Context ctx = ctxSupplier.get();
 		ctx.enqueueWork(() -> DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
-				() -> () -> the_four_primitives_and_weapons.client.screens.StabEditScreen.open(m.entityId)));
+				() -> () -> the_four_primitives_and_weapons.client.event.WeaponEditClient.open(m.entityId)));
 		ctx.setPacketHandled(true);
 	}
 

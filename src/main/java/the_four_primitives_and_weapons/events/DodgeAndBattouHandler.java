@@ -1,6 +1,7 @@
 package the_four_primitives_and_weapons.events;
 
 import the_four_primitives_and_weapons.util.VersionHelper;
+import the_four_primitives_and_weapons.entity.LunaCompanionEntity;
 import the_four_primitives_and_weapons.damage.SpecialDebuffHandler;
 
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -91,6 +92,7 @@ public class DodgeAndBattouHandler {
         boolean hasDodged = false;
         int cooldownTimer = 0;
         int fallDamageImmunityTimer = 0;
+        boolean lunaRecallUseHeld = false;
         boolean ninjatoUseHeld = false;
         boolean isRightClickHeld = false; // 右クリック押し状態
         int dashAttackCooldown = 0; // ダッシュ攻撃のクールダウン
@@ -222,7 +224,7 @@ public class DodgeAndBattouHandler {
         if (mc.screen != null) return; // GUI表示中は回避しない
 
         Player player = mc.player;
-        if (blocksNinjatoUseDodge(player)) return;
+        if (blocksLunaRecallDodge(player) || blocksNinjatoUseDodge(player)) return;
         DodgeData data = getData(player);
         if (data == null) return;
 
@@ -431,6 +433,11 @@ public class DodgeAndBattouHandler {
     public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
         Player player = event.getEntity();
 
+        // Lunaの回収を優先し、回収後も使用キーを離すまで回避させない。
+        if (event.getTarget() instanceof LunaCompanionEntity) {
+            if (player.level().isClientSide) getOrCreateData(player).lunaRecallUseHeld = true;
+            return;
+        }
         // シフトキーが押されている場合は通常の相互作用を許可
         if (player.isShiftKeyDown()) {
             return;
@@ -454,6 +461,11 @@ public class DodgeAndBattouHandler {
     public static void onEntityInteractSpecific(PlayerInteractEvent.EntityInteractSpecific event) {
         Player player = event.getEntity();
 
+        // Lunaの回収を優先し、回収後も使用キーを離すまで回避させない。
+        if (event.getTarget() instanceof LunaCompanionEntity) {
+            if (player.level().isClientSide) getOrCreateData(player).lunaRecallUseHeld = true;
+            return;
+        }
         // シフトキーが押されている場合は通常の相互作用を許可
         if (player.isShiftKeyDown()) {
             return;
@@ -508,7 +520,7 @@ public class DodgeAndBattouHandler {
     // publicにしてDodgeRequestPacketから呼べるようにする
     // @return true=回避成功、false=クールダウン等でブロック
     public static boolean performDodge(Player player) {
-        if (blocksNinjatoUseDodge(player)) return false;
+        if (blocksLunaRecallDodge(player) || blocksNinjatoUseDodge(player)) return false;
         // 回避無効化設定チェック（グローバル設定）
         if (the_four_primitives_and_weapons.config.DodgeConfig.dodgeDisabled) return false;
 
@@ -601,8 +613,24 @@ public class DodgeAndBattouHandler {
         return dedicatedUse || player.getPersistentData().getLong("NinjatoRecallDodgeUntil") > player.level().getGameTime();
     }
 
+    /** 回収対象が消えた後も、同じ長押しから自動回避を発動させない。 */
+    private static boolean blocksLunaRecallDodge(Player player) {
+        if (!player.level().isClientSide) return false;
+        return blocksLunaRecallDodgeClient(player);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private static boolean blocksLunaRecallDodgeClient(Player player) {
+        Minecraft mc = Minecraft.getInstance();
+        DodgeData data = getOrCreateData(player);
+        boolean targetingLuna = mc.hitResult instanceof net.minecraft.world.phys.EntityHitResult hit
+                && hit.getEntity() instanceof LunaCompanionEntity;
+        data.lunaRecallUseHeld = isUseKeyHeld(mc) && (data.lunaRecallUseHeld || targetingLuna);
+        return data.lunaRecallUseHeld;
+    }
+
     public static boolean canDodgeWithHands(Player player) {
-        if (blocksNinjatoUseDodge(player)) return false;
+        if (blocksLunaRecallDodge(player) || blocksNinjatoUseDodge(player)) return false;
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
         // フックショットは右クリックで自身の発射動作を行うので、回避と競合させない

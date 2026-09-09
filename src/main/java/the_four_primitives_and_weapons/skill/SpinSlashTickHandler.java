@@ -75,7 +75,10 @@ public class SpinSlashTickHandler {
             damage *= cd;
         }
 
-        ACTIVE.put(id, new SpinSession(player.getYRot(), total, damage, range, charged));
+        SpinSession session = new SpinSession(player.getYRot(), total, damage, range, charged);
+        session.lunaEffects = LunaSkillEffects.isActive(player);
+        if (LunaSkillEffects.usesNormalDamage(player)) session.lunaWeapon = player.getMainHandItem().copy();
+        ACTIVE.put(id, session);
     }
 
     @SubscribeEvent
@@ -116,6 +119,14 @@ public class SpinSlashTickHandler {
                 float frac = (i + 0.5f) / steps;   // step 中央に 1 つずつ配置
                 float sweptAt = prevSwept + anglePerTick * frac;
                 double rad = Math.toRadians(s.startYaw + sweptAt + 90);
+                if (s.lunaEffects) {
+                    for (int band = 1; band <= 3; band++) {
+                        double innerRadius = s.range * band / 4.0;
+                        the_four_primitives_and_weapons.damage.ElementalParticles.sendForced(sw, ParticleTypes.END_ROD,
+                                p.getX() + Math.cos(rad) * innerRadius, p.getY() + 1.1,
+                                p.getZ() + Math.sin(rad) * innerRadius, 1, 0, 0, 0, 0);
+                    }
+                }
                 double r = s.range * 0.75;          // ring を 1 本に集約
                 sw.sendParticles(dust,              // 属性が載っていれば属性色 dust
                     p.getX() + Math.cos(rad) * r,
@@ -177,7 +188,12 @@ public class SpinSlashTickHandler {
             // 開始角からの相対角が「これまでに掃いたアーク」内なら hit.
             // (totalSwept は 720° まで上がるので 360°超でも relativeAngle <= totalSwept で OK)
             if (totalSwept >= relativeAngle) {
-                DamageCalculator.dealDamage(player, target, s.damage, weapon);
+                if (!s.lunaWeapon.isEmpty()) {
+                    the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
+                            .damageNormalTarget(s.lunaWeapon, target);
+                } else {
+                    DamageCalculator.dealDamage(player, target, s.damage, weapon);
+                }
                 DamageCalculator.applyNormalKnockback(player, target, weapon);
                 s.hitEntities.add(target.getUUID());
 
@@ -234,6 +250,8 @@ public class SpinSlashTickHandler {
         final float damage;
         final double range;
         final boolean charged;
+        ItemStack lunaWeapon = ItemStack.EMPTY;
+        boolean lunaEffects;
         /** ヒット済み敵の UUID 集合 (重複ダメージ防止). */
         final Set<UUID> hitEntities = new HashSet<>();
         /** session 中に一度でも range 内に入った敵 — AABB スキャンを跨いで角度判定対象として保持. */

@@ -73,6 +73,7 @@ public final class SkillComboProcedure {
 
         ComboSession session = new ComboSession(motions, hitsForCharge(chargePercent),
                 chargePercent, daggerPulse, pulseRange, pulseDash);
+        session.lunaEffects = the_four_primitives_and_weapons.skill.LunaSkillEffects.isActive(player);
         ACTIVE.put(player.getUUID(), session);
         // 即ヒットさせず、 STARTUP_TICKS 分の構えを挟んでから初段を出す ( onPlayerTick が進行させる )。
         playStartupCue(player, session);
@@ -149,7 +150,12 @@ public final class SkillComboProcedure {
         // 段数がチャージで伸びるので、 一撃目〜三撃目を巡回して出す。
         String motionId = session.motions[hitIndex % session.motions.length];
         // 連撃は「通常の一撃目〜三撃目」を高速で出す技。チャージ倍率は短剣パルス側にだけ乗せる。
-        MotionExecutor.executeMotion(motionId, player, 0.0f);
+        if (session.lunaEffects && player.getMainHandItem().getItem()
+                == the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
+            the_four_primitives_and_weapons.skill.LunaSkillEffects.execute(motionId, player, -1.0F);
+        } else {
+            MotionExecutor.executeMotion(motionId, player, 0.0f);
+        }
         if (session.daggerPulse) {
             performDaggerPulse(player, session, hitIndex);
         }
@@ -235,6 +241,7 @@ public final class SkillComboProcedure {
         final boolean daggerPulse;
         final double pulseRange;
         final double pulseDash;
+        boolean lunaEffects;
         int tick;
         int index;
 

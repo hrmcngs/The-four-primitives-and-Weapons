@@ -365,13 +365,14 @@ public class ChargedAttackHandler {
             return;
         }
 
-        // Luna専用のチャージ攻撃 (曲線ビーム)
-        // 曲線ビーム本体は TyokutouThrustAttackProcedure.executeChargedThrust 内の
-        // isLunaItem(heldItem) 分岐に実装されているので、performChargedThrust 経由で呼ぶ。
-        // 旧コードは存在しない performLunaChargedAttack を参照していたため
-        // コメントアウトされていた (= Luna チャージ技が出なくなっていた) のを修正。
+        // 明示設定を優先する。未設定または突きなら従来の曲線ビームを使う。
         if (mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
-            performChargedThrust(player, world, lookVec, playerPos, chargePercent, isCooldown);
+            String selected = skillData.getMotionForWeapon(AttackSlot.CHARGED, mainHand);
+            if (skillData.hasExplicitMotion(AttackSlot.CHARGED, mainHand) && !"thrust".equals(selected)) {
+                the_four_primitives_and_weapons.skill.LunaSkillEffects.execute(selected, player, chargePercent, -1.0F);
+            } else {
+                performChargedThrust(player, world, lookVec, playerPos, chargePercent, isCooldown);
+            }
             return;
         }
 
@@ -493,14 +494,8 @@ public class ChargedAttackHandler {
             ForbiddenRarityHandler.reflectNearbyProjectiles(player);
         }
 
-        // Lunaの固有スキル
-        // Lunaの通常技はスキル解放状態に依存させず、常に固有の直線攻撃を使う。
-        if (mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
-            // バニラの攻撃速度ゲージ（ホットバー下の剣ゲージ）が満タンの時だけ発射。
-            if (player.getAttackStrengthScale(0.5F) < 0.99F) return;
-            the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure.execute(world, player.getX(), player.getY(), player.getZ(), player);
-            return;
-        }
+        boolean isLuna = mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get();
+        if (isLuna && player.getAttackStrengthScale(0.5F) < 0.99F) return;
 
         // コンボカウンターを取得
         UUID playerId = player.getUUID();
@@ -531,7 +526,14 @@ public class ChargedAttackHandler {
 
         // スロットに設定されたモーションを実行
         String motionId = skillData.getMotionForWeapon(slot, player.getMainHandItem());
-        MotionExecutor.executeMotion(motionId, player, 0.0f, chargeScale);
+        if (isLuna && (!skillData.hasExplicitMotion(slot, mainHand) || "thrust".equals(motionId))) {
+            the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
+                    .execute(world, player.getX(), player.getY(), player.getZ(), player);
+        } else if (isLuna) {
+            the_four_primitives_and_weapons.skill.LunaSkillEffects.execute(motionId, player, chargeScale);
+        } else {
+            MotionExecutor.executeMotion(motionId, player, 0.0f, chargeScale);
+        }
 
         // コンボカウンターを増やす
         data.comboCounter++;

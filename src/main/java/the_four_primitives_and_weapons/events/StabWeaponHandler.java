@@ -97,6 +97,8 @@ public class StabWeaponHandler {
 
 			StabbedWeaponEntity ent = new StabbedWeaponEntity(level);
 			ent.setItem(weapon);                         // 刺さるのは武器
+            if (weapon.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.NINJATOU.get()))
+                ent.setVaultOwner(player.getUUID(), false);
 			ent.setStabYaw(player.getYRot() + 180f);     // 向き = プレイヤーの向き
 			ent.setTilt(PRESET_TILT[p]);                  // 傾き = プリセット
 			ent.moveTo(x, y, z, 0f, 0f);

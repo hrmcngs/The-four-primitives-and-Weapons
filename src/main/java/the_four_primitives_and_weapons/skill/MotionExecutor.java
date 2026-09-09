@@ -112,6 +112,11 @@ public class MotionExecutor {
 
             switch (motionId) {
                 case "thrust" -> {
+                    if (LunaSkillEffects.usesNormalDamage(player)) {
+                        the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
+                                .execute(world, player.getX(), player.getY(), player.getZ(), player);
+                        break;
+                    }
                     // weapon_stats に "thrust" 設定を持つ武器 ( ダガー等 ) は、通常突きも
                     // 短reachのJSON突き ( thrust.range + attack_range ) を使う。
                     // 直刀はどちらの経路でも横切りと同じ奥行きにそろえる。
@@ -216,7 +221,7 @@ public class MotionExecutor {
         if (the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem()))
             return horizontalSlashForwardRange(player.getMainHandItem());
         return Math.max(1.5, 5.0
-                + the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem()));
+                + LunaSkillEffects.rangeBonus(player.getMainHandItem()));
     }
 
     // === 突き ===
@@ -224,7 +229,7 @@ public class MotionExecutor {
         boolean isCharged = chargePercent > 0.0f;
         float baseDamage = isCharged ? 15.0f * (1.0f + chargePercent) : 7.0f;
         double legacyRange = Math.max(1.0, (isCharged ? 6.0 + chargePercent * 2.0 : 5.0)
-                + the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem()));
+                + LunaSkillEffects.rangeBonus(player.getMainHandItem()));
 
         double range = the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem())
             ? horizontalSlashForwardRange(player.getMainHandItem()) : legacyRange;
@@ -253,7 +258,7 @@ public class MotionExecutor {
         if (isCharged) {
             for (LivingEntity target : targets) {
                 ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-                DamageCalculator.dealDamage(player, target, baseDamage, weapon);
+                dealMotionDamage(player, target, baseDamage, weapon);
                 DamageCalculator.applyNormalKnockback(player, target, weapon);
                 if (chargePercent >= 1.0f) {
                     target.setSecondsOnFire(5);
@@ -262,7 +267,7 @@ public class MotionExecutor {
         } else {
             for (LivingEntity target : targets) {
                 ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-                DamageCalculator.dealDamage(player, target, baseDamage, weapon);
+                dealMotionDamage(player, target, baseDamage, weapon);
                 DamageCalculator.applyNormalKnockback(player, target, weapon);
             }
         }
@@ -328,7 +333,7 @@ public class MotionExecutor {
     }
 
     private static double slashForwardRange(double base, ItemStack weapon) {
-        return Math.max(1.0, base + WeaponStatsRegistry.attackRangeBonus(weapon));
+        return Math.max(1.0, base + LunaSkillEffects.rangeBonus(weapon));
     }
 
     // === 横一文字 ===
@@ -376,7 +381,7 @@ public class MotionExecutor {
         // 武器タイプによる範囲倍率 (大剣/槍は広く、短剣は狭く)
         double rangeScale = WeaponTypeRegistry.getSpinRangeScale(player.getMainHandItem());
         double range = Math.max(1.0, baseRange * rangeScale
-                + the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem()));
+                + LunaSkillEffects.rangeBonus(player.getMainHandItem()));
 
         // 開始時の小さな視覚フラッシュ (足元のリング)
         if (!world.isClientSide) {
@@ -404,7 +409,7 @@ public class MotionExecutor {
     private static void performSlamDown(Player player, Level world, Vec3 lookVec, Vec3 playerPos, float chargePercent) {
         boolean isCharged = chargePercent > 0.0f;
         float baseDamage = isCharged ? 16.0f * (1.0f + chargePercent * 1.2f) : 13.0f;
-        double rangeBonus = the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem());
+        double rangeBonus = LunaSkillEffects.rangeBonus(player.getMainHandItem());
         double forwardRange = Math.max(1.0, (isCharged ? 4.5 + chargePercent : 3.5) + rangeBonus);
         double width = Math.max(0.75, (isCharged ? 2.5 : 1.8) + rangeBonus * 0.5);
 
@@ -461,6 +466,8 @@ public class MotionExecutor {
             }
         }
 
+        LunaSkillEffects.fillLane(player, lookVec, forwardRange, width, 0);
+
         // 前方の敵にダメージ（上下広めのAABB）
         Vec3 rightVec = new Vec3(-lookVec.z, 0, lookVec.x).normalize();
 		Vec3 endPoint = playerPos.add(lookVec.scale(forwardRange));
@@ -472,7 +479,7 @@ public class MotionExecutor {
 
         for (LivingEntity target : targets) {
             ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-            DamageCalculator.dealDamage(player, target, baseDamage, weapon);
+            dealMotionDamage(player, target, baseDamage, weapon);
             DamageCalculator.applyNormalKnockback(player, target, weapon);
             target.addEffect(new net.minecraft.world.effect.MobEffectInstance(
                 net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN,
@@ -487,17 +494,23 @@ public class MotionExecutor {
             SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.PLAYERS, 1.0f, 0.7f);
     }
 
+    private static void dealMotionDamage(Player player, LivingEntity target, float damage, ItemStack weapon) {
+        if (LunaSkillEffects.usesNormalDamage(player)) {
+            the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
+                    .damageNormalTarget(weapon, target);
+        } else {
+            DamageCalculator.dealDamage(player, target, damage, weapon);
+        }
+    }
+
     // === 共通の斬撃ダメージ処理 ===
     private static void performSlashDamage(Player player, Level world, Vec3 lookVec, Vec3 playerPos,
                                             float baseDamage, double forwardRange, double horizontalRange,
                                             float chargePercent) {
         // 武器ごとの攻撃範囲: weapon_stats.json の attack_range を斬撃の奥行き(と横幅)に反映。
-        the_four_primitives_and_weapons.skill.WeaponStatsRegistry.WeaponStats st =
-                the_four_primitives_and_weapons.skill.WeaponStatsRegistry.getStats(
-                        player.getItemInHand(InteractionHand.MAIN_HAND));
         final double fRange = slashForwardRange(forwardRange, player.getMainHandItem());
-        final double hRange = (st != null && !Float.isNaN(st.attackRange))
-                ? Math.max(0.75, horizontalRange + st.attackRange * 0.5) : horizontalRange;
+        final double hRange = Math.max(0.75, horizontalRange
+                + LunaSkillEffects.rangeBonus(player.getMainHandItem()) * 0.5);
         Vec3 rightVec = new Vec3(-lookVec.z, 0, lookVec.x).normalize();
 
 		Vec3 endPoint = playerPos.add(lookVec.scale(fRange));
@@ -509,7 +522,7 @@ public class MotionExecutor {
 
         for (LivingEntity target : targets) {
             ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-            DamageCalculator.dealDamage(player, target, baseDamage, weapon);
+            dealMotionDamage(player, target, baseDamage, weapon);
             DamageCalculator.applyNormalKnockback(player, target, weapon);
         }
     }
@@ -592,6 +605,8 @@ public class MotionExecutor {
     /** 斬撃/突き共通の 3クラスタ dust 扇。 全ての突きの見た目統一にも使う ( 突きは tilt=0 )。 */
     public static void slashCloudFan(ServerLevel sw, Player player, Vec3 look, Vec3 playerPos, double tilt) {
         double delta = fanSpread(player);
+        LunaSkillEffects.fillLane(player, look, horizontalSlashForwardRange(player.getMainHandItem()),
+                3.0 + LunaSkillEffects.rangeBonus(player.getMainHandItem()) * 0.5, tilt);
         // 攻撃に属性が載っているなら、 元の灰色 dust は出さず属性パーティクルだけで弧を描く。
         the_four_primitives_and_weapons.damage.ElementType elem =
                 the_four_primitives_and_weapons.damage.ElementalDamageUtils.getAttackElementType(player);
@@ -613,7 +628,7 @@ public class MotionExecutor {
 
     /** 武器の攻撃範囲 ( attack_range ) による扇のスケール。 範囲が広い武器ほど大きく描く。 */
     private static double fanScale(Player player) {
-        double bonus = the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem());
+        double bonus = LunaSkillEffects.rangeBonus(player.getMainHandItem());
         return Math.max(0.4, 1.0 + bonus * 0.25);
     }
 
