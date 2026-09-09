@@ -1,14 +1,30 @@
 #!/bin/bash
+# 使い方・運用メモ (help / --help / -h でも表示)
+# 使い方: bash sh/run/run_client_win.sh [offline]
+# WSLからWindows側のJavaとgradlew.batで起動します。PROJECT_WIN_PATHを環境に合わせてください。
+# WITH_SPELLBOOKS=1 / SKIP_SPELLBOOKS_PROMPT=1 で追加MODの質問を制御します。
+# Java 17と必要な依存キャッシュを事前に用意してください。起動関連の共通メモはsh/run/run_client_mac.sh冒頭にあります。
+#
 # WSL から Windows 側の gradlew.bat を呼び出して Minecraft クライアントを起動する。
 #
 # 使い方:
-#   bash run_client_win.sh            通常
-#   bash run_client_win.sh offline    オフライン (キャッシュ済み依存のみ)
+#   bash sh/run/run_client_win.sh            通常
+#   bash sh/run/run_client_win.sh offline    オフライン (キャッシュ済み依存のみ)
 #
 # 起動前に Iron's Spells 'n Spellbooks を入れるか対話で尋ねる (y/N)。
 # 環境変数で上書き: WITH_SPELLBOOKS=1 強制 / SKIP_SPELLBOOKS_PROMPT=1 対話なし。
 
 # Windows 側プロジェクトパス (必要に応じて編集)
+
+for shell_help_arg in "$@"; do
+    case "$shell_help_arg" in
+        help|--help|-h)
+            awk 'NR == 1 { next } /^#/ { sub(/^# ?/, ""); print; next } /^[[:space:]]*$/ { print; next } { exit }' "$0"
+            exit 0
+            ;;
+    esac
+done
+
 PROJECT_WIN_PATH='C:\Users\hrmcn\MCreatorWorkspaces\the_four_primitives_and_weapons'
 
 GRADLE_ARGS="runClient"

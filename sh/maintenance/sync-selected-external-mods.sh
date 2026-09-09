@@ -2,11 +2,11 @@
 # 指定した外部MODの最新JARを libs/runtime_selected へ集めるスクリプト。
 #
 # 使い方:
-#   bash scripts/sync-selected-external-mods.sh                 全部入り
-#   bash scripts/sync-selected-external-mods.sh --offline       全部入り・オフライン
-#   bash scripts/sync-selected-external-mods.sh --performance-only  Embeddium + Oculus + extra_video_settings + VanillaLite
-#   bash scripts/sync-selected-external-mods.sh --light         Embeddium + Oculus + extra_video_settings + VanillaLite + 追加2MOD
-#   bash scripts/sync-selected-external-mods.sh --offline --light
+#   bash sh/maintenance/sync-selected-external-mods.sh                 全部入り
+#   bash sh/maintenance/sync-selected-external-mods.sh --offline       全部入り・オフライン
+#   bash sh/maintenance/sync-selected-external-mods.sh --performance-only  Embeddium + Oculus + extra_video_settings + VanillaLite
+#   bash sh/maintenance/sync-selected-external-mods.sh --light         Embeddium + Oculus + extra_video_settings + VanillaLite + 追加2MOD
+#   bash sh/maintenance/sync-selected-external-mods.sh --offline --light
 #
 # --light で残すもの:
 #   chuzume-addon / extra_video_settings / RPGish-HPDisplay
@@ -23,7 +23,7 @@
 #     https://modrinth.com/mod/moonlight
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 MODS_ROOT="/Users/hiromichi/Documents/github/mods"
 DATAPACK_ROOT="/Users/hiromichi/Documents/github/datapack"
 VANILLA_LITE_DIST="${VANILLA_LITE_DIST:-$MODS_ROOT/VanillaLite/dist}"

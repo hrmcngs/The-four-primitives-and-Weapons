@@ -7,7 +7,7 @@
         {
             "label": "Build (jar)",
             "type": "shell",
-            "command": "bash build.sh",
+            "command": "bash sh/build/build.sh",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -24,7 +24,7 @@
         {
             "label": "Clean Build (jar)",
             "type": "shell",
-            "command": "bash build.sh clean",
+            "command": "bash sh/build/build.sh clean",
             "group": "build",
             "problemMatcher": ["$java"],
             "options": {
@@ -38,7 +38,7 @@
         {
             "label": "Run Client",
             "type": "shell",
-            "command": "bash run_client.sh",
+            "command": "bash sh/run/run_client.sh",
             "group": "build",
             "problemMatcher": [],
             "options": {

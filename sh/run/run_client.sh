@@ -1,14 +1,30 @@
 #!/bin/bash
+# 使い方・運用メモ (help / --help / -h でも表示)
+# 使い方: bash sh/run/run_client.sh [offline]
+# WITH_SPELLBOOKS=1 で追加MOD有効、SKIP_SPELLBOOKS_PROMPT=1 で質問を省略します。
+# 引数なしはオンラインです。macOS向けの軽量化MOD選択・シェーダー同期は sh/run/run_client_mac.sh を使います。
+# Java 17とGradle依存キャッシュが必要です。詳しいキャッシュ・TLS対処はsh/run/run_client_mac.sh冒頭にあります。
+#
 # Minecraftクライアントを起動するスクリプト（mac / WSL / Windows Git Bash 対応）
 #
 # 使い方:
-#   bash run_client.sh            通常（オンライン）
-#   bash run_client.sh offline    オフライン（キャッシュ済み依存のみで起動）
+#   bash sh/run/run_client.sh            通常（オンライン）
+#   bash sh/run/run_client.sh offline    オフライン（キャッシュ済み依存のみで起動）
 #
 # 起動前に Iron's Spells 'n Spellbooks を入れるか対話で尋ねる (y/N)。
 # 環境変数で上書き: WITH_SPELLBOOKS=1 強制 / SKIP_SPELLBOOKS_PROMPT=1 対話なし。
 
-cd "$(dirname "$0")"
+
+for shell_help_arg in "$@"; do
+    case "$shell_help_arg" in
+        help|--help|-h)
+            awk 'NR == 1 { next } /^#/ { sub(/^# ?/, ""); print; next } /^[[:space:]]*$/ { print; next } { exit }' "$0"
+            exit 0
+            ;;
+    esac
+done
+
+cd "$(dirname "$0")/../.."
 
 GRADLE_ARGS="runClient"
 if [ "$1" = "offline" ]; then

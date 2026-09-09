@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 vault_test_dir=$(mktemp -d)
 trap 'rm -rf "$vault_test_dir"' EXIT
 javac -d "$vault_test_dir" \

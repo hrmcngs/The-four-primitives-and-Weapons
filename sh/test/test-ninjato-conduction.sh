@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 conduction_test_dir=$(mktemp -d)
 trap 'rm -rf "$conduction_test_dir"' EXIT
 javac -d "$conduction_test_dir" \

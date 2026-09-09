@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 tether_test_dir=$(mktemp -d)
 trap 'rm -rf "$tether_test_dir"' EXIT
 javac -d "$tether_test_dir" \

@@ -1,22 +1,9 @@
 @echo off
-REM Windows用バッチファイル - MCreatorのコードを自動ロック
-
-echo ========================================
-echo MCreator Code Auto-Lock Script
-echo ========================================
-echo.
-
-REM Pythonスクリプトを実行
-python auto_lock_codes.py
-
-if %ERRORLEVEL% EQU 0 (
-    echo.
-    echo [成功] すべてのコードがロックされました
-    echo MCreatorを安全に起動できます
-) else (
-    echo.
-    echo [エラー] コードのロックに失敗しました
+cd /d "%~dp0"
+where sbcl >nul 2>nul
+if errorlevel 1 (
+  echo SBCL Common Lisp is required.
+  exit /b 1
 )
-
-echo.
-pause
+sbcl --script lisp\maintenance\lock-codes.lisp %*
+exit /b %errorlevel%

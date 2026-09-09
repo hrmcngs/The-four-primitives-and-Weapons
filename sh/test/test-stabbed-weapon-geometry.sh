@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 geometry_test_dir=$(mktemp -d)
 trap 'rm -rf "$geometry_test_dir"' EXIT
 cat > "$geometry_test_dir/test.gradle" <<'GRADLE'
