@@ -36,7 +36,7 @@ public class StabWeaponHandler {
 	/** プリセット: { 名前, 傾き(度), 高さオフセット(ブロック) }。 向きはプレイヤーの向きを使う。 */
 	private static final String[] PRESET_NAME = {"直立", "やや傾け", "深く刺す", "高く掲げる", "横倒し"};
 	private static final float[]  PRESET_TILT = { 5f,    22f,        8f,         5f,           80f };
-	private static final double[] PRESET_HEIGHT = { 0.0,  0.0,       -0.35,       0.5,          0.0 };
+	private static final double[] PRESET_HEIGHT = { 0.5,  0.5,        0.15,       1.0,          0.0 };
 
 	private static Item marker() {
 		return the_four_primitives_and_weapons.init.KnifeExtrasRegistrar.BATTLE_STAKE.get();

@@ -23,6 +23,7 @@ public class TheFourPrimitivesAndWeaponsModCuriosRenderers {
 	public static void clientSetup(final FMLClientSetupEvent evt) {
 		evt.enqueueWork(() -> {
 			CuriosRendererRegistry.register(TheFourPrimitivesAndWeaponsModItems.SAYA.get(), ScabbardCurioRenderer::new);
+			CuriosRendererRegistry.register(TheFourPrimitivesAndWeaponsModItems.NINJATO_SAYA.get(), ScabbardCurioRenderer::new);
 			CuriosRendererRegistry.register(TheFourPrimitivesAndWeaponsModItems.TYOKUTO_SAYA.get(), ScabbardCurioRenderer::new);
 			CuriosRendererRegistry.register(TheFourPrimitivesAndWeaponsModItems.SWORD_SAYA.get(), ScabbardCurioRenderer::new);
 			CuriosRendererRegistry.register(TheFourPrimitivesAndWeaponsModItems.RAPIER_SAYA.get(), ScabbardCurioRenderer::new);

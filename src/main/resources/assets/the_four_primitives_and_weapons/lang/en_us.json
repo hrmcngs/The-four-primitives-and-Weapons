@@ -3,7 +3,7 @@
   "tooltip.the_four_primitives_and_weapons.ninjato_chain": "Chain: right-click / 10 blocks to retrieve. Cut only by a weapon skill dealing at least 20 damage.",
   "item.the_four_primitives_and_weapons.ninjato_recall_cord": "Ninjato Recall Cord",
   "tooltip.the_four_primitives_and_weapons.ninjato_tethered": "Tethered: right-click the cord to retrieve; returns automatically at 10 blocks.",
-  "tooltip.the_four_primitives_and_weapons.ninjato_vault": "Hold use in your main hand and quickly look from up to down to vault.",
+  "tooltip.the_four_primitives_and_weapons.ninjato_vault": "Hold use in your main hand and quickly look from up to down: vault normally, sneak to plant without jumping.",
   "item.the_four_primitives_and_weapons.ninjato_saya": "Ninjato Saya",
   "item.the_four_primitives_and_weapons.undead_army_banish": "Holy Bell of Banishment",
   "item.the_four_primitives_and_weapons.throwing_knife": "Throwing Knife",

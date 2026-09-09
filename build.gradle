@@ -13,6 +13,41 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
 
+// 忍者刀の専用UVと模様を保ったまま、既存の拵え染色処理が使う変種を生成する。
+def ninjatoTintResources = layout.buildDirectory.dir('generated/ninjatoTintResources')
+sourceSets.main.resources.srcDir(ninjatoTintResources)
+def generateNinjatoFittingTints = tasks.register('generateNinjatoFittingTints') {
+    def fittingRoot = file('src/main/resources/assets/the_four_primitives_and_weapons/textures/ninjato_fitting')
+    inputs.dir(fittingRoot)
+    outputs.dir(ninjatoTintResources)
+    doLast {
+        ['tsuka/tsuka', 'kasira/kasira', 'tsuba/tuba'].each { part ->
+            def source = javax.imageio.ImageIO.read(new File(fittingRoot, "${part}.png"))
+            if (source == null) throw new GradleException("忍者刀のテクスチャを読めません: ${part}")
+            ['gray', 'black'].each { mode ->
+                def result = new java.awt.image.BufferedImage(source.width, source.height, java.awt.image.BufferedImage.TYPE_INT_ARGB)
+                for (int y = 0; y < source.height; y++) {
+                    for (int x = 0; x < source.width; x++) {
+                        int pixel = source.getRGB(x, y)
+                        int alpha = (pixel >>> 24) & 255
+                        int luminance = Math.round(0.2126f * ((pixel >>> 16) & 255)
+                            + 0.7152f * ((pixel >>> 8) & 255) + 0.0722f * (pixel & 255))
+                        // 元がほぼ黒でも染料が見える明度に上げ、明暗による模様は残す。
+                        int shade = mode == 'gray' ? Math.round(130 + luminance * 0.45f)
+                            : Math.round(12 + luminance * 0.15f)
+                        result.setRGB(x, y, (alpha << 24) | (shade << 16) | (shade << 8) | shade)
+                    }
+                }
+                def output = new File(ninjatoTintResources.get().asFile,
+                    "assets/the_four_primitives_and_weapons/textures/ninjato_fitting/${part}_${mode}.png")
+                output.parentFile.mkdirs()
+                javax.imageio.ImageIO.write(result, 'png', output)
+            }
+        }
+    }
+}
+tasks.named('processResources').configure { dependsOn(generateNinjatoFittingTints) }
+
 // ペイント編集用の32x32（各角16x16）ツールチップPNGを生成する。
 tasks.register('generateTooltipCornerPngs') {
     doLast {

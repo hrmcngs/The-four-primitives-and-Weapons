@@ -25,9 +25,6 @@ import the_four_primitives_and_weapons.init.KnifeExtrasRegistrar;
  */
 public class StabbedWeaponRenderer extends EntityRenderer<StabbedWeaponEntity> {
 
-	// 見た目調整用 ( 必要なら数値を変える )。 傾きはエンティティのプリセット値を使う。
-	public static float SINK = 0.35f;    // 地面へのめり込み量
-	public static float SCALE = 1.0f;    // 刺した武器の大きさ ( 3軸同率スケール = 比率はそのままで縮小 )
 
 	public StabbedWeaponRenderer(EntityRendererProvider.Context ctx) {
 		super(ctx);
@@ -52,9 +49,9 @@ public class StabbedWeaponRenderer extends EntityRenderer<StabbedWeaponEntity> {
 			pose.mulPose(Axis.XP.rotationDegrees(entity.getTilt()));
 			pose.mulPose(Axis.ZP.rotationDegrees(180f + entity.getRoll()));
 			// 地面へ沈める
-			pose.translate(0.0, -0.5 + SINK, 0.0);
-			// 全体スケール = グローバル基準 SCALE × 武器ごとの編集スケール ( 3軸同率で比率は保持 )
-			float sc = SCALE * entity.getScale();
+			pose.translate(0.0, the_four_primitives_and_weapons.util.StabbedWeaponGeometry.RENDER_OFFSET, 0.0);
+			// 判定と同じ編集スケールを使用する。
+			float sc = entity.getScale();
 			pose.scale(sc, sc, sc);
 			// THIRD_PERSON_RIGHT_HAND: 元の比率・立体感を保つ ( FIXED は比率が崩れる )
 			Minecraft.getInstance().getItemRenderer().renderStatic(

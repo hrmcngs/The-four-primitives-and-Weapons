@@ -27,6 +27,12 @@ import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModCustom
  * 武器アイテムを持って地面の上面をスニーク右クリックで設置、 右クリック / 攻撃で回収できる。
  */
 public class StabbedWeaponEntity extends Entity {
+    /** 上端と下端を結ぶ軸からの判定半径。長い武器でも太くしない。 */
+    private static final double HIT_RADIUS = 0.05;
+
+    @Override
+    public float getPickRadius() { return 0.0F; }
+
 	/** 0より大きい間は回収不能な次元移動演出。サーバー側だけで寿命を数える。 */
 	private int ritualLifetime;
     private final java.util.List<NinjatoTetherSegmentEntity> tetherSegments = new java.util.ArrayList<>();
@@ -79,7 +85,7 @@ public class StabbedWeaponEntity extends Entity {
             -Math.cos(yaw) * arm * 0.35 - Math.sin(yaw) * 0.4,
             (owner.isCrouching() ? -0.1875 : 0) - 0.55,
             -Math.sin(yaw) * arm * 0.35 + Math.cos(yaw) * 0.4);
-        net.minecraft.world.phys.Vec3 anchor = weaponSegment()[0];
+        net.minecraft.world.phys.Vec3 anchor = getTetherAnchor();
         net.minecraft.world.phys.Vec3 line = hand.subtract(anchor);
         int count = Math.max(1, Math.min(48, (int)Math.ceil(line.length() / 0.3)));
         while (tetherSegments.size() > count) tetherSegments.remove(tetherSegments.size() - 1).discard();
@@ -129,6 +135,8 @@ public class StabbedWeaponEntity extends Entity {
         }
         if (cordSlot < 0 && player.getInventory().getFreeSlot() < 0) return false;
         ItemStack result = getItem().copy();
+        // 回収パケットと遅れて届く回避パケットが同時に動かないようにする。
+        player.getPersistentData().putLong("NinjatoRecallDodgeUntil", player.level().getGameTime() + 10);
         discard();
         if (cordSlot >= 0) {
             // クリエイティブ等で複製された古い紐も無効化する。
@@ -196,6 +204,7 @@ public class StabbedWeaponEntity extends Entity {
 		ItemStack one = stack.copy();
 		one.setCount(1);
 		this.entityData.set(DATA_ITEM, one);
+        setBoundingBox(makeBoundingBox());
 	}
 
 	public ItemStack getItem() {
@@ -231,11 +240,13 @@ public class StabbedWeaponEntity extends Entity {
 
 	public void setRoll(float roll) {
 		this.entityData.set(DATA_ROLL, roll);
+        setBoundingBox(makeBoundingBox());
 	}
 
 	/** 表示スケール ( 0.2〜3.0 )。 見た目のみ。 当たり判定は半径 ( setRadius ) で別管理。 */
 	public void setScale(float sc) {
 		this.entityData.set(DATA_SCALE, Math.max(0.2f, Math.min(3.0f, sc)));
+        setBoundingBox(makeBoundingBox());
 	}
 
 	public float getScale() {
@@ -260,6 +271,22 @@ public class StabbedWeaponEntity extends Entity {
 		return false;
 	}
 
+    /** クリック判定だけでなく、足場として移動・着地の衝突判定にも参加する。 */
+    @Override
+    public boolean canBeCollidedWith() {
+        return !isRemoved();
+    }
+
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        super.onSyncedDataUpdated(key);
+        // 向き・長さの同期後にクライアント側の足場も同じ形へ更新する。
+        if (key.equals(DATA_YAW) || key.equals(DATA_TILT) || key.equals(DATA_RADIUS)
+                || key.equals(DATA_SCALE) || key.equals(DATA_ROLL) || key.equals(DATA_ITEM)) {
+            setBoundingBox(makeBoundingBox());
+        }
+    }
+
 	@Override
 	public boolean isNoGravity() {
 		return true; // 地面に刺さったまま静止
@@ -268,7 +295,7 @@ public class StabbedWeaponEntity extends Entity {
 	/**
 	 * 当たり判定を「武器の軸 ( 向き・傾き )」 に沿わせる。 刃先 ( 下＋前 ) と 柄 ( 上＋後ろ ) の
 	 * 2 端点を結ぶ線分を内包する AABB にするので、 表示した武器に沿った細長い判定になる
-	 * ( 半径 DATA_RADIUS で長さ・太さが伸縮 )。
+	 * ( 詳細な衝突判定は collisionPieces で細分化する )。
 	 */
 	@Override
 	protected net.minecraft.world.phys.AABB makeBoundingBox() {
@@ -276,22 +303,14 @@ public class StabbedWeaponEntity extends Entity {
 			return new net.minecraft.world.phys.AABB(
 					getX() - 0.5, getY() - 0.5, getZ() - 0.5, getX() + 0.5, getY() + 0.5, getZ() + 0.5);
 		}
-		double r = getRadius();
-		double len = 1.0 * r;                 // 武器の半長 ( 刃側 )
-		double tr = Math.toRadians(getTilt());
-		double yr = Math.toRadians(getStabYaw());
-		double horiz = Math.sin(tr);          // 前方向成分
-		double vert = Math.cos(tr);           // 下方向成分
-		double fx = -Math.sin(yr) * horiz;
-		double fz = Math.cos(yr) * horiz;
-		// 刃先 ( 下＋前 ) と 柄 ( 上＋後ろ・短め )
-		double tipX = getX() + fx * len,        tipY = getY() - vert * len,        tipZ = getZ() + fz * len;
-		double hndX = getX() - fx * len * 0.55, hndY = getY() + vert * len * 0.55, hndZ = getZ() - fz * len * 0.55;
-		double th = 0.2;                      // 太さ ( 薄くして武器の棒形状に密着 )
-		return new net.minecraft.world.phys.AABB(
-				Math.min(tipX, hndX) - th, Math.min(tipY, hndY) - th, Math.min(tipZ, hndZ) - th,
-				Math.max(tipX, hndX) + th, Math.max(tipY, hndY) + th, Math.max(tipZ, hndZ) + th);
+        net.minecraft.world.phys.Vec3[] ends = weaponSegment();
+        return new net.minecraft.world.phys.AABB(ends[0], ends[1]).inflate(HIT_RADIUS);
 	}
+
+    /** 傾いた武器を囲む大きな箱ではなく、軸に沿った細い小箱を足場にする。 */
+    public java.util.List<net.minecraft.world.phys.shapes.VoxelShape> collisionPieces() {
+        return the_four_primitives_and_weapons.util.StabbedWeaponGeometry.collisionPieces(weaponSegment(), HIT_RADIUS);
+    }
 
 	@Override
 	public void tick() {
@@ -310,7 +329,7 @@ public class StabbedWeaponEntity extends Entity {
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
 		if (ritualLifetime > 0) return InteractionResult.PASS;
-		if (vaultOwner == null && !lookHitsWeapon(player, 6.0)) return InteractionResult.PASS; // 武器に当たっていない
+		if (!lookHitsWeapon(player, 6.0)) return InteractionResult.PASS; // 武器に当たっていない
         if (!this.level().isClientSide) {
             if (vaultOwner != null && vaultTethered) recallVault(player);
             else retrieveTo(player);
@@ -339,8 +358,35 @@ public class StabbedWeaponEntity extends Entity {
 	// OBB ( カプセル ) 精密ヒット判定: 武器の線分 ( 柄→刃先 ) に視線レイが近いか
 	// ─────────────────────────────────────────────────────────────
 
+    /** 鞘口の少し下、鞘本体の表面。描画と切断判定で同じ接続位置を使う。 */
+    public net.minecraft.world.phys.Vec3 getTetherAnchor() {
+        // ninzyatousayatuki の鞘表面 (7.9, 9, 7.6) に手持ちモデルの
+        // translation / rotation / scale を適用した位置。設置レンダラーの沈み込みも加える。
+        org.joml.Vector3f offset = new org.joml.Vector3f(-0.0375F, -0.0625F, 0.15F)
+            .mul(getScale()).add(0, the_four_primitives_and_weapons.util.StabbedWeaponGeometry.RENDER_OFFSET, 0);
+        offset.rotate(new org.joml.Quaternionf()
+            .rotationY((float)Math.toRadians(getStabYaw()))
+            .rotateX((float)Math.toRadians(getTilt()))
+            .rotateZ((float)Math.toRadians(180 + getRoll())));
+        return position().add(offset.x, offset.y, offset.z);
+    }
+
 	/** 武器の軸線分 [ 柄, 刃先 ] を 向き・傾き から求める。 */
 	public net.minecraft.world.phys.Vec3[] weaponSegment() {
+        net.minecraft.world.phys.Vec3[] model = the_four_primitives_and_weapons.util.StabbedWeaponGeometry.localAxis(getItem());
+        if (model != null) {
+            org.joml.Quaternionf rotation = new org.joml.Quaternionf()
+                .rotationY((float)Math.toRadians(getStabYaw()))
+                .rotateX((float)Math.toRadians(getTilt()))
+                .rotateZ((float)Math.toRadians(180 + getRoll()));
+            net.minecraft.world.phys.Vec3[] result = new net.minecraft.world.phys.Vec3[2];
+            for (int i = 0; i < 2; i++) {
+                org.joml.Vector3f point = model[i].toVector3f().mul(getScale())
+                    .add(0, the_four_primitives_and_weapons.util.StabbedWeaponGeometry.RENDER_OFFSET, 0).rotate(rotation);
+                result[i] = position().add(point.x, point.y, point.z);
+            }
+            return result;
+        }
 		double r = getRadius();
 		double len = 1.0 * r;
 		double tr = Math.toRadians(getTilt());
@@ -361,7 +407,7 @@ public class StabbedWeaponEntity extends Entity {
 	public double clipWeapon(net.minecraft.world.phys.Vec3 origin, net.minecraft.world.phys.Vec3 dir, double maxDist) {
 		net.minecraft.world.phys.Vec3[] seg = weaponSegment();
 		net.minecraft.world.phys.Vec3 q1 = origin.add(dir.x * maxDist, dir.y * maxDist, dir.z * maxDist);
-		double th = 0.3 + getRadius() * 0.12; // 当たり太さ ( 判定半径で少し太く )
+		double th = HIT_RADIUS; // 上端・下端をつなぐ細い線と共通の太さ
 		double[] res = closestSegSeg(origin, q1, seg[0], seg[1]);
 		if (res[0] <= th * th) return res[1] * maxDist;
 		return -1;

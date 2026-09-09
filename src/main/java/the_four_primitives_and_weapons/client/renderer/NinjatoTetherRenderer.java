@@ -37,7 +37,7 @@ public final class NinjatoTetherRenderer {
         boolean main = matches(owner.getMainHandItem(), entity);
         if (!main && !matches(owner.getOffhandItem(), entity)) return;
         Vec3 hand = handPosition(owner, main, partialTick, dispatcher);
-        Vec3 anchor = entity.weaponSegment()[0];
+        Vec3 anchor = entity.getTetherAnchor();
         Vec3 cable = hand.subtract(anchor);
         float length = (float) cable.length();
         if (!Float.isFinite(length) || length < 0.001F || length > 16.0F) return;

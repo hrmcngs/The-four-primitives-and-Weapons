@@ -91,6 +91,7 @@ public class DodgeAndBattouHandler {
         boolean hasDodged = false;
         int cooldownTimer = 0;
         int fallDamageImmunityTimer = 0;
+        boolean ninjatoUseHeld = false;
         boolean isRightClickHeld = false; // 右クリック押し状態
         int dashAttackCooldown = 0; // ダッシュ攻撃のクールダウン
         int airDashCount = 0; // 空中ダッシュ回数
@@ -221,6 +222,7 @@ public class DodgeAndBattouHandler {
         if (mc.screen != null) return; // GUI表示中は回避しない
 
         Player player = mc.player;
+        if (blocksNinjatoUseDodge(player)) return;
         DodgeData data = getData(player);
         if (data == null) return;
 
@@ -506,6 +508,7 @@ public class DodgeAndBattouHandler {
     // publicにしてDodgeRequestPacketから呼べるようにする
     // @return true=回避成功、false=クールダウン等でブロック
     public static boolean performDodge(Player player) {
+        if (blocksNinjatoUseDodge(player)) return false;
         // 回避無効化設定チェック（グローバル設定）
         if (the_four_primitives_and_weapons.config.DodgeConfig.dodgeDisabled) return false;
 
@@ -584,7 +587,22 @@ public class DodgeAndBattouHandler {
      * メインハンドが武器ならOK。オフハンドが武器でもメインハンドが空でなければNG。
      * dodgeWithInertItems設定ON時: メインハンドが「何もしないアイテム」でもオフハンド武器があれば回避可能。
      */
+    /** 紐・鎖の回収と鞘の設置に使う右クリックを、回避処理から除外する。 */
+    private static boolean blocksNinjatoUseDodge(Player player) {
+        boolean dedicatedUse = the_four_primitives_and_weapons.util.NinjatoVault.isRecallItem(player.getMainHandItem())
+            || the_four_primitives_and_weapons.util.NinjatoVault.isRecallItem(player.getOffhandItem())
+            || the_four_primitives_and_weapons.util.NinjatoVault.isLoaded(player.getMainHandItem());
+        if (player.level().isClientSide) {
+            DodgeData data = getOrCreateData(player);
+            boolean held = isUseKeyHeld(Minecraft.getInstance());
+            data.ninjatoUseHeld = held && (data.ninjatoUseHeld || dedicatedUse);
+            return dedicatedUse || data.ninjatoUseHeld;
+        }
+        return dedicatedUse || player.getPersistentData().getLong("NinjatoRecallDodgeUntil") > player.level().getGameTime();
+    }
+
     public static boolean canDodgeWithHands(Player player) {
+        if (blocksNinjatoUseDodge(player)) return false;
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
         // フックショットは右クリックで自身の発射動作を行うので、回避と競合させない

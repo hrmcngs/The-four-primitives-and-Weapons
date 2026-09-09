@@ -6,6 +6,7 @@
   "refmap": "the_four_primitives_and_weapons.refmap.json",
   "mixins": [
     "GuardDamageReductionMixin",
+    "StabbedWeaponCollisionMixin",
     "MiasmaHealMixin",
     "WeaponStatsMixin",
     "LivingEntityAutoSpinAccessor",

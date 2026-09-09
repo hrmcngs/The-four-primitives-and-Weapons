@@ -40,7 +40,7 @@ public final class KoshiraeFittings {
 	/**
 	 * 入力(+染料)に対する候補。
 	 * <ul>
-	 *   <li>染料あり: <b>部位ごとの色変更</b> ( 刀=柄/鍔/縁/頭 を個別に染料色へ、 鞘=地色 )。</li>
+	 *   <li>染料あり: <b>部位ごとの色変更</b> ( 刀=柄/鍔/頭/はばき を個別に染料色へ、 鞘=地色 )。</li>
 	 *   <li>染料なし: 見た目 ( 刀=柄巻きデザイン、 鞘=仕立て )。</li>
 	 * </ul>
 	 * 大釜は「一気に全部同色」なのに対し、 拵え台は「部位ごとに部分的に」変えられる。
@@ -56,6 +56,7 @@ public final class KoshiraeFittings {
 				out.add(katanaColor(in, "tsuka", rgb, "柄を染める"));
 				out.add(katanaColor(in, "tsuba", rgb, "鍔を染める"));
 				out.add(katanaColor(in, "kashira", rgb, "頭を染める"));
+				out.add(katanaColor(in, "habaki", rgb, "はばきを染める"));
 			} else if (isRapier(in)) {
 				// レイピア: 柄(grip)/鍔(guard)/頭(pommel) のデザインを部位ごとに選択
 				out.add(rapierDesign(in, "grip", "",        "柄=既定"));
@@ -111,6 +112,7 @@ public final class KoshiraeFittings {
 			case "tsuba":   KatanaFittings.setTsuba(s, rgb); break;
 			case "fuchi":   KatanaFittings.setFuchi(s, rgb); break;
 			case "kashira": KatanaFittings.setKashira(s, rgb); break;
+			case "habaki":  KatanaFittings.setHabaki(s, rgb); break;
 			default:        KatanaFittings.setTsuka(s, rgb);
 		}
 		s.setHoverName(net.minecraft.network.chat.Component.literal(label));

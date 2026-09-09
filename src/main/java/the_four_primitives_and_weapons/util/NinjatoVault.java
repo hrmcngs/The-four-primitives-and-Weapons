@@ -70,7 +70,11 @@ public final class NinjatoVault {
         // 鞘の手持ちモデルには既に180度の反転があるため、設置用の反転を相殺する。
         planted.setRoll(180);
         planted.setRadius(0.7F);
-        planted.setPos(hit.getLocation().x, hit.getLocation().y + 0.6, hit.getLocation().z);
+        // モデル変換後の鞘先を狙った点へ合わせる。先端だけ0.04ブロック埋める。
+        Vec3[] axis = planted.weaponSegment();
+        Vec3 tip = axis[0].y < axis[1].y ? axis[0] : axis[1];
+        Vec3 origin = planted.position().add(hit.getLocation().subtract(tip)).add(0, -0.04, 0);
+        planted.setPos(origin.x, origin.y, origin.z);
         if (!player.level().addFreshEntity(planted)) return;
 
         ItemStack inHand = ItemStack.EMPTY;
@@ -84,11 +88,14 @@ public final class NinjatoVault {
         player.setItemInHand(InteractionHand.MAIN_HAND, inHand);
         if (!inHand.isEmpty()) player.startUsingItem(InteractionHand.MAIN_HAND);
         end(player);
-        Vec3 velocity = player.getDeltaMovement();
-        player.setDeltaMovement(velocity.x, 1.25, velocity.z);
-        player.fallDistance = 0;
-        player.hurtMarked = true;
-        serverPlayer.connection.send(new net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket(player));
+        // 同じ振り下ろしでも、Shift中は設置だけにする。
+        if (!player.isShiftKeyDown()) {
+            Vec3 velocity = player.getDeltaMovement();
+            player.setDeltaMovement(velocity.x, 1.25, velocity.z);
+            player.fallDistance = 0;
+            player.hurtMarked = true;
+            serverPlayer.connection.send(new net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket(player));
+        }
         player.level().playSound(null, hit.getBlockPos(), net.minecraft.sounds.SoundEvents.TRIDENT_HIT_GROUND,
             net.minecraft.sounds.SoundSource.PLAYERS, 1.0F, 0.9F);
     }
