@@ -51,7 +51,7 @@ run_client_windows.bat offline keepdaemon
 
 `bash run_client_mac.sh` の外部MOD確認で `y` を選ぶと、続けて選択できます。
 
-1. 「軽量化MODのみで起動しますか?」→ Enter / `y` で **Embeddium + Oculus（VanillaLiteを選択可能）**。
+1. 「軽量化MODのみで起動しますか?」→ Enter / `y` で **Embeddium + Oculus + extra_video_settings（VanillaLiteを選択可能）**。
 2. 上で `n` を選ぶと「負荷の大きいMODも入れますか?」→ Enter / `n` で Embeddium + Oculus + chuzume-addon / extra_video_settings / RPGish-HPDisplay。
 3. 重いMODの質問で `y` を選ぶと TACZ / Gun and Weapon / Backpack Arsenal / Mekanism / Sophisticated も追加。
 
@@ -70,7 +70,7 @@ WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=0 bash run_client_mac.sh
 
 ## 軽量化MOD使用時のシェーダー
 
-macOS版で外部MODを有効にすると、軽量化MODのみ・追加機能MODあり・全部入りのいずれでも、EmbeddiumとOculusを読み込みます。
+macOS版で外部MODを有効にすると、軽量化MODのみ・追加機能MODあり・全部入りのいずれでも、Embeddium・Oculus・自作のextra_video_settingsを読み込みます。
 `/Users/hiromichi/Documents/github/mods/VanillaLite/dist/` 内のZIPを、起動時に `run/shaderpacks/` へコピーします。別の場所を使う場合は `VANILLA_LITE_DIST=/path/to/dist` を指定できます。
 
 ゲーム内の **設定 → ビデオ設定 → シェーダーパック** でVanillaLiteを選び、シェーダーを有効にして適用してください。同じ画面でOFFや別パックへの切り替えもできます。起動スクリプトはゲーム内で選んだ設定を上書きしません。
@@ -86,8 +86,11 @@ WITH_EXTERNAL_MODS=1 PERFORMANCE_ONLY_MODS=1 bash run_client_mac.sh offline
 対話で選ぶ場合は `bash run_client_mac.sh offline` で外部MODを `y` にします。
 Oculus・EmbeddiumとVanillaLiteはローカルのファイルを使用するため、シェーダーの選択・ON/OFFにネット接続は不要です。
 配布元の `dist/` がない場合も、`run/shaderpacks/VanillaLite*.zip` があれば保存済みパックを使って起動します。ゲーム内で選んだ設定は維持します。
-OculusとEmbeddiumの配布JARは `libs/offline-performance/` にも保存します。`libs/local/` にJARがない場合はこのキャッシュ、または前回の `libs/runtime_selected/` から再利用します。同期先を消す前に保存するため、繰り返しオフライン起動できます。
+Oculus・Embeddium・extra_video_settingsの配布JARは `libs/offline-performance/` にも保存します。`libs/local/` にJARがない場合はこのキャッシュ、または前回の `libs/runtime_selected/` から再利用します。同期先を消す前に保存するため、繰り返しオフライン起動できます。
 初回に必要なMODのJAR・Gradle依存キャッシュとシェーダーZIPは、この端末に配置済みです。
+
+
+`extra_video_settings` は自作プロジェクトの `forge/forge/build/libs/` から更新日時が最新のForge用JARを取り込みます。ビルド元がない場合も保存済みキャッシュからオフラインで再利用できます。別のビルド先を使う場合は `EXTRA_VIDEO_SETTINGS_DIR=/path/to/build/libs` を指定してください。
 
 ## Windows版の外部 mod ( libs/local/ )
 

@@ -15,13 +15,12 @@
 #   1. 外部 mod をオンにしますか?
 #      y = 下記の外部MODを同期して起動 / Enter または n = 本体MODだけで起動
 #   2. 軽量化MODのみで起動しますか?
-#      Enter または y = Embeddium + Oculus / VanillaLite / n = 追加機能MODも入れる
+#      Enter または y = Embeddium + Oculus + extra_video_settings / VanillaLite / n = 追加機能MODも入れる
 #   3. 負荷の大きいMODも入れますか? (2でnの場合)
-#      y = TACZ/Mekanism系も追加 / Enter または n = 従来の軽量3MODまで
+#      y = TACZ/Mekanism系も追加 / Enter または n = 追加の2MODまで
 #
 # 追加機能MOD (軽量化MODのみでは入れない):
 #   - chuzume-addon
-#   - extra_video_settings
 #   - RPGish-HPDisplay (mh_rpgish)
 #
 # 全部入りで追加されるMOD:
@@ -31,8 +30,8 @@
 #   - Sophisticated Core + Sophisticated Backpacks
 #
 # 質問を省略する例:
-#   WITH_EXTERNAL_MODS=1 PERFORMANCE_ONLY_MODS=1 bash run_client_mac.sh  # Embeddium + Oculus / VanillaLite
-#   WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=1 bash run_client_mac.sh offline  # 軽量3MODも追加
+#   WITH_EXTERNAL_MODS=1 PERFORMANCE_ONLY_MODS=1 bash run_client_mac.sh  # Embeddium + Oculus + extra_video_settings / VanillaLite
+#   WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=1 bash run_client_mac.sh offline  # 追加2MODも有効
 #   WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=0 bash run_client_mac.sh offline  # 全部入り
 #
 # 起動前に外部MODを含めるか対話で尋ねる。選択したJARは
@@ -170,7 +169,7 @@ if [ "$USE_EXTERNAL_MODS" = "yes" ]; then
             || [ "${LIGHT_EXTERNAL_MODS:-}" = "1" ]; then
         USE_PERFORMANCE_ONLY_MODS="no"
     elif [ -t 0 ]; then
-        printf "軽量化MODのみで起動しますか? (Embeddium + Oculus / VanillaLite) [Y/n]: "
+        printf "軽量化MODのみで起動しますか? (Embeddium + Oculus + extra_video_settings / VanillaLite) [Y/n]: "
         read -r PERFORMANCE_ANSWER
         case "$PERFORMANCE_ANSWER" in
             n|N|no|NO|No) USE_PERFORMANCE_ONLY_MODS="no" ;;
@@ -206,7 +205,7 @@ if [ "$USE_EXTERNAL_MODS" = "yes" ]; then
     fi
     GRADLE_ARGS="$GRADLE_ARGS -PwithExternalMods=true -PexternalModsGroup=runtime_selected"
     if [ "$USE_PERFORMANCE_ONLY_MODS" = "yes" ]; then
-        echo "=== 外部 mod ON / 軽量化MODのみ (Embeddium + Oculus / VanillaLite切替対応) ==="
+        echo "=== 外部 mod ON / 軽量化MODのみ (Embeddium + Oculus + extra_video_settings / VanillaLite切替対応) ==="
     elif [ "$USE_LIGHT_EXTERNAL_MODS" = "yes" ]; then
         echo "=== 外部 mod ON / 軽量化MOD + 追加機能MOD (重いMODなし) ==="
     else

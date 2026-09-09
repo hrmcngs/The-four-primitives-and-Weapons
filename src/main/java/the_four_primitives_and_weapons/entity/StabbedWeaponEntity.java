@@ -35,6 +35,10 @@ public class StabbedWeaponEntity extends Entity {
 
 	/** 0より大きい間は回収不能な次元移動演出。サーバー側だけで寿命を数える。 */
 	private int ritualLifetime;
+    /** trueなら回収操作で消える装飾。アイテムをプレイヤーへ渡さない。 */
+    public static final String TAG_DISAPPEAR_ON_PICKUP = "DisappearOnPickup";
+    private boolean disappearOnPickup;
+
     private final java.util.List<NinjatoTetherSegmentEntity> tetherSegments = new java.util.ArrayList<>();
 
     /** 切断しても刀は返さず、地面に残す。紐・鎖の再取り付けは再クラフトする。 */
@@ -264,6 +268,10 @@ public class StabbedWeaponEntity extends Entity {
 		return this.entityData.get(DATA_ROLL);
 	}
 
+    public void setDisappearOnPickup(boolean value) {
+        this.disappearOnPickup = value;
+    }
+
 	public void setRitualLifetime(int ticks) {
 		this.ritualLifetime = Math.max(0, ticks);
 	}
@@ -278,16 +286,16 @@ public class StabbedWeaponEntity extends Entity {
 		return false;
 	}
 
-    /** クリック判定だけでなく、足場として移動・着地の衝突判定にも参加する。 */
+    /** 装飾として通り抜け可能。回収・編集用のクリック判定はisPickableで維持する。 */
     @Override
     public boolean canBeCollidedWith() {
-        return !isRemoved();
+        return false;
     }
 
     @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
         super.onSyncedDataUpdated(key);
-        // 向き・長さの同期後にクライアント側の足場も同じ形へ更新する。
+        // 向き・長さの同期後にクライアント側のクリック判定も同じ形へ更新する。
         if (key.equals(DATA_YAW) || key.equals(DATA_TILT) || key.equals(DATA_RADIUS)
                 || key.equals(DATA_SCALE) || key.equals(DATA_ROLL) || key.equals(DATA_ITEM)) {
             setBoundingBox(makeBoundingBox());
@@ -462,7 +470,7 @@ public class StabbedWeaponEntity extends Entity {
 	private void retrieveTo(Player player) {
         if (isRemoved()) return;
         ItemStack drop = getItem();
-		if (!drop.isEmpty()) {
+		if (!disappearOnPickup && !drop.isEmpty()) {
 			ItemStack give = drop.copy();
 			if (!player.addItem(give)) player.drop(give, false);
 		}
@@ -483,6 +491,11 @@ public class StabbedWeaponEntity extends Entity {
         entityData.set(DATA_TETHER_OWNER, vaultTethered && vaultOwner != null
             ? java.util.Optional.of(vaultOwner) : java.util.Optional.empty());
 		if (tag.contains("StabItem")) setItem(ItemStack.of(tag.getCompound("StabItem")));
+        // 新しいNBTがあれば明示値を優先。旧データの自然生成刀は回収時消滅へ移行する。
+        disappearOnPickup = tag.contains(TAG_DISAPPEAR_ON_PICKUP, 99)
+            ? tag.getBoolean(TAG_DISAPPEAR_ON_PICKUP)
+            : getItem().hasTag() && getItem().getTag().getBoolean(
+                the_four_primitives_and_weapons.events.StabWeaponHandler.TAG_NATURAL_BLADE_FIELD_WEAPON);
         entityData.set(DATA_TETHER_CHAIN, the_four_primitives_and_weapons.util.NinjatoVault.isChain(getItem()));
 		setStabYaw(tag.getFloat("StabYaw"));
 		if (tag.contains("StabTilt")) setTilt(tag.getFloat("StabTilt"));
@@ -493,6 +506,7 @@ public class StabbedWeaponEntity extends Entity {
 
 	@Override
 	protected void addAdditionalSaveData(CompoundTag tag) {
+        tag.putBoolean(TAG_DISAPPEAR_ON_PICKUP, disappearOnPickup);
         if (vaultOwner != null) tag.putUUID("VaultOwner", vaultOwner);
         tag.putBoolean("VaultTethered", vaultTethered);
 		if (!getItem().isEmpty()) tag.put("StabItem", getItem().save(new CompoundTag()));

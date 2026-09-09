@@ -30,7 +30,7 @@ import net.minecraftforge.fml.common.Mod;
 public class StabWeaponHandler {
 
 	private static final String TAG_PRESET = "StakePreset";
-	/** 剣の原で自然生成され、引き抜いた後は再設置できない武器。 */
+	/** 剣の原で自然生成された武器の識別。回収後も再設置できる。 */
 	public static final String TAG_NATURAL_BLADE_FIELD_WEAPON = "BladeFieldNaturalWeapon";
 
 	/** プリセット: { 名前, 傾き(度), 高さオフセット(ブロック) }。 向きはプレイヤーの向きを使う。 */
@@ -78,13 +78,6 @@ public class StabWeaponHandler {
 
 		ItemStack weapon = event.getItemStack();            // メインハンド = 刺す武器
 		if (!DodgeAndBattouHandler.isWeapon(weapon)) return; // 武器 ( 刀/剣等 ) のみ
-		if (weapon.hasTag() && weapon.getTag().getBoolean(TAG_NATURAL_BLADE_FIELD_WEAPON)) {
-			if (!player.level().isClientSide)
-				player.displayClientMessage(Component.literal("§7剣の原から抜かれた武器は、再び地面へ刺せない"), true);
-			event.setCanceled(true);
-			event.setCancellationResult(InteractionResult.FAIL);
-			return;
-		}
 
 		Level level = event.getLevel();
 		if (!level.isClientSide) {
@@ -97,12 +90,19 @@ public class StabWeaponHandler {
 
 			StabbedWeaponEntity ent = new StabbedWeaponEntity(level);
 			ent.setItem(weapon);                         // 刺さるのは武器
+            // /giveで付けた回収時消滅設定を、設置エンティティへ引き継ぐ。
+            ent.setDisappearOnPickup(weapon.hasTag()
+                && weapon.getTag().getBoolean(StabbedWeaponEntity.TAG_DISAPPEAR_ON_PICKUP));
             if (weapon.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.NINJATOU.get()))
                 ent.setVaultOwner(player.getUUID(), false);
 			ent.setStabYaw(player.getYRot() + 180f);     // 向き = プレイヤーの向き
 			ent.setTilt(PRESET_TILT[p]);                  // 傾き = プリセット
 			ent.moveTo(x, y, z, 0f, 0f);
-			level.addFreshEntity(ent);
+			if (!level.addFreshEntity(ent)) {
+				event.setCanceled(true);
+				event.setCancellationResult(InteractionResult.FAIL);
+				return;
+			}
 
 			level.playSound(null, x, y, z, SoundEvents.ARMOR_EQUIP_IRON, SoundSource.PLAYERS, 0.9f, 0.9f);
 			level.playSound(null, x, y, z, SoundEvents.GRINDSTONE_USE, SoundSource.PLAYERS, 0.4f, 1.4f);

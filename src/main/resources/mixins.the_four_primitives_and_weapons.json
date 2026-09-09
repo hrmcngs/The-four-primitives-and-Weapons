@@ -16,6 +16,7 @@
     "EnchantmentMaxLevelMixin"
   ],
   "client": [
+    "KeyBindsLabelLayoutMixin",
     "WeaponBlockAttackMixin",
     "BlessingVisionMixin",
     "TooltipPaddingMixin",

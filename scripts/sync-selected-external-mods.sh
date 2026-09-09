@@ -4,8 +4,8 @@
 # 使い方:
 #   bash scripts/sync-selected-external-mods.sh                 全部入り
 #   bash scripts/sync-selected-external-mods.sh --offline       全部入り・オフライン
-#   bash scripts/sync-selected-external-mods.sh --performance-only  Embeddium + Oculus + VanillaLite
-#   bash scripts/sync-selected-external-mods.sh --light         Embeddium + Oculus + VanillaLite + 軽量3MOD
+#   bash scripts/sync-selected-external-mods.sh --performance-only  Embeddium + Oculus + extra_video_settings + VanillaLite
+#   bash scripts/sync-selected-external-mods.sh --light         Embeddium + Oculus + extra_video_settings + VanillaLite + 追加2MOD
 #   bash scripts/sync-selected-external-mods.sh --offline --light
 #
 # --light で残すもの:
@@ -27,6 +27,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 MODS_ROOT="/Users/hiromichi/Documents/github/mods"
 DATAPACK_ROOT="/Users/hiromichi/Documents/github/datapack"
 VANILLA_LITE_DIST="${VANILLA_LITE_DIST:-$MODS_ROOT/VanillaLite/dist}"
+EXTRA_VIDEO_SETTINGS_DIR="${EXTRA_VIDEO_SETTINGS_DIR:-$MODS_ROOT/extra_video_settings/forge/forge/build/libs}"
 DEST="$ROOT/libs/runtime_selected"
 # 自前ビルドではない、手で置く外部 mod jar ( DuMmmMmmy 等 ) の置き場
 EXTERNAL_DIR="$ROOT/libs/external"
@@ -47,7 +48,7 @@ done
 PERFORMANCE_CACHE="$ROOT/libs/offline-performance"
 cache_performance_mod() {
     local name="$1" dir jar="" cached candidate
-    for dir in "$ROOT/libs/local" "$PERFORMANCE_CACHE" "$DEST"; do
+    for dir in "${2:-}" "$ROOT/libs/local" "$PERFORMANCE_CACHE" "$DEST"; do
         [ -d "$dir" ] || continue
         while IFS= read -r -d '' candidate; do
             if [ -z "$jar" ] || [ "$candidate" -nt "$jar" ]; then jar="$candidate"; fi
@@ -66,6 +67,7 @@ cache_performance_mod() {
 }
 PERFORMANCE_JAR="$(cache_performance_mod embeddium)"
 OCULUS_JAR="$(cache_performance_mod oculus)"
+EXTRA_VIDEO_SETTINGS_JAR="$(cache_performance_mod extra_video_settings-forge "$EXTRA_VIDEO_SETTINGS_DIR")"
 mkdir -p "$DEST"
 find "$DEST" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
 
@@ -96,8 +98,9 @@ echo "=== 指定外部Modを同期 ==="
 # オンライン・オフラインともにローカルの配布JARだけを同期する。
 install_jar "$PERFORMANCE_JAR"
 install_jar "$OCULUS_JAR"
+install_jar "$EXTRA_VIDEO_SETTINGS_JAR"
 if [ "$OFFLINE_ARG" = "--offline" ]; then
-    echo "==> Oculus / Embeddium: 保存済みJARでオフライン読み込み (ダウンロードなし)"
+    echo "==> Oculus / Embeddium / extra_video_settings: 保存済みJARでオフライン読み込み (ダウンロードなし)"
 fi
 
 # distの配布ZIPをそのまま配置する。別パックやゲーム内の選択・ON/OFF設定は保持。
@@ -141,7 +144,6 @@ else
 fi
 
 JARS=(
-    "$(latest_jar "$MODS_ROOT/extra_video_settings/forge/forge/build/libs")"
     "$(latest_jar "$DATAPACK_ROOT/RPGish-HPDisplay/mod-forge/build/libs")"
     "$CHUZUME_JAR"
 )

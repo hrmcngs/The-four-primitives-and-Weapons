@@ -74,6 +74,7 @@ public class BladeFieldFeature extends Feature<NoneFeatureConfiguration> {
         weapon.getOrCreateTag().putBoolean(StabWeaponHandler.TAG_NATURAL_BLADE_FIELD_WEAPON, true);
         StabbedWeaponEntity entity = new StabbedWeaponEntity(level.getLevel());
         entity.setItem(weapon);
+        entity.setDisappearOnPickup(true); // 自然生成の装飾刀は回収操作で消える
         entity.setStabYaw(random.nextFloat() * 360.0F);
         entity.setRoll(-18.0F + random.nextFloat() * 36.0F);
 
