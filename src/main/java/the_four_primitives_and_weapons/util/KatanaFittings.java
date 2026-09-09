@@ -357,6 +357,7 @@ public final class KatanaFittings {
 			case "reitou" -> 0x4F3B25;
 			case "my_test_iron_katana", "magisches_feen_katana" -> 0x3A3A3A;
 			case "prototype_katana" -> 0xCDCDCD;
+			case "katana_nigu_humerus" -> 0xFFFFFF;
 			default -> 0xFEF364;
 		};
 	}

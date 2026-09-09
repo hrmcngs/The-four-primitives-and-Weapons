@@ -73,6 +73,34 @@ public final class KatanaTsukaModel implements BakedModel {
 		}
 	}
 
+	/** 納刀時も、解決済みの武器モデルと同じ柄・鍔・頭を使う。鞘の形状とUVは維持する。 */
+	public static BakedModel withWeaponFittings(BakedModel base, BakedModel weapon) {
+		TextureAtlasSprite[] byTint = new TextureAtlasSprite[5];
+		collectFittingSprites(weapon.getQuads(null, null, RandomSource.create(42L)), byTint);
+		for (Direction side : Direction.values()) {
+			collectFittingSprites(weapon.getQuads(null, side, RandomSource.create(42L)), byTint);
+		}
+		boolean any = false;
+		StringBuilder key = new StringBuilder(Integer.toHexString(System.identityHashCode(base))).append("^weapon");
+		for (int tint = 1; tint <= 3; tint++) {
+			TextureAtlasSprite sprite = byTint[tint];
+			if (sprite != null) any = true;
+			key.append('/').append(sprite == null ? "" : sprite.contents().name());
+		}
+		if (!any) return base;
+		return CACHE.computeIfAbsent(key.toString(), k -> new KatanaTsukaModel(base, byTint, false));
+	}
+
+	private static void collectFittingSprites(List<BakedQuad> quads, TextureAtlasSprite[] byTint) {
+		for (BakedQuad quad : quads) {
+			int tint = quad.getTintIndex();
+			if (tint >= 1 && tint <= 3 && byTint[tint] == null
+					&& !quad.getSprite().contents().name().equals(MissingTextureAtlasSprite.getLocation())) {
+				byTint[tint] = quad.getSprite();
+			}
+		}
+	}
+
 	/** 柄(wrap)/鍔(tsubaStyle)/頭(kashira)/縁(fuchi) のデザインを反映。 どれも無く白鞘でもなければ base。 */
 	public static BakedModel maybe(BakedModel base, String wrap, String tsubaStyle, String kashira, String fuchi) {
 		if (base == null) return base;

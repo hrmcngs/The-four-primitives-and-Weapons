@@ -9,7 +9,7 @@
 | macOS / Linux / WSL / Git Bash | `bash run_client_mac.sh` |
 | Windows ( cmd / PowerShell ) | `run_client_windows.bat` |
 
-両方とも内部処理は等価です。引数も共通。
+macOS版では、外部MODを軽量化MODのみ・追加機能MODあり・重いMODありから対話で選べます。Windows版は `libs/local/` の一括取り込みです。
 
 ## 引数
 
@@ -47,7 +47,28 @@ run_client_windows.bat offline keepdaemon
 5. gradlew runClient を起動
 ```
 
-## 外部 mod ( libs/local/ )
+## macOS版の外部MOD選択
+
+`bash run_client_mac.sh` の外部MOD確認で `y` を選ぶと、続けて選択できます。
+
+1. 「軽量化MODのみで起動しますか?」→ Enter / `y` で **Embeddiumのみ**。
+2. 上で `n` を選ぶと「負荷の大きいMODも入れますか?」→ Enter / `n` で Embeddium + chuzume-addon / extra_video_settings / RPGish-HPDisplay。
+3. 重いMODの質問で `y` を選ぶと TACZ / Gun and Weapon / Backpack Arsenal / Mekanism / Sophisticated も追加。
+
+EmbeddiumのJARは `libs/local/` に配置します。選択したMODは毎回 `libs/runtime_selected/` に同期され、前回の重いMODは残りません。軽量化MODのみの場合、`libs/external/` の任意MODも取り込みません。それ以外では従来どおり取り込みます。同期に失敗した場合は起動を中止します。
+
+```bash
+# 対話なしで軽量化MODのみ
+WITH_EXTERNAL_MODS=1 PERFORMANCE_ONLY_MODS=1 bash run_client_mac.sh
+# 重いMODなしで追加機能MODも入れる (従来互換)
+WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=1 bash run_client_mac.sh
+# 重いMODも入れる (従来互換)
+WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=0 bash run_client_mac.sh
+```
+
+`PERFORMANCE_ONLY_MODS=0` は軽量化MODのみの質問を省略し、重いMODの質問へ進みます。`PERFORMANCE_ONLY_MODS=1` は `LIGHT_EXTERNAL_MODS` より優先されます。外部MODを有効にした非対話実行でどちらも未指定なら、軽量化MODのみになります。
+
+## Windows版の外部 mod ( libs/local/ )
 
 任意の `.jar` を `libs/local/` 配下に置くと、 起動時に自動取り込みされます。
 

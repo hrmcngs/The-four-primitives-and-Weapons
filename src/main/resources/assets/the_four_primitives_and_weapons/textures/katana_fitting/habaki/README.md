@@ -3,6 +3,7 @@
 柄・鍔・頭が独立している `katana_a_parent`、`katana_c_parent`、
 `reitou3d`、`ninzyatou`、`tyokuto_b_parent`、
 Magical Katana の `katanairon3dmagicanimetion` のはばきに対応します。
+上腕骨刀 (`katana_nigu_humerus`) の独立したはばきにも対応し、初期色は白です。
 一体型モデルは対象外です。
 
 ## 個別に色を変える

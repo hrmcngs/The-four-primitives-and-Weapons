@@ -4,7 +4,8 @@
 # 使い方:
 #   bash scripts/sync-selected-external-mods.sh                 全部入り
 #   bash scripts/sync-selected-external-mods.sh --offline       全部入り・オフライン
-#   bash scripts/sync-selected-external-mods.sh --light         軽量3MOD
+#   bash scripts/sync-selected-external-mods.sh --performance-only  Embeddiumのみ
+#   bash scripts/sync-selected-external-mods.sh --light         Embeddium + 軽量3MOD
 #   bash scripts/sync-selected-external-mods.sh --offline --light
 #
 # --light で残すもの:
@@ -30,11 +31,13 @@ DEST="$ROOT/libs/runtime_selected"
 EXTERNAL_DIR="$ROOT/libs/external"
 OFFLINE_ARG=""
 LIGHT_MODE="no"
+PERFORMANCE_ONLY="no"
 
 for arg in "$@"; do
     case "$arg" in
         --offline|-o|offline) OFFLINE_ARG="--offline" ;;
         --light|light) LIGHT_MODE="yes" ;;
+        --performance-only) PERFORMANCE_ONLY="yes" ;;
     esac
 done
 
@@ -64,6 +67,22 @@ install_jar() {
 }
 
 echo "=== 指定外部Modを同期 ==="
+
+# libs/local は任意のMODも置けるため、軽量化MODは名前を限定して取り込む。
+# フラット配置とGradleが生成するMaven配置の重複を避け、最新の1個を使う。
+PERFORMANCE_JAR="$(find "$ROOT/libs/local" -maxdepth 3 -type f -name 'embeddium-*.jar' \
+    ! -name '*-sources.jar' ! -name '*-dev.jar' -print0 2>/dev/null \
+    | xargs -0 ls -1t 2>/dev/null | sed -n '1p')" || PERFORMANCE_JAR=""
+if [ -n "$PERFORMANCE_JAR" ] && [ -f "$PERFORMANCE_JAR" ]; then
+    install_jar "$PERFORMANCE_JAR"
+else
+    echo "[error] 軽量化MODがありません。Embeddiumのjarを libs/local/ に配置してください。" >&2
+    exit 1
+fi
+if [ "$PERFORMANCE_ONLY" = "yes" ]; then
+    echo "==> 軽量化MODのみ: 追加機能MOD・重いMOD・libs/external/ は取り込みません"
+    exit 0
+fi
 
 CHUZUME_JAR="$(latest_jar "$MODS_ROOT/chuzume-addon/build/libs")"
 if [ -z "$CHUZUME_JAR" ] \

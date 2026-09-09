@@ -37,7 +37,6 @@ import net.minecraft.world.entity.MobType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.HitResult;
@@ -129,10 +128,12 @@ public class ChargedAttackHandler {
         if (player == null || mc.screen != null) return;
         if (!isWeapon(player.getMainHandItem())) return;
 
-        // InteractionKeyMappingTriggered はブロックを採掘中にも繰り返し発火する。
-        // ここで技パケットを送ると、目の前のブロックへ長押ししただけで技が連射される。
-        if (mc.hitResult != null && mc.hitResult.getType() == HitResult.Type.BLOCK) return;
-
+        // 長押し採掘由来の繰り返し入力は WeaponBlockAttackMixin で止める。
+        // ブロックへの実クリックも通常攻撃として扱い、採掘だけキャンセルする。
+        if (mc.hitResult != null && mc.hitResult.getType() == HitResult.Type.BLOCK) {
+            event.setCanceled(true);
+            player.resetAttackStrengthTicker(); // クロスヘアの攻撃ゲージを空振りと同様に更新
+        }
         TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(0, 0));
     }
     
@@ -580,7 +581,7 @@ public class ChargedAttackHandler {
         }
     }
     
-    private static boolean isWeapon(ItemStack stack) {
+    public static boolean isWeapon(ItemStack stack) {
         if (stack.isEmpty()) return false;
 
         // NBTフラグによる近接無効化 (アドオン契約):
@@ -681,30 +682,24 @@ public class ChargedAttackHandler {
         return damage;
     }
     
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
         Player player = event.getEntity();
-        UUID playerId = player.getUUID();
-        ChargeData data = playerChargeData.get(playerId);
-        
-        // チャージ中はブロック破壊をキャンセル
-        if (data != null && data.isCharging) {
-            event.setCanceled(true);
-            return;
-        }
-
-        ItemStack held = player.getMainHandItem();
-        if (!isWeapon(held)) return;
-
-        BlockState state = player.level().getBlockState(event.getPos());
-        // 剣が本来破壊に適しているブロックは、通常どおり壊せる。
-        // それ以外のブロック操作は武器使用中だけ無効化する。
-        boolean swordEffective = held.getItem() instanceof SwordItem && state.is(BlockTags.SWORD_EFFICIENT);
-        if (!swordEffective) {
+        ChargeData data = playerChargeData.get(player.getUUID());
+        // 武器ではブロックの種類にかかわらず採掘しない。両側で止める。
+        if (isWeapon(player.getMainHandItem()) || (data != null && data.isCharging)) {
             event.setCanceled(true);
         }
     }
-    
+
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public static void onBlockBreak(net.minecraftforge.event.level.BlockEvent.BreakEvent event) {
+        // サーバー側でも確定破壊を防ぐ (クリエイティブの即時破壊を含む)。
+        if (isWeapon(event.getPlayer().getMainHandItem())) {
+            event.setCanceled(true);
+        }
+    }
+
     // 武器特殊効果を適用するヘルパーメソッド
     // @deprecated Use DamageCalculator.applyWeaponEffects instead
     @Deprecated

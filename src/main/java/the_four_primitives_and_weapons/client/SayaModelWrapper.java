@@ -66,26 +66,14 @@ public class SayaModelWrapper implements BakedModel {
         @Override
         public BakedModel resolve(BakedModel model, ItemStack stack, @Nullable ClientLevel level,
                                   @Nullable LivingEntity entity, int seed) {
-            // ベース → 仕立て ( wrap テクスチャ差し替え ) → 納刀中の刀の拵え色を反映
-            // ( 持っている刀と同じく gray/black 変種テクスチャに差し替え、 見た目を一致させる )。
             BakedModel base = withStyle(resolveBase(stack, level, entity, seed), stack);
-            return withFittingColor(base, stack);
-        }
-
-        /** 納刀中の刀の柄/鍔/頭の色に応じて、 鞘の該当面を gray/black 変種へ差し替える ( 持っている刀と同方式 )。 */
-        private BakedModel withFittingColor(BakedModel base, ItemStack sayaStack) {
-            ItemStack weapon = getStoredWeapon(sayaStack, outer.sayaType);
+            ItemStack weapon = getStoredWeapon(stack, outer.sayaType);
             if (weapon.isEmpty()) return base;
-            int[] mode = new int[5]; // 1=柄 2=鍔 3=頭
-            mode[1] = variantMode(the_four_primitives_and_weapons.util.KatanaFittings.tsukaRgb(weapon));
-            mode[2] = variantMode(the_four_primitives_and_weapons.util.KatanaFittings.tsubaRgb(weapon));
-            mode[3] = variantMode(the_four_primitives_and_weapons.util.KatanaFittings.kashiraRgb(weapon));
-            return KatanaTsukaModel.grayForTint(base, mode);
-        }
-
-        private int variantMode(int rgb) {
-            if (rgb < 0) return 0;
-            return the_four_primitives_and_weapons.util.KatanaFittings.isNearBlack(rgb) ? 2 : 1;
+            // 武器側の既定テクスチャ・NBTデザイン・gray/black変種まで解決して引き継ぐ。
+            // 色の乗算は SayaColorClient が納刀中の武器NBTから適用する。
+            BakedModel weaponModel = Minecraft.getInstance().getItemRenderer()
+                    .getModel(weapon, level, entity, seed);
+            return KatanaTsukaModel.withWeaponFittings(base, weaponModel);
         }
 
         /** 納刀中の武器 / custom_model_data に応じた「ベース」モデルを解決する。 */

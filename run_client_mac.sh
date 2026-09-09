@@ -14,10 +14,12 @@
 # 起動時の質問:
 #   1. 外部 mod をオンにしますか?
 #      y = 下記の外部MODを同期して起動 / Enter または n = 本体MODだけで起動
-#   2. ラグを減らす軽量モードにしますか?
-#      Enter または y = 軽い3個だけ / n = 全部入り9個
+#   2. 軽量化MODのみで起動しますか?
+#      Enter または y = Embeddiumのみ / n = 追加機能MODも入れる
+#   3. 負荷の大きいMODも入れますか? (2でnの場合)
+#      y = TACZ/Mekanism系も追加 / Enter または n = 従来の軽量3MODまで
 #
-# 軽量モードで入るMOD:
+# 追加機能MOD (軽量化MODのみでは入れない):
 #   - chuzume-addon
 #   - extra_video_settings
 #   - RPGish-HPDisplay (mh_rpgish)
@@ -29,7 +31,8 @@
 #   - Sophisticated Core + Sophisticated Backpacks
 #
 # 質問を省略する例:
-#   WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=1 bash run_client_mac.sh offline  # 軽量
+#   WITH_EXTERNAL_MODS=1 PERFORMANCE_ONLY_MODS=1 bash run_client_mac.sh  # Embeddiumのみ
+#   WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=1 bash run_client_mac.sh offline  # 軽量3MODも追加
 #   WITH_EXTERNAL_MODS=1 LIGHT_EXTERNAL_MODS=0 bash run_client_mac.sh offline  # 全部入り
 #
 # 起動前に外部MODを含めるか対話で尋ねる。選択したJARは
@@ -158,31 +161,56 @@ if [ "$USE_EXTERNAL_MODS" = "yes" ]; then
     case " $GRADLE_ARGS " in
         *" --offline "*) SYNC_ARGS="--offline" ;;
     esac
-    # 大型依存 (TACZ 50MB、Mekanism一式) は必要な時だけ読み込めるようにする。
-    # LIGHT_EXTERNAL_MODS=0 なら確認せず全部入り、=1 なら確認せず軽量版。
-    if [ "${LIGHT_EXTERNAL_MODS:-}" = "0" ]; then
-        USE_LIGHT_EXTERNAL_MODS="no"
-    elif [ "${LIGHT_EXTERNAL_MODS:-}" = "1" ]; then
-        USE_LIGHT_EXTERNAL_MODS="yes"
+    # 従来の LIGHT_EXTERNAL_MODS 指定は追加機能MODの選択として維持する。
+    USE_PERFORMANCE_ONLY_MODS="no"
+    if [ "${PERFORMANCE_ONLY_MODS:-}" = "1" ]; then
+        USE_PERFORMANCE_ONLY_MODS="yes"
+    elif [ "${PERFORMANCE_ONLY_MODS:-}" = "0" ] \
+            || [ "${LIGHT_EXTERNAL_MODS:-}" = "0" ] \
+            || [ "${LIGHT_EXTERNAL_MODS:-}" = "1" ]; then
+        USE_PERFORMANCE_ONLY_MODS="no"
     elif [ -t 0 ]; then
-        printf "ラグを減らす軽量モードにしますか? (TACZ/Mekanism系を除外) [Y/n]: "
-        read LIGHT_ANSWER
-        case "$LIGHT_ANSWER" in
-            n|N|no|NO|No) USE_LIGHT_EXTERNAL_MODS="no" ;;
-            *)             USE_LIGHT_EXTERNAL_MODS="yes" ;;
+        printf "軽量化MODのみで起動しますか? (Embeddiumのみ) [Y/n]: "
+        read -r PERFORMANCE_ANSWER
+        case "$PERFORMANCE_ANSWER" in
+            n|N|no|NO|No) USE_PERFORMANCE_ONLY_MODS="no" ;;
+            *) USE_PERFORMANCE_ONLY_MODS="yes" ;;
         esac
     else
-        USE_LIGHT_EXTERNAL_MODS="yes"
+        USE_PERFORMANCE_ONLY_MODS="yes"
     fi
-    if [ "$USE_LIGHT_EXTERNAL_MODS" = "yes" ]; then
-        SYNC_ARGS="$SYNC_ARGS --light"
-    fi
-    bash scripts/sync-selected-external-mods.sh $SYNC_ARGS
-    GRADLE_ARGS="$GRADLE_ARGS -PwithExternalMods=true -PexternalModsGroup=runtime_selected"
-    if [ "$USE_LIGHT_EXTERNAL_MODS" = "yes" ]; then
-        echo "=== 外部 mod ON / 軽量モード ==="
+
+    USE_LIGHT_EXTERNAL_MODS="yes"
+    if [ "$USE_PERFORMANCE_ONLY_MODS" = "yes" ]; then
+        SYNC_ARGS="$SYNC_ARGS --performance-only"
     else
-        echo "=== 外部 mod ON / 全部入り ==="
+        if [ "${LIGHT_EXTERNAL_MODS:-}" = "0" ]; then
+            USE_LIGHT_EXTERNAL_MODS="no"
+        elif [ "${LIGHT_EXTERNAL_MODS:-}" = "1" ]; then
+            USE_LIGHT_EXTERNAL_MODS="yes"
+        elif [ -t 0 ]; then
+            printf "負荷の大きいMODも入れますか? (TACZ / Gun and Weapon / Backpack Arsenal / Mekanism / Sophisticated) [y/N]: "
+            read -r HEAVY_ANSWER
+            case "$HEAVY_ANSWER" in
+                y|Y|yes|YES|Yes) USE_LIGHT_EXTERNAL_MODS="no" ;;
+                *) USE_LIGHT_EXTERNAL_MODS="yes" ;;
+            esac
+        fi
+        if [ "$USE_LIGHT_EXTERNAL_MODS" = "yes" ]; then
+            SYNC_ARGS="$SYNC_ARGS --light"
+        fi
+    fi
+    if ! bash scripts/sync-selected-external-mods.sh $SYNC_ARGS; then
+        echo "[error] 外部MODの同期に失敗したため、起動を中止します。" >&2
+        exit 1
+    fi
+    GRADLE_ARGS="$GRADLE_ARGS -PwithExternalMods=true -PexternalModsGroup=runtime_selected"
+    if [ "$USE_PERFORMANCE_ONLY_MODS" = "yes" ]; then
+        echo "=== 外部 mod ON / 軽量化MODのみ (Embeddium) ==="
+    elif [ "$USE_LIGHT_EXTERNAL_MODS" = "yes" ]; then
+        echo "=== 外部 mod ON / 軽量化MOD + 追加機能MOD (重いMODなし) ==="
+    else
+        echo "=== 外部 mod ON / 全部入り (重いMODあり) ==="
     fi
     if [ -d libs/runtime_selected ]; then
         found=0
