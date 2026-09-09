@@ -10,9 +10,15 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 
 /** A small peaceful flier. Flower searches are bounded and only touch loaded blocks. */
 public class ButterflyEntity extends FlyingMob {
+    private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(
+            ButterflyEntity.class, EntityDataSerializers.INT);
     private Vec3 flightTarget;
     private int flightTicks;
 
@@ -20,6 +26,27 @@ public class ButterflyEntity extends FlyingMob {
         super(type, level);
         setNoGravity(true);
         xpReward = 0;
+        if (!level.isClientSide) entityData.set(VARIANT, random.nextInt(ButterflyVariant.count()));
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        entityData.define(VARIANT, 0);
+    }
+
+    public ButterflyVariant getVariant() { return ButterflyVariant.byId(entityData.get(VARIANT)); }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putInt("Variant", getVariant().ordinal());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        if (tag.contains("Variant", 99)) entityData.set(VARIANT, ButterflyVariant.byId(tag.getInt("Variant")).ordinal());
     }
 
     public static AttributeSupplier.Builder createAttributes() {
