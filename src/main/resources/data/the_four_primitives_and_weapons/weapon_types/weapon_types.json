@@ -90,6 +90,7 @@
     "straight_sword": {
       "display_name": "直刀",
       "items": [
+        "the_four_primitives_and_weapons:shakujo_blade",
         "the_four_primitives_and_weapons:luna",
         "the_four_primitives_and_weapons:kurikaraken",
         "the_four_primitives_and_weapons:iron_tyokuto",

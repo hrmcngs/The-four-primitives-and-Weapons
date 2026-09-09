@@ -278,6 +278,16 @@ public class CreativeTabPopulator {
 			event.accept(UrushiWoodInit.STRIPPED_URUSHI_LOG_ITEM);
 			event.accept(UrushiWoodInit.URUSHI_WOOD_ITEM);
 			event.accept(UrushiWoodInit.STRIPPED_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.BLACK_URUSHI_LOG_ITEM);
+			event.accept(UrushiWoodInit.BLACK_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.STRIPPED_BLACK_URUSHI_LOG_ITEM);
+			event.accept(UrushiWoodInit.STRIPPED_BLACK_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.BLACK_URUSHI_PLANKS_ITEM);
+			event.accept(UrushiWoodInit.RED_URUSHI_LOG_ITEM);
+			event.accept(UrushiWoodInit.RED_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.STRIPPED_RED_URUSHI_LOG_ITEM);
+			event.accept(UrushiWoodInit.STRIPPED_RED_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.RED_URUSHI_PLANKS_ITEM);
 			event.accept(UrushiWoodInit.URUSHI_PLANKS_ITEM);
 			event.accept(UrushiWoodInit.URUSHI_LEAVES_ITEM);
 			event.accept(UrushiWoodInit.URUSHI_SAPLING_ITEM);
@@ -308,6 +318,16 @@ public class CreativeTabPopulator {
 			event.accept(UrushiWoodInit.URUSHI_WOOD_ITEM);
 			event.accept(UrushiWoodInit.STRIPPED_URUSHI_LOG_ITEM);
 			event.accept(UrushiWoodInit.STRIPPED_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.BLACK_URUSHI_LOG_ITEM);
+			event.accept(UrushiWoodInit.BLACK_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.STRIPPED_BLACK_URUSHI_LOG_ITEM);
+			event.accept(UrushiWoodInit.STRIPPED_BLACK_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.BLACK_URUSHI_PLANKS_ITEM);
+			event.accept(UrushiWoodInit.RED_URUSHI_LOG_ITEM);
+			event.accept(UrushiWoodInit.RED_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.STRIPPED_RED_URUSHI_LOG_ITEM);
+			event.accept(UrushiWoodInit.STRIPPED_RED_URUSHI_WOOD_ITEM);
+			event.accept(UrushiWoodInit.RED_URUSHI_PLANKS_ITEM);
 		}
 
 		// === バニラの自然ブロックタブ ( 原木/葉/苗木 ) ===

@@ -32,7 +32,10 @@ import javax.annotation.Nullable;
  */
 public class KoshiraeBlock extends HorizontalDirectionalBlock {
 
-	private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 1.0D, 16.0D, 13.0D, 15.0D);
+	private static final VoxelShape SHAPE = net.minecraft.world.phys.shapes.Shapes.or(
+        Block.box(0, 14, 0, 16, 16, 16), Block.box(1, 0, 1, 3, 14, 3),
+        Block.box(13, 0, 1, 15, 14, 3), Block.box(1, 0, 13, 3, 14, 15),
+        Block.box(13, 0, 13, 15, 14, 15));
 	private static final Component TITLE =
 			Component.translatable("container.the_four_primitives_and_weapons.koshirae");
 

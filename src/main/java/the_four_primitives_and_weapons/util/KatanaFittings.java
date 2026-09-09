@@ -48,7 +48,38 @@ public final class KatanaFittings {
 
 	private static final Map<Item, Boolean> OWN_MODEL_FITTING_CACHE = new ConcurrentHashMap<>();
 	private static final Map<Item, Boolean> MODEL_FITTING_CACHE = new ConcurrentHashMap<>();
+	private static final Map<Item, Boolean> HABAKI_MODEL_CACHE = new ConcurrentHashMap<>();
 	private static final Map<ResourceLocation, JsonObject> MODEL_JSON_CACHE = new ConcurrentHashMap<>();
+
+	/** 他の拵えの染色制限とは別に、鎺の着色面を持つ刀を対象にする。 */
+	public static boolean isHabakiDyeable(ItemStack stack) {
+		return stack != null && !stack.isEmpty() && !isPracticeWeapon(stack) && hasHabakiModel(stack.getItem());
+	}
+
+	public static boolean hasHabakiModel(Item item) {
+		return HABAKI_MODEL_CACHE.computeIfAbsent(item, weapon -> {
+			ResourceLocation id = ForgeRegistries.ITEMS.getKey(weapon);
+			return id != null && modelHasHabaki(new ResourceLocation(id.getNamespace(), "item/" + id.getPath()), 0);
+		});
+	}
+
+	private static boolean modelHasHabaki(ResourceLocation id, int depth) {
+		if (depth > 16) return false;
+		JsonObject model = readModel(id);
+		if (model == null) return false;
+		if (model.has("elements")) {
+			for (JsonElement element : model.getAsJsonArray("elements")) {
+				JsonObject object = element.getAsJsonObject();
+				if (!object.has("faces")) continue;
+				for (Map.Entry<String, JsonElement> face : object.getAsJsonObject("faces").entrySet()) {
+					JsonObject data = face.getValue().getAsJsonObject();
+					if (data.has("tintindex") && data.get("tintindex").getAsInt() == 5) return true;
+				}
+			}
+			return false;
+		}
+		return model.has("parent") && modelHasHabaki(new ResourceLocation(model.get("parent").getAsString()), depth + 1);
+	}
 
 	/** 拵え ( 柄/鍔/頭 ) を着せ替え・染色できる武器か。
 	 *  本MODの 名前に katana / tyokuto / rapier を含む武器 全種 ( saya は除く )。 */
@@ -90,6 +121,7 @@ public final class KatanaFittings {
 		if (id == null) return false;
 		String n = id.getPath();
 		if (n.contains("saya")) return false;
+		if (hasHabakiModel(item)) return true;
 		if (hasCompleteFittingModel(item)) return true;
 		if (item instanceof net.minecraft.world.item.SwordItem) return true;
 		return id.getNamespace().equals(the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod.MODID)

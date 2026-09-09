@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "the_four_primitives_and_weapons:urushi_planks"
+    },
+    {
+      "item": "the_four_primitives_and_weapons:urushi_red"
+    }
+  ],
+  "result": {
+    "item": "the_four_primitives_and_weapons:red_urushi_planks"
+  }
+}

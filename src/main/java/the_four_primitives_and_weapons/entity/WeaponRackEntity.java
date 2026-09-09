@@ -47,6 +47,8 @@ public class WeaponRackEntity extends ItemFrame {
 
 	private static final EntityDataAccessor<Byte> DATA_WOOD_TYPE =
 		SynchedEntityData.defineId(WeaponRackEntity.class, EntityDataSerializers.BYTE);
+    private static final EntityDataAccessor<CompoundTag> DATA_SLOT_SETTINGS =
+        SynchedEntityData.defineId(WeaponRackEntity.class, EntityDataSerializers.COMPOUND_TAG);
 
 	// ホットキー編集で蓄積される追加回転 (degrees)。プリセットポーズの上に乗る。
 	private static final EntityDataAccessor<Float> DATA_EXTRA_ROT_X =
@@ -84,6 +86,7 @@ public class WeaponRackEntity extends ItemFrame {
 		this.entityData.define(DATA_EXTRA_ROT_Z, 0f);
 		this.entityData.define(DATA_ITEM_2, ItemStack.EMPTY);
 		this.entityData.define(DATA_WOOD_TYPE, (byte) 0);
+        this.entityData.define(DATA_SLOT_SETTINGS, new CompoundTag());
 	}
 
 	public int getWoodIndex() {
@@ -110,11 +113,13 @@ public class WeaponRackEntity extends ItemFrame {
 			tag.put("Item2", this.getItem2().save(new CompoundTag()));
 		}
 		tag.putByte("WoodType", (byte) this.getWoodIndex());
+        tag.put("SlotDisplaySettings", this.entityData.get(DATA_SLOT_SETTINGS).copy());
 	}
 
 	@Override
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
+        this.entityData.set(DATA_SLOT_SETTINGS, tag.getCompound("SlotDisplaySettings").copy());
 		this.entityData.set(DATA_EXTRA_ROT_X, tag.getFloat("ExtraRotX"));
 		this.entityData.set(DATA_EXTRA_ROT_Y, tag.getFloat("ExtraRotY"));
 		this.entityData.set(DATA_EXTRA_ROT_Z, tag.getFloat("ExtraRotZ"));
@@ -133,6 +138,31 @@ public class WeaponRackEntity extends ItemFrame {
 	}
 
 	public ItemStack getItem2() { return this.entityData.get(DATA_ITEM_2); }
+    public CompoundTag getSlotSettings(int slot) {
+        return this.entityData.get(DATA_SLOT_SETTINGS).getCompound("Slot" + slot).copy();
+    }
+
+    public int getSlotRotation(int slot) {
+        CompoundTag data = getSlotSettings(slot);
+        return Math.floorMod(data.contains("Pose", 99) ? data.getInt("Pose") : getRotation(),
+            poseCountForDirection(getDirection()));
+    }
+
+    public void editSlot(int slot, int mode, int direction, boolean fine) {
+        if (slot < 0 || slot > 1 || (slot == 1 && !supportsTwoSlots())) return;
+        if ((slot == 0 ? getItem() : getItem2()).isEmpty()) return;
+        CompoundTag data = getSlotSettings(slot);
+        if (mode == 7) data.putInt("Pose", Math.floorMod(getSlotRotation(slot) + direction, poseCountForDirection(getDirection())));
+        else if (mode == 8) { data = new CompoundTag(); data.putInt("Pose", 0); }
+        else the_four_primitives_and_weapons.util.RackDisplaySettings.adjust(data, mode, direction, fine);
+        setSlotSettings(slot, data);
+    }
+
+    private void setSlotSettings(int slot, CompoundTag data) {
+        CompoundTag all = this.entityData.get(DATA_SLOT_SETTINGS).copy();
+        all.put("Slot" + slot, data.copy());
+        this.entityData.set(DATA_SLOT_SETTINGS, all);
+    }
 	public void setItem2(ItemStack stack) {
 		ItemStack copy = stack.isEmpty() ? ItemStack.EMPTY : stack.copy();
 		if (!copy.isEmpty()) copy.setCount(1);
@@ -192,6 +222,10 @@ public class WeaponRackEntity extends ItemFrame {
 	@Override
 	public InteractionResult interact(Player player, InteractionHand hand) {
 		ItemStack stackInHand = player.getItemInHand(hand);
+        if (player.isShiftKeyDown() && stackInHand.isEmpty()) {
+            this.lastInteractAt = null;
+            return InteractionResult.sidedSuccess(level().isClientSide);
+        }
 		boolean twoSlots = this.supportsTwoSlots();
 
 		// クリック位置からスロット判別 (右側 = slot 2)。
@@ -217,7 +251,9 @@ public class WeaponRackEntity extends ItemFrame {
 					this.setItem(toPlace);
 				}
 				// 設置時は rotation を 0 にリセット (base pose から始まる)、 invisible も外す
-				this.setRotation(0);
+                CompoundTag settings = new CompoundTag();
+                settings.putInt("Pose", 0);
+                this.setSlotSettings(useSlot2 ? 1 : 0, settings);
 				this.setInvisible(false);
 				if (!player.getAbilities().instabuild) {
 					stackInHand.shrink(1);
@@ -230,8 +266,7 @@ public class WeaponRackEntity extends ItemFrame {
 		//    壁: 8 段階 (45° 刻み) / 床: 6 段階 (pk_racks ポーズ) / 天井: 1 (回転なし)
 		if (slotHasItem) {
 			if (!this.level().isClientSide()) {
-				int max = poseCountForDirection(this.getDirection());
-				this.setRotation((this.getRotation() + 1) % Math.max(1, max));
+                this.editSlot(useSlot2 ? 1 : 0, 7, 1, false);
 			}
 			return InteractionResult.sidedSuccess(this.level().isClientSide());
 		}

@@ -35,6 +35,14 @@ public class WeaponRackItem extends Item {
 		this.woodIndex = woodIndex;
 	}
 
+    @Override
+    public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level,
+            java.util.List<net.minecraft.network.chat.Component> lines, net.minecraft.world.item.TooltipFlag flag) {
+        super.appendHoverText(stack, level, lines, flag);
+        lines.add(net.minecraft.network.chat.Component.translatable("gui.the_four_primitives_and_weapons.rack.hint")
+            .withStyle(net.minecraft.ChatFormatting.GRAY));
+    }
+
 	@Override
 	public InteractionResult useOn(UseOnContext context) {
 		Level level = context.getLevel();

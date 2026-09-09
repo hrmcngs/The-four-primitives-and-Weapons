@@ -179,23 +179,23 @@ public class WeaponRackRenderer extends EntityRenderer<WeaponRackEntity> {
 		if (floorRack) {
 			if (!stack.isEmpty()) {
 				poseStack.pushPose();
-				renderItemForFloor(entity, stack, true, rotation, zFightOffset, poseStack, buffer, packedLight);
+				renderItemForFloor(entity, stack, true, entity.getSlotRotation(0), zFightOffset, poseStack, buffer, packedLight);
 				poseStack.popPose();
 			}
 			if (!stack2.isEmpty()) {
 				poseStack.pushPose();
-				renderItemForFloor(entity, stack2, false, rotation, zFightOffset, poseStack, buffer, packedLight);
+				renderItemForFloor(entity, stack2, false, entity.getSlotRotation(1), zFightOffset, poseStack, buffer, packedLight);
 				poseStack.popPose();
 			}
 		} else if (horizontalWallRack) {
 			if (!stack.isEmpty()) {
 				poseStack.pushPose();
-				renderItemForWall(entity, stack, true, rotation, invisible, zFightOffset, poseStack, buffer, packedLight);
+				renderItemForWall(entity, stack, true, entity.getSlotRotation(0), invisible, zFightOffset, poseStack, buffer, packedLight);
 				poseStack.popPose();
 			}
 			if (!stack2.isEmpty()) {
 				poseStack.pushPose();
-				renderItemForWall(entity, stack2, false, rotation, invisible, zFightOffset, poseStack, buffer, packedLight);
+				renderItemForWall(entity, stack2, false, entity.getSlotRotation(1), invisible, zFightOffset, poseStack, buffer, packedLight);
 				poseStack.popPose();
 			}
 		} else if (!stack.isEmpty()) {
@@ -220,12 +220,14 @@ public class WeaponRackRenderer extends EntityRenderer<WeaponRackEntity> {
 				oz = 0.0625f;
 			}
 
+			translateAdjustment(poseStack, entity, 0);
 			poseStack.translate(ox, oy, oz);
-			poseStack.mulPose(Axis.ZP.rotationDegrees(rotation * 360.0F / 8.0F));
+			poseStack.mulPose(Axis.ZP.rotationDegrees(entity.getSlotRotation(0) * 360.0F / 8.0F));
 			poseStack.mulPose(Axis.ZP.rotationDegrees(zRot));
 			poseStack.translate(zFightOffset, zFightOffset, zFightOffset);
 
 			// XYZ 1:1.5:1 (少し縦長)
+            rotateScaleAdjustment(poseStack, entity, 0);
 			poseStack.scale(scale, scale * 1.2f, scale);
 
 			this.itemRenderer.renderStatic(
@@ -260,10 +262,12 @@ public class WeaponRackRenderer extends EntityRenderer<WeaponRackEntity> {
 		}
 		// 回転軸をブロック中心 (pose origin = 真ん中) に。
 		// 順序: 回転 → 移動 (= 中心で回ってから marker 位置にずらす)
+		translateAdjustment(poseStack, entity, isSlot1 ? 0 : 1);
 		poseStack.mulPose(FLOOR_POSES[rotation % FLOOR_POSES.length]);
 		poseStack.translate(ox + zFightOffset, oy + zFightOffset, oz + zFightOffset);
 
 		// XYZ 1:1.5:1 (少し縦長)
+		rotateScaleAdjustment(poseStack, entity, isSlot1 ? 0 : 1);
 		poseStack.scale(scale, scale * 1.5f, scale);
 
 		this.itemRenderer.renderStatic(
@@ -300,11 +304,13 @@ public class WeaponRackRenderer extends EntityRenderer<WeaponRackEntity> {
 			oz = 0.1875f;
 		}
 
+		translateAdjustment(poseStack, entity, isSlot1 ? 0 : 1);
 		poseStack.translate(ox, oy, oz);
 		poseStack.mulPose(Axis.ZP.rotationDegrees(zRot));
 		poseStack.translate(zFightOffset, zFightOffset, zFightOffset);
 
 		// XYZ 1:1.5:1 (少し縦長)
+		rotateScaleAdjustment(poseStack, entity, isSlot1 ? 0 : 1);
 		poseStack.scale(scale, scale * 1.5f, scale);
 
 		this.itemRenderer.renderStatic(
@@ -312,6 +318,23 @@ public class WeaponRackRenderer extends EntityRenderer<WeaponRackEntity> {
 			poseStack, buffer, entity.level(), entity.getId()
 		);
 	}
+
+
+    private static void translateAdjustment(PoseStack pose, WeaponRackEntity rack, int slot) {
+        var data = rack.getSlotSettings(slot);
+        pose.translate(the_four_primitives_and_weapons.util.RackDisplaySettings.value(data, 0),
+            the_four_primitives_and_weapons.util.RackDisplaySettings.value(data, 1),
+            the_four_primitives_and_weapons.util.RackDisplaySettings.value(data, 2));
+    }
+
+    private static void rotateScaleAdjustment(PoseStack pose, WeaponRackEntity rack, int slot) {
+        var data = rack.getSlotSettings(slot);
+        pose.mulPose(Axis.XP.rotationDegrees(the_four_primitives_and_weapons.util.RackDisplaySettings.value(data, 3)));
+        pose.mulPose(Axis.YP.rotationDegrees(the_four_primitives_and_weapons.util.RackDisplaySettings.value(data, 4)));
+        pose.mulPose(Axis.ZP.rotationDegrees(the_four_primitives_and_weapons.util.RackDisplaySettings.value(data, 5)));
+        float scale = the_four_primitives_and_weapons.util.RackDisplaySettings.value(data, 6);
+        pose.scale(scale, scale, scale);
+    }
 
 	@Override
 	public Vec3 getRenderOffset(WeaponRackEntity entity, float partialTick) {

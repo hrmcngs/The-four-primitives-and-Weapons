@@ -1,0 +1,31 @@
+Urushi MOD asset attribution
+
+Source: https://github.com/iwaliner/Urushi-MOD-1.20.1
+Revision: 3dbbf1a45e813e88c7811c5356e7b7d7944750e7
+Copyright (c) 2023 iwaliner
+License: MIT (see Urushi-MIT.txt in this directory)
+
+The following textures are copied without pixel modifications.
+Paths below are relative to each mod's textures directory.
+Local (the_four_primitives_and_weapons) <- Upstream (urushi):
+block/urushi_log.png <- block/urushi_log.png
+block/urushi_log_top.png <- block/urushi_log_top.png
+block/urushi_leaves.png <- block/leaves_lacquer.png
+block/urushi_sapling.png <- block/urushi_sapling.png
+item/raw_urushi.png <- item/urushi_raw.png
+item/urushi_black.png <- item/urushi_black.png
+item/urushi_red.png <- item/urushi_red.png
+block/stripped_urushi_log.png <- block/stripped_black_urushi_log.png
+block/stripped_urushi_log_top.png <- block/stripped_black_urushi_log_top.png
+block/urushi_planks.png <- block/black_urushi_planks.png
+
+The local urushi_wood model also uses the imported urushi_log texture.
+The local stripped_urushi_wood model also uses the imported stripped log
+side texture. Local stripped logs, stripped wood, and planks use the upstream
+black lacquer appearance.
+
+Tree generation configuration:
+Local: data/the_four_primitives_and_weapons/worldgen/configured_feature/urushi_tree.json
+Upstream: src/main/resources/data/urushi/worldgen/configured_feature/lacquer.json
+Adaptation: only the trunk and foliage block IDs are changed to local IDs.
+All generation parameters are preserved from the upstream revision above.

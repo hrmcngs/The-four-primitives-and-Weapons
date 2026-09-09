@@ -12,6 +12,7 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'eclipse'
+apply from: 'gradle/urushi-wood-resources.gradle'
 
 // 忍者刀の専用UVと模様を保ったまま、既存の拵え染色処理が使う変種を生成する。
 def ninjatoTintResources = layout.buildDirectory.dir('generated/ninjatoTintResources')

@@ -50,7 +50,9 @@ public final class JsonThrustProcedure {
         // チャージでは範囲は伸ばさない ( チャージはダメージのみ強化 )。
         double reachBonus = the_four_primitives_and_weapons.skill.WeaponStatsRegistry
                 .attackRangeBonus(player.getMainHandItem());
-        double range = Math.max(0.5, cfg.range + reachBonus);
+        double range = TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem())
+            ? the_four_primitives_and_weapons.skill.MotionExecutor.horizontalSlashForwardRange(player.getMainHandItem())
+            : Math.max(0.5, cfg.range + reachBonus);
 
         // 1ヒットのダメージ: JSON指定が無ければ武器の攻撃力
         float dmg = cfg.damage > 0f
@@ -137,7 +139,7 @@ public final class JsonThrustProcedure {
 
         int hitIndex = session.doneHits;
         for (LivingEntity target : targets) {
-            if (!ThrustHitbox.intersects(target, origin, end)) continue;
+            if (!ThrustHitbox.intersects(target, origin, end, the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem()))) continue;
 
             if (target instanceof the_four_primitives_and_weapons.entity.NinjatoTetherSegmentEntity segment) {
                 segment.hurtFromSkill(player, session.damage);

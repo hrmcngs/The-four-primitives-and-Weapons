@@ -114,7 +114,7 @@ public class MotionExecutor {
                 case "thrust" -> {
                     // weapon_stats に "thrust" 設定を持つ武器 ( ダガー等 ) は、通常突きも
                     // 短reachのJSON突き ( thrust.range + attack_range ) を使う。
-                    // 持たない武器 ( 刀/直刀等 ) は従来の長reach突き。
+                    // 直刀はどちらの経路でも横切りと同じ奥行きにそろえる。
                     the_four_primitives_and_weapons.skill.WeaponStatsRegistry.WeaponStats st =
                             the_four_primitives_and_weapons.skill.WeaponStatsRegistry.getStats(player.getMainHandItem());
                     if (st != null && st.thrust != null) {
@@ -213,6 +213,8 @@ public class MotionExecutor {
 
     /** 突きの線を描く長さ。 武器の attack_range に追従させる ( performThrust の通常時と同じ基準 )。 */
     private static double thrustVisualRange(Player player) {
+        if (the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem()))
+            return horizontalSlashForwardRange(player.getMainHandItem());
         return Math.max(1.5, 5.0
                 + the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem()));
     }
@@ -221,8 +223,11 @@ public class MotionExecutor {
     private static void performThrust(Player player, Level world, Vec3 lookVec, Vec3 playerPos, float chargePercent) {
         boolean isCharged = chargePercent > 0.0f;
         float baseDamage = isCharged ? 15.0f * (1.0f + chargePercent) : 7.0f;
-        double range = Math.max(1.0, (isCharged ? 6.0 + chargePercent * 2.0 : 5.0)
+        double legacyRange = Math.max(1.0, (isCharged ? 6.0 + chargePercent * 2.0 : 5.0)
                 + the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem()));
+
+        double range = the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem())
+            ? horizontalSlashForwardRange(player.getMainHandItem()) : legacyRange;
 
         // 竹破壊
         breakBambooInPath(world, playerPos, lookVec, range);
@@ -243,7 +248,7 @@ public class MotionExecutor {
         Vec3 hitEnd = hitStart.add(lookVec.scale(range));
         AABB searchArea = ThrustHitbox.bounds(hitStart, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            entity -> entity != player && ThrustHitbox.intersects(entity, hitStart, hitEnd));
+            entity -> entity != player && ThrustHitbox.intersects(entity, hitStart, hitEnd, the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem())));
 
         if (isCharged) {
             for (LivingEntity target : targets) {
@@ -285,7 +290,7 @@ public class MotionExecutor {
             }
         }
 
-        performSlashDamage(player, world, lookVec, playerPos, baseDamage, 4.5, 3.0, chargePercent);
+        performSlashDamage(player, world, lookVec, playerPos, baseDamage, HORIZONTAL_SLASH_DEPTH, 3.0, chargePercent);
 
         world.playSound(null, playerPos.x, playerPos.y, playerPos.z,
             SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.0f, 0.9f);
@@ -309,10 +314,21 @@ public class MotionExecutor {
             }
         }
 
-        performSlashDamage(player, world, lookVec, playerPos, baseDamage, 4.5, 3.0, chargePercent);
+        performSlashDamage(player, world, lookVec, playerPos, baseDamage, HORIZONTAL_SLASH_DEPTH, 3.0, chargePercent);
 
         world.playSound(null, playerPos.x, playerPos.y, playerPos.z,
             SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.0f, 1.0f);
+    }
+
+    private static final double HORIZONTAL_SLASH_DEPTH = 4.5;
+
+    /** 横切りの真正面の奥行き。直刀の突きもこの値を共有する。 */
+    public static double horizontalSlashForwardRange(ItemStack weapon) {
+        return slashForwardRange(HORIZONTAL_SLASH_DEPTH, weapon);
+    }
+
+    private static double slashForwardRange(double base, ItemStack weapon) {
+        return Math.max(1.0, base + WeaponStatsRegistry.attackRangeBonus(weapon));
     }
 
     // === 横一文字 ===
@@ -338,7 +354,7 @@ public class MotionExecutor {
             }
         }
 
-        performSlashDamage(player, world, lookVec, playerPos, baseDamage, 4.5, 3.0, chargePercent);
+        performSlashDamage(player, world, lookVec, playerPos, baseDamage, HORIZONTAL_SLASH_DEPTH, 3.0, chargePercent);
 
         world.playSound(null, playerPos.x, playerPos.y, playerPos.z,
             SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.0f, 1.1f);
@@ -479,8 +495,7 @@ public class MotionExecutor {
         the_four_primitives_and_weapons.skill.WeaponStatsRegistry.WeaponStats st =
                 the_four_primitives_and_weapons.skill.WeaponStatsRegistry.getStats(
                         player.getItemInHand(InteractionHand.MAIN_HAND));
-        final double fRange = (st != null && !Float.isNaN(st.attackRange))
-                ? Math.max(1.0, forwardRange + st.attackRange) : forwardRange;
+        final double fRange = slashForwardRange(forwardRange, player.getMainHandItem());
         final double hRange = (st != null && !Float.isNaN(st.attackRange))
                 ? Math.max(0.75, horizontalRange + st.attackRange * 0.5) : horizontalRange;
         Vec3 rightVec = new Vec3(-lookVec.z, 0, lookVec.x).normalize();

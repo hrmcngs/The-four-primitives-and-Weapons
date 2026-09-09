@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "the_four_primitives_and_weapons:black_urushi_log"
+    }
+  },
+  "result": {
+    "item": "the_four_primitives_and_weapons:black_urushi_wood",
+    "count": 3
+  }
+}

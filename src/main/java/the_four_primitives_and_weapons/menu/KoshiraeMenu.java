@@ -50,6 +50,7 @@ public class KoshiraeMenu extends AbstractContainerMenu {
 		this.resultSlot = this.addSlot(new Slot(this.resultContainer, 0, 143, 33) {
 			@Override public boolean mayPlace(ItemStack s) { return false; }
 			@Override public void onTake(Player p, ItemStack taken) {
+				if (dyeSlot.hasItem()) dyeSlot.remove(1);
 				inputSlot.remove(1);
 				setupResult();
 				super.onTake(p, taken);

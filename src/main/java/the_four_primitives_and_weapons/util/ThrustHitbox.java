@@ -18,4 +18,13 @@ public final class ThrustHitbox {
         AABB box = target.getBoundingBox().inflate(HALF_WIDTH);
         return box.contains(start) || box.clip(start, end).isPresent();
     }
+
+    /** 横切りと同じく対象の中心で奥行きを制限し、敵の幅で射程が延びないようにする。 */
+    public static boolean intersects(LivingEntity target, Vec3 start, Vec3 end, boolean limitDepth) {
+        if (limitDepth) {
+            Vec3 axis = end.subtract(start);
+            if (target.getBoundingBox().getCenter().subtract(start).dot(axis) > axis.lengthSqr()) return false;
+        }
+        return intersects(target, start, end);
+    }
 }

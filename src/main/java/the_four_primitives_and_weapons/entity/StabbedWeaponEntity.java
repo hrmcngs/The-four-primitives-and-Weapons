@@ -135,6 +135,12 @@ public class StabbedWeaponEntity extends Entity {
         }
         if (cordSlot < 0 && player.getInventory().getFreeSlot() < 0) return false;
         ItemStack result = getItem().copy();
+        if (cordSlot >= 0 && !isChainTether()) {
+            ItemStack cord = player.getInventory().getItem(cordSlot);
+            if (cord.hasTag() && cord.getTag().contains(the_four_primitives_and_weapons.util.NinjatoVault.CORD_COLOR, 99))
+                result.getOrCreateTag().putInt(the_four_primitives_and_weapons.util.NinjatoVault.CORD_COLOR,
+                    the_four_primitives_and_weapons.util.NinjatoVault.cordColor(cord));
+        }
         // 回収パケットと遅れて届く回避パケットが同時に動かないようにする。
         player.getPersistentData().putLong("NinjatoRecallDodgeUntil", player.level().getGameTime() + 10);
         discard();

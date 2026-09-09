@@ -77,6 +77,12 @@ public class TyokutouThrustAttackProcedure {
         return STRAIGHT_SWORD_ITEMS.contains(itemName);
     }
 
+    private static double thrustRange(Player player, double fallback) {
+        return isStraightSword(player.getMainHandItem())
+            ? the_four_primitives_and_weapons.skill.MotionExecutor.horizontalSlashForwardRange(player.getMainHandItem())
+            : fallback;
+    }
+
     /**
      * アイテムがLunaかどうかを判定（曲線ビームを使えるのはLunaのみ）
      */
@@ -99,8 +105,8 @@ public class TyokutouThrustAttackProcedure {
             return;
 
         // 武器ごとの attack_range を反映 ( タイプ既定/item上書き )。 マイナスで短い突きに。
-        double range = Math.max(1.0, 7.0 + the_four_primitives_and_weapons.skill.WeaponStatsRegistry
-                .attackRangeBonus(player.getMainHandItem()));
+        double range = thrustRange(player, Math.max(1.0, 7.0 + the_four_primitives_and_weapons.skill.WeaponStatsRegistry
+                .attackRangeBonus(player.getMainHandItem())));
         double damage = 18.0;  // 他の刀と同じダメージ
 
         // 突きは上下を含む視点方向へ出す。
@@ -130,7 +136,7 @@ public class TyokutouThrustAttackProcedure {
         AABB searchArea = ThrustHitbox.bounds(hitStart, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
             target -> target != player && target.isAttackable()
-                && ThrustHitbox.intersects(target, hitStart, hitEnd));
+                && ThrustHitbox.intersects(target, hitStart, hitEnd, the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem())));
 
         // 敵にダメージ
         for (LivingEntity target : targets) {
@@ -188,9 +194,9 @@ public class TyokutouThrustAttackProcedure {
         if (entity == null || !(entity instanceof Player player))
             return;
 
-        // チャージ率に応じてパラメータを強化 ( +武器ごとの attack_range )
-        double range = Math.max(1.0, 16.0 + chargePercent * 8.0
-                + the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem()));  // 16.0～24.0（倍増）
+        // 直刀の奥行きは横切りと共通。チャージでは威力・踏み込みを強化する。
+        double range = thrustRange(player, Math.max(1.0, 16.0 + chargePercent * 8.0
+                + the_four_primitives_and_weapons.skill.WeaponStatsRegistry.attackRangeBonus(player.getMainHandItem())));
         double damage = 35.0 + chargePercent * 20.0;  // 35.0～55.0
         double thrustPower = 0.8 + chargePercent * 0.4;  // 0.8～1.2（他の刀と同程度）
 
@@ -208,7 +214,7 @@ public class TyokutouThrustAttackProcedure {
         if (world instanceof ServerLevel serverLevel) {
             // メインのエフェクトライン
             for (int i = 0; i < 30; i++) {
-                double d = i * 0.4;
+                double d = isStraightSword(player.getMainHandItem()) ? range * i / 29.0 : i * 0.4;
                 serverLevel.sendParticles(
                     ParticleTypes.SWEEP_ATTACK,
                     startPos.x + lookVec.x * d,
@@ -263,7 +269,7 @@ public class TyokutouThrustAttackProcedure {
         AABB searchArea = ThrustHitbox.bounds(startPos, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
             target -> target != player && target.isAttackable()
-                && ThrustHitbox.intersects(target, startPos, hitEnd));
+                && ThrustHitbox.intersects(target, startPos, hitEnd, the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem())));
 
         // 全ての敵を貫通
         ItemStack weapon = player.getMainHandItem();
@@ -363,7 +369,7 @@ public class TyokutouThrustAttackProcedure {
         if (entity == null || !(entity instanceof Player player))
             return;
 
-        double range = 4.0;
+        double range = thrustRange(player, 4.0);
         double damage = 12.0;
 
         Vec3 lookVec = player.getLookAngle().normalize();
@@ -375,7 +381,7 @@ public class TyokutouThrustAttackProcedure {
             DustParticleOptions dustOptions = new DustParticleOptions(new Vector3f(0.9f, 0.95f, 1.0f), 0.4f);
 
             for (int i = 0; i < 12; i++) {
-                double d = i * 0.35;
+                double d = isStraightSword(player.getMainHandItem()) ? range * i / 11.0 : i * 0.35;
                 serverLevel.sendParticles(
                     dustOptions,
                     startPos.x + lookVec.x * d,
@@ -391,7 +397,7 @@ public class TyokutouThrustAttackProcedure {
         AABB searchArea = ThrustHitbox.bounds(startPos, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
             target -> target != player && target.isAttackable()
-                && ThrustHitbox.intersects(target, startPos, hitEnd));
+                && ThrustHitbox.intersects(target, startPos, hitEnd, the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.isStraightSword(player.getMainHandItem())));
 
         if (!targets.isEmpty()) {
             LivingEntity target = targets.get(0);

@@ -18,6 +18,17 @@ import the_four_primitives_and_weapons.item.SayaItem;
 public final class NinjatoVault {
     public static final String TETHERED = "NinjatoTethered";
     public static final String MATERIAL = "NinjatoTetherMaterial";
+    public static final String CORD_COLOR = "NinjatoCordColor";
+
+    public static int cordColor(ItemStack stack) {
+        return stack.hasTag() && stack.getTag().contains(CORD_COLOR, 99)
+            ? stack.getTag().getInt(CORD_COLOR) & 0xFFFFFF : 0xBEA370;
+    }
+
+    public static boolean hasDyeableCord(ItemStack stack) {
+        return stack.is(TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get())
+            || (isNinjatoSaya(stack) && stack.hasTag() && stack.getTag().getBoolean(TETHERED) && !isChain(stack));
+    }
 
     public static boolean isChain(ItemStack stack) {
         return stack.hasTag() && "chain".equals(stack.getTag().getString(MATERIAL));
@@ -34,6 +45,14 @@ public final class NinjatoVault {
         return stack.getItem() instanceof SayaItem && stack.hasTag()
             && ItemStack.of(stack.getTag().getCompound("StoredKatana"))
                 .is(TheFourPrimitivesAndWeaponsModItems.NINJATOU.get());
+    }
+
+    /** 専用鞘と、既存の汎用鞘へ忍者刀を納めたものの両方を識別する。 */
+    public static boolean isNinjatoSaya(ItemStack stack) {
+        return stack.is(TheFourPrimitivesAndWeaponsModItems.NINJATO_SAYA.get()) || isLoaded(stack)
+            || (stack.getItem() instanceof SayaItem && stack.hasTag()
+                && ItemStack.of(stack.getTag().getCompound("StoredKatana")).isEmpty()
+                && "the_four_primitives_and_weapons:ninjatou".equals(stack.getTag().getString("LastSheathedWeapon")));
     }
 
     public static void begin(Player player) {
@@ -83,6 +102,8 @@ public final class NinjatoVault {
                 : TheFourPrimitivesAndWeaponsModItems.NINJATO_RECALL_CORD.get());
             inHand.getOrCreateTag().putUUID("PlantedWeapon", planted.getUUID());
             inHand.getOrCreateTag().putUUID("CordOwner", player.getUUID());
+            if (stack.getTag().contains(CORD_COLOR, 99))
+                inHand.getOrCreateTag().putInt(CORD_COLOR, cordColor(stack));
         }
         player.stopUsingItem();
         player.setItemInHand(InteractionHand.MAIN_HAND, inHand);
@@ -91,7 +112,8 @@ public final class NinjatoVault {
         // 同じ振り下ろしでも、Shift中は設置だけにする。
         if (!player.isShiftKeyDown()) {
             Vec3 velocity = player.getDeltaMovement();
-            player.setDeltaMovement(velocity.x, 1.25, velocity.z);
+            // 通常ジャンプと同じ効果量を、忍者刀の跳躍速度へ加算する。
+            player.setDeltaMovement(velocity.x, 1.25 + player.getJumpBoostPower(), velocity.z);
             player.fallDistance = 0;
             player.hurtMarked = true;
             serverPlayer.connection.send(new net.minecraft.network.protocol.game.ClientboundSetEntityMotionPacket(player));

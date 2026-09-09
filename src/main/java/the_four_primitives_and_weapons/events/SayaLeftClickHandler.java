@@ -13,6 +13,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.network.chat.Component;
 import the_four_primitives_and_weapons.network.BattouFromCurioPacket;
 import the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod;
+import the_four_primitives_and_weapons.util.NinjatoVault;
 
 @Mod.EventBusSubscriber(modid = "the_four_primitives_and_weapons")
 public class SayaLeftClickHandler {
@@ -20,6 +21,7 @@ public class SayaLeftClickHandler {
     @SubscribeEvent
     public static void onLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
         Player player = event.getEntity();
+        if (NinjatoVault.isNinjatoSaya(player.getMainHandItem())) return;
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
         
@@ -42,6 +44,7 @@ public class SayaLeftClickHandler {
         if (event.isCanceled()) return;
         
         Player player = event.getEntity();
+        if (NinjatoVault.isNinjatoSaya(player.getMainHandItem())) return;
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
         
@@ -61,6 +64,7 @@ public class SayaLeftClickHandler {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onAttackEntity(AttackEntityEvent event) {
         Player player = event.getEntity();
+        if (NinjatoVault.isNinjatoSaya(player.getMainHandItem())) return;
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
         

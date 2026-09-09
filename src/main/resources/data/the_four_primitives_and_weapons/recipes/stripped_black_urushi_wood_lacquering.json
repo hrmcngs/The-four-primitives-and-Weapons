@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "the_four_primitives_and_weapons:stripped_urushi_wood"
+    },
+    {
+      "item": "the_four_primitives_and_weapons:urushi_black"
+    }
+  ],
+  "result": {
+    "item": "the_four_primitives_and_weapons:stripped_black_urushi_wood"
+  }
+}

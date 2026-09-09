@@ -53,7 +53,8 @@ public final class NinjatoTetherRenderer {
         pose.mulPose(Axis.YP.rotation((float) (Math.PI / 2) - yaw));
         pose.mulPose(Axis.XP.rotation(pitch));
         if (!entity.isChainTether()) {
-            renderString(pose, buffers, length, dispatcher.getPackedLightCoords(owner, partialTick));
+            renderString(pose, buffers, length, dispatcher.getPackedLightCoords(owner, partialTick),
+                the_four_primitives_and_weapons.util.NinjatoVault.cordColor(main ? owner.getMainHandItem() : owner.getOffhandItem()));
             pose.popPose();
             return;
         }
@@ -73,12 +74,13 @@ public final class NinjatoTetherRenderer {
     }
 
     /** 紐は鎖より細い、淡い茶色の交差面。 */
-    private static void renderString(PoseStack pose, MultiBufferSource buffers, float length, int light) {
+    private static void renderString(PoseStack pose, MultiBufferSource buffers, float length, int light, int color) {
         VertexConsumer out = buffers.getBuffer(RenderType.leash());
         float w = 0.025F;
         for (float[] p : new float[][]{{-w,0,0},{w,0,0},{-w,length,0},{w,length,0},
                 {0,length,-w},{0,length,w},{0,0,-w},{0,0,w}}) {
-            out.vertex(pose.last().pose(), p[0], p[1], p[2]).color(190, 163, 112, 255).uv2(light).endVertex();
+            out.vertex(pose.last().pose(), p[0], p[1], p[2])
+                .color((color >> 16) & 255, (color >> 8) & 255, color & 255, 255).uv2(light).endVertex();
         }
     }
 

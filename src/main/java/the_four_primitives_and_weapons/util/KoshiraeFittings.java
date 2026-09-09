@@ -16,7 +16,7 @@ import java.util.List;
  * </ul>
  *
  * <p>各候補は 入力アイテムのコピーに NBT を付けたもの ( 素材消費なしの「見た目替え」)。
- * 色 ( 染料 ) はここでは扱わない ( 作業台の染色レシピで )。</p>
+	 * 染料がある場合は、部位ごとの染色候補を生成する。</p>
  */
 public final class KoshiraeFittings {
 
@@ -29,7 +29,8 @@ public final class KoshiraeFittings {
 
 	public static boolean isSupported(ItemStack in) {
 		if (in.isEmpty()) return false;
-		return KatanaFittings.isFittingWeapon(in) || SayaDesign.isSaya(in);
+		return KatanaFittings.isFittingWeapon(in) || KatanaFittings.isHabakiDyeable(in) || SayaDesign.isSaya(in)
+            || NinjatoVault.hasDyeableCord(in);
 	}
 
 	/** 入力に対する見た目候補 ( 先頭は「既定」)。 対象外なら空。 */
@@ -49,22 +50,36 @@ public final class KoshiraeFittings {
 		List<ItemStack> out = new ArrayList<>();
 		if (in.isEmpty()) return out;
 		boolean hasDye = dye != null && dye.getItem() instanceof net.minecraft.world.item.DyeItem;
+        if (hasDye && NinjatoVault.hasDyeableCord(in)) {
+            ItemStack cord = in.copy();
+            cord.setCount(1);
+            cord.getOrCreateTag().putInt(NinjatoVault.CORD_COLOR,
+                KatanaFittings.dyeRgb(((net.minecraft.world.item.DyeItem)dye.getItem()).getDyeColor()));
+            cord.setHoverName(net.minecraft.network.chat.Component.translatable(
+                "gui.the_four_primitives_and_weapons.koshirae.dye_cord"));
+            out.add(cord);
+        }
 
-		if (KatanaFittings.isFittingWeapon(in)) {
+		if (KatanaFittings.isFittingWeapon(in) || KatanaFittings.isHabakiDyeable(in)) {
 			if (hasDye) {
 				int rgb = KatanaFittings.dyeRgb(((net.minecraft.world.item.DyeItem) dye.getItem()).getDyeColor());
-				out.add(katanaColor(in, "tsuka", rgb, "柄を染める"));
-				out.add(katanaColor(in, "tsuba", rgb, "鍔を染める"));
-				out.add(katanaColor(in, "kashira", rgb, "頭を染める"));
-				out.add(katanaColor(in, "habaki", rgb, "はばきを染める"));
+				if (KatanaFittings.isFittingWeapon(in)) {
+					out.add(katanaColor(in, "tsuka", rgb, "dye_tsuka"));
+					out.add(katanaColor(in, "tsuba", rgb, "dye_tsuba"));
+					out.add(katanaColor(in, "kashira", rgb, "dye_kashira"));
+				}
+				if (KatanaFittings.isHabakiDyeable(in))
+					out.add(katanaColor(in, "habaki", rgb, "dye_habaki"));
+			} else if (!KatanaFittings.isFittingWeapon(in)) {
+				return out;
 			} else if (isRapier(in)) {
 				// レイピア: 柄(grip)/鍔(guard)/頭(pommel) のデザインを部位ごとに選択
-				out.add(rapierDesign(in, "grip", "",        "柄=既定"));
-				out.add(rapierDesign(in, "grip", "grip_b",  "柄=デザインB"));
-				out.add(rapierDesign(in, "guard", "",       "鍔=既定"));
-				out.add(rapierDesign(in, "guard", "guard_b","鍔=デザインB"));
-				out.add(rapierDesign(in, "pommel", "",      "頭=既定"));
-				out.add(rapierDesign(in, "pommel", "pommel_b","頭=デザインB"));
+				out.add(rapierDesign(in, "grip", "",        "grip_default"));
+				out.add(rapierDesign(in, "grip", "grip_b",  "grip_b"));
+				out.add(rapierDesign(in, "guard", "",       "guard_default"));
+				out.add(rapierDesign(in, "guard", "guard_b","guard_b"));
+				out.add(rapierDesign(in, "pommel", "",      "pommel_default"));
+				out.add(rapierDesign(in, "pommel", "pommel_b","pommel_b"));
 			} else {
 				out.add(katana(in, ""));                 // 既定 ( 元の柄 )
 				for (String w : KatanaFittings.WRAPS) out.add(katana(in, w));
@@ -74,7 +89,7 @@ public final class KoshiraeFittings {
 				int rgb = SayaDesign.dyeRgb(((net.minecraft.world.item.DyeItem) dye.getItem()).getDyeColor());
 				ItemStack s = in.copy(); s.setCount(1);
 				SayaDesign.setBaseColorRgb(s, rgb);
-				s.setHoverName(net.minecraft.network.chat.Component.literal("地色を染める"));
+				s.setHoverName(net.minecraft.network.chat.Component.translatable("gui.the_four_primitives_and_weapons.koshirae.dye_saya"));
 				out.add(s);
 			} else {
 				out.add(saya(in, ""));                   // 既定 ( 塗鞘 )
@@ -101,7 +116,7 @@ public final class KoshiraeFittings {
 			case "pommel": KatanaFittings.setKashiraStyle(s, design); break;
 			default:       KatanaFittings.setTsukaWrap(s, design);
 		}
-		s.setHoverName(net.minecraft.network.chat.Component.literal(label));
+		s.setHoverName(net.minecraft.network.chat.Component.translatable("gui.the_four_primitives_and_weapons.koshirae." + label));
 		return s;
 	}
 
@@ -115,7 +130,7 @@ public final class KoshiraeFittings {
 			case "habaki":  KatanaFittings.setHabaki(s, rgb); break;
 			default:        KatanaFittings.setTsuka(s, rgb);
 		}
-		s.setHoverName(net.minecraft.network.chat.Component.literal(label));
+		s.setHoverName(net.minecraft.network.chat.Component.translatable("gui.the_four_primitives_and_weapons.koshirae." + label));
 		return s;
 	}
 
@@ -123,6 +138,10 @@ public final class KoshiraeFittings {
 		ItemStack s = in.copy();
 		s.setCount(1);
 		KatanaFittings.setTsukaWrap(s, wrap);
+		s.setHoverName(net.minecraft.network.chat.Component.translatable(
+				"gui.the_four_primitives_and_weapons.koshirae.wrap",
+				net.minecraft.network.chat.Component.translatable(
+						"gui.the_four_primitives_and_weapons.koshirae.wrap." + (wrap.isEmpty() ? "default" : wrap))));
 		return s;
 	}
 
@@ -130,6 +149,8 @@ public final class KoshiraeFittings {
 		ItemStack s = in.copy();
 		s.setCount(1);
 		SayaDesign.setStyle(s, style);
+		s.setHoverName(net.minecraft.network.chat.Component.translatable(
+				"gui.the_four_primitives_and_weapons.koshirae.finish", SayaStyles.styleName(style)));
 		return s;
 	}
 }

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "the_four_primitives_and_weapons:shakujo", "required": false },
+    { "id": "the_four_primitives_and_weapons:shikomi_shakujo", "required": false }
+  ]
+}

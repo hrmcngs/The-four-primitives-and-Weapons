@@ -72,6 +72,37 @@ public final class UrushiWoodInit {
 	public static final RegistryObject<Item> URUSHI_LEAVES_ITEM = item("urushi_leaves", URUSHI_LEAVES);
 	public static final RegistryObject<Item> URUSHI_SAPLING_ITEM = item("urushi_sapling", URUSHI_SAPLING);
 
+	public static final RegistryObject<Block> BLACK_URUSHI_LOG = BLOCKS.register("black_urushi_log",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
+	public static final RegistryObject<Item> BLACK_URUSHI_LOG_ITEM = item("black_urushi_log", BLACK_URUSHI_LOG);
+	public static final RegistryObject<Block> BLACK_URUSHI_WOOD = BLOCKS.register("black_urushi_wood",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+	public static final RegistryObject<Item> BLACK_URUSHI_WOOD_ITEM = item("black_urushi_wood", BLACK_URUSHI_WOOD);
+	public static final RegistryObject<Block> STRIPPED_BLACK_URUSHI_LOG = BLOCKS.register("stripped_black_urushi_log",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
+	public static final RegistryObject<Item> STRIPPED_BLACK_URUSHI_LOG_ITEM = item("stripped_black_urushi_log", STRIPPED_BLACK_URUSHI_LOG);
+	public static final RegistryObject<Block> STRIPPED_BLACK_URUSHI_WOOD = BLOCKS.register("stripped_black_urushi_wood",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
+	public static final RegistryObject<Item> STRIPPED_BLACK_URUSHI_WOOD_ITEM = item("stripped_black_urushi_wood", STRIPPED_BLACK_URUSHI_WOOD);
+	public static final RegistryObject<Block> BLACK_URUSHI_PLANKS = BLOCKS.register("black_urushi_planks",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+	public static final RegistryObject<Item> BLACK_URUSHI_PLANKS_ITEM = item("black_urushi_planks", BLACK_URUSHI_PLANKS);
+	public static final RegistryObject<Block> RED_URUSHI_LOG = BLOCKS.register("red_urushi_log",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG)));
+	public static final RegistryObject<Item> RED_URUSHI_LOG_ITEM = item("red_urushi_log", RED_URUSHI_LOG);
+	public static final RegistryObject<Block> RED_URUSHI_WOOD = BLOCKS.register("red_urushi_wood",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+	public static final RegistryObject<Item> RED_URUSHI_WOOD_ITEM = item("red_urushi_wood", RED_URUSHI_WOOD);
+	public static final RegistryObject<Block> STRIPPED_RED_URUSHI_LOG = BLOCKS.register("stripped_red_urushi_log",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
+	public static final RegistryObject<Item> STRIPPED_RED_URUSHI_LOG_ITEM = item("stripped_red_urushi_log", STRIPPED_RED_URUSHI_LOG);
+	public static final RegistryObject<Block> STRIPPED_RED_URUSHI_WOOD = BLOCKS.register("stripped_red_urushi_wood",
+			() -> new RotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
+	public static final RegistryObject<Item> STRIPPED_RED_URUSHI_WOOD_ITEM = item("stripped_red_urushi_wood", STRIPPED_RED_URUSHI_WOOD);
+	public static final RegistryObject<Block> RED_URUSHI_PLANKS = BLOCKS.register("red_urushi_planks",
+			() -> new Block(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS)));
+	public static final RegistryObject<Item> RED_URUSHI_PLANKS_ITEM = item("red_urushi_planks", RED_URUSHI_PLANKS);
+
 	private static RegistryObject<Item> item(String name, RegistryObject<Block> block) {
 		return ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
 	}

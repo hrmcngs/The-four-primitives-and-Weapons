@@ -1,0 +1,40 @@
+// 共通の色調で木材一式を生成する。元の木目・年輪・板の継ぎ目と透明度を保つ。
+def urushiOutput = layout.buildDirectory.dir('generated/urushiWoodResources')
+sourceSets.main.resources.srcDir(urushiOutput)
+def generateUrushiWoodTextures = tasks.register('generateUrushiWoodTextures') {
+    def textureRoot = file('src/main/resources/assets/the_four_primitives_and_weapons/textures/block')
+    def names = ['urushi_log', 'urushi_log_top', 'stripped_urushi_log', 'stripped_urushi_log_top', 'urushi_planks']
+    inputs.files(names.collect { new File(textureRoot, "${it}.png") })
+    outputs.dir(urushiOutput)
+    doLast {
+        def palettes = [natural: [125, 116, 78], black: [30, 29, 28], red: [146, 39, 29]]
+        names.each { name ->
+            def source = javax.imageio.ImageIO.read(new File(textureRoot, "${name}.png"))
+            if (source == null) throw new GradleException("Cannot read ${name}")
+            def light = { int pixel -> 0.2126 * ((pixel >>> 16) & 255) + 0.7152 * ((pixel >>> 8) & 255) + 0.0722 * (pixel & 255) }
+            double total = 0
+            int count = 0
+            for (int y = 0; y < source.height; y++) for (int x = 0; x < source.width; x++) {
+                int pixel = source.getRGB(x, y)
+                if (((pixel >>> 24) & 255) > 0) { total += light(pixel); count++ }
+            }
+            double mean = count == 0 ? 1 : Math.max(1, total / count)
+            palettes.each { color, rgb ->
+                def result = new java.awt.image.BufferedImage(source.width, source.height, java.awt.image.BufferedImage.TYPE_INT_ARGB)
+                for (int y = 0; y < source.height; y++) for (int x = 0; x < source.width; x++) {
+                    int pixel = source.getRGB(x, y)
+                    double shade = Math.max(0.4, Math.min(1.7, light(pixel) / mean))
+                    int r = Math.min(255, Math.round(rgb[0] * shade) as int)
+                    int g = Math.min(255, Math.round(rgb[1] * shade) as int)
+                    int b = Math.min(255, Math.round(rgb[2] * shade) as int)
+                    result.setRGB(x, y, (int)((pixel & 0xFF000000) | (r << 16) | (g << 8) | b))
+                }
+                def output = new File(urushiOutput.get().asFile,
+                    "assets/the_four_primitives_and_weapons/textures/block/urushi_palette/${color}/${name}.png")
+                output.parentFile.mkdirs()
+                javax.imageio.ImageIO.write(result, 'png', output)
+            }
+        }
+    }
+}
+tasks.named('processResources').configure { dependsOn(generateUrushiWoodTextures) }
