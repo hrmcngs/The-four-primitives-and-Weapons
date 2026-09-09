@@ -6,6 +6,8 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.FlyingMob;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
@@ -19,6 +21,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 public class ButterflyEntity extends FlyingMob {
     private static final EntityDataAccessor<Integer> VARIANT = SynchedEntityData.defineId(
             ButterflyEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<CompoundTag> APPEARANCE = SynchedEntityData.defineId(
+            ButterflyEntity.class, EntityDataSerializers.COMPOUND_TAG);
     private Vec3 flightTarget;
     private int flightTicks;
 
@@ -33,20 +37,85 @@ public class ButterflyEntity extends FlyingMob {
     protected void defineSynchedData() {
         super.defineSynchedData();
         entityData.define(VARIANT, 0);
+        entityData.define(APPEARANCE, new CompoundTag());
     }
 
     public ButterflyVariant getVariant() { return ButterflyVariant.byId(entityData.get(VARIANT)); }
+    private int color(String key, int fallback) {
+        CompoundTag tag = entityData.get(APPEARANCE);
+        return tag.contains(key) ? tag.getInt(key) : fallback;
+    }
+    private float setting(String key, float fallback) {
+        CompoundTag tag = entityData.get(APPEARANCE);
+        return tag.contains(key) ? tag.getFloat(key) : fallback;
+    }
+    public int getWingColor() { return color("WingColor", getVariant().wingColor); }
+    public int getEdgeColor() { return color("EdgeColor", getVariant().edgeColor); }
+    public int getAccentColor() { return color("AccentColor", getVariant().accentColor); }
+    public int getBodyColor() { return color("BodyColor", 0x261F1F); }
+    public int getPattern() { return color("Pattern", getVariant().pattern); }
+    public boolean hasTails() { return color("Tails", getVariant().tails ? 1 : 0) == 1; }
+    public float getButterflySize() { return setting("Size", 1); }
+    public float getFlapSpeed() { return setting("FlapSpeed", 1); }
+    public float getFlapAmount() { return setting("FlapAmount", 0.9F); }
+    public float getWingWidth() { return setting("WingWidth", 1); }
+    public float getWingLength() { return setting("WingLength", 1); }
+
+    @Override
+    public EntityDimensions getDimensions(Pose pose) {
+        return super.getDimensions(pose).scale(getButterflySize());
+    }
+
+    @Override
+    public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        super.onSyncedDataUpdated(key);
+        if (APPEARANCE.equals(key)) refreshDimensions();
+    }
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("Variant", getVariant().ordinal());
+        CompoundTag appearance = entityData.get(APPEARANCE);
+        for (String key : appearance.getAllKeys()) tag.put(key, appearance.get(key).copy());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         if (tag.contains("Variant", 99)) entityData.set(VARIANT, ButterflyVariant.byId(tag.getInt("Variant")).ordinal());
+        else if (tag.contains("Variant", 8)) entityData.set(VARIANT, ButterflyVariant.byName(tag.getString("Variant")).ordinal());
+        CompoundTag appearance = new CompoundTag();
+        for (String key : new String[]{"WingColor", "EdgeColor", "AccentColor", "BodyColor"}) {
+            if (tag.contains(key, 99)) {
+                int value=tag.getInt(key);
+                if (value>=0 && value<=0xFFFFFF) appearance.putInt(key,value);
+            } else if (tag.contains(key, 8)) {
+                String value=tag.getString(key);
+                if (value.startsWith("#")) value=value.substring(1);
+                else if (value.startsWith("0x") || value.startsWith("0X")) value=value.substring(2);
+                if (value.matches("[0-9a-fA-F]{6}")) appearance.putInt(key,Integer.parseInt(value,16));
+            }
+        }
+        if (tag.contains("Pattern",99) && tag.getInt("Pattern")>=0 && tag.getInt("Pattern")<ButterflyVariant.PATTERN_COUNT)
+            appearance.putInt("Pattern",tag.getInt("Pattern"));
+        if (tag.contains("Tails",99) && tag.getInt("Tails")>=0 && tag.getInt("Tails")<=1)
+            appearance.putInt("Tails",tag.getInt("Tails"));
+        readSetting(tag,appearance,"Size",0.25F,4);
+        readSetting(tag,appearance,"FlapSpeed",0,4);
+        readSetting(tag,appearance,"FlapAmount",0,1.4F);
+        readSetting(tag,appearance,"FlightSpeed",0,3);
+        readSetting(tag,appearance,"WingWidth",0.5F,2);
+        readSetting(tag,appearance,"WingLength",0.5F,2);
+        entityData.set(APPEARANCE,appearance);
+        flightTarget=null;
+    }
+
+    private static void readSetting(CompoundTag source, CompoundTag target, String key, float min, float max) {
+        if (source.contains(key,99)) {
+            float value=source.getFloat(key);
+            if (Float.isFinite(value) && value>=0) target.putFloat(key,Mth.clamp(value,min,max));
+        }
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -75,7 +144,7 @@ public class ButterflyEntity extends FlyingMob {
             }
         }
         if (flightTarget != null) {
-            Vec3 direction = flightTarget.subtract(position()).normalize().scale(0.1);
+            Vec3 direction = flightTarget.subtract(position()).normalize().scale(0.1 * setting("FlightSpeed",1));
             setDeltaMovement(getDeltaMovement().scale(0.75).add(direction.scale(0.25)));
             Vec3 motion = getDeltaMovement();
             if (motion.horizontalDistanceSqr() > 0.0001) {
