@@ -1,0 +1,8 @@
+kill @e[type=the_four_primitives_and_weapons:stabbed_weapon,tag=blade_gallery.display]
+summon the_four_primitives_and_weapons:stabbed_weapon 7.5 68.5 -1.5 {Tags:["blade_gallery.display"],StabItem:{id:"the_four_primitives_and_weapons:iron_katana",Count:1b},StabYaw:35f,StabTilt:8f,StabScale:1f,DisappearOnPickup:1b}
+summon the_four_primitives_and_weapons:stabbed_weapon 30.5 67.5 0.5 {Tags:["blade_gallery.display"],StabItem:{id:"the_four_primitives_and_weapons:iron_katana",Count:1b},StabYaw:15f,StabTilt:17f,StabScale:1f,DisappearOnPickup:1b}
+summon the_four_primitives_and_weapons:stabbed_weapon 35.5 68.5 2.5 {Tags:["blade_gallery.display"],StabItem:{id:"the_four_primitives_and_weapons:iron_katana",Count:1b},StabYaw:65f,StabTilt:6f,StabScale:1f,DisappearOnPickup:1b}
+summon the_four_primitives_and_weapons:stabbed_weapon 38.5 68.5 -2.5 {Tags:["blade_gallery.display"],StabItem:{id:"the_four_primitives_and_weapons:iron_katana",Count:1b},StabYaw:120f,StabTilt:22f,StabScale:1f,DisappearOnPickup:1b}
+summon the_four_primitives_and_weapons:stabbed_weapon 32.5 68.5 -3.5 {Tags:["blade_gallery.display"],StabItem:{id:"the_four_primitives_and_weapons:iron_katana",Count:1b},StabYaw:170f,StabTilt:10f,StabScale:1f,DisappearOnPickup:1b}
+summon the_four_primitives_and_weapons:stabbed_weapon -18.5 67.5 -22.5 {Tags:["blade_gallery.display"],StabItem:{id:"the_four_primitives_and_weapons:iron_katana",Count:1b},StabYaw:55f,StabTilt:12f,StabScale:1f,DisappearOnPickup:1b}
+summon the_four_primitives_and_weapons:stabbed_weapon 19.5 67.5 -22.5 {Tags:["blade_gallery.display"],StabItem:{id:"the_four_primitives_and_weapons:iron_katana",Count:1b},StabYaw:90f,StabTilt:25f,StabScale:1f,DisappearOnPickup:1b}
