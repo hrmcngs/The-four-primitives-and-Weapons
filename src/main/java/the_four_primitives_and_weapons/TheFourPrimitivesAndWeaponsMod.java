@@ -80,6 +80,8 @@ public class TheFourPrimitivesAndWeaponsMod {
 		TheFourPrimitivesAndWeaponsModCustomEntities.REGISTRY.register(bus);
 		CustomEntityInit.CUSTOM_ENTITIES.register(bus);
 		CustomEntityInit.CUSTOM_ITEMS.register(bus);
+		the_four_primitives_and_weapons.init.ButterflyInit.ENTITIES.register(bus);
+		the_four_primitives_and_weapons.init.ButterflyInit.ITEMS.register(bus);
 		the_four_primitives_and_weapons.init.KnifeExtrasRegistrar.ITEMS.register(bus);
 		the_four_primitives_and_weapons.init.MeijiUniformRegistrar.ITEMS.register(bus);
 		TheFourPrimitivesAndWeaponsModBlockEntities.REGISTRY.register(bus);

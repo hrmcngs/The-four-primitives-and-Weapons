@@ -883,5 +883,7 @@
   "gui.the_four_primitives_and_weapons.rack.fine": "微調整",
   "gui.the_four_primitives_and_weapons.rack.coarse": "通常幅",
   "gui.the_four_primitives_and_weapons.rack.reset": "初期化",
-  "gui.the_four_primitives_and_weapons.rack.hint": "空の手でShift＋右クリック：品物ごとに位置を調整（設置ラックに自動保存）"
+  "gui.the_four_primitives_and_weapons.rack.hint": "空の手でShift＋右クリック：品物ごとに位置を調整（設置ラックに自動保存）",
+  "entity.the_four_primitives_and_weapons.butterfly": "蝶",
+  "item.the_four_primitives_and_weapons.butterfly_spawn_egg": "蝶のスポーンエッグ"
 }

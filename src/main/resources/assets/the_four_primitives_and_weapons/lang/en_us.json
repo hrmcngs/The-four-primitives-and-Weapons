@@ -884,5 +884,7 @@
   "gui.the_four_primitives_and_weapons.rack.fine": "Fine",
   "gui.the_four_primitives_and_weapons.rack.coarse": "Coarse",
   "gui.the_four_primitives_and_weapons.rack.reset": "Reset",
-  "gui.the_four_primitives_and_weapons.rack.hint": "Shift + right-click with an empty hand to adjust each item; saved to this rack."
+  "gui.the_four_primitives_and_weapons.rack.hint": "Shift + right-click with an empty hand to adjust each item; saved to this rack.",
+  "entity.the_four_primitives_and_weapons.butterfly": "Butterfly",
+  "item.the_four_primitives_and_weapons.butterfly_spawn_egg": "Butterfly Spawn Egg"
 }
