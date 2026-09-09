@@ -29,6 +29,7 @@ public class CreativeTabPopulator {
 			event.accept(TheFourPrimitivesAndWeaponsModItems.RIVERS_OF_BLOOD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.KURIKARAKEN);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.LUNA);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.RING);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.NINJATOU);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.HAMMER);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.MACHETE);

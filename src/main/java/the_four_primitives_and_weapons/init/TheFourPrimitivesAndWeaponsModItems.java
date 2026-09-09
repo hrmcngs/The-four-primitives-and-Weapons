@@ -145,6 +145,7 @@ public class TheFourPrimitivesAndWeaponsModItems {
 	public static final RegistryObject<Item> NETHERITE_TYOKUTO = REGISTRY.register("netherite_tyokuto", () -> new NetheriteTyokutoItem());
 	public static final RegistryObject<Item> CROSS = block(TheFourPrimitivesAndWeaponsModBlocks.CROSS, TheFourPrimitivesAndWeaponsModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> MY_TEST_IRON_KATANA = REGISTRY.register("my_test_iron_katana", () -> new MyTestIronKatanaItem());
+	public static final RegistryObject<Item> RING = REGISTRY.register("ring", () -> new the_four_primitives_and_weapons.item.RingItem());
 	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(TheFourPrimitivesAndWeaponsModEntities.SKELTON_MOB, -1, -1, new Item.Properties()));
 	public static final RegistryObject<Item> ACHROMATIC_SHIELD = REGISTRY.register("achromatic_shield", () -> new AchromaticShieldItem());
