@@ -32,7 +32,7 @@ def generate_pack():
     write_json(PACK / 'pack.mcmeta', {'pack': {'pack_format': 15, 'description': '刀と侵食結晶 — 夕暮れの廃神殿・撮影庭園'}})
     for event in ('load', 'tick'):
         write_json(PACK / f'data/minecraft/tags/functions/{event}.json', {'values': [f'blade_gallery:{event}']})
-    function('load', ['execute unless data storage blade_gallery:state {main_version:2} run function blade_gallery:setup',
+    function('load', ['execute unless data storage blade_gallery:state {main_version:3} run function blade_gallery:setup',
                       'function blade_gallery:scenes/load'])
     function('setup', [
         '# Overworld x/z -48..47, y 60..100 is rebuilt. Use the supplied dedicated world.',
@@ -110,7 +110,7 @@ def generate_pack():
     lines += scene_details('main',0,lambda x,z: 0)
     lines += ['function blade_gallery:weapons', 'setworldspawn -24 66 23',
               'data modify storage blade_gallery:state initialized set value 1b',
-              'data modify storage blade_gallery:state main_version set value 2',
+              'data modify storage blade_gallery:state main_version set value 3',
               'forceload remove -48 -48 47 47',
               'tellraw @a {"text":"撮影庭園が完成しました。 /function blade_gallery:camera/main で撮影位置へ","color":"gold"}']
     function('build', lines)

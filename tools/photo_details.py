@@ -28,19 +28,33 @@ def scene_details(name, cx, elevation):
         y=ground(x,z)+1
         # Clear only the trunk's grass/flowers; leave neighboring planting intact.
         lines.append(f'fill {cx+x} {y} {z} {cx+x} {y+height} {z} cherry_log')
-        for dx in (-2,-1,1,2):
-            block(x+dx,y+height-1,z,'cherry_log[axis=x]')
-        for dy,r in ((-2,3),(-1,4),(0,4),(1,3),(2,2)):
+        # Shallow umbrella crown over spreading limbs, rather than a round foliage ball.
+        for ax,az in ((1,0),(-1,0),(0,1),(0,-1)):
+            for reach in range(1,4):
+                block(x+ax*reach,y+height-1-(reach==3),z+az*reach,
+                      'cherry_log[axis='+('x' if ax else 'z')+']')
+        for dy,r in ((-1,4),(0,5),(1,3),(2,1)):
             for dx in range(-r,r+1):
                 width=round(math.sqrt(max(0,r*r-dx*dx)))
                 lines.append(f'fill {cx+x+dx} {y+height+dy} {z-width} {cx+x+dx} {y+height+dy} {z+width} cherry_leaves[persistent=true] replace air')
+        # Uneven, separate blossom strands hang from the crown rim down toward the grass.
+        # Their ends follow the hillside and leave at least two blocks of clearance.
+        for dx in range(-5,6):
+            for dz in range(-5,6):
+                if not 16<=dx*dx+dz*dz<=25 or (dx+2*dz)%3==0:
+                    continue
+                depth=3+((dx*7+dz*11+x+z)%3)
+                top=y+height
+                bottom=max(ground(x+dx,z+dz)+3,top-depth)
+                if bottom<=top:
+                    lines.append(f'fill {cx+x+dx} {bottom} {z+dz} {cx+x+dx} {top} {z+dz} cherry_leaves[persistent=true] replace air')
         for _ in range(20):
             dx,dz=rng.randint(-5,5),rng.randint(-5,5)
             yy=ground(x+dx,z+dz)
             lines.append(f'execute if block {cx+x+dx} {yy} {z+dz} grass_block run setblock {cx+x+dx} {yy+1} {z+dz} pink_petals[flower_amount={rng.randint(1,4)}] keep')
 
     if name=='flowers':
-        for x,z,h in [(-23,-22,5),(-10,-24,6),(23,-21,5),(-24,-5,5),
+        for x,z,h in [(10,-16,6),(-23,-22,5),(-10,-24,6),(23,-21,5),(-24,-5,5),
                       (23,-2,6),(-20,13,5),(21,21,5),(8,25,4)]:
             cherry(x,z,h)
         for x,z in [(-16,-11),(-7,-18),(18,-10),(17,9),(-17,4),(-24,22),(4,21),(25,12),(-4,-27)]:

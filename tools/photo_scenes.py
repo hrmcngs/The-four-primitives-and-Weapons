@@ -80,7 +80,7 @@ def generate_scenes(function, mod):
     function('scenes/setup', [f'function blade_gallery:scenes/{name}/setup' for name, _, _ in scenes])
     load = []
     for name, _, _ in scenes:
-        version = 4
+        version = 5 if name == 'flowers' else 4
         if version == 1:
             load.append(f'execute if data storage blade_gallery:state {{scenes_version:1}} run data modify storage blade_gallery:state scenes.{name} set value 1')
         load.append(f'execute unless data storage blade_gallery:state {{scenes:{{{name}:{version}}}}} run function blade_gallery:scenes/{name}/setup')
@@ -236,17 +236,13 @@ def generate_scenes(function, mod):
                                    ['poppy','pink_tulip','allium'] if x < 10 else
                                    ['dandelion','cornflower','orange_tulip'])
                         block(x,65,z,rng.choice(palette))
-            fill(10,65,-16,11,71,-15,'cherry_log')
-            fill(6,70,-20,15,72,-11,'cherry_leaves[persistent=true]')
-            fill(8,73,-18,13,74,-13,'cherry_leaves[persistent=true]')
-            fill(5,70,-17,16,71,-14,'cherry_leaves[persistent=true]')
             fill(5,65,-6,7,65,-4,'mossy_cobblestone')
             sword(6.5,66.5,-4.5,8,45,mod+':magical_katana',habaki=0xE8B4C8)
         lines = contour_scene(lines, terrain_start, name, cx, (xmin,xmax,zmin,zmax))
         lines += scene_details(name,cx,lambda x,z: terrain_offset(name,x,z))
         lines += [f'forceload remove {cx+xmin} {zmin} {cx+xmax} {zmax}',
                   f'tellraw @a {{"text":"{title}を生成しました。 /function blade_gallery:camera/{name}","color":"gold"}}']
-        version = 4
+        version = 5 if name == 'flowers' else 4
         lines.append(f'data modify storage blade_gallery:state scenes.{name} set value {version}')
         function(prefix+'/build', lines)
         camera_y=67+terrain_offset(name,-10,18)
