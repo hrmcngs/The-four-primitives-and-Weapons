@@ -291,8 +291,425 @@ setblock -20 65 -20 stone_brick_wall
 setblock -20 66 -20 lantern
 setblock 20 65 -20 stone_brick_wall
 setblock 20 66 -20 lantern
+execute if block -42 64 11 minecraft:grass_block run setblock -42 65 11 azalea_leaves[persistent=true]
+execute if block -42 64 12 minecraft:grass_block run setblock -42 65 12 azalea_leaves[persistent=true]
+execute if block -42 64 13 minecraft:grass_block run setblock -42 65 13 azalea_leaves[persistent=true]
+execute if block -41 64 10 minecraft:grass_block run setblock -41 65 10 azalea_leaves[persistent=true]
+execute if block -41 64 11 minecraft:grass_block run setblock -41 65 11 azalea_leaves[persistent=true]
+execute if block -41 64 12 minecraft:grass_block run setblock -41 65 12 azalea_leaves[persistent=true]
+execute if block -41 65 12 azalea_leaves run setblock -41 66 12 azalea_leaves[persistent=true] keep
+execute if block -41 64 13 minecraft:grass_block run setblock -41 65 13 azalea_leaves[persistent=true]
+execute if block -41 64 14 minecraft:grass_block run setblock -41 65 14 azalea_leaves[persistent=true]
+execute if block -40 64 10 minecraft:grass_block run setblock -40 65 10 azalea_leaves[persistent=true]
+execute if block -40 64 11 minecraft:grass_block run setblock -40 65 11 azalea_leaves[persistent=true]
+execute if block -40 65 11 azalea_leaves run setblock -40 66 11 azalea_leaves[persistent=true] keep
+execute if block -40 64 12 minecraft:grass_block run setblock -40 65 12 azalea_leaves[persistent=true]
+execute if block -40 65 12 azalea_leaves run setblock -40 66 12 azalea_leaves[persistent=true] keep
+execute if block -40 64 13 minecraft:grass_block run setblock -40 65 13 azalea_leaves[persistent=true]
+execute if block -40 65 13 azalea_leaves run setblock -40 66 13 azalea_leaves[persistent=true] keep
+execute if block -40 64 14 minecraft:grass_block run setblock -40 65 14 azalea_leaves[persistent=true]
+execute if block -39 64 10 minecraft:grass_block run setblock -39 65 10 azalea_leaves[persistent=true]
+execute if block -39 64 11 minecraft:grass_block run setblock -39 65 11 azalea_leaves[persistent=true]
+execute if block -39 64 12 minecraft:grass_block run setblock -39 65 12 azalea_leaves[persistent=true]
+execute if block -39 65 12 azalea_leaves run setblock -39 66 12 azalea_leaves[persistent=true] keep
+execute if block -39 64 13 minecraft:grass_block run setblock -39 65 13 azalea_leaves[persistent=true]
+execute if block -39 64 14 minecraft:grass_block run setblock -39 65 14 azalea_leaves[persistent=true]
+execute if block -38 64 11 minecraft:grass_block run setblock -38 65 11 azalea_leaves[persistent=true]
+execute if block -38 64 12 minecraft:grass_block run setblock -38 65 12 azalea_leaves[persistent=true]
+execute if block -38 64 13 minecraft:grass_block run setblock -38 65 13 azalea_leaves[persistent=true]
+execute if block -41 64 -17 minecraft:grass_block run setblock -41 65 -17 azalea_leaves[persistent=true]
+execute if block -41 64 -16 minecraft:grass_block run setblock -41 65 -16 azalea_leaves[persistent=true]
+execute if block -41 64 -15 minecraft:grass_block run setblock -41 65 -15 azalea_leaves[persistent=true]
+execute if block -40 64 -18 minecraft:grass_block run setblock -40 65 -18 azalea_leaves[persistent=true]
+execute if block -40 64 -17 minecraft:grass_block run setblock -40 65 -17 azalea_leaves[persistent=true]
+execute if block -40 64 -16 minecraft:grass_block run setblock -40 65 -16 azalea_leaves[persistent=true]
+execute if block -40 65 -16 azalea_leaves run setblock -40 66 -16 azalea_leaves[persistent=true] keep
+execute if block -40 64 -15 minecraft:grass_block run setblock -40 65 -15 azalea_leaves[persistent=true]
+execute if block -40 64 -14 minecraft:grass_block run setblock -40 65 -14 azalea_leaves[persistent=true]
+execute if block -39 64 -18 minecraft:grass_block run setblock -39 65 -18 azalea_leaves[persistent=true]
+execute if block -39 64 -17 minecraft:grass_block run setblock -39 65 -17 azalea_leaves[persistent=true]
+execute if block -39 65 -17 azalea_leaves run setblock -39 66 -17 azalea_leaves[persistent=true] keep
+execute if block -39 64 -16 minecraft:grass_block run setblock -39 65 -16 azalea_leaves[persistent=true]
+execute if block -39 65 -16 azalea_leaves run setblock -39 66 -16 azalea_leaves[persistent=true] keep
+execute if block -39 64 -15 minecraft:grass_block run setblock -39 65 -15 azalea_leaves[persistent=true]
+execute if block -39 65 -15 azalea_leaves run setblock -39 66 -15 azalea_leaves[persistent=true] keep
+execute if block -39 64 -14 minecraft:grass_block run setblock -39 65 -14 azalea_leaves[persistent=true]
+execute if block -38 64 -18 minecraft:grass_block run setblock -38 65 -18 azalea_leaves[persistent=true]
+execute if block -38 64 -17 minecraft:grass_block run setblock -38 65 -17 azalea_leaves[persistent=true]
+execute if block -38 64 -16 minecraft:grass_block run setblock -38 65 -16 azalea_leaves[persistent=true]
+execute if block -38 65 -16 azalea_leaves run setblock -38 66 -16 azalea_leaves[persistent=true] keep
+execute if block -38 64 -15 minecraft:grass_block run setblock -38 65 -15 azalea_leaves[persistent=true]
+execute if block -38 64 -14 minecraft:grass_block run setblock -38 65 -14 azalea_leaves[persistent=true]
+execute if block -37 64 -17 minecraft:grass_block run setblock -37 65 -17 azalea_leaves[persistent=true]
+execute if block -37 64 -16 minecraft:grass_block run setblock -37 65 -16 azalea_leaves[persistent=true]
+execute if block -37 64 -15 minecraft:grass_block run setblock -37 65 -15 azalea_leaves[persistent=true]
+execute if block 37 64 25 minecraft:grass_block run setblock 37 65 25 azalea_leaves[persistent=true]
+execute if block 37 64 26 minecraft:grass_block run setblock 37 65 26 azalea_leaves[persistent=true]
+execute if block 37 64 27 minecraft:grass_block run setblock 37 65 27 azalea_leaves[persistent=true]
+execute if block 38 64 24 minecraft:grass_block run setblock 38 65 24 azalea_leaves[persistent=true]
+execute if block 38 64 25 minecraft:grass_block run setblock 38 65 25 azalea_leaves[persistent=true]
+execute if block 38 64 26 minecraft:grass_block run setblock 38 65 26 azalea_leaves[persistent=true]
+execute if block 38 65 26 azalea_leaves run setblock 38 66 26 azalea_leaves[persistent=true] keep
+execute if block 38 64 27 minecraft:grass_block run setblock 38 65 27 azalea_leaves[persistent=true]
+execute if block 38 64 28 minecraft:grass_block run setblock 38 65 28 azalea_leaves[persistent=true]
+execute if block 39 64 24 minecraft:grass_block run setblock 39 65 24 azalea_leaves[persistent=true]
+execute if block 39 64 25 minecraft:grass_block run setblock 39 65 25 azalea_leaves[persistent=true]
+execute if block 39 65 25 azalea_leaves run setblock 39 66 25 azalea_leaves[persistent=true] keep
+execute if block 39 64 26 minecraft:grass_block run setblock 39 65 26 azalea_leaves[persistent=true]
+execute if block 39 65 26 azalea_leaves run setblock 39 66 26 azalea_leaves[persistent=true] keep
+execute if block 39 64 27 minecraft:grass_block run setblock 39 65 27 azalea_leaves[persistent=true]
+execute if block 39 65 27 azalea_leaves run setblock 39 66 27 azalea_leaves[persistent=true] keep
+execute if block 39 64 28 minecraft:grass_block run setblock 39 65 28 azalea_leaves[persistent=true]
+execute if block 40 64 24 minecraft:grass_block run setblock 40 65 24 azalea_leaves[persistent=true]
+execute if block 40 64 25 minecraft:grass_block run setblock 40 65 25 azalea_leaves[persistent=true]
+execute if block 40 64 26 minecraft:grass_block run setblock 40 65 26 azalea_leaves[persistent=true]
+execute if block 40 65 26 azalea_leaves run setblock 40 66 26 azalea_leaves[persistent=true] keep
+execute if block 40 64 27 minecraft:grass_block run setblock 40 65 27 azalea_leaves[persistent=true]
+execute if block 40 64 28 minecraft:grass_block run setblock 40 65 28 azalea_leaves[persistent=true]
+execute if block 41 64 25 minecraft:grass_block run setblock 41 65 25 azalea_leaves[persistent=true]
+execute if block 41 64 26 minecraft:grass_block run setblock 41 65 26 azalea_leaves[persistent=true]
+execute if block 41 64 27 minecraft:grass_block run setblock 41 65 27 azalea_leaves[persistent=true]
+execute if block 18 64 29 minecraft:grass_block run setblock 18 65 29 azalea_leaves[persistent=true]
+execute if block 18 64 30 minecraft:grass_block run setblock 18 65 30 azalea_leaves[persistent=true]
+execute if block 18 64 31 minecraft:grass_block run setblock 18 65 31 azalea_leaves[persistent=true]
+execute if block 19 64 28 minecraft:grass_block run setblock 19 65 28 azalea_leaves[persistent=true]
+execute if block 19 64 29 minecraft:grass_block run setblock 19 65 29 azalea_leaves[persistent=true]
+execute if block 19 64 30 minecraft:grass_block run setblock 19 65 30 azalea_leaves[persistent=true]
+execute if block 19 65 30 azalea_leaves run setblock 19 66 30 azalea_leaves[persistent=true] keep
+execute if block 19 64 31 minecraft:grass_block run setblock 19 65 31 azalea_leaves[persistent=true]
+execute if block 19 64 32 minecraft:grass_block run setblock 19 65 32 azalea_leaves[persistent=true]
+execute if block 20 64 28 minecraft:grass_block run setblock 20 65 28 azalea_leaves[persistent=true]
+execute if block 20 64 29 minecraft:grass_block run setblock 20 65 29 azalea_leaves[persistent=true]
+execute if block 20 65 29 azalea_leaves run setblock 20 66 29 azalea_leaves[persistent=true] keep
+execute if block 20 64 30 minecraft:grass_block run setblock 20 65 30 azalea_leaves[persistent=true]
+execute if block 20 65 30 azalea_leaves run setblock 20 66 30 azalea_leaves[persistent=true] keep
+execute if block 20 64 31 minecraft:grass_block run setblock 20 65 31 azalea_leaves[persistent=true]
+execute if block 20 65 31 azalea_leaves run setblock 20 66 31 azalea_leaves[persistent=true] keep
+execute if block 20 64 32 minecraft:grass_block run setblock 20 65 32 azalea_leaves[persistent=true]
+execute if block 21 64 28 minecraft:grass_block run setblock 21 65 28 azalea_leaves[persistent=true]
+execute if block 21 64 29 minecraft:grass_block run setblock 21 65 29 azalea_leaves[persistent=true]
+execute if block 21 64 30 minecraft:grass_block run setblock 21 65 30 azalea_leaves[persistent=true]
+execute if block 21 65 30 azalea_leaves run setblock 21 66 30 azalea_leaves[persistent=true] keep
+execute if block 21 64 31 minecraft:grass_block run setblock 21 65 31 azalea_leaves[persistent=true]
+execute if block 21 64 32 minecraft:grass_block run setblock 21 65 32 azalea_leaves[persistent=true]
+execute if block 22 64 29 minecraft:grass_block run setblock 22 65 29 azalea_leaves[persistent=true]
+execute if block 22 64 30 minecraft:grass_block run setblock 22 65 30 azalea_leaves[persistent=true]
+execute if block 22 64 31 minecraft:grass_block run setblock 22 65 31 azalea_leaves[persistent=true]
+execute if block -14 64 32 minecraft:grass_block run setblock -14 65 32 azalea_leaves[persistent=true]
+execute if block -14 64 33 minecraft:grass_block run setblock -14 65 33 azalea_leaves[persistent=true]
+execute if block -14 64 34 minecraft:grass_block run setblock -14 65 34 azalea_leaves[persistent=true]
+execute if block -13 64 31 minecraft:grass_block run setblock -13 65 31 azalea_leaves[persistent=true]
+execute if block -13 64 32 minecraft:grass_block run setblock -13 65 32 azalea_leaves[persistent=true]
+execute if block -13 64 33 minecraft:grass_block run setblock -13 65 33 azalea_leaves[persistent=true]
+execute if block -13 65 33 azalea_leaves run setblock -13 66 33 azalea_leaves[persistent=true] keep
+execute if block -13 64 34 minecraft:grass_block run setblock -13 65 34 azalea_leaves[persistent=true]
+execute if block -13 64 35 minecraft:grass_block run setblock -13 65 35 azalea_leaves[persistent=true]
+execute if block -12 64 31 minecraft:grass_block run setblock -12 65 31 azalea_leaves[persistent=true]
+execute if block -12 64 32 minecraft:grass_block run setblock -12 65 32 azalea_leaves[persistent=true]
+execute if block -12 65 32 azalea_leaves run setblock -12 66 32 azalea_leaves[persistent=true] keep
+execute if block -12 64 33 minecraft:grass_block run setblock -12 65 33 azalea_leaves[persistent=true]
+execute if block -12 65 33 azalea_leaves run setblock -12 66 33 azalea_leaves[persistent=true] keep
+execute if block -12 64 34 minecraft:grass_block run setblock -12 65 34 azalea_leaves[persistent=true]
+execute if block -12 65 34 azalea_leaves run setblock -12 66 34 azalea_leaves[persistent=true] keep
+execute if block -12 64 35 minecraft:grass_block run setblock -12 65 35 azalea_leaves[persistent=true]
+execute if block -11 64 31 minecraft:grass_block run setblock -11 65 31 azalea_leaves[persistent=true]
+execute if block -11 64 32 minecraft:grass_block run setblock -11 65 32 azalea_leaves[persistent=true]
+execute if block -11 64 33 minecraft:grass_block run setblock -11 65 33 azalea_leaves[persistent=true]
+execute if block -11 65 33 azalea_leaves run setblock -11 66 33 azalea_leaves[persistent=true] keep
+execute if block -11 64 34 minecraft:grass_block run setblock -11 65 34 azalea_leaves[persistent=true]
+execute if block -11 64 35 minecraft:grass_block run setblock -11 65 35 azalea_leaves[persistent=true]
+execute if block -10 64 32 minecraft:grass_block run setblock -10 65 32 azalea_leaves[persistent=true]
+execute if block -10 64 33 minecraft:grass_block run setblock -10 65 33 azalea_leaves[persistent=true]
+execute if block -10 64 34 minecraft:grass_block run setblock -10 65 34 azalea_leaves[persistent=true]
+execute if block -32 64 -37 minecraft:grass_block run setblock -32 65 -37 azalea_leaves[persistent=true]
+execute if block -32 64 -36 minecraft:grass_block run setblock -32 65 -36 azalea_leaves[persistent=true]
+execute if block -32 64 -35 minecraft:grass_block run setblock -32 65 -35 azalea_leaves[persistent=true]
+execute if block -31 64 -38 minecraft:grass_block run setblock -31 65 -38 azalea_leaves[persistent=true]
+execute if block -31 64 -37 minecraft:grass_block run setblock -31 65 -37 azalea_leaves[persistent=true]
+execute if block -31 64 -36 minecraft:grass_block run setblock -31 65 -36 azalea_leaves[persistent=true]
+execute if block -31 65 -36 azalea_leaves run setblock -31 66 -36 azalea_leaves[persistent=true] keep
+execute if block -31 64 -35 minecraft:grass_block run setblock -31 65 -35 azalea_leaves[persistent=true]
+execute if block -31 64 -34 minecraft:grass_block run setblock -31 65 -34 azalea_leaves[persistent=true]
+execute if block -30 64 -38 minecraft:grass_block run setblock -30 65 -38 azalea_leaves[persistent=true]
+execute if block -30 64 -37 minecraft:grass_block run setblock -30 65 -37 azalea_leaves[persistent=true]
+execute if block -30 65 -37 azalea_leaves run setblock -30 66 -37 azalea_leaves[persistent=true] keep
+execute if block -30 64 -36 minecraft:grass_block run setblock -30 65 -36 azalea_leaves[persistent=true]
+execute if block -30 65 -36 azalea_leaves run setblock -30 66 -36 azalea_leaves[persistent=true] keep
+execute if block -30 64 -35 minecraft:grass_block run setblock -30 65 -35 azalea_leaves[persistent=true]
+execute if block -30 65 -35 azalea_leaves run setblock -30 66 -35 azalea_leaves[persistent=true] keep
+execute if block -30 64 -34 minecraft:grass_block run setblock -30 65 -34 azalea_leaves[persistent=true]
+execute if block -29 64 -38 minecraft:grass_block run setblock -29 65 -38 azalea_leaves[persistent=true]
+execute if block -29 64 -37 minecraft:grass_block run setblock -29 65 -37 azalea_leaves[persistent=true]
+execute if block -29 64 -36 minecraft:grass_block run setblock -29 65 -36 azalea_leaves[persistent=true]
+execute if block -29 65 -36 azalea_leaves run setblock -29 66 -36 azalea_leaves[persistent=true] keep
+execute if block -29 64 -35 minecraft:grass_block run setblock -29 65 -35 azalea_leaves[persistent=true]
+execute if block -29 64 -34 minecraft:grass_block run setblock -29 65 -34 azalea_leaves[persistent=true]
+execute if block -28 64 -37 minecraft:grass_block run setblock -28 65 -37 azalea_leaves[persistent=true]
+execute if block -28 64 -36 minecraft:grass_block run setblock -28 65 -36 azalea_leaves[persistent=true]
+execute if block -28 64 -35 minecraft:grass_block run setblock -28 65 -35 azalea_leaves[persistent=true]
+fill -38 65 -30 -38 70 -30 cherry_log
+setblock -40 69 -30 cherry_log[axis=x] keep
+setblock -39 69 -30 cherry_log[axis=x] keep
+setblock -37 69 -30 cherry_log[axis=x] keep
+setblock -36 69 -30 cherry_log[axis=x] keep
+fill -41 68 -30 -41 68 -30 cherry_leaves[persistent=true] replace air
+fill -40 68 -32 -40 68 -28 cherry_leaves[persistent=true] replace air
+fill -39 68 -33 -39 68 -27 cherry_leaves[persistent=true] replace air
+fill -38 68 -33 -38 68 -27 cherry_leaves[persistent=true] replace air
+fill -37 68 -33 -37 68 -27 cherry_leaves[persistent=true] replace air
+fill -36 68 -32 -36 68 -28 cherry_leaves[persistent=true] replace air
+fill -35 68 -30 -35 68 -30 cherry_leaves[persistent=true] replace air
+fill -42 69 -30 -42 69 -30 cherry_leaves[persistent=true] replace air
+fill -41 69 -33 -41 69 -27 cherry_leaves[persistent=true] replace air
+fill -40 69 -33 -40 69 -27 cherry_leaves[persistent=true] replace air
+fill -39 69 -34 -39 69 -26 cherry_leaves[persistent=true] replace air
+fill -38 69 -34 -38 69 -26 cherry_leaves[persistent=true] replace air
+fill -37 69 -34 -37 69 -26 cherry_leaves[persistent=true] replace air
+fill -36 69 -33 -36 69 -27 cherry_leaves[persistent=true] replace air
+fill -35 69 -33 -35 69 -27 cherry_leaves[persistent=true] replace air
+fill -34 69 -30 -34 69 -30 cherry_leaves[persistent=true] replace air
+fill -42 70 -30 -42 70 -30 cherry_leaves[persistent=true] replace air
+fill -41 70 -33 -41 70 -27 cherry_leaves[persistent=true] replace air
+fill -40 70 -33 -40 70 -27 cherry_leaves[persistent=true] replace air
+fill -39 70 -34 -39 70 -26 cherry_leaves[persistent=true] replace air
+fill -38 70 -34 -38 70 -26 cherry_leaves[persistent=true] replace air
+fill -37 70 -34 -37 70 -26 cherry_leaves[persistent=true] replace air
+fill -36 70 -33 -36 70 -27 cherry_leaves[persistent=true] replace air
+fill -35 70 -33 -35 70 -27 cherry_leaves[persistent=true] replace air
+fill -34 70 -30 -34 70 -30 cherry_leaves[persistent=true] replace air
+fill -41 71 -30 -41 71 -30 cherry_leaves[persistent=true] replace air
+fill -40 71 -32 -40 71 -28 cherry_leaves[persistent=true] replace air
+fill -39 71 -33 -39 71 -27 cherry_leaves[persistent=true] replace air
+fill -38 71 -33 -38 71 -27 cherry_leaves[persistent=true] replace air
+fill -37 71 -33 -37 71 -27 cherry_leaves[persistent=true] replace air
+fill -36 71 -32 -36 71 -28 cherry_leaves[persistent=true] replace air
+fill -35 71 -30 -35 71 -30 cherry_leaves[persistent=true] replace air
+fill -40 72 -30 -40 72 -30 cherry_leaves[persistent=true] replace air
+fill -39 72 -32 -39 72 -28 cherry_leaves[persistent=true] replace air
+fill -38 72 -32 -38 72 -28 cherry_leaves[persistent=true] replace air
+fill -37 72 -32 -37 72 -28 cherry_leaves[persistent=true] replace air
+fill -36 72 -30 -36 72 -30 cherry_leaves[persistent=true] replace air
+execute if block -39 64 -31 grass_block run setblock -39 65 -31 pink_petals[flower_amount=1] keep
+execute if block -40 64 -28 grass_block run setblock -40 65 -28 pink_petals[flower_amount=3] keep
+execute if block -35 64 -28 grass_block run setblock -35 65 -28 pink_petals[flower_amount=3] keep
+execute if block -41 64 -31 grass_block run setblock -41 65 -31 pink_petals[flower_amount=2] keep
+execute if block -34 64 -25 grass_block run setblock -34 65 -25 pink_petals[flower_amount=2] keep
+execute if block -40 64 -28 grass_block run setblock -40 65 -28 pink_petals[flower_amount=4] keep
+execute if block -39 64 -35 grass_block run setblock -39 65 -35 pink_petals[flower_amount=2] keep
+execute if block -39 64 -32 grass_block run setblock -39 65 -32 pink_petals[flower_amount=1] keep
+execute if block -33 64 -29 grass_block run setblock -33 65 -29 pink_petals[flower_amount=1] keep
+execute if block -37 64 -25 grass_block run setblock -37 65 -25 pink_petals[flower_amount=3] keep
+execute if block -34 64 -25 grass_block run setblock -34 65 -25 pink_petals[flower_amount=3] keep
+execute if block -35 64 -30 grass_block run setblock -35 65 -30 pink_petals[flower_amount=4] keep
+execute if block -35 64 -32 grass_block run setblock -35 65 -32 pink_petals[flower_amount=3] keep
+execute if block -42 64 -30 grass_block run setblock -42 65 -30 pink_petals[flower_amount=2] keep
+execute if block -38 64 -35 grass_block run setblock -38 65 -35 pink_petals[flower_amount=1] keep
+execute if block -38 64 -33 grass_block run setblock -38 65 -33 pink_petals[flower_amount=4] keep
+execute if block -43 64 -30 grass_block run setblock -43 65 -30 pink_petals[flower_amount=4] keep
+execute if block -43 64 -30 grass_block run setblock -43 65 -30 pink_petals[flower_amount=4] keep
+execute if block -42 64 -32 grass_block run setblock -42 65 -32 pink_petals[flower_amount=2] keep
+execute if block -43 64 -34 grass_block run setblock -43 65 -34 pink_petals[flower_amount=4] keep
+fill 33 65 -35 33 70 -35 cherry_log
+setblock 31 69 -35 cherry_log[axis=x] keep
+setblock 32 69 -35 cherry_log[axis=x] keep
+setblock 34 69 -35 cherry_log[axis=x] keep
+setblock 35 69 -35 cherry_log[axis=x] keep
+fill 30 68 -35 30 68 -35 cherry_leaves[persistent=true] replace air
+fill 31 68 -37 31 68 -33 cherry_leaves[persistent=true] replace air
+fill 32 68 -38 32 68 -32 cherry_leaves[persistent=true] replace air
+fill 33 68 -38 33 68 -32 cherry_leaves[persistent=true] replace air
+fill 34 68 -38 34 68 -32 cherry_leaves[persistent=true] replace air
+fill 35 68 -37 35 68 -33 cherry_leaves[persistent=true] replace air
+fill 36 68 -35 36 68 -35 cherry_leaves[persistent=true] replace air
+fill 29 69 -35 29 69 -35 cherry_leaves[persistent=true] replace air
+fill 30 69 -38 30 69 -32 cherry_leaves[persistent=true] replace air
+fill 31 69 -38 31 69 -32 cherry_leaves[persistent=true] replace air
+fill 32 69 -39 32 69 -31 cherry_leaves[persistent=true] replace air
+fill 33 69 -39 33 69 -31 cherry_leaves[persistent=true] replace air
+fill 34 69 -39 34 69 -31 cherry_leaves[persistent=true] replace air
+fill 35 69 -38 35 69 -32 cherry_leaves[persistent=true] replace air
+fill 36 69 -38 36 69 -32 cherry_leaves[persistent=true] replace air
+fill 37 69 -35 37 69 -35 cherry_leaves[persistent=true] replace air
+fill 29 70 -35 29 70 -35 cherry_leaves[persistent=true] replace air
+fill 30 70 -38 30 70 -32 cherry_leaves[persistent=true] replace air
+fill 31 70 -38 31 70 -32 cherry_leaves[persistent=true] replace air
+fill 32 70 -39 32 70 -31 cherry_leaves[persistent=true] replace air
+fill 33 70 -39 33 70 -31 cherry_leaves[persistent=true] replace air
+fill 34 70 -39 34 70 -31 cherry_leaves[persistent=true] replace air
+fill 35 70 -38 35 70 -32 cherry_leaves[persistent=true] replace air
+fill 36 70 -38 36 70 -32 cherry_leaves[persistent=true] replace air
+fill 37 70 -35 37 70 -35 cherry_leaves[persistent=true] replace air
+fill 30 71 -35 30 71 -35 cherry_leaves[persistent=true] replace air
+fill 31 71 -37 31 71 -33 cherry_leaves[persistent=true] replace air
+fill 32 71 -38 32 71 -32 cherry_leaves[persistent=true] replace air
+fill 33 71 -38 33 71 -32 cherry_leaves[persistent=true] replace air
+fill 34 71 -38 34 71 -32 cherry_leaves[persistent=true] replace air
+fill 35 71 -37 35 71 -33 cherry_leaves[persistent=true] replace air
+fill 36 71 -35 36 71 -35 cherry_leaves[persistent=true] replace air
+fill 31 72 -35 31 72 -35 cherry_leaves[persistent=true] replace air
+fill 32 72 -37 32 72 -33 cherry_leaves[persistent=true] replace air
+fill 33 72 -37 33 72 -33 cherry_leaves[persistent=true] replace air
+fill 34 72 -37 34 72 -33 cherry_leaves[persistent=true] replace air
+fill 35 72 -35 35 72 -35 cherry_leaves[persistent=true] replace air
+execute if block 36 64 -38 grass_block run setblock 36 65 -38 pink_petals[flower_amount=2] keep
+execute if block 37 64 -37 grass_block run setblock 37 65 -37 pink_petals[flower_amount=3] keep
+execute if block 37 64 -35 grass_block run setblock 37 65 -35 pink_petals[flower_amount=1] keep
+execute if block 30 64 -40 grass_block run setblock 30 65 -40 pink_petals[flower_amount=2] keep
+execute if block 33 64 -38 grass_block run setblock 33 65 -38 pink_petals[flower_amount=3] keep
+execute if block 29 64 -30 grass_block run setblock 29 65 -30 pink_petals[flower_amount=1] keep
+execute if block 37 64 -32 grass_block run setblock 37 65 -32 pink_petals[flower_amount=1] keep
+execute if block 28 64 -34 grass_block run setblock 28 65 -34 pink_petals[flower_amount=3] keep
+execute if block 35 64 -33 grass_block run setblock 35 65 -33 pink_petals[flower_amount=1] keep
+execute if block 29 64 -39 grass_block run setblock 29 65 -39 pink_petals[flower_amount=2] keep
+execute if block 38 64 -30 grass_block run setblock 38 65 -30 pink_petals[flower_amount=3] keep
+execute if block 36 64 -32 grass_block run setblock 36 65 -32 pink_petals[flower_amount=3] keep
+execute if block 30 64 -31 grass_block run setblock 30 65 -31 pink_petals[flower_amount=4] keep
+execute if block 32 64 -39 grass_block run setblock 32 65 -39 pink_petals[flower_amount=4] keep
+execute if block 36 64 -34 grass_block run setblock 36 65 -34 pink_petals[flower_amount=4] keep
+execute if block 36 64 -40 grass_block run setblock 36 65 -40 pink_petals[flower_amount=3] keep
+execute if block 37 64 -40 grass_block run setblock 37 65 -40 pink_petals[flower_amount=1] keep
+execute if block 33 64 -30 grass_block run setblock 33 65 -30 pink_petals[flower_amount=2] keep
+execute if block 35 64 -30 grass_block run setblock 35 65 -30 pink_petals[flower_amount=4] keep
+execute if block 33 64 -39 grass_block run setblock 33 65 -39 pink_petals[flower_amount=4] keep
+execute if block -9 64 10 water run setblock -9 65 10 lily_pad keep
+execute if block -16 64 3 water run setblock -16 65 3 lily_pad keep
+execute if block 13 64 12 water run setblock 13 65 12 lily_pad keep
+execute if block -7 64 -9 water run setblock -7 65 -9 lily_pad keep
+setblock -36 65 4 mossy_cobblestone keep
+setblock -36 66 4 moss_carpet keep
+setblock 23 65 24 mossy_cobblestone keep
+setblock 23 66 24 moss_carpet keep
+setblock -12 65 29 mossy_cobblestone keep
+setblock -12 66 29 moss_carpet keep
+execute if block -43 64 31 grass_block run setblock -43 65 31 azalea keep
+execute if block -32 64 39 grass_block run setblock -32 65 39 fern keep
+execute if block 39 64 17 grass_block run setblock 39 65 17 grass keep
+execute if block -42 64 -33 grass_block run setblock -42 65 -33 grass keep
+execute if block 41 64 15 grass_block run setblock 41 65 15 fern keep
+execute if block -40 64 -5 grass_block run setblock -40 65 -5 azalea keep
+execute if block -34 64 -41 grass_block run setblock -34 65 -41 grass keep
+execute if block -42 64 -24 grass_block run setblock -42 65 -24 fern keep
+execute if block -33 64 35 grass_block run setblock -33 65 35 grass keep
+execute if block 36 64 2 grass_block run setblock 36 65 2 azalea keep
+execute if block 19 64 -33 grass_block run setblock 19 65 -33 azalea keep
+execute if block -41 64 -16 grass_block run setblock -41 65 -16 fern keep
+execute if block 27 64 35 grass_block run setblock 27 65 35 grass keep
+execute if block 40 64 -17 grass_block run setblock 40 65 -17 grass keep
+execute if block -30 64 -42 grass_block run setblock -30 65 -42 azalea keep
+execute if block 26 64 -36 grass_block run setblock 26 65 -36 azalea keep
+execute if block 34 64 -36 grass_block run setblock 34 65 -36 fern keep
+execute if block -40 64 3 grass_block run setblock -40 65 3 fern keep
+execute if block 35 64 21 grass_block run setblock 35 65 21 fern keep
+execute if block 41 64 11 grass_block run setblock 41 65 11 fern keep
+execute if block -38 64 20 grass_block run setblock -38 65 20 azalea keep
+execute if block 26 64 -36 grass_block run setblock 26 65 -36 fern keep
+execute if block -35 64 -29 grass_block run setblock -35 65 -29 fern keep
+execute if block 6 64 -32 grass_block run setblock 6 65 -32 fern keep
+execute if block 39 64 36 grass_block run setblock 39 65 36 fern keep
+execute if block -38 64 23 grass_block run setblock -38 65 23 grass keep
+execute if block 41 64 43 grass_block run setblock 41 65 43 grass keep
+execute if block -13 64 -36 grass_block run setblock -13 65 -36 azalea keep
+execute if block -6 64 32 grass_block run setblock -6 65 32 fern keep
+execute if block 33 64 35 grass_block run setblock 33 65 35 azalea keep
+execute if block 39 64 19 grass_block run setblock 39 65 19 azalea keep
+execute if block 38 64 -31 grass_block run setblock 38 65 -31 grass keep
+execute if block 42 64 27 grass_block run setblock 42 65 27 azalea keep
+execute if block -26 64 37 grass_block run setblock -26 65 37 grass keep
+execute if block -11 64 36 grass_block run setblock -11 65 36 grass keep
+execute if block -40 64 42 grass_block run setblock -40 65 42 grass keep
+execute if block -42 64 5 grass_block run setblock -42 65 5 grass keep
+execute if block 12 64 -31 grass_block run setblock 12 65 -31 azalea keep
+execute if block -32 64 -35 grass_block run setblock -32 65 -35 azalea keep
+execute if block 40 64 -29 grass_block run setblock 40 65 -29 azalea keep
+execute if block -40 64 -32 grass_block run setblock -40 65 -32 azalea keep
+execute if block 38 64 -29 grass_block run setblock 38 65 -29 azalea keep
+execute if block -12 64 -33 grass_block run setblock -12 65 -33 grass keep
+execute if block 42 64 -6 grass_block run setblock 42 65 -6 fern keep
+execute if block 43 64 -11 grass_block run setblock 43 65 -11 grass keep
+execute if block -18 64 39 grass_block run setblock -18 65 39 fern keep
+execute if block -19 64 -40 grass_block run setblock -19 65 -40 fern keep
+execute if block -40 64 -2 grass_block run setblock -40 65 -2 azalea keep
+execute if block 19 64 41 grass_block run setblock 19 65 41 azalea keep
+execute if block 37 64 -11 grass_block run setblock 37 65 -11 fern keep
+execute if block -27 64 -38 grass_block run setblock -27 65 -38 azalea keep
+execute if block -35 64 -7 grass_block run setblock -35 65 -7 azalea keep
+execute if block -41 64 38 grass_block run setblock -41 65 38 grass keep
+execute if block -21 64 33 grass_block run setblock -21 65 33 fern keep
+execute if block -35 64 -26 grass_block run setblock -35 65 -26 azalea keep
+execute if block -2 64 -33 grass_block run setblock -2 65 -33 grass keep
+execute if block -36 64 25 grass_block run setblock -36 65 25 fern keep
+execute if block 35 64 -22 grass_block run setblock 35 65 -22 fern keep
+execute if block 43 64 -23 grass_block run setblock 43 65 -23 grass keep
+execute if block 13 64 -37 grass_block run setblock 13 65 -37 azalea keep
+execute if block -17 64 31 grass_block run setblock -17 65 31 fern keep
+execute if block 35 64 42 grass_block run setblock 35 65 42 fern keep
+execute if block -16 64 -36 grass_block run setblock -16 65 -36 fern keep
+execute if block 19 64 43 grass_block run setblock 19 65 43 fern keep
+execute if block -37 64 40 grass_block run setblock -37 65 40 azalea keep
+execute if block -6 64 39 grass_block run setblock -6 65 39 grass keep
+execute if block 24 64 -35 grass_block run setblock 24 65 -35 grass keep
+execute if block -17 64 40 grass_block run setblock -17 65 40 fern keep
+execute if block 6 64 39 grass_block run setblock 6 65 39 fern keep
+execute if block -15 64 -38 grass_block run setblock -15 65 -38 fern keep
+execute if block -39 64 -3 grass_block run setblock -39 65 -3 azalea keep
+execute if block 36 64 23 grass_block run setblock 36 65 23 fern keep
+execute if block 29 64 41 grass_block run setblock 29 65 41 fern keep
+execute if block 4 64 -42 grass_block run setblock 4 65 -42 grass keep
+execute if block -41 64 -22 grass_block run setblock -41 65 -22 grass keep
+execute if block 16 64 -32 grass_block run setblock 16 65 -32 azalea keep
+execute if block 39 64 37 grass_block run setblock 39 65 37 fern keep
+execute if block 43 64 -9 grass_block run setblock 43 65 -9 grass keep
+execute if block 35 64 19 grass_block run setblock 35 65 19 azalea keep
+execute if block -15 64 -43 grass_block run setblock -15 65 -43 grass keep
+execute if block -43 64 20 grass_block run setblock -43 65 20 fern keep
+execute if block 2 64 37 grass_block run setblock 2 65 37 grass keep
+execute if block -41 64 42 grass_block run setblock -41 65 42 azalea keep
+execute if block 32 64 32 grass_block run setblock 32 65 32 fern keep
+execute if block -22 64 -35 grass_block run setblock -22 65 -35 azalea keep
+execute if block 12 64 30 grass_block run setblock 12 65 30 fern keep
+execute if block -38 64 12 grass_block run setblock -38 65 12 azalea keep
+execute if block 8 64 -35 grass_block run setblock 8 65 -35 azalea keep
+execute if block 38 64 -12 grass_block run setblock 38 65 -12 grass keep
+execute if block -42 64 -13 grass_block run setblock -42 65 -13 fern keep
+execute if block -34 64 39 grass_block run setblock -34 65 39 fern keep
+execute if block 36 64 41 grass_block run setblock 36 65 41 azalea keep
+execute if block -41 64 15 grass_block run setblock -41 65 15 grass keep
+execute if block -41 64 19 grass_block run setblock -41 65 19 azalea keep
+execute if block 37 64 10 grass_block run setblock 37 65 10 fern keep
+execute if block 35 64 43 grass_block run setblock 35 65 43 grass keep
+execute if block -39 64 18 grass_block run setblock -39 65 18 fern keep
+execute if block 24 64 42 grass_block run setblock 24 65 42 grass keep
+execute if block 3 64 40 grass_block run setblock 3 65 40 grass keep
+execute if block 41 64 37 grass_block run setblock 41 65 37 fern keep
+execute if block -42 64 -24 grass_block run setblock -42 65 -24 azalea keep
+execute if block 38 64 -21 grass_block run setblock 38 65 -21 azalea keep
+execute if block -8 64 -33 grass_block run setblock -8 65 -33 fern keep
+execute if block -2 64 -33 grass_block run setblock -2 65 -33 fern keep
+execute if block 33 64 40 grass_block run setblock 33 65 40 azalea keep
+execute if block 38 64 13 grass_block run setblock 38 65 13 grass keep
+execute if block -35 64 20 grass_block run setblock -35 65 20 grass keep
+execute if block 41 64 -22 grass_block run setblock 41 65 -22 azalea keep
+execute if block 39 64 20 grass_block run setblock 39 65 20 fern keep
+execute if block -36 64 9 grass_block run setblock -36 65 9 fern keep
+execute if block 5 64 -40 grass_block run setblock 5 65 -40 azalea keep
+execute if block 20 64 -35 grass_block run setblock 20 65 -35 azalea keep
+execute if block -7 64 -41 grass_block run setblock -7 65 -41 azalea keep
+execute if block 29 64 39 grass_block run setblock 29 65 39 azalea keep
+execute if block 11 64 -38 grass_block run setblock 11 65 -38 azalea keep
+execute if block -15 64 38 grass_block run setblock -15 65 38 fern keep
+execute if block 34 64 39 grass_block run setblock 34 65 39 grass keep
+execute if block 4 64 35 grass_block run setblock 4 65 35 grass keep
+execute if block 38 64 21 grass_block run setblock 38 65 21 grass keep
+execute if block 10 64 34 grass_block run setblock 10 65 34 azalea keep
+execute if block 37 64 5 grass_block run setblock 37 65 5 grass keep
+execute if block 25 64 41 grass_block run setblock 25 65 41 fern keep
+execute if block -30 64 42 grass_block run setblock -30 65 42 azalea keep
+execute if block -36 64 -34 grass_block run setblock -36 65 -34 fern keep
+execute if block -20 64 43 grass_block run setblock -20 65 43 fern keep
+execute if block 42 64 20 grass_block run setblock 42 65 20 grass keep
 function blade_gallery:weapons
 setworldspawn -24 66 23
 data modify storage blade_gallery:state initialized set value 1b
+data modify storage blade_gallery:state main_version set value 2
 forceload remove -48 -48 47 47
 tellraw @a {"text":"撮影庭園が完成しました。 /function blade_gallery:camera/main で撮影位置へ","color":"gold"}

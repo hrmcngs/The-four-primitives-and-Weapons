@@ -1,0 +1,2 @@
+schedule function blade_gallery:scenes/flowers/wait 1s replace
+execute in minecraft:overworld if loaded 480 64 -32 if loaded 480 64 -16 if loaded 480 64 0 if loaded 480 64 16 if loaded 496 64 -32 if loaded 496 64 -16 if loaded 496 64 0 if loaded 496 64 16 if loaded 512 64 -32 if loaded 512 64 -16 if loaded 512 64 0 if loaded 512 64 16 if loaded 528 64 -32 if loaded 528 64 -16 if loaded 528 64 0 if loaded 528 64 16 run function blade_gallery:scenes/flowers/build

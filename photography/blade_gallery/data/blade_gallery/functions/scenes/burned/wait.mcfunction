@@ -1,0 +1,2 @@
+schedule function blade_gallery:scenes/burned/wait 1s replace
+execute in minecraft:overworld if loaded 224 64 -32 if loaded 224 64 -16 if loaded 224 64 0 if loaded 224 64 16 if loaded 240 64 -32 if loaded 240 64 -16 if loaded 240 64 0 if loaded 240 64 16 if loaded 256 64 -32 if loaded 256 64 -16 if loaded 256 64 0 if loaded 256 64 16 if loaded 272 64 -32 if loaded 272 64 -16 if loaded 272 64 0 if loaded 272 64 16 run function blade_gallery:scenes/burned/build

@@ -1,0 +1,2 @@
+schedule function blade_gallery:scenes/battlefield/wait 1s replace
+execute in minecraft:overworld if loaded 352 64 -32 if loaded 352 64 -16 if loaded 352 64 0 if loaded 352 64 16 if loaded 368 64 -32 if loaded 368 64 -16 if loaded 368 64 0 if loaded 368 64 16 if loaded 384 64 -32 if loaded 384 64 -16 if loaded 384 64 0 if loaded 384 64 16 if loaded 400 64 -32 if loaded 400 64 -16 if loaded 400 64 0 if loaded 400 64 16 run function blade_gallery:scenes/battlefield/build

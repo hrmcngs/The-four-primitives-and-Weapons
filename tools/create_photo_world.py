@@ -9,6 +9,8 @@ import shutil
 import struct
 import time
 import zipfile
+from photo_scenes import generate_scenes
+from photo_details import scene_details
 
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / 'photography' / 'blade_gallery'
@@ -30,7 +32,8 @@ def generate_pack():
     write_json(PACK / 'pack.mcmeta', {'pack': {'pack_format': 15, 'description': '刀と侵食結晶 — 夕暮れの廃神殿・撮影庭園'}})
     for event in ('load', 'tick'):
         write_json(PACK / f'data/minecraft/tags/functions/{event}.json', {'values': [f'blade_gallery:{event}']})
-    function('load', ['execute unless data storage blade_gallery:state initialized run function blade_gallery:setup'])
+    function('load', ['execute unless data storage blade_gallery:state {main_version:2} run function blade_gallery:setup',
+                      'function blade_gallery:scenes/load'])
     function('setup', [
         '# Overworld x/z -48..47, y 60..100 is rebuilt. Use the supplied dedicated world.',
         'execute in minecraft:overworld run forceload add -48 -48 47 47',
@@ -104,8 +107,10 @@ def generate_pack():
     for x, z in ((-25, 18), (-17, 18), (5, 20), (9, 20), (-20, -20), (20, -20)):
         block(x, 65, z, 'stone_brick_wall')
         block(x, 66, z, 'lantern')
+    lines += scene_details('main',0,lambda x,z: 0)
     lines += ['function blade_gallery:weapons', 'setworldspawn -24 66 23',
               'data modify storage blade_gallery:state initialized set value 1b',
+              'data modify storage blade_gallery:state main_version set value 2',
               'forceload remove -48 -48 47 47',
               'tellraw @a {"text":"撮影庭園が完成しました。 /function blade_gallery:camera/main で撮影位置へ","color":"gold"}']
     function('build', lines)
@@ -127,6 +132,7 @@ def generate_pack():
         function('camera/'+name, [f'execute in minecraft:overworld run tp @s {pos} facing {target}'])
     for name, ticks in [('sunset',12500), ('day',6000), ('night',18000)]:
         function('light/'+name, [f'time set {ticks}', 'weather clear'])
+    generate_scenes(function, MOD)
 
 
 # Small typed NBT writer: creates a fresh save, without copying player data or old chunks.
