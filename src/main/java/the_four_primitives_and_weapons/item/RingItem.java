@@ -18,6 +18,12 @@ public final class RingItem extends Item implements ICurioItem {
     }
 
     @Override
+    public void appendHoverText(ItemStack stack, @javax.annotation.Nullable net.minecraft.world.level.Level level,
+            java.util.List<net.minecraft.network.chat.Component> tooltip, net.minecraft.world.item.TooltipFlag flag) {
+        tooltip.add(net.minecraft.network.chat.Component.translatable("tooltip.the_four_primitives_and_weapons.promise_ring"));
+    }
+
+    @Override
     public boolean canEquipFromUse(SlotContext context, ItemStack stack) {
         return true;
     }

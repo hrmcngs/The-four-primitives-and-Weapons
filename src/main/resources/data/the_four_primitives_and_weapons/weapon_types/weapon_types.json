@@ -4,6 +4,7 @@
     "katana": {
       "display_name": "刀",
       "items": [
+        "the_four_primitives_and_weapons:promise_katana",
         "the_four_primitives_and_weapons:wooden_katana",
         "the_four_primitives_and_weapons:iron_katana",
         "the_four_primitives_and_weapons:reitou",
@@ -90,6 +91,7 @@
     "straight_sword": {
       "display_name": "直刀",
       "items": [
+        "the_four_primitives_and_weapons:promise_straight_sword",
         "the_four_primitives_and_weapons:shakujo_blade",
         "the_four_primitives_and_weapons:luna",
         "the_four_primitives_and_weapons:kurikaraken",
@@ -135,6 +137,7 @@
     "sword": {
       "display_name": "剣",
       "items": [
+        "the_four_primitives_and_weapons:promise_sword",
         "the_four_primitives_and_weapons:boundary_blade",
         "the_four_primitives_and_weapons:gate",
         "minecraft:wooden_sword",

@@ -145,6 +145,9 @@ public class TheFourPrimitivesAndWeaponsModItems {
 	public static final RegistryObject<Item> NETHERITE_TYOKUTO = REGISTRY.register("netherite_tyokuto", () -> new NetheriteTyokutoItem());
 	public static final RegistryObject<Item> CROSS = block(TheFourPrimitivesAndWeaponsModBlocks.CROSS, TheFourPrimitivesAndWeaponsModTabs.TAB_YOPKEINAMONO);
 	public static final RegistryObject<Item> MY_TEST_IRON_KATANA = REGISTRY.register("my_test_iron_katana", () -> new MyTestIronKatanaItem());
+	public static final RegistryObject<Item> PROMISE_KATANA = REGISTRY.register("promise_katana", () -> new the_four_primitives_and_weapons.item.PromiseWeaponItem("katana"));
+	public static final RegistryObject<Item> PROMISE_SWORD = REGISTRY.register("promise_sword", () -> new the_four_primitives_and_weapons.item.PromiseWeaponItem("sword"));
+	public static final RegistryObject<Item> PROMISE_STRAIGHT_SWORD = REGISTRY.register("promise_straight_sword", () -> new the_four_primitives_and_weapons.item.PromiseWeaponItem("straight_sword"));
 	public static final RegistryObject<Item> RING = REGISTRY.register("ring", () -> new the_four_primitives_and_weapons.item.RingItem());
 	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(TheFourPrimitivesAndWeaponsModEntities.SKELTON_MOB, -1, -1, new Item.Properties()));

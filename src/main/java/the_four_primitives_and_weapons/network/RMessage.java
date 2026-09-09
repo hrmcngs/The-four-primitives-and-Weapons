@@ -118,6 +118,9 @@ public class RMessage {
 				}
 			}
 
+            if (the_four_primitives_and_weapons.util.PromiseRing.store(entity, InteractionHand.MAIN_HAND)
+                    || the_four_primitives_and_weapons.util.PromiseRing.store(entity, InteractionHand.OFF_HAND)) return;
+
 			// 抜刀チェック A: 利き手 (メインハンド) の満杯鞘 + オフハンド空 → 利き手の鞘から抜刀
 			if (CuriosScabbardHelper.isScabbard(mainHand)
 					&& CuriosScabbardHelper.hasStoredWeapon(mainHand)
@@ -135,6 +138,7 @@ public class RMessage {
 				// どっちの手にも納刀済み鞘がない場合: Curios (belt → back) → インベントリ手前の順で抜刀
 				if (drawFromCuriosFirst(entity)) return;
 				if (drawFromInventoryFirst(entity)) return;
+                if (the_four_primitives_and_weapons.util.PromiseRing.drawSelected(entity)) return;
 			}
 
 			RkigaYasaretatokiProcedure.execute(entity);

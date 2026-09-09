@@ -58,6 +58,7 @@ public class BattouFromSpecificSlotPacket {
             if (player == null) return;
             if (!player.level().hasChunkAt(player.blockPosition())) return;
 
+            if (message.locationType < 0 || message.locationType >= ScabbardLocation.values().length) return;
             ScabbardLocation location = ScabbardLocation.values()[message.locationType];
 
             // メインハンドが空でない場合は抜刀しない（HAND+MAIN_HANDの場合は鞘自体を持っているのでOK）
@@ -72,6 +73,9 @@ public class BattouFromSpecificSlotPacket {
             }
 
             switch (location) {
+                case RING:
+                    the_four_primitives_and_weapons.util.PromiseRing.draw(player, message.slotIndex);
+                    break;
                 case CURIOS:
                     drawFromCurios(player, message.curioSlotId, message.slotIndex);
                     break;

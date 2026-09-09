@@ -1,0 +1,11 @@
+{
+  "katana": {
+    "the_four_primitives_and_weapons:promise_katana": "the_four_primitives_and_weapons:custom/saya/katana/saya_diamond_katana"
+  },
+  "sword": {
+    "the_four_primitives_and_weapons:promise_sword": "the_four_primitives_and_weapons:custom/saya/sword/saya_sword_diamond_sword"
+  },
+  "tyokuto": {
+    "the_four_primitives_and_weapons:promise_straight_sword": "the_four_primitives_and_weapons:custom/saya/tyokuto/saya_diamond_tyokuto"
+  }
+}

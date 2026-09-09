@@ -88,6 +88,7 @@ public class WeaponWheelState {
         if (player == null || mc.level == null) return false;
 
         List<DrawableWeaponInfo> weapons = CuriosScabbardHelper.findAllLoadedScabbards(player);
+        the_four_primitives_and_weapons.util.PromiseRing.addDrawOptions(player, weapons);
 
         currentMode = WheelMode.DRAW;
         drawableWeapons = weapons;
@@ -111,6 +112,7 @@ public class WeaponWheelState {
         if (weaponStack.isEmpty()) return false;
 
         List<DrawableWeaponInfo> emptyScabbards = CuriosScabbardHelper.findAllEmptyScabbards(player);
+        the_four_primitives_and_weapons.util.PromiseRing.addStoreOptions(player, emptyScabbards);
         emptyScabbards.removeIf(info -> !CuriosScabbardHelper.isCompatible(weaponStack, info.scabbardStack));
 
         currentMode = WheelMode.SHEATH;

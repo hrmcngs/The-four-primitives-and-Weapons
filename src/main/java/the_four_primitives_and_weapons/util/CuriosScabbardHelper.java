@@ -406,6 +406,8 @@ public class CuriosScabbardHelper {
      * 登録外の武器は納刀不可。
      */
     public static boolean isCompatible(ItemStack weaponStack, ItemStack scabbardStack) {
+        if (scabbardStack.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.RING.get()))
+            return PromiseRing.canStore(scabbardStack, weaponStack);
         boolean isTyokutoSaya = scabbardStack.getItem() instanceof TyokutoSayaItem;
         boolean isSwordSaya   = scabbardStack.getItem() instanceof SwordSayaItem;
         boolean isRapierSaya  = scabbardStack.getItem() instanceof RapierSayaItem;
@@ -500,7 +502,8 @@ public class CuriosScabbardHelper {
         CURIOS,
         INVENTORY,
         COVERUP,
-        HAND
+        HAND,
+        RING
     }
 
     /**

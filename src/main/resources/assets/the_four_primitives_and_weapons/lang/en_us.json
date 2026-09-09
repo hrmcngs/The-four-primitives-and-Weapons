@@ -1,4 +1,10 @@
 {
+  "item.the_four_primitives_and_weapons.promise_weapon": "At the Promise’s End",
+  "gui.the_four_primitives_and_weapons.ring.form.katana": "Katana",
+  "gui.the_four_primitives_and_weapons.ring.form.sword": "Sword",
+  "gui.the_four_primitives_and_weapons.ring.form.straight_sword": "Straight sword",
+  "tooltip.the_four_primitives_and_weapons.promise_weapon": "A weapon summoned from the ring.",
+  "tooltip.the_four_primitives_and_weapons.promise_ring": "Equip in a ring slot. Tap R to draw or store; hold R to choose a weapon.",
   "item.the_four_primitives_and_weapons.ring": "Ring",
   "item.the_four_primitives_and_weapons.ninjato_recall_chain": "Ninjato Recall Chain",
   "tooltip.the_four_primitives_and_weapons.ninjato_chain": "Chain: right-click / 10 blocks to retrieve. Cut only by a weapon skill dealing at least 20 damage.",

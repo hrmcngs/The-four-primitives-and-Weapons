@@ -71,9 +71,14 @@ public class SheathIntoSpecificSlotPacket {
             if (!DodgeAndBattouHandler.isWeapon(weaponStack)
                 || DodgeAndBattouHandler.isSaya(weaponStack)) return;
 
+            if (message.locationType < 0 || message.locationType >= ScabbardLocation.values().length) return;
             ScabbardLocation location = ScabbardLocation.values()[message.locationType];
 
             switch (location) {
+                case RING:
+                    if (message.slotIndex == the_four_primitives_and_weapons.util.PromiseRing.form(weaponStack))
+                        the_four_primitives_and_weapons.util.PromiseRing.store(player, weaponHand);
+                    break;
                 case CURIOS:
                     sheathIntoCurios(player, weaponStack, weaponHand,
                                      message.curioSlotId, message.slotIndex);

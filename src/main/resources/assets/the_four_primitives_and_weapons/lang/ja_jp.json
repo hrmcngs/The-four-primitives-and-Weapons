@@ -1,4 +1,10 @@
 {
+  "item.the_four_primitives_and_weapons.promise_weapon": "約束の果てに",
+  "gui.the_four_primitives_and_weapons.ring.form.katana": "刀",
+  "gui.the_four_primitives_and_weapons.ring.form.sword": "剣",
+  "gui.the_four_primitives_and_weapons.ring.form.straight_sword": "直刀",
+  "tooltip.the_four_primitives_and_weapons.promise_weapon": "指輪から呼び出された武器",
+  "tooltip.the_four_primitives_and_weapons.promise_ring": "ringスロットに装備。R短押しで抜刀・納刀、R長押しで武器を選択",
   "item.the_four_primitives_and_weapons.ring": "指輪",
   "item.the_four_primitives_and_weapons.ninjato_recall_chain": "忍者刀の回収鎖",
   "tooltip.the_four_primitives_and_weapons.ninjato_chain": "鎖付き：右クリック／10ブロックで回収。20ダメージ以上の武器スキルで切断される。",
