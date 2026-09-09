@@ -49,7 +49,8 @@ public enum ButterflyVariant {
     CYAN(0x38BEE0, 0x21536E, 0xBBF6FF, 8, false),
     CRIMSON(0x8E3043, 0x2F202C, 0xF18B80, 2, true),
     FIREFLY_GOLD(0xDBC057, 0x313D36, 0xFFF5A7, 5, false),
-    MOONLIGHT(0xD6DCEB, 0x575B83, 0xFFFFFF, 4, true);
+    MOONLIGHT(0xD6DCEB, 0x575B83, 0xFFFFFF, 4, true),
+    DREAMWING(0xF06428, 0xA51D30, 0xFFD65A, 10, false);
 
     public final int wingColor, edgeColor, accentColor, pattern;
     public final boolean tails;
@@ -60,7 +61,7 @@ public enum ButterflyVariant {
     }
 
     private static final ButterflyVariant[] ALL = values();
-    public static final int PATTERN_COUNT = 10;
+    public static final int PATTERN_COUNT = 11;
     public static ButterflyVariant byName(String name) {
         try { return valueOf(name.toUpperCase(java.util.Locale.ROOT)); }
         catch (IllegalArgumentException exception) { return MORPHO; }

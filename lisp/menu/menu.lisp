@@ -7,7 +7,7 @@
     (:build "共通ビルド・バージョン指定" "sh/build/build.sh" "clean / offline / -Pmod_version_override=... / -Prelease_type=...")
     (:build "macOS向けビルド" "sh/build/build_mac.sh" "clean / offline。出力先はbuild/libs")
     (:build "WSLからWindows版をビルド" "sh/build/build_win.sh" "cleanのみ対応。Windows側の固定パスを使用")
-    (:generate "蝶・刀のコマンドを対話式で生成" "sh/generate/generate_commands.sh" "48種類の蝶、拵え、設置角度などを設定。SBCLが必要")
+    (:generate "蝶・刀のコマンドを対話式で生成" "sh/generate/generate_commands.sh" "49種類の蝶、拵え、設置角度などを設定。SBCLが必要")
     (:generate "撮影ワールドを新規作成" "sh/generate/generate-photo-world.sh" "SBCL・gzip・zip。既存ワールドは上書きしません")
     (:generate "テクスチャ・ノイズフォントを生成" "sh/generate/generate-assets.sh" "SBCL・Java 17。Lispで画素を加工")
     (:maintenance "Javaのlevel参照を移行" "sh/maintenance/codemod-level.sh" "既定は候補表示、--applyでバックアップ付き適用")

@@ -45,7 +45,7 @@
     (when (> i 0) (setf (gethash "Variant" tag) (nth (1- i) names)))
     (when (yes "色と模様を設定しますか？")
       (put-colors tag '(("羽" "WingColor") ("縁" "EdgeColor") ("模様" "AccentColor") ("胴体" "BodyColor")))
-      (let ((pattern (choose "模様" '("プリセットのまま" "翅脈" "翅脈と白斑" "アゲハ縞" "小斑点" "目玉" "帯" "点列" "ジグザグ" "輪郭パネル" "市松"))))
+      (let ((pattern (choose "模様" '("プリセットのまま" "翅脈" "翅脈と白斑" "アゲハ縞" "小斑点" "目玉" "帯" "点列" "ジグザグ" "輪郭パネル" "市松" "夢見鳥風（専用の羽形状）"))))
         (when (> pattern 0) (setf (gethash "Pattern" tag) (1- pattern))))
       (let ((tails (choose "尾" '("プリセットのまま" "あり" "なし"))))
         (when (> tails 0) (setf (gethash "Tails" tag) (if (= tails 1) :true :false)))))

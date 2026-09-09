@@ -46,6 +46,7 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
     public static class Model extends EntityModel<ButterflyEntity> {
         private final ModelPart body, left, right, leftMark, rightMark;
         private final ModelPart[] tails = new ModelPart[2];
+        private final ModelPart[][] dreamWings = new ModelPart[2][2];
         private final ModelPart[][][] markings = new ModelPart[ButterflyVariant.PATTERN_COUNT][2][3];
         private int pattern, wingColor, edgeColor, accentColor, bodyColor;
         private boolean hasTails;
@@ -64,6 +65,17 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
                     .addBox(0.75F,-0.7F,-3.4F,0.25F,0.3F,1.4F), PartPose.offset(0,22,0));
             for (int side : new int[]{-1,1}) {
                 String name = side < 0 ? "left" : "right";
+                // Stepped, swept forewings and rounded hindwings, with inset color panels.
+                for (int layer=0; layer<2; layer++) {
+                    CubeListBuilder shape=CubeListBuilder.create();
+                    float inset=layer*0.22F;
+                    float[][] rows={{0.9F,-4,2.7F,0.8F},{0.4F,-3.2F,4.1F,0.8F},
+                            {0.2F,-2.4F,4.8F,1.2F},{0.2F,-1.2F,4.3F,1.2F},
+                            {0.3F,0,3.4F,1.2F},{0.6F,1.2F,3.4F,1.2F},{1.1F,2.4F,2.3F,0.8F}};
+                    for (float[] row:rows) mark(shape,side,row[0]+inset,row[1]+inset,
+                            row[2]-2*inset,row[3]-2*inset,layer*0.05F);
+                    root.addOrReplaceChild(name+"Dream"+layer,shape,PartPose.offset(0,22,0));
+                }
                 root.addOrReplaceChild(name, CubeListBuilder.create().texOffs(0,0)
                         .addBox(side < 0 ? -5 : 0,0,-3,5,0.15F,3.5F)
                         .addBox(side < 0 ? -3.5F : 0,0,0.5F,3.5F,0.15F,2.7F),PartPose.offset(0,22,0));
@@ -129,6 +141,13 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
                                 if ((i+j)%2==0) mark(dark,side,0.8F+i*0.65F,-2.4F+j*0.7F,0.55F,0.55F,0.08F);
                             mark(accent,side,1,1.7F,1.7F,0.25F,0.11F);
                         }
+                        case 10 -> { // Golden, stepped teardrops on warm dream wings.
+                            mark(accent,side,2.1F,-2.9F,0.6F,0.55F,0.11F);
+                            mark(accent,side,1.65F,-2.35F,1.5F,0.8F,0.11F);
+                            mark(accent,side,1.9F,-1.55F,1,0.5F,0.11F);
+                            mark(accent,side,1.45F,1.35F,1.6F,0.6F,0.11F);
+                            mark(accent,side,1.8F,1.95F,0.9F,0.5F,0.11F);
+                        }
                     }
                     CubeListBuilder[] layers={dark,accent,pupil};
                     for (int layer=0;layer<3;layer++) root.addOrReplaceChild(name+"Pattern"+pattern+"_"+layer,
@@ -141,6 +160,7 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
             for (int side=0;side<2;side++) {
                 String name=side==0?"left":"right";
                 tails[side]=baked.getChild(name+"Tail");
+                for (int layer=0;layer<2;layer++) dreamWings[side][layer]=baked.getChild(name+"Dream"+layer);
                 for (int pattern=0;pattern<ButterflyVariant.PATTERN_COUNT;pattern++) for (int layer=0;layer<3;layer++)
                     markings[pattern][side][layer]=baked.getChild(name+"Pattern"+pattern+"_"+layer);
             }
@@ -158,6 +178,7 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
             for (int side=0;side<2;side++) {
                 float angle=side==0?flap:-flap;
                 tails[side].zRot=angle;
+                for (ModelPart part:dreamWings[side]) part.zRot=angle;
                 for (int layer=0;layer<3;layer++) markings[pattern][side][layer].zRot=angle;
             }
         }
@@ -171,10 +192,17 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
             draw(body,bodyColor,pose,buffer,light,overlay,alpha);
             pose.pushPose();
             pose.scale(wingWidth,1,wingLength);
-            draw(left,edgeColor,pose,buffer,light,overlay,alpha);
-            draw(right,edgeColor,pose,buffer,light,overlay,alpha);
-            draw(leftMark,wingColor,pose,buffer,light,overlay,alpha);
-            draw(rightMark,wingColor,pose,buffer,light,overlay,alpha);
+            if (pattern==10) {
+                for (ModelPart[] wing:dreamWings) {
+                    draw(wing[0],edgeColor,pose,buffer,light,overlay,alpha);
+                    draw(wing[1],wingColor,pose,buffer,light,overlay,alpha);
+                }
+            } else {
+                draw(left,edgeColor,pose,buffer,light,overlay,alpha);
+                draw(right,edgeColor,pose,buffer,light,overlay,alpha);
+                draw(leftMark,wingColor,pose,buffer,light,overlay,alpha);
+                draw(rightMark,wingColor,pose,buffer,light,overlay,alpha);
+            }
             for (int side=0;side<2;side++) {
                 if (hasTails) draw(tails[side],edgeColor,pose,buffer,light,overlay,alpha);
                 for (int layer=0;layer<3;layer++) draw(markings[pattern][side][layer],

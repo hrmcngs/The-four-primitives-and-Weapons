@@ -1,6 +1,6 @@
 # 蝶の色と模様
 
-蝶 `the_four_primitives_and_weapons:butterfly` は48種類のプリセット、10系統の模様を持ちます。
+蝶 `the_four_primitives_and_weapons:butterfly` は49種類のプリセット、11系統の模様を持ちます。
 スポーンエッグや種類を指定しない召喚ではランダムに決まり、保存・再読込後も維持されます。
 種類はクライアントへ同期されます。以前の種類データがない蝶には初回読込時に種類が付きます。
 
@@ -38,7 +38,7 @@
 /data merge entity @e[type=the_four_primitives_and_weapons:butterfly,distance=..8,sort=nearest,limit=1] {Variant:0}
 ```
 
-`Variant` は整数0〜47、または下記の名前を指定できます。範囲外の整数・未知の名前は0として扱います。
+`Variant` は整数0〜48、または下記の名前を指定できます。範囲外の整数・未知の名前は0として扱います。
 Javaコードの変更なので、反映にはMODの再ビルドとゲームの再起動が必要です。
 
 参考にした資料：モルフォの青は [Natural History Museum](https://www.nhm.ac.uk/discover/spotlight-blue-morpho.html)、
@@ -57,12 +57,12 @@ Javaコードの変更なので、反映にはMODの再ビルドとゲームの�
 
 | NBT | 範囲／形式 | 用途 |
 | --- | --- | --- |
-| `Variant` | 0〜47 または名前 | 色・模様・尾のプリセット |
+| `Variant` | 0〜48 または名前 | 色・模様・尾のプリセット |
 | `WingColor` | `"#RRGGBB"` または整数RGB | 羽の地色 |
 | `EdgeColor` | 同上 | 羽の縁と模様の暗い部分 |
 | `AccentColor` | 同上 | 斑点・帯・模様の明るい部分 |
 | `BodyColor` | 同上 | 胴体と触角 |
-| `Pattern` | 0〜9 | 模様を独立して選択 |
+| `Pattern` | 0〜10 | 模様を独立して選択 |
 | `Tails` | `0b` / `1b` | 尾状突起を非表示／表示 |
 | `Size` | 0.25〜4、標準1 | 全体の大きさ。当たり判定も拡縮 |
 | `WingWidth` | 0.5〜2、標準1 | 羽だけの横幅 |
@@ -113,10 +113,11 @@ Javaコードの変更なので、反映にはMODの再ビルドとゲームの�
 | 7 | ジグザグ帯 |
 | 8 | 輪郭付きパネル |
 | 9 | 市松状の斑紋 |
+| 10 | 夢見鳥風の雫模様・専用の羽形状 |
 
 ## 全プリセット
 
-最初の10種類は従来のIDを維持しています。追加の38種類は色をテーマにした創作プリセットです。
+最初の10種類は従来のIDを維持しています。ID 10〜47は色をテーマにした創作プリセット、ID 48は夢見鳥風のdreamwingです。既存のIDは維持しています。
 
 | ID | 名前 | 羽の色 | 模様 | 尾 |
 | --- | --- | --- | --- | --- |
@@ -168,3 +169,20 @@ Javaコードの変更なので、反映にはMODの再ビルドとゲームの�
 | 45 | `crimson` | `#8E3043` | 2 | あり |
 | 46 | `firefly_gold` | `#DBC057` | 5 | なし |
 | 47 | `moonlight` | `#D6DCEB` | 4 | あり |
+| 48 | `dreamwing` | `#F06428` | 10 | なし |
+
+## 夢見鳥風の蝶
+
+赤橙の羽・深紅の縁・金色の雫模様を持つプリセットです。Pattern 10で専用の羽形状になります。色の上書きも可能です。
+
+```mcfunction
+summon the_four_primitives_and_weapons:butterfly ~ ~1 ~ {Variant:"dreamwing"}
+```
+
+撮影用に位置を固定してゆっくり羽ばたかせる例：
+
+```mcfunction
+summon the_four_primitives_and_weapons:butterfly ~ ~1 ~ {Variant:"dreamwing",NoAI:1b,PersistenceRequired:1b,Size:1.5f,FlapSpeed:0.4f}
+```
+
+`bash sh/generate/generate_commands.sh` でもdreamwingを選択できます。通常の蝶として飛び、吸収・変身・戦闘能力は持ちません。
