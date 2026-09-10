@@ -45,12 +45,13 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
 
     public static class Model extends EntityModel<ButterflyEntity> {
         private final ModelPart body, left, right, leftMark, rightMark;
+        private final ModelPart[] antennae = new ModelPart[2];
         private final ModelPart[] tails = new ModelPart[2];
         private final ModelPart[][] dreamWings = new ModelPart[2][2];
         private final ModelPart[][][] markings = new ModelPart[ButterflyVariant.PATTERN_COUNT][2][3];
         private int pattern, wingColor, edgeColor, accentColor, bodyColor;
         private boolean hasTails;
-        private float wingWidth=1, wingLength=1;
+        private float wingWidth=1, wingLength=1, bodyWidth=1, bodyLength=1;
 
         private static void mark(CubeListBuilder cubes, int side, float x, float z, float width, float depth, float layer) {
             cubes.texOffs(0,0).addBox(side < 0 ? -x-width : x, -layer, z, width, 0.15F+2*layer, depth);
@@ -59,10 +60,17 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
         public Model() {
             MeshDefinition mesh = new MeshDefinition();
             var root = mesh.getRoot();
-            root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0,0)
-                    .addBox(-0.45F,-0.5F,-2.5F,0.9F,1,5)
-                    .addBox(-1,-0.7F,-3.4F,0.25F,0.3F,1.4F)
-                    .addBox(0.75F,-0.7F,-3.4F,0.25F,0.3F,1.4F), PartPose.offset(0,22,0));
+            var bodyRoot = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0,0)
+                    .addBox(-0.45F,-0.5F,-2.1F,0.9F,1,3.3F)
+                    .addBox(-0.3F,-0.35F,1.2F,0.6F,0.7F,1.5F)
+                    .addBox(-0.6F,-0.65F,-3.1F,1.2F,1.15F,1.2F), PartPose.offset(0,22,0));
+            // The pivots lie inside the head; length and rotation never detach the roots.
+            for (int side : new int[]{-1,1}) {
+                bodyRoot.addOrReplaceChild(side < 0 ? "leftAntenna" : "rightAntenna", CubeListBuilder.create().texOffs(0,0)
+                        .addBox(-0.09F,-0.09F,-1.8F,0.18F,0.18F,1.85F)
+                        .addBox(-0.15F,-0.15F,-2.0F,0.3F,0.3F,0.35F),
+                        PartPose.offset(side*0.32F,-0.4F,-2.95F));
+            }
             for (int side : new int[]{-1,1}) {
                 String name = side < 0 ? "left" : "right";
                 // Stepped, swept forewings and rounded hindwings, with inset color panels.
@@ -157,6 +165,7 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
             ModelPart baked = LayerDefinition.create(mesh,16,16).bakeRoot();
             body=baked.getChild("body");left=baked.getChild("left");right=baked.getChild("right");
             leftMark=baked.getChild("leftMark");rightMark=baked.getChild("rightMark");
+            antennae[0]=body.getChild("leftAntenna"); antennae[1]=body.getChild("rightAntenna");
             for (int side=0;side<2;side++) {
                 String name=side==0?"left":"right";
                 tails[side]=baked.getChild(name+"Tail");
@@ -168,12 +177,14 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
 
         @Override
         public void setupAnim(ButterflyEntity entity,float limbSwing,float limbAmount,float age,float yaw,float pitch) {
-            float flap = 0.25F + Mth.sin(age*1.3F*entity.getFlapSpeed() + entity.getId())*entity.getFlapAmount();
+            float flap = entity.getFlapRestAngle()*Mth.DEG_TO_RAD + Mth.sin(age*1.3F*entity.getFlapSpeed() + entity.getId())*entity.getFlapAmount();
             left.zRot=leftMark.zRot=flap;
             right.zRot=rightMark.zRot=-flap;
             pattern=entity.getPattern();
             wingColor=entity.getWingColor(); edgeColor=entity.getEdgeColor();
             accentColor=entity.getAccentColor(); bodyColor=entity.getBodyColor();
+            bodyWidth=entity.getBodyWidth(); bodyLength=entity.getBodyLength();
+            configureAntennae(entity.getAntennaLength(),entity.getAntennaSpread(),entity.getAntennaTilt());
             hasTails=entity.hasTails(); wingWidth=entity.getWingWidth(); wingLength=entity.getWingLength();
             for (int side=0;side<2;side++) {
                 float angle=side==0?flap:-flap;
@@ -183,13 +194,24 @@ public class ButterflyRenderer extends MobRenderer<ButterflyEntity, ButterflyRen
             }
         }
 
+        public void configureAntennae(float length, float spread, float tilt) {
+            for (int side=0;side<2;side++) {
+                antennae[side].zScale=length;
+                antennae[side].yRot=(side==0?1:-1)*spread*Mth.DEG_TO_RAD;
+                antennae[side].xRot=-tilt*Mth.DEG_TO_RAD;
+            }
+        }
+
         private void draw(ModelPart part, int color, PoseStack pose, VertexConsumer buffer, int light, int overlay, float alpha) {
             part.render(pose,buffer,light,overlay,((color>>16)&255)/255F,((color>>8)&255)/255F,(color&255)/255F,alpha);
         }
 
         @Override
         public void renderToBuffer(PoseStack pose,VertexConsumer buffer,int light,int overlay,float r,float g,float b,float alpha) {
+            pose.pushPose();
+            pose.scale(bodyWidth,1,bodyLength);
             draw(body,bodyColor,pose,buffer,light,overlay,alpha);
+            pose.popPose();
             pose.pushPose();
             pose.scale(wingWidth,1,wingLength);
             if (pattern==10) {

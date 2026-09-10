@@ -52,14 +52,17 @@ public class ButterflyEntity extends FlyingMob {
     // Rebuild only after synchronized appearance data changes, not on every rendered frame.
     private Appearance cachedAppearance;
     private record Appearance(int wing, int edge, int accent, int body, int pattern, boolean tails,
-                              float size, float flapSpeed, float flapAmount, float width, float length, float flightSpeed) {}
+                              float size, float flapSpeed, float flapAmount, float width, float length, float flightSpeed,
+                              float antennaLength, float antennaSpread, float antennaTilt, float bodyWidth, float bodyLength, float flapRestAngle) {}
     private Appearance appearance() {
         if (cachedAppearance == null) {
             ButterflyVariant variant = getVariant();
             cachedAppearance = new Appearance(color("WingColor",variant.wingColor), color("EdgeColor",variant.edgeColor),
                     color("AccentColor",variant.accentColor),color("BodyColor",0x261F1F),color("Pattern",variant.pattern),
                     color("Tails",variant.tails?1:0)==1,setting("Size",1),setting("FlapSpeed",1),
-                    setting("FlapAmount",0.9F),setting("WingWidth",1),setting("WingLength",1),setting("FlightSpeed",1));
+                    setting("FlapAmount",0.9F),setting("WingWidth",1),setting("WingLength",1),setting("FlightSpeed",1),
+                    setting("AntennaLength",1),setting("AntennaSpread",25),setting("AntennaTilt",20),
+                    setting("BodyWidth",1),setting("BodyLength",1),setting("FlapRestAngle",14.323945F));
         }
         return cachedAppearance;
     }
@@ -74,6 +77,12 @@ public class ButterflyEntity extends FlyingMob {
     public float getFlapAmount() { return appearance().flapAmount(); }
     public float getWingWidth() { return appearance().width(); }
     public float getWingLength() { return appearance().length(); }
+    public float getAntennaLength() { return appearance().antennaLength(); }
+    public float getAntennaSpread() { return appearance().antennaSpread(); }
+    public float getAntennaTilt() { return appearance().antennaTilt(); }
+    public float getBodyWidth() { return appearance().bodyWidth(); }
+    public float getBodyLength() { return appearance().bodyLength(); }
+    public float getFlapRestAngle() { return appearance().flapRestAngle(); }
 
     @Override
     public EntityDimensions getDimensions(Pose pose) {
@@ -100,37 +109,9 @@ public class ButterflyEntity extends FlyingMob {
         super.readAdditionalSaveData(tag);
         if (tag.contains("Variant", 99)) entityData.set(VARIANT, ButterflyVariant.byId(tag.getInt("Variant")).ordinal());
         else if (tag.contains("Variant", 8)) entityData.set(VARIANT, ButterflyVariant.byName(tag.getString("Variant")).ordinal());
-        CompoundTag appearance = new CompoundTag();
-        for (String key : new String[]{"WingColor", "EdgeColor", "AccentColor", "BodyColor"}) {
-            if (tag.contains(key, 99)) {
-                int value=tag.getInt(key);
-                if (value>=0 && value<=0xFFFFFF) appearance.putInt(key,value);
-            } else if (tag.contains(key, 8)) {
-                String value=tag.getString(key);
-                if (value.startsWith("#")) value=value.substring(1);
-                else if (value.startsWith("0x") || value.startsWith("0X")) value=value.substring(2);
-                if (value.matches("[0-9a-fA-F]{6}")) appearance.putInt(key,Integer.parseInt(value,16));
-            }
-        }
-        if (tag.contains("Pattern",99) && tag.getInt("Pattern")>=0 && tag.getInt("Pattern")<ButterflyVariant.PATTERN_COUNT)
-            appearance.putInt("Pattern",tag.getInt("Pattern"));
-        if (tag.contains("Tails",99) && tag.getInt("Tails")>=0 && tag.getInt("Tails")<=1)
-            appearance.putInt("Tails",tag.getInt("Tails"));
-        readSetting(tag,appearance,"Size",0.25F,4);
-        readSetting(tag,appearance,"FlapSpeed",0,4);
-        readSetting(tag,appearance,"FlapAmount",0,1.4F);
-        readSetting(tag,appearance,"FlightSpeed",0,3);
-        readSetting(tag,appearance,"WingWidth",0.5F,2);
-        readSetting(tag,appearance,"WingLength",0.5F,2);
+        CompoundTag appearance = ButterflyAppearanceSettings.readAppearance(tag);
         entityData.set(APPEARANCE,appearance);
         flightTarget=null;
-    }
-
-    private static void readSetting(CompoundTag source, CompoundTag target, String key, float min, float max) {
-        if (source.contains(key,99)) {
-            float value=source.getFloat(key);
-            if (Float.isFinite(value) && value>=0) target.putFloat(key,Mth.clamp(value,min,max));
-        }
     }
 
     public static AttributeSupplier.Builder createAttributes() {

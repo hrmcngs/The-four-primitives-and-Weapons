@@ -14,6 +14,7 @@
     (:maintenance "Javaのlevel参照を移行" "sh/maintenance/codemod-level.sh" "既定は候補表示、--applyでバックアップ付き適用")
     (:maintenance "MCreatorのコードをロック" "sh/maintenance/lock_codes.sh" "通常ロック / --allでベース設定とバックアップも処理")
     (:maintenance "外部MOD・シェーダーを同期" "sh/maintenance/sync-selected-external-mods.sh" "--performance-only / --light / --offline。libs/runtime_selectedを更新")
+    (:test "蝶の見た目・触角を検証" "sh/test/test-butterfly-appearance.sh" "Java 17・Gradle。NBTとモデル形状を一時出力で検証")
     (:test "通信軽量化を検証" "sh/test/test-performance.sh" "Java 17。重複送信の抑制と再同期を検証")
     (:test "ランダム撮影地形を検証" "sh/test/test-photo-terrain.sh" "SBCL。シード再現・地形の傾斜・植生を検証")
     (:test "Lisp移植した画像・修正ツールを検証" "sh/test/test-lisp-migration.sh" "SBCL・Java 17。PNG入出力と画素処理を検証")

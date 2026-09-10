@@ -52,6 +52,9 @@
     (when (yes "大きさ・羽の形・動きを設定しますか？")
       (loop for (label key low high default) in
         '(("大きさ" "Size" 0.25 4 1) ("羽の幅" "WingWidth" 0.5 2 1) ("羽の長さ" "WingLength" 0.5 2 1)
+          ("触角の長さ" "AntennaLength" 0.25 3 1) ("触角の開き（度）" "AntennaSpread" 0 80 25)
+          ("触角の傾き（度）" "AntennaTilt" 0 80 20) ("胴体の幅" "BodyWidth" 0.5 2 1)
+          ("胴体の長さ" "BodyLength" 0.5 2 1) ("羽の開き角（度）" "FlapRestAngle" 0 80 14.323945)
           ("羽ばたき速度" "FlapSpeed" 0 4 1) ("振幅" "FlapAmount" 0 1.4 0.9) ("飛行速度" "FlightSpeed" 0 3 1))
         do (setf (gethash key tag) (numeric label low high default))))
     (when (yes "その場へ固定しますか？")
