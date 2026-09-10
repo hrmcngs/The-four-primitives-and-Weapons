@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"the_four_primitives_and_weapons:stripped_kinmokusei_log"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

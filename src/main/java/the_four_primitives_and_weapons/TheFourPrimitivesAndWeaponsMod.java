@@ -108,6 +108,8 @@ public class TheFourPrimitivesAndWeaponsMod {
 		the_four_primitives_and_weapons.item.SayaWoodCraftRecipe.Registrar.SERIALIZERS.register(bus);
 		// 漆の木 ( ブロック一式 )
 		the_four_primitives_and_weapons.init.UrushiWoodInit.register(bus);
+		the_four_primitives_and_weapons.init.FloweringWoodInit.register(bus);
+		the_four_primitives_and_weapons.init.OsmanthusFoodInit.register(bus);
 		// 刀の拵え ( 柄/鍔 の染色 ) レシピのシリアライザ
 		the_four_primitives_and_weapons.item.KatanaFittingRecipe.Registrar.SERIALIZERS.register(bus);
 		// 拵え台 ( ブロック + アイテム + メニュー )

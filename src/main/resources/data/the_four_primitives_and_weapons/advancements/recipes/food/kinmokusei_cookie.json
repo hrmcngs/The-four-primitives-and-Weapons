@@ -1,0 +1,1 @@
+{"parent":"minecraft:recipes/root","criteria":{"has_ingredient":{"trigger":"minecraft:inventory_changed","conditions":{"items":[{"items":["the_four_primitives_and_weapons:kinmokusei_syrup"]}]}}},"rewards":{"recipes":["the_four_primitives_and_weapons:kinmokusei_cookie"]}}

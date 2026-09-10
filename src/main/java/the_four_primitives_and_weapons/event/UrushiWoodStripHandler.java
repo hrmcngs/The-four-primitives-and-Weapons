@@ -15,6 +15,13 @@ public final class UrushiWoodStripHandler {
         if (event.getToolAction() != ToolActions.AXE_STRIP
             || !event.getHeldItemStack().canPerformAction(ToolActions.AXE_STRIP)) return;
         Block input = event.getState().getBlock();
+        for (var wood : the_four_primitives_and_weapons.init.FloweringWoodInit.WOODS.values()) {
+            if (input == wood.log().get()) {
+                event.setFinalState(wood.stripped().get().defaultBlockState().setValue(RotatedPillarBlock.AXIS,
+                    event.getState().getValue(RotatedPillarBlock.AXIS)));
+                return;
+            }
+        }
         Block output;
         if (input == UrushiWoodInit.URUSHI_LOG.get()) output = UrushiWoodInit.STRIPPED_URUSHI_LOG.get();
         else if (input == UrushiWoodInit.URUSHI_WOOD.get()) output = UrushiWoodInit.STRIPPED_URUSHI_WOOD.get();

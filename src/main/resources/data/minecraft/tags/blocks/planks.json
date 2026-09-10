@@ -1,8 +1,1 @@
-{
-  "replace": false,
-  "values": [
-    "the_four_primitives_and_weapons:urushi_planks",
-    "the_four_primitives_and_weapons:black_urushi_planks",
-    "the_four_primitives_and_weapons:red_urushi_planks"
-  ]
-}
+{"replace":false,"values":["the_four_primitives_and_weapons:urushi_planks","the_four_primitives_and_weapons:black_urushi_planks","the_four_primitives_and_weapons:red_urushi_planks","the_four_primitives_and_weapons:tsubaki_planks","the_four_primitives_and_weapons:shidare_ume_planks","the_four_primitives_and_weapons:ginmokusei_planks","the_four_primitives_and_weapons:kinmokusei_planks"]}

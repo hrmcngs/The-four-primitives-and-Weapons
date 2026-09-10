@@ -1,8 +1,1 @@
-{
-  "replace": false,
-  "values": [
-    "#the_four_primitives_and_weapons:urushi_logs",
-    "#the_four_primitives_and_weapons:black_urushi_logs",
-    "#the_four_primitives_and_weapons:red_urushi_logs"
-  ]
-}
+{"replace":false,"values":["#the_four_primitives_and_weapons:urushi_logs","#the_four_primitives_and_weapons:black_urushi_logs","#the_four_primitives_and_weapons:red_urushi_logs","the_four_primitives_and_weapons:stripped_tsubaki_log","the_four_primitives_and_weapons:tsubaki_log","the_four_primitives_and_weapons:stripped_shidare_ume_log","the_four_primitives_and_weapons:shidare_ume_log","the_four_primitives_and_weapons:stripped_ginmokusei_log","the_four_primitives_and_weapons:ginmokusei_log","the_four_primitives_and_weapons:stripped_kinmokusei_log","the_four_primitives_and_weapons:kinmokusei_log"]}
