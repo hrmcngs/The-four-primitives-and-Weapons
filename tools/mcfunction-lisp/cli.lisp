@@ -1,0 +1,15 @@
+(load (merge-pathnames "library.lisp" *load-truename*))
+(in-package :mcfunction-lisp)
+(handler-case
+  (let ((args (uiop:command-line-arguments)) (options (make-hash-table :test 'equal)))
+    (loop while args for key = (pop args) do
+      (unless (and (member key '("--source" "--output" "--namespace" "--pack-format" "--function-directory") :test #'equal) args)
+        (error "Invalid option or missing value: ~A" key))
+      (setf (gethash key options) (pop args)))
+    (unless (and (gethash "--source" options) (gethash "--output" options)) (error "--source and --output are required."))
+    (let ((*project* (make-project :namespace (or (gethash "--namespace" options) "example")
+                    :pack-format (parse-integer (or (gethash "--pack-format" options) "15"))
+                    :function-directory (or (gethash "--function-directory" options) "functions"))))
+      (load (merge-pathnames (gethash "--source" options) (uiop:getcwd)))
+      (format t "Datapack: ~A~%" (write-project *project* (gethash "--output" options)))))
+  (error (e) (format *error-output* "mcfunction-lisp: ~A~%" e) (uiop:quit 1)))

@@ -1,3 +1,4 @@
+(load (merge-pathnames "../../tools/mcfunction-lisp/library.lisp" *load-truename*))
 (in-package :maw-tools)
 ;; Lisp -> mcfunction bridge. Coordinates and PRNG are deterministic for a given seed.
 (defvar *terrain-seed* 1)
@@ -95,8 +96,7 @@
             (+ x 0.5d0) (+ h 1.1d0) (+ z 0.5d0) scene item (if (equal scene "flowers") #xE8B4C8 #x8A8980) (+ 8 (terrain-random 65)) (terrain-random 360)))))
     (values (nreverse *terrain-lines*) (terrain-height (- center 10) 22 center))))
 (defun terrain-write-function (pack path lines)
-  (write-text (merge-pathnames (format nil "data/blade_gallery/functions/~A.mcfunction" path) pack)
-    (format nil "~{~A~%~}" lines)))
+  (mcfunction-lisp:write-function-file pack "blade_gallery" path lines :if-exists :supersede))
 (defun generate-photo-terrain (pack seed)
   (let ((scenes '("rubble" "burned" "battlefield" "flowers")))
     (loop for scene in scenes for center from 128 by 128 for index from 0 do
