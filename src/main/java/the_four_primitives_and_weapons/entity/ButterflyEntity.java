@@ -49,17 +49,31 @@ public class ButterflyEntity extends FlyingMob {
         CompoundTag tag = entityData.get(APPEARANCE);
         return tag.contains(key) ? tag.getFloat(key) : fallback;
     }
-    public int getWingColor() { return color("WingColor", getVariant().wingColor); }
-    public int getEdgeColor() { return color("EdgeColor", getVariant().edgeColor); }
-    public int getAccentColor() { return color("AccentColor", getVariant().accentColor); }
-    public int getBodyColor() { return color("BodyColor", 0x261F1F); }
-    public int getPattern() { return color("Pattern", getVariant().pattern); }
-    public boolean hasTails() { return color("Tails", getVariant().tails ? 1 : 0) == 1; }
-    public float getButterflySize() { return setting("Size", 1); }
-    public float getFlapSpeed() { return setting("FlapSpeed", 1); }
-    public float getFlapAmount() { return setting("FlapAmount", 0.9F); }
-    public float getWingWidth() { return setting("WingWidth", 1); }
-    public float getWingLength() { return setting("WingLength", 1); }
+    // Rebuild only after synchronized appearance data changes, not on every rendered frame.
+    private Appearance cachedAppearance;
+    private record Appearance(int wing, int edge, int accent, int body, int pattern, boolean tails,
+                              float size, float flapSpeed, float flapAmount, float width, float length, float flightSpeed) {}
+    private Appearance appearance() {
+        if (cachedAppearance == null) {
+            ButterflyVariant variant = getVariant();
+            cachedAppearance = new Appearance(color("WingColor",variant.wingColor), color("EdgeColor",variant.edgeColor),
+                    color("AccentColor",variant.accentColor),color("BodyColor",0x261F1F),color("Pattern",variant.pattern),
+                    color("Tails",variant.tails?1:0)==1,setting("Size",1),setting("FlapSpeed",1),
+                    setting("FlapAmount",0.9F),setting("WingWidth",1),setting("WingLength",1),setting("FlightSpeed",1));
+        }
+        return cachedAppearance;
+    }
+    public int getWingColor() { return appearance().wing(); }
+    public int getEdgeColor() { return appearance().edge(); }
+    public int getAccentColor() { return appearance().accent(); }
+    public int getBodyColor() { return appearance().body(); }
+    public int getPattern() { return appearance().pattern(); }
+    public boolean hasTails() { return appearance().tails(); }
+    public float getButterflySize() { return appearance().size(); }
+    public float getFlapSpeed() { return appearance().flapSpeed(); }
+    public float getFlapAmount() { return appearance().flapAmount(); }
+    public float getWingWidth() { return appearance().width(); }
+    public float getWingLength() { return appearance().length(); }
 
     @Override
     public EntityDimensions getDimensions(Pose pose) {
@@ -68,6 +82,7 @@ public class ButterflyEntity extends FlyingMob {
 
     @Override
     public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+        if (APPEARANCE.equals(key) || VARIANT.equals(key)) cachedAppearance = null;
         super.onSyncedDataUpdated(key);
         if (APPEARANCE.equals(key)) refreshDimensions();
     }
@@ -126,8 +141,8 @@ public class ButterflyEntity extends FlyingMob {
     @Override
     protected void customServerAiStep() {
         super.customServerAiStep();
-        if (--flightTicks <= 0 || flightTarget == null || horizontalCollision
-                || position().distanceToSqr(flightTarget) < 0.4) {
+        // Failed searches and continuous wall contact must also respect the retry interval.
+        if (--flightTicks <= 0) {
             flightTicks = 40 + random.nextInt(40);
             flightTarget = null;
             BlockPos origin = blockPosition();
@@ -143,8 +158,12 @@ public class ButterflyEntity extends FlyingMob {
                 }
             }
         }
+        if (flightTarget != null && (horizontalCollision || position().distanceToSqr(flightTarget) < 0.4)) {
+            flightTarget = null;
+            flightTicks = Math.min(flightTicks, 5);
+        }
         if (flightTarget != null) {
-            Vec3 direction = flightTarget.subtract(position()).normalize().scale(0.1 * setting("FlightSpeed",1));
+            Vec3 direction = flightTarget.subtract(position()).normalize().scale(0.1 * appearance().flightSpeed());
             setDeltaMovement(getDeltaMovement().scale(0.75).add(direction.scale(0.25)));
             Vec3 motion = getDeltaMovement();
             if (motion.horizontalDistanceSqr() > 0.0001) {

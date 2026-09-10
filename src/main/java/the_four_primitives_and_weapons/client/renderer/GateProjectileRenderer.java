@@ -22,6 +22,7 @@ import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems;
  * Gate飛び道具レンダラー — 金の直刀が切先を進行方向に向けて飛ぶ
  */
 public class GateProjectileRenderer extends EntityRenderer<GateProjectileEntity> {
+    private static final ResourceLocation FIXED_TEXTURE_ID = new ResourceLocation("the_four_primitives_and_weapons", "textures/item/aa.png");
 
     private final ItemRenderer itemRenderer;
     private static final ItemStack DISPLAY_ITEM = ItemStack.EMPTY;
@@ -77,6 +78,6 @@ public class GateProjectileRenderer extends EntityRenderer<GateProjectileEntity>
 
     @Override
     public ResourceLocation getTextureLocation(GateProjectileEntity entity) {
-        return new ResourceLocation("the_four_primitives_and_weapons", "textures/item/aa.png");
+        return FIXED_TEXTURE_ID;
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.client.model.HumanoidModel;
 import the_four_primitives_and_weapons.entity.MeteorArrowEntity;
 
 public class MeteorArrowRenderer extends HumanoidMobRenderer<MeteorArrowEntity, HumanoidModel<MeteorArrowEntity>> {
+    private static final ResourceLocation FIXED_TEXTURE_ID = new ResourceLocation("the_four_primitives_and_weapons:textures/entities/toumei.png");
 	public MeteorArrowRenderer(EntityRendererProvider.Context context) {
 		super(context, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
 		this.addLayer(new HumanoidArmorLayer(this, new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)), new HumanoidModel(context.bakeLayer(ModelLayers.PLAYER_OUTER_ARMOR)), context.getModelManager()));
@@ -18,6 +19,6 @@ public class MeteorArrowRenderer extends HumanoidMobRenderer<MeteorArrowEntity, 
 
 	@Override
 	public ResourceLocation getTextureLocation(MeteorArrowEntity entity) {
-		return new ResourceLocation("the_four_primitives_and_weapons:textures/entities/toumei.png");
+		return FIXED_TEXTURE_ID;
 	}
 }

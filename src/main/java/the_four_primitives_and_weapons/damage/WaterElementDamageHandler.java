@@ -180,7 +180,7 @@ public class WaterElementDamageHandler {
         @SubscribeEvent
         public static void onServerTick(TickEvent.ServerTickEvent event) {
             if (event.phase != TickEvent.Phase.END) return;
-            if (event.getServer() == null) return;
+            if (event.getServer() == null || slowedMap.isEmpty()) return;
 
             List<UUID> toExpire = new ArrayList<>();
             slowedMap.forEach((id, entry) -> {
@@ -194,15 +194,14 @@ public class WaterElementDamageHandler {
 
             for (UUID id : toExpire) {
                 try {
-                    for (ServerLevel level : event.getServer().getAllLevels()) {
-                        Entity e = level.getEntity(id);
-                        if (e instanceof LivingEntity living) {
+                    {
+                        LivingEntity living = the_four_primitives_and_weapons.performance.ServerEntityLookup.living(event.getServer(), id);
+                        if (living != null) {
                             AttributeInstance attr = living.getAttribute(Attributes.MOVEMENT_SPEED);
                             if (attr != null) {
                                 try { attr.removeModifier(WATER_SLOW_UUID); }
                                 catch (Throwable ignored) {}
                             }
-                            break;
                         }
                     }
                 } catch (Throwable ignored) {}

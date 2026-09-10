@@ -28,6 +28,7 @@ import net.minecraft.world.item.Items;
 import the_four_primitives_and_weapons.entity.FlyingAttackerEntity;
 
 public class FlyingAttackerRenderer extends HumanoidMobRenderer<FlyingAttackerEntity, HumanoidModel<FlyingAttackerEntity>> {
+    private static final ResourceLocation FIXED_TEXTURE_ID = new ResourceLocation("the_four_primitives_and_weapons:textures/entities/toumei.png");
 
 	// @RotationParams(FlyingAttacker_Sword)
 	public static float SWORD_YAW = 0f; // 剣Y軸回転
@@ -74,7 +75,7 @@ public class FlyingAttackerRenderer extends HumanoidMobRenderer<FlyingAttackerEn
 
 	@Override
 	public ResourceLocation getTextureLocation(FlyingAttackerEntity entity) {
-		return new ResourceLocation("the_four_primitives_and_weapons:textures/entities/toumei.png");
+		return FIXED_TEXTURE_ID;
 	}
 	
 	// 剣を中央に配置するカスタムレイヤー

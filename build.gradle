@@ -530,6 +530,14 @@ jar {
 }
 
 processResources {
+    // Compact only build output; keep the editable source resources readable.
+    exclude '**/.DS_Store', '**/._*'
+    doLast {
+        def compactJson = new groovy.json.JsonGenerator.Options().disableUnicodeEscaping().build()
+        fileTree(destinationDir).matching { include '**/*.json', '**/*.mcmeta' }.each { resource ->
+            resource.setText(compactJson.toJson(new groovy.json.JsonSlurper().parse(resource, 'UTF-8')), 'UTF-8')
+        }
+    }
     inputs.property 'mc_version', mc_version
     inputs.property 'mod_version', mod_version
     filesMatching('META-INF/mods.toml') {

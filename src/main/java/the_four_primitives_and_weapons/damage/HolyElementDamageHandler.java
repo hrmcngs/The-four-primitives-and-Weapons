@@ -162,19 +162,18 @@ public class HolyElementDamageHandler {
         @SubscribeEvent
         public static void onServerTick(TickEvent.ServerTickEvent event) {
             if (event.phase != TickEvent.Phase.END) return;
-            if (event.getServer() == null) return;
+            if (event.getServer() == null || holyGlowTargets.isEmpty()) return;
 
             long now = event.getServer().overworld().getGameTime();
             holyGlowTargets.entrySet().removeIf(entry -> {
                 Long expireTick = entry.getValue();
                 if (expireTick != null && now < expireTick) return false;
 
-                for (ServerLevel level : event.getServer().getAllLevels()) {
-                    Entity entity = level.getEntity(entry.getKey());
-                    if (entity instanceof LivingEntity living) {
+                {
+                        LivingEntity living = the_four_primitives_and_weapons.performance.ServerEntityLookup.living(event.getServer(), entry.getKey());
+                        if (living != null) {
                         Boolean previous = holyGlowPreviousState.remove(entry.getKey());
                         living.setGlowingTag(previous != null && previous);
-                        break;
                     }
                 }
                 holyGlowPreviousState.remove(entry.getKey());

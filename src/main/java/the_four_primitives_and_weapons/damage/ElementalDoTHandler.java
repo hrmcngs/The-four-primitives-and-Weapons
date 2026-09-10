@@ -229,14 +229,7 @@ public class ElementalDoTHandler {
                 if (dot.remainingTick <= 0) return true; // 終了 → 削除
 
                 // エンティティを検索
-                LivingEntity target = null;
-                for (ServerLevel level : event.getServer().getAllLevels()) {
-                    net.minecraft.world.entity.Entity e = level.getEntity(entry.getKey());
-                    if (e instanceof LivingEntity living) {
-                        target = living;
-                        break;
-                    }
-                }
+                LivingEntity target = the_four_primitives_and_weapons.performance.ServerEntityLookup.living(event.getServer(), entry.getKey());
                 if (target == null || !target.isAlive()) return true;
 
                 // 独自 DamageSource で直接ダメージ

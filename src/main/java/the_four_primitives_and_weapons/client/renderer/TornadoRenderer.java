@@ -13,6 +13,7 @@ import the_four_primitives_and_weapons.entity.TornadoEntity;
  * The tornado effect is created using particles, so this renderer is mostly invisible
  */
 public class TornadoRenderer extends EntityRenderer<TornadoEntity> {
+    private static final ResourceLocation FIXED_TEXTURE_ID = new ResourceLocation("minecraft", "textures/entity/creeper/creeper.png");
 
     public TornadoRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -22,7 +23,7 @@ public class TornadoRenderer extends EntityRenderer<TornadoEntity> {
     @Override
     public ResourceLocation getTextureLocation(TornadoEntity entity) {
         // Return a dummy texture - tornado is rendered with particles
-        return new ResourceLocation("minecraft", "textures/entity/creeper/creeper.png");
+        return FIXED_TEXTURE_ID;
     }
 
     @Override

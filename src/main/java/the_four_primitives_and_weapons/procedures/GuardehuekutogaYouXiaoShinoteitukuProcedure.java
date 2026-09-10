@@ -11,14 +11,7 @@ public class GuardehuekutogaYouXiaoShinoteitukuProcedure {
 		if (entity == null)
 			return;
 		if (world instanceof ServerLevel _level) {
-			for (Entity e : _level.getAllEntities()) {
-				if (e instanceof ArmorStand stand && stand.getTags().contains("the_four_primitives_and_weapons_guard_bind")) {
-					float newYRot = stand.getYRot() + 40;
-					stand.setYRot(newYRot);
-					stand.setYBodyRot(newYRot);
-					stand.setYHeadRot(newYRot);
-				}
-			}
+			the_four_primitives_and_weapons.performance.GuardStandIndex.rotate(_level);
 		}
 		{
 			Entity _ent = entity;

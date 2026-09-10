@@ -55,19 +55,19 @@ public class TheFourPrimitivesAndWeaponsModVariables {
 		@SubscribeEvent
 		public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
 			if (!event.getEntity().level().isClientSide())
-				((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())).syncPlayerVariables(event.getEntity());
+				((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())).syncPlayerVariables(event.getEntity(), true);
 		}
 
 		@SubscribeEvent
 		public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
 			if (!event.getEntity().level().isClientSide())
-				((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())).syncPlayerVariables(event.getEntity());
+				((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())).syncPlayerVariables(event.getEntity(), true);
 		}
 
 		@SubscribeEvent
 		public static void onPlayerChangedDimensionSyncPlayerVariables(PlayerEvent.PlayerChangedDimensionEvent event) {
 			if (!event.getEntity().level().isClientSide())
-				((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())).syncPlayerVariables(event.getEntity());
+				((PlayerVariables) event.getEntity().getCapability(PLAYER_VARIABLES_CAPABILITY, null).orElse(new PlayerVariables())).syncPlayerVariables(event.getEntity(), true);
 		}
 
 		@SubscribeEvent
@@ -318,10 +318,20 @@ public class TheFourPrimitivesAndWeaponsModVariables {
 		public double questScreenPage = 1.0;
 		public boolean playerLockChallenge = false;
 
-		public void syncPlayerVariables(Entity entity) {
-			if (entity instanceof ServerPlayer serverPlayer)
-				TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new PlayerVariablesSyncMessage(this));
-		}
+        private final the_four_primitives_and_weapons.performance.SyncSnapshot<Tag> syncSnapshot =
+                new the_four_primitives_and_weapons.performance.SyncSnapshot<>();
+
+        public void syncPlayerVariables(Entity entity) { syncPlayerVariables(entity, false); }
+
+        public void syncPlayerVariables(Entity entity, boolean force) {
+            if (entity instanceof ServerPlayer serverPlayer) {
+                CompoundTag snapshot = (CompoundTag) writeNBT();
+                if (syncSnapshot.shouldSend(serverPlayer.connection, snapshot, force)) {
+                    TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.send(PacketDistributor.PLAYER.with(() -> serverPlayer),
+                            new PlayerVariablesSyncMessage(snapshot));
+                }
+            }
+        }
 
 		public Tag writeNBT() {
 			CompoundTag nbt = new CompoundTag();
@@ -379,6 +389,7 @@ public class TheFourPrimitivesAndWeaponsModVariables {
 
 	public static class PlayerVariablesSyncMessage {
 		public PlayerVariables data;
+        private CompoundTag encodedSnapshot;
 
 		public PlayerVariablesSyncMessage(FriendlyByteBuf buffer) {
 			this.data = new PlayerVariables();
@@ -386,11 +397,17 @@ public class TheFourPrimitivesAndWeaponsModVariables {
 		}
 
 		public PlayerVariablesSyncMessage(PlayerVariables data) {
-			this.data = data;
+			this((CompoundTag) data.writeNBT());
 		}
 
+        public PlayerVariablesSyncMessage(CompoundTag snapshot) {
+            this.encodedSnapshot = snapshot;
+            this.data = new PlayerVariables();
+            this.data.readNBT(snapshot);
+        }
+
 		public static void buffer(PlayerVariablesSyncMessage message, FriendlyByteBuf buffer) {
-			buffer.writeNbt((CompoundTag) message.data.writeNBT());
+			buffer.writeNbt(message.encodedSnapshot != null ? message.encodedSnapshot : (CompoundTag) message.data.writeNBT());
 		}
 
 		public static void handler(PlayerVariablesSyncMessage message, Supplier<NetworkEvent.Context> contextSupplier) {

@@ -147,7 +147,7 @@ public class LearningHandler {
     // ============================
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
+        if (event.phase != TickEvent.Phase.END || states.isEmpty()) return;
         if (event.getServer().getTickCount() % MOVE_OBSERVATION_INTERVAL != 0) return;
 
         for (ServerLevel level : event.getServer().getAllLevels()) {

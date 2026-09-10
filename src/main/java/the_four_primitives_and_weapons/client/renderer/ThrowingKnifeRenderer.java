@@ -22,6 +22,7 @@ import the_four_primitives_and_weapons.entity.ThrowingKnifeEntity;
  * 向きが合わない場合は下のパラメータ (YAW_OFFSET / PITCH_OFFSET / ROLL_OFFSET / SCALE) を編集して再ビルドする。
  */
 public class ThrowingKnifeRenderer extends EntityRenderer<ThrowingKnifeEntity> {
+    private static final ResourceLocation FIXED_TEXTURE_ID = new ResourceLocation("minecraft", "textures/block/iron_block.png");
 
     // @RotationParams(ThrowingKnife)
     public static float YAW_OFFSET = 0f;    // Y軸回転 (進行方向左右の追加回転)
@@ -81,6 +82,6 @@ public class ThrowingKnifeRenderer extends EntityRenderer<ThrowingKnifeEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(ThrowingKnifeEntity entity) {
-        return new ResourceLocation("minecraft", "textures/block/iron_block.png");
+        return FIXED_TEXTURE_ID;
     }
 }

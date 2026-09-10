@@ -14,6 +14,7 @@ import the_four_primitives_and_weapons.entity.LunaCompanionEntity;
 import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems;
 
 public class LunaCompanionRenderer extends EntityRenderer<LunaCompanionEntity> {
+    private static final ResourceLocation FIXED_TEXTURE_ID = new ResourceLocation("the_four_primitives_and_weapons", "textures/item/luna.png");
     private final ItemRenderer itemRenderer;
 
     public LunaCompanionRenderer(EntityRendererProvider.Context context) {
@@ -45,6 +46,6 @@ public class LunaCompanionRenderer extends EntityRenderer<LunaCompanionEntity> {
 
     @Override
     public ResourceLocation getTextureLocation(LunaCompanionEntity entity) {
-        return new ResourceLocation("the_four_primitives_and_weapons", "textures/item/luna.png");
+        return FIXED_TEXTURE_ID;
     }
 }

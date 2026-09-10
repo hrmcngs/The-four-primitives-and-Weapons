@@ -142,7 +142,7 @@ public class CorrosionElementDamageHandler {
         @SubscribeEvent
         public static void onServerTick(TickEvent.ServerTickEvent event) {
             if (event.phase != TickEvent.Phase.END) return;
-            if (event.getServer() == null) return;
+            if (event.getServer() == null || armorReductionTimers.isEmpty()) return;
 
             // ConcurrentHashMap の removeIf に渡される Entry が SimpleImmutableEntry で
             // entry.setValue() が UnsupportedOperationException を投げる JDK 実装がある
@@ -166,15 +166,14 @@ public class CorrosionElementDamageHandler {
             // 期限切れ entry: ARMOR modifier を取り除く + マップから削除
             for (java.util.UUID id : toExpire) {
                 try {
-                    for (ServerLevel level : event.getServer().getAllLevels()) {
-                        net.minecraft.world.entity.Entity e = level.getEntity(id);
-                        if (e instanceof LivingEntity living) {
+                    {
+                        LivingEntity living = the_four_primitives_and_weapons.performance.ServerEntityLookup.living(event.getServer(), id);
+                        if (living != null) {
                             AttributeInstance armorAttr = living.getAttribute(Attributes.ARMOR);
                             if (armorAttr != null) {
                                 try { armorAttr.removeModifier(ARMOR_REDUCTION_UUID); }
                                 catch (Throwable ignored) {}
                             }
-                            break;
                         }
                     }
                 } catch (Throwable ignored) {
