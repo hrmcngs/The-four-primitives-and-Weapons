@@ -86,6 +86,7 @@ public final class KatanaFittings {
 	public static boolean isFittingWeapon(ItemStack s) {
 		if (s == null || s.isEmpty()) return false;
 		if (s.is(PRACTICE_WEAPON_TAG)) return false; // 木刀など は 最優先で染色/差し替え不可
+		if (s.getItem() instanceof the_four_primitives_and_weapons.item.PromiseWeaponItem) return true;
 		if (s.is(FITTING_DYEABLE_TAG)) return true;
 		if (hasOwnCompleteFittingModel(s.getItem())) return true;
 		if (s.is(NO_FITTING_DYE_TAG)) return false;
@@ -237,6 +238,13 @@ public final class KatanaFittings {
 	public static final String KASHIRA_KEY = "KashiraColor";
 	/** はばきの色。整数 RGB または文字列 #RRGGBB / 0xRRGGBB。 */
 	public static final String HABAKI_KEY = "HabakiColor";
+	/** 刀身の乗算色。未設定は元のテクスチャを維持。モデルの tintindex 6 に対応。 */
+	public static final String BLADE_KEY = "BladeColor";
+	public static int bladeRgb(ItemStack stack) {
+		int color = rgb(stack, BLADE_KEY);
+		return color >= 0 ? color : 0xFFFFFF;
+	}
+	public static void setBlade(ItemStack stack, int rgb) { stack.getOrCreateTag().putInt(BLADE_KEY, rgb & 0xFFFFFF); }
 	/** 縁 ( ふち ) の色。 */
 	public static final String FUCHI_KEY = "FuchiColor";
 	/** 柄巻きの巻き方 ( デザイン )。 */

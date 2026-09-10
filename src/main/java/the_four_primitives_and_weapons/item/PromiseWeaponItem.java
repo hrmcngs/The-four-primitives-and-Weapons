@@ -1,6 +1,9 @@
 package the_four_primitives_and_weapons.item;
 
 import java.util.List;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.Entity;
+import the_four_primitives_and_weapons.util.KatanaFittings;
 import javax.annotation.Nullable;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -28,5 +31,37 @@ public final class PromiseWeaponItem extends SwordItem {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable("gui.the_four_primitives_and_weapons.ring.form." + form));
         tooltip.add(Component.translatable("tooltip.the_four_primitives_and_weapons.promise_weapon"));
+    }
+    // Palette generated with the addon ./maw create-weapon command.
+    private static void applyDefaultColors(ItemStack stack) {
+        CompoundTag tag = stack.getOrCreateTag();
+        if (!tag.contains(KatanaFittings.BLADE_KEY)) {
+            KatanaFittings.setBlade(stack, 0xCAD2D9);
+        }
+        if (!tag.contains(KatanaFittings.TSUKA_KEY)) {
+            KatanaFittings.setTsuka(stack, 0x171B22);
+        }
+        if (!tag.contains(KatanaFittings.TSUBA_KEY)) {
+            KatanaFittings.setTsuba(stack, 0xAEBAC5);
+        }
+        if (!tag.contains(KatanaFittings.KASHIRA_KEY)) {
+            KatanaFittings.setKashira(stack, 0xAEBAC5);
+        }
+        if (!tag.contains(KatanaFittings.HABAKI_KEY)) {
+            KatanaFittings.setHabaki(stack, 0xDFE6EB);
+        }
+    }
+
+    @Override
+    public ItemStack getDefaultInstance() {
+        ItemStack stack = super.getDefaultInstance();
+        applyDefaultColors(stack);
+        return stack;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+        applyDefaultColors(stack);
+        super.inventoryTick(stack, level, entity, slot, selected);
     }
 }

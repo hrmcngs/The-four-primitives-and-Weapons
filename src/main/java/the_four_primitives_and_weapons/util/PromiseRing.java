@@ -52,7 +52,7 @@ public final class PromiseRing {
             // 鞘に納めてある同じ形は、既存の鞘から抜く候補を使う。
             if (options.stream().anyMatch(option -> option.weaponStack.is(item))) continue;
             ItemStack preview = ring.hasTag() ? ItemStack.of(ring.getTag().getCompound(storage(i))) : ItemStack.EMPTY;
-            if (preview.isEmpty()) preview = new ItemStack(item);
+            if (preview.isEmpty()) preview = item.getDefaultInstance();
             options.add(new CuriosScabbardHelper.DrawableWeaponInfo(ring, preview,
                     CuriosScabbardHelper.ScabbardLocation.RING, "ring", i,
                     "ring · " + Component.translatable("gui.the_four_primitives_and_weapons.ring.form." + forms[i]).getString()));
@@ -116,7 +116,7 @@ public final class PromiseRing {
                 }
                 if (player.getCooldowns().isOnCooldown(TheFourPrimitivesAndWeaponsModItems.RING.get())) return false;
                 if (!ring.getOrCreateTag().hasUUID("PromiseRingId")) ring.getOrCreateTag().putUUID("PromiseRingId", UUID.randomUUID());
-                drawn = new ItemStack(item);
+                drawn = item.getDefaultInstance();
                 drawn.getOrCreateTag().putString("StoryWeaponId", "promise_end");
                 drawn.getOrCreateTag().putUUID("PromiseRingId", ring.getTag().getUUID("PromiseRingId"));
                 drawn.getOrCreateTag().putUUID("PromiseOwner", player.getUUID());
