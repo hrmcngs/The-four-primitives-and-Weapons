@@ -11,6 +11,8 @@
 # /function blade_gallery:random/setup は同じシードで再構築（対象4エリアの建築物も上書き）。
 # 別の地形にするにはshを再実行。ゲーム内からLispを実行する仕組みではありません。
 # シードは出力データパックのterrain-seed.txtに保存。編集元の既存mcfunctionは保持します。
+# 各撮影カメラ前に主役の刀を1本配置。/function blade_gallery:focus/flowers などで主役だけ復元できます。
+# focusは台座周辺3×3の地表を整え、その上5ブロックを空けます。完成後camera/flowersなどへ移動。
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 case "${1:-}" in help|--help|-h) awk 'NR==1 {next} /^#/ {sub(/^# ?/, ""); print; next} {exit}' "$0"; exit 0;; esac

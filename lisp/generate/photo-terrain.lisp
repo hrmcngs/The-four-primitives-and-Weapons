@@ -95,15 +95,40 @@
           (terrain-command "summon the_four_primitives_and_weapons:stabbed_weapon ~,1F ~,1F ~,1F {Tags:[\"blade_gallery.~A\"],StabItem:{id:\"~A\",Count:1b,tag:{TsukaColor:8484469,TsubaColor:7501688,KashiraColor:7632245,HabakiColor:~D}},StabTilt:~Df,StabYaw:~Df,StabScale:1f,DisappearOnPickup:1b}"
             (+ x 0.5d0) (+ h 1.1d0) (+ z 0.5d0) scene item (if (equal scene "flowers") #xE8B4C8 #x8A8980) (+ 8 (terrain-random 65)) (terrain-random 360)))))
     (values (nreverse *terrain-lines*) (terrain-height (- center 10) 22 center))))
+(defun terrain-focus (scene center seed)
+  (let* ((*terrain-seed* seed) (*terrain-lines* nil) (x (+ center 12)) (z 6)
+         (h (max 65 (loop for dx from -1 to 1 maximize
+                    (loop for dz from -1 to 1 maximize (terrain-height (+ x dx) (+ z dz) center))))))
+    (terrain-command "kill @e[type=the_four_primitives_and_weapons:stabbed_weapon,tag=blade_gallery.focus.~A]" scene)
+    (loop for dx from -1 to 1 do (loop for dz from -1 to 1 do
+      (terrain-command "fill ~D ~D ~D ~D ~D ~D dirt" (+ x dx) (min h (terrain-height (+ x dx) (+ z dz) center)) (+ z dz) (+ x dx) h (+ z dz))
+      (terrain-block (+ x dx) h (+ z dz) "grass_block")))
+    (terrain-command "fill ~D ~D ~D ~D ~D ~D air" (1- x) (1+ h) (1- z) (1+ x) (+ h 5) (1+ z))
+    (terrain-command "summon the_four_primitives_and_weapons:stabbed_weapon ~,1F ~,1F ~,1F {Tags:[\"blade_gallery.~A\",\"blade_gallery.focus.~A\"],StabItem:{id:\"the_four_primitives_and_weapons:~A\",Count:1b,tag:{HabakiColor:~D}},StabTilt:8f,StabYaw:45f,StabScale:1.5f,DisappearOnPickup:1b}"
+      (+ x 0.5d0) (+ h 1.1d0) (+ z 0.5d0) scene scene (if (equal scene "flowers") "magical_katana" "iron_katana")
+      (if (equal scene "flowers") #xE8B4C8 #x8A8980))
+    (values (nreverse *terrain-lines*) (format nil "execute in minecraft:overworld run tp @s ~D ~D ~D facing ~,1F ~,1F ~,1F"
+      (- x 3) (+ h 3) (+ z 5) (+ x 0.5d0) (+ h 1.8d0) (+ z 0.5d0)))))
 (defun terrain-write-function (pack path lines)
   (mcfunction-lisp:write-function-file pack "blade_gallery" path lines :if-exists :supersede))
 (defun generate-photo-terrain (pack seed)
   (let ((scenes '("rubble" "burned" "battlefield" "flowers")))
     (loop for scene in scenes for center from 128 by 128 for index from 0 do
       (multiple-value-bind (commands camera-y) (terrain-scene scene center seed)
+        (declare (ignore camera-y))
+        (multiple-value-bind (focus camera) (terrain-focus scene center seed)
+          (setf commands (append commands focus))
+          (terrain-write-function pack (format nil "camera/~A" scene) (list camera))
+          (terrain-write-function pack (format nil "focus/~A" scene)
+            (list (format nil "execute in minecraft:overworld run forceload add ~D 0 ~D 15" (+ center 8) (+ center 15))
+                  (format nil "schedule function blade_gallery:focus/~A_wait 1s replace" scene)))
+          (terrain-write-function pack (format nil "focus/~A_wait" scene)
+            (list (format nil "schedule function blade_gallery:focus/~A_wait 1s replace" scene)
+                  (format nil "execute in minecraft:overworld if loaded ~D 64 6 run function blade_gallery:focus/~A_build" (+ center 12) scene)))
+          (terrain-write-function pack (format nil "focus/~A_build" scene)
+            (append (list (format nil "schedule clear blade_gallery:focus/~A_wait" scene)) focus
+              (list (format nil "forceload remove ~D 0 ~D 15" (+ center 8) (+ center 15))))))
         (let* ((prefix (format nil "random/~A" scene)) (parts (ceiling (length commands) 256)))
-          (terrain-write-function pack (format nil "camera/~A" scene)
-            (list (format nil "execute in minecraft:overworld run tp @s ~D ~D 22 facing ~D ~D -12" (- center 10) (+ camera-y 3) center (+ camera-y 5))))
           (terrain-write-function pack (format nil "scenes/~A/setup" scene)
             (list (format nil "execute unless data storage blade_gallery:state random_busy run function blade_gallery:~A/start" prefix)))
           (terrain-write-function pack (format nil "~A/start" prefix)
