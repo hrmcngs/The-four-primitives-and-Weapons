@@ -111,7 +111,7 @@ public class ConvergentGateItem extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§6右クリック: 剣を" + GateFormula.convergeProjectileCount() + "本収束射出する"));
-        tooltip.add(Component.literal("§7Knockback X / Unbreakable"));
+        tooltip.add(Component.translatable("tooltip.the_four_primitives_and_weapons.convergent_gate.summon", GateFormula.convergeProjectileCount()));
+        tooltip.add(Component.translatable("tooltip.the_four_primitives_and_weapons.gate.properties"));
     }
 }

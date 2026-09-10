@@ -924,5 +924,11 @@
   "jei.the_four_primitives_and_weapons.info.kinmokusei_cookie": "小麦2個＋金木犀シロップ1個でクッキー8個。ガラス瓶は戻ります。",
   "jei.the_four_primitives_and_weapons.info.flowering_tree": "苗木を土系ブロックに植え、明るさと成長用の空間を確保してください。骨粉で成長を促せます。葉から苗木を入手できます。現時点で自然バイオームへの自動生成はありません。",
   "jei.the_four_primitives_and_weapons.info.stripped_wood": "対応する原木に斧を使うと樹皮を剥げます。作業台で作るレシピではありません。",
-  "jei.the_four_primitives_and_weapons.info.flowering_leaves": "ハサミまたはシルクタッチで葉そのものを回収できます。通常の破壊・自然消滅では苗木が確率で落ちます。"
+  "jei.the_four_primitives_and_weapons.info.flowering_leaves": "ハサミまたはシルクタッチで葉そのものを回収できます。通常の破壊・自然消滅では苗木が確率で落ちます。",
+  "tooltip.the_four_primitives_and_weapons.gate.summon": "§6右クリック：%s本の剣を召喚",
+  "tooltip.the_four_primitives_and_weapons.gate.drop": "§6ドロップキー：剣を召喚／スニーク＋ドロップ：手放す",
+  "tooltip.the_four_primitives_and_weapons.gate.properties": "§7ノックバック X／破壊不能",
+  "tooltip.the_four_primitives_and_weapons.luna.drop": "§6ドロップキー：護衛を召喚",
+  "tooltip.the_four_primitives_and_weapons.luna.release": "§7スニーク＋ドロップ／インベントリから投棄：手放す",
+  "tooltip.the_four_primitives_and_weapons.convergent_gate.summon": "§6右クリック：%s本の剣を収束射出"
 }

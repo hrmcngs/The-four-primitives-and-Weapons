@@ -925,5 +925,11 @@
   "jei.the_four_primitives_and_weapons.info.kinmokusei_cookie": "Two wheat and one kinmokusei syrup make eight cookies. The glass bottle is returned.",
   "jei.the_four_primitives_and_weapons.info.flowering_tree": "Plant the sapling on suitable soil with sufficient light and space. Bone meal can accelerate growth. Leaves can drop saplings. These trees do not currently spawn automatically in natural biomes.",
   "jei.the_four_primitives_and_weapons.info.stripped_wood": "Use an axe on the matching log to strip its bark. This is a world interaction, not a crafting-table recipe.",
-  "jei.the_four_primitives_and_weapons.info.flowering_leaves": "Collect the leaves with shears or Silk Touch. Ordinary breaking or decay can drop a sapling."
+  "jei.the_four_primitives_and_weapons.info.flowering_leaves": "Collect the leaves with shears or Silk Touch. Ordinary breaking or decay can drop a sapling.",
+  "tooltip.the_four_primitives_and_weapons.gate.summon": "§6Right-click: summon %s swords",
+  "tooltip.the_four_primitives_and_weapons.gate.drop": "§6Drop key: summon swords / Sneak + Drop: discard",
+  "tooltip.the_four_primitives_and_weapons.gate.properties": "§7Knockback X / Unbreakable",
+  "tooltip.the_four_primitives_and_weapons.luna.drop": "§6Drop key: summon a companion",
+  "tooltip.the_four_primitives_and_weapons.luna.release": "§7Sneak + Drop / discard from inventory: release the item",
+  "tooltip.the_four_primitives_and_weapons.convergent_gate.summon": "§6Right-click: fire %s converging swords"
 }

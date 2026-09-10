@@ -104,9 +104,9 @@ public class GateItem extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§6右クリック: " + GateFormula.gateProjectileCount() + "本の剣を召喚"));
-        tooltip.add(Component.literal("§6ドロップキー: 同じ召喚 / Shift+ドロップ: 手放す"));
-        tooltip.add(Component.literal("§7Knockback X / Unbreakable"));
+        tooltip.add(Component.translatable("tooltip.the_four_primitives_and_weapons.gate.summon", GateFormula.gateProjectileCount()));
+        tooltip.add(Component.translatable("tooltip.the_four_primitives_and_weapons.gate.drop"));
+        tooltip.add(Component.translatable("tooltip.the_four_primitives_and_weapons.gate.properties"));
     }
 
     public static boolean isGateSword(ItemStack stack) {

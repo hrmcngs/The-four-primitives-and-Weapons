@@ -53,8 +53,8 @@ public class LunaItem extends SwordItem {
                                java.util.List<net.minecraft.network.chat.Component> tooltip,
                                net.minecraft.world.item.TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
-        tooltip.add(net.minecraft.network.chat.Component.literal("§6ドロップキー: 護衛を召喚"));
-        tooltip.add(net.minecraft.network.chat.Component.literal("§7Shift+ドロップ / インベントリから投棄: 手放す"));
+        tooltip.add(net.minecraft.network.chat.Component.translatable("tooltip.the_four_primitives_and_weapons.luna.drop"));
+        tooltip.add(net.minecraft.network.chat.Component.translatable("tooltip.the_four_primitives_and_weapons.luna.release"));
     }
 
 	// 右クリック機能を削除（回避システムで処理される）
