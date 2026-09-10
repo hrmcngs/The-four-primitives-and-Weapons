@@ -36,7 +36,11 @@ import the_four_primitives_and_weapons.damage.IElementalDamageSource;
 import the_four_primitives_and_weapons.damage.ModDamageSources;
 
 import javax.annotation.Nullable;
-import java.util.Comparator;
+import java.util.Map;
+import java.util.LinkedHashSet;
+import the_four_primitives_and_weapons.item.LunaFormula;
+import the_four_primitives_and_weapons.util.LunaBehaviorScript;
+import static the_four_primitives_and_weapons.util.LunaBehaviorScript.Setting.*;
 import java.util.UUID;
 
 /** Qで投げたLunaの軽量な護衛形態。 */
@@ -174,7 +178,8 @@ public class LunaCompanionEntity extends PathfinderMob {
                     40, 0, true, false, false));
         }
         // 常時演出は5tickに1個だけにして負荷を抑える。
-        if (tickCount % 5 == 0 && level() instanceof ServerLevel serverLevel) {
+        int particleInterval = LunaFormula.get().ticks(PARTICLE_INTERVAL);
+        if (particleInterval > 0 && tickCount % particleInterval == 0 && level() instanceof ServerLevel serverLevel) {
             double angle = random.nextDouble() * Math.PI * 2.0;
             double radius = 0.35 + random.nextDouble() * 0.55;
             serverLevel.sendParticles(ParticleTypes.END_ROD,
@@ -185,47 +190,40 @@ public class LunaCompanionEntity extends PathfinderMob {
         }
 
         // 索敵は毎tickではなく0.5秒ごと。
-        if (tickCount % 10 == 0) {
-            // 召喚者が攻撃した相手を最優先し、次に召喚者を攻撃した相手を守備対象にする。
-            LivingEntity attackedByOwner = owner.getLastHurtMob();
-            LivingEntity attackedOwner = owner.getLastHurtByMob();
-            if (validTarget(attackedByOwner, owner)) guardTarget = attackedByOwner;
-            else if (validTarget(attackedOwner, owner)) guardTarget = attackedOwner;
-            else guardTarget = level().getEntitiesOfClass(Monster.class, owner.getBoundingBox().inflate(12.0),
-                            mob -> mob.isAlive() && mob.getTarget() == owner).stream()
-                    .min(Comparator.comparingDouble(this::distanceToSqr)).orElse(null);
+        if (tickCount % LunaFormula.get().ticks(SCAN_INTERVAL) == 0) {
+            guardTarget = selectGuardTarget(owner);
         }
 
-        if (validTarget(guardTarget, owner)) {
+        if (validTarget(guardTarget, owner) && LunaFormula.get().attackEnabled(senses(owner, guardTarget))) {
             entityData.set(ENGAGING, true);
             faceBladeToward(guardTarget);
             // 敵を追い回さず、攻撃中も召喚者のすぐ横を発射位置にする。
-            double anchorDistance = moveToOwnerAnchor(owner, 0.32);
+            double anchorDistance = moveToOwnerAnchor(owner, LunaFormula.get().value(COMBAT_SPEED));
             double targetDistance = distanceToSqr(guardTarget);
             // 発射位置に着き、切先の回転が敵へ追いついてからレーザーを撃つ。
-            if (anchorDistance <= 4.0 && targetDistance <= 576.0
+            if (anchorDistance <= Math.pow(LunaFormula.get().value(ANCHOR_TOLERANCE), 2)
+                    && targetDistance <= Math.pow(LunaFormula.get().value(TARGET_RANGE), 2)
                     && isBladeAimedAt(guardTarget) && attackCooldown == 0) {
                 fireLaser(guardTarget);
                 // プレイヤーの攻撃速度ゲージ回復時間より5tickだけ長くする。
-                attackCooldown = Math.max(10,
-                        (int)Math.ceil(owner.getCurrentItemAttackStrengthDelay()) + 5);
+                attackCooldown = LunaFormula.get().cooldown(senses(owner, guardTarget));
             }
         } else {
             guardTarget = null;
             entityData.set(ENGAGING, false);
             // 周回させず、プレイヤーの右横に固定する。プレイヤーの移動または
             // 視点変更で固定位置が変わった時だけ追従し、到着後は完全停止する。
-            moveToOwnerAnchor(owner, 0.22);
+            moveToOwnerAnchor(owner, LunaFormula.get().value(IDLE_SPEED));
         }
-        if (distanceToSqr(owner) > 1024.0) teleportTo(owner.getX(), owner.getY() + 1.0, owner.getZ());
+        if (distanceToSqr(owner) > Math.pow(LunaFormula.get().value(TELEPORT_DISTANCE), 2)) teleportTo(owner.getX(), owner.getY() + 1.0, owner.getZ());
     }
 
     /** プレイヤーの右横にある共通の待機・発射位置へ移動し、そこまでの距離二乗を返す。 */
     private double moveToOwnerAnchor(ServerPlayer owner, double speed) {
         double yaw = Math.toRadians(standbyYaw);
-        double anchorX = owner.getX() + Math.cos(yaw) * 1.5;
-        double anchorY = owner.getY() + 1.4;
-        double anchorZ = owner.getZ() + Math.sin(yaw) * 1.5;
+        double anchorX = owner.getX() + Math.cos(yaw) * LunaFormula.get().value(ANCHOR_SIDE);
+        double anchorY = owner.getY() + LunaFormula.get().value(ANCHOR_HEIGHT);
+        double anchorZ = owner.getZ() + Math.sin(yaw) * LunaFormula.get().value(ANCHOR_SIDE);
         double dx = anchorX - getX();
         double dy = anchorY - getY();
         double dz = anchorZ - getZ();
@@ -242,8 +240,8 @@ public class LunaCompanionEntity extends PathfinderMob {
         float wantedYaw = (float)Math.toDegrees(Math.atan2(dz, dx));
         float wantedPitch = (float)Math.toDegrees(Math.atan2(dy, Math.sqrt(dx * dx + dz * dz)));
         // 敵方向へ瞬間的に切り替えず、毎tick滑らかに追従する。
-        setYRot(Mth.rotLerp(0.22F, getYRot(), wantedYaw));
-        setXRot(Mth.lerp(0.22F, getXRot(), wantedPitch));
+        setYRot(Mth.rotLerp((float) LunaFormula.get().value(ROTATION_BLEND), getYRot(), wantedYaw));
+        setXRot(Mth.lerp((float) LunaFormula.get().value(ROTATION_BLEND), getXRot(), wantedPitch));
     }
 
     /** 滑らかな回転が敵方向へほぼ到達したかを判定する。 */
@@ -253,19 +251,21 @@ public class LunaCompanionEntity extends PathfinderMob {
         double dz = target.getZ() - getZ();
         float wantedYaw = (float)Math.toDegrees(Math.atan2(dz, dx));
         float wantedPitch = (float)Math.toDegrees(Math.atan2(dy, Math.sqrt(dx * dx + dz * dz)));
-        return Math.abs(Mth.wrapDegrees(wantedYaw - getYRot())) <= 7.0F
-                && Math.abs(Mth.wrapDegrees(wantedPitch - getXRot())) <= 7.0F;
+        return Math.abs(Mth.wrapDegrees(wantedYaw - getYRot())) <= LunaFormula.get().value(AIM_TOLERANCE)
+                && Math.abs(Mth.wrapDegrees(wantedPitch - getXRot())) <= LunaFormula.get().value(AIM_TOLERANCE);
     }
 
     private void fireLaser(LivingEntity target) {
         if (!(level() instanceof ServerLevel serverLevel)) return;
         entityData.set(FIRING, true);
-        firingTicks = 7;
+        firingTicks = LunaFormula.get().ticks(FIRING_TICKS);
         faceBladeToward(target);
         the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
                 .fireSummonedStraightLaser(serverLevel, this, target, owner());
         ServerPlayer owner = owner();
-        ElementalShot element = resolveShotElement(owner);
+        Map<String, Object> sensors = senses(owner, target);
+        ElementalShot element = resolveShotElement(owner, sensors);
+        float damage = (float) LunaFormula.get().damage(sensors);
         if (element.type != ElementType.NONE && element.level > 0) {
             // direct=this / causing=owner にして、属性効果とプレイヤーの討伐判定を両立する。
             DamageSource source = ModDamageSources.of(serverLevel,
@@ -274,14 +274,14 @@ public class LunaCompanionEntity extends PathfinderMob {
                 elementalSource.setElementType(element.type);
                 elementalSource.setElementLevel(element.level);
             }
-            target.hurt(source, 8.0F);
+            target.hurt(source, damage);
         } else {
-            target.hurt(owner != null ? damageSources().playerAttack(owner) : damageSources().mobAttack(this), 8.0F);
+            target.hurt(owner != null ? damageSources().playerAttack(owner) : damageSources().mobAttack(this), damage);
         }
     }
 
     /** Lunaに付いた属性を優先し、無属性なら所有者の手持ち/Curios属性本を使う。 */
-    private ElementalShot resolveShotElement(@Nullable ServerPlayer owner) {
+    private ElementalShot resolveShotElement(@Nullable ServerPlayer owner, Map<String, Object> sensors) {
         ElementType lunaType = ElementalDamageUtils.getEffectiveElementType(storedItem);
         int lunaLevel = ElementalDamageUtils.getEffectiveElementLevel(storedItem);
         if (owner == null) return new ElementalShot(lunaType, lunaLevel);
@@ -289,11 +289,12 @@ public class LunaCompanionEntity extends PathfinderMob {
         ElementalDamageUtils.BookSlotInfo book = ElementalDamageUtils.getBookSlotInfo(owner);
         if (lunaType != ElementType.NONE) {
             if (book.type == lunaType) {
-                int high = Math.max(lunaLevel, book.level);
-                int low = Math.min(lunaLevel, book.level);
-                return new ElementalShot(lunaType, high + Math.max(low / 2, 1));
+                return new ElementalShot(lunaType,
+                        LunaFormula.get().combinedElementLevel(sensors, lunaLevel, book.level));
             }
-            return new ElementalShot(lunaType, lunaLevel);
+            if (book.type == ElementType.NONE || LunaFormula.get().preferLunaElement(sensors)) {
+                return new ElementalShot(lunaType, lunaLevel);
+            }
         }
         return new ElementalShot(book.type, book.level);
     }
@@ -303,7 +304,7 @@ public class LunaCompanionEntity extends PathfinderMob {
     private void moveToward(double x, double y, double z, double speed) {
         Vec3 delta = new Vec3(x - getX(), y - getY(), z - getZ());
         double distance = delta.length();
-        if (distance <= 0.08) {
+        if (distance <= LunaFormula.get().value(STOP_DISTANCE)) {
             setDeltaMovement(Vec3.ZERO);
             return;
         }
@@ -313,7 +314,40 @@ public class LunaCompanionEntity extends PathfinderMob {
 
     private boolean validTarget(@Nullable LivingEntity target, Player owner) {
         return target != null && target.isAlive() && target != owner && target != this
-                && target.distanceToSqr(owner) <= 576.0;
+                && target.distanceToSqr(owner) <= Math.pow(LunaFormula.get().value(TARGET_RANGE), 2);
+    }
+
+    @Nullable
+    private LivingEntity selectGuardTarget(ServerPlayer owner) {
+        var candidates = new LinkedHashSet<LivingEntity>();
+        if (validTarget(owner.getLastHurtMob(), owner)) candidates.add(owner.getLastHurtMob());
+        if (validTarget(owner.getLastHurtByMob(), owner)) candidates.add(owner.getLastHurtByMob());
+        candidates.addAll(level().getEntitiesOfClass(Monster.class,
+                owner.getBoundingBox().inflate(LunaFormula.get().value(SCAN_RANGE)),
+                mob -> validTarget(mob, owner) && mob.getTarget() == owner));
+        LivingEntity best = null;
+        double bestPriority = 0;
+        for (LivingEntity candidate : candidates) {
+            double priority = LunaFormula.get().targetPriority(senses(owner, candidate));
+            if (priority > bestPriority || (priority == bestPriority && best != null
+                    && distanceToSqr(candidate) < distanceToSqr(best))) {
+                best = candidate;
+                bestPriority = priority;
+            }
+        }
+        return best;
+    }
+
+    private Map<String, Object> senses(@Nullable ServerPlayer owner, @Nullable LivingEntity target) {
+        int bookLevel = owner == null ? 0 : ElementalDamageUtils.getBookSlotInfo(owner).level;
+        return Map.of(
+                "owner-health-ratio", owner == null ? 1.0 : (double) owner.getHealth() / Math.max(1, owner.getMaxHealth()),
+                "owner-attack-delay", owner == null ? 20.0 : (double) owner.getCurrentItemAttackStrengthDelay(),
+                "target-distance", target == null ? 0.0 : Math.sqrt(distanceToSqr(target)),
+                "owner-attacked-target", owner != null && target != null && owner.getLastHurtMob() == target,
+                "target-attacked-owner", owner != null && target != null && owner.getLastHurtByMob() == target,
+                "luna-element-level", ElementalDamageUtils.getEffectiveElementLevel(storedItem),
+                "book-element-level", bookLevel);
     }
 
     @Override public boolean isPushable() { return false; }
@@ -369,7 +403,10 @@ public class LunaCompanionEntity extends PathfinderMob {
         ServerPlayer owner = owner();
         if (owner != null) {
             removeGrantedVision(owner);
-            if (!owner.getInventory().add(item)) owner.drop(item, false);
+            if (!owner.getInventory().add(item)) {
+                the_four_primitives_and_weapons.events.GateDropHandler.dropFromMenu(owner, item, false,
+                        the_four_primitives_and_weapons.util.GateDropContext.Reason.COMPANION_RETURN);
+            }
         } else spawnAtLocation(item);
         storedItem = ItemStack.EMPTY;
     }

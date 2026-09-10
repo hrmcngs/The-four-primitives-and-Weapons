@@ -13,7 +13,13 @@
     "MobMeleeReachMixin",
     "ItemEnchantMixin",
     "ItemStackRarityMixin",
-    "EnchantmentMaxLevelMixin"
+    "EnchantmentMaxLevelMixin",
+    "GateDropKeyMixin",
+    "GateMenuDropMixin",
+    "GateContainerDropMixin",
+    "GateDispenserDropMixin",
+    "GateBlockDropMixin",
+    "GateInventoryOverflowMixin"
   ],
   "client": [
     "KeyBindsLabelLayoutMixin",

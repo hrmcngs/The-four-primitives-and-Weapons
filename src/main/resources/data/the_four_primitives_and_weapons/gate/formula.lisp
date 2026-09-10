@@ -4,28 +4,21 @@
 ;; データパックで上書きすれば Java 再コンパイル無しに調整可能。
 ;; ======================================================================
 
-;; --- GateItem (空中展開 → 連続射出) -----------------------------------------------
-;; 本数 (≧1 の整数)
-(define gate-projectile-count 18)
-;; 1段あたりの本数・段の高さ間隔
-(define gate-columns 6)
-(define gate-row-spacing 1.7)
-;; 空中で構える時間と各剣の射出間隔 (tick)
+;; --- GateItem: gate1-16/data/superdog/functions/poof.mcfunction ---
+;; 54-56行: 1回に3本。18本/3段の展開ではない。
+(define gate-projectile-count 3)
+;; 31行: 通常の剣は15tickで射出。29行のlimit=1による例外は再現しない。
 (define gate-warmup-ticks 15)
-(define gate-launch-interval 1)
-;; 横展開: 外側の剣がプレイヤーから左右へ離れる距離 (ブロック)
-(define gate-side-spread 5.0)
-;; 前後オフセット (負=後方スポーン、ブロック)
+(define gate-side-spread 3.5)
 (define gate-forward-offset -2)
-;; 垂直オフセット (目の高さ基準、ブロック)
-(define gate-vertical-offset 1.0)
-;; 初速 (blocks/tick 相当; projectile の deltaMovement 倍率)
-(define gate-shoot-velocity 2.0)
-;; クールダウン (tick)
-(define gate-cooldown 50)
-;; 効果音の回数 (Gate: 展開音 / ConvergentGate: wither.shoot)
+;; 元の高さ0.3/0.6/0.7に加える補正 (使用者の足元基準)
+(define gate-vertical-offset 0.0)
+;; 元の tp ^ ^ ^4 に合わせる。
+(define gate-shoot-velocity 4.0)
+;; 元に召喚クールダウンはない。
+(define gate-cooldown 0)
+;; 以下は収束型の既存設定。通常Gateの召喚音/耐性は元の値を使用。
 (define gate-sound-reps 4)
-;; 耐性バフ: 振幅 (0=I, 4=V) と持続 (tick; Gateは展開待ち時間も加算)
 (define gate-resist-amp 4)
 (define gate-resist-dur 20)
 
@@ -41,8 +34,8 @@
 ;; クールダウン (tick)
 (define converge-cooldown 20)
 
-;; --- GateProjectileEntity (共通の飛翔体) ------------------------------
-;; 自動消滅 tick (タイムアウト時に爆発エフェクトあり)
+;; --- GateProjectileEntity (共通の命中演出・収束型の寿命) ------------------------------
+;; 収束型の自動消滅 tick (通常Gateは元に合わせて召喚から50tickで無音消滅)
 (define gate-proj-lifetime 100)
 ;; タイムアウト時の爆発半径 (1.5 ≒ 3x3x3)
 (define gate-proj-end-radius 1.5)

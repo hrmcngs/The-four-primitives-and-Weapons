@@ -54,9 +54,11 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
 		double length = line.length();
 		if (length < 0.001) return;
 		Vec3 direction = line.scale(1.0 / length);
-		int steps = Math.max(1, (int)Math.ceil(length / 0.2));
+		double spacing = the_four_primitives_and_weapons.item.LunaFormula.get().value(
+                the_four_primitives_and_weapons.util.LunaBehaviorScript.Setting.LASER_STEP);
+		int steps = Math.max(1, (int)Math.ceil(length / spacing));
 		for (int i = 0; i <= steps; i++) {
-			Vec3 pos = start.add(direction.scale(Math.min(length, i * 0.2)));
+			Vec3 pos = start.add(direction.scale(Math.min(length, i * spacing)));
 			if (viewer != null)
 				level.sendParticles(viewer, ParticleTypes.END_ROD, true, pos.x, pos.y, pos.z,
 						1, 0.03, 0.03, 0.03, 0.0);

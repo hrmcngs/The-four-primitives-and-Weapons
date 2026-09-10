@@ -95,16 +95,13 @@ public final class GateFormula {
     }
 
     // --- 高レベル API: GateItem --------------------------------------
-    public static int    gateProjectileCount() { return Math.max(1, getInt("gate-projectile-count", 18)); }
-    public static int    gateColumns()         { return Math.max(1, getInt("gate-columns", 6)); }
-    public static double gateRowSpacing()      { return Math.max(0.0, getDouble("gate-row-spacing", 1.7)); }
+    public static int    gateProjectileCount() { return Math.max(1, getInt("gate-projectile-count", 3)); }
     public static int    gateWarmupTicks()     { return Math.max(0, getInt("gate-warmup-ticks", 15)); }
-    public static int    gateLaunchInterval()  { return Math.max(0, getInt("gate-launch-interval", 1)); }
-    public static double gateSideSpread()       { return getDouble("gate-side-spread",       5.0); }
+    public static double gateSideSpread()       { return getDouble("gate-side-spread",       3.5); }
     public static double gateForwardOffset()    { return getDouble("gate-forward-offset",   -2.0); }
-    public static double gateVerticalOffset()   { return getDouble("gate-vertical-offset",   1.0); }
-    public static double gateShootVelocity()    { return getDouble("gate-shoot-velocity",    2.0); }
-    public static int    gateCooldown()         { return getInt   ("gate-cooldown",          50); }
+    public static double gateVerticalOffset()   { return getDouble("gate-vertical-offset",   0.0); }
+    public static double gateShootVelocity()    { return getDouble("gate-shoot-velocity",    4.0); }
+    public static int    gateCooldown()         { return getInt   ("gate-cooldown",          0); }
     public static int    gateSoundReps()        { return Math.max(1, getInt("gate-sound-reps", 4)); }
     public static int    gateResistAmp()        { return getInt   ("gate-resist-amp",        4); }
     public static int    gateResistDur()        { return getInt   ("gate-resist-dur",        20); }

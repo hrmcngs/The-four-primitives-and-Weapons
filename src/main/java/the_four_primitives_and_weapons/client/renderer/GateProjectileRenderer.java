@@ -12,7 +12,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 
 import the_four_primitives_and_weapons.entity.GateProjectileEntity;
@@ -28,9 +27,9 @@ public class GateProjectileRenderer extends EntityRenderer<GateProjectileEntity>
     public static float YAW_OFFSET = 0f; // Y軸微調整
     public static float PITCH_OFFSET = 0f; // X軸微調整
     public static float ROLL_OFFSET = 0f; // Z軸微調整
-    public static float SCALE_X = 1.8f; // Xサイズ
-    public static float SCALE_Y = 1.8f; // Yサイズ
-    public static float SCALE_Z = 1.8f; // Zサイズ
+    public static float SCALE_X = 1.0f; // Xサイズ
+    public static float SCALE_Y = 1.0f; // Yサイズ
+    public static float SCALE_Z = 1.0f; // Zサイズ
     // @EndRotationParams
     private static ItemStack sharedStack;
     
@@ -66,7 +65,7 @@ public class GateProjectileRenderer extends EntityRenderer<GateProjectileEntity>
         ItemStack displayStack = sharedStack;
         itemRenderer.renderStatic(
                 displayStack, ItemDisplayContext.NONE,
-                LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.level(), entity.getId());
+                packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.level(), entity.getId());
 
         poseStack.popPose();
         super.render(entity, entityYaw, partialTick, poseStack, buffer, packedLight);

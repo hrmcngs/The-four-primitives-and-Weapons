@@ -16,8 +16,8 @@ import javax.annotation.Nullable;
 
 /**
  * Gate - 金の直刀ベースの特殊武器。
- * 右クリックでプレイヤーの周囲に剣の陣を展開し、短い待機の後に順番に
- * 視線方向のターゲットに向かって飛んでいく。
+ * ドロップ操作で3本を召喚し、待機中に視線の50ブロック先を狙って射出。
+ * MODの既存操作として右クリックでも同じ召喚を行う。
  * ヒット時にブロック破壊なしの爆発。
  * データパック「gate1-16」のForge MOD移植版。
  */
@@ -49,7 +49,7 @@ public class GateItem extends SwordItem {
 
         if (!level.isClientSide) {
             Vec3 lookVec = player.getLookAngle();
-            Vec3 eyePos = player.getEyePosition();
+            Vec3 origin = player.position();
 
             // プレイヤーの前方・右方向ベクトル（水平面）
             double yawRad = Math.toRadians(player.getYRot());
@@ -58,50 +58,43 @@ public class GateItem extends SwordItem {
             double rightX = -Math.cos(yawRad);
             double rightZ = -Math.sin(yawRad);
 
-            // 複数段の扇状に展開する。中央上部ほど高くして視界を空ける。
+            // poof.mcfunction:54-56 の ^3.5 ^0.3 ^-2 / ^0 ^0.6 ^-2 / ^-3.5 ^0.7 ^-2。
+            // MODではドロップアイテムの代わりに使用者の位置と水平向きを基準にする。
             int count = GateFormula.gateProjectileCount();
             double side = GateFormula.gateSideSpread();
-            double fwd  = GateFormula.gateForwardOffset();
-            double vy   = GateFormula.gateVerticalOffset();
+            double depth = GateFormula.gateForwardOffset();
             double speed = GateFormula.gateShootVelocity();
-
-            int columns = Math.min(count, GateFormula.gateColumns());
+            double[] heights = {0.3, 0.6, 0.7};
             for (int i = 0; i < count; i++) {
-                int row = i / columns;
-                int rowCount = Math.min(columns, count - row * columns);
-                double position = rowCount <= 1 ? 0.0 : -1.0 + 2.0 * (i % columns) / (rowCount - 1);
-                double lateral = side * position * (1.0 + row * 0.12);
-                double height = vy + row * GateFormula.gateRowSpacing()
-                        + (1.0 - position * position) * 1.5;
-                double depth = fwd - row * 0.65;
+                double lateral = count <= 1 ? 0 : side - 2.0 * side * i / (count - 1);
+                double height = heights[i % heights.length] + GateFormula.gateVerticalOffset();
 
                 the_four_primitives_and_weapons.entity.GateProjectileEntity projectile =
                         new the_four_primitives_and_weapons.entity.GateProjectileEntity(level, player);
 
-                double spawnX = eyePos.x + rightX * lateral + forwardX * depth;
-                double spawnY = eyePos.y + height;
-                double spawnZ = eyePos.z + rightZ * lateral + forwardZ * depth;
+                double spawnX = origin.x + -rightX * lateral + forwardX * depth;
+                // 不可視防具立ての原点から、表示される剣の高さへ補正。
+                double spawnY = origin.y + height + 1.0;
+                double spawnZ = origin.z + -rightZ * lateral + forwardZ * depth;
                 projectile.setPos(spawnX, spawnY, spawnZ);
 
-                projectile.prepareLaunch(lookVec.scale(speed),
-                        GateFormula.gateWarmupTicks() + i * GateFormula.gateLaunchInterval());
+                projectile.prepareGateLaunch(lookVec.scale(speed), GateFormula.gateWarmupTicks());
 
                 level.addFreshEntity(projectile);
             }
 
             // 展開音 (各剣の射出音は飛翔体側で鳴らす)
-            int soundReps = GateFormula.gateSoundReps();
+            int soundReps = 8; // poof.mcfunction:59-66
             for (int i = 0; i < soundReps; i++) {
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.ILLUSIONER_PREPARE_MIRROR, SoundSource.PLAYERS, 2.0f, 1.0f);
+                        SoundEvents.ILLUSIONER_PREPARE_MIRROR, SoundSource.PLAYERS, 10.0f, 1.5f);
             }
 
             // 耐性付与 (反動防止)
             player.addEffect(new net.minecraft.world.effect.MobEffectInstance(
                     net.minecraft.world.effect.MobEffects.DAMAGE_RESISTANCE,
-                    GateFormula.gateResistDur() + GateFormula.gateWarmupTicks()
-                            + (count - 1) * GateFormula.gateLaunchInterval(),
-                    GateFormula.gateResistAmp(), true, false));
+                    40, 100, true, false)); // poof.mcfunction:57
+
 
             player.getCooldowns().addCooldown(this, GateFormula.gateCooldown());
         }
@@ -111,7 +104,8 @@ public class GateItem extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§6右クリック: " + GateFormula.gateProjectileCount() + "本の剣を展開して連続射出"));
+        tooltip.add(Component.literal("§6右クリック: " + GateFormula.gateProjectileCount() + "本の剣を召喚"));
+        tooltip.add(Component.literal("§6ドロップキー: 同じ召喚 / Shift+ドロップ: 手放す"));
         tooltip.add(Component.literal("§7Knockback X / Unbreakable"));
     }
 

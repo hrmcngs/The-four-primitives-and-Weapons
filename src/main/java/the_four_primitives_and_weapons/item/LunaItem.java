@@ -48,6 +48,15 @@ public class LunaItem extends SwordItem {
 		}, 3, -2.4f, new Item.Properties());
 	}
 
+    @Override
+    public void appendHoverText(ItemStack stack, @javax.annotation.Nullable Level level,
+                               java.util.List<net.minecraft.network.chat.Component> tooltip,
+                               net.minecraft.world.item.TooltipFlag flag) {
+        super.appendHoverText(stack, level, tooltip, flag);
+        tooltip.add(net.minecraft.network.chat.Component.literal("§6ドロップキー: 護衛を召喚"));
+        tooltip.add(net.minecraft.network.chat.Component.literal("§7Shift+ドロップ / インベントリから投棄: 手放す"));
+    }
+
 	// 右クリック機能を削除（回避システムで処理される）
 
 	// 直刀として動作（突き攻撃）

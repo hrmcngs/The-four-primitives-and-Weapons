@@ -25,6 +25,7 @@ import org.joml.Vector3f;
 
 import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModEntities;
 import the_four_primitives_and_weapons.item.GateFormula;
+import the_four_primitives_and_weapons.item.GateItem;
 
 /**
  * Gateの飛び道具 - エンチャントした金の剣の見た目+金色パーティクル。
@@ -36,6 +37,10 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
             new DustParticleOptions(new Vector3f(1.0f, 0.816f, 0.0f), 1.0f);
     private static final EntityDataAccessor<Integer> WARMUP = SynchedEntityData.defineId(
             GateProjectileEntity.class, EntityDataSerializers.INT);
+    private static final EntityDataAccessor<Boolean> DATAPACK_GATE = SynchedEntityData.defineId(
+            GateProjectileEntity.class, EntityDataSerializers.BOOLEAN);
+    private int summonAge;
+    private Vec3 aimPoint = Vec3.ZERO;
     private Vec3 launchVelocity = Vec3.ZERO;
     private int life = 0;
 
@@ -50,6 +55,23 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
     @Override
     protected void defineSynchedData() {
         entityData.define(WARMUP, 0);
+        entityData.define(DATAPACK_GATE, false);
+    }
+
+    public void prepareGateLaunch(Vec3 velocity, int delay) {
+        entityData.set(DATAPACK_GATE, true);
+        updateAimPoint();
+        prepareLaunch(aimPoint.subtract(position()).normalize().scale(velocity.length()), delay);
+    }
+
+    private void updateAimPoint() {
+        if (getOwner() instanceof Player player
+                && (GateItem.isGateSword(player.getMainHandItem())
+                    || GateItem.isGateSword(player.getOffhandItem()))) {
+            // poof.mcfunction:18 のローカル座標 ^ ^1.5 ^50。
+            aimPoint = player.position().add(player.getLookAngle().scale(50))
+                    .add(player.getUpVector(1.0f).scale(1.5));
+        }
     }
 
     public void prepareLaunch(Vec3 velocity, int delay) {
@@ -68,6 +90,11 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
         super.addAdditionalSaveData(tag);
         tag.putInt("GateWarmup", entityData.get(WARMUP));
         tag.putInt("GateLife", life);
+        tag.putBoolean("DatapackGate", entityData.get(DATAPACK_GATE));
+        tag.putInt("GateSummonAge", summonAge);
+        tag.putDouble("GateAimX", aimPoint.x);
+        tag.putDouble("GateAimY", aimPoint.y);
+        tag.putDouble("GateAimZ", aimPoint.z);
         tag.putDouble("GateLaunchX", launchVelocity.x);
         tag.putDouble("GateLaunchY", launchVelocity.y);
         tag.putDouble("GateLaunchZ", launchVelocity.z);
@@ -78,6 +105,9 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
         super.readAdditionalSaveData(tag);
         entityData.set(WARMUP, tag.getInt("GateWarmup"));
         life = tag.getInt("GateLife");
+        entityData.set(DATAPACK_GATE, tag.getBoolean("DatapackGate"));
+        summonAge = tag.getInt("GateSummonAge");
+        aimPoint = new Vec3(tag.getDouble("GateAimX"), tag.getDouble("GateAimY"), tag.getDouble("GateAimZ"));
         launchVelocity = new Vec3(tag.getDouble("GateLaunchX"), tag.getDouble("GateLaunchY"),
                 tag.getDouble("GateLaunchZ"));
     }
@@ -85,7 +115,8 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
     @Override
     public ItemStack getItem() {
         ItemStack stack = new ItemStack(Items.GOLDEN_SWORD);
-        stack.enchant(Enchantments.KNOCKBACK, 1);
+        stack.enchant(Enchantments.KNOCKBACK, 5);
+        stack.getOrCreateTag().putInt("CustomModelData", 827373);
         return stack;
     }
 
@@ -103,8 +134,27 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
 
     @Override
     public void tick() {
+        if (entityData.get(DATAPACK_GATE)) {
+            summonAge++;
+            if (!level().isClientSide) {
+                updateAimPoint();
+                // poof.mcfunction:32,36。寿命は待機を含む。タイムアウト爆発はない。
+                if (summonAge >= 50 || position().distanceToSqr(aimPoint) <= 25) {
+                    discard();
+                    return;
+                }
+                if (entityData.get(WARMUP) > 0) {
+                    prepareLaunch(aimPoint.subtract(position()).normalize().scale(launchVelocity.length()),
+                            entityData.get(WARMUP));
+                } else {
+                    // tp に相当する一定速度。ThrowableProjectileの空気抵抗を次tickへ持ち越さない。
+                    setDeltaMovement(launchVelocity);
+                }
+            }
+        }
         if (entityData.get(WARMUP) > 0) {
-            // 待機中は移動・衝突判定・飛翔寿命を進めない。
+            // 待機中も金色の粒子は出す。移動・衝突判定は射出後に開始。
+            spawnTrail();
             baseTick();
             if (!level().isClientSide) {
                 int remaining = entityData.get(WARMUP) - 1;
@@ -113,7 +163,7 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
                     setDeltaMovement(launchVelocity);
                     hasImpulse = true;
                     level().playSound(null, getX(), getY(), getZ(), SoundEvents.DROWNED_SHOOT,
-                            SoundSource.PLAYERS, 0.7f, 1.6f);
+                            SoundSource.PLAYERS, 2.0f, 2.0f);
                 }
             }
             return;
@@ -122,20 +172,23 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
         if (isRemoved()) return;
         life++;
 
-        // 金色パーティクル (本数は lisp 設定)
-        int particles = GateFormula.projParticlesPerTick();
-        if (particles > 0 && level() instanceof ServerLevel serverLevel) {
-            serverLevel.sendParticles(GOLD_PARTICLE,
-                    getX(), getY(), getZ(), particles, 0.1, 0.1, 0.1, 0.0);
-        }
+        spawnTrail();
 
         // 自動消滅: lifetime tick 後に爆発エフェクト付きで discard
-        if (life > GateFormula.projLifetime()) {
+        if (!entityData.get(DATAPACK_GATE) && life > GateFormula.projLifetime()) {
             if (!level().isClientSide) {
                 level().explode(this, getX(), getY(), getZ(),
                         GateFormula.projEndRadius(), Level.ExplosionInteraction.NONE);
             }
             discard();
+        }
+    }
+
+    private void spawnTrail() {
+        int particles = GateFormula.projParticlesPerTick();
+        if (particles > 0 && level() instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(GOLD_PARTICLE,
+                    getX(), getY(), getZ(), particles, 0.2, 0.2, 0.2, 0.0);
         }
     }
 
