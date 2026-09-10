@@ -1,6 +1,16 @@
 package the_four_primitives_and_weapons.entity;
 
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,17 +24,19 @@ import net.minecraft.world.phys.EntityHitResult;
 import org.joml.Vector3f;
 
 import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModEntities;
-import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems;
 import the_four_primitives_and_weapons.item.GateFormula;
 
 /**
- * Gateの飛び道具 - 金の直刀の見た目+金色パーティクル。
+ * Gateの飛び道具 - エンチャントした金の剣の見た目+金色パーティクル。
  * エンティティやブロックに当たると爆発する。
  */
 public class GateProjectileEntity extends ThrowableProjectile implements ItemSupplier {
 
     private static final DustParticleOptions GOLD_PARTICLE =
             new DustParticleOptions(new Vector3f(1.0f, 0.816f, 0.0f), 1.0f);
+    private static final EntityDataAccessor<Integer> WARMUP = SynchedEntityData.defineId(
+            GateProjectileEntity.class, EntityDataSerializers.INT);
+    private Vec3 launchVelocity = Vec3.ZERO;
     private int life = 0;
 
     public GateProjectileEntity(EntityType<? extends ThrowableProjectile> type, Level level) {
@@ -36,11 +48,45 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
     }
 
     @Override
-    protected void defineSynchedData() {}
+    protected void defineSynchedData() {
+        entityData.define(WARMUP, 0);
+    }
+
+    public void prepareLaunch(Vec3 velocity, int delay) {
+        launchVelocity = velocity;
+        entityData.set(WARMUP, Math.max(0, delay));
+        setDeltaMovement(delay > 0 ? Vec3.ZERO : velocity);
+        setYRot((float) (Mth.atan2(velocity.x, velocity.z) * Mth.RAD_TO_DEG));
+        setXRot((float) (Mth.atan2(velocity.y, velocity.horizontalDistance()) * Mth.RAD_TO_DEG));
+        yRotO = getYRot();
+        xRotO = getXRot();
+        hasImpulse = true;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putInt("GateWarmup", entityData.get(WARMUP));
+        tag.putInt("GateLife", life);
+        tag.putDouble("GateLaunchX", launchVelocity.x);
+        tag.putDouble("GateLaunchY", launchVelocity.y);
+        tag.putDouble("GateLaunchZ", launchVelocity.z);
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        entityData.set(WARMUP, tag.getInt("GateWarmup"));
+        life = tag.getInt("GateLife");
+        launchVelocity = new Vec3(tag.getDouble("GateLaunchX"), tag.getDouble("GateLaunchY"),
+                tag.getDouble("GateLaunchZ"));
+    }
 
     @Override
     public ItemStack getItem() {
-        return new ItemStack(TheFourPrimitivesAndWeaponsModItems.GOLD_TYOKUTO.get());
+        ItemStack stack = new ItemStack(Items.GOLDEN_SWORD);
+        stack.enchant(Enchantments.KNOCKBACK, 1);
+        return stack;
     }
 
     // 爆風で吹き飛ばされない（向きが変わらない）
@@ -57,7 +103,23 @@ public class GateProjectileEntity extends ThrowableProjectile implements ItemSup
 
     @Override
     public void tick() {
+        if (entityData.get(WARMUP) > 0) {
+            // 待機中は移動・衝突判定・飛翔寿命を進めない。
+            baseTick();
+            if (!level().isClientSide) {
+                int remaining = entityData.get(WARMUP) - 1;
+                entityData.set(WARMUP, remaining);
+                if (remaining == 0) {
+                    setDeltaMovement(launchVelocity);
+                    hasImpulse = true;
+                    level().playSound(null, getX(), getY(), getZ(), SoundEvents.DROWNED_SHOOT,
+                            SoundSource.PLAYERS, 0.7f, 1.6f);
+                }
+            }
+            return;
+        }
         super.tick();
+        if (isRemoved()) return;
         life++;
 
         // 金色パーティクル (本数は lisp 設定)

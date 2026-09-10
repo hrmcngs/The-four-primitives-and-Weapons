@@ -1,14 +1,20 @@
 ;; ======================================================================
 ;; Gate / ConvergentGate / GateProjectile の数値パラメータを Lisp で定義。
 ;; 起動時に一度だけ評価され、結果はキャッシュされる。
-;; リソースパックで上書きすれば Java 再コンパイル無しに調整可能。
+;; データパックで上書きすれば Java 再コンパイル無しに調整可能。
 ;; ======================================================================
 
-;; --- GateItem (3 本射出) -----------------------------------------------
+;; --- GateItem (空中展開 → 連続射出) -----------------------------------------------
 ;; 本数 (≧1 の整数)
-(define gate-projectile-count 3)
+(define gate-projectile-count 18)
+;; 1段あたりの本数・段の高さ間隔
+(define gate-columns 6)
+(define gate-row-spacing 1.7)
+;; 空中で構える時間と各剣の射出間隔 (tick)
+(define gate-warmup-ticks 15)
+(define gate-launch-interval 1)
 ;; 横展開: 外側の剣がプレイヤーから左右へ離れる距離 (ブロック)
-(define gate-side-spread 3.5)
+(define gate-side-spread 5.0)
 ;; 前後オフセット (負=後方スポーン、ブロック)
 (define gate-forward-offset -2)
 ;; 垂直オフセット (目の高さ基準、ブロック)
@@ -16,10 +22,10 @@
 ;; 初速 (blocks/tick 相当; projectile の deltaMovement 倍率)
 (define gate-shoot-velocity 2.0)
 ;; クールダウン (tick)
-(define gate-cooldown 20)
-;; 発射音の連打回数 (wither.shoot × N)
+(define gate-cooldown 50)
+;; 効果音の回数 (Gate: 展開音 / ConvergentGate: wither.shoot)
 (define gate-sound-reps 4)
-;; 耐性バフ: 振幅 (0=I, 4=V) と持続 (tick)
+;; 耐性バフ: 振幅 (0=I, 4=V) と持続 (tick; Gateは展開待ち時間も加算)
 (define gate-resist-amp 4)
 (define gate-resist-dur 20)
 
