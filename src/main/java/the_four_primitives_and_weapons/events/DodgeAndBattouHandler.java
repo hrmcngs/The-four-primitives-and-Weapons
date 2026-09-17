@@ -831,6 +831,11 @@ public class DodgeAndBattouHandler {
             return;
         }
 
+        if (!the_four_primitives_and_weapons.util.CuriosScabbardHelper.isCompatible(weaponStack, sheathStack)) {
+            player.displayClientMessage(Component.literal("§cこの鞘にはこの武器を納刀できません"), true);
+            return;
+        }
+
         // 直刀鞘の場合
         if (isTyokutouSaya(sheathStack)) {
             // 直刀のみ納刀可能

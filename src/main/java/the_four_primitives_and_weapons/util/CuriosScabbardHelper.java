@@ -132,6 +132,10 @@ public class CuriosScabbardHelper {
         if (info == null) return false;
 
         ItemStack sheathStack = info.stack;
+        if (!isCompatible(weaponStack, sheathStack)) {
+            player.displayClientMessage(Component.literal("§cこの鞘にはこの武器を納刀できません"), true);
+            return false;
+        }
         boolean isTyokutoSaya = sheathStack.getItem() instanceof TyokutoSayaItem;
         boolean isSwordSaya = sheathStack.getItem() instanceof SwordSayaItem;
         boolean isRapierSaya = sheathStack.getItem() instanceof RapierSayaItem;
@@ -408,6 +412,9 @@ public class CuriosScabbardHelper {
     public static boolean isCompatible(ItemStack weaponStack, ItemStack scabbardStack) {
         if (scabbardStack.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.RING.get()))
             return PromiseRing.canStore(scabbardStack, weaponStack);
+        // 専用鞘と、忍者刀の空鞘として表示される旧来の汎用鞘は忍者刀専用。
+        if (NinjatoVault.isNinjatoSaya(scabbardStack))
+            return weaponStack.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.NINJATOU.get());
         boolean isTyokutoSaya = scabbardStack.getItem() instanceof TyokutoSayaItem;
         boolean isSwordSaya   = scabbardStack.getItem() instanceof SwordSayaItem;
         boolean isRapierSaya  = scabbardStack.getItem() instanceof RapierSayaItem;
