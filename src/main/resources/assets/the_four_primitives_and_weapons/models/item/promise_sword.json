@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/handheld",
+  "parent": "minecraft:block/block",
   "textures": {
     "metal": "the_four_primitives_and_weapons:katana_fitting/kasira/kasira_gray",
     "grip": "the_four_primitives_and_weapons:katana_fitting/tsuka/tuka_black",
