@@ -119,19 +119,16 @@ public class SpinSlashTickHandler {
                 float frac = (i + 0.5f) / steps;   // step 中央に 1 つずつ配置
                 float sweptAt = prevSwept + anglePerTick * frac;
                 double rad = Math.toRadians(s.startYaw + sweptAt + 90);
+                double r = s.range * 0.75;          // dustとLunaの光を同じ円周に配置
+                double x = p.getX() + Math.cos(rad) * r;
+                double y = p.getY() + 1.1;
+                double z = p.getZ() + Math.sin(rad) * r;
                 if (s.lunaEffects) {
-                    for (int band = 1; band <= 3; band++) {
-                        double innerRadius = s.range * band / 4.0;
-                        the_four_primitives_and_weapons.damage.ElementalParticles.sendForced(sw, ParticleTypes.END_ROD,
-                                p.getX() + Math.cos(rad) * innerRadius, p.getY() + 1.1,
-                                p.getZ() + Math.sin(rad) * innerRadius, 1, 0, 0, 0, 0);
-                    }
+                    the_four_primitives_and_weapons.damage.ElementalParticles.sendForced(sw, ParticleTypes.END_ROD,
+                            x, y, z, 3, 0.15, 0.1, 0.15, 0.0);
                 }
-                double r = s.range * 0.75;          // ring を 1 本に集約
                 sw.sendParticles(dust,              // 属性が載っていれば属性色 dust
-                    p.getX() + Math.cos(rad) * r,
-                    p.getY() + 1.1,
-                    p.getZ() + Math.sin(rad) * r,
+                    x, y, z,
                     3, 0.15, 0.1, 0.15, 0.001);
             }
         }

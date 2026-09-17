@@ -605,14 +605,17 @@ public class MotionExecutor {
     /** 斬撃/突き共通の 3クラスタ dust 扇。 全ての突きの見た目統一にも使う ( 突きは tilt=0 )。 */
     public static void slashCloudFan(ServerLevel sw, Player player, Vec3 look, Vec3 playerPos, double tilt) {
         double delta = fanSpread(player);
-        LunaSkillEffects.fillLane(player, look, horizontalSlashForwardRange(player.getMainHandItem()),
-                3.0 + LunaSkillEffects.rangeBonus(player.getMainHandItem()) * 0.5, tilt);
         // 攻撃に属性が載っているなら、 元の灰色 dust は出さず属性パーティクルだけで弧を描く。
         the_four_primitives_and_weapons.damage.ElementType elem =
                 the_four_primitives_and_weapons.damage.ElementalDamageUtils.getAttackElementType(player);
         boolean elemental = elem != the_four_primitives_and_weapons.damage.ElementType.NONE;
 
         for (Vec3 p : fanPoints(player, look, playerPos, tilt)) {
+            // Lunaの光もdustと同じ3クラスタ・散布幅に重ねる（合計42粒は維持）。
+            if (LunaSkillEffects.isActive(player)) {
+                the_four_primitives_and_weapons.damage.ElementalParticles.sendForced(
+                        sw, ParticleTypes.END_ROD, p.x, p.y, p.z, 14, delta, 0.0, delta, 0.0);
+            }
             if (elemental) {
                 // 灰色 dust と全く同じ範囲に撒く ( delta 1 0 1 = 横に広く・上下は広げない )。
 				// 通常攻撃ごとの通信量を抑えつつ、弧が判別できる密度にする。
