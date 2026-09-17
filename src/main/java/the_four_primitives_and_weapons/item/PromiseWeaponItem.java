@@ -33,13 +33,20 @@ public final class PromiseWeaponItem extends SwordItem {
         tooltip.add(Component.translatable("tooltip.the_four_primitives_and_weapons.promise_weapon"));
     }
     // Palette generated with the addon ./maw create-weapon command.
-    private static void applyDefaultColors(ItemStack stack) {
+    private void applyDefaultColors(ItemStack stack) {
         CompoundTag tag = stack.getOrCreateTag();
         if (!tag.contains(KatanaFittings.BLADE_KEY)) {
             KatanaFittings.setBlade(stack, 0xCAD2D9);
         }
+        if ("sword".equals(form) && !tag.getBoolean("PromiseMetalGrip")) {
+            // 既存の既定の黒い柄も銀色へ移行。個別に染色済みの色は維持する。
+            if (!tag.contains(KatanaFittings.TSUKA_KEY) || tag.getInt(KatanaFittings.TSUKA_KEY) == 0x171B22) {
+                KatanaFittings.setTsuka(stack, 0xCAD2D9);
+            }
+            tag.putBoolean("PromiseMetalGrip", true);
+        }
         if (!tag.contains(KatanaFittings.TSUKA_KEY)) {
-            KatanaFittings.setTsuka(stack, 0x171B22);
+            KatanaFittings.setTsuka(stack, "sword".equals(form) ? 0xCAD2D9 : 0x171B22);
         }
         if (!tag.contains(KatanaFittings.TSUBA_KEY)) {
             KatanaFittings.setTsuba(stack, 0xAEBAC5);

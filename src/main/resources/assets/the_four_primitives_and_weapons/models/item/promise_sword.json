@@ -1,3 +1,10 @@
 {
-  "parent": "the_four_primitives_and_weapons:custom/weapon/sword/sword_parent"
+  "parent": "the_four_primitives_and_weapons:custom/weapon/sword/sword_parent",
+  "textures": {
+    "0": "minecraft:block/iron_block",
+    "3": "minecraft:block/iron_block",
+    "4": "minecraft:block/iron_block",
+    "6": "minecraft:block/iron_block",
+    "particle": "minecraft:block/iron_block"
+  }
 }
