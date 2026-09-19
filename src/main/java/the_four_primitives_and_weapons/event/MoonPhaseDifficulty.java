@@ -10,6 +10,7 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import the_four_primitives_and_weapons.world.AstronomicalEvents;
+import the_four_primitives_and_weapons.world.AstronomyData;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,7 +65,7 @@ public class MoonPhaseDifficulty {
     /** 現在の月相 (0-7) をサーバーのオーバーワールドから取得 */
     public static int getMoonPhase(Level level) {
         if (level == null) return 4;
-        return ((ServerLevel) level).getMoonPhase();
+        return AstronomyData.settings(level).moonPhase(level.getMoonPhase());
     }
 
     /** 現在の月相による難易度ボーナス (0-8) */
@@ -100,7 +101,7 @@ public class MoonPhaseDifficulty {
         for (ServerLevel level : event.getServer().getAllLevels()) {
             if (!level.dimensionType().natural()) continue;
             boolean solarEclipse = Level.OVERWORLD.equals(level.dimension())
-                && AstronomicalEvents.solarEclipseProgress(level.getDayTime()) >= 0F;
+                && AstronomyData.settings(level).solarProgress(level.getDayTime()) >= 0F;
             if (solarEclipse && !wasSolarEclipse.getOrDefault(level, false)) {
                 for (ServerPlayer player : level.players()) {
                     player.sendSystemMessage(Component.literal("§6日食が始まりました。太陽が次第に隠れていきます。"));
@@ -115,11 +116,11 @@ public class MoonPhaseDifficulty {
 
             // 夜入り瞬間: 月相を通知
             if (isNight && !wasNightInLevel) {
-                int phase = level.getMoonPhase();
+                int phase = getMoonPhase(level);
                 int bonus = PHASE_BONUS[phase];
                 String name = PHASE_NAME[phase];
                 String lunarEvent = Level.OVERWORLD.equals(level.dimension())
-                    ? AstronomicalEvents.nightEventNames(level.getDayTime(), phase) : "";
+                    ? AstronomyMoonEffects.nightNames(level) : "";
                 String eventLabel = lunarEvent.isEmpty() ? "" : " §b（" + lunarEvent + "）";
 
                 for (ServerPlayer p : level.players()) {

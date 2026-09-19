@@ -1,0 +1,29 @@
+{
+  "weather.wind": {
+    "subtitle": "subtitles.the_four_primitives_and_weapons.weather.wind",
+    "sounds": [
+      {
+        "name": "the_four_primitives_and_weapons:weather/wind",
+        "stream": false
+      }
+    ]
+  },
+  "weather.sand": {
+    "subtitle": "subtitles.the_four_primitives_and_weapons.weather.sand",
+    "sounds": [
+      {
+        "name": "the_four_primitives_and_weapons:weather/sand",
+        "stream": false
+      }
+    ]
+  },
+  "weather.hail": {
+    "subtitle": "subtitles.the_four_primitives_and_weapons.weather.hail",
+    "sounds": [
+      {
+        "name": "the_four_primitives_and_weapons:weather/hail",
+        "stream": false
+      }
+    ]
+  }
+}

@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "the_four_primitives_and_weapons.refmap.json",
   "mixins": [
+    "RegionalWeatherLevelMixin",
+    "RegionalWeatherServerMixin",
     "GuardDamageReductionMixin",
     "StabbedWeaponCollisionMixin",
     "MiasmaHealMixin",
@@ -22,6 +24,7 @@
     "GateInventoryOverflowMixin"
   ],
   "client": [
+    "RegionalWeatherRendererMixin",
     "LunarSizeMixin",
     "KeyBindsLabelLayoutMixin",
     "WeaponBlockAttackMixin",

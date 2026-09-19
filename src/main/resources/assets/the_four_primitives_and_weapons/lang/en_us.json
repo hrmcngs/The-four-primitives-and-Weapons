@@ -931,5 +931,8 @@
   "tooltip.the_four_primitives_and_weapons.gate.properties": "§7Knockback X / Unbreakable",
   "tooltip.the_four_primitives_and_weapons.luna.drop": "§6Drop key: summon a companion",
   "tooltip.the_four_primitives_and_weapons.luna.release": "§7Sneak + Drop / discard from inventory: release the item",
-  "tooltip.the_four_primitives_and_weapons.convergent_gate.summon": "§6Right-click: fire %s converging swords"
+  "tooltip.the_four_primitives_and_weapons.convergent_gate.summon": "§6Right-click: fire %s converging swords",
+  "subtitles.the_four_primitives_and_weapons.weather.wind": "Wind gusts",
+  "subtitles.the_four_primitives_and_weapons.weather.sand": "Sand blows",
+  "subtitles.the_four_primitives_and_weapons.weather.hail": "Hail patters"
 }

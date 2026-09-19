@@ -7,7 +7,11 @@ public final class AstronomicalEvents {
     public enum MoonTint {
         NORMAL("", 1F, 1F, 1F),
         BLUE("ブルームーン", 0.35F, 0.65F, 1F),
-        BLOOD("ブラッドムーン", 1F, 0.22F, 0.12F);
+        BLOOD("ブラッドムーン", 1F, 0.22F, 0.12F),
+        GOLD("ゴールドムーン", 1F, 0.72F, 0.20F),
+        JADE("ジェイドムーン", 0.25F, 1F, 0.55F),
+        VIOLET("バイオレットムーン", 0.65F, 0.30F, 1F),
+        ROSE("ローズムーン", 1F, 0.40F, 0.70F);
 
         public final String displayName;
         public final float red, green, blue;
@@ -50,6 +54,10 @@ public final class AstronomicalEvents {
         long day = Math.floorDiv(dayTime, 24000L);
         if (Math.floorMod(day, 64L) == 24L) return MoonTint.BLOOD;
         if (Math.floorMod(day, 32L) == 8L) return MoonTint.BLUE;
+        if (Math.floorMod(day, 64L) == 16L) return MoonTint.GOLD;
+        if (Math.floorMod(day, 64L) == 32L) return MoonTint.JADE;
+        if (Math.floorMod(day, 128L) == 56L) return MoonTint.VIOLET;
+        if (Math.floorMod(day, 128L) == 120L) return MoonTint.ROSE;
         return MoonTint.NORMAL;
     }
 
@@ -66,24 +74,38 @@ public final class AstronomicalEvents {
         return names;
     }
 
-    public record Meteor(double x, double z, double dx, double dz, float opacity) { }
+    public record Meteor(double x, double y, double z, double dx, double dy, double dz, float opacity) { }
 
     /** One brief streak per time slot; no entities, packets or persistent state. */
     public static Meteor meteor(long dayTime) {
+        return meteor(dayTime, isMeteorShower(dayTime), 0);
+    }
+
+    public static Meteor meteor(long dayTime, boolean shower, int lane) {
+        return meteor(dayTime, shower, lane, false);
+    }
+
+    public static Meteor meteor(long dayTime, boolean shower, int lane, boolean allowDaytime) {
         long timeOfDay = Math.floorMod(dayTime, 24000L);
-        if (timeOfDay < 13000L || timeOfDay >= 23000L) return null;
-        int interval = isMeteorShower(dayTime) ? 40 : 320;
+        if (!allowDaytime && (timeOfDay < 13000L || timeOfDay >= 23000L)) return null;
+        int interval = shower ? 40 : 320;
+        dayTime += lane * 13L;
         long slot = Math.floorDiv(dayTime, interval);
         int age = (int) Math.floorMod(dayTime, interval);
         if (age >= 24) return null;
-        Random random = new Random(slot * 0x9E3779B97F4A7C15L);
+        Random random = new Random(slot * 0x9E3779B97F4A7C15L + lane * 7919L);
         double angle = random.nextDouble() * Math.PI * 2.0;
-        double direction = angle + 0.6 + random.nextDouble();
-        double radius = 25.0 + random.nextDouble() * 65.0;
-        double dx = Math.cos(direction), dz = Math.sin(direction);
-        double travel = (age / 23.0 - 0.5) * 45.0;
-        return new Meteor(Math.cos(angle) * radius + dx * travel,
-            Math.sin(angle) * radius + dz * travel, dx, dz,
+        // Sample the visible hemisphere, including low skies in every direction.
+        double elevation = Math.toRadians(12.0 + random.nextDouble() * 65.0);
+        double horizontal = Math.cos(elevation), vertical = Math.sin(elevation);
+        double side = random.nextBoolean() ? 0.8 : -0.8;
+        double dx = 0.6 * vertical * Math.cos(angle) - side * Math.sin(angle);
+        double dy = -0.6 * horizontal;
+        double dz = 0.6 * vertical * Math.sin(angle) + side * Math.cos(angle);
+        double travel = (age / 23.0 - 0.5) * 32.0;
+        return new Meteor(100.0 * horizontal * Math.cos(angle) + dx * travel,
+            100.0 * vertical + dy * travel,
+            100.0 * horizontal * Math.sin(angle) + dz * travel, dx, dy, dz,
             (float) Math.sin(Math.PI * age / 23.0));
     }
 }

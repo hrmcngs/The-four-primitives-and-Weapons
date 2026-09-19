@@ -13,19 +13,20 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Matrix4f;
 import the_four_primitives_and_weapons.world.AstronomicalEvents;
+import the_four_primitives_and_weapons.world.AstronomyData;
 
 /** Called inside vanilla's sky pass, after the moon and before stars. */
 public final class AstronomicalSkyRenderer {
     private AstronomicalSkyRenderer() { }
 
-    /** Vanilla sky overlay; VanillaLite recognizes this signature and uses its own mask. */
+    /** Pixel-grid shadow; VanillaLite recognizes its signature and supplies a sky-toned tint. */
     public static void renderSolarEclipse(ClientLevel level, PoseStack pose, float partialTick) {
-        float progress = AstronomicalEvents.solarEclipseProgress(level.getDayTime());
+        float progress = AstronomyData.settings(level).solarProgress(level.getDayTime());
         if (progress < 0F) return;
         float alpha = (float) Math.sin(Math.PI * progress) * (1F - level.getRainLevel(partialTick));
         if (alpha <= 0.001F) return;
-        float radius = 32F;
-        float centerX = (progress * 4.8F - 2.4F) * radius;
+        float radius = 7.5F;
+        float centerX = Math.round((progress * 4F - 2F) * 8F) * radius / 8F;
         Matrix4f matrix = pose.last().pose();
         boolean culling = org.lwjgl.opengl.GL11.glIsEnabled(org.lwjgl.opengl.GL11.GL_CULL_FACE);
         RenderSystem.disableCull();
@@ -34,12 +35,23 @@ public final class AstronomicalSkyRenderer {
         RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
         try {
             BufferBuilder buffer = Tesselator.getInstance().getBuilder();
-            buffer.begin(VertexFormat.Mode.TRIANGLE_FAN, DefaultVertexFormat.POSITION_COLOR);
-            eclipseVertex(buffer, matrix, centerX, 0F, alpha);
-            for (int segment = 0; segment <= 64; segment++) {
-                double angle = segment * Math.PI * 2.0 / 64.0;
-                eclipseVertex(buffer, matrix, centerX + radius * (float) Math.cos(angle),
-                    radius * (float) Math.sin(angle), alpha);
+            buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+            // Match the bright 8-pixel core of Minecraft's 32-pixel sun texture.
+            // Keep a one-pixel rim at maximum coverage, with stepped corners.
+            float pixel = radius / 4F;
+            for (int z = -4; z < 4; z++) {
+                for (int x = -4; x < 4; x++) {
+                    float cx = (x + .5F) * pixel;
+                    float cz = (z + .5F) * pixel;
+                    if (Math.abs(cx - centerX) >= radius - pixel * .5F
+                        || Math.abs(cz) >= radius - pixel * .5F) continue;
+                    if (Math.abs(cx - centerX) > radius - pixel * 1.5F
+                        && Math.abs(cz) > radius - pixel * 1.5F) continue;
+                    eclipseVertex(buffer, matrix, x * pixel, z * pixel, alpha);
+                    eclipseVertex(buffer, matrix, (x + 1) * pixel, z * pixel, alpha);
+                    eclipseVertex(buffer, matrix, (x + 1) * pixel, (z + 1) * pixel, alpha);
+                    eclipseVertex(buffer, matrix, x * pixel, (z + 1) * pixel, alpha);
+                }
             }
             BufferUploader.drawWithShader(buffer.end());
         } finally {
@@ -52,13 +64,24 @@ public final class AstronomicalSkyRenderer {
     }
 
     private static void eclipseVertex(BufferBuilder buffer, Matrix4f matrix, float x, float z, float alpha) {
-        buffer.vertex(matrix, x, 99F, z).color(3, 4, 5, Math.round(alpha * 255F)).endVertex();
+        buffer.vertex(matrix, x, 99F, z).color(4, 7, 11, Math.round(alpha * 255F)).endVertex();
     }
 
     public static void renderMeteors(ClientLevel level, PoseStack pose, float partialTick) {
-        var meteor = AstronomicalEvents.meteor(level.getDayTime());
+        var settings = AstronomyData.settings(level);
+        if (settings.meteors() == 0) return;
+        boolean shower = settings.meteorShower(level.getDayTime());
+        for (int lane = 0; lane < (shower ? 3 : 1); lane++) {
+            renderMeteor(level, pose, partialTick, AstronomicalEvents.meteor(level.getDayTime(), shower, lane, settings.meteors() == 1));
+        }
+    }
+
+    private static void renderMeteor(ClientLevel level, PoseStack pose, float partialTick,
+            AstronomicalEvents.Meteor meteor) {
         if (meteor == null) return;
-        float alpha = meteor.opacity() * Math.min(1F, level.getStarBrightness(partialTick) * 2F)
+        float visibility = AstronomyData.settings(level).meteors() == 1 ? 1F
+            : Math.min(1F, level.getStarBrightness(partialTick) * 2F);
+        float alpha = meteor.opacity() * visibility
             * (1F - level.getRainLevel(partialTick)) * (1F - level.getThunderLevel(partialTick));
         if (alpha <= 0.001F) return;
 
@@ -66,8 +89,8 @@ public final class AstronomicalSkyRenderer {
         Matrix4f matrix = new Matrix4f(pose.last().pose())
             .rotateX(-level.getTimeOfDay(partialTick) * (float) (Math.PI * 2.0))
             .rotateY((float) (Math.PI / 2.0));
-        Vec3 head = new Vec3(meteor.x(), 75.0, meteor.z());
-        Vec3 direction = new Vec3(meteor.dx(), 0.0, meteor.dz());
+        Vec3 head = new Vec3(meteor.x(), meteor.y(), meteor.z());
+        Vec3 direction = new Vec3(meteor.dx(), meteor.dy(), meteor.dz());
         Vec3 tail = head.subtract(direction.scale(19.0));
         Vec3 width = direction.cross(head).normalize().scale(0.22);
         RenderSystem.setShader(GameRenderer::getPositionColorShader);

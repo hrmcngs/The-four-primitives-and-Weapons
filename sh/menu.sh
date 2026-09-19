@@ -9,6 +9,7 @@
 # Enterで既定値、Ctrl+Cまたは入力終了でメニューを終了します。
 #
 # Lisp化したツール（Python不要）:
+#   天文現象・timeコマンド生成: sh/generate/generate-time-commands.sh
 #   蝶・刀のコマンド生成: sh/generate/generate_commands.sh
 #   撮影ワールドの作成: sh/generate/generate-photo-world.sh
 #   拵えテクスチャ・ノイズフォント: sh/generate/generate-assets.sh

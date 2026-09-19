@@ -930,5 +930,8 @@
   "tooltip.the_four_primitives_and_weapons.gate.properties": "§7ノックバック X／破壊不能",
   "tooltip.the_four_primitives_and_weapons.luna.drop": "§6ドロップキー：護衛を召喚",
   "tooltip.the_four_primitives_and_weapons.luna.release": "§7スニーク＋ドロップ／インベントリから投棄：手放す",
-  "tooltip.the_four_primitives_and_weapons.convergent_gate.summon": "§6右クリック：%s本の剣を収束射出"
+  "tooltip.the_four_primitives_and_weapons.convergent_gate.summon": "§6右クリック：%s本の剣を収束射出",
+  "subtitles.the_four_primitives_and_weapons.weather.wind": "風が吹き荒れる",
+  "subtitles.the_four_primitives_and_weapons.weather.sand": "砂が吹きつける",
+  "subtitles.the_four_primitives_and_weapons.weather.hail": "雹が打ちつける"
 }
