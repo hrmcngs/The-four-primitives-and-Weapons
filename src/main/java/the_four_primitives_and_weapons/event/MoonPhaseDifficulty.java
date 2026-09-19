@@ -9,9 +9,11 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import the_four_primitives_and_weapons.world.AstronomicalEvents;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * 月の満ち欠けによる難易度修正システム。
@@ -57,6 +59,7 @@ public class MoonPhaseDifficulty {
     };
 
     private static final Map<String, Boolean> wasNight = new HashMap<>();
+    private static final Map<ServerLevel, Boolean> wasSolarEclipse = new WeakHashMap<>();
 
     /** 現在の月相 (0-7) をサーバーのオーバーワールドから取得 */
     public static int getMoonPhase(Level level) {
@@ -96,6 +99,14 @@ public class MoonPhaseDifficulty {
 
         for (ServerLevel level : event.getServer().getAllLevels()) {
             if (!level.dimensionType().natural()) continue;
+            boolean solarEclipse = Level.OVERWORLD.equals(level.dimension())
+                && AstronomicalEvents.solarEclipseProgress(level.getDayTime()) >= 0F;
+            if (solarEclipse && !wasSolarEclipse.getOrDefault(level, false)) {
+                for (ServerPlayer player : level.players()) {
+                    player.sendSystemMessage(Component.literal("§6日食が始まりました。太陽が次第に隠れていきます。"));
+                }
+            }
+            wasSolarEclipse.put(level, solarEclipse);
             long dayTime = level.getDayTime() % 24000;
             boolean isNight = dayTime >= NIGHT_START && dayTime <= NIGHT_END;
 
@@ -107,10 +118,13 @@ public class MoonPhaseDifficulty {
                 int phase = level.getMoonPhase();
                 int bonus = PHASE_BONUS[phase];
                 String name = PHASE_NAME[phase];
+                String lunarEvent = Level.OVERWORLD.equals(level.dimension())
+                    ? AstronomicalEvents.nightEventNames(level.getDayTime(), phase) : "";
+                String eventLabel = lunarEvent.isEmpty() ? "" : " §b（" + lunarEvent + "）";
 
                 for (ServerPlayer p : level.players()) {
                     p.sendSystemMessage(Component.literal(
-                        "§7今夜は " + name + " §7— 難易度補正 §c+" + bonus));
+                        "§7今夜は " + name + eventLabel + " §7— 難易度補正 §c+" + bonus));
                     // 満月/十三夜などの高ボーナス時は特別演出
                     if (bonus >= 6) {
                         level.playSound(null, p.blockPosition(),

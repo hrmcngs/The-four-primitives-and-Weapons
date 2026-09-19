@@ -279,6 +279,7 @@
 #   bash sh/build/build.sh                              通常ビルド (Gradle が version / release_type をプロンプト)
 #   bash sh/build/build.sh clean                        クリーンビルド
 #   bash sh/build/build.sh offline                      オフラインビルド (キャッシュ済み依存のみ)
+#   bash sh/build/build.sh tls                          既存の回線向けTLS互換設定でオンラインビルド
 #   bash sh/build/build.sh -Pmod_version_override=1.2.3 プロンプトを skip して 1.2.3 で即ビルド
 #   bash sh/build/build.sh -Prelease_type=release       version は対話、release type だけ指定
 #
@@ -303,6 +304,7 @@ TASKS="build"
 GRADLE_ARGS=""
 LABEL="Build"
 DO_CLEAN=0
+USE_TLS_WORKAROUND=0
 
 for arg in "$@"; do
     case "$arg" in
@@ -314,12 +316,27 @@ for arg in "$@"; do
             GRADLE_ARGS="$GRADLE_ARGS --offline -Dnet.minecraftforge.gradle.check.certs=false"
             LABEL="$LABEL (Offline)"
             ;;
+        tls)
+            USE_TLS_WORKAROUND=1
+            ;;
         *)
             # それ以外は Gradle にそのまま渡す (-Pmod_version_override=X 等)
             GRADLE_ARGS="$GRADLE_ARGS $arg"
             ;;
     esac
 done
+
+if [ "$USE_TLS_WORKAROUND" = "1" ]; then
+    TLS_WORKAROUND_FILE="$(pwd)/tls_workaround.properties"
+    if [ ! -f "$TLS_WORKAROUND_FILE" ]; then
+        echo "TLS互換設定が見つかりません: $TLS_WORKAROUND_FILE" >&2
+        exit 1
+    fi
+    # run_client_mac.sh と同じ互換設定。証明書の検証は無効化しない。
+    export JAVA_TOOL_OPTIONS="${JAVA_TOOL_OPTIONS:-} -Djava.security.properties=\"${TLS_WORKAROUND_FILE}\" -Djdk.tls.client.protocols=TLSv1.2 -Dhttps.protocols=TLSv1.2 -Djdk.tls.client.cipherSuites=TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256"
+    GRADLE_ARGS="$GRADLE_ARGS --no-daemon"
+    LABEL="$LABEL (TLS互換設定)"
+fi
 
 echo "=== $LABEL ==="
 

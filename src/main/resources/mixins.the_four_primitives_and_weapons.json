@@ -22,6 +22,7 @@
     "GateInventoryOverflowMixin"
   ],
   "client": [
+    "LunarSizeMixin",
     "KeyBindsLabelLayoutMixin",
     "WeaponBlockAttackMixin",
     "BlessingVisionMixin",
