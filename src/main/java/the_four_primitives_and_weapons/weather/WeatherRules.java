@@ -53,6 +53,17 @@ public final class WeatherRules {
         }
         return allowed(candidate, c, dayTime) ? candidate : WeatherKind.CLEAR;
     }
+    /** Visibility is separate from precipitation intensity/audio density. */
+    public static float opacity(WeatherKind kind, long time) {
+        float intensity = intensity(kind, time);
+        if (intensity == 0) return 0;
+        return switch (kind) {
+            case DRIZZLE -> .55F;
+            case RAIN -> .9F;
+            case SHOWERS -> .85F;
+            default -> intensity;
+        };
+    }
     public static float intensity(WeatherKind kind, long time) {
         // Showers have intermittent wet and dry spells, unlike continuous rain.
         if (kind == WeatherKind.SHOWERS && Math.floorMod(time, 600L) >= 360L) return 0F;

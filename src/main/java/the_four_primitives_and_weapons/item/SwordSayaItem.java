@@ -63,12 +63,14 @@ public class SwordSayaItem extends Item implements ICurioItem {
 	}
 
 	public static boolean canSheathe(ItemStack swordStack) {
+        if (the_four_primitives_and_weapons.util.PromiseRing.isRingWeapon(swordStack)) return false;
 		return SayaRegistry.isRegistered(SayaRegistry.SayaType.SWORD, swordStack);
 	}
 
 	public static void sheatheSword(Player player, ItemStack swordStack, ItemStack sheathStack,
 									InteractionHand swordHand, InteractionHand sheathHand) {
 		if (swordHand == sheathHand) return; // 同じ手は不可 (武器消失防止)
+        if (!canSheathe(swordStack)) return;
 		CompoundTag sheathTag = sheathStack.getOrCreateTag();
 
 		if (!sheathTag.contains("StoredSword")) {

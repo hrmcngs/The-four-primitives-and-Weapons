@@ -78,6 +78,10 @@ public class RMessage {
 			boolean offIsWeapon = !offIsBluepurge && DodgeAndBattouHandler.isWeapon(offHand)
 					&& !DodgeAndBattouHandler.isSaya(offHand);
 
+            // Ring weapons return to the ring even while the other hand holds a saya.
+            if (the_four_primitives_and_weapons.util.PromiseRing.store(entity, InteractionHand.MAIN_HAND)
+                    || the_four_primitives_and_weapons.util.PromiseRing.store(entity, InteractionHand.OFF_HAND)) return;
+
 			// 納刀チェック1: 武器+空の鞘を両手で持っていれば納刀
 			if (mainIsWeapon && DodgeAndBattouHandler.isSaya(offHand)
 					&& !CuriosScabbardHelper.hasStoredWeapon(offHand)) {
@@ -117,9 +121,6 @@ public class RMessage {
 					return;
 				}
 			}
-
-            if (the_four_primitives_and_weapons.util.PromiseRing.store(entity, InteractionHand.MAIN_HAND)
-                    || the_four_primitives_and_weapons.util.PromiseRing.store(entity, InteractionHand.OFF_HAND)) return;
 
 			// 抜刀チェック A: 利き手 (メインハンド) の満杯鞘 + オフハンド空 → 利き手の鞘から抜刀
 			if (CuriosScabbardHelper.isScabbard(mainHand)

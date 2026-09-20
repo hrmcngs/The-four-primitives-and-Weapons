@@ -63,12 +63,14 @@ public class DaggerSayaItem extends Item implements ICurioItem {
     }
 
     public static boolean canSheathe(ItemStack daggerStack) {
+        if (the_four_primitives_and_weapons.util.PromiseRing.isRingWeapon(daggerStack)) return false;
         return SayaRegistry.isRegistered(SayaRegistry.SayaType.DAGGER, daggerStack);
     }
 
     public static void sheatheDagger(Player player, ItemStack daggerStack, ItemStack sheathStack,
                                      InteractionHand daggerHand, InteractionHand sheathHand) {
         if (daggerHand == sheathHand) return; // 同じ手は不可
+        if (!canSheathe(daggerStack)) return;
         CompoundTag sheathTag = sheathStack.getOrCreateTag();
 
         if (!sheathTag.contains("StoredDagger")) {

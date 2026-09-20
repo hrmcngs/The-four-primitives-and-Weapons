@@ -1,0 +1,70 @@
+buildscript {
+    repositories { mavenCentral() }
+    dependencies { classpath 'org.ow2.asm:asm:9.7.1' }
+}
+
+import org.objectweb.asm.ClassReader
+import org.objectweb.asm.ClassWriter
+import org.objectweb.asm.ClassVisitor
+import org.objectweb.asm.MethodVisitor
+import org.objectweb.asm.Label
+import org.objectweb.asm.Opcodes
+import java.util.zip.ZipFile
+import java.util.zip.ZipEntry
+import java.util.zip.ZipOutputStream
+import java.util.zip.Deflater
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
+
+// Optimize only the distribution archive, after Forge remapping. IDE classes
+// retain full debugging information; source names and line numbers stay in the JAR.
+def compactDistribution = tasks.register('compactDistributionJar') {
+    mustRunAfter 'reobfJar'
+    onlyIf { !tasks.findByName('reobfJar')?.state?.failure }
+    doLast {
+        File archive = tasks.named('jar').get().archiveFile.get().asFile
+        if (!archive.exists()) return
+        long before = archive.length()
+        File temporary = new File(archive.parentFile, archive.name + '.compact.tmp')
+        int variables = 0
+        try {
+            new ZipFile(archive).withCloseable { input ->
+                new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(temporary))).withCloseable { output ->
+                    output.setLevel(Deflater.BEST_COMPRESSION)
+                    input.entries().each { original ->
+                        byte[] bytes = input.getInputStream(original).withCloseable { it.bytes }
+                        if (original.name.endsWith('.class')) {
+                            def writer = new ClassWriter(0)
+                            new ClassReader(bytes).accept(new ClassVisitor(Opcodes.ASM9, writer) {
+                                @Override MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
+                                    def method = super.visitMethod(access, name, descriptor, signature, exceptions)
+                                    return new MethodVisitor(Opcodes.ASM9, method) {
+                                        @Override void visitLocalVariable(String n, String d, String s, Label start, Label end, int index) {
+                                            variables++
+                                        }
+                                    }
+                                }
+                            }, 0)
+                            bytes = writer.toByteArray()
+                        }
+                        def entry = new ZipEntry(original.name)
+                        entry.time = original.time
+                        entry.comment = original.comment
+                        output.putNextEntry(entry)
+                        output.write(bytes)
+                        output.closeEntry()
+                    }
+                }
+            }
+            // Never increase the release archive. Atomic replacement prevents partial jars.
+            if (temporary.length() < before) {
+                long after = temporary.length()
+                Files.move(temporary.toPath(), archive.toPath(), StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE)
+                logger.lifecycle("Compact JAR: ${before} -> ${after} bytes; removed ${variables} local-variable debug records (line numbers retained)")
+            } else {
+                logger.lifecycle("Compact JAR: existing archive is already smaller; retained ${before} bytes")
+            }
+        } finally { temporary.delete() }
+    }
+}
+tasks.matching { it.name == 'reobfJar' }.configureEach { finalizedBy compactDistribution }

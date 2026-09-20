@@ -14,7 +14,7 @@ public final class WeatherAtmosphere {
         return switch (kind) {
             case CLEAR -> new Profile("", 0, 0);
             case FOG -> new Profile("", 0, 2);
-            case DRIZZLE -> new Profile("", 0, 2);
+            case DRIZZLE -> new Profile("", 0, 4);
             case RAIN, SHOWERS -> new Profile("", 0, 5);
             case HEAVY_RAIN -> new Profile("wind", .16F, 10);
             case THUNDERSTORM -> new Profile("wind", .32F, 12);

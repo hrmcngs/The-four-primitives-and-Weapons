@@ -62,6 +62,7 @@ public class TyokutouSayaItem extends Item {
      * 納刀可能な直刀かチェック
      */
     public static boolean canSheathe(ItemStack swordStack) {
+        if (the_four_primitives_and_weapons.util.PromiseRing.isRingWeapon(swordStack)) return false;
         return TyokutouThrustAttackProcedure.isStraightSword(swordStack);
     }
 
@@ -70,6 +71,7 @@ public class TyokutouSayaItem extends Item {
      */
     public static void sheatheSword(Player player, ItemStack swordStack, ItemStack sheathStack,
                                     InteractionHand swordHand, InteractionHand sheathHand) {
+        if (!canSheathe(swordStack)) return;
         CompoundTag sheathTag = sheathStack.getOrCreateTag();
 
         // 鞘が空の場合のみ納刀可能

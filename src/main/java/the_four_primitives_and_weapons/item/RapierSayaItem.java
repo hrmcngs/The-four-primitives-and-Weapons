@@ -59,12 +59,14 @@ public class RapierSayaItem extends Item implements ICurioItem {
     }
 
     public static boolean canSheathe(ItemStack rapierStack) {
+        if (the_four_primitives_and_weapons.util.PromiseRing.isRingWeapon(rapierStack)) return false;
         return SayaRegistry.isRegistered(SayaRegistry.SayaType.RAPIER, rapierStack);
     }
 
     public static void sheatheRapier(Player player, ItemStack rapierStack, ItemStack sheathStack,
                                      InteractionHand rapierHand, InteractionHand sheathHand) {
         if (rapierHand == sheathHand) return; // 同じ手は不可
+        if (!canSheathe(rapierStack)) return;
         CompoundTag sheathTag = sheathStack.getOrCreateTag();
 
         if (!sheathTag.contains("StoredRapier")) {

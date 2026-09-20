@@ -4,6 +4,18 @@ import the_four_primitives_and_weapons.world.AstronomySettings;
 
 public class AstronomicalEventsTest {
     public static void main(String[] args) {
+        for (float p : new float[] {-2, -1, 0, 1, Float.NaN})
+            check(the_four_primitives_and_weapons.world.EclipseLightCurve.strength(p) == 0, "No eclipse darkness outside active transit");
+        check(the_four_primitives_and_weapons.world.EclipseLightCurve.strength(.5F) == 1, "Maximum darkness at middle");
+        float prior = 0;
+        for (int i = 0; i <= 50; i++) {
+            float progress = i / 100F;
+            float value = the_four_primitives_and_weapons.world.EclipseLightCurve.strength(progress);
+            check(value >= prior && value <= 1, "Gradual dimming toward maximum");
+            check(Math.abs(value - the_four_primitives_and_weapons.world.EclipseLightCurve.strength(1 - progress)) < .00001, "Symmetric recovery");
+            prior = value;
+        }
+
         var settings = new AstronomySettings(2F, 5, MoonTint.JADE.ordinal(), 1, false);
         check(settings.moonSize(186000L) == 2F && settings.moonPhase(7) == 5, "Moon overrides on shower day");
         check(settings.moonColor(186000L, 7) == MoonTint.JADE, "Manual color on crescent");

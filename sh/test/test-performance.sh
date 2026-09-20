@@ -11,7 +11,7 @@ performance_test_dir=$(mktemp -d)
 trap 'rm -rf "$performance_test_dir"' EXIT
 javac -d "$performance_test_dir" src/main/java/the_four_primitives_and_weapons/performance/SyncSnapshot.java tests/SyncSnapshotTest.java
 java -cp "$performance_test_dir" SyncSnapshotTest
-javac -d "$performance_test_dir" src/main/java/the_four_primitives_and_weapons/performance/TickWorkQueue.java \
+javac -d "$performance_test_dir" src/main/java/the_four_primitives_and_weapons/performance/TickWorkQueue.java src/main/java/the_four_primitives_and_weapons/performance/TickPositionCache.java \
     src/main/java/the_four_primitives_and_weapons/performance/WeatherSkyMesh.java \
     src/main/java/the_four_primitives_and_weapons/weather/WeatherKind.java \
     src/main/java/the_four_primitives_and_weapons/weather/WeatherRules.java \

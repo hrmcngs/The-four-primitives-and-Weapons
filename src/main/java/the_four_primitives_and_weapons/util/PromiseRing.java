@@ -35,6 +35,11 @@ public final class PromiseRing {
         };
     }
 
+    /** Ring weapons remain ring-only even when their provenance NBT is absent. */
+    public static boolean isRingWeapon(ItemStack stack) {
+        return stack.getItem() instanceof the_four_primitives_and_weapons.item.PromiseWeaponItem;
+    }
+
     public static int form(ItemStack stack) {
         for (int i = 0; i < 3; i++) if (stack.is(weapon(i))) return i;
         return -1;

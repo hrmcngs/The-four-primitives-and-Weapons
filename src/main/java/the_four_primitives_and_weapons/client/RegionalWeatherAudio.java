@@ -14,10 +14,12 @@ import the_four_primitives_and_weapons.weather.*;
 public final class RegionalWeatherAudio {
     private static Loop current;
     private static int retry;
+    private static WeatherAtmosphere.Profile sampled = WeatherAtmosphere.profile(WeatherKind.CLEAR, 0);
     public static void reset() {
         if (current != null) Minecraft.getInstance().getSoundManager().stop(current);
         current = null;
         retry = 0;
+        sampled = WeatherAtmosphere.profile(WeatherKind.CLEAR, 0);
     }
     private static WeatherAtmosphere.Profile sample() {
         var mc = Minecraft.getInstance();
@@ -25,16 +27,18 @@ public final class RegionalWeatherAudio {
         if (mc.level == null || mc.player == null || !Level.OVERWORLD.equals(mc.level.dimension())
             || camera.getFluidInCamera() != FogType.NONE) return WeatherAtmosphere.profile(WeatherKind.CLEAR, 0);
         var pos = camera.getBlockPosition();
+        var profile = WeatherAtmosphere.profile(RegionalWeather.at(mc.level, pos), mc.level.getGameTime());
+        if (profile.sound().isEmpty()) return profile;
         if (mc.level.getHeight(Heightmap.Types.MOTION_BLOCKING, pos.getX(), pos.getZ()) - pos.getY() > 12)
             return WeatherAtmosphere.profile(WeatherKind.CLEAR, 0);
-        var profile = WeatherAtmosphere.profile(RegionalWeather.at(mc.level, pos), mc.level.getGameTime());
-        return new WeatherAtmosphere.Profile(profile.sound(), profile.volume() * (mc.level.canSeeSky(pos) ? 1F : .18F), profile.particles());
+        if (mc.level.canSeeSky(pos)) return profile;
+        return new WeatherAtmosphere.Profile(profile.sound(), profile.volume() * .18F, profile.particles());
     }
     public static void tick() {
         var mc = Minecraft.getInstance();
         if (mc.level == null || mc.player == null) { reset(); return; }
         if (mc.isPaused()) return;
-        var profile = sample();
+        var profile = sampled = sample();
         if (current != null && (!current.key.equals(profile.sound()) || current.level != mc.level)) {
             current.retiring = true;
             current = null;
@@ -63,7 +67,7 @@ public final class RegionalWeatherAudio {
         @Override public void tick() {
             var mc = Minecraft.getInstance();
             if (mc.level != level || mc.player == null) { stop(); return; }
-            var profile = sample();
+            var profile = sampled;
             float target = !retiring && key.equals(profile.sound()) ? profile.volume() : 0;
             volume += Math.max(-.025F, Math.min(.025F, target - volume));
             if (target == 0 && volume <= .001F) stop();

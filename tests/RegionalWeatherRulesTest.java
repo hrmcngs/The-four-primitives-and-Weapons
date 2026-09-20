@@ -57,6 +57,10 @@ public class RegionalWeatherRulesTest {
         check(the_four_primitives_and_weapons.weather.WeatherAtmosphere.profile(WeatherKind.FOG, 0).sound().isEmpty(), "Fog remains silent");
         check(the_four_primitives_and_weapons.weather.WeatherAtmosphere.profile(WeatherKind.RAIN, 0).sound().isEmpty(), "Do not duplicate vanilla rain sound");
         check(the_four_primitives_and_weapons.weather.WeatherAtmosphere.profile(WeatherKind.SHOWERS, 400).particles() == 0, "No particles during shower dry spell");
+        check(WeatherRules.opacity(WeatherKind.DRIZZLE, 0) > WeatherRules.intensity(WeatherKind.DRIZZLE, 0), "Drizzle visible without changing rain intensity");
+        check(WeatherRules.opacity(WeatherKind.RAIN, 0) > WeatherRules.opacity(WeatherKind.DRIZZLE, 0), "Rain stronger than drizzle");
+        check(WeatherRules.opacity(WeatherKind.SHOWERS, 400) == 0, "Shower dry spell remains invisible");
+        check(WeatherRules.opacity(WeatherKind.CLEAR, 0) == 0, "Clear sky has no precipitation opacity");
         System.out.println("Regional weather: biome exclusions, desert night boundaries, dry spells and forced modes passed.");
     }
 }

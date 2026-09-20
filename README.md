@@ -22,7 +22,9 @@ https://curseforge.com/minecraft/mc-mods/the-four-primitives-and-weapons
 
 ## Wiki
 
-- [レアリティシステム・ツールチップ枠・giveコマンド](WIKI_RARITY.md)
+使い方・仕様・設定方法は[GitHub Wiki](https://github.com/Drowse-Lab/The-four-primitives-and-Weapons/wiki)に、未実装事項・確認待ちの作業は[Issues](https://github.com/Drowse-Lab/The-four-primitives-and-Weapons/issues)にまとめています。
+
+- [レアリティシステム・ツールチップ枠・giveコマンド](https://github.com/Drowse-Lab/The-four-primitives-and-Weapons/wiki/Rarity-System)
 
 ***
 ## other

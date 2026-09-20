@@ -412,6 +412,7 @@ public class CuriosScabbardHelper {
     public static boolean isCompatible(ItemStack weaponStack, ItemStack scabbardStack) {
         if (scabbardStack.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.RING.get()))
             return PromiseRing.canStore(scabbardStack, weaponStack);
+        if (PromiseRing.isRingWeapon(weaponStack)) return false;
         // 専用鞘と、忍者刀の空鞘として表示される旧来の汎用鞘は忍者刀専用。
         if (NinjatoVault.isNinjatoSaya(scabbardStack))
             return weaponStack.is(the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.NINJATOU.get());
@@ -448,6 +449,7 @@ public class CuriosScabbardHelper {
      * カバーするので、こちらに切り替える。
      */
     public static boolean isRegisteredForSaya(ItemStack weaponStack) {
+        if (PromiseRing.isRingWeapon(weaponStack)) return false;
         return SayaRegistry.isRegistered(SayaRegistry.SayaType.KATANA, weaponStack);
     }
 
@@ -455,6 +457,7 @@ public class CuriosScabbardHelper {
      * 直刀 saya に登録されているアイテムか。
      */
     public static boolean isRegisteredForTyokutoSaya(ItemStack weaponStack) {
+        if (PromiseRing.isRingWeapon(weaponStack)) return false;
         return SayaRegistry.isRegistered(SayaRegistry.SayaType.TYOKUTO, weaponStack);
     }
 

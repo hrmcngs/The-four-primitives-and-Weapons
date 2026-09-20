@@ -30,7 +30,9 @@
     "WeaponBlockAttackMixin",
     "BlessingVisionMixin",
     "TooltipPaddingMixin",
-    "TooltipPositionMixin"
+    "TooltipPositionMixin",
+    "EclipseLightTextureMixin",
+    "EclipseShaderUniformMixin"
   ],
   "server": [],
   "injectors": {

@@ -64,12 +64,15 @@ public final class RegionalWeatherEffects {
             case DECREASED -> Math.max(1, baseCount / 2);
             default -> baseCount;
         };
+        // Short-lived rain particles must be near eye level, not ten blocks overhead.
+        boolean rainDrops = kind.precipitation == 1 && kind != WeatherKind.HAIL;
+        double spread = rainDrops ? 12 : 32;
         for (int i = 0; i < count; i++) {
-            double x = camera.x + (random.nextDouble() - 0.5) * 32;
-            double y = camera.y + (kind.precipitation != 0 ? 4 + random.nextDouble() * 6 : random.nextDouble() * 8 - 2);
-            double z = camera.z + (random.nextDouble() - 0.5) * 32;
+            double x = camera.x + (random.nextDouble() - 0.5) * spread;
+            double y = camera.y + (rainDrops ? random.nextDouble() * 4 - 1 : kind.precipitation != 0 ? 4 + random.nextDouble() * 6 : random.nextDouble() * 8 - 2);
+            double z = camera.z + (random.nextDouble() - 0.5) * spread;
             var pos = BlockPos.containing(x, y, z);
-            if (!mc.level.getBlockState(pos).isAir() || !mc.level.canSeeSky(pos) || RegionalWeather.at(mc.level, pos) != kind) continue;
+            if (!mc.level.hasChunkAt(pos) || !mc.level.getBlockState(pos).isAir() || !mc.level.canSeeSky(pos) || RegionalWeather.at(mc.level, pos) != kind) continue;
             switch (kind) {
                 case SANDSTORM -> mc.level.addParticle(SAND, x, y, z, 0.6, 0.02, 0.2);
                 case HAIL -> mc.level.addParticle(ParticleTypes.ITEM_SNOWBALL, x, y, z, 0.05, -0.8, 0.02);

@@ -5,6 +5,18 @@ import the_four_primitives_and_weapons.weather.*;
 public final class RuntimePerformanceTest {
     private static void check(boolean value, String message) { if (!value) throw new AssertionError(message); }
     public static void main(String[] args) throws Exception {
+        TickPositionCache<String> cache = new TickPositionCache<>();
+        Object world = new Object();
+        cache.begin(world, 1, 13000, 0);
+        cache.put(-1L, "rain");
+        cache.begin(world, 1, 13000, 0);
+        check("rain".equals(cache.get(-1L)), "Same-tick weather lookup reused");
+        cache.begin(world, 1, 13000, 1); check(cache.get(-1L) == null, "Weather override invalidates immediately");
+        cache.put(-1L, "rain"); cache.begin(world, 1, 23000, 1); check(cache.get(-1L) == null, "Time command invalidates immediately");
+        cache.put(-1L, "rain"); cache.begin(world, 2, 23000, 1); check(cache.get(-1L) == null, "Tick boundary invalidates");
+        cache.put(-1L, "rain"); cache.begin(new Object(), 2, 23000, 1); check(cache.get(-1L) == null, "World switch invalidates");
+        for (long i = 0; i < 20000; i++) cache.put(i, Long.toString(i));
+        for (long i = 0; i < 20000; i++) check(cache.get(i) == null || cache.get(i).equals(Long.toString(i)), "Hash collisions never return another position");
         TickWorkQueue queue = new TickWorkQueue();
         List<Integer> calls = new ArrayList<>();
         queue.add(3, () -> calls.add(3));
@@ -30,6 +42,11 @@ public final class RuntimePerformanceTest {
             check(appearance == WeatherSky.appearance(kind), "Immutable sky profile reused");
             check(WeatherAtmosphere.profile(kind, 0) == WeatherAtmosphere.profile(kind, 0), "Immutable ambience reused");
             mesh.update(1234.5, -789.1, 24000.25, appearance, clouds);
+            for (int r = 0; r < 20; r++) for (int s = 0; s < 96; s++) {
+                boolean reference = mesh.alpha(WeatherSkyMesh.index(r,s)) != 0 || mesh.alpha(WeatherSkyMesh.index(r+1,s)) != 0
+                    || mesh.alpha(WeatherSkyMesh.index(r+1,s+1)) != 0 || mesh.alpha(WeatherSkyMesh.index(r,s+1)) != 0;
+                check(mesh.visible(r,s) == reference, "Only fully transparent faces are omitted");
+            }
             for (int r = 0; r <= 20; r++) for (int s = 0; s <= 96; s++) {
                 int i = WeatherSkyMesh.index(r,s);
                 double elevation = -.08 + (Math.PI / 2 + .08) * r / 20;
@@ -45,7 +62,7 @@ public final class RuntimePerformanceTest {
                 check(Math.round(alpha*255)==mesh.alpha(i), "Cloud/haze alpha unchanged");
             }
         }
-        System.out.println("Scheduler deadlines, reentrancy, concurrency, cleanup and all weather mesh equivalence checks passed.");
+        System.out.println("Position cache invalidation/collisions, scheduler, transparent-face culling and weather mesh equivalence checks passed.");
         System.out.println("Sky: 7680 repeated vertex calculations -> 2016 unique vertices; geometry trigonometry precomputed once.");
     }
 }

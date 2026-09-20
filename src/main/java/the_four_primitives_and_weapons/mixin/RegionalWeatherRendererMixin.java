@@ -16,6 +16,12 @@ import the_four_primitives_and_weapons.weather.*;
 
 @Mixin(LevelRenderer.class)
 public abstract class RegionalWeatherRendererMixin {
+    @Redirect(method = "renderSky", at = @At(value = "INVOKE",
+        target = "Lnet/minecraft/client/multiplayer/ClientLevel;getSkyColor(Lnet/minecraft/world/phys/Vec3;F)Lnet/minecraft/world/phys/Vec3;"))
+    private net.minecraft.world.phys.Vec3 eclipse$skyColor(ClientLevel client, net.minecraft.world.phys.Vec3 pos, float partialTick) {
+        return client.getSkyColor(pos, partialTick).scale(the_four_primitives_and_weapons.client.SolarEclipseLighting.brightness());
+    }
+
     @Shadow private ClientLevel level;
     @Unique private float regionalWeather$columnIntensity = 1F;
 
@@ -47,7 +53,7 @@ public abstract class RegionalWeatherRendererMixin {
             return biome.getPrecipitationAt(pos);
         }
         var kind = RegionalWeather.at(level, pos, biome);
-        regionalWeather$columnIntensity = WeatherRules.intensity(kind, level.getGameTime());
+        regionalWeather$columnIntensity = WeatherRules.opacity(kind, level.getGameTime());
         return RegionalWeather.precipitation(kind, level.getGameTime());
     }
     @ModifyArg(method = "renderSnowAndRain", at = @At(value = "INVOKE",

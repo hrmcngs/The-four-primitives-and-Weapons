@@ -26,7 +26,7 @@ public final class RegionalWeatherSky {
             case RAIN, DRIZZLE -> .65F;
             default -> 1F;
         };
-        int red = Math.round(28 + 185 * daylight * shade);
+        int red = Math.round(28 + 185 * daylight * shade * SolarEclipseLighting.brightness());
         // Exact byte differences identify our geometry in VanillaLite's sky program.
         int green = appearance.sand() ? red - 20 : red + 1;
         int blue = appearance.sand() ? Math.max(0, red - 45) : red + 2;
@@ -49,6 +49,7 @@ public final class RegionalWeatherSky {
             MESH.update(camera.getPosition().x, camera.getPosition().z, time, appearance, clouds);
             for (int ring = 0; ring < 20; ring++) {
                 for (int segment = 0; segment < 96; segment++) {
+                    if (!MESH.visible(ring, segment)) continue;
                     vertex(buffer, matrix, ring, segment, red, green, blue);
                     vertex(buffer, matrix, ring + 1, segment, red, green, blue);
                     vertex(buffer, matrix, ring + 1, segment + 1, red, green, blue);

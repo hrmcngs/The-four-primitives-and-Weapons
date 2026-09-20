@@ -7,7 +7,7 @@ astronomy_test_dir=$(mktemp -d)
 trap 'rm -rf "$astronomy_test_dir"' EXIT
 javac -d "$astronomy_test_dir" src/main/java/the_four_primitives_and_weapons/world/LunarCycle.java \
   src/main/java/the_four_primitives_and_weapons/world/AstronomicalEvents.java \
-  src/main/java/the_four_primitives_and_weapons/world/AstronomySettings.java tests/AstronomicalEventsTest.java
+  src/main/java/the_four_primitives_and_weapons/world/AstronomySettings.java src/main/java/the_four_primitives_and_weapons/world/EclipseLightCurve.java tests/AstronomicalEventsTest.java
 java -cp "$astronomy_test_dir" AstronomicalEventsTest
 bash sh/generate/generate-time-commands.sh --self-test
 cat > "$astronomy_test_dir/test.gradle" <<'GRADLE'

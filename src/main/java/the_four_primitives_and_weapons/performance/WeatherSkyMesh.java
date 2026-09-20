@@ -25,6 +25,10 @@ public final class WeatherSkyMesh {
     public float y(int i) { return ys[i]; }
     public float z(int i) { return zs[i]; }
     public int alpha(int i) { return alpha[i]; }
+    public boolean visible(int ring, int segment) {
+        return alpha[index(ring, segment)] != 0 || alpha[index(ring + 1, segment)] != 0
+            || alpha[index(ring + 1, segment + 1)] != 0 || alpha[index(ring, segment + 1)] != 0;
+    }
     public void update(double cameraX, double cameraZ, double time, WeatherSky.Appearance a, boolean clouds) {
         for (int i = 0; i < xs.length; i++) {
             float y = ys[i];

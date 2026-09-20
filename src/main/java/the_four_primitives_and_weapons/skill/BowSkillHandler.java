@@ -186,12 +186,7 @@ public class BowSkillHandler {
             handleHoming(arrow);
         }
 
-        if (tick % 200 == 0) {
-            HOMING_ARROWS.removeIf(ref -> {
-                Arrow a = ref.get();
-                return a == null || !a.isAlive();
-            });
-        }
+
     }
 
     private static void handleHoming(Arrow arrow) {

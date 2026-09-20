@@ -11,6 +11,7 @@ import net.minecraft.world.level.biome.Biomes;
 import the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod;
 
 public final class RegionalWeather {
+    private static final the_four_primitives_and_weapons.performance.TickPositionCache<WeatherKind> CLIENT_CACHE = new the_four_primitives_and_weapons.performance.TickPositionCache<>();
     public static final TagKey<Biome> NO_RAIN = tag("no_rain");
     public static final TagKey<Biome> NO_SNOW = tag("no_snow");
     public static final TagKey<Biome> NO_THUNDER = tag("no_thunder");
@@ -19,14 +20,22 @@ public final class RegionalWeather {
     private static TagKey<Biome> tag(String name) {
         return TagKey.create(Registries.BIOME, new ResourceLocation(TheFourPrimitivesAndWeaponsMod.MODID, "weather/" + name));
     }
-    public static WeatherKind at(Level level, BlockPos pos) {
-        if (!Level.OVERWORLD.equals(level.dimension())) return WeatherKind.CLEAR;
-        var holder = level.getBiome(pos);
-        return resolve(level, pos, holder.value(), holder);
-    }
+    public static WeatherKind at(Level level, BlockPos pos) { return at(level, pos, null); }
     public static WeatherKind at(Level level, BlockPos pos, Biome biome) {
         if (!Level.OVERWORLD.equals(level.dimension())) return WeatherKind.CLEAR;
-        return resolve(level, pos, biome, level.getBiome(pos));
+        long key = pos.asLong();
+        if (level.isClientSide) {
+            var forced = RegionalWeatherData.clientForced;
+            int state = (level.isRaining() ? 1 : 0) | (level.isThundering() ? 2 : 0)
+                | ((forced == null ? 0 : forced.ordinal() + 1) << 2);
+            CLIENT_CACHE.begin(level, level.getGameTime(), level.getDayTime(), state);
+            var cached = CLIENT_CACHE.get(key);
+            if (cached != null) return cached;
+        }
+        var holder = level.getBiome(pos);
+        var result = resolve(level, pos, biome == null ? holder.value() : biome, holder);
+        if (level.isClientSide) CLIENT_CACHE.put(key, result);
+        return result;
     }
     private static WeatherKind resolve(Level level, BlockPos pos, Biome biome, net.minecraft.core.Holder<Biome> holder) {
         boolean desert = holder.is(Biomes.DESERT);
