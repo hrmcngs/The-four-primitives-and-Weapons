@@ -12,6 +12,7 @@ import the_four_primitives_and_weapons.weather.*;
 
 /** Sky-pass dome: visible without shaders; VanillaLite preserves the same vertex colors. */
 public final class RegionalWeatherSky {
+    private static final the_four_primitives_and_weapons.performance.WeatherSkyMesh MESH = new the_four_primitives_and_weapons.performance.WeatherSkyMesh();
     public static void render(ClientLevel level, PoseStack pose, float partialTick) {
         var mc = Minecraft.getInstance();
         var camera = mc.gameRenderer.getMainCamera();
@@ -45,12 +46,13 @@ public final class RegionalWeatherSky {
             buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
             Matrix4f matrix = pose.last().pose();
             double time = level.getGameTime() + partialTick;
+            MESH.update(camera.getPosition().x, camera.getPosition().z, time, appearance, clouds);
             for (int ring = 0; ring < 20; ring++) {
                 for (int segment = 0; segment < 96; segment++) {
-                    vertex(buffer, matrix, ring, segment, camera.getPosition().x, camera.getPosition().z, time, appearance, clouds, red, green, blue);
-                    vertex(buffer, matrix, ring + 1, segment, camera.getPosition().x, camera.getPosition().z, time, appearance, clouds, red, green, blue);
-                    vertex(buffer, matrix, ring + 1, segment + 1, camera.getPosition().x, camera.getPosition().z, time, appearance, clouds, red, green, blue);
-                    vertex(buffer, matrix, ring, segment + 1, camera.getPosition().x, camera.getPosition().z, time, appearance, clouds, red, green, blue);
+                    vertex(buffer, matrix, ring, segment, red, green, blue);
+                    vertex(buffer, matrix, ring + 1, segment, red, green, blue);
+                    vertex(buffer, matrix, ring + 1, segment + 1, red, green, blue);
+                    vertex(buffer, matrix, ring, segment + 1, red, green, blue);
                 }
             }
             BufferUploader.drawWithShader(buffer.end());
@@ -62,20 +64,10 @@ public final class RegionalWeatherSky {
             RenderSystem.setShaderColor(1, 1, 1, 1);
         }
     }
-    private static void vertex(BufferBuilder buffer, Matrix4f matrix, int ring, int segment,
-            double cameraX, double cameraZ, double time, WeatherSky.Appearance a, boolean clouds, int r, int g, int b) {
-        double elevation = -.08 + (Math.PI / 2 + .08) * ring / 20;
-        double angle = Math.PI * 2 * (segment % 96) / 96;
-        float x = (float) (Math.cos(angle) * Math.cos(elevation));
-        float y = (float) Math.sin(elevation);
-        float z = (float) (Math.sin(angle) * Math.cos(elevation));
-        float cloud = clouds ? WeatherSky.density(x * 9 + cameraX * .0008, z * 9 + cameraZ * .0008, time, a) : 0;
-        cloud *= Math.min(1F, Math.max(0F, y * 7));
-        float haze = a.haze() * (1 - Math.max(0F, y) * .65F);
-        float alpha = Math.max(cloud, haze);
-        // Fade the lower rim into the horizon without a hard dome boundary.
-        if (y < 0) alpha *= Math.max(0F, 1 + y / .08F);
-        buffer.vertex(matrix, x * 100, y * 100, z * 100).color(r, g, b, Math.round(alpha * 255)).endVertex();
+    private static void vertex(BufferBuilder buffer, Matrix4f matrix, int ring, int segment, int r, int g, int b) {
+        int i = the_four_primitives_and_weapons.performance.WeatherSkyMesh.index(ring, segment);
+        buffer.vertex(matrix, MESH.x(i) * 100, MESH.y(i) * 100, MESH.z(i) * 100)
+            .color(r, g, b, MESH.alpha(i)).endVertex();
     }
     private RegionalWeatherSky() { }
 }

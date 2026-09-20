@@ -43,9 +43,7 @@ public class BlackholeenteiteinotitukuGengXinShiProcedure {
 										dx = entity.getX() - entityiterator.getX();
 										dy = entity.getY() - entityiterator.getY();
 										dz = entity.getZ() - entityiterator.getZ();
-										for (int index0 = 0; index0 < 20; index0++) {
-											entityiterator.setDeltaMovement(new Vec3((dx / 20), (dy / 20), (dz / 20)));
-										}
+										entityiterator.setDeltaMovement(new Vec3((dx / 20), (dy / 20), (dz / 20)));
 									}
 								}
 							}

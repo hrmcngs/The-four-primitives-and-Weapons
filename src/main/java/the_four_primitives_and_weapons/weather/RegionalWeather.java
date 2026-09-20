@@ -19,10 +19,16 @@ public final class RegionalWeather {
     private static TagKey<Biome> tag(String name) {
         return TagKey.create(Registries.BIOME, new ResourceLocation(TheFourPrimitivesAndWeaponsMod.MODID, "weather/" + name));
     }
-    public static WeatherKind at(Level level, BlockPos pos) { return at(level, pos, level.getBiome(pos).value()); }
-    public static WeatherKind at(Level level, BlockPos pos, Biome biome) {
+    public static WeatherKind at(Level level, BlockPos pos) {
         if (!Level.OVERWORLD.equals(level.dimension())) return WeatherKind.CLEAR;
         var holder = level.getBiome(pos);
+        return resolve(level, pos, holder.value(), holder);
+    }
+    public static WeatherKind at(Level level, BlockPos pos, Biome biome) {
+        if (!Level.OVERWORLD.equals(level.dimension())) return WeatherKind.CLEAR;
+        return resolve(level, pos, biome, level.getBiome(pos));
+    }
+    private static WeatherKind resolve(Level level, BlockPos pos, Biome biome, net.minecraft.core.Holder<Biome> holder) {
         boolean desert = holder.is(Biomes.DESERT);
         var climate = new WeatherRules.Climate(desert, !biome.hasPrecipitation(),
             biome.getPrecipitationAt(pos) == Biome.Precipitation.SNOW,
@@ -34,7 +40,10 @@ public final class RegionalWeather {
     public static Biome.Precipitation precipitation(Level level, BlockPos pos, Biome biome) {
         if (!Level.OVERWORLD.equals(level.dimension())) return biome.getPrecipitationAt(pos);
         WeatherKind kind = at(level, pos, biome);
-        if (WeatherRules.intensity(kind, level.getGameTime()) == 0F) return Biome.Precipitation.NONE;
+        return precipitation(kind, level.getGameTime());
+    }
+    public static Biome.Precipitation precipitation(WeatherKind kind, long gameTime) {
+        if (WeatherRules.intensity(kind, gameTime) == 0F) return Biome.Precipitation.NONE;
         return switch (kind.precipitation) {
             case 1 -> Biome.Precipitation.RAIN;
             case 2 -> Biome.Precipitation.SNOW;

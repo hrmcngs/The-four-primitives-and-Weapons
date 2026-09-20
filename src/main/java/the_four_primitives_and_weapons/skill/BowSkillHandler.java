@@ -181,7 +181,8 @@ public class BowSkillHandler {
         Iterator<WeakReference<Arrow>> it = HOMING_ARROWS.iterator();
         while (it.hasNext()) {
             Arrow arrow = it.next().get();
-            if (arrow == null || !arrow.isAlive() || arrow.level() != event.level) continue;
+            if (arrow == null || !arrow.isAlive()) { it.remove(); continue; }
+            if (arrow.level() != event.level) continue;
             handleHoming(arrow);
         }
 
@@ -201,12 +202,18 @@ public class BowSkillHandler {
 
         Vec3 pos = arrow.position();
         Vec3 motionNorm = motion.normalize();
-        LivingEntity target = arrow.level().getEntitiesOfClass(LivingEntity.class,
-                arrow.getBoundingBox().inflate(HOMING_RADIUS)).stream()
-            .filter(e -> e != arrow.getOwner() && e.isAlive() && !e.isSpectator())
-            .filter(e -> e.getEyePosition().subtract(pos).normalize().dot(motionNorm) > 0.5)
-            .min(Comparator.comparingDouble(e -> e.distanceToSqr(arrow)))
-            .orElse(null);
+        LivingEntity target = null;
+        double closest = Double.POSITIVE_INFINITY;
+        var owner = arrow.getOwner();
+        for (LivingEntity candidate : arrow.level().getEntitiesOfClass(LivingEntity.class,
+                arrow.getBoundingBox().inflate(HOMING_RADIUS), e -> e != owner && e.isAlive() && !e.isSpectator())) {
+            double distance = candidate.distanceToSqr(arrow);
+            if (distance >= closest) continue;
+            // Only calculate the viewing cone for candidates that can improve the result.
+            if (candidate.getEyePosition().subtract(pos).normalize().dot(motionNorm) <= .5) continue;
+            target = candidate;
+            closest = distance;
+        }
 
         if (target == null) return;
 

@@ -42,9 +42,13 @@ public abstract class RegionalWeatherRendererMixin {
     @Redirect(method = "renderSnowAndRain", at = @At(value = "INVOKE",
         target = "Lnet/minecraft/world/level/biome/Biome;getPrecipitationAt(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/biome/Biome$Precipitation;"), require = 1)
     private Biome.Precipitation regionalWeather$column(Biome biome, BlockPos pos) {
-        regionalWeather$columnIntensity = Level.OVERWORLD.equals(level.dimension())
-            ? WeatherRules.intensity(RegionalWeather.at(level, pos, biome), level.getGameTime()) : 1F;
-        return RegionalWeather.precipitation(level, pos, biome);
+        if (!Level.OVERWORLD.equals(level.dimension())) {
+            regionalWeather$columnIntensity = 1F;
+            return biome.getPrecipitationAt(pos);
+        }
+        var kind = RegionalWeather.at(level, pos, biome);
+        regionalWeather$columnIntensity = WeatherRules.intensity(kind, level.getGameTime());
+        return RegionalWeather.precipitation(kind, level.getGameTime());
     }
     @ModifyArg(method = "renderSnowAndRain", at = @At(value = "INVOKE",
         target = "Lcom/mojang/blaze3d/vertex/VertexConsumer;color(FFFF)Lcom/mojang/blaze3d/vertex/VertexConsumer;"), index = 3, require = 1)

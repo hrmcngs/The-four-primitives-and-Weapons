@@ -45,11 +45,6 @@ import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModBlockE
 import java.util.function.Supplier;
 import java.util.function.Function;
 import java.util.function.BiConsumer;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.List;
-import java.util.Collection;
-import java.util.ArrayList;
-import java.util.AbstractMap;
 
 @Mod("the_four_primitives_and_weapons")
 public class TheFourPrimitivesAndWeaponsMod {
@@ -126,7 +121,7 @@ public class TheFourPrimitivesAndWeaponsMod {
 		messageID++;
 	}
 
-	private static final Collection<AbstractMap.SimpleEntry<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
+	private static final the_four_primitives_and_weapons.performance.TickWorkQueue workQueue = new the_four_primitives_and_weapons.performance.TickWorkQueue();
 
 	public static void queueServerWork(int tick, Runnable action) {
         // 遅延発動する武器スキルも、通常攻撃と区別できるよう実行文脈を引き継ぐ。
@@ -138,20 +133,18 @@ public class TheFourPrimitivesAndWeaponsMod {
                 finally { the_four_primitives_and_weapons.util.NinjatoTetherCutRule.endSkill(); }
             };
         }
-		workQueue.add(new AbstractMap.SimpleEntry(action, tick));
+		workQueue.add(tick, action);
 	}
 
 	@SubscribeEvent
 	public void tick(TickEvent.ServerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
-			List<AbstractMap.SimpleEntry<Runnable, Integer>> actions = new ArrayList<>();
-			workQueue.forEach(work -> {
-				work.setValue(work.getValue() - 1);
-				if (work.getValue() == 0)
-					actions.add(work);
-			});
-			actions.forEach(e -> e.getKey().run());
-			workQueue.removeAll(actions);
+			workQueue.tick();
 		}
 	}
+    @SubscribeEvent
+    public void clearScheduledWork(net.minecraftforge.event.server.ServerStoppedEvent event) {
+        workQueue.clear();
+    }
+
 }

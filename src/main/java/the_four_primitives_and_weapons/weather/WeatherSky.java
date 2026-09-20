@@ -3,7 +3,10 @@ package the_four_primitives_and_weapons.weather;
 /** Shared, deterministic sky appearance. Coverage is independent of global rain strength. */
 public final class WeatherSky {
     public record Appearance(float coverage, float opacity, float haze, float speed, boolean sand) { }
-    public static Appearance appearance(WeatherKind kind) {
+    private static final Appearance[] PROFILES = new Appearance[WeatherKind.values().length];
+    static { for (var kind : WeatherKind.values()) PROFILES[kind.ordinal()] = create(kind); }
+    public static Appearance appearance(WeatherKind kind) { return PROFILES[kind.ordinal()]; }
+    private static Appearance create(WeatherKind kind) {
         return switch (kind) {
             case CLEAR -> new Appearance(.32F, .78F, 0F, .4F, false);
             case FOG -> new Appearance(.72F, .6F, .8F, .18F, false);

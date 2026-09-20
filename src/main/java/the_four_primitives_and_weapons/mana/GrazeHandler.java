@@ -50,8 +50,8 @@ public class GrazeHandler {
                 p.getBoundingBox().inflate(GRAZE_OUTER))) {
             if (!proj.isAlive()) continue;
             if (proj.getOwner() == p) continue;
-            double d = Math.sqrt(p.distanceToSqr(proj));
-            if (d < GRAZE_INNER || d > GRAZE_OUTER) continue;
+            double d = p.distanceToSqr(proj);
+            if (d < GRAZE_INNER * GRAZE_INNER || d > GRAZE_OUTER * GRAZE_OUTER) continue;
 
             int last = grazedAt.getOrDefault(proj.getId(), -9999);
             if (now - last < PER_PROJECTILE_COOLDOWN_TICKS) continue;

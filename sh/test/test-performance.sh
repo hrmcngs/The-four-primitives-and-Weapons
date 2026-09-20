@@ -11,6 +11,13 @@ performance_test_dir=$(mktemp -d)
 trap 'rm -rf "$performance_test_dir"' EXIT
 javac -d "$performance_test_dir" src/main/java/the_four_primitives_and_weapons/performance/SyncSnapshot.java tests/SyncSnapshotTest.java
 java -cp "$performance_test_dir" SyncSnapshotTest
+javac -d "$performance_test_dir" src/main/java/the_four_primitives_and_weapons/performance/TickWorkQueue.java \
+    src/main/java/the_four_primitives_and_weapons/performance/WeatherSkyMesh.java \
+    src/main/java/the_four_primitives_and_weapons/weather/WeatherKind.java \
+    src/main/java/the_four_primitives_and_weapons/weather/WeatherRules.java \
+    src/main/java/the_four_primitives_and_weapons/weather/WeatherSky.java \
+    src/main/java/the_four_primitives_and_weapons/weather/WeatherAtmosphere.java tests/RuntimePerformanceTest.java
+java -cp "$performance_test_dir" RuntimePerformanceTest
 if [[ "${1:-}" == --full ]]; then
     cat > "$performance_test_dir/test.gradle" <<'GRADLE'
 gradle.beforeProject { project -> project.layout.buildDirectory.set(new File(System.getProperty('maw.performanceBuild'))) }
