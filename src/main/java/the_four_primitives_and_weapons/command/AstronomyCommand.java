@@ -64,7 +64,7 @@ public final class AstronomyCommand {
                 .then(Commands.literal("off").executes(c -> effects(c.getSource(), false))))
             .then(Commands.literal("reset").executes(c -> change(c.getSource(), s -> AstronomySettings.DEFAULT)))
             .then(Commands.literal("status").executes(c -> {
-                c.getSource().sendSuccess(() -> Component.literal(describe(AstronomyData.get(c.getSource().getLevel()).settings())), false);
+                c.getSource().sendSuccess(() -> describe(AstronomyData.get(c.getSource().getLevel()).settings()), false);
                 return 1;
             })));
     }
@@ -87,19 +87,22 @@ public final class AstronomyCommand {
         var data = AstronomyData.get(source.getLevel());
         data.update(update.apply(data.settings()));
         for (var player : source.getServer().getPlayerList().getPlayers()) AstronomySyncPacket.send(player);
-        source.sendSuccess(() -> Component.literal("オーバーワールドの天文設定を保存しました。" + describe(data.settings())), true);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.astronomy.saved", describe(data.settings())), true);
         return 1;
     }
-    private static String eclipseName(float value) {
-        return value == -1F ? "自動" : value == -2F ? "無効" : Float.toString(value);
+    private static Component label(String value) {
+        return Component.translatable("command.the_four_primitives_and_weapons." + value);
     }
-    private static String describe(AstronomySettings s) {
-        String color = s.color() < 0 ? "自動" : s.color() == 0 ? "白"
-            : AstronomicalEvents.MoonTint.values()[s.color()].displayName;
-        return "月サイズ: " + (s.size() < 0 ? "自動" : s.size() + "倍")
-            + " / 月相: " + (s.phase() < 0 ? "自動" : Integer.toString(s.phase()))
-            + " / 色: " + color + " / 流星: " + (s.meteors() < 0 ? "自動" : s.meteors() == 0 ? "無効" : "流星群")
-            + " / 日食: " + eclipseName(s.solar()) + " / 月食: " + eclipseName(s.lunar())
-            + " / 色の効果: " + (s.effects() ? "有効" : "無効");
+    private static Component eclipseName(float value) {
+        return value == -1F ? label("auto") : value == -2F ? label("off") : Component.literal(Float.toString(value));
+    }
+    private static Component describe(AstronomySettings s) {
+        Component color = s.color() < 0 ? label("auto") : label("moon." +
+            AstronomicalEvents.MoonTint.values()[s.color()].name().toLowerCase(Locale.ROOT));
+        return Component.translatable("command.the_four_primitives_and_weapons.astronomy.status",
+            s.size() < 0 ? label("auto") : Component.translatable("command.the_four_primitives_and_weapons.multiplier", s.size()),
+            s.phase() < 0 ? label("auto") : Component.literal(Integer.toString(s.phase())),
+            color, label(s.meteors() < 0 ? "auto" : s.meteors() == 0 ? "off" : "meteors"),
+            eclipseName(s.solar()), eclipseName(s.lunar()), label(s.effects() ? "on" : "off"));
     }
 }

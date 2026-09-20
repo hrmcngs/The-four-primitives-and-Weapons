@@ -71,8 +71,8 @@ public class SpawnTraitMobCommand {
         }
 
         if (foundTrait == null) {
-            source.sendFailure(Component.literal("§c不明な特性: " + traitName));
-            source.sendFailure(Component.literal("§7使用可能: " + String.join(", ", TRAIT_NAMES)));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.spawntraitmobcommand.1", traitName));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.spawntraitmobcommand.2", String.join(", ", TRAIT_NAMES)));
             return 0;
         }
 
@@ -84,18 +84,18 @@ public class SpawnTraitMobCommand {
         // エンティティを作成
         EntityType<?> type = EntityType.byString(entityId.toString()).orElse(null);
         if (type == null) {
-            source.sendFailure(Component.literal("§c不明なエンティティ: " + entityId));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.spawntraitmobcommand.3", entityId));
             return 0;
         }
 
         Entity entity = type.spawn(level, pos, MobSpawnType.COMMAND);
         if (entity == null) {
-            source.sendFailure(Component.literal("§cエンティティのスポーンに失敗しました"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.spawntraitmobcommand.4"));
             return 0;
         }
 
         if (!(entity instanceof Monster monster)) {
-            source.sendFailure(Component.literal("§c" + entityId + " はモンスターではありません"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.spawntraitmobcommand.5", entityId));
             entity.discard();
             return 0;
         }
@@ -103,10 +103,7 @@ public class SpawnTraitMobCommand {
         // 特性を適用
         MobTraitHandler.applyTraitToMob(monster, trait);
 
-        source.sendSuccess(() -> Component.literal(
-            trait.getColorCode() + "§l" + trait.getFormattedName() + " §f" +
-            type.getDescription().getString() + " §aをスポーンしました"
-        ), true);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.spawntraitmobcommand.6", trait.getColorCode(), trait.getFormattedComponent(), type.getDescription()), true);
 
         return 1;
     }

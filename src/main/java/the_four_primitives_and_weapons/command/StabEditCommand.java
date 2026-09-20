@@ -37,7 +37,7 @@ public class StabEditCommand {
 
 	private static int open(CommandSourceStack source) {
 		if (!(source.getEntity() instanceof ServerPlayer player)) {
-			source.sendFailure(Component.literal("§cプレイヤーから実行してください"));
+			source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.stabeditcommand.1"));
 			return 0;
 		}
 		double reach = 6.0;
@@ -60,7 +60,7 @@ public class StabEditCommand {
 			if (t >= 0 && t < bestT) { bestT = t; target = rack; }
 		}
 		if (target == null) {
-			source.sendFailure(Component.literal("§c編集するラック・刺さった武器/杭にカーソルを合わせてください"));
+			source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.stabeditcommand.2"));
 			return 0;
 		}
 		TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.send(

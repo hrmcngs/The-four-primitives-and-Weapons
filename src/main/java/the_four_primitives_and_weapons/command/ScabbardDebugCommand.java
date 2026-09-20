@@ -78,7 +78,7 @@ public class ScabbardDebugCommand {
                 case "scaleY" -> ScabbardCurioRenderer.backScaleY = f;
                 case "scaleZ" -> ScabbardCurioRenderer.backScaleZ = f;
                 default -> {
-                    source.sendFailure(Component.literal("§c不明なパラメータ: " + param));
+                    source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.1", param));
                     return 0;
                 }
             }
@@ -94,41 +94,28 @@ public class ScabbardDebugCommand {
                 case "scaleY" -> ScabbardCurioRenderer.beltScaleY = f;
                 case "scaleZ" -> ScabbardCurioRenderer.beltScaleZ = f;
                 default -> {
-                    source.sendFailure(Component.literal("§c不明なパラメータ: " + param));
+                    source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.2", param));
                     return 0;
                 }
             }
         } else {
-            source.sendFailure(Component.literal("§c不明なスロット: " + slot + " (back / belt)"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.3", slot));
             return 0;
         }
 
-        source.sendSuccess(() -> Component.literal(
-                "§a[鞘] " + slot + "." + param + " = " + value), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.4", slot, param, value), false);
         return 1;
     }
 
     private static void showAll(CommandSourceStack source) {
-        source.sendSuccess(() -> Component.literal("§e=== 背中 (back) ==="), false);
-        source.sendSuccess(() -> Component.literal(String.format(
-                "  §7位置: §fx=%.3f  y=%.3f  z=%.3f",
-                ScabbardCurioRenderer.backX, ScabbardCurioRenderer.backY, ScabbardCurioRenderer.backZ)), false);
-        source.sendSuccess(() -> Component.literal(String.format(
-                "  §7回転: §frotX=%.1f  rotY=%.1f  rotZ=%.1f",
-                ScabbardCurioRenderer.backRotX, ScabbardCurioRenderer.backRotY, ScabbardCurioRenderer.backRotZ)), false);
-        source.sendSuccess(() -> Component.literal(String.format(
-                "  §7縮尺: §fscaleX=%.2f  scaleY=%.2f  scaleZ=%.2f",
-                ScabbardCurioRenderer.backScaleX, ScabbardCurioRenderer.backScaleY, ScabbardCurioRenderer.backScaleZ)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.5"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.6", String.format(java.util.Locale.ROOT, "%.3f", ScabbardCurioRenderer.backX), String.format(java.util.Locale.ROOT, "%.3f", ScabbardCurioRenderer.backY), String.format(java.util.Locale.ROOT, "%.3f", ScabbardCurioRenderer.backZ)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.7", String.format(java.util.Locale.ROOT, "%.1f", ScabbardCurioRenderer.backRotX), String.format(java.util.Locale.ROOT, "%.1f", ScabbardCurioRenderer.backRotY), String.format(java.util.Locale.ROOT, "%.1f", ScabbardCurioRenderer.backRotZ)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.8", String.format(java.util.Locale.ROOT, "%.2f", ScabbardCurioRenderer.backScaleX), String.format(java.util.Locale.ROOT, "%.2f", ScabbardCurioRenderer.backScaleY), String.format(java.util.Locale.ROOT, "%.2f", ScabbardCurioRenderer.backScaleZ)), false);
 
-        source.sendSuccess(() -> Component.literal("§e=== ベルト (belt) ==="), false);
-        source.sendSuccess(() -> Component.literal(String.format(
-                "  §7位置: §fx=%.3f  y=%.3f  z=%.3f",
-                ScabbardCurioRenderer.beltX, ScabbardCurioRenderer.beltY, ScabbardCurioRenderer.beltZ)), false);
-        source.sendSuccess(() -> Component.literal(String.format(
-                "  §7回転: §frotX=%.1f  rotY=%.1f  rotZ=%.1f",
-                ScabbardCurioRenderer.beltRotX, ScabbardCurioRenderer.beltRotY, ScabbardCurioRenderer.beltRotZ)), false);
-        source.sendSuccess(() -> Component.literal(String.format(
-                "  §7縮尺: §fscaleX=%.2f  scaleY=%.2f  scaleZ=%.2f",
-                ScabbardCurioRenderer.beltScaleX, ScabbardCurioRenderer.beltScaleY, ScabbardCurioRenderer.beltScaleZ)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.9"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.10", String.format(java.util.Locale.ROOT, "%.3f", ScabbardCurioRenderer.beltX), String.format(java.util.Locale.ROOT, "%.3f", ScabbardCurioRenderer.beltY), String.format(java.util.Locale.ROOT, "%.3f", ScabbardCurioRenderer.beltZ)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.11", String.format(java.util.Locale.ROOT, "%.1f", ScabbardCurioRenderer.beltRotX), String.format(java.util.Locale.ROOT, "%.1f", ScabbardCurioRenderer.beltRotY), String.format(java.util.Locale.ROOT, "%.1f", ScabbardCurioRenderer.beltRotZ)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.scabbarddebugcommand.12", String.format(java.util.Locale.ROOT, "%.2f", ScabbardCurioRenderer.beltScaleX), String.format(java.util.Locale.ROOT, "%.2f", ScabbardCurioRenderer.beltScaleY), String.format(java.util.Locale.ROOT, "%.2f", ScabbardCurioRenderer.beltScaleZ)), false);
     }
 }

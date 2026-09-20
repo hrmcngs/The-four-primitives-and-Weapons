@@ -76,13 +76,14 @@ public class DistanceScalingHandler {
                         }
 
                         context.getSource().sendSuccess(() ->
-                            Component.literal("§7distanceScaling を " + (value ? "§a有効" : "§c無効") + " §7にしました"),
+                            Component.translatable("command.the_four_primitives_and_weapons.distance.set",
+                                Component.translatable("command.the_four_primitives_and_weapons.label." + (value ? "enabled" : "disabled"))),
                             true
                         );
 
                         if (value) {
                             context.getSource().sendSuccess(() ->
-                                Component.literal("§7スポーン地点から " + BLOCKS_PER_LEVEL + " ブロックごとにMobが強化されます (最大Lv" + MAX_LEVEL + ")"),
+                                Component.translatable("command.the_four_primitives_and_weapons.distance.explain", BLOCKS_PER_LEVEL, MAX_LEVEL),
                                 false
                             );
                         }

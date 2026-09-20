@@ -182,7 +182,7 @@ public class MagicalKatanaCrystalHandler {
         // 増殖対策: 結晶ポーチが無ければ破壊できない
         if (the_four_primitives_and_weapons.item.MaterializedPouchItem.findFirst(owner).isEmpty()) {
             if (owner instanceof net.minecraft.server.level.ServerPlayer sp)
-                sp.displayClientMessage(Component.literal("§c結晶ポーチが無いため破壊できません"), true);
+                sp.displayClientMessage(Component.translatable("command.the_four_primitives_and_weapons.crystal.pouch_required"), true);
             return 0;
         }
         UUID ownerId = owner.getUUID();

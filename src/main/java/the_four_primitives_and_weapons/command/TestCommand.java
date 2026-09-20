@@ -317,7 +317,7 @@ public class TestCommand {
             }
         }
         if (trait == null) {
-            source.sendFailure(Component.literal("§c不明な特性: " + traitName));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.1", traitName));
             return 0;
         }
 
@@ -327,8 +327,7 @@ public class TestCommand {
         if (entity instanceof Monster monster) {
             MobTraitHandler.applyTraitToMob(monster, trait);
             final MobTrait finalTrait = trait;
-            source.sendSuccess(() -> Component.literal(
-                "§a特性 " + finalTrait.getFormattedName() + " §aのゾンビをスポーンしました"), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.2", finalTrait.getFormattedComponent()), false);
         }
         return 1;
     }
@@ -351,8 +350,7 @@ public class TestCommand {
             }
             i++;
         }
-        source.sendSuccess(() -> Component.literal(
-            "§a全" + MobTrait.values().length + "種の特性ゾンビをスポーンしました"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.3", MobTrait.values().length), false);
         return MobTrait.values().length;
     }
 
@@ -368,23 +366,21 @@ public class TestCommand {
     // === /test elementkind <kind> ===
     private static int setWeaponElementKind(CommandSourceStack source, String kindName) {
         if (!(source.getEntity() instanceof ServerPlayer player)) {
-            source.sendFailure(Component.literal("§cプレイヤー専用コマンドです"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.4"));
             return 0;
         }
         ElementDamageKind kind = parseElementKind(kindName);
         if (kind == null) {
-            source.sendFailure(Component.literal("§c不明な与え方: " + kindName
-                + " ( physical / magic / buildup )"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.5", kindName));
             return 0;
         }
         ItemStack weapon = player.getMainHandItem();
         if (weapon.isEmpty()) {
-            source.sendFailure(Component.literal("§c手にアイテムを持ってください"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.6"));
             return 0;
         }
         ElementalDamageUtils.setElementKind(weapon, kind);
-        source.sendSuccess(() -> Component.literal(
-            "§a属性ダメージの与え方を §6" + kind.getName().toUpperCase() + " §aにしました"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.7", kind.getName().toUpperCase()), false);
         return 1;
     }
 
@@ -396,25 +392,24 @@ public class TestCommand {
     private static int setWeaponElement(CommandSourceStack source, String elementName, int lvl,
                                         String kindName) {
         if (!(source.getEntity() instanceof ServerPlayer player)) {
-            source.sendFailure(Component.literal("§cプレイヤー専用コマンドです"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.8"));
             return 0;
         }
         ElementType element = ElementType.fromString(elementName);
         if (element == ElementType.NONE) {
-            source.sendFailure(Component.literal("§c不明な属性: " + elementName));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.9", elementName));
             return 0;
         }
         ItemStack weapon = player.getMainHandItem();
         if (weapon.isEmpty()) {
-            source.sendFailure(Component.literal("§c手にアイテムを持ってください"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.10"));
             return 0;
         }
         ElementDamageKind kind;
         if (kindName != null) {
             kind = parseElementKind(kindName);
             if (kind == null) {
-                source.sendFailure(Component.literal("§c不明な与え方: " + kindName
-                    + " ( physical / magic / buildup )"));
+                source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.11", kindName));
                 return 0;
             }
         } else {
@@ -426,9 +421,7 @@ public class TestCommand {
         ElementalDamageUtils.setElementKind(weapon, kind);
 
         final ElementDamageKind appliedKind = kind;
-        source.sendSuccess(() -> Component.literal(
-            "§a武器に §6" + element.getName().toUpperCase() + " Lv." + lvl
-                + " §7[" + appliedKind.getName() + "] §aを付与しました"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.12", element.getName().toUpperCase(), lvl, appliedKind.getName()), false);
         return 1;
     }
 
@@ -437,7 +430,7 @@ public class TestCommand {
     //   ItemInput を渡すと、 その item の ItemStack ( nbt 含む ) を各属性版で複製する。
     private static int giveAllElementSwords(CommandSourceStack source, int lvl, ItemInput itemInput) {
         if (!(source.getEntity() instanceof ServerPlayer player)) {
-            source.sendFailure(Component.literal("§cプレイヤー専用コマンドです"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.13"));
             return 0;
         }
         int count = 0;
@@ -450,7 +443,7 @@ public class TestCommand {
                         ? itemInput.createItemStack(1, false)
                         : new ItemStack(Items.DIAMOND_SWORD);
             } catch (Exception e) {
-                source.sendFailure(Component.literal("§citem 生成失敗: " + e.getMessage()));
+                source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.14", e.getMessage()));
                 return 0;
             }
             ElementalDamageUtils.setElement(stack, elem, lvl);
@@ -463,8 +456,7 @@ public class TestCommand {
                 : "minecraft:diamond_sword";
         final int total = count;
         final String fBase = baseName;
-        source.sendSuccess(() -> Component.literal(
-            "§a全" + total + "属性の §e" + fBase + " §aを付与しました (Lv." + lvl + ")"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.15", total, fBase, lvl), false);
         return count;
     }
 
@@ -476,11 +468,10 @@ public class TestCommand {
         Entity spawned = type.spawn(level, (net.minecraft.nbt.CompoundTag) null, null, pos,
                 MobSpawnType.COMMAND, true, false);
         if (spawned == null) {
-            source.sendFailure(Component.literal("§cターゲットダミーをスポーンできませんでした"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.16"));
             return 0;
         }
-        source.sendSuccess(() -> Component.literal(
-            "§aターゲットダミーをスポーンしました §7(素手で右クリック=計測表示 / スニーク右クリック=リセット)"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.17"), false);
         return 1;
     }
 
@@ -492,17 +483,17 @@ public class TestCommand {
         EntityType<?> type = ForgeRegistries.ENTITY_TYPES.getValue(debugMobId);
         if (type != null) {
             type.spawn(level, (net.minecraft.nbt.CompoundTag) null, null, pos, MobSpawnType.COMMAND, true, false);
-            source.sendSuccess(() -> Component.literal("§aデバッグMobをスポーンしました"), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.18"), false);
             return 1;
         }
-        source.sendFailure(Component.literal("§cデバッグMobが見つかりません"));
+        source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.19"));
         return 0;
     }
 
     // === /test heal ===
     private static int healSelf(CommandSourceStack source) {
         if (!(source.getEntity() instanceof ServerPlayer player)) {
-            source.sendFailure(Component.literal("§cプレイヤー専用コマンドです"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.20"));
             return 0;
         }
         player.setHealth(player.getMaxHealth());
@@ -510,22 +501,22 @@ public class TestCommand {
         player.getFoodData().setSaturation(20.0f);
         player.removeAllEffects();
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION, 200, 1));
-        source.sendSuccess(() -> Component.literal("§a全回復しました"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.21"), false);
         return 1;
     }
 
     // === /test god ===
     private static int toggleGod(CommandSourceStack source) {
         if (!(source.getEntity() instanceof ServerPlayer player)) {
-            source.sendFailure(Component.literal("§cプレイヤー専用コマンドです"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.22"));
             return 0;
         }
         boolean invulnerable = !player.isInvulnerable();
         player.setInvulnerable(invulnerable);
         if (invulnerable) {
-            source.sendSuccess(() -> Component.literal("§6無敵モード: §aON"), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.23"), false);
         } else {
-            source.sendSuccess(() -> Component.literal("§6無敵モード: §cOFF"), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.24"), false);
         }
         return 1;
     }
@@ -534,32 +525,28 @@ public class TestCommand {
     private static int setDifficulty(CommandSourceStack source, String name) {
         CustomDifficulty diff = CustomDifficulty.byName(name);
         CustomDifficultyCommand.setCurrentDifficulty(diff);
-        source.sendSuccess(() -> Component.literal("§a難易度を §e" + diff.getName() + " §aに変更しました"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.25", diff.getName()), false);
         return 1;
     }
 
     // === /test info ===
     private static int showInfo(CommandSourceStack source) {
         CustomDifficulty diff = CustomDifficultyCommand.getCurrentDifficulty();
-        source.sendSuccess(() -> Component.literal("§6=== MOD設定 ==="), false);
-        source.sendSuccess(() -> Component.literal("§f難易度: §e" + diff.getName()), false);
-        source.sendSuccess(() -> Component.literal("§fAIレベル: §e" + diff.getAiLevel()), false);
-        source.sendSuccess(() -> Component.literal("§f特性確率: §e" + (int)(diff.getTraitChance() * 100) + "%"), false);
-        source.sendSuccess(() -> Component.literal("§fエリート確率: §e" + (int)(diff.getEliteSpawnChance() * 100) + "%"), false);
-        source.sendSuccess(() -> Component.literal("§fバフ確率: §e" + (int)(diff.getBuffEffectChance() * 100) + "%"), false);
-        source.sendSuccess(() -> Component.literal(
-            "§fブロック設置/破壊: §e" + diff.isBlockPlaceEnabled() + "/" + diff.isBlockBreakEnabled()), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.26"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.27", diff.getName()), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.28", diff.getAiLevel()), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.29", (int)(diff.getTraitChance() * 100)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.30", (int)(diff.getEliteSpawnChance() * 100)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.31", (int)(diff.getBuffEffectChance() * 100)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.32", diff.isBlockPlaceEnabled(), diff.isBlockBreakEnabled()), false);
         source.sendSuccess(() -> Component.literal(
             "§fTrueCrafter: §e" + CustomDifficultyCommand.isTrueCrafterEnabled()), false);
-        source.sendSuccess(() -> Component.literal(
-            "§f進行度: §e" + ProgressionTracker.describe()), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.33", ProgressionTracker.describe()), false);
         // 月相情報
         if (source.getLevel() != null) {
             int phase = MoonPhaseDifficulty.getMoonPhase(source.getLevel());
             int bonus = MoonPhaseDifficulty.getDifficultyBonus(source.getLevel());
-            source.sendSuccess(() -> Component.literal(
-                "§f月相: " + MoonPhaseDifficulty.getPhaseName(phase)
-                + " §f(難易度補正 §c+" + bonus + "§f)"), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.34", Component.translatable("command.the_four_primitives_and_weapons.phase." + (phase & 7)), bonus), false);
         }
         return 1;
     }
@@ -568,7 +555,7 @@ public class TestCommand {
     private static int testDamage(CommandSourceStack source, float amount, String elementName, int lvl) {
         ElementType element = ElementType.fromString(elementName);
         if (element == ElementType.NONE) {
-            source.sendFailure(Component.literal("§c不明な属性: " + elementName));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.35", elementName));
             return 0;
         }
         // 最寄りのLivingEntityを取得（プレイヤー以外）
@@ -580,7 +567,7 @@ public class TestCommand {
                 center.getX() + 20, center.getY() + 10, center.getZ() + 20),
             e -> !(e instanceof ServerPlayer));
         if (nearby.isEmpty()) {
-            source.sendFailure(Component.literal("§c近くにMobがいません（半径20）"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.36"));
             return 0;
         }
         // 最も近いエンティティ
@@ -596,9 +583,7 @@ public class TestCommand {
             elemSource.setElementLevel(lvl);
         }
         target.hurt(ds, amount);
-        source.sendSuccess(() -> Component.literal(
-            String.format("§a%s に §6%s §aLv.%d で §c%.1f §aダメージ",
-                target.getName().getString(), element.getName().toUpperCase(), lvl, amount)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.37", target.getName(), element.getName().toUpperCase(), String.format(java.util.Locale.ROOT, "%d", lvl), String.format(java.util.Locale.ROOT, "%.1f", amount)), false);
         return 1;
     }
 
@@ -613,7 +598,7 @@ public class TestCommand {
                 center.getX() + 20, center.getY() + 10, center.getZ() + 20),
             e -> !(e instanceof ServerPlayer));
         if (nearby.isEmpty()) {
-            source.sendFailure(Component.literal("§c近くにMobがいません（半径20）"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.38"));
             return 0;
         }
         LivingEntity target = nearby.stream()
@@ -631,13 +616,11 @@ public class TestCommand {
                 elemSource.setElementLevel(lvl);
             }
             target.hurt(ds, amount);
-            source.sendSuccess(() -> Component.literal(
-                String.format("  §6%s §fLv.%d §c%.1fダメージ", elem.getName().toUpperCase(), lvl, amount)), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.39", elem.getName().toUpperCase(), String.format(java.util.Locale.ROOT, "%d", lvl), String.format(java.util.Locale.ROOT, "%.1f", amount)), false);
             count++;
         }
         final int total = count;
-        source.sendSuccess(() -> Component.literal(
-            "§a全" + total + "属性のダメージテスト完了"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.40", total), false);
         return count;
     }
 
@@ -645,7 +628,7 @@ public class TestCommand {
     private static int testDps(CommandSourceStack source, String elementName, int lvl, int seconds) {
         ElementType element = ElementType.fromString(elementName);
         if (element == ElementType.NONE) {
-            source.sendFailure(Component.literal("§c不明な属性: " + elementName));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.41", elementName));
             return 0;
         }
         ServerLevel level = source.getLevel();
@@ -656,7 +639,7 @@ public class TestCommand {
                 center.getX() + 20, center.getY() + 10, center.getZ() + 20),
             e -> !(e instanceof ServerPlayer));
         if (nearby.isEmpty()) {
-            source.sendFailure(Component.literal("§c近くにMobがいません（半径20）"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.42"));
             return 0;
         }
         LivingEntity target = nearby.stream()
@@ -696,19 +679,16 @@ public class TestCommand {
         final float fTotal = totalDmg;
         final float fDps = dps;
         final float fActual = actualDmg;
-        source.sendSuccess(() -> Component.literal("§6=== DPSテスト結果 ==="), false);
-        source.sendSuccess(() -> Component.literal(
-            String.format("§f属性: §6%s §fLv.%d §f期間: %d秒", element.getName().toUpperCase(), lvl, seconds)), false);
-        source.sendSuccess(() -> Component.literal(
-            String.format("§f合計ダメージ: §c%.1f §f実ダメージ: §c%.1f", fTotal, fActual)), false);
-        source.sendSuccess(() -> Component.literal(
-            String.format("§fDPS: §c%.1f/秒", fDps)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.43"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.44", element.getName().toUpperCase(), String.format(java.util.Locale.ROOT, "%d", lvl), String.format(java.util.Locale.ROOT, "%d", seconds)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.45", String.format(java.util.Locale.ROOT, "%.1f", fTotal), String.format(java.util.Locale.ROOT, "%.1f", fActual)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.46", String.format(java.util.Locale.ROOT, "%.1f", fDps)), false);
         return 1;
     }
 
     // === /test gaterot ===
     private static int showGateRot(CommandSourceStack source) {
-        source.sendSuccess(() -> Component.literal("§6=== Gate回転パラメータ ==="), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.47"), false);
         source.sendSuccess(() -> Component.literal(String.format(
             "§f  YAW=§e%.1f §fPITCH=§e%.1f §fROLL=§e%.1f",
             GateProjectileRenderer.YAW_OFFSET,
@@ -719,7 +699,7 @@ public class TestCommand {
             GateProjectileRenderer.SCALE_X,
             GateProjectileRenderer.SCALE_Y,
             GateProjectileRenderer.SCALE_Z)), false);
-        source.sendSuccess(() -> Component.literal("§7変更: /test gaterot <yaw> <pitch> <roll> <sx> <sy> <sz>"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.48"), false);
         return 1;
     }
 
@@ -730,9 +710,7 @@ public class TestCommand {
         GateProjectileRenderer.SCALE_X = sx;
         GateProjectileRenderer.SCALE_Y = sy;
         GateProjectileRenderer.SCALE_Z = sz;
-        source.sendSuccess(() -> Component.literal(String.format(
-            "§aGate回転を更新: §fYAW=§e%.1f §fPITCH=§e%.1f §fROLL=§e%.1f §fS=§e%.2f/%.2f/%.2f",
-            yaw, pitch, roll, sx, sy, sz)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.49", String.format(java.util.Locale.ROOT, "%.1f", yaw), String.format(java.util.Locale.ROOT, "%.1f", pitch), String.format(java.util.Locale.ROOT, "%.1f", roll), String.format(java.util.Locale.ROOT, "%.2f", sx), String.format(java.util.Locale.ROOT, "%.2f", sy), String.format(java.util.Locale.ROOT, "%.2f", sz)), false);
         return 1;
     }
 
@@ -740,9 +718,8 @@ public class TestCommand {
 
     private static int setLogEnabled(CommandSourceStack source, boolean on) {
         CombatLogger.setEnabled(on);
-        source.sendSuccess(() -> Component.literal(
-            on ? "§a戦闘ログ: §e有効 §7(logs/combat_ai/ に出力)"
-               : "§a戦闘ログ: §c無効"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.50", on ? Component.translatable("command.the_four_primitives_and_weapons.label.log.on")
+               : Component.translatable("command.the_four_primitives_and_weapons.label.log.off")), false);
         return 1;
     }
 
@@ -762,25 +739,18 @@ public class TestCommand {
         final long fSize = size;
         final long fLines = lines;
         final boolean fExists = exists;
-        source.sendSuccess(() -> Component.literal("§6=== 戦闘ログ状態 ==="), false);
-        source.sendSuccess(() -> Component.literal(
-            "§f有効: " + (CombatLogger.isEnabled() ? "§aON" : "§cOFF")), false);
-        source.sendSuccess(() -> Component.literal(
-            "§f今日のファイル: §e" + file.getFileName()), false);
-        source.sendSuccess(() -> Component.literal(
-            "§f存在: " + (fExists ? "§a○" : "§c×")
-            + " §fサイズ: §e" + fSize + "B §fイベント数: §e" + fLines), false);
-        source.sendSuccess(() -> Component.literal(
-            "§7/test log tail [n] で最新ログを表示"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.51"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.52", (CombatLogger.isEnabled() ? "§aON" : "§cOFF")), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.53", file.getFileName()), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.54", (fExists ? "§a○" : "§c×"), fSize, fLines), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.55"), false);
         return 1;
     }
 
     private static int logPath(CommandSourceStack source) {
         java.nio.file.Path dir = CombatLogger.getLogDirectory();
-        source.sendSuccess(() -> Component.literal(
-            "§6ログディレクトリ: §e" + dir.toAbsolutePath()), false);
-        source.sendSuccess(() -> Component.literal(
-            "§6今日のファイル: §e" + CombatLogger.getTodayEventFile().toAbsolutePath()), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.56", dir.toAbsolutePath()), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.57", CombatLogger.getTodayEventFile().toAbsolutePath()), false);
         return 1;
     }
 
@@ -788,53 +758,48 @@ public class TestCommand {
         java.nio.file.Path file = CombatLogger.getTodayEventFile();
         try {
             boolean deleted = java.nio.file.Files.deleteIfExists(file);
-            source.sendSuccess(() -> Component.literal(
-                deleted ? "§a今日の戦闘ログを削除しました" : "§7削除対象がありません"), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.58", deleted ? Component.translatable("command.the_four_primitives_and_weapons.label.log.deleted") : Component.translatable("command.the_four_primitives_and_weapons.label.log.absent")), false);
             return deleted ? 1 : 0;
         } catch (Exception e) {
-            source.sendFailure(Component.literal("§c削除失敗: " + e.getMessage()));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.59", e.getMessage()));
             return 0;
         }
     }
 
     private static int logAnalyze(CommandSourceStack source, int topN) {
         List<String> lines = CombatLogAnalyzer.summary(topN);
-        source.sendSuccess(() -> Component.literal("§6=== 戦闘ログ集計 (Lisp注入中) ==="), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.60"), false);
         for (String line : lines) {
             source.sendSuccess(() -> Component.literal("§7" + line), false);
         }
-        source.sendSuccess(() -> Component.literal(
-            "§7Lisp変数: log-mob-type-* / log-player-* として各Mobの脳に注入中"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.61"), false);
         return 1;
     }
 
     private static int logRefresh(CommandSourceStack source) {
         CombatLogAnalyzer.refresh();
-        source.sendSuccess(() -> Component.literal(
-            "§a戦闘ログを再解析しました (総イベント数: §e"
-            + CombatLogAnalyzer.getTotalEvents() + "§a)"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.62", CombatLogAnalyzer.getTotalEvents()), false);
         return 1;
     }
 
     private static int logTail(CommandSourceStack source, int n) {
         java.nio.file.Path file = CombatLogger.getTodayEventFile();
         if (!java.nio.file.Files.exists(file)) {
-            source.sendFailure(Component.literal("§c今日のログはまだありません"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.63"));
             return 0;
         }
         try {
             List<String> all = java.nio.file.Files.readAllLines(file);
             int from = Math.max(0, all.size() - n);
             List<String> tail = all.subList(from, all.size());
-            source.sendSuccess(() -> Component.literal(
-                "§6=== 戦闘ログ 最新" + tail.size() + "件 (全" + all.size() + "件) ==="), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.64", tail.size(), all.size()), false);
             for (String line : tail) {
                 String display = line.length() > 180 ? line.substring(0, 177) + "..." : line;
                 source.sendSuccess(() -> Component.literal("§7" + display), false);
             }
             return tail.size();
         } catch (Exception e) {
-            source.sendFailure(Component.literal("§c読込失敗: " + e.getMessage()));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.testcommand.65", e.getMessage()));
             return 0;
         }
     }
@@ -859,8 +824,7 @@ public class TestCommand {
             }
         }
         final int total = removed;
-        source.sendSuccess(() -> Component.literal(
-            "§a半径" + radius + "内の§c" + total + "個§aのMob設置ブロックを削除しました"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.66", radius, total), false);
         return removed;
     }
 
@@ -875,8 +839,7 @@ public class TestCommand {
         int count = mobs.size();
         mobs.forEach(Entity::discard);
         final int total = count;
-        source.sendSuccess(() -> Component.literal(
-            "§a半径" + radius + "ブロック以内の§c" + total + "体§aのMobを削除しました"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.testcommand.67", radius, total), false);
         return count;
     }
 }

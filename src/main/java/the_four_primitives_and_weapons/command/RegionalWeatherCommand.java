@@ -43,7 +43,9 @@ public final class RegionalWeatherCommand {
     }
     private static int status(CommandSourceStack source) {
         var kind = RegionalWeather.at(source.getLevel(), BlockPos.containing(source.getPosition()));
-        source.sendSuccess(() -> Component.literal("現在地: " + kind.label + (kind.wmoCode < 0 ? "" : " / WMO参考コード " + kind.wmoCode)), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.weather.status", name(kind))
+            .append(kind.wmoCode < 0 ? Component.empty() : Component.translatable(
+                "command.the_four_primitives_and_weapons.weather.wmo", kind.wmoCode)), false);
         return 1;
     }
     private static int set(CommandSourceStack source, WeatherKind kind, int duration) {
@@ -55,8 +57,12 @@ public final class RegionalWeatherCommand {
             level.setWeatherParameters(wet ? 0 : duration, wet ? duration : 0, wet, kind.thunder);
         }
         for (var player : source.getServer().getPlayerList().getPlayers()) RegionalWeatherSyncPacket.send(player);
-        source.sendSuccess(() -> Component.literal("天気の種類: " + (kind == null ? "自動" : kind.label)
-            + "。バイオーム・昼夜の許可条件を満たす場所に適用します。"), true);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.weather.set", name(kind)), true);
         return kind == null ? 1 : duration;
+    }
+
+    private static Component name(WeatherKind kind) {
+        return Component.translatable(kind == null ? "command.the_four_primitives_and_weapons.auto"
+            : "weather.the_four_primitives_and_weapons." + kind.name().toLowerCase(Locale.ROOT));
     }
 }

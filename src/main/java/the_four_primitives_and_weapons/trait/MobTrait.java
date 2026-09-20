@@ -75,6 +75,13 @@ public enum MobTrait {
         return colorCode + "[" + displayName + "]";
     }
 
+    public net.minecraft.network.chat.Component getFormattedComponent() {
+        return net.minecraft.network.chat.Component.literal(colorCode + "[")
+            .append(net.minecraft.network.chat.Component.translatable(
+                "trait.the_four_primitives_and_weapons." + name().toLowerCase(java.util.Locale.ROOT)))
+            .append("]");
+    }
+
     /** 全特性の重みの合計 */
     public static int getTotalWeight() {
         int total = 0;

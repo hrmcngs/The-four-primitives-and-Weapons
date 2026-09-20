@@ -24,6 +24,7 @@ public abstract class RegionalWeatherRendererMixin {
 
     @Shadow private ClientLevel level;
     @Unique private float regionalWeather$columnIntensity = 1F;
+    @Unique private float regionalWeather$dropScale = 1F;
 
     @org.spongepowered.asm.mixin.injection.Inject(method = "renderSky", at = @At(value = "INVOKE",
         target = "Lcom/mojang/blaze3d/systems/RenderSystem;depthMask(Z)V", ordinal = 1))
@@ -50,15 +51,26 @@ public abstract class RegionalWeatherRendererMixin {
     private Biome.Precipitation regionalWeather$column(Biome biome, BlockPos pos) {
         if (!Level.OVERWORLD.equals(level.dimension())) {
             regionalWeather$columnIntensity = 1F;
+            regionalWeather$dropScale = 1F;
             return biome.getPrecipitationAt(pos);
         }
         var kind = RegionalWeather.at(level, pos, biome);
         regionalWeather$columnIntensity = WeatherRules.opacity(kind, level.getGameTime());
+        regionalWeather$dropScale = kind == WeatherKind.DRIZZLE ? .4F : 1F;
         return RegionalWeather.precipitation(kind, level.getGameTime());
     }
     @ModifyArg(method = "renderSnowAndRain", at = @At(value = "INVOKE",
         target = "Lcom/mojang/blaze3d/vertex/VertexConsumer;color(FFFF)Lcom/mojang/blaze3d/vertex/VertexConsumer;"), index = 3, require = 1)
     private float regionalWeather$rainDensity(float alpha) { return alpha * regionalWeather$columnIntensity; }
+
+    // Tile the same texture more finely: shorter, narrower drizzle streaks in both
+    // vanilla and shader weather passes, without adding geometry or particles.
+    @Redirect(method = "renderSnowAndRain", at = @At(value = "INVOKE",
+        target = "Lcom/mojang/blaze3d/vertex/VertexConsumer;uv(FF)Lcom/mojang/blaze3d/vertex/VertexConsumer;"), require = 1)
+    private com.mojang.blaze3d.vertex.VertexConsumer regionalWeather$dropSize(
+            com.mojang.blaze3d.vertex.VertexConsumer vertex, float u, float v) {
+        return vertex.uv(u / regionalWeather$dropScale, v / regionalWeather$dropScale);
+    }
 
     @Redirect(method = "tickRain", at = @At(value = "INVOKE",
         target = "Lnet/minecraft/world/level/biome/Biome;getPrecipitationAt(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/biome/Biome$Precipitation;"), require = 1)

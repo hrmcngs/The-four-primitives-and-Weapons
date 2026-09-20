@@ -48,14 +48,10 @@ public class UndeadArmyCommand {
     private static int startRaid(CommandSourceStack source, ServerPlayer target) {
         boolean triggered = UndeadArmyEvent.triggerRaid(target);
         if (triggered) {
-            source.sendSuccess(() -> Component.literal(
-                "§a" + target.getName().getString() + " にアンデットアーミーを発動"
-            ), true);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.undeadarmycommand.1", target.getName()), true);
             return 1;
         } else {
-            source.sendFailure(Component.literal(
-                "§c" + target.getName().getString() + " は既に侵攻中、またはワールドが見つかりません"
-            ));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.undeadarmycommand.2", target.getName()));
             return 0;
         }
     }
@@ -63,14 +59,10 @@ public class UndeadArmyCommand {
     private static int cancelRaid(CommandSourceStack source, ServerPlayer target) {
         boolean canceled = UndeadArmyEvent.cancelRaid(target);
         if (canceled) {
-            source.sendSuccess(() -> Component.literal(
-                "§e" + target.getName().getString() + " の侵攻をキャンセル"
-            ), true);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.undeadarmycommand.3", target.getName()), true);
             return 1;
         } else {
-            source.sendFailure(Component.literal(
-                "§c" + target.getName().getString() + " は侵攻中ではありません"
-            ));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.undeadarmycommand.4", target.getName()));
             return 0;
         }
     }

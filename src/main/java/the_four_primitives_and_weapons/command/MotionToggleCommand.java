@@ -73,29 +73,28 @@ public class MotionToggleCommand {
      */
     private static int explainMotions(CommandSourceStack source) {
         if (!(source.getEntity() instanceof ServerPlayer player)) {
-            source.sendFailure(Component.literal("§cこのコマンドはプレイヤー専用"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.1"));
             return 0;
         }
         net.minecraft.world.item.ItemStack held = player.getMainHandItem();
         if (held.isEmpty()) {
-            source.sendFailure(Component.literal("§c武器を手に持ってから実行してください"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.2"));
             return 0;
         }
 
         PlayerSkillData.SkillStorage sd = PlayerSkillData.getSkillData(player);
         if (sd == null) {
-            source.sendFailure(Component.literal("§cスキルデータを取得できませんでした"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.3"));
             return 0;
         }
 
         the_four_primitives_and_weapons.skill.WeaponTypeRegistry.WeaponTypeData type =
                 the_four_primitives_and_weapons.skill.WeaponTypeRegistry.getTypeForItem(held);
-        source.sendSuccess(() -> Component.literal("§6" + held.getHoverName().getString()
-                + " §7/ タイプ: §e" + (type != null ? type.getId() : "未登録")), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.4", held.getHoverName(), (type != null ? type.getId() : Component.translatable("command.the_four_primitives_and_weapons.label.unregistered"))), false);
 
         for (PlayerSkillData.AttackSlot slot : PlayerSkillData.AttackSlot.values()) {
             String actual = sd.getMotionForWeapon(slot, held);
-            String origin;
+            Component origin;
 
             String nbt = the_four_primitives_and_weapons.skill.WeaponSkillNBT.getMotion(held, slot);
             String loadoutMotion = null;
@@ -109,17 +108,15 @@ public class MotionToggleCommand {
             String typeMotion = (type != null) ? sd.getRawTypeMotion(type.getId(), slot) : null;
             String jsonDefault = (type != null) ? type.getDefaultMotion(slot) : null;
 
-            if (nbt != null) origin = "§c武器NBT §7(優先度0)";
-            else if (loadoutMotion != null) origin = "§e武器スロット §7(優先度1)";
-            else if (typeMotion != null) origin = "§aタイプ別 §7(優先度2)";
-            else if (jsonDefault != null) origin = "§bJSON既定 §7(優先度3)";
-            else origin = "§7グローバル既定 (優先度4)";
+            if (nbt != null) origin = Component.translatable("command.the_four_primitives_and_weapons.label.origin.nbt");
+            else if (loadoutMotion != null) origin = Component.translatable("command.the_four_primitives_and_weapons.label.origin.loadout");
+            else if (typeMotion != null) origin = Component.translatable("command.the_four_primitives_and_weapons.label.origin.type");
+            else if (jsonDefault != null) origin = Component.translatable("command.the_four_primitives_and_weapons.label.origin.json");
+            else origin = Component.translatable("command.the_four_primitives_and_weapons.label.origin.global");
 
-            source.sendSuccess(() -> Component.literal(
-                    "  §f" + slot.getId() + "§7: §f" + actual + " §7← " + origin), false);
+            source.sendSuccess(() -> Component.literal("  §f" + slot.getId() + "§7: §f" + actual + " §7← ").append(origin), false);
         }
-        source.sendSuccess(() -> Component.literal(
-                "§7※ 上位の層が出ている場合、 スキル画面で下位のタブを選び直しても反映されません"), false);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.5"), false);
         return 1;
     }
 
@@ -134,22 +131,21 @@ public class MotionToggleCommand {
     /** force = null → トグル / true → ON / false → OFF */
     private static int setMotion(CommandSourceStack source, String motionId, Boolean force) {
         if (!(source.getEntity() instanceof ServerPlayer player)) {
-            source.sendFailure(Component.literal("§cこのコマンドはプレイヤー専用"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.6"));
             return 0;
         }
         boolean currentlyEnabled = PlayerSkillData.isMotionEnabled(player, motionId);
         boolean target = (force != null) ? force : !currentlyEnabled;
         PlayerSkillData.setMotionEnabled(player, motionId, target);
 
-        final String label = target ? "§a有効" : "§c無効";
-        source.sendSuccess(() -> Component.literal(
-                "§7技 §e" + motionId + "§7 を " + label + " §7にしました"), false);
+        final Component label = target ? Component.translatable("command.the_four_primitives_and_weapons.label.enabled") : Component.translatable("command.the_four_primitives_and_weapons.label.disabled");
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.7", motionId, label), false);
         return 1;
     }
 
     private static int listDisabled(CommandSourceStack source) {
         if (!(source.getEntity() instanceof ServerPlayer player)) {
-            source.sendFailure(Component.literal("§cこのコマンドはプレイヤー専用"));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.8"));
             return 0;
         }
         List<String> disabled = new ArrayList<>();
@@ -157,10 +153,9 @@ public class MotionToggleCommand {
             if (!PlayerSkillData.isMotionEnabled(player, id)) disabled.add(id);
         }
         if (disabled.isEmpty()) {
-            source.sendSuccess(() -> Component.literal("§7無効化されている技はありません"), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.9"), false);
         } else {
-            source.sendSuccess(() -> Component.literal(
-                    "§7無効化中 (" + disabled.size() + "): §c" + String.join(", ", disabled)), false);
+            source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.motiontogglecommand.10", disabled.size(), String.join(", ", disabled)), false);
         }
         return 1;
     }

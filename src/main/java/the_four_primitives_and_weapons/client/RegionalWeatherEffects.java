@@ -77,11 +77,14 @@ public final class RegionalWeatherEffects {
                 case SANDSTORM -> mc.level.addParticle(SAND, x, y, z, 0.6, 0.02, 0.2);
                 case HAIL -> mc.level.addParticle(ParticleTypes.ITEM_SNOWBALL, x, y, z, 0.05, -0.8, 0.02);
                 case DRIZZLE, RAIN, HEAVY_RAIN, SHOWERS, THUNDERSTORM -> {
-                    mc.level.addParticle(ParticleTypes.RAIN, x, y, z, 0, -.5, 0);
+                    var drop = mc.particleEngine.createParticle(ParticleTypes.RAIN, x, y, z, 0, -.5, 0);
+                    if (drop != null && kind == WeatherKind.DRIZZLE) drop.scale(.4F);
                     var ground = mc.level.getHeightmapPos(net.minecraft.world.level.levelgen.Heightmap.Types.MOTION_BLOCKING, pos);
                     if (Math.abs(ground.getY() - camera.y) < 10 && mc.level.canSeeSky(ground)
-                        && RegionalWeather.at(mc.level, ground) == kind)
-                        mc.level.addParticle(ParticleTypes.SPLASH, x, ground.getY() + .05, z, 0, .02, 0);
+                        && RegionalWeather.at(mc.level, ground) == kind) {
+                        var splash = mc.particleEngine.createParticle(ParticleTypes.SPLASH, x, ground.getY() + .05, z, 0, .02, 0);
+                        if (splash != null && kind == WeatherKind.DRIZZLE) splash.scale(.4F);
+                    }
                 }
                 case SNOW, HEAVY_SNOW -> mc.level.addParticle(ParticleTypes.SNOWFLAKE, x, y, z, .025, -.05, .01);
                 case BLOWING_SNOW -> mc.level.addParticle(ParticleTypes.SNOWFLAKE, x, y, z, 0.4, -0.02, 0.15);

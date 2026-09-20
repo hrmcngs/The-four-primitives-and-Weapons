@@ -232,8 +232,8 @@ public class CustomDifficultyCommand {
 
         source.sendSuccess(() -> Component.literal("§7")
             .append(Component.translatable("difficulty.the_four_primitives_and_weapons.stats",
-                newDifficulty.getDamageMultiplier(),
-                newDifficulty.getHealthMultiplier(),
+                String.format(java.util.Locale.ROOT, "%.1f", newDifficulty.getDamageMultiplier()),
+                String.format(java.util.Locale.ROOT, "%.2f", newDifficulty.getHealthMultiplier()),
                 newDifficulty.getAiLevel())),
             false);
 

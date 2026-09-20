@@ -75,7 +75,7 @@ public class ElementDamageCommand {
                                float amount, String elementName, int level) {
         ElementType element = ElementType.fromString(elementName);
         if (element == ElementType.NONE) {
-            source.sendFailure(Component.literal("§c不明な属性: " + elementName));
+            source.sendFailure(Component.translatable("command.the_four_primitives_and_weapons.elementdamagecommand.1", elementName));
             return 0;
         }
 
@@ -95,10 +95,7 @@ public class ElementDamageCommand {
         }
 
         final int total = count;
-        source.sendSuccess(() -> Component.literal(
-            String.format("§a%d体に §6%s§a Lv.%d で §c%.1f§a ダメージを与えました",
-                total, element.getName().toUpperCase(), level, amount)
-        ), true);
+        source.sendSuccess(() -> Component.translatable("command.the_four_primitives_and_weapons.elementdamagecommand.2", String.format(java.util.Locale.ROOT, "%d", total), element.getName().toUpperCase(), String.format(java.util.Locale.ROOT, "%d", level), String.format(java.util.Locale.ROOT, "%.1f", amount)), true);
 
         return count;
     }

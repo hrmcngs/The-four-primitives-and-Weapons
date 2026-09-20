@@ -63,7 +63,7 @@ public class AngelTalkCommand {
                         String key = StringArgumentType.getString(context, "key");
                         AngelChatAI.setApiKey(key);
                         context.getSource().sendSuccess(
-                            () -> Component.literal("§aAPIキーを設定しました"), true);
+                            () -> Component.translatable("command.the_four_primitives_and_weapons.angeltalkcommand.1"), true);
                         return 1;
                     }))));
     }
