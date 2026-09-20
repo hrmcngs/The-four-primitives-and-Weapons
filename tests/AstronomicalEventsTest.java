@@ -4,6 +4,48 @@ import the_four_primitives_and_weapons.world.AstronomySettings;
 
 public class AstronomicalEventsTest {
     public static void main(String[] args) {
+        var jade = AstronomySettings.DEFAULT.withColor(MoonTint.JADE.ordinal()).withPhase(0);
+        var blue = jade.withColor(MoonTint.BLUE.ordinal());
+        var gold = jade.withColor(MoonTint.GOLD.ordinal());
+        var violet = jade.withColor(MoonTint.VIOLET.ordinal());
+        var rose = jade.withColor(MoonTint.ROSE.ordinal());
+        check(gold.miningExperience(18000, 0, 5) == 8, "Mining XP rounds up");
+        check(gold.miningExperience(18000, 0, 0) == 0, "No XP created from non-XP blocks");
+        check(gold.miningExperience(18000, 0, Integer.MAX_VALUE) == Integer.MAX_VALUE, "XP cannot overflow");
+        check(violet.preserveDurability(18000, 0, .249F), "Violet preserves durability");
+        check(!violet.preserveDurability(18000, 0, .25F), "Durability chance boundary");
+        check(rose.breedingCooldown(18000, 0, 6000) == 3000, "Breeding cooldown halves");
+        check(rose.breedingCooldown(18000, 0, -24000) == -24000, "Baby age unchanged");
+        for (MoonTint tint : MoonTint.values()) {
+            var setting = jade.withColor(tint.ordinal());
+            if (tint != MoonTint.GOLD) check(setting.miningExperience(18000, 0, 5) == 5, "XP color isolation");
+            if (tint != MoonTint.VIOLET) check(!setting.preserveDurability(18000, 0, 0F), "Durability color isolation");
+            if (tint != MoonTint.ROSE) check(setting.breedingCooldown(18000, 0, 6000) == 6000, "Breeding color isolation");
+            for (var disabled : new AstronomySettings[]{setting.withEffects(false), setting.withPhase(4)}) {
+                check(disabled.miningExperience(18000, 0, 5) == 5, "Disabled XP bonus");
+                check(!disabled.preserveDurability(18000, 0, 0F), "Disabled durability bonus");
+                check(disabled.breedingCooldown(18000, 0, 6000) == 6000, "Disabled breeding bonus");
+            }
+        }
+        check(jade.boostCropGrowth(18000, 0, 0.24F), "Jade promotes growth");
+        check(!jade.boostCropGrowth(18000, 0, 0.25F), "Growth boost limited to 25 percent");
+        check(!blue.boostCropGrowth(18000, 0, 0F), "Blue does not accelerate crops");
+        check(blue.fishingLuckBonus(18000, 0) == 2F, "Blue adds two fishing luck");
+        check(jade.fishingLuckBonus(18000, 0) == 0F, "Jade does not alter fishing loot");
+        for (long time : new long[]{0, 6000, 12999, 23001, 24000}) {
+            check(gold.miningExperience(time, 0, 5) == 5, "No daytime XP bonus");
+            check(!violet.preserveDurability(time, 0, 0F), "No daytime durability bonus");
+            check(rose.breedingCooldown(time, 0, 6000) == 6000, "No daytime breeding bonus");
+            check(!jade.boostCropGrowth(time, 0, 0F), "No daytime growth bonus");
+            check(blue.fishingLuckBonus(time, 0) == 0F, "No daytime fishing bonus");
+        }
+        check(blue.fishingLuckBonus(13000, 0) == 2F && blue.fishingLuckBonus(23000, 0) == 2F, "Night boundaries");
+        check(!jade.withEffects(false).boostCropGrowth(18000, 0, 0F), "Effects off disables growth");
+        check(blue.withEffects(false).fishingLuckBonus(18000, 0) == 0F, "Effects off disables fishing bonus");
+        check(!jade.withPhase(4).boostCropGrowth(18000, 0, 0F), "New moon disables growth");
+        check(blue.withPhase(4).fishingLuckBonus(18000, 0) == 0F, "New moon disables fishing bonus");
+        check(AstronomySettings.DEFAULT.fishingLuckBonus(210000, 0) == 2F, "Natural blue moon bonus");
+        check(AstronomySettings.DEFAULT.boostCropGrowth(786000, 0, 0F), "Natural jade moon bonus");
         for (float p : new float[] {-2, -1, 0, 1, Float.NaN})
             check(the_four_primitives_and_weapons.world.EclipseLightCurve.strength(p) == 0, "No eclipse darkness outside active transit");
         check(the_four_primitives_and_weapons.world.EclipseLightCurve.strength(.5F) == 1, "Maximum darkness at middle");

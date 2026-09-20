@@ -39,6 +39,37 @@ public record AstronomySettings(float size, int phase, int color, int meteors, b
     public boolean meteorShower(long time) {
         return meteors < 0 ? AstronomicalEvents.isMeteorShower(time) : meteors == 1;
     }
+
+    /** Shared gate for gameplay benefits; no potion effects are applied. */
+    public AstronomicalEvents.MoonTint activeEffectColor(long time, int naturalPhase) {
+        long hour = Math.floorMod(time, 24000L);
+        return effects && hour >= 13000L && hour <= 23000L && moonPhase(naturalPhase) != 4
+            ? moonColor(time, naturalPhase) : AstronomicalEvents.MoonTint.NORMAL;
+    }
+
+    public float fishingLuckBonus(long time, int naturalPhase) {
+        return activeEffectColor(time, naturalPhase) == AstronomicalEvents.MoonTint.BLUE ? 2F : 0F;
+    }
+
+    public boolean boostCropGrowth(long time, int naturalPhase, float roll) {
+        return activeEffectColor(time, naturalPhase) == AstronomicalEvents.MoonTint.JADE
+            && roll >= 0F && roll < 0.25F;
+    }
+
+    public int miningExperience(long time, int naturalPhase, int original) {
+        return original > 0 && activeEffectColor(time, naturalPhase) == AstronomicalEvents.MoonTint.GOLD
+            ? (int) Math.min(Integer.MAX_VALUE, original + ((long) original + 1L) / 2L) : original;
+    }
+
+    public boolean preserveDurability(long time, int naturalPhase, float roll) {
+        return activeEffectColor(time, naturalPhase) == AstronomicalEvents.MoonTint.VIOLET
+            && roll >= 0F && roll < 0.25F;
+    }
+
+    public int breedingCooldown(long time, int naturalPhase, int original) {
+        return original > 0 && activeEffectColor(time, naturalPhase) == AstronomicalEvents.MoonTint.ROSE
+            ? Math.max(1, original / 2) : original;
+    }
     public float solarProgress(long time) {
         return solar == -1F ? AstronomicalEvents.solarEclipseProgress(time) : solar == -2F ? -1F : solar;
     }

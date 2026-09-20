@@ -9,7 +9,7 @@
     (:build "WSLからWindows版をビルド" "sh/build/build_win.sh" "cleanのみ対応。Windows側の固定パスを使用")
     (:generate "汎用Lispからデータパック生成" "sh/generate/generate-mcfunction.sh" "MOD不要。独立したtools/mcfunction-lispを他repoでも使用可能")
     (:generate "蝶・刀のコマンドを対話式で生成" "sh/generate/generate_commands.sh" "49種類の蝶、拵え、設置角度などを設定。SBCLが必要")
-    (:generate "天文現象・timeコマンドを生成" "sh/generate/generate-time-commands.sh" "月・流星群・日食・月食・WMO参考天候・時刻を指定。SBCLが必要")
+    (:generate "月の効果・天文現象・timeコマンドを生成" "sh/generate/generate-time-commands.sh" "色を選ぶだけの効果お試し／月・流星・食・WMO天候の詳細設定／効果一覧。SBCLが必要")
     (:generate "ランダム地形の撮影ワールドを作成" "sh/generate/generate-photo-world.sh" "Lisp→mcfunction。毎回別の地形、シード指定で再現。SBCL・gzip・zip")
     (:generate "金木犀料理の素材・レシピを再生成" "sh/generate/generate-osmanthus-food.sh" "シロップ・ケーキ・クッキー。SBCL・Java 17・バニラ1.20.1素材")
     (:generate "バニラ由来の花木素材を再生成" "sh/generate/generate-flowering-woods.sh" "SBCL・Java 17・unzip・1.20.1 client.jar。花木の素材を更新")
