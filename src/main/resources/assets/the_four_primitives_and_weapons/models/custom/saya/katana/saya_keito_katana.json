@@ -1,0 +1,8 @@
+{
+  "parent": "the_four_primitives_and_weapons:custom/saya/katana/saya_katana_parent",
+  "textures": {
+    "1": "the_four_primitives_and_weapons:katana_fitting/tsuba/katanadarkness_tuba",
+    "3": "the_four_primitives_and_weapons:katana_fitting/kasira/katanadarkness_kasira",
+    "5": "the_four_primitives_and_weapons:katana_fitting/tsuka/katanadarkness_tuka"
+  }
+}

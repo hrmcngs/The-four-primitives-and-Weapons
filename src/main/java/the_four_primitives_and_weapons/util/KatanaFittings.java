@@ -242,7 +242,17 @@ public final class KatanaFittings {
 	public static final String BLADE_KEY = "BladeColor";
 	public static int bladeRgb(ItemStack stack) {
 		int color = rgb(stack, BLADE_KEY);
-		return color >= 0 ? color : 0xFFFFFF;
+		if (color >= 0) return color;
+		// Keep the steel texture's shading, with an icy blue-white cast unique to Ketu.
+		// A rendering default also updates existing blades without rewriting their NBT.
+		return stack.getItem() instanceof the_four_primitives_and_weapons.item.KeitoKatanaItem
+				? 0xDFF2FC : 0xFFFFFF;
+	}
+	/** Alternate blade plane; explicit BladeColor still recolors the entire blade. */
+	public static int bladeShadeRgb(ItemStack stack) {
+		if (rgb(stack, BLADE_KEY) >= 0) return bladeRgb(stack);
+		return stack.getItem() instanceof the_four_primitives_and_weapons.item.KeitoKatanaItem
+				? 0xD4ECEE : bladeRgb(stack);
 	}
 	public static void setBlade(ItemStack stack, int rgb) { stack.getOrCreateTag().putInt(BLADE_KEY, rgb & 0xFFFFFF); }
 	/** 縁 ( ふち ) の色。 */
@@ -332,10 +342,30 @@ public final class KatanaFittings {
 	}
 
 	// 各部位: 専用キーが無ければ 皮装備方式 display.color を見る ( /give …{display:{color:N}} で全部位が同色になる )。
-	public static int tsukaRgb(ItemStack stack)   { int c = rgb(stack, TSUKA_KEY);   return c >= 0 ? c : displayColor(stack); }
-	public static int tsubaRgb(ItemStack stack)   { int c = rgb(stack, TSUBA_KEY);   return c >= 0 ? c : displayColor(stack); }
-	public static int kashiraRgb(ItemStack stack) { int c = rgb(stack, KASHIRA_KEY); return c >= 0 ? c : displayColor(stack); }
+	public static int tsukaRgb(ItemStack stack)   { return fittingRgb(stack, TSUKA_KEY, 0x101010); }
+	public static int tsubaRgb(ItemStack stack)   { return fittingRgb(stack, TSUBA_KEY, 0x101010); }
+	public static int kashiraRgb(ItemStack stack) { return fittingRgb(stack, KASHIRA_KEY, 0x383838); }
+
+	private static int fittingRgb(ItemStack stack, String key, int keitoDefault) {
+		int color = rgb(stack, key);
+		if (color >= 0) return color;
+		color = displayColor(stack);
+		if (color >= 0) return color;
+		return stack.getItem() instanceof the_four_primitives_and_weapons.item.KeitoKatanaItem
+				? keitoDefault : -1;
+	}
 	public static int fuchiRgb(ItemStack stack)   { return rgb(stack, FUCHI_KEY); }
+
+	/** Ketu's default grip/guard darken the black texture itself, retaining its pattern. */
+	public static int fittingTint(ItemStack stack, int tintIndex, int color) {
+		if (color < 0) return 0xFFFFFFFF;
+		if (!isNearBlack(color)) return 0xFF000000 | color;
+		if ((tintIndex == 1 || tintIndex == 2)
+				&& stack.getItem() instanceof the_four_primitives_and_weapons.item.KeitoKatanaItem
+				&& rgb(stack, tintIndex == 1 ? TSUKA_KEY : TSUBA_KEY) < 0 && displayColor(stack) < 0)
+			return 0xFF505050;
+		return 0xFFFFFFFF;
+	}
 
 	/** はばき: 個別指定 → display.color → 武器ごとの初期色。 */
 	public static int habakiRgb(ItemStack stack) {
@@ -352,6 +382,7 @@ public final class KatanaFittings {
 			return 0xFFFFFF;
 		return switch (id.getPath()) {
 			case "iron_katana" -> 0xFEF364;
+			case "keito_katana" -> 0x62551A;
 			case "iron_tyokuto" -> 0xFFE052;
 			case "gold_katana", "gold_tyokuto", "gate", "convergent_gate" -> 0x96ACB3;
 			case "diamond_katana", "diamond_tyokuto" -> 0x2C2031;

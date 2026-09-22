@@ -1,0 +1,5 @@
+{
+  "pattern": ["D", "A", "S"],
+  "key": {"D": "minecraft:diamond", "A": "minecraft:amethyst_shard", "S": "minecraft:stick"},
+  "result": "the_four_primitives_and_weapons:keito_katana"
+}

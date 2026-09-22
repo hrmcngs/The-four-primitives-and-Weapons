@@ -21,12 +21,13 @@ public class KatanaColorClient {
 			// はばきは無彩色の地に直接乗算する。暗色でも指定 RGB をそのまま使う。
 			if (tintIndex == 5) return 0xFF000000 | KatanaFittings.habakiRgb(stack);
 			if (tintIndex == 6) return 0xFF000000 | KatanaFittings.bladeRgb(stack);
+			if (tintIndex == 7) return 0xFF000000 | KatanaFittings.bladeShadeRgb(stack);
 			if (!KatanaFittings.isFittingWeapon(stack)) return 0xFFFFFFFF;
 			// 色を設定した部位は モデル側で グレー版(tint) か 暗版(模様入りの黒、tintなし) に差し替わる。
 			// 暗版(ほぼ黒)のときは 乗算で潰れないよう tint を掛けない ( テクスチャに任せる )。
 			switch (tintIndex) {
-				case 1: return tint(KatanaFittings.tsukaRgb(stack));
-				case 2: return tint(KatanaFittings.tsubaRgb(stack));
+				case 1: return KatanaFittings.fittingTint(stack, 1, KatanaFittings.tsukaRgb(stack));
+				case 2: return KatanaFittings.fittingTint(stack, 2, KatanaFittings.tsubaRgb(stack));
 				case 3: return tint(KatanaFittings.kashiraRgb(stack));
 				// 縁(fuchi=4)は無し
 				default: return 0xFFFFFFFF;

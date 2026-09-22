@@ -18,6 +18,7 @@
     "  先頭 _ のファイルは無視される (テンプレート用)。"
   ],
   "katana": {
+    "the_four_primitives_and_weapons:keito_katana": "the_four_primitives_and_weapons:custom/saya/katana/saya_keito_katana",
     "the_four_primitives_and_weapons:wooden_katana": "the_four_primitives_and_weapons:custom/saya/katana/saya_wooden_katana",
     "the_four_primitives_and_weapons:iron_katana": "the_four_primitives_and_weapons:custom/saya/katana/saya_iron_katana",
     "the_four_primitives_and_weapons:reitou": "the_four_primitives_and_weapons:custom/saya/katana/saya_iron_katana",

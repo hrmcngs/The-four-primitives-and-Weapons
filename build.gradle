@@ -552,3 +552,4 @@ tasks.withType(JavaCompile).configureEach {
 apply from: 'mcreator.gradle'
 apply from: 'lock_all_codes.gradle'
 apply from: 'gradle/compact-jar.gradle'
+apply from: 'gradle/dev-runtime-snapshot.gradle'

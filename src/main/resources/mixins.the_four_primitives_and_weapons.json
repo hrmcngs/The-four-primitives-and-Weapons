@@ -27,6 +27,8 @@
     "GateInventoryOverflowMixin"
   ],
   "client": [
+    "KeitoGlintMixin",
+    "KeitoGlintBuffersMixin",
     "RegionalWeatherRendererMixin",
     "LunarSizeMixin",
     "KeyBindsLabelLayoutMixin",

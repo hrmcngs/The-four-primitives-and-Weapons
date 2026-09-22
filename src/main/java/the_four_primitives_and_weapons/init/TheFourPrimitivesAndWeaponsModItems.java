@@ -140,6 +140,7 @@ public class TheFourPrimitivesAndWeaponsModItems {
 	public static final RegistryObject<Item> A = REGISTRY.register("a", () -> new AItem());
 	public static final RegistryObject<Item> HAMMER = REGISTRY.register("hammer", () -> new HammerItem());
 	public static final RegistryObject<Item> IRON_KATANA = REGISTRY.register("iron_katana", () -> new IronKatanaItem());
+    public static final RegistryObject<Item> KEITO_KATANA = REGISTRY.register("keito_katana", () -> new the_four_primitives_and_weapons.item.KeitoKatanaItem());
 	public static final RegistryObject<Item> WOODEN_KATANA = REGISTRY.register("wooden_katana", () -> new WoodenKatanaItem());
 	public static final RegistryObject<Item> WOODEN_TYOKUTO = REGISTRY.register("wooden_tyokuto", () -> new WoodenTyokutoItem());
 	public static final RegistryObject<Item> DIAMOND_KATANA = REGISTRY.register("diamond_katana", () -> new DiamondKatanaItem());

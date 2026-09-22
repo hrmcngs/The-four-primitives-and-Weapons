@@ -17,6 +17,7 @@ public class CreativeTabPopulator {
 		if (event.getTab() == TheFourPrimitivesAndWeaponsModTabs.TAB_WEAPON.get()) {
 			event.accept(TheFourPrimitivesAndWeaponsModItems.WOODEN_KATANA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.IRON_KATANA);
+            event.accept(TheFourPrimitivesAndWeaponsModItems.KEITO_KATANA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.STONE_KATANA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.GOLD_KATANA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.DIAMOND_KATANA);

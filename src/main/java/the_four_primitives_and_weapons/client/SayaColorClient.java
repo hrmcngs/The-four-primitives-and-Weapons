@@ -52,10 +52,7 @@ public class SayaColorClient {
 			case 3: rgb = the_four_primitives_and_weapons.util.KatanaFittings.kashiraRgb(weapon); break;
 			default: rgb = -1; // 縁(4)は廃止
 		}
-		if (rgb < 0) return 0xFFFFFFFF;
-		// ほぼ黒は tint を掛けない ( モデル側が暗版テクスチャに差し替える。 持っている刀と同じ )。
-		if (the_four_primitives_and_weapons.util.KatanaFittings.isNearBlack(rgb)) return 0xFFFFFFFF;
-		return 0xFF000000 | rgb;
+		return the_four_primitives_and_weapons.util.KatanaFittings.fittingTint(weapon, tintIndex, rgb);
 	}
 
 	/** 鞘に納められている武器 ItemStack を取り出す ( StoredKatana/Sword/Rapier )。 無ければ null。 */

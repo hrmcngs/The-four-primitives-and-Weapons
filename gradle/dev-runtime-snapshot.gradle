@@ -1,0 +1,68 @@
+// Keep a running development game independent of compileJava/processResources.
+// Gradle and IDE rebuilds may delete/recreate the normal output directories.
+def runtimeSnapshots = []
+def isolateModRuntime = { JavaExec launch ->
+    def modId = 'the_four_primitives_and_weapons'
+    def original = launch.environment['MOD_CLASSES']?.toString()
+    if (!original || !original.contains(modId + '%%')) {
+        throw new GradleException("Cannot isolate ${launch.name}: MOD_CLASSES is missing ${modId}")
+    }
+    def root = file('run/.mod-runtime')
+    root.mkdirs()
+    def snapshot = java.nio.file.Files.createTempDirectory(root.toPath(), launch.name + '-').toFile()
+    runtimeSnapshots.add(snapshot)
+    def replacements = [:]
+    def entries = original.split(java.util.regex.Pattern.quote(File.pathSeparator)).collect { entry ->
+        if (!entry.startsWith(modId + '%%')) return entry
+        def source = file(entry.substring((modId + '%%').length())).canonicalFile
+        if (!source.isDirectory()) throw new GradleException("Missing development output: ${source}")
+        if (!replacements.containsKey(source)) {
+            def target = new File(snapshot, "output-${replacements.size()}")
+            project.copy { from source; into target }
+            replacements[source] = target
+        }
+        return modId + '%%' + replacements[source].absolutePath
+    }
+    launch.environment 'MOD_CLASSES', entries.join(File.pathSeparator)
+    launch.classpath = files(launch.classpath.files.collect { path ->
+        replacements.containsKey(path.canonicalFile) ? replacements[path.canonicalFile] : path
+    })
+    def mappingKey = 'mixin.env.refMapRemappingFile'
+    def mapping = launch.systemProperties[mappingKey]
+    if (mapping && file(mapping.toString()).isFile()) {
+        def target = new File(snapshot, 'output.srg')
+        java.nio.file.Files.copy(file(mapping.toString()).toPath(), target.toPath())
+        launch.systemProperty mappingKey, target.absolutePath
+    }
+    logger.lifecycle("${launch.name}: isolated MOD runtime at ${snapshot}")
+    return [snapshot: snapshot, replacements: replacements]
+}
+
+tasks.matching { it.name in ['runClient', 'runServer'] }.configureEach { launch ->
+    doFirst { isolateModRuntime(launch as JavaExec) }
+}
+
+tasks.register('verifyDevRuntimeSnapshot') {
+    dependsOn 'classes', 'prepareRunClient'
+    doLast {
+        def launch = tasks.named('runClient').get() as JavaExec
+        def result = isolateModRuntime(launch)
+        def helper = 'the_four_primitives_and_weapons/util/CuriosElytraHelper.class'
+        assert result.replacements.values().any { new File(it, helper).isFile() }
+        result.replacements.each { source, target ->
+            assert !launch.classpath.files.any { it.canonicalFile == source }
+            project.fileTree(source).files.each { sourceFile ->
+                def relative = source.toPath().relativize(sourceFile.toPath())
+                def copied = target.toPath().resolve(relative).toFile()
+                assert copied.isFile() && java.util.Arrays.equals(sourceFile.bytes, copied.bytes)
+            }
+        }
+        assert launch.environment['MOD_CLASSES'].contains(result.snapshot.absolutePath)
+        logger.lifecycle('Development runtime snapshot: class/resource copies and launch paths verified.')
+    }
+}
+
+// Only delete snapshots owned by this Gradle invocation, after its game exits.
+gradle.buildFinished {
+    runtimeSnapshots.each { project.delete(it) }
+}
