@@ -101,8 +101,10 @@ public abstract class WeaponStatsMixin {
             ItemStack self = (ItemStack) (Object) this;
             WeaponStats st = WeaponStatsRegistry.getStats(self);
             if (st == null) return;
+            // 盾も共通攻撃力を通常攻撃・振り下ろしへ反映。攻撃速度は cooldown に置き換える。
+            boolean shield = the_four_primitives_and_weapons.event.ShieldBashHandler.isShield(self);
             boolean hasDmg = !Float.isNaN(st.attackDamage);
-            boolean hasSpd = !Float.isNaN(st.attackSpeed);
+            boolean hasSpd = !shield && !Float.isNaN(st.attackSpeed);
             boolean hasReach = !Float.isNaN(st.attackRange);
             if (!hasDmg && !hasSpd && !hasReach) return;
 

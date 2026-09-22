@@ -1,0 +1,16 @@
+{
+  "parent": "the_four_primitives_and_weapons:item/greatshield",
+  "textures": {
+    "material": "minecraft:block/diamond_block",
+    "rim": "minecraft:block/diamond_block",
+    "handle": "minecraft:block/diamond_block"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "the_four_primitives_and_weapons:item/blocking_diamond_greatshield"
+    }
+  ]
+}

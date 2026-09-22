@@ -317,23 +317,50 @@
         "the_four_primitives_and_weapons:parry_shield",
         "the_four_primitives_and_weapons:nigu_shield",
         "the_four_primitives_and_weapons:achromatic_shield",
-        "minecraft:shield"
+        "minecraft:shield",
+        "the_four_primitives_and_weapons:wooden_shield",
+        "the_four_primitives_and_weapons:wooden_rimmed_shield",
+        "the_four_primitives_and_weapons:stone_shield",
+        "the_four_primitives_and_weapons:stone_rimmed_shield",
+        "the_four_primitives_and_weapons:iron_shield",
+        "the_four_primitives_and_weapons:iron_rimmed_shield",
+        "the_four_primitives_and_weapons:gold_shield",
+        "the_four_primitives_and_weapons:gold_rimmed_shield",
+        "the_four_primitives_and_weapons:diamond_shield",
+        "the_four_primitives_and_weapons:diamond_rimmed_shield",
+        "the_four_primitives_and_weapons:netherite_shield",
+        "the_four_primitives_and_weapons:netherite_rimmed_shield",
+        "the_four_primitives_and_weapons:wooden_greatshield",
+        "the_four_primitives_and_weapons:stone_greatshield",
+        "the_four_primitives_and_weapons:iron_greatshield",
+        "the_four_primitives_and_weapons:gold_greatshield",
+        "the_four_primitives_and_weapons:diamond_greatshield",
+        "the_four_primitives_and_weapons:netherite_greatshield"
       ],
       "motions": {
         "combat": [
-          "shield_bash"
+          "slam_down",
+          "thrust"
         ],
         "dash": [
           "dash_rush"
         ],
         "right_click": [
-          "guard"
+          "none_right"
         ],
         "shift_right_click": [
-          "parry",
-          "guard"
+          "none_shift"
         ]
-      }
+      },
+      "default_motions": {
+        "first_hit": "slam_down",
+        "second_hit": "slam_down",
+        "third_hit": "slam_down",
+        "charged": "slam_down",
+        "right_click": "none_right",
+        "shift_right_click": "none_shift"
+      },
+      "_comment": "右クリックは盾自体の防御に任せる。FキーのパリーはShieldParryHandler、利き手の長押しバッシュは全盾共通のShieldBashHandlerで処理。"
     },
     "bow": {
       "display_name": "弓",
@@ -554,14 +581,8 @@
     },
     "the_four_primitives_and_weapons:parry_shield": {
       "enabled": true,
-      "special_motions": {
-        "combat": [
-          "shield_bash"
-        ],
-        "shift_right_click": [
-          "parry"
-        ]
-      }
+      "special_motions": {},
+      "_comment": "バッシュ・パリーは共通イベントとアイテムで実行。未登録の技IDはスキル候補に追加しない。"
     }
   }
 }

@@ -29,6 +29,8 @@ public class CustomEntityRenderers {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         // Register entity renderers
+        event.registerEntityRenderer(CustomEntityInit.PLACED_GREATSHIELD.get(),
+                the_four_primitives_and_weapons.client.renderer.PlacedGreatshieldRenderer::new);
         event.registerEntityRenderer(TheFourPrimitivesAndWeaponsModCustomEntities.TORNADO.get(), TornadoRenderer::new);
         event.registerEntityRenderer(TheFourPrimitivesAndWeaponsModCustomEntities.DARK_PROJECTILE.get(), DarkProjectileRenderer::new);
 

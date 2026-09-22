@@ -42,6 +42,12 @@ public class CustomEntityInit {
     public static final DeferredRegister<Item> CUSTOM_ITEMS =
         DeferredRegister.create(ForgeRegistries.ITEMS, TheFourPrimitivesAndWeaponsMod.MODID);
 
+    public static final RegistryObject<EntityType<the_four_primitives_and_weapons.entity.PlacedGreatshieldEntity>> PLACED_GREATSHIELD =
+        CUSTOM_ENTITIES.register("placed_greatshield", () -> EntityType.Builder
+            .<the_four_primitives_and_weapons.entity.PlacedGreatshieldEntity>of(
+                the_four_primitives_and_weapons.entity.PlacedGreatshieldEntity::new, MobCategory.MISC)
+            .sized(1.0f, 1.875f).clientTrackingRange(10).updateInterval(3).build("placed_greatshield"));
+
     public static final RegistryObject<EntityType<CommonSoldierEntity>> COMMON_SOLDIER =
         CUSTOM_ENTITIES.register("common_soldier",
             () -> EntityType.Builder.<CommonSoldierEntity>of(CommonSoldierEntity::new, MobCategory.MONSTER)

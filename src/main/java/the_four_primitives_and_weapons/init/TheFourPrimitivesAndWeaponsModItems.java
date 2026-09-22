@@ -308,6 +308,12 @@ public class TheFourPrimitivesAndWeaponsModItems {
 	public static final RegistryObject<Item> GOLD_RIMMED_SHIELD = REGISTRY.register("gold_rimmed_shield", () -> new MaterialShieldItem(Tiers.GOLD, 112));
 	public static final RegistryObject<Item> DIAMOND_RIMMED_SHIELD = REGISTRY.register("diamond_rimmed_shield", () -> new MaterialShieldItem(Tiers.DIAMOND, 1561));
 	public static final RegistryObject<Item> NETHERITE_RIMMED_SHIELD = REGISTRY.register("netherite_rimmed_shield", () -> new MaterialShieldItem(Tiers.NETHERITE, 2031));
+	public static final RegistryObject<Item> WOODEN_GREATSHIELD = REGISTRY.register("wooden_greatshield", () -> new the_four_primitives_and_weapons.item.GreatshieldItem(Tiers.WOOD, 336));
+	public static final RegistryObject<Item> STONE_GREATSHIELD = REGISTRY.register("stone_greatshield", () -> new the_four_primitives_and_weapons.item.GreatshieldItem(Tiers.STONE, 512));
+	public static final RegistryObject<Item> IRON_GREATSHIELD = REGISTRY.register("iron_greatshield", () -> new the_four_primitives_and_weapons.item.GreatshieldItem(Tiers.IRON, 1024));
+	public static final RegistryObject<Item> GOLD_GREATSHIELD = REGISTRY.register("gold_greatshield", () -> new the_four_primitives_and_weapons.item.GreatshieldItem(Tiers.GOLD, 224));
+	public static final RegistryObject<Item> DIAMOND_GREATSHIELD = REGISTRY.register("diamond_greatshield", () -> new the_four_primitives_and_weapons.item.GreatshieldItem(Tiers.DIAMOND, 3122));
+	public static final RegistryObject<Item> NETHERITE_GREATSHIELD = REGISTRY.register("netherite_greatshield", () -> new the_four_primitives_and_weapons.item.GreatshieldItem(Tiers.NETHERITE, 4062));
 	public static final RegistryObject<Item> PARRY_SHIELD = REGISTRY.register("parry_shield", () -> new ParryShieldItem());
 
 	// 漆 ( 原木から採れる生漆 → 漆黒/朱の漆。 鞘に塗って塗鞘スタイルにする )

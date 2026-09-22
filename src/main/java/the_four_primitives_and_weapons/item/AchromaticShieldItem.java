@@ -11,7 +11,7 @@ import net.minecraft.world.item.ShieldItem;
 
 public class AchromaticShieldItem extends ShieldItem {
 	public AchromaticShieldItem() {
-		super(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.COMMON));
+		super(new Item.Properties().durability(512).fireResistant().rarity(Rarity.COMMON));
 	}
 
 	@Override

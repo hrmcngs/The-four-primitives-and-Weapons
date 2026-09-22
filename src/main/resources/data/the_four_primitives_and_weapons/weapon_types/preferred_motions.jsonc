@@ -27,6 +27,7 @@
 // =============================================================================
 {
   "preferred_motions": {
+    "shield":         ["slam_down"],        // 盾: 叩きつけるのが得意
     "katana":         [],
     "rapier":         ["thrust"],            // 細剣: 突き特化
     "straight_sword": ["thrust"],            // 直刀: 突き特化
@@ -37,6 +38,7 @@
     "nata":           ["slam_down"]              // 鉈: 叩きつける
   },
   "normal_motions": {
+    "shield":         [""],           // 盾: 突きは通常
     "katana":         [                     
       "upper_left_slash",                    // 左上斬り
       "upper_right_slash",                   // 右上斬り
@@ -76,6 +78,7 @@
     ]
   },
   "disliked_motions": {
+    "shield":         ["upper_left_slash", "upper_right_slash", "horizontal_slash", "spin_slash", "thrust_combo"], // 刀身を使う技は不得意
     "katana":         ["thrust"],
     "rapier":         ["spin_slash", "slam_down"],   // 細剣には重い技は不向き
     "straight_sword": ["slam_down"],

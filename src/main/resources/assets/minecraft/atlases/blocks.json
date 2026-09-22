@@ -67,6 +67,10 @@
     {
       "type": "minecraft:single",
       "resource": "the_four_primitives_and_weapons:block/blue_fire_1"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:entity/shield_base_nopattern"
     }
   ]
 }

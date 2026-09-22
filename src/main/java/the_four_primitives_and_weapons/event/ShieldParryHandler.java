@@ -32,7 +32,7 @@ import net.minecraftforge.fml.common.Mod;
  *
  * ＜パリィ成功時＞
  *   - 受けたダメージをキャンセル
- *   - 攻撃者に受けたダメージ×1.5の魔法ダメージを反射
+ *   - 攻撃者に受けたダメージ×1.5＋盾の攻撃力の魔法ダメージを反射
  *   - クリットパーティクル＋高音のシールドSE
  */
 @Mod.EventBusSubscriber
@@ -66,7 +66,7 @@ public class ShieldParryHandler {
                 && player.getUsedItemHand() == InteractionHand.OFF_HAND) {
             long blockStart = ParryShieldItem.getBlockStartTime(player);
             if (isInParryWindow(now, blockStart)) {
-                triggerParry(event, player);
+                triggerParry(event, player, InteractionHand.OFF_HAND);
                 return;
             }
         }
@@ -77,7 +77,7 @@ public class ShieldParryHandler {
                 && event.getSource().getEntity() instanceof LivingEntity) {
             long swapStart = ParryShieldItem.getSwapStartTime(player);
             if (isInParryWindow(now, swapStart)) {
-                triggerParry(event, player);
+                triggerParry(event, player, isShield(mainhand) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND);
             }
         }
     }
@@ -85,13 +85,23 @@ public class ShieldParryHandler {
     // ===================================================================
     // パリィ実行
     // ===================================================================
-    private static void triggerParry(LivingHurtEvent event, Player player) {
+    private static void triggerParry(LivingHurtEvent event, Player player, InteractionHand hand) {
         float incoming = event.getAmount();
+        // このパリーで盾が壊れても、使った盾の攻撃力を反射に適用する。
+        ItemStack shield = player.getItemInHand(hand);
+        float reflectedDamage = incoming * 1.5f + ShieldBashHandler.getAttackDamage(shield);
         event.setCanceled(true);
+
+        // キャンセルした攻撃は通常の盾耐久処理を通らないので、ここで消費する。
+        if (incoming > 0) {
+            shield.hurtAndBreak(1 + (int) Math.floor(incoming), player,
+                    entity -> entity.broadcastBreakEvent(hand));
+            if (shield.isEmpty()) player.stopUsingItem();
+        }
 
         // 攻撃者へ反射ダメージ
         if (event.getSource().getEntity() instanceof LivingEntity attacker) {
-            attacker.hurt(player.damageSources().magic(), incoming * 1.5f);
+            attacker.hurt(player.damageSources().magic(), reflectedDamage);
         }
 
         // エフェクト

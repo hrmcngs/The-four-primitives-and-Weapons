@@ -432,6 +432,7 @@ public class DodgeAndBattouHandler {
     @SubscribeEvent
     public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
         Player player = event.getEntity();
+        if (event.getTarget() instanceof the_four_primitives_and_weapons.entity.PlacedGreatshieldEntity) return;
 
         // Lunaの回収を優先し、回収後も使用キーを離すまで回避させない。
         if (event.getTarget() instanceof LunaCompanionEntity) {
@@ -460,6 +461,7 @@ public class DodgeAndBattouHandler {
     @SubscribeEvent
     public static void onEntityInteractSpecific(PlayerInteractEvent.EntityInteractSpecific event) {
         Player player = event.getEntity();
+        if (event.getTarget() instanceof the_four_primitives_and_weapons.entity.PlacedGreatshieldEntity) return;
 
         // Lunaの回収を優先し、回収後も使用キーを離すまで回避させない。
         if (event.getTarget() instanceof LunaCompanionEntity) {

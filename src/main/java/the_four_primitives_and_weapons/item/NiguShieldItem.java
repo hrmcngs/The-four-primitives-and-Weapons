@@ -12,7 +12,7 @@ import net.minecraftforge.fml.loading.moddiscovery.NightConfigWrapper;
 
 public class NiguShieldItem extends ShieldItem {
 	public NiguShieldItem() {
-		super(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.COMMON));
+		super(new Item.Properties().durability(768).fireResistant().rarity(Rarity.COMMON));
 	}
 
 	@Override

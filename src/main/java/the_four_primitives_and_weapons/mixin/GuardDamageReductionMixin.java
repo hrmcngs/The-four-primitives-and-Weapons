@@ -32,6 +32,9 @@ public class GuardDamageReductionMixin {
         if (!(self instanceof Player player)) {
             return damage;
         }
+        if (the_four_primitives_and_weapons.events.SwordGuardHandler.hasShieldInHands(player)) {
+            return damage;
+        }
 
         CompoundTag data = player.getPersistentData();
         int guardTicks = data.getInt("SwordGuardTicks");

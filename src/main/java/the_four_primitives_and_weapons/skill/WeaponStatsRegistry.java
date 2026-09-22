@@ -52,6 +52,8 @@ public class WeaponStatsRegistry extends SimplePreparableReloadListener<WeaponSt
         public final int enchantability;
         public final float damageBonus;
         public final float attackSpeed;
+        /** 盾バッシュ後のクールタイム (tick、-1=未設定)。 */
+        public final int cooldown;
         /** 総攻撃力の絶対値上書き ( NaN=未設定 )。 */
         public final float attackDamage;
         /** 近接リーチ ( ENTITY_REACH ) の加算値 ( NaN=未設定 )。 マイナスで短く。 */
@@ -72,6 +74,12 @@ public class WeaponStatsRegistry extends SimplePreparableReloadListener<WeaponSt
 
         public WeaponStats(int durability, int enchantability, float damageBonus, float attackSpeed,
                            float attackDamage, float attackRange, ThrustConfig thrust, ThrowConfig throwCfg) {
+            this(durability, enchantability, damageBonus, attackSpeed, attackDamage, attackRange, thrust, throwCfg, -1);
+        }
+
+        public WeaponStats(int durability, int enchantability, float damageBonus, float attackSpeed,
+                           float attackDamage, float attackRange, ThrustConfig thrust, ThrowConfig throwCfg, int cooldown) {
+            this.cooldown = cooldown;
             this.durability = durability;
             this.enchantability = enchantability;
             this.damageBonus = damageBonus;
@@ -216,7 +224,8 @@ public class WeaponStatsRegistry extends SimplePreparableReloadListener<WeaponSt
                 thrust = new ThrustConfig(range, hits, kb, dash, dmg);
             }
         }
-        return new WeaponStats(durability, enchant, damage, speed, atkDamage, atkRange, thrust, throwCfg);
+        return new WeaponStats(durability, enchant, damage, speed, atkDamage, atkRange, thrust, throwCfg,
+                stats.has("cooldown") ? Math.max(0, stats.get("cooldown").getAsInt()) : -1);
     }
 
     @Override
@@ -240,7 +249,8 @@ public class WeaponStatsRegistry extends SimplePreparableReloadListener<WeaponSt
                 !Float.isNaN(item.attackDamage) ? item.attackDamage : type.attackDamage,
                 !Float.isNaN(item.attackRange) ? item.attackRange : type.attackRange,
                 item.thrust != null ? item.thrust : type.thrust,
-                item.throwCfg != null ? item.throwCfg : type.throwCfg);
+                item.throwCfg != null ? item.throwCfg : type.throwCfg,
+                item.cooldown >= 0 ? item.cooldown : type.cooldown);
     }
 
     // === 公開API ===

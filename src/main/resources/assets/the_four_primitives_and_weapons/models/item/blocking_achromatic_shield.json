@@ -1,1 +1,43 @@
-{"parent":"the_four_primitives_and_weapons:custom/shiel2dconverted","textures":{"0":"the_four_primitives_and_weapons:block/shieldb","particle":"the_four_primitives_and_weapons:item/shieldb"}}
+{
+  "parent": "the_four_primitives_and_weapons:custom/shiel2dconverted",
+  "textures": {
+    "0": "the_four_primitives_and_weapons:block/shieldb",
+    "particle": "the_four_primitives_and_weapons:item/shieldb"
+  },
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        0,
+        5
+      ],
+      "translation": [
+        -4,
+        -5.5,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        0,
+        5
+      ],
+      "translation": [
+        -4,
+        -5.5,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    }
+  }
+}

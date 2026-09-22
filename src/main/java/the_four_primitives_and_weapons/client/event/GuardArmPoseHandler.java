@@ -21,6 +21,7 @@ public class GuardArmPoseHandler {
     @SubscribeEvent
     public static void onRenderLiving(RenderLivingEvent.Pre<?, ?> event) {
         if (!(event.getEntity() instanceof AbstractClientPlayer player)) return;
+        if (the_four_primitives_and_weapons.events.SwordGuardHandler.hasShieldInHands(player)) return;
         if (!(event.getRenderer().getModel() instanceof PlayerModel<?> model)) return;
 
         boolean isGuarding = GuardClientState.isGuarding(player.getId());

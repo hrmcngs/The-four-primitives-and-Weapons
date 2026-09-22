@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "the_four_primitives_and_weapons:wooden_greatshield",
+    "the_four_primitives_and_weapons:stone_greatshield",
+    "the_four_primitives_and_weapons:iron_greatshield",
+    "the_four_primitives_and_weapons:gold_greatshield",
+    "the_four_primitives_and_weapons:diamond_greatshield",
+    "the_four_primitives_and_weapons:netherite_greatshield"
+  ]
+}

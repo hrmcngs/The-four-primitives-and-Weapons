@@ -1,11 +1,9 @@
 package the_four_primitives_and_weapons.item;
 
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import the_four_primitives_and_weapons.event.ShieldBashHandler;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -13,10 +11,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 
-import java.util.List;
 
 /**
  * パリィシールド
@@ -46,12 +41,12 @@ public class ParryShieldItem extends ShieldItem {
     public static final String NBT_SWAP_START  = "ParryShieldSwapStart";
 
     public static final int PARRY_WINDOW_TICKS = 10;
-    public static final int MIN_CHARGE_TICKS   = 5;
-    public static final int MAX_CHARGE_TICKS   = 40;
+    public static final int MIN_CHARGE_TICKS   = ShieldBashHandler.MIN_CHARGE_TICKS;
+    public static final int MAX_CHARGE_TICKS   = ShieldBashHandler.MAX_CHARGE_TICKS;
     public static final int USE_DURATION       = 72000;
 
     public ParryShieldItem() {
-        super(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+        super(new Item.Properties().durability(512).rarity(Rarity.UNCOMMON));
     }
 
     @Override
@@ -75,84 +70,10 @@ public class ParryShieldItem extends ShieldItem {
             // オフハンド: パリィウィンドウ開始
             player.getPersistentData().putLong(NBT_BLOCK_START, level.getGameTime());
         }
-        // メインハンド: バッシュは releaseUsing() で実行
+        // メインハンド: 共通の ShieldBashHandler がチャージとリリースを処理
 
         player.startUsingItem(hand);
         return InteractionResultHolder.consume(shield);
-    }
-
-    // =========================================================
-    // チャージ中のサウンドフィードバック（メッセージなし）
-    // =========================================================
-    @Override
-    public void onUseTick(Level level, LivingEntity user, ItemStack stack, int remainingUseDuration) {
-        if (level.isClientSide) return;
-        if (!(user instanceof Player player)) return;
-        if (player.getUsedItemHand() != InteractionHand.MAIN_HAND) return;
-
-        int held = getUseDuration(stack) - remainingUseDuration;
-
-        if (held == MIN_CHARGE_TICKS) {
-            level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS, 0.4f, 1.5f);
-
-        } else if (held == MAX_CHARGE_TICKS / 2) {
-            level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS, 0.6f, 1.1f);
-
-        } else if (held == MAX_CHARGE_TICKS) {
-            level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                SoundEvents.ANVIL_LAND, SoundSource.PLAYERS, 0.4f, 1.8f);
-        }
-    }
-
-    // =========================================================
-    // 右クリック離し — バッシュ発動
-    // =========================================================
-    @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int timeCharged) {
-        if (level.isClientSide) return;
-        if (!(user instanceof Player player)) return;
-        if (player.getUsedItemHand() != InteractionHand.MAIN_HAND) return;
-
-        int held = getUseDuration(stack) - timeCharged;
-        if (held < MIN_CHARGE_TICKS) return; // 不発
-
-        float charge = Math.min(
-            (float)(held - MIN_CHARGE_TICKS) / (MAX_CHARGE_TICKS - MIN_CHARGE_TICKS),
-            1.0f
-        );
-        performShieldBash(level, player, charge);
-    }
-
-    // =========================================================
-    // シールドバッシュ本体
-    // =========================================================
-    private void performShieldBash(Level level, Player player, float charge) {
-        float damage    = 2.0f + charge * 6.0f;
-        float knockback = 0.5f + charge * 2.5f;
-        double range    = 2.0  + charge * 2.5;
-
-        Vec3 look = player.getLookAngle();
-        AABB area = player.getBoundingBox()
-            .inflate(range, 0.5, range)
-            .move(look.x * (range * 0.5), 0, look.z * (range * 0.5));
-
-        List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, area,
-            e -> e != player && e.isAlive());
-
-        for (LivingEntity target : targets) {
-            double dx = target.getX() - player.getX();
-            double dz = target.getZ() - player.getZ();
-            double len = Math.sqrt(dx * dx + dz * dz);
-            if (len > 0) target.knockback(knockback, -dx / len, -dz / len);
-            target.hurt(player.damageSources().playerAttack(player), damage);
-        }
-
-        float pitch  = 0.6f + charge * 0.6f;
-        float volume = 0.8f + charge * 0.7f;
-        level.playSound(null, player.getX(), player.getY(), player.getZ(),
-            SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS, volume, pitch);
     }
 
     // =========================================================

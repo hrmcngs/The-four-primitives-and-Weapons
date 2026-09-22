@@ -1,0 +1,8 @@
+{
+  "parent": "the_four_primitives_and_weapons:item/blocking_greatshield",
+  "textures": {
+    "material": "minecraft:block/cobblestone",
+    "rim": "minecraft:block/cobblestone",
+    "handle": "minecraft:block/cobblestone"
+  }
+}

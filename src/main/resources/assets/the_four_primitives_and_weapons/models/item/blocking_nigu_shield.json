@@ -1,0 +1,67 @@
+{
+  "parent": "the_four_primitives_and_weapons:custom/nigushield",
+  "textures": {
+    "0": "the_four_primitives_and_weapons:block/nigushield",
+    "particle": "the_four_primitives_and_weapons:item/shieldb"
+  },
+  "display": {
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        0,
+        5
+      ],
+      "translation": [
+        -4,
+        -5.5,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        0,
+        5
+      ],
+      "translation": [
+        -4,
+        -5.5,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        45,
+        -45,
+        0
+      ],
+      "translation": [
+        3,
+        -1.75,
+        -1.25
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        45,
+        -45,
+        0
+      ],
+      "translation": [
+        3,
+        -1.75,
+        -1.5
+      ]
+    }
+  }
+}

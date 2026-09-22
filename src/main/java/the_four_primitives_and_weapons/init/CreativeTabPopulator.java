@@ -49,6 +49,12 @@ public class CreativeTabPopulator {
 			event.accept(TheFourPrimitivesAndWeaponsModItems.DIAMOND_RIMMED_SHIELD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.NETHERITE_SHIELD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.NETHERITE_RIMMED_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.WOODEN_GREATSHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.STONE_GREATSHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.IRON_GREATSHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.GOLD_GREATSHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.DIAMOND_GREATSHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.NETHERITE_GREATSHIELD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.ACHROMATIC_SHIELD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.NIGU_SHIELD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.SAYA);

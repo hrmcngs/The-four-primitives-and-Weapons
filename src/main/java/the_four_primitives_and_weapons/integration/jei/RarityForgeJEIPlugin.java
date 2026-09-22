@@ -59,6 +59,34 @@ public class RarityForgeJEIPlugin implements IModPlugin {
         // JEI 情報パネル: アイテム選択時に操作/効果を説明表示
         registerKnifeItemInfo(registration);
         registerUrushiItemInfo(registration);
+        registerShieldItemInfo(registration);
+    }
+
+    /** 作業台・鍛冶台レシピはJEIの自動読込に任せ、ここでは盾の操作と入手方法を案内する。 */
+    private void registerShieldItemInfo(IRecipeRegistration registration) {
+        java.util.List<net.minecraft.world.item.Item> shields = new java.util.ArrayList<>();
+        shields.add(Items.SHIELD);
+        for (var entry : TheFourPrimitivesAndWeaponsModItems.REGISTRY.getEntries()) {
+            if (entry.get() instanceof net.minecraft.world.item.ShieldItem) shields.add(entry.get());
+        }
+        String prefix = "jei.the_four_primitives_and_weapons.info.shield.";
+        for (var item : shields) {
+            String id = net.minecraftforge.registries.ForgeRegistries.ITEMS.getKey(item).getPath();
+            String recipe;
+            if (item == Items.SHIELD) recipe = "vanilla";
+            else if (id.equals("netherite_greatshield")) recipe = "greatshield_netherite";
+            else if (id.endsWith("_greatshield")) recipe = "greatshield";
+            else if (id.startsWith("netherite_")) recipe = "netherite";
+            else if (id.endsWith("_rimmed_shield")) recipe = "rimmed";
+            else if (id.equals("nigu_shield") || id.equals("achromatic_shield") || id.equals("parry_shield")) recipe = id;
+            else recipe = "material";
+            registration.addIngredientInfo(new ItemStack(item), VanillaTypes.ITEM_STACK,
+                    Component.translatable(prefix + (item instanceof the_four_primitives_and_weapons.item.GreatshieldItem
+                            ? "greatshield_controls" : "controls")),
+                    Component.translatable(prefix + "parry"),
+                    Component.translatable(prefix + "stats"),
+                    Component.translatable(prefix + recipe));
+        }
     }
 
     /** 漆系アイテムの入手/使い方を JEI の情報パネルに表示。 */

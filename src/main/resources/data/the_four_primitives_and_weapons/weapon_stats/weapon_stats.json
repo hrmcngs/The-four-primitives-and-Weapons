@@ -8,7 +8,7 @@
     "netherite": "耐久2031,エンチャ15, バニラネザライトの剣相当",
     "special": "耐久0(無限), 特殊武器"
   },
-  "_comment_types": "武器タイプ別の既定値。 weapon_types.json の全タイプIDを列挙。 空 {} は未設定(=既定/item任せ)。 同じフィールドが weapons(item別)にあればそちらが優先。 設定可: attack_speed / attack_damage / damage_bonus / attack_range / durability / enchantability / thrust。 addon で新タイプを足したら、ここに \"<typeId>\": { ... } を1行足すだけでそのタイプ全アイテムに効く。",
+  "_comment_types": "武器タイプ別の既定値。 weapon_types.json の全タイプIDを列挙。 空 {} は未設定(=既定/item任せ)。 同じフィールドが weapons(item別)にあればそちらが優先。 設定可: attack_speed / attack_damage / damage_bonus / attack_range / durability / enchantability / thrust。 addon で新タイプを足したら、ここに \"<typeId>\": { ... } を1行足すだけでそのタイプ全アイテムに効く。 盾は attack_damage(通常攻撃・振り下ろし・バッシュ・パリー共通) / cooldown(待ち時間tick) を使用。",
   "types": {
     "katana": {
       "attack_speed": -2.4
@@ -34,7 +34,11 @@
       "attack_speed": -1.2,
       "attack_range": -2.0
     },
-    "shield": {},
+    "shield": {
+      "durability": 336,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
     "bow": {},
     "crossbow": {},
     "throwing": {
@@ -319,6 +323,118 @@
       "durability": 0,
       "enchantability": 9,
       "damage_bonus": 3
+    },
+    "_comment_shields": "盾: attack_damage=共通攻撃力(通常攻撃・振り下ろしの武器攻撃力、バッシュ最大威力、パリー反射への加算。最低チャージのバッシュは25%)、cooldown=発動後のクールタイムtick(20=1秒、0=なし)。attack_speedは盾では使わない。縁・全体は同じ耐久値。durability:0=耐久無限。",
+    "minecraft:shield": {
+      "durability": 336,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:nigu_shield": {
+      "durability": 768,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:achromatic_shield": {
+      "durability": 512,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:parry_shield": {
+      "durability": 512,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:wooden_shield": {
+      "durability": 168,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:wooden_rimmed_shield": {
+      "durability": 168,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:stone_shield": {
+      "durability": 256,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:stone_rimmed_shield": {
+      "durability": 256,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:iron_shield": {
+      "durability": 512,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:iron_rimmed_shield": {
+      "durability": 512,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:gold_shield": {
+      "durability": 112,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:gold_rimmed_shield": {
+      "durability": 112,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:diamond_shield": {
+      "durability": 1561,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:diamond_rimmed_shield": {
+      "durability": 1561,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:netherite_shield": {
+      "durability": 2031,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "the_four_primitives_and_weapons:netherite_rimmed_shield": {
+      "durability": 2031,
+      "attack_damage": 8.0,
+      "cooldown": 20
+    },
+    "_comment_greatshields": "大盾: 通常盾の2倍の耐久値。共通攻撃力12、バッシュのクールタイム32tick(1.6秒)。",
+    "the_four_primitives_and_weapons:wooden_greatshield": {
+      "durability": 336,
+      "attack_damage": 12.0,
+      "cooldown": 32
+    },
+    "the_four_primitives_and_weapons:stone_greatshield": {
+      "durability": 512,
+      "attack_damage": 12.0,
+      "cooldown": 32
+    },
+    "the_four_primitives_and_weapons:iron_greatshield": {
+      "durability": 1024,
+      "attack_damage": 12.0,
+      "cooldown": 32
+    },
+    "the_four_primitives_and_weapons:gold_greatshield": {
+      "durability": 224,
+      "attack_damage": 12.0,
+      "cooldown": 32
+    },
+    "the_four_primitives_and_weapons:diamond_greatshield": {
+      "durability": 3122,
+      "attack_damage": 12.0,
+      "cooldown": 32
+    },
+    "the_four_primitives_and_weapons:netherite_greatshield": {
+      "durability": 4062,
+      "attack_damage": 12.0,
+      "cooldown": 32
     }
   }
 }

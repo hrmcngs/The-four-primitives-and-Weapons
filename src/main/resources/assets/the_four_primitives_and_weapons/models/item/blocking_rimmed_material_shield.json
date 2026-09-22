@@ -32,9 +32,14 @@
         5
       ],
       "translation": [
-        -6,
-        -3.25,
-        6
+        -4,
+        -5.5,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
       ]
     },
     "firstperson_lefthand": {
@@ -44,9 +49,14 @@
         5
       ],
       "translation": [
-        -6,
-        -3.25,
-        6
+        -4,
+        -5.5,
+        0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
       ]
     },
     "gui": {
@@ -90,5 +100,7 @@
         0.7
       ]
     }
-  }
+  },
+  "gui_light": "front",
+  "ambientocclusion": false
 }

@@ -3,6 +3,9 @@ package the_four_primitives_and_weapons.events;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraft.world.entity.player.Player;
@@ -27,6 +30,7 @@ import the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod;
 import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems;
 import the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModMobEffects;
 import the_four_primitives_and_weapons.network.GuardSyncPacket;
+import the_four_primitives_and_weapons.event.ShieldBashHandler;
 
 /**
  * Shift+右クリックで全SwordItemにガード発動
@@ -46,6 +50,39 @@ public class SwordGuardHandler {
     private static final int NORMAL_GUARD_DURATION = 15;
     private static final int GUARD_COOLDOWN = 40;
 
+    public static boolean hasShieldInHands(Player player) {
+        return ShieldBashHandler.isShield(player.getMainHandItem())
+                || ShieldBashHandler.isShield(player.getOffhandItem());
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void prioritizeShield(PlayerInteractEvent.RightClickItem event) {
+        useShieldInsteadOfGuard(event);
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void prioritizeShieldOnBlock(PlayerInteractEvent.RightClickBlock event) {
+        useShieldInsteadOfGuard(event);
+    }
+
+    private static void useShieldInsteadOfGuard(PlayerInteractEvent event) {
+        Player player = event.getEntity();
+        if (!player.isShiftKeyDown() || player.isSpectator() || !hasShieldInHands(player)) return;
+        // 大盾の設置は HIGHEST の専用イベントで先に処理される。
+        InteractionHand hand = ShieldBashHandler.isShield(player.getMainHandItem())
+                ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+        ItemStack shield = player.getItemInHand(hand);
+        // 盾がクールダウン中でも武器ガードへフォールバックしない。
+        InteractionResult result = InteractionResult.FAIL;
+        if (!player.getCooldowns().isOnCooldown(shield.getItem())) {
+            var use = shield.use(player.level(), player, hand);
+            if (use.getObject() != shield) player.setItemInHand(hand, use.getObject());
+            result = use.getResult();
+        }
+        event.setCanceled(true);
+        event.setCancellationResult(result == InteractionResult.PASS ? InteractionResult.FAIL : result);
+    }
+
     /**
      * Shift+右クリックでガード発動
      */
@@ -54,6 +91,7 @@ public class SwordGuardHandler {
         Player player = event.getEntity();
         if (player.level().isClientSide()) return;
         if (!player.isShiftKeyDown()) return;
+        if (hasShieldInHands(player)) return;
 
         ItemStack mainHand = player.getMainHandItem();
         if (!(mainHand.getItem() instanceof SwordItem)) return;
@@ -162,6 +200,10 @@ public class SwordGuardHandler {
         CompoundTag data = player.getPersistentData();
         int guardTicks = data.getInt(GUARD_TICKS_TAG);
         if (guardTicks <= 0) return;
+        if (hasShieldInHands(player)) {
+            endGuard(player, data);
+            return;
+        }
 
         // 位置固定
         double gx = data.getDouble(GUARD_POS_X);
