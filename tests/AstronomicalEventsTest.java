@@ -4,6 +4,30 @@ import the_four_primitives_and_weapons.world.AstronomySettings;
 
 public class AstronomicalEventsTest {
     public static void main(String[] args) {
+        var seenMeteors = java.util.EnumSet.noneOf(AstronomicalEvents.MeteorKind.class);
+        int ordinaryAttempts = 0, ordinaryHits = 0;
+        boolean lingeringTrain = false, lingeringFireball = false;
+        for (long t = 0; t < 128 * 24000L; t += 320) {
+            long hour = Math.floorMod(t, 24000);
+            if (hour < 13000 || hour >= 22900) continue;
+            ordinaryAttempts++;
+            var meteor = AstronomicalEvents.meteor(t + 6, false, 0);
+            if (meteor == null) continue;
+            ordinaryHits++;
+            seenMeteors.add(meteor.kind());
+            check(meteor.equals(AstronomicalEvents.meteor(t + 6, false, 0)), "Deterministic meteor type");
+            var trail = AstronomicalEvents.meteor(t + 40, false, 0);
+            if (trail != null) {
+                check(trail.headOpacity() == 0 && trail.opacity() > 0, "Train remains after head disappears");
+                var later = AstronomicalEvents.meteor(t + 60, false, 0);
+                check(later != null && later.opacity() < trail.opacity() && later.x() == trail.x(), "Stationary fading train");
+                lingeringTrain |= trail.kind() == AstronomicalEvents.MeteorKind.TRAIN;
+                lingeringFireball |= trail.kind() == AstronomicalEvents.MeteorKind.FIREBALL;
+            }
+            check(AstronomicalEvents.meteor(t + 100, false, 0) == null, "Trails expire");
+        }
+        check(seenMeteors.size() == 4 && lingeringTrain && lingeringFireball, "All types also occur outside showers");
+        check(ordinaryHits > ordinaryAttempts / 5 && ordinaryHits < ordinaryAttempts / 3, "Rare ordinary-night occurrence");
         var jade = AstronomySettings.DEFAULT.withColor(MoonTint.JADE.ordinal()).withPhase(0);
         var blue = jade.withColor(MoonTint.BLUE.ordinal());
         var gold = jade.withColor(MoonTint.GOLD.ordinal());

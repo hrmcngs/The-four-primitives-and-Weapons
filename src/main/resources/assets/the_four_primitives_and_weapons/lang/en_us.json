@@ -1157,5 +1157,17 @@
   "trait.the_four_primitives_and_weapons.explosive": "Explosive",
   "trait.the_four_primitives_and_weapons.learner": "Learner",
   "trait.the_four_primitives_and_weapons.undying": "Undying",
-  "command.the_four_primitives_and_weapons.crystal.pouch_required": "§cA crystal pouch is required to destroy these weapons"
+  "command.the_four_primitives_and_weapons.crystal.pouch_required": "§cA crystal pouch is required to destroy these weapons",
+  "item.the_four_primitives_and_weapons.wooden_shield": "Wooden Shield (Full)",
+  "item.the_four_primitives_and_weapons.stone_shield": "Stone Shield (Full)",
+  "item.the_four_primitives_and_weapons.iron_shield": "Iron Shield (Full)",
+  "item.the_four_primitives_and_weapons.gold_shield": "Golden Shield (Full)",
+  "item.the_four_primitives_and_weapons.diamond_shield": "Diamond Shield (Full)",
+  "item.the_four_primitives_and_weapons.netherite_shield": "Netherite Shield (Full)",
+  "item.the_four_primitives_and_weapons.wooden_rimmed_shield": "Wooden-Rimmed Shield",
+  "item.the_four_primitives_and_weapons.stone_rimmed_shield": "Stone-Rimmed Shield",
+  "item.the_four_primitives_and_weapons.iron_rimmed_shield": "Iron-Rimmed Shield",
+  "item.the_four_primitives_and_weapons.gold_rimmed_shield": "Golden-Rimmed Shield",
+  "item.the_four_primitives_and_weapons.diamond_rimmed_shield": "Diamond-Rimmed Shield",
+  "item.the_four_primitives_and_weapons.netherite_rimmed_shield": "Netherite-Rimmed Shield"
 }

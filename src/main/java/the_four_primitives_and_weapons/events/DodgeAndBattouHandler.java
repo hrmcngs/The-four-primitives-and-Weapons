@@ -520,6 +520,8 @@ public class DodgeAndBattouHandler {
     // publicにしてDodgeRequestPacketから呼べるようにする
     // @return true=回避成功、false=クールダウン等でブロック
     public static boolean performDodge(Player player) {
+        // パケット経由でも盾の防御を優先し、回避の移動・無敵時間・CDを発生させない。
+        if (hasShieldInHands(player)) return false;
         if (blocksLunaRecallDodge(player) || blocksNinjatoUseDodge(player)) return false;
         // 回避無効化設定チェック（グローバル設定）
         if (the_four_primitives_and_weapons.config.DodgeConfig.dodgeDisabled) return false;
@@ -537,13 +539,11 @@ public class DodgeAndBattouHandler {
             if (!"dodge".equals(rightClickMotion)) return false;
         }
 
-        // メインハンドが近接武器で、オフハンドが右クリックで作用するアイテム（弓/クロスボウ/盾/投擲等）
+        // メインハンドが近接武器で、オフハンドが右クリックで作用するアイテム（弓/クロスボウ/投擲等）
         // なら回避せずにオフハンドのアイテムを使わせる。
-        // 盾の場合も優先（防御/パリィ）。
-        // メインハンドが遠距離武器の場合はこのチェックをスキップ（回避させる）。
+        // 盾は上で両手を判定済み。それ以外はメインハンドが遠距離武器ならスキップ。
         ItemStack offHand = player.getOffhandItem();
         if (isWeapon(heldItem) && !isRangedWeapon(heldItem) && !offHand.isEmpty()) {
-            if (offHand.getItem() instanceof net.minecraft.world.item.ShieldItem) return false;
             if (offHand.getItem() instanceof net.minecraft.world.item.BowItem) return false;
             if (offHand.getItem() instanceof net.minecraft.world.item.CrossbowItem) return false;
             if (offHand.getItem() instanceof the_four_primitives_and_weapons.item.ThrowingKnifeItem) return false;
@@ -629,7 +629,19 @@ public class DodgeAndBattouHandler {
         return data.lunaRecallUseHeld;
     }
 
+    /** 防御可能な盾は、構える前や盾のクールダウン中も回避より優先する。 */
+    private static boolean hasShieldInHands(Player player) {
+        return isShieldForDefense(player.getMainHandItem()) || isShieldForDefense(player.getOffhandItem());
+    }
+
+    private static boolean isShieldForDefense(ItemStack stack) {
+        return !stack.isEmpty() && (stack.getItem() instanceof ShieldItem
+                || stack.canPerformAction(net.minecraftforge.common.ToolActions.SHIELD_BLOCK));
+    }
+
     public static boolean canDodgeWithHands(Player player) {
+        // イベントをキャンセルする前に止め、通常の盾の use 処理へ入力を渡す。
+        if (hasShieldInHands(player)) return false;
         if (blocksLunaRecallDodge(player) || blocksNinjatoUseDodge(player)) return false;
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
@@ -650,6 +662,7 @@ public class DodgeAndBattouHandler {
      * これを使って、event.setCanceled する前に実際に回避するかを確認する。
      */
     public static boolean isRightClickDodgeEnabled(Player player) {
+        if (hasShieldInHands(player)) return false;
         ItemStack heldItem = player.getMainHandItem();
         if (heldItem.isEmpty()) return true; // 素手のデフォルトは回避相当
         return "dodge".equals(resolveRightClickMotion(player, heldItem));
@@ -661,11 +674,13 @@ public class DodgeAndBattouHandler {
      * アイテムにスペルが付与されていて ユーザーが右クリックを明示設定していない場合は
      * "spell" を返す ( = スペル優先。回避せず詠唱を通す )。
      * ユーザーが明示的に "回避" 等を選んでいればその設定を尊重する。</p>
+     * <p>ただし盾を持っている間の回避は "none_right" として通常のアイテム使用へ渡す。
+     * 保存済みのスキル設定は変更せず、盾を外せば選択中の回避に戻る。</p>
      */
     public static String resolveRightClickMotion(Player player, ItemStack heldItem) {
         the_four_primitives_and_weapons.skill.PlayerSkillData.SkillStorage skillData =
                 the_four_primitives_and_weapons.skill.PlayerSkillData.getSkillData(player);
-        if (skillData == null) return "dodge";
+        if (skillData == null) return hasShieldInHands(player) ? "none_right" : "dodge";
         the_four_primitives_and_weapons.skill.PlayerSkillData.AttackSlot slot =
                 the_four_primitives_and_weapons.skill.PlayerSkillData.AttackSlot.RIGHT_CLICK;
         if (the_four_primitives_and_weapons.compat.SpellbooksCompat.isLoaded()
@@ -673,7 +688,8 @@ public class DodgeAndBattouHandler {
                 && !skillData.hasExplicitMotion(slot, heldItem)) {
             return "spell";
         }
-        return skillData.getMotionForWeapon(slot, heldItem);
+        String motion = skillData.getMotionForWeapon(slot, heldItem);
+        return "dodge".equals(motion) && hasShieldInHands(player) ? "none_right" : motion;
     }
 
     /**

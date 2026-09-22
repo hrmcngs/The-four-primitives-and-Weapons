@@ -37,6 +37,18 @@ public class CreativeTabPopulator {
 			event.accept(TheFourPrimitivesAndWeaponsModItems.SMALL_SWORD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.WARABITETOU);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.HALLOWEEN_2023_10_31_SICKLE);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.WOODEN_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.WOODEN_RIMMED_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.STONE_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.STONE_RIMMED_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.IRON_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.IRON_RIMMED_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.GOLD_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.GOLD_RIMMED_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.DIAMOND_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.DIAMOND_RIMMED_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.NETHERITE_SHIELD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.NETHERITE_RIMMED_SHIELD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.ACHROMATIC_SHIELD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.NIGU_SHIELD);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.SAYA);

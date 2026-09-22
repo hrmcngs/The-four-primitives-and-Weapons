@@ -1,0 +1,14 @@
+{
+  "parent": "the_four_primitives_and_weapons:item/rimmed_material_shield",
+  "textures": {
+    "rim": "minecraft:block/iron_block"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "the_four_primitives_and_weapons:item/blocking_iron_rimmed_shield"
+    }
+  ]
+}

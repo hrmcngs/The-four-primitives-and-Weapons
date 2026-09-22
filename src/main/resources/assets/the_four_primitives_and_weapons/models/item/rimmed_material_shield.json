@@ -1,0 +1,531 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "minecraft:block/oak_planks",
+    "handle": "minecraft:entity/shield_base_nopattern",
+    "material": "minecraft:entity/shield_base_nopattern"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        1,
+        5
+      ],
+      "to": [
+        13,
+        21,
+        6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            3,
+            5.5
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            3.75,
+            0.5,
+            6.25,
+            5.5
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            3.75,
+            0.5,
+            6.25,
+            5.5
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            3.75,
+            0.5,
+            6.25,
+            5.5
+          ],
+          "texture": "#material"
+        },
+        "up": {
+          "uv": [
+            3.75,
+            0.5,
+            6.25,
+            5.5
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            3.75,
+            0.5,
+            6.25,
+            5.5
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        0,
+        4.5
+      ],
+      "to": [
+        3,
+        22,
+        6.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        }
+      }
+    },
+    {
+      "from": [
+        13,
+        0,
+        4.5
+      ],
+      "to": [
+        14,
+        22,
+        6.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        }
+      }
+    },
+    {
+      "from": [
+        3,
+        0,
+        4.5
+      ],
+      "to": [
+        13,
+        1,
+        6.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        }
+      }
+    },
+    {
+      "from": [
+        3,
+        21,
+        4.5
+      ],
+      "to": [
+        13,
+        22,
+        6.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#rim"
+        }
+      }
+    },
+    {
+      "name": "shield",
+      "from": [
+        7,
+        8,
+        6
+      ],
+      "to": [
+        9,
+        14,
+        12
+      ],
+      "rotation": {
+        "angle": 0,
+        "axis": "y",
+        "origin": [
+          8,
+          0,
+          8
+        ]
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            1.5,
+            8.5,
+            3
+          ],
+          "texture": "#handle"
+        },
+        "east": {
+          "uv": [
+            6.5,
+            1.5,
+            8,
+            3
+          ],
+          "texture": "#handle"
+        },
+        "south": {
+          "uv": [
+            10,
+            1.5,
+            10.5,
+            3
+          ],
+          "texture": "#handle"
+        },
+        "west": {
+          "uv": [
+            8.5,
+            1.5,
+            10,
+            3
+          ],
+          "texture": "#handle"
+        },
+        "up": {
+          "uv": [
+            8.5,
+            1.5,
+            8,
+            0
+          ],
+          "texture": "#handle"
+        },
+        "down": {
+          "uv": [
+            9,
+            0,
+            8.5,
+            1.5
+          ],
+          "texture": "#handle"
+        }
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "translation": [
+        1,
+        -5,
+        3.5
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        -90,
+        0
+      ],
+      "translation": [
+        1,
+        -5,
+        3.5
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -5,
+        -5
+      ],
+      "translation": [
+        0.5,
+        -8,
+        0
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        -5,
+        -5
+      ],
+      "translation": [
+        0.5,
+        -8,
+        0
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "scale": [
+        0.45,
+        0.45,
+        0.45
+      ]
+    },
+    "gui": {
+      "rotation": [
+        0,
+        160,
+        10
+      ],
+      "translation": [
+        0,
+        -2,
+        0
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "head": {
+      "rotation": [
+        90,
+        0,
+        90
+      ],
+      "translation": [
+        2.75,
+        4.5,
+        0.25
+      ]
+    },
+    "fixed": {
+      "translation": [
+        0,
+        -2.25,
+        0
+      ],
+      "scale": [
+        0.7,
+        0.7,
+        0.7
+      ]
+    }
+  }
+}

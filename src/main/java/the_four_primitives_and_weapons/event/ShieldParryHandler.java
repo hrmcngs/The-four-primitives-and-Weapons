@@ -2,7 +2,6 @@ package the_four_primitives_and_weapons.event;
 
 import the_four_primitives_and_weapons.item.ParryShieldItem;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -10,19 +9,16 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.TickEvent;
+import net.minecraft.world.item.ShieldItem;
+import net.minecraftforge.common.ToolActions;
+import net.minecraftforge.event.entity.living.LivingSwapItemsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * パリィシールドのパリィ判定＆Fキースワップ検出ハンドラ
+ * 専用盾の右クリックパリィと、すべての盾のFキースワップパリィ。
  *
  * ＜パリィ発動の2経路＞
  *
@@ -31,10 +27,8 @@ import java.util.concurrent.ConcurrentHashMap;
  *      攻撃を受けると発動。
  *
  *   B. スワップパリィ（Fキー）
- *      Fキーでメインハンドにシールドが来た直後 PARRY_WINDOW_TICKS 以内に
- *      攻撃を受けると発動。
- *      スワップはティックごとに「前ティックのメインハンドアイテム」と
- *      「今ティックのメインハンドアイテム」を比較して検出する。
+ *      Fキーで盾をどちらかの手へ持ち替えた直後 PARRY_WINDOW_TICKS の間に
+ *      攻撃を受けると発動。実際の持ち替えイベントをサーバーで検出する。
  *
  * ＜パリィ成功時＞
  *   - 受けたダメージをキャンセル
@@ -44,31 +38,16 @@ import java.util.concurrent.ConcurrentHashMap;
 @Mod.EventBusSubscriber
 public class ShieldParryHandler {
 
-    // 前ティックのメインハンドアイテムIDをプレイヤーUUIDごとに保持
-    private static final Map<UUID, String> prevMainHandId = new ConcurrentHashMap<>();
-
-    // ===================================================================
-    // Fキースワップ検出（サーバーティック）
-    // ===================================================================
-    @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase != TickEvent.Phase.END) return;
-        Player player = event.player;
-        if (player.level().isClientSide) return;
-
-        UUID uuid = player.getUUID();
-        String currentMainId = itemId(player.getMainHandItem());
-        String prevId = prevMainHandId.getOrDefault(uuid, "");
-
-        boolean shieldNowInMain = player.getMainHandItem().getItem() instanceof ParryShieldItem;
-        boolean shieldWasInMain = isParryShieldId(prevId);
-
-        // メインハンドにシールドが来た瞬間 → パリィウィンドウ開始
-        if (shieldNowInMain && !shieldWasInMain) {
+    // 実際のFキー持ち替えだけで開始する。ホットバー変更やログインでは開始しない。
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onSwapHands(LivingSwapItemsEvent.Hands event) {
+        if (event.isCanceled()) return;
+        if (!(event.getEntity() instanceof Player player) || player.level().isClientSide) return;
+        if (isShield(event.getItemSwappedToMainHand()) || isShield(event.getItemSwappedToOffHand())) {
             ParryShieldItem.recordSwapParry(player, player.level().getGameTime());
+        } else {
+            player.getPersistentData().remove(ParryShieldItem.NBT_SWAP_START);
         }
-
-        prevMainHandId.put(uuid, currentMainId);
     }
 
     // ===================================================================
@@ -83,9 +62,10 @@ public class ShieldParryHandler {
 
         // --- 経路A: オフハンドパリィ ---
         ItemStack offhand = player.getItemInHand(InteractionHand.OFF_HAND);
-        if (offhand.getItem() instanceof ParryShieldItem && player.isUsingItem()) {
+        if (offhand.getItem() instanceof ParryShieldItem && player.isUsingItem()
+                && player.getUsedItemHand() == InteractionHand.OFF_HAND) {
             long blockStart = ParryShieldItem.getBlockStartTime(player);
-            if (blockStart >= 0 && (now - blockStart) <= ParryShieldItem.PARRY_WINDOW_TICKS) {
+            if (isInParryWindow(now, blockStart)) {
                 triggerParry(event, player);
                 return;
             }
@@ -93,9 +73,10 @@ public class ShieldParryHandler {
 
         // --- 経路B: スワップパリィ（Fキー）---
         ItemStack mainhand = player.getItemInHand(InteractionHand.MAIN_HAND);
-        if (mainhand.getItem() instanceof ParryShieldItem) {
+        if ((isShield(mainhand) || isShield(offhand))
+                && event.getSource().getEntity() instanceof LivingEntity) {
             long swapStart = ParryShieldItem.getSwapStartTime(player);
-            if (swapStart >= 0 && (now - swapStart) <= ParryShieldItem.PARRY_WINDOW_TICKS) {
+            if (isInParryWindow(now, swapStart)) {
                 triggerParry(event, player);
             }
         }
@@ -128,13 +109,12 @@ public class ShieldParryHandler {
     // ユーティリティ
     // ===================================================================
 
-    private static String itemId(ItemStack stack) {
-        if (stack.isEmpty()) return "";
-        ResourceLocation loc = ForgeRegistries.ITEMS.getKey(stack.getItem());
-        return loc != null ? loc.toString() : "";
+    private static boolean isShield(ItemStack stack) {
+        return !stack.isEmpty() && (stack.getItem() instanceof ShieldItem
+                || stack.canPerformAction(ToolActions.SHIELD_BLOCK));
     }
 
-    private static boolean isParryShieldId(String id) {
-        return id.equals("the_four_primitives_and_weapons:parry_shield");
+    private static boolean isInParryWindow(long now, long start) {
+        return start >= 0 && now >= start && now - start < ParryShieldItem.PARRY_WINDOW_TICKS;
     }
 }

@@ -13,6 +13,8 @@ import net.minecraftforge.common.ForgeSpawnEggItem;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Tiers;
+import the_four_primitives_and_weapons.item.MaterialShieldItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.BlockItem;
 
@@ -294,6 +296,18 @@ public class TheFourPrimitivesAndWeaponsModItems {
 	public static final RegistryObject<Item> NETHERITE_RAPIER = REGISTRY.register("netherite_rapier", () -> new NetheriteRapierItem());
 	public static final RegistryObject<Item> RAPIER_SAYA = REGISTRY.register("rapier_saya", () -> new RapierSayaItem());
 	public static final RegistryObject<Item> DAGGER_SAYA = REGISTRY.register("dagger_saya", () -> new the_four_primitives_and_weapons.item.DaggerSayaItem());
+	public static final RegistryObject<Item> WOODEN_SHIELD = REGISTRY.register("wooden_shield", () -> new MaterialShieldItem(Tiers.WOOD, 168));
+	public static final RegistryObject<Item> STONE_SHIELD = REGISTRY.register("stone_shield", () -> new MaterialShieldItem(Tiers.STONE, 256));
+	public static final RegistryObject<Item> IRON_SHIELD = REGISTRY.register("iron_shield", () -> new MaterialShieldItem(Tiers.IRON, 512));
+	public static final RegistryObject<Item> GOLD_SHIELD = REGISTRY.register("gold_shield", () -> new MaterialShieldItem(Tiers.GOLD, 112));
+	public static final RegistryObject<Item> DIAMOND_SHIELD = REGISTRY.register("diamond_shield", () -> new MaterialShieldItem(Tiers.DIAMOND, 1561));
+	public static final RegistryObject<Item> NETHERITE_SHIELD = REGISTRY.register("netherite_shield", () -> new MaterialShieldItem(Tiers.NETHERITE, 2031));
+	public static final RegistryObject<Item> WOODEN_RIMMED_SHIELD = REGISTRY.register("wooden_rimmed_shield", () -> new MaterialShieldItem(Tiers.WOOD, 168));
+	public static final RegistryObject<Item> STONE_RIMMED_SHIELD = REGISTRY.register("stone_rimmed_shield", () -> new MaterialShieldItem(Tiers.STONE, 256));
+	public static final RegistryObject<Item> IRON_RIMMED_SHIELD = REGISTRY.register("iron_rimmed_shield", () -> new MaterialShieldItem(Tiers.IRON, 512));
+	public static final RegistryObject<Item> GOLD_RIMMED_SHIELD = REGISTRY.register("gold_rimmed_shield", () -> new MaterialShieldItem(Tiers.GOLD, 112));
+	public static final RegistryObject<Item> DIAMOND_RIMMED_SHIELD = REGISTRY.register("diamond_rimmed_shield", () -> new MaterialShieldItem(Tiers.DIAMOND, 1561));
+	public static final RegistryObject<Item> NETHERITE_RIMMED_SHIELD = REGISTRY.register("netherite_rimmed_shield", () -> new MaterialShieldItem(Tiers.NETHERITE, 2031));
 	public static final RegistryObject<Item> PARRY_SHIELD = REGISTRY.register("parry_shield", () -> new ParryShieldItem());
 
 	// 漆 ( 原木から採れる生漆 → 漆黒/朱の漆。 鞘に塗って塗鞘スタイルにする )

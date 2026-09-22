@@ -1156,5 +1156,17 @@
   "trait.the_four_primitives_and_weapons.explosive": "爆裂",
   "trait.the_four_primitives_and_weapons.learner": "学習",
   "trait.the_four_primitives_and_weapons.undying": "不死",
-  "command.the_four_primitives_and_weapons.crystal.pouch_required": "§c結晶ポーチが無いため破壊できません"
+  "command.the_four_primitives_and_weapons.crystal.pouch_required": "§c結晶ポーチが無いため破壊できません",
+  "item.the_four_primitives_and_weapons.wooden_shield": "木の盾（全体）",
+  "item.the_four_primitives_and_weapons.stone_shield": "石の盾（全体）",
+  "item.the_four_primitives_and_weapons.iron_shield": "鉄の盾（全体）",
+  "item.the_four_primitives_and_weapons.gold_shield": "金の盾（全体）",
+  "item.the_four_primitives_and_weapons.diamond_shield": "ダイヤモンドの盾（全体）",
+  "item.the_four_primitives_and_weapons.netherite_shield": "ネザーライトの盾（全体）",
+  "item.the_four_primitives_and_weapons.wooden_rimmed_shield": "木の盾（縁）",
+  "item.the_four_primitives_and_weapons.stone_rimmed_shield": "石の盾（縁）",
+  "item.the_four_primitives_and_weapons.iron_rimmed_shield": "鉄の盾（縁）",
+  "item.the_four_primitives_and_weapons.gold_rimmed_shield": "金の盾（縁）",
+  "item.the_four_primitives_and_weapons.diamond_rimmed_shield": "ダイヤモンドの盾（縁）",
+  "item.the_four_primitives_and_weapons.netherite_rimmed_shield": "ネザーライトの盾（縁）"
 }

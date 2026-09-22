@@ -1,1 +1,21 @@
-{"replace":false,"values":["minecraft:shield","the_four_primitives_and_weapons:achromatic_shield","the_four_primitives_and_weapons:nigu_shield","the_four_primitives_and_weapons:parry_shield"]}
+{
+  "replace": false,
+  "values": [
+    "minecraft:shield",
+    "the_four_primitives_and_weapons:achromatic_shield",
+    "the_four_primitives_and_weapons:nigu_shield",
+    "the_four_primitives_and_weapons:parry_shield",
+    "the_four_primitives_and_weapons:wooden_shield",
+    "the_four_primitives_and_weapons:stone_shield",
+    "the_four_primitives_and_weapons:iron_shield",
+    "the_four_primitives_and_weapons:gold_shield",
+    "the_four_primitives_and_weapons:diamond_shield",
+    "the_four_primitives_and_weapons:netherite_shield",
+    "the_four_primitives_and_weapons:wooden_rimmed_shield",
+    "the_four_primitives_and_weapons:stone_rimmed_shield",
+    "the_four_primitives_and_weapons:iron_rimmed_shield",
+    "the_four_primitives_and_weapons:gold_rimmed_shield",
+    "the_four_primitives_and_weapons:diamond_rimmed_shield",
+    "the_four_primitives_and_weapons:netherite_rimmed_shield"
+  ]
+}

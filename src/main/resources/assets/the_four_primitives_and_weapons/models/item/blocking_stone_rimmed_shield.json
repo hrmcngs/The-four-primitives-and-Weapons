@@ -1,0 +1,6 @@
+{
+  "parent": "the_four_primitives_and_weapons:item/blocking_rimmed_material_shield",
+  "textures": {
+    "rim": "minecraft:block/cobblestone"
+  }
+}

@@ -1,6 +1,7 @@
 package the_four_primitives_and_weapons.client;
 
 import net.minecraft.world.item.Item;
+import the_four_primitives_and_weapons.item.MaterialShieldItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -25,6 +26,12 @@ public class ItemPropertyInit {
     }
 
     public static void registerItemProperties(Item item) {
+        if (item instanceof MaterialShieldItem) {
+            ItemProperties.register(item, new ResourceLocation("blocking"),
+                (stack, world, entity, seed) ->
+                    entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0f : 0.0f);
+        }
+
         if (item instanceof KurikarakenItem) {
             ItemProperties.register(item,
                 new ResourceLocation(TheFourPrimitivesAndWeaponsMod.MODID, "kurikaraken_model"),

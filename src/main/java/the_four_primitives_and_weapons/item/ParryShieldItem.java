@@ -38,7 +38,7 @@ import java.util.List;
  *     右クリック直後 PARRY_WINDOW_TICKS tick 以内に攻撃を受けるとパリィ発動。
  *
  *   【Fキー（持ちかえ）— スワップパリィ】
- *     メインハンドに来た瞬間から PARRY_WINDOW_TICKS tick 以内にパリィ発動。
+ *     どちらかの手へ持ち替えた瞬間から PARRY_WINDOW_TICKS tick の間パリィ可能。
  */
 public class ParryShieldItem extends ShieldItem {
 

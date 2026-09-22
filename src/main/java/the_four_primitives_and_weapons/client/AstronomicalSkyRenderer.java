@@ -91,8 +91,11 @@ public final class AstronomicalSkyRenderer {
             .rotateY((float) (Math.PI / 2.0));
         Vec3 head = new Vec3(meteor.x(), meteor.y(), meteor.z());
         Vec3 direction = new Vec3(meteor.dx(), meteor.dy(), meteor.dz());
-        Vec3 tail = head.subtract(direction.scale(19.0));
-        Vec3 width = direction.cross(head).normalize().scale(0.22);
+        boolean fireball = meteor.kind() == AstronomicalEvents.MeteorKind.FIREBALL;
+        double length = meteor.kind() == AstronomicalEvents.MeteorKind.SHORT ? 7.0 : fireball ? 28.0 : 19.0;
+        Vec3 tail = head.subtract(direction.scale(length));
+        Vec3 width = direction.cross(head).normalize().scale(fireball ? 0.6 : 0.22);
+        float red = fireball ? 1F : 0.8F, green = fireball ? 0.65F : 0.9F, blue = fireball ? 0.3F : 1F;
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
         RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
         boolean culling = org.lwjgl.opengl.GL11.glIsEnabled(org.lwjgl.opengl.GL11.GL_CULL_FACE);
@@ -100,10 +103,20 @@ public final class AstronomicalSkyRenderer {
         try {
             BufferBuilder buffer = Tesselator.getInstance().getBuilder();
             buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
-            vertex(buffer, matrix, head.add(width), alpha);
-            vertex(buffer, matrix, head.subtract(width), alpha);
-            vertex(buffer, matrix, tail.subtract(width.scale(0.08)), 0F);
-            vertex(buffer, matrix, tail.add(width.scale(0.08)), 0F);
+            vertex(buffer, matrix, head.add(width), alpha, red, green, blue);
+            vertex(buffer, matrix, head.subtract(width), alpha, red, green, blue);
+            vertex(buffer, matrix, tail.subtract(width.scale(0.08)), 0F, red, green, blue);
+            vertex(buffer, matrix, tail.add(width.scale(0.08)), 0F, red, green, blue);
+            if (fireball && meteor.headOpacity() > 0F) {
+                // A bright, angular head rather than a smooth circular sprite.
+                Vec3 along = direction.normalize().scale(1.1);
+                Vec3 across = width.scale(1.8);
+                float headAlpha = meteor.headOpacity() * visibility * (1F - level.getRainLevel(partialTick));
+                vertex(buffer, matrix, head.add(along), headAlpha, red, green, blue);
+                vertex(buffer, matrix, head.add(across), headAlpha, red, green, blue);
+                vertex(buffer, matrix, head.subtract(along), headAlpha, red, green, blue);
+                vertex(buffer, matrix, head.subtract(across), headAlpha, red, green, blue);
+            }
             BufferUploader.drawWithShader(buffer.end());
         } finally {
             if (culling) RenderSystem.enableCull();
@@ -112,8 +125,8 @@ public final class AstronomicalSkyRenderer {
         }
     }
 
-    private static void vertex(BufferBuilder buffer, Matrix4f matrix, Vec3 position, float alpha) {
+    private static void vertex(BufferBuilder buffer, Matrix4f matrix, Vec3 position, float alpha, float red, float green, float blue) {
         buffer.vertex(matrix, (float) position.x, (float) position.y, (float) position.z)
-            .color(0.8F, 0.9F, 1F, alpha).endVertex();
+            .color(red, green, blue, alpha).endVertex();
     }
 }

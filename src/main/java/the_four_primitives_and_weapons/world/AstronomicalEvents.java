@@ -74,9 +74,11 @@ public final class AstronomicalEvents {
         return names;
     }
 
-    public record Meteor(double x, double y, double z, double dx, double dy, double dz, float opacity) { }
+    public enum MeteorKind { SHORT, STREAK, TRAIN, FIREBALL }
+    public record Meteor(double x, double y, double z, double dx, double dy, double dz,
+                         float opacity, MeteorKind kind, float headOpacity) { }
 
-    /** One brief streak per time slot; no entities, packets or persistent state. */
+    /** Deterministic streaks and fading trains; no entities, packets or persistent state. */
     public static Meteor meteor(long dayTime) {
         return meteor(dayTime, isMeteorShower(dayTime), 0);
     }
@@ -88,12 +90,19 @@ public final class AstronomicalEvents {
     public static Meteor meteor(long dayTime, boolean shower, int lane, boolean allowDaytime) {
         long timeOfDay = Math.floorMod(dayTime, 24000L);
         if (!allowDaytime && (timeOfDay < 13000L || timeOfDay >= 23000L)) return null;
-        int interval = shower ? 40 : 320;
-        dayTime += lane * 13L;
+        int interval = shower ? 100 : 320;
+        dayTime += lane * 33L;
         long slot = Math.floorDiv(dayTime, interval);
         int age = (int) Math.floorMod(dayTime, interval);
-        if (age >= 24) return null;
         Random random = new Random(slot * 0x9E3779B97F4A7C15L + lane * 7919L);
+        // Ordinary nights get a 25% chance per 16-second slot, rather than a guaranteed streak.
+        if (!shower && random.nextFloat() >= 0.25F) return null;
+        float kindRoll = random.nextFloat();
+        MeteorKind kind = kindRoll < 0.05F ? MeteorKind.FIREBALL : kindRoll < 0.35F ? MeteorKind.TRAIN
+            : kindRoll < 0.65F ? MeteorKind.SHORT : MeteorKind.STREAK;
+        int flight = kind == MeteorKind.SHORT ? 12 : 24;
+        int duration = kind == MeteorKind.TRAIN || kind == MeteorKind.FIREBALL ? 90 : flight;
+        if (age >= duration) return null;
         double angle = random.nextDouble() * Math.PI * 2.0;
         // Sample the visible hemisphere, including low skies in every direction.
         double elevation = Math.toRadians(12.0 + random.nextDouble() * 65.0);
@@ -102,10 +111,13 @@ public final class AstronomicalEvents {
         double dx = 0.6 * vertical * Math.cos(angle) - side * Math.sin(angle);
         double dy = -0.6 * horizontal;
         double dz = 0.6 * vertical * Math.sin(angle) + side * Math.cos(angle);
-        double travel = (age / 23.0 - 0.5) * 32.0;
+        double travel = (Math.min(age, flight - 1) / (double)(flight - 1) - 0.5) * 32.0;
+        float headOpacity = age < flight ? (float) Math.sin(Math.PI * age / (flight - 1)) : 0F;
+        float opacity = duration == flight ? headOpacity : age < flight
+            ? Math.min(1F, age / 6F) : (duration - age) / (float)(duration - flight);
         return new Meteor(100.0 * horizontal * Math.cos(angle) + dx * travel,
             100.0 * vertical + dy * travel,
             100.0 * horizontal * Math.sin(angle) + dz * travel, dx, dy, dz,
-            (float) Math.sin(Math.PI * age / 23.0));
+            opacity, kind, headOpacity);
     }
 }

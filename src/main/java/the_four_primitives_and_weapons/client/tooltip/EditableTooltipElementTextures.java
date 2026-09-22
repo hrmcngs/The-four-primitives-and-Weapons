@@ -36,13 +36,13 @@ public final class EditableTooltipElementTextures {
         int height = bottom - top;
         if (width <= 0 || height <= 0) return;
 
+        // The tooltip background is buffered. Finish it before configuring the
+        // immediate texture draws: flushing GUI batches resets render state.
+        graphics.flush();
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        // 上辺はY反転して描画するため、頂点の巻き順が逆になる。
-        // Cullが有効だと上辺だけ消えるので、属性装飾の間だけ無効化する。
-        RenderSystem.disableCull();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 0.88F);
-        graphics.enableScissor(left, top, right, bottom);
+        // Every quad is bounded by the frame already; no scissor/flush is needed.
 
         // PNGを引き伸ばさず32pxごとに並べ、バニラ風のドット比率を保つ。
         int verticalDepth = Math.min(height, 12);
@@ -59,26 +59,20 @@ public final class EditableTooltipElementTextures {
             drawFromRight(graphics, texture, right, y, span, horizontalDepth, source);
         }
 
-        graphics.disableScissor();
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.enableCull();
     }
 
     private static void drawFromBottom(GuiGraphics g, ResourceLocation texture,
                                        int x, int bottom, int span, int depth, int source) {
         g.blit(texture, x, bottom - depth, span, depth,
-                0, 0, source, source, source, source);
+                0, 0, span, source, source, source);
     }
 
     private static void drawFromTop(GuiGraphics g, ResourceLocation texture,
                                     int x, int top, int span, int depth, int source) {
-        // 原始PNGは下辺向けのまま保ち、描画時だけ上辺の内側へ反転する。
-        g.pose().pushPose();
-        g.pose().translate(x, top + depth, 0.0F);
-        g.pose().scale(1.0F, -1.0F, 1.0F);
-        g.blit(texture, 0, 0, span, depth,
-                0, 0, source, source, source, source);
-        g.pose().popPose();
+        // Flip the UVs, not the geometry, so the front face stays visible with culling.
+        g.blit(texture, x, top, span, depth,
+                0, source, span, -source, source, source);
     }
 
     private static void drawFromLeft(GuiGraphics g, ResourceLocation texture,
@@ -87,7 +81,7 @@ public final class EditableTooltipElementTextures {
         g.pose().translate(left + depth, y, 0.0F);
         g.pose().mulPose(Axis.ZP.rotationDegrees(90.0F));
         g.blit(texture, 0, 0, span, depth,
-                0, 0, source, source, source, source);
+                0, 0, span, source, source, source);
         g.pose().popPose();
     }
 
@@ -97,7 +91,7 @@ public final class EditableTooltipElementTextures {
         g.pose().translate(right - depth, y + span, 0.0F);
         g.pose().mulPose(Axis.ZP.rotationDegrees(-90.0F));
         g.blit(texture, 0, 0, span, depth,
-                0, 0, source, source, source, source);
+                0, 0, span, source, source, source);
         g.pose().popPose();
     }
 
