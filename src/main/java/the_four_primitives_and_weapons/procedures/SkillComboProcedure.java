@@ -110,7 +110,7 @@ public final class SkillComboProcedure {
 
         ComboSession session = ACTIVE.get(player.getUUID());
         if (session == null) return;
-        if (!player.isAlive()) {
+        if (!player.isAlive() || session.hand != null && !session.hand.valid()) {
             ACTIVE.remove(player.getUUID());
             return;
         }
@@ -145,6 +145,13 @@ public final class SkillComboProcedure {
     }
 
     private static void runNext(Player player, ComboSession session) {
+        if (session.hand != null) {
+            if (!session.hand.valid()) { ACTIVE.remove(player.getUUID()); return; }
+            session.hand.run(() -> runHandNext(player, session));
+        } else runHandNext(player, session);
+    }
+
+    private static void runHandNext(Player player, ComboSession session) {
         if (session.index >= session.totalHits) return;
         int hitIndex = session.index++;
         // 段数がチャージで伸びるので、 一撃目〜三撃目を巡回して出す。
@@ -152,7 +159,7 @@ public final class SkillComboProcedure {
         // 連撃は「通常の一撃目〜三撃目」を高速で出す技。チャージ倍率は短剣パルス側にだけ乗せる。
         if (session.lunaEffects && player.getMainHandItem().getItem()
                 == the_four_primitives_and_weapons.init.TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
-            the_four_primitives_and_weapons.skill.LunaSkillEffects.execute(motionId, player, -1.0F);
+            the_four_primitives_and_weapons.skill.LunaSkillEffects.execute(motionId, player, session.chargePercent, -1.0F);
         } else {
             MotionExecutor.executeMotion(motionId, player, 0.0f);
         }
@@ -175,7 +182,7 @@ public final class SkillComboProcedure {
         Level world = player.level();
         Vec3 look = MotionExecutor.horizontalLook(player);
         Vec3 eye = player.position().add(0, player.getEyeHeight() * 0.6, 0);
-        Vec3 origin = player.position();
+        Vec3 origin = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.position());
         Vec3 end = origin.add(look.scale(session.pulseRange));
         AABB area = new AABB(origin, end).inflate(0.9, 0.9, 0.9);
 
@@ -184,7 +191,8 @@ public final class SkillComboProcedure {
             player.setDeltaMovement(player.getDeltaMovement().add(look.scale(dashStep)));
             player.hurtMarked = true;
         }
-        player.swing(InteractionHand.MAIN_HAND, true);
+        var hand = the_four_primitives_and_weapons.skill.AttackHandContext.capture();
+        player.swing(hand != null ? hand.hand() : InteractionHand.MAIN_HAND, true);
 
         float baseAttack = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
         float pulseDamage = Math.max(0.75f, baseAttack * 0.28f);
@@ -234,6 +242,8 @@ public final class SkillComboProcedure {
     }
 
     private static final class ComboSession {
+        final the_four_primitives_and_weapons.skill.AttackHandContext.Snapshot hand =
+            the_four_primitives_and_weapons.skill.AttackHandContext.capture();
         final String[] motions;
         /** 実際に出す段数 ( チャージで伸びる )。 motions は 3 つを巡回して使う。 */
         final int totalHits;

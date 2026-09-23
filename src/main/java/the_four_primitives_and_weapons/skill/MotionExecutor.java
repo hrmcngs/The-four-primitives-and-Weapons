@@ -108,15 +108,10 @@ public class MotionExecutor {
 
             Level world = player.level();
             Vec3 lookVec = horizontalLook(player);   // ピッチ無視: 上下向いても yaw 正面に技を出す
-            Vec3 playerPos = player.position();
+            Vec3 playerPos = AttackHandContext.origin(player, player.position());
 
             switch (motionId) {
                 case "thrust" -> {
-                    if (LunaSkillEffects.usesNormalDamage(player)) {
-                        the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
-                                .execute(world, player.getX(), player.getY(), player.getZ(), player);
-                        break;
-                    }
                     // weapon_stats に "thrust" 設定を持つ武器 ( ダガー等 ) は、通常突きも
                     // 短reachのJSON突き ( thrust.range + attack_range ) を使う。
                     // 直刀はどちらの経路でも横切りと同じ奥行きにそろえる。
@@ -125,7 +120,7 @@ public class MotionExecutor {
                     if (st != null && st.thrust != null) {
                         the_four_primitives_and_weapons.procedures.JsonThrustProcedure.execute(player, chargePercent, st.thrust);
                     } else {
-                        the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.execute(world, player.getX(), player.getY(), player.getZ(), player);
+                        the_four_primitives_and_weapons.procedures.TyokutouThrustAttackProcedure.execute(world, playerPos.x, playerPos.y, playerPos.z, player);
                     }
                 }
                 case "upper_left_slash" -> performUpperLeftSlash(player, world, lookVec, playerPos, chargePercent);
@@ -174,7 +169,7 @@ public class MotionExecutor {
         if (elem == the_four_primitives_and_weapons.damage.ElementType.NONE) return;
 
         Vec3 look = player.getLookAngle();
-        Vec3 c = player.getEyePosition().add(look.scale(1.5)).subtract(0.0, 0.35, 0.0);
+        Vec3 c = AttackHandContext.origin(player, player.getEyePosition()).add(look.scale(1.5)).subtract(0.0, 0.35, 0.0);
         the_four_primitives_and_weapons.damage.ElementalParticles.spawn(sl, elem, c.x, c.y, c.z, 8);
     }
 
@@ -196,7 +191,7 @@ public class MotionExecutor {
         // 属性粒子が扇を描いてしまい、 見た目が斬撃と区別できない。
         if ("thrust".equals(motionId)) {
             Vec3 look = player.getLookAngle().normalize();
-            Vec3 pos = player.position();
+            Vec3 pos = AttackHandContext.origin(player, player.position());
             double end = thrustVisualRange(player);
             double y = player.getEyeY();
             int steps = (int) Math.round((end - 0.6) / 0.25);
@@ -209,7 +204,7 @@ public class MotionExecutor {
         }
 
         double delta = fanSpread(player);
-        for (Vec3 p : fanPoints(player, player.getLookAngle(), player.position(), 0.0)) {
+        for (Vec3 p : fanPoints(player, player.getLookAngle(), AttackHandContext.origin(player, player.position()), 0.0)) {
             // 範囲は灰色 dust と同じ ( 横に広く・上下は広げない )。
             the_four_primitives_and_weapons.damage.ElementalParticles.spawnWide(
                     sl, elem, p.x, p.y, p.z, 10, delta, 0.0);
@@ -240,7 +235,7 @@ public class MotionExecutor {
         // エフェクト: 突きは扇ではなく前方へ伸びる線
         if (!world.isClientSide) {
             ServerLevel serverWorld = (ServerLevel) world;
-            thrustLine(serverWorld, player, lookVec, playerPos, range);
+            thrustLine(serverWorld, player, lookVec, player.position(), range);
             if (isCharged) {
                 serverWorld.sendParticles(ParticleTypes.ENCHANTED_HIT,
                     playerPos.x + lookVec.x * 2, playerPos.y + 1.2, playerPos.z + lookVec.z * 2,
@@ -249,7 +244,7 @@ public class MotionExecutor {
         }
 
         // 通常・チャージともに演出と同じ高さの細い直線で判定する。
-        Vec3 hitStart = player.getEyePosition();
+        Vec3 hitStart = AttackHandContext.origin(player, player.getEyePosition());
         Vec3 hitEnd = hitStart.add(lookVec.scale(range));
         AABB searchArea = ThrustHitbox.bounds(hitStart, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
@@ -287,7 +282,7 @@ public class MotionExecutor {
         if (!world.isClientSide) {
             ServerLevel serverWorld = (ServerLevel) world;
             // 左上から右下への斜め斬り: 横に大きく広がる白い雲のファン ( 左が高い )
-            slashCloudFan(serverWorld, player, lookVec, playerPos, -0.5);
+            slashCloudFan(serverWorld, player, lookVec, playerPos, -0.7);
             if (isCharged) {
                 serverWorld.sendParticles(ParticleTypes.ENCHANTED_HIT,
                     playerPos.x + lookVec.x * 2, playerPos.y + 1.2, playerPos.z + lookVec.z * 2,
@@ -311,7 +306,7 @@ public class MotionExecutor {
         if (!world.isClientSide) {
             ServerLevel serverWorld = (ServerLevel) world;
             // 右上から左下への斜め斬り: 横に大きく広がる白い雲のファン ( 右が高い )
-            slashCloudFan(serverWorld, player, lookVec, playerPos, 0.5);
+            slashCloudFan(serverWorld, player, lookVec, playerPos, 0.7);
             if (isCharged) {
                 serverWorld.sendParticles(ParticleTypes.ENCHANTED_HIT,
                     playerPos.x + lookVec.x * 2, playerPos.y + 1.2, playerPos.z + lookVec.z * 2,
@@ -495,12 +490,7 @@ public class MotionExecutor {
     }
 
     private static void dealMotionDamage(Player player, LivingEntity target, float damage, ItemStack weapon) {
-        if (LunaSkillEffects.usesNormalDamage(player)) {
-            the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
-                    .damageNormalTarget(weapon, target);
-        } else {
-            DamageCalculator.dealDamage(player, target, damage, weapon);
-        }
+        DamageCalculator.dealDamage(player, target, damage, weapon);
     }
 
     // === 共通の斬撃ダメージ処理 ===
@@ -571,6 +561,7 @@ public class MotionExecutor {
      * @param range 線の長さ ( 技の実際のリーチをそのまま渡す )
      */
     public static void thrustLine(ServerLevel sw, Player player, Vec3 look, Vec3 playerPos, double range) {
+        playerPos = AttackHandContext.origin(player, playerPos);
         net.minecraft.core.particles.ParticleOptions dust = slashDust(player);
         double start = 0.6;                       // プレイヤーの中に湧かせない
         double end = Math.max(start + 0.5, range);
@@ -648,6 +639,7 @@ public class MotionExecutor {
      * @param tilt 斜め斬りの傾き ( 左右クラスタの高さ差 )
      */
     private static Vec3[] fanPoints(Player player, Vec3 look, Vec3 playerPos, double tilt) {
+        tilt = DualWieldRules.mirroredTilt(tilt, AttackHandContext.mirrored(player));
         Vec3 right = new Vec3(-look.z, 0, look.x).normalize();
         double scale = fanScale(player);
         double fwd = 3.0 * scale;                      // ^3 ( 前方 ) を範囲でスケール

@@ -11,6 +11,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import the_four_primitives_and_weapons.client.KeitoGlint;
 import the_four_primitives_and_weapons.item.KeitoKatanaItem;
+import the_four_primitives_and_weapons.damage.ElementType;
+import the_four_primitives_and_weapons.damage.ElementalDamageUtils;
 
 @Mixin(ItemRenderer.class)
 public abstract class KeitoGlintMixin {
@@ -19,7 +21,9 @@ public abstract class KeitoGlintMixin {
     private MultiBufferSource tfpaw$keitoGlint(MultiBufferSource original, ItemStack stack,
             ItemDisplayContext context, boolean leftHand, PoseStack pose, MultiBufferSource buffers,
             int light, int overlay, BakedModel model) {
-        if (!(stack.getItem() instanceof KeitoKatanaItem) || !stack.hasFoil()) return original;
-        return type -> original.getBuffer(KeitoGlint.recolor(type));
+        ElementType element = ElementalDamageUtils.getEffectiveElementType(stack);
+        if (element == ElementType.NONE && !(stack.getItem() instanceof KeitoKatanaItem)) return original;
+        if (!stack.hasFoil()) return original;
+        return type -> original.getBuffer(KeitoGlint.recolor(type, element));
     }
 }

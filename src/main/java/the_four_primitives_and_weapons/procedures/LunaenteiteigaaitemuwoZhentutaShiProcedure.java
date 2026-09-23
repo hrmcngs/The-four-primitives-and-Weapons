@@ -41,7 +41,11 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
         if (EnchantmentHelper.getItemEnchantmentLevel(TheFourPrimitivesAndWeaponsModEnchantments.KILL.get(), weapon) != 0) {
             target.kill();
         } else {
-            target.hurt(target.damageSources().generic(), 1.0F);
+            var hand = the_four_primitives_and_weapons.skill.AttackHandContext.capture();
+            if (hand != null) {
+                the_four_primitives_and_weapons.skill.AttackHandContext.hurt(hand.player(),
+                    (LivingEntity) target, target.damageSources().generic(), 1.0F);
+            } else target.hurt(target.damageSources().generic(), 1.0F);
         }
     }
 
@@ -75,6 +79,11 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
+		if (entity instanceof net.minecraft.world.entity.player.Player player) {
+			// Legacy callers also use the ordinary dust attack; no uncharged player beam.
+			the_four_primitives_and_weapons.skill.MotionExecutor.executeMotion("thrust", player, 0.0F);
+			return;
+		}
 		double r = 0;
 		double alpha = 0;
 		double beta = 0;
@@ -92,7 +101,9 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
 		double Y_pos = 0;
 		if (TheFourPrimitivesAndWeaponsModItems.LUNA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem()
 				|| TheFourPrimitivesAndWeaponsModItems.LUNA.get() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) {
-			if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(TheFourPrimitivesAndWeaponsModMobEffects.WAZA.get()) : false)) {
+			if (!(entity instanceof LivingEntity _livEnt ? _livEnt.hasEffect(TheFourPrimitivesAndWeaponsModMobEffects.WAZA.get()) : false)
+                    || (entity instanceof net.minecraft.world.entity.player.Player player
+                        && the_four_primitives_and_weapons.skill.AttackHandContext.active(player))) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					// 再発射間隔は攻撃速度ゲージ側で管理するため、旧15tick固定ロックは廃止。
 					_entity.addEffect(new MobEffectInstance(TheFourPrimitivesAndWeaponsModMobEffects.WAZA.get(), 1, 1, true, false));

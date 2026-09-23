@@ -122,12 +122,15 @@ public class MoonPhaseDifficulty {
                 String lunarEvent = Level.OVERWORLD.equals(level.dimension())
                     ? AstronomyMoonEffects.nightNames(level) : "";
                 String eventLabel = lunarEvent.isEmpty() ? "" : " §b（" + lunarEvent + "）";
+                boolean bloodMoon = Level.OVERWORLD.equals(level.dimension())
+                    && AstronomyData.settings(level).moonColor(level.getDayTime(), level.getMoonPhase())
+                        == AstronomicalEvents.MoonTint.BLOOD;
 
                 for (ServerPlayer p : level.players()) {
                     p.sendSystemMessage(Component.literal(
                         "§7今夜は " + name + eventLabel + " §7— 難易度補正 §c+" + bonus));
-                    // 満月/十三夜などの高ボーナス時は特別演出
-                    if (bonus >= 6) {
+                    // 遠吠えの演出はブラッドムーンの夜だけ。
+                    if (bloodMoon) {
                         level.playSound(null, p.blockPosition(),
                             SoundEvents.WOLF_HOWL, SoundSource.AMBIENT,
                             0.5f + bonus * 0.05f, 0.8f);

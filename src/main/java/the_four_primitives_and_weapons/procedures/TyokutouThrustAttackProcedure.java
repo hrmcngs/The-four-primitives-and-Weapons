@@ -131,7 +131,7 @@ public class TyokutouThrustAttackProcedure {
         }
 
         // 演出と同じ高さの細い直線で判定する。
-        Vec3 hitStart = player.getEyePosition();
+        Vec3 hitStart = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition());
         Vec3 hitEnd = hitStart.add(lookVec.scale(range));
         AABB searchArea = ThrustHitbox.bounds(hitStart, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
@@ -193,6 +193,11 @@ public class TyokutouThrustAttackProcedure {
     public static void executeChargedThrust(LevelAccessor world, double x, double y, double z, Entity entity, float chargePercent, boolean isCooldown) {
         if (entity == null || !(entity instanceof Player player))
             return;
+        if (isLunaItem(player.getMainHandItem())
+                && !the_four_primitives_and_weapons.skill.LunaChargeRules.beamEnabled(chargePercent)) {
+            the_four_primitives_and_weapons.skill.MotionExecutor.executeMotion("thrust", player, 0.0F);
+            return;
+        }
 
         // 直刀の奥行きは横切りと共通。チャージでは威力・踏み込みを強化する。
         double range = thrustRange(player, Math.max(1.0, 16.0 + chargePercent * 8.0
@@ -202,7 +207,7 @@ public class TyokutouThrustAttackProcedure {
 
         // チャージ突きも上下を含めてカメラの向きへ出す。
         Vec3 lookVec = player.getLookAngle().normalize();
-        Vec3 startPos = player.position().add(0, player.getEyeHeight(), 0);
+        Vec3 startPos = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition());
 
         // Lunaのビーム発射音。曲線自体は下の元実装 createCurvingBeams* だけで生成する。
         if (world instanceof ServerLevel serverLevel && isLunaItem(player.getMainHandItem())) {
@@ -373,7 +378,7 @@ public class TyokutouThrustAttackProcedure {
         double damage = 12.0;
 
         Vec3 lookVec = player.getLookAngle().normalize();
-        Vec3 startPos = player.position().add(0, player.getEyeHeight(), 0);
+        Vec3 startPos = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition());
 
         // エフェクト（小さいDustパーティクル）
         if (world instanceof ServerLevel serverLevel) {
@@ -445,7 +450,8 @@ public class TyokutouThrustAttackProcedure {
         // ビームの数（少なめ）
         int beamCount = (int)(3 + chargePercent * 2); // 3～5本
 
-        Vec3 playerPos = player.position().add(0, player.getEyeHeight() * 0.8, 0);
+        Vec3 playerPos = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player,
+            player.position().add(0, player.getEyeHeight() * 0.8, 0));
         Vec3 rightVec = new Vec3(-lookVec.z, 0, lookVec.x).normalize();
         Vec3 upVec = lookVec.cross(rightVec).normalize();
 
@@ -518,6 +524,7 @@ public class TyokutouThrustAttackProcedure {
 
         Vec3 playerPos = source.position().add(0,
                 source instanceof Player player ? player.getEyeHeight() * 0.8 : source.getBbHeight() * 0.8, 0);
+        if (source instanceof Player player) playerPos = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, playerPos);
 
         // プレイヤーの右ベクトルと上ベクトルを計算（垂直視線対策）
         Vec3 rightVec;
@@ -543,6 +550,8 @@ public class TyokutouThrustAttackProcedure {
             upVec = lookVec.cross(rightVec).normalize();
         }
 
+        if (source instanceof Player player && the_four_primitives_and_weapons.skill.AttackHandContext.mirrored(player))
+            rightVec = rightVec.scale(-1);
         for (int i = 0; i < beamCount; i++) {
             // ビームの開始位置（プレイヤーの左右から発生）
             double sideOffset = (Math.random() - 0.5) * 2.0; // -1.0 ~ 1.0 で左右に配置
@@ -686,7 +695,8 @@ public class TyokutouThrustAttackProcedure {
         // 最小4本、最大18本
         int beamCount = Math.max(4, (int)(4 + chargePercent * 14));
 
-        Vec3 playerPos = player.position().add(0, player.getEyeHeight() * 0.8, 0);
+        Vec3 playerPos = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player,
+            player.position().add(0, player.getEyeHeight() * 0.8, 0));
 
         // プレイヤーの右ベクトルと上ベクトルを計算（垂直視線対策）
         Vec3 rightVec;
@@ -712,6 +722,7 @@ public class TyokutouThrustAttackProcedure {
             upVec = lookVec.cross(rightVec).normalize();
         }
 
+        if (the_four_primitives_and_weapons.skill.AttackHandContext.mirrored(player)) rightVec = rightVec.scale(-1);
         for (int i = 0; i < beamCount; i++) {
             // ビームの開始位置（プレイヤーの左右から発生）
             boolean isLeftSide = i % 2 == 0;

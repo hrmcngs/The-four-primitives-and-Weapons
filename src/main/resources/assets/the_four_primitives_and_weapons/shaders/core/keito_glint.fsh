@@ -6,6 +6,7 @@ uniform vec4 ColorModulator;
 uniform float FogStart;
 uniform float FogEnd;
 uniform float GlintAlpha;
+uniform vec3 GlintColor;
 in float vertexDistance;
 in vec2 texCoord0;
 out vec4 fragColor;
@@ -16,8 +17,7 @@ void main() {
     // Keep the full moving pattern at moderate intensity; do not clip its dim bands.
     float peak = max(sampleColor.r, max(sampleColor.g, sampleColor.b));
     float brightness = peak * 0.45;
-    vec3 blueWhite = vec3(0.65, 0.86, 1.0);
     float fade = linear_fog_fade(vertexDistance, FogStart, FogEnd) * GlintAlpha;
-    fragColor = vec4(blueWhite * brightness * ColorModulator.rgb * fade,
+    fragColor = vec4(GlintColor * brightness * ColorModulator.rgb * fade,
                      sampleColor.a * ColorModulator.a);
 }

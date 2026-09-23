@@ -7,9 +7,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
-/** 選択したLunaの技へ範囲・粒子を適用し、通常技だけ固有の命中処理を使う。 */
+/** Luna's extra range and END_ROD effects are reserved for completed charges. */
 public final class LunaSkillEffects {
-    private record Context(Player player, boolean normal) {}
+    private record Context(Player player) {}
     private static final ThreadLocal<Context> ACTIVE = new ThreadLocal<>();
 
     private LunaSkillEffects() {}
@@ -19,8 +19,12 @@ public final class LunaSkillEffects {
     }
 
     public static void execute(String motionId, Player player, float chargePercent, float chargeScale) {
+        if (!LunaChargeRules.beamEnabled(chargePercent)) {
+            MotionExecutor.executeMotion(motionId, player, 0.0F, chargeScale);
+            return;
+        }
         Context previous = ACTIVE.get();
-        ACTIVE.set(new Context(player, chargePercent <= 0.0F));
+        ACTIVE.set(new Context(player));
         try {
             MotionExecutor.executeMotion(motionId, player, chargePercent, chargeScale);
         } finally {
@@ -31,10 +35,6 @@ public final class LunaSkillEffects {
 
     public static boolean isActive(Player player) {
         return ACTIVE.get() != null && ACTIVE.get().player() == player;
-    }
-
-    public static boolean usesNormalDamage(Player player) {
-        return isActive(player) && ACTIVE.get().normal();
     }
 
     static double rangeBonus(ItemStack weapon) {

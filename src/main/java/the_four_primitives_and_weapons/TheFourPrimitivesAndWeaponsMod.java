@@ -124,6 +124,7 @@ public class TheFourPrimitivesAndWeaponsMod {
 	private static final the_four_primitives_and_weapons.performance.TickWorkQueue workQueue = new the_four_primitives_and_weapons.performance.TickWorkQueue();
 
 	public static void queueServerWork(int tick, Runnable action) {
+        action = the_four_primitives_and_weapons.skill.AttackHandContext.carry(action);
         // 遅延発動する武器スキルも、通常攻撃と区別できるよう実行文脈を引き継ぐ。
         if (the_four_primitives_and_weapons.util.NinjatoTetherCutRule.inSkill()) {
             Runnable skillAction = action;

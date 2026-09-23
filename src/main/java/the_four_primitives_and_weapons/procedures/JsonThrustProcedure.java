@@ -87,6 +87,11 @@ public final class JsonThrustProcedure {
         return Math.max(1, 1 + Math.round(c * (max - 1)));
     }
 
+    public static boolean isThrusting(Player player) {
+        ComboSession session = ACTIVE.get(player.getUUID());
+        return session != null && session.doneHits < session.totalHits;
+    }
+
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
@@ -97,7 +102,7 @@ public final class JsonThrustProcedure {
 
         ComboSession session = ACTIVE.get(player.getUUID());
         if (session == null) return;
-        if (!player.isAlive()) {
+        if (!player.isAlive() || session.hand != null && !session.hand.valid()) {
             ACTIVE.remove(player.getUUID());
             return;
         }
@@ -122,10 +127,17 @@ public final class JsonThrustProcedure {
     }
 
     private static void doHit(Player player, ComboSession session) {
+        if (session.hand != null) {
+            if (!session.hand.valid()) { ACTIVE.remove(player.getUUID()); return; }
+            session.hand.run(() -> doHandHit(player, session));
+        } else doHandHit(player, session);
+    }
+
+    private static void doHandHit(Player player, ComboSession session) {
         Level world = player.level();
         Vec3 look = player.getLookAngle().normalize();
         Vec3 eye = player.getEyePosition();
-        Vec3 origin = player.getEyePosition();
+        Vec3 origin = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition());
         Vec3 end = origin.add(look.scale(session.range));
         AABB area = ThrustHitbox.bounds(origin, end);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, area,
@@ -135,7 +147,8 @@ public final class JsonThrustProcedure {
         double dashStep = session.dash / Math.max(1, session.totalHits);
         player.setDeltaMovement(player.getDeltaMovement().add(look.scale(dashStep)));
         player.hurtMarked = true;
-        player.swing(player.getUsedItemHand(), true);
+        var hand = the_four_primitives_and_weapons.skill.AttackHandContext.capture();
+        player.swing(hand != null ? hand.hand() : player.getUsedItemHand(), true);
 
         int hitIndex = session.doneHits;
         for (LivingEntity target : targets) {
@@ -146,7 +159,8 @@ public final class JsonThrustProcedure {
                 continue;
             }
             target.invulnerableTime = 0; // 多段ヒットを通す
-            target.hurt(world.damageSources().playerAttack(player), session.damage);
+            the_four_primitives_and_weapons.skill.AttackHandContext.hurt(player, target,
+                world.damageSources().playerAttack(player), session.damage);
             target.knockback((float) session.knockback, -look.x, -look.z);
         }
         session.doneHits++;
@@ -167,6 +181,8 @@ public final class JsonThrustProcedure {
     }
 
     private static final class ComboSession {
+        final the_four_primitives_and_weapons.skill.AttackHandContext.Snapshot hand =
+            the_four_primitives_and_weapons.skill.AttackHandContext.capture();
         final int totalHits;
         final double range;
         final double knockback;

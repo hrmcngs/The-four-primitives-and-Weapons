@@ -77,22 +77,28 @@ public class SpinSlashTickHandler {
 
         SpinSession session = new SpinSession(player.getYRot(), total, damage, range, charged);
         session.lunaEffects = LunaSkillEffects.isActive(player);
-        if (LunaSkillEffects.usesNormalDamage(player)) session.lunaWeapon = player.getMainHandItem().copy();
         ACTIVE.put(id, session);
     }
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
+        if (event.player.level().isClientSide) return;
         SpinSession s = ACTIVE.get(event.player.getUUID());
         if (s == null) return;
-
         Player p = event.player;
+        if (s.hand != null) {
+            if (!s.hand.valid()) { ACTIVE.remove(p.getUUID()); return; }
+            s.hand.run(() -> tickSpin(p, s));
+        } else tickSpin(p, s);
+    }
+
+    private static void tickSpin(Player p, SpinSession s) {
         s.elapsed++;
 
         float anglePerTick = TOTAL_ROTATION_DEG / s.totalTicks;
         float totalSwept = s.elapsed * anglePerTick;
-        float newYaw = s.startYaw + totalSwept;
+        float newYaw = s.startYaw + totalSwept * s.direction;
 
         // === 1. Visual rotation (server-authoritative + sync to client) ===
         if (p instanceof ServerPlayer sp) {
@@ -118,7 +124,7 @@ public class SpinSlashTickHandler {
             for (int i = 0; i < steps; i++) {
                 float frac = (i + 0.5f) / steps;   // step 中央に 1 つずつ配置
                 float sweptAt = prevSwept + anglePerTick * frac;
-                double rad = Math.toRadians(s.startYaw + sweptAt + 90);
+                double rad = Math.toRadians(s.startYaw + sweptAt * s.direction + 90);
                 double r = s.range * 0.75;          // dustとLunaの光を同じ円周に配置
                 double x = p.getX() + Math.cos(rad) * r;
                 double y = p.getY() + 1.1;
@@ -135,7 +141,7 @@ public class SpinSlashTickHandler {
 
         // === 4. 終了判定 ===
         if (s.elapsed >= s.totalTicks) {
-            ACTIVE.remove(event.player.getUUID());
+            ACTIVE.remove(p.getUUID());
             p.level().playSound(null, p.getX(), p.getY(), p.getZ(),
                 SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.PLAYERS, 1.5f, 0.7f);
         }
@@ -180,17 +186,12 @@ public class SpinSlashTickHandler {
             // 逆変換 (target dir → yaw) = -atan2(x, z):
             //   (0, 1) → 0°,  (-1, 0) → 90°,  (0, -1) → 180°,  (1, 0) → -90° (≡ 270°)
             double targetYaw = -Math.toDegrees(Math.atan2(toTarget.x, toTarget.z));
-            double relativeAngle = wrap360(targetYaw - s.startYaw);
+            double relativeAngle = wrap360((targetYaw - s.startYaw) * s.direction);
 
             // 開始角からの相対角が「これまでに掃いたアーク」内なら hit.
             // (totalSwept は 720° まで上がるので 360°超でも relativeAngle <= totalSwept で OK)
             if (totalSwept >= relativeAngle) {
-                if (!s.lunaWeapon.isEmpty()) {
-                    the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
-                            .damageNormalTarget(s.lunaWeapon, target);
-                } else {
-                    DamageCalculator.dealDamage(player, target, s.damage, weapon);
-                }
+                DamageCalculator.dealDamage(player, target, s.damage, weapon);
                 DamageCalculator.applyNormalKnockback(player, target, weapon);
                 s.hitEntities.add(target.getUUID());
 
@@ -241,13 +242,14 @@ public class SpinSlashTickHandler {
 
     /** 進行中の回転 session 1 個分の状態. */
     private static class SpinSession {
+        final AttackHandContext.Snapshot hand = AttackHandContext.capture();
+        final int direction = hand != null && AttackHandContext.mirrored(hand.player()) ? -1 : 1;
         final float startYaw;
         int elapsed = 0;
         final int totalTicks;
         final float damage;
         final double range;
         final boolean charged;
-        ItemStack lunaWeapon = ItemStack.EMPTY;
         boolean lunaEffects;
         /** ヒット済み敵の UUID 集合 (重複ダメージ防止). */
         final Set<UUID> hitEntities = new HashSet<>();

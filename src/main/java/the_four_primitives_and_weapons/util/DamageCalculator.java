@@ -332,7 +332,7 @@ public class DamageCalculator {
         // ダメージを与える
         DamageSource source = attacker instanceof Player player ?
             player.damageSources().playerAttack(player) : attacker.damageSources().mobAttack(attacker);
-        target.hurt(source, actualDamage);
+        the_four_primitives_and_weapons.skill.AttackHandContext.hurt(attacker, target, source, actualDamage);
 
         // 武器エフェクトを適用
         applyWeaponEffects(attacker, target, actualDamage, weapon);
