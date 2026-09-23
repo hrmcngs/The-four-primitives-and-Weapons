@@ -21,7 +21,7 @@ public final class DualWieldSwingAnimation {
         Swing[] swings = SWINGS.computeIfAbsent(player, ignored -> new Swing[2]);
         swings[offHand ? 1 : 0] = new Swing(level.getGameTime(), Math.max(1, Math.min(40, duration)),
             player.getItemInHand(hand).getItem());
-        // Luna fires on release rather than vanilla's click path. Restore the local HUD cooldown.
+        // Luna's custom click path bypasses vanilla attack handling. Restore the local HUD cooldown.
         // An off-hand follow-up must not restart the main-hand gauge a second time.
         if (!offHand && player == Minecraft.getInstance().player) player.resetAttackStrengthTicker();
     }

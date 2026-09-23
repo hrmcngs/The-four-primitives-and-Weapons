@@ -198,8 +198,6 @@ public class DamageCalculator {
             int baneLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS, weapon);
             if (baneLevel > 0) {
                 damage += 2.5f * baneLevel;
-                // スローネス → attribute modifier ベース (牛乳で消えない / モヤ無し)
-                SpecialDebuffHandler.applySlowness(target, 20 + 10 * baneLevel, 3);
             }
         }
 
@@ -262,6 +260,11 @@ public class DamageCalculator {
             weapon = attacker.getItemInHand(InteractionHand.MAIN_HAND);
         }
 
+        int baneLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BANE_OF_ARTHROPODS, weapon);
+        if (target.getMobType() == MobType.ARTHROPOD && baneLevel > 0) {
+            SpecialDebuffHandler.applySlowness(target, 20 + 10 * baneLevel, 3);
+        }
+
         // 火属性エンチャント（Fire Aspect）
         int fireAspect = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FIRE_ASPECT, weapon);
         if (fireAspect > 0) {
@@ -322,6 +325,13 @@ public class DamageCalculator {
      * @return 実際に与えたダメージ
      */
     public static float dealDamage(LivingEntity attacker, LivingEntity target, float baseDamage, ItemStack weapon) {
+        return dealDamage(attacker, target, baseDamage, weapon,
+                attacker instanceof Player player
+                        ? the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition())
+                        : attacker.getEyePosition());
+    }
+
+    public static float dealDamage(LivingEntity attacker, LivingEntity target, float baseDamage, ItemStack weapon, Vec3 origin) {
         // ダメージ計算
         float actualDamage = calculateDamage(attacker, target, baseDamage, weapon);
 
@@ -332,7 +342,8 @@ public class DamageCalculator {
         // ダメージを与える
         DamageSource source = attacker instanceof Player player ?
             player.damageSources().playerAttack(player) : attacker.damageSources().mobAttack(attacker);
-        the_four_primitives_and_weapons.skill.AttackHandContext.hurt(attacker, target, source, actualDamage);
+        source = new DamageSource(source.typeHolder(), attacker, attacker, origin);
+        if (!the_four_primitives_and_weapons.skill.AttackHandContext.hurt(attacker, target, source, actualDamage)) return 0;
 
         // 武器エフェクトを適用
         applyWeaponEffects(attacker, target, actualDamage, weapon);

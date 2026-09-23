@@ -35,28 +35,30 @@ import java.util.Comparator;
 
 public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
     /** Lunaの通常突き・変更した通常技で共通の命中処理。 */
-    public static void damageNormalTarget(ItemStack weapon, Entity target) {
+    public static void damageNormalTarget(Entity attacker, ItemStack weapon, Entity target, Vec3 origin) {
         if (target.level().isClientSide || !(target instanceof LivingEntity)
                 || target instanceof SkeltonMobEntity) return;
-        if (EnchantmentHelper.getItemEnchantmentLevel(TheFourPrimitivesAndWeaponsModEnchantments.KILL.get(), weapon) != 0) {
-            target.kill();
-        } else {
-            var hand = the_four_primitives_and_weapons.skill.AttackHandContext.capture();
-            if (hand != null) {
-                the_four_primitives_and_weapons.skill.AttackHandContext.hurt(hand.player(),
-                    (LivingEntity) target, target.damageSources().generic(), 1.0F);
-            } else target.hurt(target.damageSources().generic(), 1.0F);
-        }
+        // Keep the beam's origin: generic damage without a position cannot be shield-blocked.
+        var source = new the_four_primitives_and_weapons.damage.ShieldableSkillDamageSource(
+                new net.minecraft.world.damagesource.DamageSource(
+                    target.damageSources().generic().typeHolder(), attacker, attacker, origin), origin);
+        boolean hit = attacker instanceof LivingEntity living
+                ? the_four_primitives_and_weapons.skill.AttackHandContext.hurt(living, (LivingEntity) target, source, 1.0F)
+                : target.hurt(source, 1.0F);
+        if (hit && EnchantmentHelper.getItemEnchantmentLevel(TheFourPrimitivesAndWeaponsModEnchantments.KILL.get(), weapon) != 0) target.kill();
     }
 
 	/** 召喚Luna用。プレイヤー通常技と同じ直線END_RODレーザーを発射する。 */
-	public static void fireSummonedStraightLaser(ServerLevel level, Entity source, LivingEntity target,
-			@javax.annotation.Nullable ServerPlayer viewer) {
+	public static boolean fireSummonedStraightLaser(ServerLevel level, Entity source, LivingEntity target,
+			@javax.annotation.Nullable ServerPlayer viewer, float damage) {
 		Vec3 start = source.position().add(0, source.getBbHeight() * 0.55, 0);
 		Vec3 end = target.position().add(0, target.getBbHeight() * 0.5, 0);
+		Vec3 clipped = the_four_primitives_and_weapons.event.GreatshieldHandler.clipBeam(level, start, end, damage);
+		boolean reachesTarget = clipped.distanceToSqr(end) < 1.0e-12;
+		end = clipped;
 		Vec3 line = end.subtract(start);
 		double length = line.length();
-		if (length < 0.001) return;
+		if (length < 0.001) return false;
 		Vec3 direction = line.scale(1.0 / length);
 		double spacing = the_four_primitives_and_weapons.item.LunaFormula.get().value(
                 the_four_primitives_and_weapons.util.LunaBehaviorScript.Setting.LASER_STEP);
@@ -74,6 +76,7 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
 				net.minecraft.sounds.SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 2.0F, 2.0F);
 		level.playSound(null, source.getX(), source.getY(), source.getZ(),
 				net.minecraft.sounds.SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 1.2F, 1.15F);
+		return reachesTarget;
 	}
 
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -84,6 +87,18 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
 			the_four_primitives_and_weapons.skill.MotionExecutor.executeMotion("thrust", player, 0.0F);
 			return;
 		}
+		fireBeam(world, x, y, z, entity);
+	}
+
+    public static void fireReadyBeam(net.minecraft.world.entity.player.Player player, float attackGauge) {
+        if (player.level().isClientSide || !the_four_primitives_and_weapons.skill.LunaChargeRules.beamEnabled(attackGauge)) return;
+        Vec3 origin = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.position());
+        fireBeam(player.level(), origin.x, origin.y, origin.z, player);
+    }
+
+    private static void fireBeam(LevelAccessor world, double x, double y, double z, Entity entity) {
+        double beamY = entity instanceof net.minecraft.world.entity.player.Player player
+                ? y + the_four_primitives_and_weapons.util.ThrustHitbox.height(player) : y + 1;
 		double r = 0;
 		double alpha = 0;
 		double beta = 0;
@@ -110,27 +125,22 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
 				r = 1;
 				alpha = entity.getYRot();
 				beta = entity.getXRot();
-				{
-					Entity _ent = entity;
-					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), VersionHelper.getLevel(_ent) instanceof ServerLevel ? (ServerLevel) VersionHelper.getLevel(_ent) : null, 4,
-								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "particle minecraft:enchanted_hit ~ ~1 ~ 0.5 0.5 0.5 .0 20 force @p");
-					}
-				}
-				{
-					Entity _ent = entity;
-					if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-						_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), VersionHelper.getLevel(_ent) instanceof ServerLevel ? (ServerLevel) VersionHelper.getLevel(_ent) : null, 4,
-								_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "particle minecraft:end_rod ~ ~1 ~ 1 1 1 .0 5 force @p");
-					}
-				}
+                if (world instanceof ServerLevel level) {
+                    if (entity instanceof ServerPlayer player) {
+                        level.sendParticles(player, ParticleTypes.ENCHANTED_HIT, true, x, beamY, z, 20, 0.5, 0.5, 0.5, 0);
+                        level.sendParticles(player, ParticleTypes.END_ROD, true, x, beamY, z, 5, 1, 1, 1, 0);
+                    } else {
+                        level.sendParticles(ParticleTypes.ENCHANTED_HIT, x, beamY, z, 20, 0.5, 0.5, 0.5, 0);
+                        level.sendParticles(ParticleTypes.END_ROD, x, beamY, z, 5, 1, 1, 1, 0);
+                    }
+                }
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
 						_level.playSound(null,
-								new BlockPos((int) (x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), (int) ((y + 1) - r * Math.sin(Math.toRadians(beta))), (int) (z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha)))),
+								new BlockPos((int) (x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), (int) ((beamY) - r * Math.sin(Math.toRadians(beta))), (int) (z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha)))),
 								ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.beacon.activate")), SoundSource.PLAYERS, 2, 2);
 					} else {
-						_level.playLocalSound((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))), (z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))),
+						_level.playLocalSound((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((beamY) - r * Math.sin(Math.toRadians(beta))), (z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))),
 								ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.beacon.activate")), SoundSource.PLAYERS, 2, 2, false);
 					}
 				}
@@ -139,21 +149,33 @@ public class LunaenteiteigaaitemuwoZhentutaShiProcedure {
 							net.minecraft.sounds.SoundEvents.BEACON_DEACTIVATE,
 							SoundSource.PLAYERS, 1.2F, 1.15F);
 				}
+				Vec3 beamOrigin = new Vec3(x, beamY, z);
+				Vec3 previous = beamOrigin;
+                Vec3 beamEnd = beamOrigin.add(entity.getLookAngle().scale(21));
+                var beamShields = the_four_primitives_and_weapons.event.GreatshieldHandler.beamShields(entity.level(), new AABB(beamOrigin, beamEnd));
+				java.util.Set<Integer> hitTargets = new java.util.HashSet<>();
+                // Reuse one broad-phase query for all samples; do not sort entities per particle.
+                var beamTargets = world.getEntitiesOfClass(LivingEntity.class, new AABB(beamOrigin, beamEnd).inflate(0.25),
+                        target -> target != entity && !(target instanceof SkeltonMobEntity));
 				for (int index0 = 0; index0 < 100; index0++) {
 					{
-						final Vec3 _center = new Vec3((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((y + 1) - r * Math.sin(Math.toRadians(beta))),
+						final Vec3 _center = new Vec3((x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha))), ((beamY) - r * Math.sin(Math.toRadians(beta))),
 								(z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha))));
-						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(0.5 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
-								.collect(Collectors.toList());
-						for (Entity target : _entfound) {
-							if (target != entity) damageNormalTarget(
-									entity instanceof LivingEntity living ? living.getMainHandItem() : ItemStack.EMPTY,
-									target);
-						}
+						Vec3 clipped = the_four_primitives_and_weapons.event.GreatshieldHandler.clipBeam(beamShields, previous, _center, 1.0F);
+						if (clipped.distanceToSqr(_center) > 1.0e-12) break;
+						previous = _center;
+                        AABB sample = new AABB(_center, _center).inflate(0.25);
+                        for (LivingEntity target : beamTargets) {
+                            if (!hitTargets.contains(target.getId()) && target.getBoundingBox().intersects(sample)) {
+                                hitTargets.add(target.getId());
+                                damageNormalTarget(entity, entity instanceof LivingEntity living ? living.getMainHandItem() : ItemStack.EMPTY,
+                                        target, beamOrigin);
+                            }
+                        }
 					}
-					if (world instanceof ServerLevel _level) {
+					if (index0 % 2 == 0 && world instanceof ServerLevel _level) {
 						double px = x - r * Math.cos(Math.toRadians(beta)) * Math.sin(Math.toRadians(alpha));
-						double py = (y + 1) - r * Math.sin(Math.toRadians(beta));
+						double py = (beamY) - r * Math.sin(Math.toRadians(beta));
 						double pz = z + r * Math.cos(Math.toRadians(beta)) * Math.cos(Math.toRadians(alpha));
 						if (entity instanceof ServerPlayer serverPlayer)
 							_level.sendParticles(serverPlayer, ParticleTypes.END_ROD, true, px, py, pz, 1, 0.03, 0.03, 0.03, 0);

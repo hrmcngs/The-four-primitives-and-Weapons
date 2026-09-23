@@ -191,9 +191,9 @@ public class SpinSlashTickHandler {
             // 開始角からの相対角が「これまでに掃いたアーク」内なら hit.
             // (totalSwept は 720° まで上がるので 360°超でも relativeAngle <= totalSwept で OK)
             if (totalSwept >= relativeAngle) {
-                DamageCalculator.dealDamage(player, target, s.damage, weapon);
-                DamageCalculator.applyNormalKnockback(player, target, weapon);
                 s.hitEntities.add(target.getUUID());
+                if (DamageCalculator.dealDamage(player, target, s.damage, weapon) <= 0) continue;
+                DamageCalculator.applyNormalKnockback(player, target, weapon);
 
                 if (world instanceof ServerLevel sw) {
                     sw.sendParticles(MotionExecutor.slashDust(player),

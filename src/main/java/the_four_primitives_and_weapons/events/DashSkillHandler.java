@@ -347,7 +347,7 @@ public class DashSkillHandler {
         for (LivingEntity target : targets) {
             state.hitEntities.add(target.getId());
             ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-            DamageCalculator.dealDamage(player, target, state.baseDamage, weapon);
+            if (DamageCalculator.dealDamage(player, target, state.baseDamage, weapon) <= 0) continue;
 
             // ノックバック（WATER: 強化ノックバック・耐性考慮）
             double knockScale = state.element == ElementType.WATER ? 1.2 : 0.5;

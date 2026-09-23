@@ -1,6 +1,7 @@
 package the_four_primitives_and_weapons.util;
 
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
@@ -9,6 +10,20 @@ public final class ThrustHitbox {
     private static final double HALF_WIDTH = 0.2;
 
     private ThrustHitbox() {}
+
+    /** Shared chest height for thrust dust, its hitbox, and Luna's beam. */
+    public static double height(Player player) {
+        return player.getEyeHeight() * 0.8;
+    }
+
+    public static Vec3 origin(Player player) {
+        return origin(player, player.position());
+    }
+
+    public static Vec3 origin(Player player, Vec3 feet) {
+        return the_four_primitives_and_weapons.skill.AttackHandContext.origin(player,
+                feet.add(0, height(player), 0));
+    }
 
     public static AABB bounds(Vec3 start, Vec3 end) {
         return new AABB(start, end).inflate(HALF_WIDTH);

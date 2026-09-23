@@ -189,7 +189,12 @@ public class ElectricElementDamageHandler {
      * @param source ダメージソース元
      * @param level 属性レベル
      */
-    public static void applyElectricDamage(LivingEntity target, float damage, LivingEntity source, int level) {
+    public static boolean applyElectricDamage(LivingEntity target, float damage, LivingEntity source, int level) {
+        return applyElectricDamage(target, damage, source, level, null);
+    }
+
+    public static boolean applyElectricDamage(LivingEntity target, float damage, LivingEntity source, int level,
+            net.minecraft.world.phys.Vec3 beamOrigin) {
         // カスタム DamageType: the_four_primitives_and_weapons:electric
         DamageSource ds = ModDamageSources.ofElement(target.level(), ElementType.ELECTRIC, source);
         // ds が IElementalDamageSource を実装していない場合 ( magic フォールバック等 ) に
@@ -199,11 +204,12 @@ public class ElectricElementDamageHandler {
             elementalSource.setElementType(ElementType.ELECTRIC);
             elementalSource.setElementLevel(level);
         }
+        if (beamOrigin != null) ds = new ShieldableSkillDamageSource(ds, beamOrigin);
 
         // 直前の被弾による無敵時間で弾かれて「ダメージが入らない」 のを防ぐ
         //   ( 放電スキルは連続/同時ヒットしうるため )。
         target.invulnerableTime = 0;
-        target.hurt(ds, damage);
+        return target.hurt(ds, damage);
     }
 
     public static float handleElectricDamage(LivingEntity attacker, LivingEntity target, ItemStack weapon, float baseDmg) {

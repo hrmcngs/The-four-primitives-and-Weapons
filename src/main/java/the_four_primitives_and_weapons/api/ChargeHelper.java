@@ -151,7 +151,7 @@ public final class ChargeHelper {
         ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
         Vec3 playerPos = player.position();
         for (LivingEntity target : targets) {
-            DamageCalculator.dealDamage(player, target, damage, weapon);
+            if (DamageCalculator.dealDamage(player, target, damage, weapon) <= 0) continue;
             Vec3 kb = target.position().subtract(playerPos).normalize().scale(knockbackStrength);
             target.setDeltaMovement(target.getDeltaMovement().add(kb.x, 0.1, kb.z));
         }

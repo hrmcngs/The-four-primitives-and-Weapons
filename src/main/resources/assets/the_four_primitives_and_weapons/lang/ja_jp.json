@@ -1175,7 +1175,7 @@
   "tooltip.the_four_primitives_and_weapons.shield_bash_damage": "バッシュ攻撃力: %s～%s",
   "tooltip.the_four_primitives_and_weapons.shield_bash_cooldown": "バッシュクールタイム: %s秒",
   "jei.the_four_primitives_and_weapons.info.shield.controls": "オフハンドの盾は右クリックで防御。利き手の盾は右クリック長押しでバッシュをチャージし、離すと前方へ攻撃します。0.25秒から発動、2秒で最大チャージ。画面下部にゲージと攻撃力を表示します。 前入力（初期設定W）をしながら利き手の盾をチャージすると、地上で離したとき前方へ踏み込むダッシュバッシュになります。射程が1ブロック、吹き飛ばしが強化されます。攻撃力・耐久消費・クールタイムは通常のバッシュと共通です。",
-  "jei.the_four_primitives_and_weapons.info.shield.parry": "持ち替えキー（初期設定F）で盾をどちらかの手へ移すと、直後0.5秒間は攻撃をパリーできます。成功するとダメージを無効化して攻撃者へ「受けたダメージ×1.5＋盾の攻撃力」を反射し、盾の耐久を消費します。",
+  "jei.the_four_primitives_and_weapons.info.shield.parry": "盾を持ち替え（初期設定F）、またはオフハンドのパリィシールドを構えた直後0.2秒以内に、正面120度からの攻撃を1回パリィできます。再受付は入力から0.6秒後で、連打しても受付時間は延長されません。成功するとダメージを無効化し、「受けたダメージ×1.5＋盾の攻撃力」を反射して耐久を消費します。構え続けた場合は通常の盾防御になります。",
   "jei.the_four_primitives_and_weapons.info.shield.stats": "攻撃力とクールタイムは盾の説明欄で確認できます。バッシュは空振りでもクールタイムが入り、命中時に耐久を1消費します。防御とパリーでも耐久を消費します。",
   "jei.the_four_primitives_and_weapons.info.shield.vanilla": "板材6個と鉄インゴット1個を作業台で組み合わせて作成。通常の盾でもチャージバッシュとFキーのパリーが使えます。",
   "jei.the_four_primitives_and_weapons.info.shield.material": "全体タイプ。対応素材6個と棒1本を作業台で組み合わせます。板面・縁・持ち手が素材の見た目になります。",

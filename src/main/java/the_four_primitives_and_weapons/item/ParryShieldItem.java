@@ -40,7 +40,9 @@ public class ParryShieldItem extends ShieldItem {
     public static final String NBT_BLOCK_START = "ParryShieldBlockStart";
     public static final String NBT_SWAP_START  = "ParryShieldSwapStart";
 
-    public static final int PARRY_WINDOW_TICKS = 10;
+    public static final int PARRY_WINDOW_TICKS = the_four_primitives_and_weapons.skill.CombatTimingRules.PARRY_WINDOW;
+    private static final String NBT_ATTEMPT = "ParryAttemptTime";
+    private static final String NBT_DIMENSION = "ParryAttemptDimension";
     public static final int MIN_CHARGE_TICKS   = ShieldBashHandler.MIN_CHARGE_TICKS;
     public static final int MAX_CHARGE_TICKS   = ShieldBashHandler.MAX_CHARGE_TICKS;
     public static final int USE_DURATION       = 72000;
@@ -68,7 +70,8 @@ public class ParryShieldItem extends ShieldItem {
 
         if (!level.isClientSide && hand == InteractionHand.OFF_HAND) {
             // オフハンド: パリィウィンドウ開始
-            player.getPersistentData().putLong(NBT_BLOCK_START, level.getGameTime());
+            if (beginParryAttempt(player, level.getGameTime()))
+                player.getPersistentData().putLong(NBT_BLOCK_START, level.getGameTime());
         }
         // メインハンド: 共通の ShieldBashHandler がチャージとリリースを処理
 
@@ -91,6 +94,23 @@ public class ParryShieldItem extends ShieldItem {
     }
 
     public static void recordSwapParry(Player player, long gameTick) {
-        player.getPersistentData().putLong(NBT_SWAP_START, gameTick);
+        if (beginParryAttempt(player, gameTick)) player.getPersistentData().putLong(NBT_SWAP_START, gameTick);
+    }
+
+    private static boolean beginParryAttempt(Player player, long now) {
+        CompoundTag data = player.getPersistentData();
+        String dimension = player.level().dimension().location().toString();
+        if (data.contains(NBT_ATTEMPT) && dimension.equals(data.getString(NBT_DIMENSION))
+                && the_four_primitives_and_weapons.skill.CombatTimingRules.inWindow(now, data.getLong(NBT_ATTEMPT),
+                    the_four_primitives_and_weapons.skill.CombatTimingRules.PARRY_RETRY)) return false;
+        consumeParry(player);
+        data.putLong(NBT_ATTEMPT, now);
+        data.putString(NBT_DIMENSION, dimension);
+        return true;
+    }
+
+    public static void consumeParry(Player player) {
+        player.getPersistentData().remove(NBT_BLOCK_START);
+        player.getPersistentData().remove(NBT_SWAP_START);
     }
 }

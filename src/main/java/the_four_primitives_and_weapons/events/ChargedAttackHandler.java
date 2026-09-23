@@ -74,7 +74,6 @@ public class ChargedAttackHandler {
     private static final Map<Player, ChargeData> clientChargeData = new java.util.WeakHashMap<>();
     private static final int MAX_CHARGE_TIME = 60; // 3秒 (20 ticks/秒 × 3)
     private static final int MIN_CHARGE_TIME = 20; // 最小チャージ時間 1秒
-    private static final int LUNA_CURVE_CHARGE_TIME = the_four_primitives_and_weapons.skill.LunaChargeRules.MIN_TICKS;
     /**
      * 攻撃ゲージが満タンになるまでの長さにかける倍率。 1.0 = バニラの攻撃クールダウンと同じ。
      *
@@ -133,21 +132,11 @@ public class ChargedAttackHandler {
         if (player == null || mc.screen != null) return;
         if (!isWeapon(player.getMainHandItem())) return;
 
-        // Luna chooses normal/charged on release, including taps shorter than one client tick.
+        // Luna attacks on click. Its beam readiness comes from the attack gauge, not a held input.
         if (player.getMainHandItem().getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
             event.setCanceled(true);
             event.setSwingHand(false);
-            ChargeData data = clientChargeData.computeIfAbsent(player, ignored -> new ChargeData());
-            if (!data.isCharging) {
-                if (data.chargeCooldown > 0) {
-                    TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(0, 0));
-                } else {
-                    data.isCharging = true;
-                    data.chargeTime = 0;
-                    data.chargingItem = player.getMainHandItem().copy();
-                    data.chargingSlot = player.getInventory().selected;
-                }
-            }
+            TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(0, 0));
             return;
         }
 
@@ -224,6 +213,12 @@ public class ChargedAttackHandler {
         ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
 
+        if (mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
+            data.reset();
+            data.wasLeftClickPressed = mc.options.keyAttack.isDown();
+            return;
+        }
+
         // Closing input with a menu or switching weapons cancels, rather than firing a stored attack.
         if (mc.screen != null || (data.isCharging && (data.chargingSlot != player.getInventory().selected
                 || !ItemStack.isSameItemSameTags(data.chargingItem, mainHand)))) {
@@ -272,15 +267,11 @@ public class ChargedAttackHandler {
         // 通常の武器を持っている場合
         if (isWeapon(mainHand)) {
             boolean isLeftClickHeld = mc.options.keyAttack.isDown();
-            boolean isLuna = mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get();
             
             // チャージ開始（左クリック長押し）- クールダウン中は開始しない。
             // 閾値を上げて「コンボの押しっぱなし」で誤ってチャージ攻撃(slam_down等)が
             // 出るのを防ぐ ( 5→10 tick = 0.5秒明確に押し続けた時だけチャージ開始 )。
-            // Lunaは従来どおり押し始めからチャージする。他武器だけ誤発動防止の
-            // 10tick猶予を使う。以前はLunaにも猶予が掛かり、1秒溜めても
-            // MIN_CHARGE_TIMEへ届かず解放パケット自体が送られていなかった。
-            if (isLeftClickHeld && !data.isCharging && (isLuna || data.clickReleaseTimer > 10)) {
+            if (isLeftClickHeld && !data.isCharging && data.clickReleaseTimer > 10) {
                 if (data.chargeCooldown <= 0) {
                     data.isCharging = true;
                     data.chargeTime = 0;
@@ -315,27 +306,20 @@ public class ChargedAttackHandler {
     }
     
     private static void releaseChargedAttack(Player player, ChargeData data) {
-        // Luna: short release -> normal skill; a full second or more -> charged skill.
-        boolean chargedLuna = !data.chargingItem.isEmpty()
-                && data.chargingItem.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get();
-        int requiredChargeTime = chargedLuna ? LUNA_CURVE_CHARGE_TIME : MIN_CHARGE_TIME;
-        var action = the_four_primitives_and_weapons.skill.ChargeReleaseRules.action(chargedLuna, data.chargeTime, requiredChargeTime);
-        if (action == the_four_primitives_and_weapons.skill.ChargeReleaseRules.Action.CHARGED) {
+        // Only other weapons use the held-charge input path.
+        if (data.chargeTime >= MIN_CHARGE_TIME) {
             float chargePercent = Math.min((float) data.chargeTime / MAX_CHARGE_TIME, 1.0f);
             // サーバーに攻撃パケットを送信
             TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(1, chargePercent));
 
             // チャージ攻撃後のクールダウンを設定（チャージ率に応じて長くなる）
             data.chargeCooldown = 20 + (int)(chargePercent * 20); // 1秒～2秒
-        } else if (action == the_four_primitives_and_weapons.skill.ChargeReleaseRules.Action.NORMAL) {
-            TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(0, 0));
         }
         data.reset();
     }
     
     public static void performChargedAttack(Player player, float chargePercent) {
-        if (player.getMainHandItem().getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()
-                && !the_four_primitives_and_weapons.skill.LunaChargeRules.beamEnabled(chargePercent)) {
+        if (player.getMainHandItem().getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
             performNormalAttack(player);
             return;
         }
@@ -348,8 +332,11 @@ public class ChargedAttackHandler {
     }
 
     public static void performChargedAttack(Player player, float chargePercent, boolean isCooldown) {
+        if (player.level().isClientSide || !player.isAlive() || player.isSpectator()) return;
         if (!the_four_primitives_and_weapons.skill.AttackHandContext.active(player)) {
             if (the_four_primitives_and_weapons.skill.DualWieldAttackHandler.busy(player)) return;
+            if (player.isBlocking() || !the_four_primitives_and_weapons.skill.CombatRecovery.ready(player)) return;
+            the_four_primitives_and_weapons.skill.CombatRecovery.begin(player, true);
             if (the_four_primitives_and_weapons.skill.DualWieldAttackHandler.paired(player)) {
                 var skills = PlayerSkillData.getSkillData(player);
                 the_four_primitives_and_weapons.skill.DualWieldAttackHandler.execute(player,
@@ -360,7 +347,7 @@ public class ChargedAttackHandler {
                 return;
             }
         }
-        syncReleasedSwing(player);
+        syncSkillSwing(player);
         Level world = player.level();
         Vec3 playerPos = player.position();
         Vec3 lookVec = the_four_primitives_and_weapons.skill.MotionExecutor.horizontalLook(player);
@@ -516,6 +503,7 @@ public class ChargedAttackHandler {
         for (LivingEntity target : targets) {
             ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
             float actualDamage = DamageCalculator.dealDamage(player, target, baseDamage, weapon);
+            if (actualDamage <= 0) continue;
             
             // 貫通による吹き飛ばし
             target.setDeltaMovement(lookVec.scale(2.0 * chargePercent).add(0, 0.5, 0));
@@ -532,7 +520,10 @@ public class ChargedAttackHandler {
     }
     
     public static void performNormalAttack(Player player) {
+        if (player.level().isClientSide || !player.isAlive() || player.isSpectator() || player.isBlocking()
+                || !the_four_primitives_and_weapons.skill.CombatRecovery.ready(player)) return;
         if (the_four_primitives_and_weapons.skill.DualWieldAttackHandler.busy(player)) return;
+        the_four_primitives_and_weapons.skill.CombatRecovery.begin(player, false);
         Level world = player.level();
 
         // プレイヤーのスキルデータを取得
@@ -553,14 +544,14 @@ public class ChargedAttackHandler {
         }
 
         boolean isLuna = mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get();
-        if (isLuna && player.getAttackStrengthScale(0.5F) < 0.99F) return;
 
         // コンボカウンターを取得
         UUID playerId = player.getUUID();
         ChargeData data = playerChargeData.computeIfAbsent(playerId, k -> new ChargeData());
 
         // 攻撃ゲージの溜まり具合。 lastAttackTime を更新する「前」に取る ( 更新後だと必ず 0 になる )。
-        float chargeScale = attackChargeScale(player, data);
+        float chargeScale = isLuna ? Math.min(attackChargeScale(player, data), player.getAttackStrengthScale(0.0F))
+            : attackChargeScale(player, data);
 
         // コンボタイムアウト。 遅い武器 / 不得意技 ( ゲージ充填 0.5 倍 ) だと固定 20 tick では
         // 2 撃目がゲージ満タンに間に合わないので、 実際の攻撃間隔に追従させる。
@@ -595,18 +586,26 @@ public class ChargedAttackHandler {
 
         // A paired attack advances the combo once, not once per hand.
         data.comboCounter++;
+        if (isLuna) player.resetAttackStrengthTicker();
     }
 
     private static void executeNormalMotion(Player player, AttackSlot slot, String motionId, float chargeScale) {
         ItemStack mainHand = player.getMainHandItem();
         boolean isLuna = mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get();
-        if (isLuna) syncReleasedSwing(player);
-        // Uncharged Luna uses the same selected skill, dust and melee damage as other weapons.
-        MotionExecutor.executeMotion(motionId, player, 0.0f, chargeScale);
+        if (isLuna) syncSkillSwing(player);
+        if (isLuna) {
+            // A ready thrust replaces the normal thrust with a beam, including its melee hit.
+            if ("thrust".equals(motionId) && PlayerSkillData.isMotionEnabled(player, motionId)
+                    && the_four_primitives_and_weapons.skill.LunaChargeRules.beamEnabled(chargeScale)) {
+                the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure.fireReadyBeam(player, chargeScale);
+            } else {
+                the_four_primitives_and_weapons.skill.LunaSkillEffects.execute(motionId, player, chargeScale);
+            }
+        } else MotionExecutor.executeMotion(motionId, player, 0.0f, chargeScale);
     }
 
-    /** Release-triggered skills bypass vanilla's click swing, so synchronize their actual start. */
-    private static void syncReleasedSwing(Player player) {
+    /** Custom skill input bypasses vanilla's click swing, so synchronize the actual attack. */
+    private static void syncSkillSwing(Player player) {
         if (player instanceof net.minecraft.server.level.ServerPlayer serverPlayer
                 && !the_four_primitives_and_weapons.skill.AttackHandContext.active(player)) {
             player.swing(InteractionHand.MAIN_HAND, true);

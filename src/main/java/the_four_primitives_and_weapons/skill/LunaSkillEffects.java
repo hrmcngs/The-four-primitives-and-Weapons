@@ -7,7 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
-/** Luna's extra range and END_ROD effects are reserved for completed charges. */
+/** Luna's extra range and END_ROD effects require a full attack gauge. */
 public final class LunaSkillEffects {
     private record Context(Player player) {}
     private static final ThreadLocal<Context> ACTIVE = new ThreadLocal<>();
@@ -19,7 +19,8 @@ public final class LunaSkillEffects {
     }
 
     public static void execute(String motionId, Player player, float chargePercent, float chargeScale) {
-        if (!LunaChargeRules.beamEnabled(chargePercent)) {
+        float gauge = chargeScale >= 0 ? chargeScale : player.getAttackStrengthScale(0.0F);
+        if (!LunaChargeRules.beamEnabled(gauge)) {
             MotionExecutor.executeMotion(motionId, player, 0.0F, chargeScale);
             return;
         }

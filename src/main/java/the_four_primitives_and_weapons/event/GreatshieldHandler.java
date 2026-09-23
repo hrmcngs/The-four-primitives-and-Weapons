@@ -4,7 +4,6 @@ import java.util.UUID;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -22,6 +21,28 @@ import the_four_primitives_and_weapons.item.GreatshieldItem;
 @Mod.EventBusSubscriber(modid = TheFourPrimitivesAndWeaponsMod.MODID)
 public final class GreatshieldHandler {
     private static final UUID WEIGHT = UUID.fromString("e3d6d41f-3c47-44d3-844f-50cc23fba2d1");
+    private static final java.util.Map<net.minecraft.server.level.ServerLevel, java.util.Set<PlacedGreatshieldEntity>> PLACED = new java.util.WeakHashMap<>();
+
+    @SubscribeEvent
+    public static void shieldJoined(net.minecraftforge.event.entity.EntityJoinLevelEvent event) {
+        if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel level
+                && event.getEntity() instanceof PlacedGreatshieldEntity shield) {
+            PLACED.computeIfAbsent(level, ignored -> java.util.Collections.newSetFromMap(new java.util.WeakHashMap<>())).add(shield);
+        }
+    }
+
+    @SubscribeEvent
+    public static void shieldLeft(net.minecraftforge.event.entity.EntityLeaveLevelEvent event) {
+        if (event.getEntity() instanceof PlacedGreatshieldEntity shield) {
+            var shields = PLACED.get(event.getLevel());
+            if (shields != null) shields.remove(shield);
+        }
+    }
+
+    @SubscribeEvent
+    public static void levelUnloaded(net.minecraftforge.event.level.LevelEvent.Unload event) {
+        PLACED.remove(event.getLevel());
+    }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onPlace(PlayerInteractEvent.RightClickBlock event) {
@@ -106,19 +127,58 @@ public final class GreatshieldHandler {
                 // 爆発は Detonate で実際の爆心から判定済み。着火したプレイヤーの位置を使わない。
                 || event.getSource().is(DamageTypeTags.IS_EXPLOSION)) return;
         var source = event.getSource();
-        if (source.getEntity() == null && !(source.getDirectEntity() instanceof Projectile)) return;
         Vec3 from = source.getSourcePosition();
-        if (source.getDirectEntity() instanceof net.minecraft.world.entity.LivingEntity attacker) from = attacker.getEyePosition();
+        if (source.sourcePositionRaw() == null
+                && source.getDirectEntity() instanceof net.minecraft.world.entity.LivingEntity attacker) from = attacker.getEyePosition();
         if (from == null) return;
         Vec3 to = target.getBoundingBox().getCenter();
-        // 保護対象の直近の大盾だけを調べる。上下・左右を回り込んだ攻撃は防がない。
-        for (var shield : target.level().getEntitiesOfClass(PlacedGreatshieldEntity.class,
-                target.getBoundingBox().inflate(3), entity -> !entity.isRemoved())) {
-            if (shield.getBoundingBox().clip(from, to).isPresent()) {
-                event.setCanceled(true);
-                shield.absorbDamage(event.getAmount());
-                return;
+        var shield = firstShield(target.level(), from, to);
+        if (shield != null) {
+            event.setCanceled(true);
+            shield.absorbDamage(event.getAmount());
+        }
+    }
+
+    /** Trace the entire attack path, including shields far from the victim. */
+    public static PlacedGreatshieldEntity firstShield(net.minecraft.world.level.Level level, Vec3 from, Vec3 to) {
+        return firstShield(beamShields(level, new net.minecraft.world.phys.AABB(from, to)), from, to);
+    }
+
+    public static java.util.List<PlacedGreatshieldEntity> beamShields(net.minecraft.world.level.Level level, net.minecraft.world.phys.AABB bounds) {
+        var shields = PLACED.get(level);
+        if (shields == null || shields.isEmpty()) return java.util.List.of();
+        var search = bounds.inflate(0.001);
+        java.util.List<PlacedGreatshieldEntity> result = new java.util.ArrayList<>();
+        for (var shield : shields) {
+            if (!shield.isRemoved() && !shield.getShield().isEmpty() && shield.getBoundingBox().intersects(search)) result.add(shield);
+        }
+        return result;
+    }
+
+    private static PlacedGreatshieldEntity firstShield(java.util.List<PlacedGreatshieldEntity> shields, Vec3 from, Vec3 to) {
+        PlacedGreatshieldEntity nearest = null;
+        double nearestDistance = Double.POSITIVE_INFINITY;
+        for (var shield : shields) {
+            if (shield.isRemoved() || shield.getShield().isEmpty()) continue;
+            var hit = the_four_primitives_and_weapons.util.ShieldGeometry.intersection(shield.getBoundingBox(), from, to);
+            if (hit.isPresent() && from.distanceToSqr(hit.get()) < nearestDistance) {
+                nearest = shield;
+                nearestDistance = from.distanceToSqr(hit.get());
             }
         }
+        return nearest;
+    }
+
+    /** Clip particle beams too, so their visible path cannot continue through a shield. */
+    public static Vec3 clipBeam(net.minecraft.world.level.Level level, Vec3 from, Vec3 to, float damage) {
+        return clipBeam(beamShields(level, new net.minecraft.world.phys.AABB(from, to)), from, to, damage);
+    }
+
+    public static Vec3 clipBeam(java.util.List<PlacedGreatshieldEntity> shields, Vec3 from, Vec3 to, float damage) {
+        var shield = firstShield(shields, from, to);
+        if (shield == null) return to;
+        Vec3 hit = the_four_primitives_and_weapons.util.ShieldGeometry.intersection(shield.getBoundingBox(), from, to).orElse(to);
+        shield.absorbDamage(damage);
+        return hit;
     }
 }

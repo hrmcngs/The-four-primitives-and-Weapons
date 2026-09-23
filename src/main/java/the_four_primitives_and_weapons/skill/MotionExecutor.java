@@ -244,7 +244,7 @@ public class MotionExecutor {
         }
 
         // 通常・チャージともに演出と同じ高さの細い直線で判定する。
-        Vec3 hitStart = AttackHandContext.origin(player, player.getEyePosition());
+        Vec3 hitStart = ThrustHitbox.origin(player);
         Vec3 hitEnd = hitStart.add(lookVec.scale(range));
         AABB searchArea = ThrustHitbox.bounds(hitStart, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
@@ -253,7 +253,7 @@ public class MotionExecutor {
         if (isCharged) {
             for (LivingEntity target : targets) {
                 ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-                dealMotionDamage(player, target, baseDamage, weapon);
+                if (!dealMotionDamage(player, target, baseDamage, weapon)) continue;
                 DamageCalculator.applyNormalKnockback(player, target, weapon);
                 if (chargePercent >= 1.0f) {
                     target.setSecondsOnFire(5);
@@ -262,7 +262,7 @@ public class MotionExecutor {
         } else {
             for (LivingEntity target : targets) {
                 ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-                dealMotionDamage(player, target, baseDamage, weapon);
+                if (!dealMotionDamage(player, target, baseDamage, weapon)) continue;
                 DamageCalculator.applyNormalKnockback(player, target, weapon);
             }
         }
@@ -474,7 +474,7 @@ public class MotionExecutor {
 
         for (LivingEntity target : targets) {
             ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-            dealMotionDamage(player, target, baseDamage, weapon);
+            if (!dealMotionDamage(player, target, baseDamage, weapon)) continue;
             DamageCalculator.applyNormalKnockback(player, target, weapon);
             target.addEffect(new net.minecraft.world.effect.MobEffectInstance(
                 net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN,
@@ -489,8 +489,8 @@ public class MotionExecutor {
             SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.PLAYERS, 1.0f, 0.7f);
     }
 
-    private static void dealMotionDamage(Player player, LivingEntity target, float damage, ItemStack weapon) {
-        DamageCalculator.dealDamage(player, target, damage, weapon);
+    private static boolean dealMotionDamage(Player player, LivingEntity target, float damage, ItemStack weapon) {
+        return DamageCalculator.dealDamage(player, target, damage, weapon) > 0;
     }
 
     // === 共通の斬撃ダメージ処理 ===
@@ -512,7 +512,7 @@ public class MotionExecutor {
 
         for (LivingEntity target : targets) {
             ItemStack weapon = player.getItemInHand(InteractionHand.MAIN_HAND);
-            dealMotionDamage(player, target, baseDamage, weapon);
+            if (!dealMotionDamage(player, target, baseDamage, weapon)) continue;
             DamageCalculator.applyNormalKnockback(player, target, weapon);
         }
     }
@@ -561,11 +561,11 @@ public class MotionExecutor {
      * @param range 線の長さ ( 技の実際のリーチをそのまま渡す )
      */
     public static void thrustLine(ServerLevel sw, Player player, Vec3 look, Vec3 playerPos, double range) {
-        playerPos = AttackHandContext.origin(player, playerPos);
+        playerPos = ThrustHitbox.origin(player, playerPos);
         net.minecraft.core.particles.ParticleOptions dust = slashDust(player);
         double start = 0.6;                       // プレイヤーの中に湧かせない
         double end = Math.max(start + 0.5, range);
-        double y = player.getEyeY();              // 当たり判定と同じ視点位置
+        double y = playerPos.y;                   // ビーム・当たり判定と同じ高さ
         int steps = (int) Math.round((end - start) / 0.25);
         for (int i = 0; i <= steps; i++) {
             double d = start + (end - start) * i / steps;

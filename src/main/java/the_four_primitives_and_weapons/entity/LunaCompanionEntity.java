@@ -260,23 +260,26 @@ public class LunaCompanionEntity extends PathfinderMob {
         entityData.set(FIRING, true);
         firingTicks = LunaFormula.get().ticks(FIRING_TICKS);
         faceBladeToward(target);
-        the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
-                .fireSummonedStraightLaser(serverLevel, this, target, owner());
         ServerPlayer owner = owner();
         Map<String, Object> sensors = senses(owner, target);
         ElementalShot element = resolveShotElement(owner, sensors);
         float damage = (float) LunaFormula.get().damage(sensors);
+        if (!the_four_primitives_and_weapons.procedures.LunaenteiteigaaitemuwoZhentutaShiProcedure
+                .fireSummonedStraightLaser(serverLevel, this, target, owner, damage)) return;
+        Vec3 origin = position().add(0, getBbHeight() * 0.55, 0);
         if (element.type != ElementType.NONE && element.level > 0) {
             // direct=this / causing=owner にして、属性効果とプレイヤーの討伐判定を両立する。
             DamageSource source = ModDamageSources.of(serverLevel,
                     ModDamageSources.keyFor(element.type), this, owner);
+            source = new DamageSource(source.typeHolder(), this, owner, origin);
             if (source instanceof IElementalDamageSource elementalSource) {
                 elementalSource.setElementType(element.type);
                 elementalSource.setElementLevel(element.level);
             }
-            target.hurt(source, damage);
+            target.hurt(new the_four_primitives_and_weapons.damage.ShieldableSkillDamageSource(source, origin), damage);
         } else {
-            target.hurt(owner != null ? damageSources().playerAttack(owner) : damageSources().mobAttack(this), damage);
+            DamageSource base = owner != null ? damageSources().playerAttack(owner) : damageSources().mobAttack(this);
+            target.hurt(new DamageSource(base.typeHolder(), this, owner, origin), damage);
         }
     }
 

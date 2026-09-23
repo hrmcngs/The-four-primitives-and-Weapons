@@ -131,7 +131,7 @@ public class TyokutouThrustAttackProcedure {
         }
 
         // 演出と同じ高さの細い直線で判定する。
-        Vec3 hitStart = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition());
+        Vec3 hitStart = ThrustHitbox.origin(player);
         Vec3 hitEnd = hitStart.add(lookVec.scale(range));
         AABB searchArea = ThrustHitbox.bounds(hitStart, hitEnd);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
@@ -142,7 +142,7 @@ public class TyokutouThrustAttackProcedure {
         for (LivingEntity target : targets) {
             // ダメージ計算＋エンチャント＋武器効果を統一適用
             ItemStack weapon = player.getMainHandItem();
-            DamageCalculator.dealDamage(player, target, (float)damage, weapon);
+            if (DamageCalculator.dealDamage(player, target, (float)damage, weapon) <= 0) continue;
 
             // ノックバック（他の刀と同じ・耐性考慮）
             DamageCalculator.setKnockbackVelocity(target, lookVec.scale(1.5).add(0, 0.4, 0));
@@ -194,7 +194,7 @@ public class TyokutouThrustAttackProcedure {
         if (entity == null || !(entity instanceof Player player))
             return;
         if (isLunaItem(player.getMainHandItem())
-                && !the_four_primitives_and_weapons.skill.LunaChargeRules.beamEnabled(chargePercent)) {
+                && !the_four_primitives_and_weapons.skill.LunaChargeRules.beamEnabled(player.getAttackStrengthScale(0.0F))) {
             the_four_primitives_and_weapons.skill.MotionExecutor.executeMotion("thrust", player, 0.0F);
             return;
         }
@@ -207,7 +207,7 @@ public class TyokutouThrustAttackProcedure {
 
         // チャージ突きも上下を含めてカメラの向きへ出す。
         Vec3 lookVec = player.getLookAngle().normalize();
-        Vec3 startPos = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition());
+        Vec3 startPos = ThrustHitbox.origin(player);
 
         // Lunaのビーム発射音。曲線自体は下の元実装 createCurvingBeams* だけで生成する。
         if (world instanceof ServerLevel serverLevel && isLunaItem(player.getMainHandItem())) {
@@ -281,6 +281,7 @@ public class TyokutouThrustAttackProcedure {
         for (LivingEntity target : targets) {
             // ダメージ計算＋エンチャント＋武器効果を統一適用
             float actualDamage = DamageCalculator.dealDamage(player, target, (float)damage, weapon);
+            if (actualDamage <= 0) continue;
 
             // ターゲット位置にダメージエフェクト
             if (world instanceof ServerLevel serverLevel) {
@@ -378,7 +379,7 @@ public class TyokutouThrustAttackProcedure {
         double damage = 12.0;
 
         Vec3 lookVec = player.getLookAngle().normalize();
-        Vec3 startPos = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition());
+        Vec3 startPos = ThrustHitbox.origin(player);
 
         // エフェクト（小さいDustパーティクル）
         if (world instanceof ServerLevel serverLevel) {
@@ -409,7 +410,7 @@ public class TyokutouThrustAttackProcedure {
 
             // ダメージ計算＋エンチャント＋武器効果を統一適用
             ItemStack weapon = player.getMainHandItem();
-            DamageCalculator.dealDamage(player, target, (float)damage, weapon);
+            if (DamageCalculator.dealDamage(player, target, (float)damage, weapon) <= 0) return;
 
             // ノックバック（耐性考慮）
             DamageCalculator.setKnockbackVelocity(target, lookVec.scale(0.8).add(0, 0.2, 0));
@@ -466,6 +467,7 @@ public class TyokutouThrustAttackProcedure {
             // ビームの終点（視線方向の直線上）
             double beamRange = range + Math.random() * 2;
             Vec3 beamEnd = beamStart.add(lookVec.scale(beamRange));
+            beamEnd = the_four_primitives_and_weapons.event.GreatshieldHandler.clipBeam(serverLevel, beamStart, beamEnd, chargePercent * 5.0f);
 
             // 直線に沿ってパーティクルを配置
             int particleCount = 40 + (int)(chargePercent * 20);
@@ -620,11 +622,19 @@ public class TyokutouThrustAttackProcedure {
 
             // ベジェ曲線に沿ってパーティクルを配置（密度を上げる）
             int particleCount = 50 + (int)(chargePercent * 30);  // 50-80個に増加
+            java.util.List<Vec3> beamPath = new java.util.ArrayList<>();
+            beamPath.add(beamStart);
+            var beamShields = the_four_primitives_and_weapons.event.GreatshieldHandler.beamShields(serverLevel,
+                    new AABB(beamStart, beamEnd).minmax(new AABB(controlPoint1, controlPoint2)));
             for (int j = 0; j < particleCount; j++) {
                 float t = (float)j / (particleCount - 1);
 
                 // 3次ベジェ曲線の計算
                 Vec3 particlePos = bezierCubic(beamStart, controlPoint1, controlPoint2, beamEnd, t);
+                Vec3 previous = beamPath.get(beamPath.size() - 1);
+                Vec3 clipped = the_four_primitives_and_weapons.event.GreatshieldHandler.clipBeam(beamShields, previous, particlePos, chargePercent * 10.0f);
+                beamPath.add(clipped);
+                if (clipped.distanceToSqr(particlePos) > 1.0e-12) break;
 
                 // パーティクルの種類（ENCHANTED_HITで統一）
                 serverLevel.sendParticles(
@@ -654,7 +664,7 @@ public class TyokutouThrustAttackProcedure {
 
             // ビームの軌跡に沿って追加ダメージ判定
             if (source instanceof Player player)
-                checkBeamDamage(serverLevel, beamStart, beamEnd, player, chargePercent * 10.0f);
+                checkBeamDamage(serverLevel, beamPath, player, chargePercent * 10.0f);
         }
 
         // プレイヤーの周りから発生するエフェクト
@@ -812,11 +822,19 @@ public class TyokutouThrustAttackProcedure {
 
             // ベジェ曲線に沿ってパーティクルを配置（密度を上げる）
             int particleCount = 60 + (int)(chargePercent * 40);  // 60-100個に増加
+            java.util.List<Vec3> beamPath = new java.util.ArrayList<>();
+            beamPath.add(beamStart);
+            var beamShields = the_four_primitives_and_weapons.event.GreatshieldHandler.beamShields(serverLevel,
+                    new AABB(beamStart, beamEnd).minmax(new AABB(controlPoint1, controlPoint2)));
             for (int j = 0; j < particleCount; j++) {
                 float t = (float)j / (particleCount - 1);
 
                 // 3次ベジェ曲線の計算
                 Vec3 particlePos = bezierCubic(beamStart, controlPoint1, controlPoint2, beamEnd, t);
+                Vec3 previous = beamPath.get(beamPath.size() - 1);
+                Vec3 clipped = the_four_primitives_and_weapons.event.GreatshieldHandler.clipBeam(beamShields, previous, particlePos, chargePercent * 10.0f);
+                beamPath.add(clipped);
+                if (clipped.distanceToSqr(particlePos) > 1.0e-12) break;
 
                 // パーティクルの種類（進行に応じて変化）
                 if (t < 0.3) {
@@ -857,7 +875,7 @@ public class TyokutouThrustAttackProcedure {
             }
 
             // ビームの軌跡に沿って追加ダメージ判定
-            checkBeamDamage(serverLevel, beamStart, beamEnd, player, chargePercent * 8.0f);
+            checkBeamDamage(serverLevel, beamPath, player, chargePercent * 8.0f);
         }
 
         // プレイヤーの周りから発生する円形エフェクト
@@ -902,43 +920,30 @@ public class TyokutouThrustAttackProcedure {
      * ビームの軌跡上にいる敵に追加ダメージ
      */
     private static void checkBeamDamage(ServerLevel world, Vec3 start, Vec3 end, Player player, float damage) {
-        Vec3 direction = end.subtract(start).normalize();
-        double distance = start.distanceTo(end);
+        checkBeamDamage(world, java.util.List.of(start, end), player, damage);
+    }
 
-        // ビームの経路上にいるエンティティを検索
-        AABB searchArea = new AABB(
-            Math.min(start.x, end.x) - 1,
-            Math.min(start.y, end.y) - 1,
-            Math.min(start.z, end.z) - 1,
-            Math.max(start.x, end.x) + 1,
-            Math.max(start.y, end.y) + 1,
-            Math.max(start.z, end.z) + 1
-        );
-
-        List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            entity -> {
-                if (entity == player) return false;
-
-                // ビームからの距離を計算
-                Vec3 toEntity = entity.position().subtract(start);
-                double projection = toEntity.dot(direction);
-
-                if (projection < 0 || projection > distance) return false;
-
-                Vec3 closestPoint = start.add(direction.scale(projection));
-                double distanceToBeam = entity.position().distanceTo(closestPoint);
-
-                return distanceToBeam <= 1.0; // ビームから1ブロック以内
-            });
-
-        ItemStack weapon = player.getMainHandItem();
-        for (LivingEntity target : targets) {
-            // DamageCalculatorを基準にダメージ計算＋武器効果適用
-            DamageCalculator.dealDamage(player, target, damage, weapon);
-
-            // 小さなノックバック（耐性考慮）
-            Vec3 knockback = target.position().subtract(start).normalize().scale(0.3);
-            DamageCalculator.addKnockbackVelocity(target, knockback);
+    private static void checkBeamDamage(ServerLevel world, java.util.List<Vec3> path, Player player, float damage) {
+        if (path.size() < 2) return;
+        AABB bounds = new AABB(path.get(0), path.get(0));
+        for (Vec3 point : path) bounds = bounds.minmax(new AABB(point, point));
+        // Query once per beam, not once per particle; each target is hit at most once.
+        for (LivingEntity target : world.getEntitiesOfClass(LivingEntity.class, bounds.inflate(1), e -> e != player && e.isAlive())) {
+            Vec3 center = target.getBoundingBox().getCenter();
+            for (int i = 1; i < path.size(); i++) {
+                Vec3 start = path.get(i - 1);
+                Vec3 delta = path.get(i).subtract(start);
+                double length = delta.length();
+                if (length < 1.0e-6) continue;
+                Vec3 direction = delta.scale(1 / length);
+                double projection = center.subtract(start).dot(direction);
+                if (projection < 0 || projection > length) continue;
+                if (center.distanceToSqr(start.add(direction.scale(projection))) > 1) continue;
+                if (DamageCalculator.dealDamage(player, target, damage, player.getMainHandItem(), start) > 0) {
+                    DamageCalculator.addKnockbackVelocity(target, direction.scale(0.3));
+                }
+                break;
+            }
         }
     }
 }

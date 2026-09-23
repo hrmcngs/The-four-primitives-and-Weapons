@@ -25,7 +25,7 @@ public final class DualWieldAttackHandler {
             && ChargedAttackHandler.isWeapon(player.getOffhandItem());
     }
     public static boolean busy(Player player) {
-        return !player.level().isClientSide && (PENDING.containsKey(player.getUUID()) || paired(player) && running(player));
+        return !player.level().isClientSide && (PENDING.containsKey(player.getUUID()) || running(player));
     }
     private static boolean running(Player player) {
         return SpinSlashTickHandler.isSpinning(player) || SlamDownPitchHandler.isSlamming(player)

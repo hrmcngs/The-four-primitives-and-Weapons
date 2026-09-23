@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.event.entity.living.LivingSwapItemsEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -54,9 +54,15 @@ public class ShieldParryHandler {
     // パリィ判定（被ダメージ時）
     // ===================================================================
     @SubscribeEvent(priority = EventPriority.HIGH)
-    public static void onLivingHurt(LivingHurtEvent event) {
+    public static void onLivingAttack(LivingAttackEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
         if (player.level().isClientSide) return;
+        if (event.getAmount() <= 0 || event.getSource().is(net.minecraft.tags.DamageTypeTags.BYPASSES_SHIELD)) return;
+        var sourcePosition = event.getSource().getSourcePosition();
+        if (sourcePosition == null) return;
+        var incoming = sourcePosition.subtract(player.position());
+        var look = player.getLookAngle();
+        if (!the_four_primitives_and_weapons.skill.CombatTimingRules.facingAttack(look.x, look.z, incoming.x, incoming.z)) return;
 
         long now = player.level().getGameTime();
 
@@ -65,7 +71,7 @@ public class ShieldParryHandler {
         if (offhand.getItem() instanceof ParryShieldItem && player.isUsingItem()
                 && player.getUsedItemHand() == InteractionHand.OFF_HAND) {
             long blockStart = ParryShieldItem.getBlockStartTime(player);
-            if (isInParryWindow(now, blockStart)) {
+            if (!player.getCooldowns().isOnCooldown(offhand.getItem()) && isInParryWindow(now, blockStart)) {
                 triggerParry(event, player, InteractionHand.OFF_HAND);
                 return;
             }
@@ -76,7 +82,8 @@ public class ShieldParryHandler {
         if ((isShield(mainhand) || isShield(offhand))
                 && event.getSource().getEntity() instanceof LivingEntity) {
             long swapStart = ParryShieldItem.getSwapStartTime(player);
-            if (isInParryWindow(now, swapStart)) {
+            ItemStack shield = isShield(mainhand) ? mainhand : offhand;
+            if (!player.getCooldowns().isOnCooldown(shield.getItem()) && isInParryWindow(now, swapStart)) {
                 triggerParry(event, player, isShield(mainhand) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND);
             }
         }
@@ -85,12 +92,14 @@ public class ShieldParryHandler {
     // ===================================================================
     // パリィ実行
     // ===================================================================
-    private static void triggerParry(LivingHurtEvent event, Player player, InteractionHand hand) {
+    private static void triggerParry(LivingAttackEvent event, Player player, InteractionHand hand) {
         float incoming = event.getAmount();
         // このパリーで盾が壊れても、使った盾の攻撃力を反射に適用する。
         ItemStack shield = player.getItemInHand(hand);
         float reflectedDamage = incoming * 1.5f + ShieldBashHandler.getAttackDamage(shield);
         event.setCanceled(true);
+        // One deliberate input guards one impact; holding/swapping cannot refresh it indefinitely.
+        ParryShieldItem.consumeParry(player);
 
         // キャンセルした攻撃は通常の盾耐久処理を通らないので、ここで消費する。
         if (incoming > 0) {
@@ -125,6 +134,6 @@ public class ShieldParryHandler {
     }
 
     private static boolean isInParryWindow(long now, long start) {
-        return start >= 0 && now >= start && now - start < ParryShieldItem.PARRY_WINDOW_TICKS;
+        return the_four_primitives_and_weapons.skill.CombatTimingRules.inWindow(now, start, ParryShieldItem.PARRY_WINDOW_TICKS);
     }
 }

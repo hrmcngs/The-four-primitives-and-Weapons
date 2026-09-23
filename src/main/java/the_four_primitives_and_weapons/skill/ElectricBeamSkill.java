@@ -41,6 +41,7 @@ public final class ElectricBeamSkill {
 		BlockHitResult bhr = level.clip(new ClipContext(origin, maxEnd,
 				ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
 		Vec3 end = bhr.getType() != HitResult.Type.MISS ? bhr.getLocation() : maxEnd;
+		end = the_four_primitives_and_weapons.event.GreatshieldHandler.clipBeam(level, origin, end, DAMAGE);
 		double reach = end.subtract(origin).length();
 
 		// 発射音
@@ -60,12 +61,12 @@ public final class ElectricBeamSkill {
 			Vec3 center = entity.position().add(0, entity.getBbHeight() / 2.0, 0);
 			Vec3 rel = center.subtract(origin);
 			double proj = rel.dot(dir);                 // 線方向の射影
-			if (proj < -0.5 || proj > reach + 0.5) continue;
+			if (proj < 0 || proj > reach) continue;
 			double perp = rel.subtract(dir.scale(proj)).length(); // 線までの垂直距離
 			if (perp > HIT_RADIUS) continue;
 			if (!damaged.add(entity.getId())) continue;
 			entity.invulnerableTime = 0; // 直前の被弾無敵で弾かれないように
-			ElectricElementDamageHandler.applyElectricDamage(entity, DAMAGE, player, 2);
+			if (!ElectricElementDamageHandler.applyElectricDamage(entity, DAMAGE, player, 2, origin)) continue;
 			// 軽いノックバック ( 進行方向へ )
 			entity.setDeltaMovement(entity.getDeltaMovement().add(dir.x * 0.4, 0.25, dir.z * 0.4));
 			entity.hurtMarked = true;

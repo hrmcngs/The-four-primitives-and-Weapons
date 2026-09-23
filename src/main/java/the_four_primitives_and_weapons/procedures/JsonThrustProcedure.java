@@ -136,8 +136,8 @@ public final class JsonThrustProcedure {
     private static void doHandHit(Player player, ComboSession session) {
         Level world = player.level();
         Vec3 look = player.getLookAngle().normalize();
-        Vec3 eye = player.getEyePosition();
-        Vec3 origin = the_four_primitives_and_weapons.skill.AttackHandContext.origin(player, player.getEyePosition());
+        Vec3 eye = ThrustHitbox.origin(player);
+        Vec3 origin = ThrustHitbox.origin(player);
         Vec3 end = origin.add(look.scale(session.range));
         AABB area = ThrustHitbox.bounds(origin, end);
         List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, area,
@@ -159,8 +159,8 @@ public final class JsonThrustProcedure {
                 continue;
             }
             target.invulnerableTime = 0; // 多段ヒットを通す
-            the_four_primitives_and_weapons.skill.AttackHandContext.hurt(player, target,
-                world.damageSources().playerAttack(player), session.damage);
+            if (!the_four_primitives_and_weapons.skill.AttackHandContext.hurt(player, target,
+                world.damageSources().playerAttack(player), session.damage)) continue;
             target.knockback((float) session.knockback, -look.x, -look.z);
         }
         session.doneHits++;
