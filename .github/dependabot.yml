@@ -8,3 +8,7 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    # ForgeGradle 5 requires Gradle 7; migrate ForgeGradle before upgrading the wrapper.
+    ignore:
+      - dependency-name: gradle-wrapper
+        versions: [">=8.0"]
