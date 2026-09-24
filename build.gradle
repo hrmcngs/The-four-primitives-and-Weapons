@@ -434,6 +434,7 @@ repositories {
 // versions containing the current security fixes.
 def netty_version = project.findProperty('NETTY_VERSION') ?: '4.1.137.Final'
 def log4j_version = project.findProperty('LOG4J_VERSION') ?: '2.25.5'
+def jline_version = project.findProperty('JLINE_VERSION') ?: '3.30.15'
 configurations.configureEach {
     resolutionStrategy.eachDependency { details ->
         if (details.requested.group == 'io.netty') {
@@ -442,6 +443,9 @@ configurations.configureEach {
         } else if (details.requested.group == 'org.apache.logging.log4j') {
             details.useVersion log4j_version
             details.because 'Log4j security fix for CVE-2026-49844'
+        } else if (details.requested.group == 'org.jline') {
+            details.useVersion jline_version
+            details.because 'JLine HISTORY_IGNORE ReDoS fix: GHSA-5q95-hrpc-m3w3'
         }
     }
 }
