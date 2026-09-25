@@ -1,0 +1,82 @@
+// Recover saved dependencies after a Gradle metadata-cache change. Only used
+// offline: online builds retain the normal repositories and version resolution.
+if (gradle.startParameter.offline) {
+    def cacheRoot = new File(gradle.gradleUserHomeDir, 'caches/modules-2/files-2.1')
+    def mirror = file('.gradle/offline-maven')
+    // Keep original POM/module metadata and classifiers. Minecraft/Forge also
+    // declare some libraries as artifacts without POMs; artifact() handles those.
+    // Symlinks avoid duplicating JARs; systems without symlink support use copies.
+    if (cacheRoot.isDirectory()) cacheRoot.eachDir { groupDir ->
+        groupDir.eachDir { artifactDir ->
+            artifactDir.eachDir { versionDir ->
+                def destination = new File(mirror, "${groupDir.name.replace('.', '/')}/${artifactDir.name}/${versionDir.name}")
+                versionDir.eachDir { hashDir ->
+                    hashDir.eachFile { cached ->
+                        if (cached.isFile() && (cached.name.endsWith('.pom') || cached.name.endsWith('.jar') || cached.name.endsWith('.module'))) {
+                            destination.mkdirs()
+                            def target = new File(destination, cached.name).toPath()
+                            if (!java.nio.file.Files.exists(target)) {
+                                java.nio.file.Files.deleteIfExists(target)
+                                try {
+                                    java.nio.file.Files.createSymbolicLink(target, cached.toPath())
+                                } catch (UnsupportedOperationException | java.io.IOException ignored) {
+                                    java.nio.file.Files.copy(cached.toPath(), target, java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    repositories.maven {
+        name = 'offlineSavedDependencies'
+        url = mirror.toURI()
+        metadataSources { mavenPom(); gradleMetadata(); artifact() }
+    }
+    logger.lifecycle('Offline: saved dependency JARs and metadata available locally (no downloads).')
+    // ForgeGradle 5's metadata task performs HTTP even with --offline.
+    // Use its existing version JSON, but fail clearly instead of skipping a
+    // required download when the cached output is absent or for another version.
+    tasks.matching { it.name == 'downloadMCMeta' }.configureEach { download ->
+        // Forge also calls this task directly during configuration if its output
+        // is missing. Point it at the persistent cache before that check runs.
+        download.output.set(layout.file(download.getMCVersion().map { versionId ->
+            def saved = ['minecraft_repo', 'mcp_repo'].collect { repo ->
+                new File(gradle.gradleUserHomeDir, "caches/forge_gradle/${repo}/versions/${versionId}/version.json")
+            }.find { candidate -> candidate.isFile() && new groovy.json.JsonSlurper().parse(candidate).id == versionId }
+            if (saved == null) throw new GradleException('Minecraft起動情報が未取得です。接続できる回線で online prepare を実行してください。')
+            saved
+        }))
+        onlyIf {
+            def cached = download.output.get().asFile
+            if (!cached.isFile() || new groovy.json.JsonSlurper().parse(cached).id != download.getMCVersion().get()) {
+                throw new GradleException('Minecraft起動情報が未取得です。接続できる回線で online prepare を実行してください。')
+            }
+            logger.lifecycle('Offline: using saved Minecraft version metadata.')
+            return false
+        }
+    }
+}
+
+tasks.register('verifyOfflineAssets') {
+    group = 'verification'
+    description = 'Check cached Minecraft assets without downloading or starting the game.'
+    doLast {
+        def download = tasks.named('downloadAssets').get()
+        def meta = download.meta.get().asFile
+        def advice = '接続できる回線で bash sh/run/run_client_mac.sh online prepare を実行してください。'
+        if (!meta.isFile()) throw new GradleException("Minecraft起動情報が未取得です。${advice}")
+        def version = new groovy.json.JsonSlurper().parse(meta)
+        def root = download.output
+        def index = new File(root, "indexes/${version.assetIndex.id}.json")
+        if (!index.isFile()) throw new GradleException("アセット一覧が未取得です: ${index.name}。${advice}")
+        def assets = new groovy.json.JsonSlurper().parse(index).objects
+        def missing = assets.findAll { name, entry ->
+            def object = new File(root, "objects/${entry.hash.substring(0, 2)}/${entry.hash}")
+            !object.isFile() || object.length() != entry.size
+        }
+        if (!missing.isEmpty()) throw new GradleException("アセットが${missing.size()}件不足/破損しています (${missing.keySet().take(3).join(', ')})。${advice}")
+        logger.lifecycle("Offline assets verified: ${assets.size()} files.")
+    }
+}

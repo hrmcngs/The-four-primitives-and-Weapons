@@ -30,11 +30,13 @@ public class TheFourPrimitivesAndWeaponsModEntityRenderers {
 	 */
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+		event.registerLayerDefinition(the_four_primitives_and_weapons.client.model.SwordgraveWardenModel.LAYER, the_four_primitives_and_weapons.client.model.SwordgraveWardenModel::createBodyLayer);
 		event.registerLayerDefinition(BlackholeModel.LAYER_LOCATION, BlackholeModel::createBodyLayer);
 	}
 
 	@SubscribeEvent
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(TheFourPrimitivesAndWeaponsModEntities.SWORDGRAVE_WARDEN.get(), the_four_primitives_and_weapons.client.renderer.SwordgraveWardenRenderer::new);
 		event.registerEntityRenderer(TheFourPrimitivesAndWeaponsModEntities.SKELTON_MOB.get(), SkeltonMobRenderer::new);
 		event.registerEntityRenderer(TheFourPrimitivesAndWeaponsModEntities.LUNA_COMPANION.get(), LunaCompanionRenderer::new);
 		event.registerEntityRenderer(TheFourPrimitivesAndWeaponsModEntities.KATANA_TOBU.get(), KatanaTobuRenderer::new);

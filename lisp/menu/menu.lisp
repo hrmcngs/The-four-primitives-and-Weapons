@@ -60,8 +60,8 @@
   (let ((path (third tool)))
     (cond
       ((equal path "sh/run/run_client_mac.sh")
-       (nth (choose "どう起動しますか？" '("オフライン" "オンライン・TLS自動判定" "オンライン・TLS制限なし" "オフライン・daemon維持"))
-            '(("offline") ("online") ("online" "notls") ("offline" "keepdaemon"))))
+       (nth (choose "どう起動しますか？" '("オフライン（学校Wi-Fi・未接続向け）" "オンライン・TLS自動判定" "オンライン・TLS制限なし" "オフライン・daemon維持" "事前準備：オンラインで必要ファイル取得" "確認：オフラインでビルド・起動準備（ゲームは開かない）"))
+            '(("offline") ("online") ("online" "notls") ("offline" "keepdaemon") ("online" "prepare") ("offline" "prepare"))))
       ((equal path "sh/generate/generate-mcfunction.sh")
        (list "--source" (prompt "Lispソース" "tools/mcfunction-lisp/examples/terrain.lisp")
              "--output" (prompt "新規データパック保存先" (format nil "run/generated_commands/datapack-~D" (get-universal-time)))

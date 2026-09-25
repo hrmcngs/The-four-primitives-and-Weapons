@@ -31,6 +31,9 @@ import the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class TheFourPrimitivesAndWeaponsModEntities {
 	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, TheFourPrimitivesAndWeaponsMod.MODID);
+	public static final RegistryObject<EntityType<the_four_primitives_and_weapons.entity.SwordgraveWardenEntity>> SWORDGRAVE_WARDEN = register("swordgrave_warden",
+            EntityType.Builder.<the_four_primitives_and_weapons.entity.SwordgraveWardenEntity>of(the_four_primitives_and_weapons.entity.SwordgraveWardenEntity::new, MobCategory.MONSTER)
+                    .sized(1.4f, 2.7f).clientTrackingRange(12).updateInterval(3));
 	public static final RegistryObject<EntityType<SkeltonMobEntity>> SKELTON_MOB = register("skelton_mob",
 			EntityType.Builder.<SkeltonMobEntity>of(SkeltonMobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(SkeltonMobEntity::new)
 
@@ -83,6 +86,7 @@ public class TheFourPrimitivesAndWeaponsModEntities {
 
 	@SubscribeEvent
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
+        event.put(SWORDGRAVE_WARDEN.get(), the_four_primitives_and_weapons.entity.SwordgraveWardenEntity.attributes().build());
 		event.put(SKELTON_MOB.get(), SkeltonMobEntity.createAttributes().build());
 		event.put(LUNA_COMPANION.get(), LunaCompanionEntity.createAttributes().build());
 		event.put(BLACKHOLE.get(), BlackholeEntity.createAttributes().build());

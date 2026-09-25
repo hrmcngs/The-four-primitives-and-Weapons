@@ -1,4 +1,12 @@
 {
+  "entity.the_four_primitives_and_weapons.swordgrave_warden": "剣塚の番人",
+  "item.the_four_primitives_and_weapons.swordgrave_warden_spawn_egg": "剣塚の番人のスポーンエッグ",
+  "boss.the_four_primitives_and_weapons.swordgrave.ready": "%s ─ 正面は堅牢・側背面を狙え",
+  "boss.the_four_primitives_and_weapons.swordgrave.thrust": "%s ─ 突き：横へ回避",
+  "boss.the_four_primitives_and_weapons.swordgrave.sweep": "%s ─ 薙ぎ払い：跳ぶか懐へ",
+  "boss.the_four_primitives_and_weapons.swordgrave.fall": "%s ─ 落剣：予告円から離れろ",
+  "boss.the_four_primitives_and_weapons.swordgrave.open": "%s ─ 装甲が緩んだ：反撃！",
+  "boss.the_four_primitives_and_weapons.swordgrave.broken": "%s ─ パリィ成功：体勢崩壊！",
   "item.the_four_primitives_and_weapons.keito_katana": "計都星の刀",
   "tooltip.the_four_primitives_and_weapons.keito_katana": "その星の名を知る者は、抜刀を吉兆とは呼ばない。",
   "tooltip.the_four_primitives_and_weapons.promise_ring.lore": "破れた約束を誓いに変えて",

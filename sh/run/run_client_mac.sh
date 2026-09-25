@@ -4,6 +4,10 @@
 #
 # 開発用 Minecraft クライアント (`runClient`) を起動するためのスクリプトと、各種フラグ / 環境変数 / トラブルシュート手順をまとめます。
 # 起動時にMODのクラス・リソースを専用コピーへ隔離します。プレイ中のビルドで読み込み先が消えないようにするため、コード・リソースの変更は次回起動で反映されます。
+# 学校Wi-Fi・未接続: menuの 1 → 1 → 1 → 1（オフライン）。保存済みJARを再認識し、起動情報の再取得も行いません。
+# 初回準備: 接続可能な回線で `bash sh/run/run_client_mac.sh online prepare`。ゲームを開かず依存・アセットを取得します。
+# 接続不要の確認: `bash sh/run/run_client_mac.sh offline prepare`。ビルド・アセット検査・起動準備を行います。
+# 未取得ファイルがある初回や、依存バージョン/MODを変更した直後は、接続可能な回線で事前準備が必要です。
 #
 # ## スクリプト
 #
@@ -237,6 +241,9 @@ for arg in "$@"; do
 done
 
 GRADLE_ARGS="runClient --offline -x downloadAssets"
+PREPARE_ONLY="no"
+# prepare: ゲームを開かずビルドと起動準備。online prepare で事前取得、
+# offline prepare で学校Wi-Fi/未接続時の準備確認ができます。
 USE_TLS_WORKAROUND="auto"   # auto = 回線を実測して自動判定 ( notls / tls で明示上書き可 )
 KILL_DAEMON="yes"   # JAVA_TOOL_OPTIONS / gradle.properties 変更が daemon に反映されない問題対策
 OFFLINE_MODE="yes"
@@ -263,10 +270,24 @@ for arg in "$@"; do
         keepdaemon|keep-daemon)
             KILL_DAEMON="no"
             ;;
+        prepare)
+            PREPARE_ONLY="yes"
+            ;;
     esac
 done
+if [ "$PREPARE_ONLY" = "yes" ]; then
+    if [ "$OFFLINE_MODE" = "yes" ]; then
+        GRADLE_ARGS="build prepareRunClient --offline -x downloadAssets"
+    else
+        GRADLE_ARGS="build prepareRunClient downloadAssets"
+    fi
+    echo "=== ゲームを開かずビルド・起動準備を行います ==="
+fi
 
 # --- TLS workaround 自動判定 ---
+if [ "$OFFLINE_MODE" = "yes" ]; then
+    GRADLE_ARGS="verifyOfflineAssets $GRADLE_ARGS"
+fi
 # 引数で notls / tls を明示しなかった場合、実際に素の TLS で Mojang の
 # メタサーバへ到達できるかを curl で 1 回だけ試す。
 #   到達できる ( テザリング等 直接回線 )        → workaround OFF
@@ -419,3 +440,11 @@ case "$(uname -s)" in
         ./gradlew $GRADLE_ARGS
         ;;
 esac
+gradle_status=$?
+if [ "$gradle_status" -ne 0 ] && [ "$OFFLINE_MODE" = "yes" ]; then
+    echo "オフライン処理が失敗しました。上のエラーを確認してください。" >&2
+    echo "依存ファイルが未取得の場合は、接続可能な回線で次を一度実行してください:" >&2
+    echo "  bash sh/run/run_client_mac.sh online prepare" >&2
+    echo "取得後は offline で起動できます。別PC・Gradle更新・MOD追加時は再準備が必要になる場合があります。" >&2
+fi
+exit "$gradle_status"

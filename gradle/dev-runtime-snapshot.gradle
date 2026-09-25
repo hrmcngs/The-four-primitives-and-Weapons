@@ -25,8 +25,23 @@ def isolateModRuntime = { JavaExec launch ->
     }
     launch.environment 'MOD_CLASSES', entries.join(File.pathSeparator)
     launch.classpath = files(launch.classpath.files.collect { path ->
-        replacements.containsKey(path.canonicalFile) ? replacements[path.canonicalFile] : path
-    })
+        replacements.containsKey(path.canonicalFile) ? replacements[path.canonicalFile] : path.canonicalFile
+    }.unique())
+    // Forge discovers services from both Java's classpath and its legacy path
+    // list. A cache symlink and its real path otherwise discover fmlloader twice.
+    def legacyKey = 'legacyClassPath.file'
+    def legacyPath = launch.systemProperties[legacyKey]
+    if (legacyPath) {
+        def legacyFile = file(legacyPath.toString())
+        if (!legacyFile.isFile()) throw new GradleException("Missing Forge classpath: ${legacyFile}")
+        def paths = legacyFile.readLines('UTF-8').findAll { !it.isBlank() }.collect { entry ->
+            def source = file(entry).canonicalFile
+            (replacements.containsKey(source) ? replacements[source] : source).absolutePath
+        }.unique()
+        def target = new File(snapshot, 'minecraft-classpath.txt')
+        target.setText(paths.join(System.lineSeparator()) + System.lineSeparator(), 'UTF-8')
+        launch.systemProperty legacyKey, target.absolutePath
+    }
     def mappingKey = 'mixin.env.refMapRemappingFile'
     def mapping = launch.systemProperties[mappingKey]
     if (mapping && file(mapping.toString()).isFile()) {
@@ -58,6 +73,11 @@ tasks.register('verifyDevRuntimeSnapshot') {
             }
         }
         assert launch.environment['MOD_CLASSES'].contains(result.snapshot.absolutePath)
+        assert launch.classpath.files.every { it == it.canonicalFile }
+        def legacy = file(launch.systemProperties['legacyClassPath.file'].toString()).readLines('UTF-8')
+        assert legacy.size() == legacy.unique(false).size()
+        assert legacy.every { file(it).absolutePath == file(it).canonicalPath }
+        assert legacy.count { new File(it).name.startsWith('fmlloader-') } == 1
         logger.lifecycle('Development runtime snapshot: class/resource copies and launch paths verified.')
     }
 }

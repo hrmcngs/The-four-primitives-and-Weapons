@@ -110,6 +110,7 @@ public class ShieldParryHandler {
 
         // 攻撃者へ反射ダメージ
         if (event.getSource().getEntity() instanceof LivingEntity attacker) {
+            if (attacker instanceof the_four_primitives_and_weapons.entity.SwordgraveWardenEntity boss) boss.onParried();
             attacker.hurt(player.damageSources().magic(), reflectedDamage);
         }
 

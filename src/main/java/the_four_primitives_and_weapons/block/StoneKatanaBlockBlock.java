@@ -1,7 +1,6 @@
 
 package the_four_primitives_and_weapons.block;
 
-import org.checkerframework.checker.units.qual.s;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;

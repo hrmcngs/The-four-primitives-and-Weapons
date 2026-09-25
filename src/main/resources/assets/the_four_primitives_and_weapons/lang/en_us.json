@@ -1,4 +1,12 @@
 {
+  "entity.the_four_primitives_and_weapons.swordgrave_warden": "Swordgrave Warden",
+  "item.the_four_primitives_and_weapons.swordgrave_warden_spawn_egg": "Swordgrave Warden Spawn Egg",
+  "boss.the_four_primitives_and_weapons.swordgrave.ready": "%s — Armored front; flank it",
+  "boss.the_four_primitives_and_weapons.swordgrave.thrust": "%s — Thrust: sidestep",
+  "boss.the_four_primitives_and_weapons.swordgrave.sweep": "%s — Sweep: jump or move inside",
+  "boss.the_four_primitives_and_weapons.swordgrave.fall": "%s — Falling blade: leave the marked circle",
+  "boss.the_four_primitives_and_weapons.swordgrave.open": "%s — Armor exposed: strike!",
+  "boss.the_four_primitives_and_weapons.swordgrave.broken": "%s — Parried: stance broken!",
   "item.the_four_primitives_and_weapons.keito_katana": "Ketu, the Omen Blade",
   "tooltip.the_four_primitives_and_weapons.keito_katana": "To draw this blade is to invite the ill-fated star.",
   "tooltip.the_four_primitives_and_weapons.promise_ring.lore": "Turn a broken promise into a vow.",

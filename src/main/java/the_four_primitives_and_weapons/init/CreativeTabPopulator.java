@@ -13,7 +13,8 @@ public class CreativeTabPopulator {
 
 	@SubscribeEvent
 	public static void onBuildTabContents(BuildCreativeModeTabContentsEvent event) {
-		// === TAB_WEAPON ===
+		if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) event.accept(TheFourPrimitivesAndWeaponsModItems.SWORDGRAVE_WARDEN_SPAWN_EGG);
+        // === TAB_WEAPON ===
 		if (event.getTab() == TheFourPrimitivesAndWeaponsModTabs.TAB_WEAPON.get()) {
 			event.accept(TheFourPrimitivesAndWeaponsModItems.WOODEN_KATANA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.IRON_KATANA);

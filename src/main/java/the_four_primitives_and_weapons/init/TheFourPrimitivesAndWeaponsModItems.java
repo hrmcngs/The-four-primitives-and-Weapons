@@ -4,7 +4,6 @@
  */
 package the_four_primitives_and_weapons.init;
 
-import org.checkerframework.checker.units.qual.A;
 
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -153,6 +152,8 @@ public class TheFourPrimitivesAndWeaponsModItems {
 	public static final RegistryObject<Item> PROMISE_STRAIGHT_SWORD = REGISTRY.register("promise_straight_sword", () -> new the_four_primitives_and_weapons.item.PromiseWeaponItem("straight_sword"));
 	public static final RegistryObject<Item> RING = REGISTRY.register("ring", () -> new the_four_primitives_and_weapons.item.RingItem());
 	public static final RegistryObject<Item> LUNA = REGISTRY.register("luna", () -> new LunaItem());
+	public static final RegistryObject<Item> SWORDGRAVE_WARDEN_SPAWN_EGG = REGISTRY.register("swordgrave_warden_spawn_egg",
+            () -> new ForgeSpawnEggItem(TheFourPrimitivesAndWeaponsModEntities.SWORDGRAVE_WARDEN, 0x53545C, 0x88DCE6, new Item.Properties()));
 	public static final RegistryObject<Item> SKELTON_MOB_SPAWN_EGG = REGISTRY.register("skelton_mob_spawn_egg", () -> new ForgeSpawnEggItem(TheFourPrimitivesAndWeaponsModEntities.SKELTON_MOB, -1, -1, new Item.Properties()));
 	public static final RegistryObject<Item> ACHROMATIC_SHIELD = REGISTRY.register("achromatic_shield", () -> new AchromaticShieldItem());
 	public static final RegistryObject<Item> HARVEST_MOON_2023929 = REGISTRY.register("harvest_moon_2023929", () -> new HarvestMoon2023929Item());

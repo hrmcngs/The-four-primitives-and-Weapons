@@ -3,7 +3,6 @@ package the_four_primitives_and_weapons.client.screens;
 
 import the_four_primitives_and_weapons.util.VersionHelper;
 
-import org.checkerframework.checker.units.qual.h;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
