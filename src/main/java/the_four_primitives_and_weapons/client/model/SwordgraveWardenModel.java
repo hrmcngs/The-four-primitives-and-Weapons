@@ -26,6 +26,19 @@ public class SwordgraveWardenModel extends IronGolemModel<IronGolem> {
                 root.getChild("left_arm"), root.getChild("right_leg"), root.getChild("left_leg"));
         metal.visible = hilt.visible = gem.visible = eyes.visible = false;
         for (ModelPart parent : mossParents) parent.getChild("moss").visible = false;
+        // Scale each articulated stone mass, including its attached moss. Keep
+        // the head small so the shoulders and fists read as a heavy guardian.
+        root.getChild("body").xScale = 1.3f;
+        root.getChild("body").zScale = 1.45f;
+        for (String name : List.of("right_arm", "left_arm")) {
+            root.getChild(name).xScale = 1.3f;
+            root.getChild(name).zScale = 1.5f;
+        }
+        for (String name : List.of("right_leg", "left_leg")) {
+            root.getChild(name).xScale = 1.4f;
+            root.getChild(name).zScale = 1.4f;
+            root.getChild(name).x *= 1.35f;
+        }
     }
     private static CubeListBuilder box(float x, float y, float z, float w, float h, float d) {
         return CubeListBuilder.create().texOffs(0, 0).addBox(x, y, z, w, h, d);
@@ -45,23 +58,23 @@ public class SwordgraveWardenModel extends IronGolemModel<IronGolem> {
                 .addBox(-3.6f, -8.5f, -4.1f, 1.5f, 3, 0.3f));
         PartDefinition body = root.addOrReplaceChild("body", box(-9, -2, -5, 18, 11, 10)
                 .addBox(-7, 9, -4, 14, 2, 8)
-                .addBox(-4, 11, -3, 8, 6, 6), PartPose.offset(0, -7, 0));
+                .addBox(-6, 11, -3.5f, 12, 6, 7), PartPose.offset(0, -7, 0));
         moss(body, box(-9.1f, -2.8f, -5.1f, 18.2f, 0.9f, 10.2f)
                 .addBox(-8, -2, -5.2f, 3, 4, 0.4f)
                 .addBox(-6, 1, -5.2f, 2, 4, 0.4f)
                 .addBox(-4, 4, -5.2f, 2, 3, 0.4f)
                 .addBox(5, -2, -5.2f, 2, 2, 0.4f)
-                .addBox(2, 12, -3.2f, 1.5f, 4, 0.4f));
+                .addBox(2, 12, -3.7f, 1.5f, 4, 0.4f));
         for (int side : new int[] {-1, 1}) {
             boolean left = side == 1;
             float armX = left ? 9 : -15;
             PartDefinition arm = root.addOrReplaceChild(left ? "left_arm" : "right_arm",
                     box(armX, -3, -4, 6, 9, 8)
-                    .addBox(armX + 1, 6, -3, 4, 8, 6)
-                    .addBox(armX, 14, -4, 6, 11, 8), PartPose.offset(0, -7, 0));
+                    .addBox(armX + 0.5f, 6, -3.5f, 5, 8, 7)
+                    .addBox(armX - 0.5f, 14, -4.5f, 7, 11, 9), PartPose.offset(0, -7, 0));
             moss(arm, box(armX - 0.1f, -3.8f, -4.1f, 6.2f, 0.9f, 8.2f)
                     .addBox(armX + (left ? 4 : 0), -3, -4.2f, 2, left ? 3 : 6, 0.4f)
-                    .addBox(armX + 1, 18, -4.2f, 2, 4, 0.4f));
+                    .addBox(armX + 1, 18, -4.7f, 2, 4, 0.4f));
             PartDefinition leg = root.addOrReplaceChild(left ? "left_leg" : "right_leg",
                     box(-3, 0, -3, 6, 13, 6)
                     .addBox(-3.5f, 9, -5, 7, 4, 9), PartPose.offset(side * 4, 11, 0));

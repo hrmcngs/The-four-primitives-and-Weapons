@@ -1,4 +1,10 @@
 {
+  "hud.the_four_primitives_and_weapons.swordgrave.ready": "装甲堅牢 ─ 側面・背面を狙え",
+  "hud.the_four_primitives_and_weapons.swordgrave.thrust": "突きの予告 ─ 横へ回避",
+  "hud.the_four_primitives_and_weapons.swordgrave.sweep": "薙ぎ払いの予告 ─ 跳ぶか懐へ",
+  "hud.the_four_primitives_and_weapons.swordgrave.fall": "落剣の予告 ─ 円から離れろ",
+  "hud.the_four_primitives_and_weapons.swordgrave.open": "装甲が緩んだ ─ 反撃の好機",
+  "hud.the_four_primitives_and_weapons.swordgrave.broken": "パリィ成功 ─ 体勢崩壊",
   "entity.the_four_primitives_and_weapons.swordgrave_warden": "剣塚の番人",
   "item.the_four_primitives_and_weapons.swordgrave_warden_spawn_egg": "剣塚の番人のスポーンエッグ",
   "boss.the_four_primitives_and_weapons.swordgrave.ready": "%s ─ 正面は堅牢・側背面を狙え",

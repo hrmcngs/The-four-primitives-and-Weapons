@@ -36,6 +36,7 @@ public class SwordgraveWardenEntity extends IronGolem {
         super(type, level);
         xpReward = 80;
         setPersistenceRequired();
+        title("ready");
     }
     public static AttributeSupplier.Builder attributes() {
         return IronGolem.createAttributes().add(Attributes.MAX_HEALTH, 280)

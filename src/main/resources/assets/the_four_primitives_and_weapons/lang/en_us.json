@@ -1,4 +1,10 @@
 {
+  "hud.the_four_primitives_and_weapons.swordgrave.ready": "Armoured — strike the flanks or rear",
+  "hud.the_four_primitives_and_weapons.swordgrave.thrust": "Thrust incoming — sidestep",
+  "hud.the_four_primitives_and_weapons.swordgrave.sweep": "Sweep incoming — jump or move inside",
+  "hud.the_four_primitives_and_weapons.swordgrave.fall": "Falling blade — leave the circle",
+  "hud.the_four_primitives_and_weapons.swordgrave.open": "Armour exposed — strike now",
+  "hud.the_four_primitives_and_weapons.swordgrave.broken": "Parried — guard broken",
   "entity.the_four_primitives_and_weapons.swordgrave_warden": "Swordgrave Warden",
   "item.the_four_primitives_and_weapons.swordgrave_warden_spawn_egg": "Swordgrave Warden Spawn Egg",
   "boss.the_four_primitives_and_weapons.swordgrave.ready": "%s — Armored front; flank it",
