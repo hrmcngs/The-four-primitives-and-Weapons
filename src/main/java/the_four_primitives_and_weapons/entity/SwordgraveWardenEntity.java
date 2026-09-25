@@ -11,10 +11,12 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -42,12 +44,17 @@ public class SwordgraveWardenEntity extends IronGolem {
     }
     @Override protected void registerGoals() {
         goalSelector.addGoal(0, new FloatGoal(this));
+        targetSelector.addGoal(0, new HurtByTargetGoal(this));
         targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
     @Override public boolean removeWhenFarAway(double distance) { return false; }
-    @Override public void setTarget(net.minecraft.world.entity.LivingEntity target) {
-        // IronGolem normally targets hostile mobs on contact; this encounter is for players.
-        if (target == null || target instanceof Player) super.setTarget(target);
+    @Override public void setTarget(LivingEntity target) {
+        // Retaliate against attackers, without inheriting IronGolem's aggression
+        // against unrelated monsters merely touching its body.
+        if (target == null || target instanceof Player || target == getLastHurtByMob()) super.setTarget(target);
+    }
+    @Override public boolean canAttackType(EntityType<?> type) {
+        return type == EntityType.CREEPER || super.canAttackType(type);
     }
     @Override public net.minecraft.world.InteractionResult mobInteract(Player player, net.minecraft.world.InteractionHand hand) {
         return net.minecraft.world.InteractionResult.PASS;
@@ -143,14 +150,16 @@ public class SwordgraveWardenEntity extends IronGolem {
             }
         }
         var bounds = new net.minecraft.world.phys.AABB(aim, aim).inflate(8, 4, 8);
-        for (Player player : server.getEntitiesOfClass(Player.class, bounds, p -> p.isAlive() && !p.isCreative() && !p.isSpectator())) {
-            Vec3 offset = player.position().subtract(aim);
+        for (LivingEntity victim : server.getEntitiesOfClass(LivingEntity.class, bounds,
+                entity -> entity != this && entity.isAlive() && !isAlliedTo(entity)
+                        && (entity instanceof Player player ? !player.isCreative() && !player.isSpectator() : entity == getTarget()))) {
+            Vec3 offset = victim.position().subtract(aim);
             if (!SwordgraveRules.hits(releasedAttack, offset.dot(direction), offset.x * -direction.z + offset.z * direction.x, offset.y)
-                    || !hasLineOfSight(player)) continue;
+                    || !hasLineOfSight(victim)) continue;
             DamageSource source = new DamageSource(damageSources().mobAttack(this).typeHolder(), this, this,
                     releasedAttack == SwordgraveRules.FALL ? aim.add(0, 3, 0) : position());
-            if (player.hurt(source, releasedAttack == SwordgraveRules.THRUST ? 12 : 10)) {
-                player.knockback(0.65, -direction.x, -direction.z);
+            if (victim.hurt(source, releasedAttack == SwordgraveRules.THRUST ? 12 : 10)) {
+                victim.knockback(0.65, -direction.x, -direction.z);
             }
         }
     }
