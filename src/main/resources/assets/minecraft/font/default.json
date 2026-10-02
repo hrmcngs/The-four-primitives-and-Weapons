@@ -1,3 +1,15 @@
 {
-    "providers": []
+  "providers": [
+    {
+      "type": "ttf",
+      "file": "the_four_primitives_and_weapons:misaki_gothic.ttf",
+      "size": 8.0,
+      "oversample": 1.0,
+      "shift": [
+        0.0,
+        0.0
+      ],
+      "skip": " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+    }
+  ]
 }
