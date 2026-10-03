@@ -58,6 +58,10 @@ public class MobWeaponAIHandler {
             return;
         }
 
+        // Dedicated soldiers register this goal themselves. Never run a second attack timeline.
+        if (mob.goalSelector.getAvailableGoals().stream()
+                .anyMatch(goal -> goal.getGoal() instanceof PlayerLikeAIGoal)) return;
+
         // 武器を持っているかチェック
         ItemStack mainHandItem = mob.getItemInHand(InteractionHand.MAIN_HAND);
         if (!isWeapon(mainHandItem)) {

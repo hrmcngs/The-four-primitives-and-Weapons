@@ -51,7 +51,14 @@ public class PlayerLikeAIGoal extends Goal {
 
     // コンボカウンター
     private int comboCounter = 0;
-    private long lastAttackTime = 0;
+    private long lastAttackTime = -1;
+    private EnemyAttackRules.Attack committedAttack;
+    private Vec3 committedDirection = Vec3.ZERO;
+    private ALifeAIBridge.AIAction pendingAttack;
+    private LivingEntity pendingTarget;
+    private ItemStack pendingWeapon = ItemStack.EMPTY;
+    private long strikeAt;
+    private long recoverUntil;
 
     public PlayerLikeAIGoal(Mob entity, int tier) {
         this.entity = entity;
@@ -80,18 +87,79 @@ public class PlayerLikeAIGoal extends Goal {
             return;
         }
 
+        if (the_four_primitives_and_weapons.events.PostureCombatHandler.isStaggered(entity)) {
+            entity.getNavigation().stop();
+            pendingAttack = null;
+            pendingTarget = null;
+            pendingWeapon = ItemStack.EMPTY;
+            return;
+        }
+
+        long now = entity.level().getGameTime();
+        if (fallDamageImmunityTicks > 0) fallDamageImmunityTicks--;
+        if (pendingAttack != null) {
+            entity.getNavigation().stop();
+            if (pendingTarget == null || !pendingTarget.isAlive() || entity.getTarget() != pendingTarget
+                    || !ItemStack.matches(pendingWeapon, entity.getMainHandItem()) || !entity.hasLineOfSight(pendingTarget)) {
+                pendingAttack = null;
+                pendingTarget = null;
+                pendingWeapon = ItemStack.EMPTY;
+                recoverUntil = now + 6;
+                return;
+            }
+            Vec3 aim = entity.position().add(committedDirection.scale(4));
+            entity.getLookControl().setLookAt(aim.x, entity.getEyeY(), aim.z, 30, 30);
+            if (now < strikeAt) {
+                if (now % 4 == 0) showAttackShape(true);
+                return;
+            }
+            ALifeAIBridge.AIAction attack = pendingAttack;
+            pendingAttack = null;
+            pendingTarget = null;
+            pendingWeapon = ItemStack.EMPTY;
+            recoverUntil = now + committedAttack.recovery();
+            executeAction(attack);
+            return;
+        }
+        if (now < recoverUntil) {
+            entity.getNavigation().stop();
+            return;
+        }
+
         try {
             // AIを更新してアクションを取得
             currentAction = aiBridge.update();
 
             // アクションを実行
             if (currentAction != null) {
-                executeAction(currentAction);
-            }
-
-            // 落下ダメージ無効時間のカウントダウン
-            if (fallDamageImmunityTicks > 0) {
-                fallDamageImmunityTicks--;
+                if (isOffensiveAction(currentAction.action) && entity.getTarget() != null) {
+                    pendingAttack = currentAction;
+                    pendingTarget = entity.getTarget();
+                    pendingWeapon = entity.getMainHandItem().copy();
+                    if (lastAttackTime < 0 || now - lastAttackTime > 80) comboCounter = 0;
+                    var weaponType = the_four_primitives_and_weapons.skill.WeaponTypeRegistry.getTypeForItem(pendingWeapon);
+                    committedAttack = EnemyAttackRules.choose(weaponType == null ? null : weaponType.getId(),
+                            comboCounter, "charge_attack".equals(currentAction.action), "dash_attack".equals(currentAction.action));
+                    if (entity.distanceTo(pendingTarget) > committedAttack.reach() + pendingTarget.getBbWidth() / 2.0 + 0.25) {
+                        entity.getNavigation().moveTo(pendingTarget, 1.0);
+                        pendingAttack = null;
+                        pendingTarget = null;
+                        pendingWeapon = ItemStack.EMPTY;
+                        return;
+                    }
+                    committedDirection = pendingTarget.position().subtract(entity.position()).multiply(1, 0, 1).normalize();
+                    if (committedDirection.lengthSqr() < 1.0e-6)
+                        committedDirection = new Vec3(0, 0, 1);
+                    strikeAt = now + committedAttack.windup();
+                    entity.getNavigation().stop();
+                    if (entity.level() instanceof ServerLevel level) {
+                        boolean heavy = !"attack".equals(currentAction.action);
+                        level.sendParticles(heavy ? ParticleTypes.CRIT : ParticleTypes.ENCHANT,
+                                entity.getX(), entity.getEyeY(), entity.getZ(), 8, 0.3, 0.2, 0.3, 0.02);
+                        level.playSound(null, entity.blockPosition(), SoundEvents.ARMOR_EQUIP_IRON,
+                                SoundSource.HOSTILE, 0.6f, heavy ? 0.7f : 1.3f);
+                    }
+                } else executeAction(currentAction);
             }
 
             actionTicks++;
@@ -99,6 +167,20 @@ public class PlayerLikeAIGoal extends Goal {
             System.err.println("[PlayerLikeAI] Critical error in tick for " + entity.getName().getString() + ": " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    private static boolean isOffensiveAction(String action) {
+        return "attack".equals(action) || "charge_attack".equals(action)
+                || "dash_attack".equals(action);
+    }
+
+    @Override
+    public void stop() {
+        pendingAttack = null;
+        pendingTarget = null;
+        pendingWeapon = ItemStack.EMPTY;
+        recoverUntil = 0;
+        entity.getNavigation().stop();
     }
 
     /**
@@ -111,16 +193,16 @@ public class PlayerLikeAIGoal extends Goal {
                     executeDodge(action);
                     break;
                 case "dash_attack":
-                    executeDashAttack(action);
+                    executeWeaponAttack(action);
                     break;
                 case "charge_attack":
-                    executeChargeAttack(action);
+                    executeWeaponAttack(action);
                     break;
                 case "use_weapon_skill":
                     executeWeaponSkill(action);
                     break;
                 case "attack":
-                    executeNormalAttack(action);
+                    executeWeaponAttack(action);
                     break;
                 case "move_to_target":
                     moveToTarget(action);
@@ -151,84 +233,69 @@ public class PlayerLikeAIGoal extends Goal {
         }
     }
 
-    /**
-     * ダッシュ攻撃を実行（DodgeAndBattouHandlerのperformDashAttackと同じ）
-     */
-    private void executeDashAttack(ALifeAIBridge.AIAction action) {
-        LivingEntity target = entity.getTarget();
-        if (target == null || !target.isAlive()) {
-            return;
-        }
-
-        Level world = VersionHelper.getLevel(entity);
-        Vec3 lookVec = target.position().subtract(entity.position()).normalize();
-        Vec3 entityPos = entity.position();
-
-        // 竹を破壊する
-        breakBambooInPath(entityPos, lookVec, 7.0);
-
-        // 前方への高速移動
-        double dashStrength = 1.8;
-        entity.setDeltaMovement(entity.getDeltaMovement().add(lookVec.scale(dashStrength)));
-
-        // エフェクト
-        if (!world.isClientSide) {
-            ServerLevel serverWorld = (ServerLevel) world;
-
-            // ダッシュ攻撃のエフェクト
-            for (int i = 0; i < 10; i++) {
-                double d = i * 0.6;
-                serverWorld.sendParticles(
-                    ParticleTypes.SWEEP_ATTACK,
-                    entityPos.x + lookVec.x * d,
-                    entityPos.y + 1,
-                    entityPos.z + lookVec.z * d,
-                    2, 0, 0, 0, 0
-                );
-
-                serverWorld.sendParticles(
-                    ParticleTypes.CLOUD,
-                    entityPos.x + lookVec.x * d,
-                    entityPos.y + 0.1,
-                    entityPos.z + lookVec.z * d,
-                    3, 0.3, 0, 0.3, 0.01
-                );
+    /** Resolve the announced attack without tracking a dodging target at impact. */
+    private void executeWeaponAttack(ALifeAIBridge.AIAction action) {
+        if (committedAttack == null || entity.level().isClientSide()
+                || entity.getTarget() == null || !entity.getTarget().isAlive()) return;
+        Vec3 origin = entity.position();
+        double reach = committedAttack.reach();
+        entity.swing(InteractionHand.MAIN_HAND, true);
+        if ("dash_attack".equals(action.action))
+            entity.setDeltaMovement(entity.getDeltaMovement().add(committedDirection.scale(0.6)));
+        showAttackShape(false);
+        ItemStack weapon = entity.getMainHandItem();
+        for (LivingEntity victim : entity.level().getEntitiesOfClass(LivingEntity.class,
+                entity.getBoundingBox().inflate(reach + 1, 1, reach + 1))) {
+            if (victim == entity || !entity.canAttack(victim) || entity.isAlliedTo(victim)
+                    || !entity.hasLineOfSight(victim) || !victim.isAlive()) continue;
+            // The full target bounds may overlap the attack height; terrain still blocks sight.
+            if (victim.getBoundingBox().maxY < origin.y + 0.2
+                    || victim.getBoundingBox().minY > origin.y + entity.getBbHeight()) continue;
+            Vec3 offset = victim.position().subtract(origin);
+            double forward = offset.x * committedDirection.x + offset.z * committedDirection.z;
+            double side = offset.x * -committedDirection.z + offset.z * committedDirection.x;
+            if (!EnemyAttackRules.hits(committedAttack, forward, side, victim.getBbWidth() / 2.0)) continue;
+            float dealt = DamageCalculator.dealDamage(entity, victim, committedAttack.damage(), weapon);
+            // A successful parry or dodge must also avoid the attack's extra knockback.
+            if (dealt > 0) {
+                DamageCalculator.addKnockbackVelocity(victim, committedDirection.scale(
+                        committedAttack.shape() == EnemyAttackRules.Shape.SMASH ? 0.45 : 0.2).add(0, 0.08, 0));
             }
         }
-
-        // 前方の敵に大ダメージ
-        double range = 7.0;
-        Vec3 endPos = entityPos.add(lookVec.scale(range));
-        AABB searchArea = new AABB(entityPos.add(-2, -1, -2), endPos.add(2, 2, 2));
-
-        List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            targetEntity -> {
-                if (targetEntity == entity) return false;
-                if (!entity.canAttack(targetEntity)) return false;
-                Vec3 toEntity = targetEntity.position().subtract(entityPos).normalize();
-                double dot = lookVec.dot(toEntity);
-                return dot > -0.2 && entity.distanceTo(targetEntity) <= range;
-            });
-
-        ItemStack weapon = entity.getItemInHand(InteractionHand.MAIN_HAND);
-
-        for (LivingEntity targetEntity : targets) {
-            float baseDamage = 18.0f;
-            DamageCalculator.dealDamage(entity, targetEntity, baseDamage, weapon);
-
-            targetEntity.setDeltaMovement(lookVec.scale(1.5).add(0, 0.4, 0));
-        }
-
-        // サウンド
-        world.playSound(null, entityPos.x, entityPos.y, entityPos.z,
-            SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.HOSTILE, 1.2f, 1.0f);
-        world.playSound(null, entityPos.x, entityPos.y, entityPos.z,
-            SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.HOSTILE, 1.0f, 1.2f);
+        entity.level().playSound(null, entity.blockPosition(),
+                committedAttack.shape() == EnemyAttackRules.Shape.THRUST ? SoundEvents.PLAYER_ATTACK_CRIT
+                        : SoundEvents.PLAYER_ATTACK_SWEEP,
+                SoundSource.HOSTILE, 1, committedAttack.shape() == EnemyAttackRules.Shape.SMASH ? 0.7f : 1.1f);
+        comboCounter++;
+        lastAttackTime = entity.level().getGameTime();
     }
 
-    /**
-     * 回避を実行（プレイヤーの右クリック動作）
-     */
+    private void showAttackShape(boolean warning) {
+        if (!(entity.level() instanceof ServerLevel level) || committedAttack == null) return;
+        Vec3 origin = entity.position();
+        if (committedAttack.shape() == EnemyAttackRules.Shape.SWEEP) {
+            for (int i = 0; i <= 12; i++) {
+                double angle = Math.toRadians(-committedAttack.halfAngle() + 2 * committedAttack.halfAngle() * i / 12);
+                double forward = Math.cos(angle) * committedAttack.reach();
+                double side = Math.sin(angle) * committedAttack.reach();
+                Vec3 point = origin.add(committedDirection.scale(forward))
+                        .add(-committedDirection.z * side, warning ? 0.2 : 1, committedDirection.x * side);
+                level.sendParticles(warning ? ParticleTypes.ENCHANT : ParticleTypes.SWEEP_ATTACK,
+                        point.x, point.y, point.z, 1, 0, 0, 0, 0);
+            }
+        } else {
+            for (int i = 1; i <= 10; i++) {
+                Vec3 center = origin.add(committedDirection.scale(committedAttack.reach() * i / 10));
+                for (int side : new int[]{-1, 1}) {
+                    double width = committedAttack.halfWidth() * side;
+                    level.sendParticles(warning ? ParticleTypes.ENCHANT : ParticleTypes.CRIT,
+                            center.x - committedDirection.z * width, center.y + (warning ? 0.2 : 1),
+                            center.z + committedDirection.x * width, 1, 0, 0, 0, 0);
+                }
+            }
+        }
+    }
+
     private void executeDodge(ALifeAIBridge.AIAction action) {
         if (action.direction == null) {
             return;
@@ -283,206 +350,6 @@ public class PlayerLikeAIGoal extends Goal {
      * - 刀（Katana）: 周囲回転斬り
      * - その他: 貫通突き（デフォルト）
      */
-    private void executeChargeAttack(ALifeAIBridge.AIAction action) {
-        // 盲目効果時：チャージ攻撃が80%の確率で失敗
-        if (entity.hasEffect(MobEffects.BLINDNESS)) {
-            if (random.nextDouble() < 0.8) {                return;
-            }
-        }
-
-        // 武器取得して攻撃タイプを判定
-        ItemStack weapon = entity.getItemInHand(InteractionHand.MAIN_HAND);
-        String weaponName = weapon.getItem().getClass().getSimpleName();
-        boolean isKatana = weaponName.contains("Katana") || weaponName.contains("katana");
-
-        if (isKatana) {
-            // 刀: 周囲回転斬り（ChargedAttackHandler.performSpinSlashと同じ）
-            executeSpinSlash(action);
-        } else {
-            // デフォルト: 貫通突き（ChargedAttackHandler.performChargedThrustと同じ）
-            executeChargedThrust(action);
-        }
-    }
-
-    /**
-     * 貫通突きチャージ攻撃（ChargedAttackHandler.performChargedThrustと同じ）
-     */
-    private void executeChargedThrust(ALifeAIBridge.AIAction action) {
-        // 暗闇効果時：チャージ攻撃の範囲が50%減少
-        double rangeMultiplier = 1.0;
-        if (entity.hasEffect(MobEffects.DARKNESS)) {
-            rangeMultiplier = 0.5;
-        }
-
-        Level world = VersionHelper.getLevel(entity);
-        Vec3 entityPos = entity.position();
-
-        // 攻撃方向を計算
-        Vec3 lookVec;
-        if (action.target != null) {
-            lookVec = action.target.subtract(entityPos).normalize();
-        } else {
-            LivingEntity target = entity.getTarget();
-            if (target != null) {
-                lookVec = target.position().subtract(entityPos).normalize();
-            } else {
-                lookVec = entity.getLookAngle();
-            }
-        }
-
-        // 混乱効果時：攻撃方向がランダムにずれる
-        if (entity.hasEffect(MobEffects.CONFUSION)) {
-            double angleOffset = (random.nextDouble() - 0.5) * Math.PI * 0.5; // ±45度のずれ
-            double cos = Math.cos(angleOffset);
-            double sin = Math.sin(angleOffset);
-            lookVec = new Vec3(
-                lookVec.x * cos - lookVec.z * sin,
-                lookVec.y,
-                lookVec.x * sin + lookVec.z * cos
-            ).normalize();
-        }
-
-        float chargePercent = action.chargePercent;
-        float baseDamage = 15.0f * (1.0f + chargePercent);
-        double range = (6.0f + chargePercent * 2.0f) * rangeMultiplier;
-
-        // 竹を破壊する
-        breakBambooInPath(entityPos, lookVec, range);
-
-        final Vec3 finalLookVec = lookVec;
-
-        // 貫通突きエフェクト
-        if (!world.isClientSide) {
-            ServerLevel serverWorld = (ServerLevel) world;
-
-            for (double d = 0; d <= range; d += 0.3) {
-                serverWorld.sendParticles(
-                    ParticleTypes.ELECTRIC_SPARK,
-                    entityPos.x + finalLookVec.x * d,
-                    entityPos.y + 1,
-                    entityPos.z + finalLookVec.z * d,
-                    5, 0.2, 0.2, 0.2, 0.05
-                );
-
-                if (chargePercent >= 1.0f) {
-                    serverWorld.sendParticles(
-                        ParticleTypes.END_ROD,
-                        entityPos.x + finalLookVec.x * d,
-                        entityPos.y + 1,
-                        entityPos.z + finalLookVec.z * d,
-                        2, 0.1, 0.1, 0.1, 0
-                    );
-                }
-            }
-        }
-
-        // 貫通攻撃（直線上の全ての敵）
-        Vec3 endPos = entityPos.add(finalLookVec.scale(range));
-        AABB searchArea = new AABB(entityPos, endPos).inflate(1.0);
-
-        List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            target -> {
-                if (target == entity) return false;
-                if (!entity.canAttack(target)) return false;
-                Vec3 toEntity = target.position().subtract(entityPos);
-                double dot = finalLookVec.dot(toEntity.normalize());
-                return dot > 0.8 && toEntity.length() <= range;
-            });
-
-        ItemStack weapon = entity.getItemInHand(InteractionHand.MAIN_HAND);
-
-        for (LivingEntity target : targets) {
-            DamageCalculator.dealDamage(entity, target, baseDamage, weapon);
-
-            // 貫通による吹き飛ばし
-            target.setDeltaMovement(finalLookVec.scale(2.0 * chargePercent).add(0, 0.5, 0));
-
-            if (chargePercent >= 1.0f) {
-                // 最大チャージで出血効果
-                target.setSecondsOnFire(5);
-            }
-        }
-
-        world.playSound(null, entityPos.x, entityPos.y, entityPos.z,
-            SoundEvents.TRIDENT_THUNDER, SoundSource.HOSTILE, 1.0f, 1.0f);
-    }
-
-    /**
-     * 回転斬りチャージ攻撃（ChargedAttackHandler.performSpinSlashと同じ）
-     */
-    private void executeSpinSlash(ALifeAIBridge.AIAction action) {
-        Level world = VersionHelper.getLevel(entity);
-        Vec3 entityPos = entity.position();
-
-        float chargePercent = action.chargePercent;
-        float baseDamage = 12.0f * (1.0f + chargePercent * 1.5f);
-        double range = 4.0f + chargePercent * 2.0f;
-
-        // 回転斬りエフェクト
-        if (!world.isClientSide) {
-            ServerLevel serverWorld = (ServerLevel) world;
-
-            // 複数の円を描く
-            for (int ring = 0; ring < 3; ring++) {
-                double r = range * (ring + 1) / 3.0;
-                for (int i = 0; i < 360; i += 10) {
-                    double rad = Math.toRadians(i);
-                    serverWorld.sendParticles(
-                        ring == 0 ? ParticleTypes.SWEEP_ATTACK : ParticleTypes.CRIT,
-                        entityPos.x + Math.cos(rad) * r,
-                        entityPos.y + 1 + ring * 0.3,
-                        entityPos.z + Math.sin(rad) * r,
-                        1, 0, 0, 0, 0
-                    );
-                }
-            }
-
-            if (chargePercent >= 1.0f) {
-                // 最大チャージで追加エフェクト
-                for (int i = 0; i < 8; i++) {
-                    double angle = Math.PI * 2 * i / 8;
-                    serverWorld.sendParticles(
-                        ParticleTypes.ELECTRIC_SPARK,
-                        entityPos.x + Math.cos(angle) * range,
-                        entityPos.y + 1,
-                        entityPos.z + Math.sin(angle) * range,
-                        10, 0.2, 0.5, 0.2, 0.1
-                    );
-                }
-            }
-        }
-
-        // 周囲の敵全てにダメージ
-        AABB searchArea = new AABB(
-            entityPos.x - range, entityPos.y - 1, entityPos.z - range,
-            entityPos.x + range, entityPos.y + 3, entityPos.z + range
-        );
-
-        List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            target -> target != entity && entity.canAttack(target) && entity.distanceTo(target) <= range);
-
-        ItemStack weapon = entity.getItemInHand(InteractionHand.MAIN_HAND);
-
-        for (LivingEntity target : targets) {
-            DamageCalculator.dealDamage(entity, target, baseDamage, weapon);
-
-            // 円形ノックバック
-            Vec3 knockback = target.position().subtract(entityPos).normalize().scale(1.0 + chargePercent);
-            target.setDeltaMovement(knockback.x, 0.4, knockback.z);
-
-            if (chargePercent >= 1.0f) {
-                // スタン効果（仮）
-                target.setDeltaMovement(0, target.getDeltaMovement().y, 0);
-            }
-        }
-
-        world.playSound(null, entityPos.x, entityPos.y, entityPos.z,
-            SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.HOSTILE, 1.5f, 0.7f);
-    }
-
-    /**
-     * 武器スキルを使用（プレイヤーの右クリック動作）
-     */
     private void executeWeaponSkill(ALifeAIBridge.AIAction action) {
         // 盲目効果時：スキルが60%の確率で失敗
         if (entity.hasEffect(MobEffects.BLINDNESS)) {
@@ -536,238 +403,7 @@ public class PlayerLikeAIGoal extends Goal {
         }
     }
 
-    /**
-     * 通常攻撃を実行（ChargedAttackHandlerと同じロジック）
-     * 武器タイプにより異なる攻撃を実行：
-     * - 刀（Katana）: 三段コンボ斬り（左上、右上、横一文字）
-     * - その他: デフォルト攻撃
-     */
-    private void executeNormalAttack(ALifeAIBridge.AIAction action) {
-        LivingEntity target = entity.getTarget();
-        if (target == null || entity.distanceTo(target) > 5.0) {
-            return;
-        }
-
-        // コンボリセット判定（最後の攻撃から1秒以上経過していたらリセット）
-        long currentTime = System.currentTimeMillis();
-        if (currentTime - lastAttackTime > 1000) {
-            comboCounter = 0;
-        }
-        lastAttackTime = currentTime;
-
-        // 武器取得して攻撃タイプを判定
-        ItemStack weapon = entity.getItemInHand(InteractionHand.MAIN_HAND);
-        String weaponName = weapon.getItem().getClass().getSimpleName();
-        boolean isKatana = weaponName.contains("Katana") || weaponName.contains("katana");
-
-        if (isKatana) {
-            // 刀: 三段コンボ（ChargedAttackHandler.performKatanaComboと同じ）
-            executeKatanaCombo(target);
-        } else {
-            // デフォルト攻撃
-            executeDefaultAttack(target, action);
-        }
-    }
-
-    /**
-     * 刀のコンボ攻撃（ChargedAttackHandler.performKatanaComboと同じ）
-     */
-    private void executeKatanaCombo(LivingEntity target) {
-        Level world = VersionHelper.getLevel(entity);
-        Vec3 entityPos = entity.position();
-        Vec3 lookVec = target.position().subtract(entityPos).normalize();
-
-        // コンボ段階に応じた攻撃
-        int combo = comboCounter % 3;
-
-        if (!world.isClientSide) {
-            ServerLevel serverWorld = (ServerLevel) world;
-
-            // コンボに応じたエフェクト
-            if (combo == 0) {
-                // 左上から右下への斬撃
-                for (int i = -2; i <= 2; i++) {
-                    serverWorld.sendParticles(ParticleTypes.SWEEP_ATTACK,
-                        entityPos.x + lookVec.x * 2 - 0.5 + i * 0.2,
-                        entityPos.y + 1.5 - i * 0.2,
-                        entityPos.z + lookVec.z * 2,
-                        1, 0, 0, 0, 0);
-                }
-            } else if (combo == 1) {
-                // 右上から左下への斬撃
-                for (int i = -2; i <= 2; i++) {
-                    serverWorld.sendParticles(ParticleTypes.SWEEP_ATTACK,
-                        entityPos.x + lookVec.x * 2 + 0.5 - i * 0.2,
-                        entityPos.y + 1.5 - i * 0.2,
-                        entityPos.z + lookVec.z * 2,
-                        1, 0, 0, 0, 0);
-                }
-            } else {
-                // 横一文字斬り
-                Vec3 rightVec = lookVec.cross(new Vec3(0, 1, 0)).normalize();
-                for (int i = -3; i <= 3; i++) {
-                    serverWorld.sendParticles(ParticleTypes.SWEEP_ATTACK,
-                        entityPos.x + lookVec.x * 2 + rightVec.x * i * 0.3,
-                        entityPos.y + 1,
-                        entityPos.z + lookVec.z * 2 + rightVec.z * i * 0.3,
-                        1, 0, 0, 0, 0);
-                }
-            }
-        }
-
-        // 攻撃範囲と処理（横に広い範囲）
-        double forwardRange = 4.5;  // 前方リーチ
-        double horizontalRange = 3.0;  // 横幅を大幅に拡大
-        float baseDamage = combo == 2 ? 12.0f : 9.0f;
-
-        // 右ベクトルを計算
-        Vec3 rightVec = new Vec3(-lookVec.z, 0, lookVec.x).normalize();
-
-        // 横長の攻撃範囲を構築
-        Vec3 minPoint = entityPos.add(lookVec.scale(-0.5))
-            .add(rightVec.scale(-horizontalRange))
-            .add(0, -0.5, 0);
-        Vec3 maxPoint = entityPos.add(lookVec.scale(forwardRange))
-            .add(rightVec.scale(horizontalRange))
-            .add(0, 2.5, 0);
-
-        AABB searchArea = new AABB(minPoint, maxPoint);
-
-        List<LivingEntity> targets = world.getEntitiesOfClass(LivingEntity.class, searchArea,
-            e -> {
-                if (e == entity) return false;
-                if (!entity.canAttack(e)) return false;
-                Vec3 toEntity = e.position().subtract(entityPos).normalize();
-                double dot = lookVec.dot(toEntity);
-                // より広い横方向の判定（180度近い範囲）
-                return dot > -0.3 && entity.distanceTo(e) <= forwardRange + horizontalRange;
-            });
-
-        ItemStack weapon = entity.getItemInHand(InteractionHand.MAIN_HAND);
-
-        for (LivingEntity t : targets) {
-            DamageCalculator.dealDamage(entity, t, baseDamage, weapon);
-
-            Vec3 knockback = t.position().subtract(entityPos).normalize().scale(0.4);
-            t.setDeltaMovement(t.getDeltaMovement().add(knockback.x, 0.1, knockback.z));
-        }
-
-        world.playSound(null, entityPos.x, entityPos.y, entityPos.z,
-            SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.HOSTILE,
-            1.0f, 0.9f + combo * 0.1f);
-
-        // コンボカウンターを増やす
-        comboCounter++;
-    }
-
-    /**
-     * デフォルト攻撃（武器タイプに応じたエフェクト付き）
-     */
-    private void executeDefaultAttack(LivingEntity target, ALifeAIBridge.AIAction action) {
-        if (target == null || entity.distanceTo(target) > 3.0) {
-            return;
-        }
-
-        // 通常のダメージ処理
-        boolean hitSuccess = entity.doHurtTarget(target);
-
-        if (hitSuccess) {
-            Level world = VersionHelper.getLevel(entity);
-            Vec3 targetPos = target.position();
-
-            // 武器タイプに応じたエフェクトとノックバック
-            if (!world.isClientSide) {
-                ServerLevel serverWorld = (ServerLevel) world;
-
-                // 攻撃タイプに応じたパーティクルエフェクト
-                switch (action.attackType) {
-                    case "iai_slash":
-                    case "quick_slash":
-                    case "slash":
-                        // 斬撃エフェクト
-                        serverWorld.sendParticles(
-                            ParticleTypes.SWEEP_ATTACK,
-                            targetPos.x, targetPos.y + target.getBbHeight() / 2, targetPos.z,
-                            2, 0.3, 0.3, 0.3, 0
-                        );
-                        break;
-
-                    case "thrust":
-                    case "pierce":
-                    case "charge_thrust":
-                        // 突きエフェクト（火花）
-                        serverWorld.sendParticles(
-                            ParticleTypes.CRIT,
-                            targetPos.x, targetPos.y + target.getBbHeight() / 2, targetPos.z,
-                            8, 0.2, 0.2, 0.2, 0.1
-                        );
-                        // 強めのノックバック
-                        Vec3 knockback = target.position().subtract(entity.position()).normalize().scale(0.6);
-                        target.setDeltaMovement(target.getDeltaMovement().add(knockback.x, 0.15, knockback.z));
-                        break;
-
-                    case "overhead_smash":
-                    case "cleave":
-                        // 叩きつけエフェクト（爆発パーティクル）
-                        serverWorld.sendParticles(
-                            ParticleTypes.EXPLOSION,
-                            targetPos.x, targetPos.y, targetPos.z,
-                            1, 0, 0, 0, 0
-                        );
-                        // 非常に強いノックバック
-                        Vec3 smashKnockback = target.position().subtract(entity.position()).normalize().scale(0.8);
-                        target.setDeltaMovement(target.getDeltaMovement().add(smashKnockback.x, 0.3, smashKnockback.z));
-                        break;
-
-                    case "spin_slash":
-                    case "sweep":
-                        // 回転斬りエフェクト（複数回の斬撃）
-                        for (int i = 0; i < 3; i++) {
-                            serverWorld.sendParticles(
-                                ParticleTypes.SWEEP_ATTACK,
-                                targetPos.x, targetPos.y + target.getBbHeight() / 2, targetPos.z,
-                                1, 0.4, 0.4, 0.4, 0
-                            );
-                        }
-                        break;
-
-                    case "downward_cut":
-                        // 下段斬りエフェクト
-                        serverWorld.sendParticles(
-                            ParticleTypes.SWEEP_ATTACK,
-                            targetPos.x, targetPos.y + 0.5, targetPos.z,
-                            2, 0.3, 0.2, 0.3, 0
-                        );
-                        break;
-
-                    default:
-                        // デフォルトエフェクト
-                        serverWorld.sendParticles(
-                            ParticleTypes.SWEEP_ATTACK,
-                            targetPos.x, targetPos.y + target.getBbHeight() / 2, targetPos.z,
-                            1, 0.2, 0.2, 0.2, 0
-                        );
-                        break;
-                }
-
-                // 攻撃音（攻撃タイプに応じて変更）
-                if (action.attackType.contains("smash") || action.attackType.contains("cleave")) {
-                    world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                        SoundEvents.PLAYER_ATTACK_STRONG, SoundSource.HOSTILE, 1.0f, 0.8f);
-                } else if (action.attackType.contains("thrust") || action.attackType.contains("pierce")) {
-                    world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                        SoundEvents.PLAYER_ATTACK_CRIT, SoundSource.HOSTILE, 1.0f, 1.2f);
-                } else {
-                    world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                        SoundEvents.PLAYER_ATTACK_SWEEP, SoundSource.HOSTILE, 1.0f, 1.0f);
-                }
-            }
-        }
-    }
-
-    /**
-     * ターゲットに向かって移動
-     */
+    /** Approach the current target. */
     private void moveToTarget(ALifeAIBridge.AIAction action) {
         if (action.target == null || entity.getNavigation() == null) {
             return;

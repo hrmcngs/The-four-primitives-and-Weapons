@@ -522,6 +522,7 @@ public class DodgeAndBattouHandler {
     // publicにしてDodgeRequestPacketから呼べるようにする
     // @return true=回避成功、false=クールダウン等でブロック
     public static boolean performDodge(Player player) {
+        if (PostureCombatHandler.isStaggered(player)) return false;
         // パケット経由でも盾の防御を優先し、回避の移動・無敵時間・CDを発生させない。
         if (hasShieldInHands(player)) return false;
         if (blocksLunaRecallDodge(player) || blocksNinjatoUseDodge(player)) return false;
@@ -577,6 +578,7 @@ public class DodgeAndBattouHandler {
         // 回避データを設定
         data.hasDodged = true;
         data.dodgeTimer = DODGE_WINDOW;
+        if (!world.isClientSide) TacticalDefenseHandler.beginDodge(player);
         data.cooldownPending = true; // 頂点到達後にクールダウン開始
         data.cooldownTimer = 0;
         data.fallDamageImmunityTimer = FALL_DAMAGE_IMMUNITY_TIME;

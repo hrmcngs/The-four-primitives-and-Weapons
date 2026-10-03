@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
  *
  * PersistentDataの "SwordGuardTicks" > 0 の場合:
  *   - "SwordGuardFull" == true → 100%カット（Replica Sword of Light）
- *   - それ以外 → 25%カット（通常武器）
+ *   - それ以外 → 正面からの攻撃を50%カット（通常武器）
  *
  * Resistanceエフェクトもアーマースタンドも使わない
  */
@@ -39,7 +39,7 @@ public class GuardDamageReductionMixin {
         CompoundTag data = player.getPersistentData();
         int guardTicks = data.getInt("SwordGuardTicks");
 
-        if (guardTicks <= 0) {
+        if (guardTicks <= 0 || !the_four_primitives_and_weapons.events.TacticalDefenseHandler.canBlock(player, source)) {
             return damage;
         }
 
@@ -48,7 +48,7 @@ public class GuardDamageReductionMixin {
             return 0f;
         }
 
-        // 25%カット（通常武器）
-        return damage * 0.75f;
+        // 正面からの防御可能な攻撃を50%カット
+        return damage * 0.5f;
     }
 }

@@ -23,6 +23,7 @@ public abstract class TooltipPositionMixin {
         Vector2ic positioned = positioner.positionTooltip(
                 screenWidth, screenHeight, mouseX, mouseY, tooltipWidth, tooltipHeight);
         int adjustedY = TooltipScrollController.adjustedY(positioned.y(), screenHeight, tooltipHeight);
-        return new org.joml.Vector2i(positioned.x(), adjustedY);
+        int adjustedX = TooltipScrollController.adjustedX(positioned.x(), screenWidth, tooltipWidth);
+        return new org.joml.Vector2i(adjustedX, adjustedY);
     }
 }

@@ -90,6 +90,7 @@ public class SwordGuardHandler {
     public static void onRightClickItem(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getEntity();
         if (player.level().isClientSide()) return;
+        if (PostureCombatHandler.isStaggered(player) || !TacticalDefenseHandler.canBeginGuard(player)) return;
         if (!player.isShiftKeyDown()) return;
         if (hasShieldInHands(player)) return;
 
@@ -121,7 +122,8 @@ public class SwordGuardHandler {
 
         // NBTタグでガード状態を設定
         data.putInt(GUARD_TICKS_TAG, duration);
-        data.putBoolean(GUARD_FULL_TAG, isReplica); // true=100%カット, false=25%カット
+        TacticalDefenseHandler.beginGuard(player);
+        data.putBoolean(GUARD_FULL_TAG, isReplica); // true=100%カット, false=50%カット
 
         // ガード位置を記録（位置固定用）
         data.putDouble(GUARD_POS_X, player.getX());
@@ -244,7 +246,7 @@ public class SwordGuardHandler {
     /**
      * ガード終了処理
      */
-    private static void endGuard(Player player, CompoundTag data) {
+    static void endGuard(Player player, CompoundTag data) {
         data.putInt(GUARD_TICKS_TAG, 0);
         data.remove(GUARD_FULL_TAG);
 

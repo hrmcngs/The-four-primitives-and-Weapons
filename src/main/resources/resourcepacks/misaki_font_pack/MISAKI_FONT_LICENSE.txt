@@ -7,3 +7,7 @@ THESE FONTS ARE PROVIDED "AS IS" WITHOUT WARRANTY.
 
 Original archive files misaki.txt and readme.txt are included under:
 assets/the_four_primitives_and_weapons/font/
+
+misaki_gothic_minecraft.ttf is a modified copy for Minecraft 1.20.1.
+Left-side bearings and the vertical baseline are corrected for Minecraft's TTF renderer; required TTF checksums are updated.
+Original outlines and advance widths are preserved.

@@ -13,6 +13,7 @@ public final class CombatRecovery {
     private CombatRecovery() {}
 
     public static boolean ready(Player player) {
+        if (the_four_primitives_and_weapons.events.PostureCombatHandler.isStaggered(player)) return false;
         Recovery recovery = RECOVERIES.get(player);
         return recovery == null || !recovery.dimension.equals(player.level().dimension().location())
                 || !CombatTimingRules.inWindow(player.level().getGameTime(), recovery.started, recovery.ticks);

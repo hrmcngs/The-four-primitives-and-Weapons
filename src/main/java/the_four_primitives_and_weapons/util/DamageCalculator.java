@@ -137,6 +137,11 @@ public class DamageCalculator {
      * 現在の Attack cooldown スケール context を取得（複数tick skill が damage に焼き込むのに使う）。
      * @return context 値、未セットなら null
      */
+    public static float getChargePercentContext() {
+        Float charge = CHARGE_CONTEXT.get();
+        return charge == null ? 0 : charge;
+    }
+
     public static Float getCooldownScaleContext() {
         return COOLDOWN_SCALE_CONTEXT.get();
     }
