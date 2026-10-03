@@ -50,6 +50,15 @@ public final class KoshiraeFittings {
 		List<ItemStack> out = new ArrayList<>();
 		if (in.isEmpty()) return out;
 		boolean hasDye = dye != null && dye.getItem() instanceof net.minecraft.world.item.DyeItem;
+		if (!hasDye && KatanaFittings.isTsubaShapeWeapon(in)) {
+			for (String shape : new String[]{"", "oval", "diamond", "circle"}) {
+				ItemStack s = in.copy(); s.setCount(1);
+				KatanaFittings.setTsubaStyle(s, shape);
+				s.setHoverName(net.minecraft.network.chat.Component.translatable(
+					"gui.the_four_primitives_and_weapons.koshirae.tsuba." + (shape.isEmpty() ? "default" : shape)));
+				out.add(s);
+			}
+		}
         if (hasDye && NinjatoVault.hasDyeableCord(in)) {
             ItemStack cord = in.copy();
             cord.setCount(1);

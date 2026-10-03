@@ -256,6 +256,26 @@ public class WeaponStatsRegistry extends SimplePreparableReloadListener<WeaponSt
     // === 公開API ===
 
     public static WeaponStats getStats(ItemStack stack) {
+        WeaponStats base = getBaseStats(stack);
+        if (!stack.hasTag() || !stack.getTag().contains(
+                the_four_primitives_and_weapons.item.TicexWeaponRecipe.MATERIAL_TAG, 10)) return base;
+        net.minecraft.nbt.CompoundTag material = stack.getTag().getCompound(
+                the_four_primitives_and_weapons.item.TicexWeaponRecipe.MATERIAL_TAG);
+        int durability = material.getInt("Durability");
+        float attack = material.getFloat("Attack");
+        if (durability <= 0 || !Float.isFinite(attack) || attack < 0) return base;
+        float defaultDamage = stack.getItem() instanceof net.minecraft.world.item.SwordItem sword
+                ? sword.getDamage() + 1 : 5;
+        float weaponDamage = base != null && Float.isFinite(base.attackDamage) ? base.attackDamage : defaultDamage;
+        // Preserve each weapon's damage profile; iron head attack (2) is the reference material.
+        float materialDamage = Math.max(1, weaponDamage - 2 + attack);
+        if (base == null) return new WeaponStats(durability, -1, Float.NaN, Float.NaN,
+                materialDamage, Float.NaN, null, null);
+        return new WeaponStats(durability, base.enchantability, base.damageBonus, base.attackSpeed,
+                materialDamage, base.attackRange, base.thrust, base.throwCfg, base.cooldown);
+    }
+
+    private static WeaponStats getBaseStats(ItemStack stack) {
         if (stack.isEmpty()) return null;
         ResourceLocation regName = ForgeRegistries.ITEMS.getKey(stack.getItem());
         if (regName == null) return null;

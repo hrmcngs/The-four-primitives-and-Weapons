@@ -187,6 +187,11 @@ public class ThrowingKnifeEntity extends ThrowableItemProjectile implements Item
             dmg = thrownWeaponDamage(raw);
         }
         // レアリティ強化台で付与された WeaponRarity の攻撃力ボーナスを加算
+        if (raw.getItem() instanceof the_four_primitives_and_weapons.item.ThrowingKnifeItem
+                && raw.hasTag() && raw.getTag().contains(the_four_primitives_and_weapons.item.TicexWeaponRecipe.MATERIAL_TAG, 10)) {
+            float attack = raw.getTag().getCompound(the_four_primitives_and_weapons.item.TicexWeaponRecipe.MATERIAL_TAG).getFloat("Attack");
+            if (Float.isFinite(attack)) dmg = Math.max(1, dmg + attack - 2);
+        }
         if (!raw.isEmpty()) {
             the_four_primitives_and_weapons.item.rarity.WeaponRarity r =
                 the_four_primitives_and_weapons.item.rarity.WeaponRarity.getFromStack(raw);

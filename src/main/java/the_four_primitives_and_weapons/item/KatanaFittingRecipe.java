@@ -34,7 +34,7 @@ public class KatanaFittingRecipe extends CustomRecipe {
 	}
 
 	private static boolean isKatana(ItemStack s) {
-		return KatanaFittings.isFittingWeapon(s);
+		return KatanaFittings.isFittingWeapon(s) || KatanaFittings.isTsubaShapeWeapon(s);
 	}
 
 	private static boolean isMarker(ItemStack s) {
@@ -45,10 +45,11 @@ public class KatanaFittingRecipe extends CustomRecipe {
 	@Override
 	public boolean matches(CraftingContainer inv, Level level) {
 		int katana = 0, dye = 0, marker = 0, string = 0, ingot = 0;
+		boolean shapeOnly = false;
 		for (int i = 0; i < inv.getContainerSize(); i++) {
 			ItemStack s = inv.getItem(i);
 			if (s.isEmpty()) continue;
-			if (isKatana(s)) katana++;
+			if (isKatana(s)) { katana++; shapeOnly = !KatanaFittings.isFittingWeapon(s); }
 			else if (s.getItem() instanceof DyeItem) dye++;
 			else if (isMarker(s)) marker++;
 			else if (s.getItem() == Items.STRING) string++;
@@ -56,6 +57,7 @@ public class KatanaFittingRecipe extends CustomRecipe {
 			else return false;
 		}
 		if (katana != 1 || marker > 1 || string > 1 || dye > 1 || ingot > 1) return false;
+		if (shapeOnly) return ingot == 1 && marker == 0 && dye == 0 && string == 0;
 		// 「染料で色(+部位)」/「糸で柄巻き切替」/「鉄インゴットで鍔デザイン切替」のどれか一方
 		if (dye == 1) return string == 0 && ingot == 0;
 		if (string == 1) return marker == 0 && ingot == 0;
@@ -97,7 +99,12 @@ public class KatanaFittingRecipe extends CustomRecipe {
 		ItemStack out = katana.copy();
 		out.setCount(1);
 		if (ingot) {
-			KatanaFittings.setTsubaStyle(out, KatanaFittings.nextTsuba(KatanaFittings.getTsubaStyle(out)));
+			ResourceLocation itemId = ForgeRegistries.ITEMS.getKey(out.getItem());
+			if (itemId != null && itemId.getPath().contains("rapier")) {
+				KatanaFittings.setTsubaStyle(out, "guard_b".equals(KatanaFittings.getTsubaStyle(out)) ? "" : "guard_b");
+			} else {
+				KatanaFittings.setTsubaStyle(out, KatanaFittings.nextTsuba(KatanaFittings.getTsubaStyle(out)));
+			}
 		} else if (string) {
 			KatanaFittings.setTsukaWrap(out, KatanaFittings.nextWrap(KatanaFittings.getTsukaWrap(out)));
 		} else if (dye != null) {

@@ -1214,5 +1214,15 @@
   "tooltip.the_four_primitives_and_weapons.greatshield_place": "Shift＋右クリックで目の前に設置／Shift＋大盾を右クリックで回収",
   "tooltip.the_four_primitives_and_weapons.greatshield_weight": "手に持つと移動速度−20%・ダッシュバッシュ不可",
   "jei.the_four_primitives_and_weapons.info.shield.greatshield_controls": "利き手で長押しして離すと通常バッシュ（0.25秒から発動、2秒で最大）。大盾のダッシュバッシュは使えません。どちらかの手に持っている間は移動速度が20%低下します。Shift＋右クリックで目の前に設置し、Shift＋設置した大盾を右クリックで回収できます。設置中は矢・盾越しの近接攻撃・盾の反対側からの爆風（ダメージと吹き飛ばし）を防ぎ、耐久を消費します。回収時は残り耐久やエンチャントを引き継ぎます。",
-  "message.the_four_primitives_and_weapons.greatshield_place_denied": "この場所には大盾を設置できません。"
+  "message.the_four_primitives_and_weapons.greatshield_place_denied": "この場所には大盾を設置できません。",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.default": "鐔：既定",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.oval": "鐔：楕円（刃・峰方向に長い）",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.diamond": "鐔：菱形",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.circle": "鐔：真円",
+  "tooltip.the_four_primitives_and_weapons.ticex_material": "素材：%s",
+  "item.the_four_primitives_and_weapons.ticex_weapon_pattern": "武器の型紙",
+  "tooltip.the_four_primitives_and_weapons.ticex_pattern_weapon": "作る武器：%s",
+  "tooltip.the_four_primitives_and_weapons.ticex_pattern_use": "右クリックで武器を選択。型紙＋棒＋同じ素材3個で製作（型紙は戻る）",
+  "gui.the_four_primitives_and_weapons.ticex_pattern": "作る武器を選択",
+  "gui.the_four_primitives_and_weapons.ticex_pattern_search": "武器名で検索"
 }

@@ -1,0 +1,4 @@
+{
+  "conditions": [{"type": "forge:mod_loaded", "modid": "ticex"}, {"type": "forge:mod_loaded", "modid": "tconstruct"}],
+  "type": "the_four_primitives_and_weapons:ticex_weapon"
+}

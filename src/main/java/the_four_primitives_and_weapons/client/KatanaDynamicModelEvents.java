@@ -21,6 +21,7 @@ public class KatanaDynamicModelEvents {
 
 	@SubscribeEvent
 	public static void onModifyBakingResult(ModelEvent.ModifyBakingResult event) {
+		TsubaShapeModel.clearCache();
 		// 本MOD + addon の拵え対応モデルをラップ。
 		// item model json に刀身/鍔/頭/柄の4テクスチャが揃っていれば自動対象にする。
 		for (net.minecraft.world.item.Item item : net.minecraftforge.registries.ForgeRegistries.ITEMS.getValues()) {

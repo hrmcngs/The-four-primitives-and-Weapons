@@ -1215,5 +1215,15 @@
   "tooltip.the_four_primitives_and_weapons.greatshield_place": "Sneak + use to place directly in front of you; sneak + use shield to retrieve",
   "tooltip.the_four_primitives_and_weapons.greatshield_weight": "Movement speed −20% while held; no dash bash",
   "jei.the_four_primitives_and_weapons.info.shield.greatshield_controls": "Hold use in the main hand and release for a regular bash (0.25-second minimum, 2-second full charge). Greatshields cannot dash bash. Holding one in either hand reduces movement speed by 20%. Sneak-use to place it one block directly in front of you, and sneak-use the placed shield to retrieve it. It intercepts arrows, melee attacks, and blast damage and knockback from the other side of the shield, consuming durability. Retrieval preserves remaining durability and enchantments.",
-  "message.the_four_primitives_and_weapons.greatshield_place_denied": "You cannot place a greatshield here."
+  "message.the_four_primitives_and_weapons.greatshield_place_denied": "You cannot place a greatshield here.",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.default": "Guard: Default",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.oval": "Guard: Oval (edge to spine)",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.diamond": "Guard: Diamond",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.circle": "Guard: Circle",
+  "tooltip.the_four_primitives_and_weapons.ticex_material": "Material: %s",
+  "item.the_four_primitives_and_weapons.ticex_weapon_pattern": "Weapon Pattern",
+  "tooltip.the_four_primitives_and_weapons.ticex_pattern_weapon": "Weapon: %s",
+  "tooltip.the_four_primitives_and_weapons.ticex_pattern_use": "Right-click to select. Craft with a stick and 3 matching materials; the pattern is returned.",
+  "gui.the_four_primitives_and_weapons.ticex_pattern": "Select a weapon",
+  "gui.the_four_primitives_and_weapons.ticex_pattern_search": "Search weapon name"
 }

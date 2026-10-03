@@ -101,6 +101,16 @@ public final class KatanaFittings {
 				|| isDyeableKnife(n);
 	}
 
+	/** 刀・直刀の鐔形状。練習刀でも形状の選択は可能。 */
+	public static boolean isTsubaShapeWeapon(ItemStack s) {
+		if (s == null || s.isEmpty()) return false;
+		var type = the_four_primitives_and_weapons.skill.WeaponTypeRegistry.getTypeForItem(s);
+		if (type != null && (type.getId().equals("katana") || type.getId().equals("straight_sword"))) return true;
+		var id = ForgeRegistries.ITEMS.getKey(s.getItem());
+		return id != null && id.getNamespace().equals(the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod.MODID)
+			&& !id.getPath().contains("saya") && (id.getPath().contains("katana") || id.getPath().contains("tyokuto"));
+	}
+
 	/**
 	 * 投げナイフ系か ( 柄だけ染色できる )。
 	 *
@@ -291,7 +301,7 @@ public final class KatanaFittings {
 
 	/** 鍔のデザイン ( 差し替え )。 "" = 既定。 */
 	public static final String TSUBA_STYLE_KEY = "TsubaStyle";
-	public static final String[] TSUBAS = { "tuba" };
+	public static final String[] TSUBAS = { "tuba", "oval", "diamond", "circle" };
 
 	public static String getTsubaStyle(ItemStack stack) {
 		CompoundTag t = stack.getTag();

@@ -88,7 +88,8 @@ public final class KatanaTsukaModel implements BakedModel {
 			key.append('/').append(sprite == null ? "" : sprite.contents().name());
 		}
 		if (!any) return base;
-		return CACHE.computeIfAbsent(key.toString(), k -> new KatanaTsukaModel(base, byTint, false));
+		BakedModel fitted = CACHE.computeIfAbsent(key.toString(), k -> new KatanaTsukaModel(base, byTint, false));
+		return weapon instanceof TsubaShapeModel shaped ? TsubaShapeModel.apply(fitted, shaped.shape) : fitted;
 	}
 
 	private static void collectFittingSprites(List<BakedQuad> quads, TextureAtlasSprite[] byTint) {

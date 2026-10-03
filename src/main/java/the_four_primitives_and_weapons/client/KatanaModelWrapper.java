@@ -77,13 +77,14 @@ public final class KatanaModelWrapper implements BakedModel {
 				design[1] = KatanaFittings.getTsukaWrap(stack);
 				design[2] = KatanaFittings.getTsubaStyle(stack);
 				design[3] = KatanaFittings.getKashiraStyle(stack);
-				return KatanaTsukaModel.styleColor(base, design, mode);
+				return TsubaShapeModel.apply(KatanaTsukaModel.styleColor(base, design, mode), design[2]);
 			}
 			String wrap = or(KatanaFittings.getTsukaWrap(stack), "tuka");
 			String tsuba = or(KatanaFittings.getTsubaStyle(stack), "tuba");
 			String kashira = or(KatanaFittings.getKashiraStyle(stack), "kasira");
 			String fuchi = or(KatanaFittings.getFuchiStyle(stack), "fuchi");
-			return KatanaTsukaModel.maybe(base, wrap, tsuba, kashira, fuchi);
+			return TsubaShapeModel.apply(KatanaTsukaModel.maybe(base, wrap, tsuba, kashira, fuchi),
+					"shirasaya".equals(wrap) ? "" : tsuba);
 		}
 
 		private String or(String v, String def) {
