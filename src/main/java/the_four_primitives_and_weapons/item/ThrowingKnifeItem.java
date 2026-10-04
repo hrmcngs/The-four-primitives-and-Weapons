@@ -158,6 +158,8 @@ public class ThrowingKnifeItem extends Item {
         player.awardStat(Stats.ITEM_USED.get(this));
         // shrink で空になると getStats が引けなくなるので、 先に確定させる。
         int cd = effCooldown(stack);
+        cd = Math.max(1, (int)Math.ceil(cd / (1 + .06 * the_four_primitives_and_weapons.skill.WeaponGrowth.rank(stack,
+                the_four_primitives_and_weapons.skill.WeaponGrowthRules.Perk.HASTE))));
         if (consumesItem() && !player.getAbilities().instabuild) {
             stack.shrink(1);
         }

@@ -73,7 +73,10 @@ public final class TicexWeaponModel implements BakedModel {
                         :stack.getItem() instanceof TridentItem?"trident":stack.getItem() instanceof ShieldItem?"shield"
                         :stack.getItem() instanceof ThrowingKnifeItem?"knife":"sword";
                 if(stack.getItem() instanceof BowItem && entity!=null && entity.isUsingItem() && entity.getUseItem()==stack) {
-                    float draw=BowItem.getPowerForTime(stack.getUseDuration()-entity.getUseItemRemainingTicks());
+                    int charge=stack.getUseDuration()-entity.getUseItemRemainingTicks();
+                    charge=(int)Math.ceil(charge*(1+.06*the_four_primitives_and_weapons.skill.WeaponGrowth.rank(stack,
+                            the_four_primitives_and_weapons.skill.WeaponGrowthRules.Perk.HASTE)));
+                    float draw=BowItem.getPowerForTime(charge);
                     family="bow"+(draw>=1?3:draw>.65?2:draw>.2?1:0);
                 }
                 resolved=SOLID.getOrDefault(family,resolved);

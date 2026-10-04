@@ -120,7 +120,7 @@ public final class PostureCombatHandler {
         if (event.getEntity().level().isClientSide() || event.getAmount() <= 0 || !melee(event.getSource())) return;
         LivingEntity attacker = (LivingEntity) event.getSource().getEntity();
         var weapon = attacker.getMainHandItem();
-        if (!(weapon.getItem() instanceof SwordItem || weapon.getItem() instanceof TridentItem)
+        if (!(weapon.getItem() instanceof SwordItem || weapon.getItem() instanceof TridentItem || weapon.getItem() instanceof net.minecraft.world.item.ShieldItem)
                 && !(attacker instanceof Mob)) return;
         var type = WeaponTypeRegistry.getTypeForItem(weapon);
         Float context = DamageCalculator.getCooldownScaleContext();
@@ -128,6 +128,8 @@ public final class PostureCombatHandler {
                 ? player.getAttackStrengthScale(0.5f) : 1;
         float pressure = PostureRules.impact(type == null ? null : type.getId(), gauge,
                 DamageCalculator.getChargePercentContext(), event.getEntity().getAttributeValue(Attributes.KNOCKBACK_RESISTANCE));
+        pressure *= 1 + .2f * the_four_primitives_and_weapons.skill.WeaponGrowth.rank(weapon,
+                the_four_primitives_and_weapons.skill.WeaponGrowthRules.Perk.BREAKER);
         addPressure(event.getEntity(), attacker, pressure);
     }
 }

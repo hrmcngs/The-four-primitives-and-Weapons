@@ -122,6 +122,8 @@ import the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod;
 public class TheFourPrimitivesAndWeaponsModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, TheFourPrimitivesAndWeaponsMod.MODID);
 	public static final RegistryObject<Item> TICEX_WEAPON_PATTERN = REGISTRY.register("ticex_weapon_pattern", () -> new the_four_primitives_and_weapons.item.TicexWeaponPatternItem());
+	public static final RegistryObject<Item> WEAPON_UPGRADE_JOURNAL = REGISTRY.register("weapon_upgrade_journal", () -> new the_four_primitives_and_weapons.item.WeaponUpgradeJournalItem());
+	public static final RegistryObject<Item> TEMPERING_SHARD = REGISTRY.register("tempering_shard", () -> new Item(new Item.Properties()));
 	public static final RegistryObject<Item> BUBBLESHOT = REGISTRY.register("bubbles_book", () -> new BubbleshotItem());
 	public static final RegistryObject<Item> FIREBALL = REGISTRY.register("fire_book", () -> new FireballItem());
 	public static final RegistryObject<Item> THUNDERBOLT = REGISTRY.register("thunder_book", () -> new ThunderboltItem());

@@ -126,13 +126,14 @@ public abstract class WeaponStatsMixin {
 
             Multimap<Attribute, AttributeModifier> out = HashMultimap.create(orig);
             if (applyDmg) {
-                out.removeAll(Attributes.ATTACK_DAMAGE);
+                // Replace the weapon base only; retain rarity/catalyst and other additional bonuses.
+                out.get(Attributes.ATTACK_DAMAGE).removeIf(modifier -> modifier.getId().equals(ATTACK_DAMAGE_UUID));
                 // バニラは「基礎1 + modifier」で総攻撃力。 総攻撃力 = attackDamage。
                 out.put(Attributes.ATTACK_DAMAGE, new AttributeModifier(
                         ATTACK_DAMAGE_UUID, "Weapon modifier", st.attackDamage - 1.0, AttributeModifier.Operation.ADDITION));
             }
             if (applySpd) {
-                out.removeAll(Attributes.ATTACK_SPEED);
+                out.get(Attributes.ATTACK_SPEED).removeIf(modifier -> modifier.getId().equals(ATTACK_SPEED_UUID));
                 out.put(Attributes.ATTACK_SPEED, new AttributeModifier(
                         ATTACK_SPEED_UUID, "Weapon modifier", st.attackSpeed, AttributeModifier.Operation.ADDITION));
             }
