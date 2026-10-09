@@ -16,13 +16,13 @@ import the_four_primitives_and_weapons.world.AstronomySettings;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public record AstronomySyncPacket(AstronomySettings settings) {
     public AstronomySyncPacket(FriendlyByteBuf buf) {
-        this(new AstronomySettings(buf.readFloat(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readBoolean(), buf.readFloat(), buf.readFloat()));
+        this(new AstronomySettings(buf.readFloat(), buf.readInt(), buf.readInt(), buf.readInt(), buf.readBoolean(), buf.readFloat(), buf.readFloat(), buf.readInt()));
     }
     public static void encode(AstronomySyncPacket msg, FriendlyByteBuf buf) {
         var s = msg.settings;
         buf.writeFloat(s.size()); buf.writeInt(s.phase()); buf.writeInt(s.color());
         buf.writeInt(s.meteors()); buf.writeBoolean(s.effects());
-        buf.writeFloat(s.solar()); buf.writeFloat(s.lunar());
+        buf.writeFloat(s.solar()); buf.writeFloat(s.lunar()); buf.writeInt(s.aurora());
     }
     public static void handle(AstronomySyncPacket msg, Supplier<NetworkEvent.Context> supplier) {
         var context = supplier.get();

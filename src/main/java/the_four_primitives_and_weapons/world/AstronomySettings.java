@@ -2,34 +2,40 @@ package the_four_primitives_and_weapons.world;
 
 /** Independent overrides. Eclipse values: -1 = calendar, -2 = off, 0..1 = fixed. */
 public record AstronomySettings(float size, int phase, int color, int meteors, boolean effects,
-                                float solar, float lunar) {
+                                float solar, float lunar, int aurora) {
     public static final AstronomySettings DEFAULT = new AstronomySettings(-1F, -1, -1, -1, true);
 
     /** Existing saves and callers start with both eclipses on their natural calendars. */
     public AstronomySettings(float size, int phase, int color, int meteors, boolean effects) {
         this(size, phase, color, meteors, effects, -1F, -1F);
     }
+    public AstronomySettings(float size, int phase, int color, int meteors, boolean effects, float solar, float lunar) {
+        this(size, phase, color, meteors, effects, solar, lunar, -1);
+    }
     public AstronomySettings {
         if (size != -1F && (!Float.isFinite(size) || size < 0.25F || size > 4F)) size = -1F;
         if (phase < -1 || phase > 7) phase = -1;
         if (color < -1 || color >= AstronomicalEvents.MoonTint.values().length) color = -1;
         if (meteors < -1 || meteors > 1) meteors = -1;
+        if (aurora < -1 || aurora > 1) aurora = -1;
         solar = validEclipse(solar);
         lunar = validEclipse(lunar);
     }
     private static float validEclipse(float value) {
         return value == -1F || value == -2F || (Float.isFinite(value) && value >= 0F && value <= 1F) ? value : -1F;
     }
-    public AstronomySettings withSize(float value) { return new AstronomySettings(value, phase, color, meteors, effects, solar, lunar); }
-    public AstronomySettings withPhase(int value) { return new AstronomySettings(size, value, color, meteors, effects, solar, lunar); }
-    public AstronomySettings withColor(int value) { return new AstronomySettings(size, phase, value, meteors, effects, solar, lunar); }
-    public AstronomySettings withMeteors(int value) { return new AstronomySettings(size, phase, color, value, effects, solar, lunar); }
-    public AstronomySettings withEffects(boolean value) { return new AstronomySettings(size, phase, color, meteors, value, solar, lunar); }
-    public AstronomySettings withSolar(float value) { return new AstronomySettings(size, phase, color, meteors, effects, value, lunar); }
-    public AstronomySettings withLunar(float value) { return new AstronomySettings(size, phase, color, meteors, effects, solar, value); }
+    public AstronomySettings withSize(float value) { return new AstronomySettings(value, phase, color, meteors, effects, solar, lunar, aurora); }
+    public AstronomySettings withPhase(int value) { return new AstronomySettings(size, value, color, meteors, effects, solar, lunar, aurora); }
+    public AstronomySettings withColor(int value) { return new AstronomySettings(size, phase, value, meteors, effects, solar, lunar, aurora); }
+    public AstronomySettings withMeteors(int value) { return new AstronomySettings(size, phase, color, value, effects, solar, lunar, aurora); }
+    public AstronomySettings withEffects(boolean value) { return new AstronomySettings(size, phase, color, meteors, value, solar, lunar, aurora); }
+    public AstronomySettings withSolar(float value) { return new AstronomySettings(size, phase, color, meteors, effects, value, lunar, aurora); }
+    public AstronomySettings withLunar(float value) { return new AstronomySettings(size, phase, color, meteors, effects, solar, value, aurora); }
+    public AstronomySettings withAurora(int value) { return new AstronomySettings(size, phase, color, meteors, effects, solar, lunar, value); }
+    public boolean auroraActive(long time) { return aurora == 1 || (aurora == -1 && AstronomicalEvents.isAuroraNight(time)); }
     public float moonSize(long time) { return size < 0F ? LunarCycle.sizeMultiplier(time) : size; }
     public AstronomySettings vanillaMoon(int moonPhase) {
-        return new AstronomySettings(1F, moonPhase, AstronomicalEvents.MoonTint.NORMAL.ordinal(), meteors, effects, solar, lunar);
+        return new AstronomySettings(1F, moonPhase, AstronomicalEvents.MoonTint.NORMAL.ordinal(), meteors, effects, solar, lunar, aurora);
     }
     public int moonPhase(int naturalPhase) { return phase < 0 ? naturalPhase : phase; }
     public AstronomicalEvents.MoonTint moonColor(long time, int naturalPhase) {

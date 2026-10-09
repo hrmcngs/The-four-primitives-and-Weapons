@@ -7,7 +7,7 @@ import the_four_primitives_and_weapons.network.AstronomySyncPacket;
 
 public class AstronomyPersistenceTest {
     public static void main(String[] args) {
-        var settings = new AstronomySettings(2F, 5, 4, 1, false, 0.5F, 0.75F);
+        var settings = new AstronomySettings(2F, 5, 4, 1, false, 0.5F, 0.75F, 1);
         var data = new AstronomyData();
         data.update(settings);
         if (!data.isDirty()) throw new AssertionError("Settings must be saved");
@@ -16,7 +16,7 @@ public class AstronomyPersistenceTest {
         if (!AstronomySettings.DEFAULT.equals(AstronomyData.load(new CompoundTag()).settings()))
             throw new AssertionError("Old/empty saves default to natural cycle");
         var oldSave = AstronomyData.encode(settings);
-        oldSave.remove("Solar"); oldSave.remove("Lunar");
+        oldSave.remove("Aurora"); oldSave.remove("Solar"); oldSave.remove("Lunar");
         var migrated = AstronomyData.load(oldSave).settings();
         if (!migrated.equals(new AstronomySettings(2F, 5, 4, 1, false)))
             throw new AssertionError("Existing settings survive eclipse schema migration");

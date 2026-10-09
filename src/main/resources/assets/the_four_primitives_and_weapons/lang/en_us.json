@@ -1,4 +1,5 @@
 {
+  "command.the_four_primitives_and_weapons.astronomy.aurora": " / Aurora: %s",
   "hud.the_four_primitives_and_weapons.swordgrave.ready": "Armoured — strike the flanks or rear",
   "hud.the_four_primitives_and_weapons.swordgrave.thrust": "Thrust incoming — sidestep",
   "hud.the_four_primitives_and_weapons.swordgrave.sweep": "Sweep incoming — jump or move inside",

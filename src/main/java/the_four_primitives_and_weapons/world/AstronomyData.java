@@ -27,7 +27,8 @@ public final class AstronomyData extends SavedData {
             tag.contains("Meteors") ? tag.getInt("Meteors") : -1,
             !tag.contains("Effects") || tag.getBoolean("Effects"),
             tag.contains("Solar") ? tag.getFloat("Solar") : -1F,
-            tag.contains("Lunar") ? tag.getFloat("Lunar") : -1F);
+            tag.contains("Lunar") ? tag.getFloat("Lunar") : -1F,
+            tag.contains("Aurora") ? tag.getInt("Aurora") : -1);
     }
     public static CompoundTag encode(AstronomySettings value) {
         CompoundTag tag = new CompoundTag();
@@ -35,6 +36,7 @@ public final class AstronomyData extends SavedData {
         tag.putInt("Color", value.color()); tag.putInt("Meteors", value.meteors());
         tag.putBoolean("Effects", value.effects());
         tag.putFloat("Solar", value.solar()); tag.putFloat("Lunar", value.lunar());
+        tag.putInt("Aurora", value.aurora());
         return tag;
     }
     public static AstronomyData load(CompoundTag tag) {

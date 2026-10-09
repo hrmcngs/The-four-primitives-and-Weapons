@@ -4,7 +4,31 @@ import the_four_primitives_and_weapons.world.AstronomySettings;
 
 public class AstronomicalEventsTest {
     public static void main(String[] args) {
-        var seenMeteors = java.util.EnumSet.noneOf(AstronomicalEvents.MeteorKind.class);
+        var polar = the_four_primitives_and_weapons.world.AuroraBiomeStyle.POLAR;
+        var ocean = the_four_primitives_and_weapons.world.AuroraBiomeStyle.OCEAN;
+        var forest = the_four_primitives_and_weapons.world.AuroraBiomeStyle.FOREST;
+        var mountain = the_four_primitives_and_weapons.world.AuroraBiomeStyle.MOUNTAIN;
+        var plains = the_four_primitives_and_weapons.world.AuroraBiomeStyle.PLAINS;
+        var hidden = the_four_primitives_and_weapons.world.AuroraBiomeStyle.HIDDEN;
+        check(polar == polar.select(-0.5F, false, false, true, false, false), "Frozen ocean uses polar curtains");
+        check(ocean == polar.select(0.5F, false, false, true, false, false), "Temperate ocean uses blue curtains");
+        check(forest == polar.select(0.7F, false, false, false, false, true), "Forest palette");
+        check(mountain == polar.select(0.4F, false, false, false, true, false), "Mountain palette");
+        check(plains == polar.select(0.8F, false, false, false, false, false), "Plains palette");
+        check(hidden == polar.select(2F, false, false, false, false, false), "Desert excludes natural aurora");
+        check(hidden == polar.select(0.8F, true, false, false, false, true), "Jungle exclusion precedes forest");
+        check(hidden == hidden.forForcedDisplay(false) && plains == hidden.forForcedDisplay(true), "Manual on bypasses local exclusion");
+        long auroraNight = 3 * 24000L + 18000L;
+        check(AstronomySettings.DEFAULT.auroraActive(auroraNight), "Natural aurora night");
+        check(!AstronomySettings.DEFAULT.auroraActive(3 * 24000L + 6000L), "No daytime natural aurora");
+        check(!AstronomySettings.DEFAULT.auroraActive(4 * 24000L + 18000L), "Ordinary night");
+        check(!AstronomySettings.DEFAULT.withAurora(0).auroraActive(auroraNight), "Aurora off");
+        var aurora = AstronomySettings.DEFAULT.withAurora(1).withMeteors(1).withSize(2).withPhase(5)
+            .withColor(2).withEffects(false).withSolar(0.5F).withLunar(1).vanillaMoon(0);
+        check(aurora.aurora() == 1 && aurora.meteors() == 1, "Independent sky overrides preserve aurora");
+        check(aurora.auroraActive(18000), "Forced aurora on ordinary night");
+        var seenMeteors
+ = java.util.EnumSet.noneOf(AstronomicalEvents.MeteorKind.class);
         int ordinaryAttempts = 0, ordinaryHits = 0;
         boolean lingeringTrain = false, lingeringFireball = false;
         for (long t = 0; t < 128 * 24000L; t += 320) {

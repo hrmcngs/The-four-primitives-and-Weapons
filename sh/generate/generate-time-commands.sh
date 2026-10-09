@@ -2,7 +2,8 @@
 # 天文現象・timeコマンドを対話式で生成します（SBCL、オフライン）。
 #   bash sh/generate/generate-time-commands.sh
 #   bash sh/menu.sh → 生成 → 天文現象・timeコマンド
-# 日時、バニラの三日月・半月など8相、月の大きさ・色、流星群、日食・月食、効果を個別指定できます。
+# 日時、バニラの三日月・半月など8相、月の大きさ・色、流星群、オーロラ、日食・月食、効果を個別指定できます。
+# 「5. オーロラを試す・切り替える」で晴れた夜のお試し／自然発生／無効を選べます。
 # run/generated_commands/astronomy-<日時>/ にcommands.txtとgenerated.mcfunctionを保存します。
 # ゲームへ自動送信しません。WMO参考分類の天候も選択可能。コマンドを順に実行してください。
 # /astronomyには対応する本体MODと管理者権限が必要です。設定はワールドへ保存されます。

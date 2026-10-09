@@ -30,6 +30,7 @@ public final class AstronomyCommand {
             color.then(Commands.literal(tint.name().toLowerCase(Locale.ROOT))
                 .executes(c -> color(c.getSource(), tint.ordinal())));
         }
+        var aurora = Commands.literal("aurora");
         var meteors = Commands.literal("meteors");
         var vanilla = Commands.literal("vanilla")
             .then(Commands.argument("phase", IntegerArgumentType.integer(0, 7))
@@ -43,6 +44,7 @@ public final class AstronomyCommand {
         String[] modes = {"auto", "off", "on"};
         for (int i = 0; i < modes.length; i++) {
             int mode = i - 1;
+            aurora.then(Commands.literal(modes[i]).executes(c -> change(c.getSource(), s -> s.withAurora(mode))));
             meteors.then(Commands.literal(modes[i]).executes(c -> change(c.getSource(),
                 s -> s.withMeteors(mode))));
         }
@@ -58,7 +60,7 @@ public final class AstronomyCommand {
         }
         event.getDispatcher().register(Commands.literal("astronomy").requires(s -> s.hasPermission(2))
             .then(Commands.literal("moon").then(size).then(phase).then(color).then(vanilla))
-            .then(meteors).then(eclipse)
+            .then(meteors).then(aurora).then(eclipse)
             .then(Commands.literal("effects")
                 .then(Commands.literal("on").executes(c -> effects(c.getSource(), true)))
                 .then(Commands.literal("off").executes(c -> effects(c.getSource(), false))))
@@ -103,6 +105,8 @@ public final class AstronomyCommand {
             s.size() < 0 ? label("auto") : Component.translatable("command.the_four_primitives_and_weapons.multiplier", s.size()),
             s.phase() < 0 ? label("auto") : Component.literal(Integer.toString(s.phase())),
             color, label(s.meteors() < 0 ? "auto" : s.meteors() == 0 ? "off" : "meteors"),
-            eclipseName(s.solar()), eclipseName(s.lunar()), label(s.effects() ? "on" : "off"));
+            eclipseName(s.solar()), eclipseName(s.lunar()), label(s.effects() ? "on" : "off"))
+            .append(Component.translatable("command.the_four_primitives_and_weapons.astronomy.aurora",
+                label(s.aurora() < 0 ? "auto" : s.aurora() == 0 ? "off" : "on")));
     }
 }

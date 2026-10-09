@@ -26,6 +26,13 @@ public final class AstronomicalEvents {
 
     private AstronomicalEvents() { }
 
+    /** Stable per-night schedule shared by clients; overlaps other sky events. */
+    public static boolean isAuroraNight(long time) {
+        long day = Math.floorDiv(time, 24000L);
+        long hour = Math.floorMod(time, 24000L);
+        return hour >= 13000L && hour <= 23000L && Math.floorMod(day, 12L) == 3L;
+    }
+
     /** Game-calendar eclipses: a new-moon noon and a full-moon midnight. */
     public static boolean isSolarEclipseDay(long dayTime) {
         return Math.floorMod(Math.floorDiv(dayTime, 24000L), 64L) == 12L;
