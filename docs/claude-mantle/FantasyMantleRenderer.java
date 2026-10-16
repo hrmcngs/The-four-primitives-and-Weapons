@@ -1,0 +1,86 @@
+package the_four_primitives_and_weapons.client.renderer;
+
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import the_four_primitives_and_weapons.client.model.FantasyPatternQuad;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.*;
+import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.entity.RenderLayerParent;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.client.ICurioRenderer;
+import the_four_primitives_and_weapons.init.KnifeExtrasRegistrar;
+
+/** Unadorned black mantle: folded shoulder yoke, overlapping cloth strips and ankle-length hem. */
+public class FantasyMantleRenderer implements ICurioRenderer {
+    private static final ResourceLocation TEXTURE = new ResourceLocation(
+        "the_four_primitives_and_weapons", "textures/models/armor/fantasy_mantle.png");
+    private final ModelPart cloth;
+    public FantasyMantleRenderer() {
+        MeshDefinition mesh = new MeshDefinition();
+        PartDefinition root = mesh.getRoot();
+        root.addOrReplaceChild("yoke", CubeListBuilder.create()
+            .addBox(-5, -1.2f, 2.4f, 10, 1.8f, 1.2f), PartPose.ZERO);
+        for (int sign : new int[]{-1, 1}) {
+            root.addOrReplaceChild("shoulder" + sign, CubeListBuilder.create()
+                .addBox(-2, -.6f, -2.4f, 4, 1.2f, 5.8f),
+                PartPose.offsetAndRotation(sign * 4.6f, -.4f, 0, .06f, 0, sign * .16f));
+            root.addOrReplaceChild("lapel" + sign, CubeListBuilder.create()
+                .addBox(-.65f, -1.3f, -.45f, 1.3f, 3.2f, .9f),
+                PartPose.offsetAndRotation(sign * 3.7f, .2f, -2.3f, -.15f, 0, -sign * .18f));
+        }
+        for (int i = -3; i <= 3; i++) {
+            PartDefinition panel = root.addOrReplaceChild("panel" + i, CubeListBuilder.create()
+                .addBox(-1.3f, 0, 0, 2.6f, 9, .7f),
+                PartPose.offsetAndRotation(i * 2.2f, 0, 3.2f + Math.abs(i) * .05f,
+                    .07f, -i * .025f, -i * .012f));
+            panel.addOrReplaceChild("hem", CubeListBuilder.create()
+                .addBox(-1.6f, 0, 0, 3.2f, 14 - Math.abs(i) * .4f, .7f),
+                PartPose.offsetAndRotation(0, 9, 0, .035f, 0, -i * .012f));
+        }
+        cloth = LayerDefinition.create(mesh, 64, 64).bakeRoot();
+    }
+    @Override public <T extends LivingEntity, M extends EntityModel<T>> void render(
+            ItemStack stack, SlotContext context, PoseStack poses, RenderLayerParent<T, M> parent,
+            MultiBufferSource buffers, int light, float limbSwing, float limbAmount,
+            float partialTicks, float age, float yaw, float pitch) {
+        if (!(parent.getModel() instanceof HumanoidModel<?> humanoid) || context.entity().isInvisible()) return;
+        float flare = context.entity() instanceof Player player
+            ? player.getCooldowns().getCooldownPercent(KnifeExtrasRegistrar.FANTASY_MANTLE.get(), partialTicks) : 0;
+        flare = Math.max(0, (flare - .75f) * 4);
+        for (int i = -3; i <= 3; i++) {
+            ModelPart panel = cloth.getChild("panel" + i);
+            panel.xRot = .07f + Math.min(limbAmount, 1) * .22f
+                + (float)Math.sin(age * .07f + i * .35f) * .018f + flare * .55f;
+            panel.zRot = -i * (.012f + flare * .06f);
+            panel.getChild("hem").xRot = .035f
+                + (float)Math.sin(age * .07f + i * .35f - .5f) * .025f;
+        }
+        poses.pushPose();
+        humanoid.body.translateAndRotate(poses);
+        VertexConsumer out = buffers.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
+        cloth.render(poses, out, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+        for (int i = -3; i <= 3; i++) {
+            ModelPart panel = cloth.getChild("panel" + i);
+            float u0 = (i + 3) / 7f;
+            float u1 = (i + 4) / 7f;
+            float split = 9 / 23f;
+            poses.pushPose(); panel.translateAndRotate(poses);
+            FantasyPatternQuad.draw(poses, out, light, OverlayTexture.NO_OVERLAY,
+                -1.3f, 0, 1.3f, 9, .72f, u0, 0, u1, split, true, 1, 1, 1, 1);
+            poses.pushPose(); panel.getChild("hem").translateAndRotate(poses);
+            FantasyPatternQuad.draw(poses, out, light, OverlayTexture.NO_OVERLAY,
+                -1.6f, 0, 1.6f, 14 - Math.abs(i) * .4f, .72f,
+                u0, split, u1, 1, true, 1, 1, 1, 1);
+            poses.popPose(); poses.popPose();
+        }
+        poses.popPose();
+    }
+}
