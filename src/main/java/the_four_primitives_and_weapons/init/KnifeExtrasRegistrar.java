@@ -34,5 +34,8 @@ public final class KnifeExtrasRegistrar {
     public static final RegistryObject<Item> BATTLE_STAKE =
         ITEMS.register("battle_stake", () -> new net.minecraft.world.item.Item(new net.minecraft.world.item.Item.Properties()));
 
+    public static final RegistryObject<Item> FANTASY_MANTLE =
+        ITEMS.register("fantasy_mantle", the_four_primitives_and_weapons.item.FantasyMantleItem::new);
+
     private KnifeExtrasRegistrar() {}
 }

@@ -1,6 +1,10 @@
 {
   "sources": [
     {
+      "type": "minecraft:single",
+      "resource": "the_four_primitives_and_weapons:models/armor/fantasy_mantle"
+    },
+    {
       "type": "minecraft:directory",
       "source": "entity/banner",
       "prefix": "entity/banner/"

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I I",
+    "WWW",
+    "WWW"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "W": {
+      "item": "minecraft:black_wool"
+    }
+  },
+  "result": {
+    "item": "the_four_primitives_and_weapons:fantasy_mantle"
+  }
+}

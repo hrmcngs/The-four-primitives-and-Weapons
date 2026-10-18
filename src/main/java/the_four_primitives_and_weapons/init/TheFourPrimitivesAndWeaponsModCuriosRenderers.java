@@ -28,6 +28,7 @@ public class TheFourPrimitivesAndWeaponsModCuriosRenderers {
 			CuriosRendererRegistry.register(TheFourPrimitivesAndWeaponsModItems.SWORD_SAYA.get(), ScabbardCurioRenderer::new);
 			CuriosRendererRegistry.register(TheFourPrimitivesAndWeaponsModItems.RAPIER_SAYA.get(), ScabbardCurioRenderer::new);
 			CuriosRendererRegistry.register(TheFourPrimitivesAndWeaponsModItems.DAGGER_SAYA.get(), ScabbardCurioRenderer::new);
+			CuriosRendererRegistry.register(KnifeExtrasRegistrar.FANTASY_MANTLE.get(), the_four_primitives_and_weapons.client.renderer.FantasyMantleRenderer::new);
 			// elytra スロット: エリトラの羽を背中に描画 (ElytraSlot 相当機能)
 			CuriosRendererRegistry.register(Items.ELYTRA, ElytraCurioRenderer::new);
 			// hands スロット: 手袋類を両手に描画

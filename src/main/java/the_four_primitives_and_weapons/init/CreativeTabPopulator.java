@@ -121,6 +121,7 @@ public class CreativeTabPopulator {
 			event.accept(KnifeExtrasRegistrar.ANTI_GRAVITY_BRACELET);
 			event.accept(KnifeExtrasRegistrar.MATERIALIZED_POUCH);
 			event.accept(KnifeExtrasRegistrar.BATTLE_STAKE);
+			event.accept(KnifeExtrasRegistrar.FANTASY_MANTLE);
 			event.accept(CustomEntityInit.GUIDE_BOOK);
 			event.accept(CustomEntityInit.MANA_POTION);
 			event.accept(CustomEntityInit.UNDEAD_ARMY_BANISH);

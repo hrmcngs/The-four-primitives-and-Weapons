@@ -328,7 +328,7 @@
   "item.the_four_primitives_and_weapons.bogged_outer_boots": "Bogged Outer Boots",
   "item.the_four_primitives_and_weapons.luna": "§eLuna",
   "advancements.kurikaraken_progress.descr": "Get an kurikaraken",
-  "key.the_four_primitives_and_weapons.r": "Draw/Sheathe/Wheel (hold + left-click)",
+  "key.the_four_primitives_and_weapons.r": "Draw/Sheathe & Abilities",
   "key.the_four_primitives_and_weapons.crystal_pouch": "Open Crystal Pouch",
   "key.the_four_primitives_and_weapons.skill_screen": "Skills",
   "key.categories.the_four_primitives_and_weapons": "Armor & Weapon Mod",
@@ -1264,5 +1264,11 @@
   "gui.the_four_primitives_and_weapons.upgrade.perk.breaker.desc": "+20% melee posture impact per rank",
   "gui.the_four_primitives_and_weapons.upgrade.perk.guard": "Guard",
   "gui.the_four_primitives_and_weapons.upgrade.perk.guard.desc": "Reduce remaining damage while guarding by 6% per rank",
-  "gui.the_four_primitives_and_weapons.upgrade.owned": "Owned: %s emeralds, %s tempering shards"
+  "gui.the_four_primitives_and_weapons.upgrade.owned": "Owned: %s emeralds, %s tempering shards",
+  "item.the_four_primitives_and_weapons.fantasy_mantle": "Fantasy Mantle",
+  "curios.identifier.mantle": "Mantle",
+  "tooltip.the_four_primitives_and_weapons.fantasy_mantle": "Equip in the mantle slot. Hold R to select Sweep, Thrust, or Guard.",
+  "action.the_four_primitives_and_weapons.mantle.sweep": "Mantle: Sweep",
+  "action.the_four_primitives_and_weapons.mantle.thrust": "Mantle: Thrust",
+  "action.the_four_primitives_and_weapons.mantle.guard": "Mantle: Guard"
 }

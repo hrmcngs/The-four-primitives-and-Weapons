@@ -328,7 +328,7 @@
   "item.the_four_primitives_and_weapons.bogged_outer_boots": "Bogged Outer Boots",
   "item.the_four_primitives_and_weapons.luna": "§eLuna",
   "advancements.kurikaraken_progress.descr": "倶利伽羅剣を得る",
-  "key.the_four_primitives_and_weapons.r": "抜刀/納刀/ホイール (押しながら左クリック)",
+  "key.the_four_primitives_and_weapons.r": "抜刀・納刀・技選択",
   "key.the_four_primitives_and_weapons.crystal_pouch": "結晶ポーチを開く",
   "key.the_four_primitives_and_weapons.skill_screen": "技の選択",
   "key.categories.the_four_primitives_and_weapons": "防具と武器MOD",
@@ -1263,5 +1263,11 @@
   "gui.the_four_primitives_and_weapons.upgrade.perk.breaker.desc": "1段階につき近接攻撃の体勢崩し＋20%",
   "gui.the_four_primitives_and_weapons.upgrade.perk.guard": "守勢",
   "gui.the_four_primitives_and_weapons.upgrade.perk.guard.desc": "1段階につきガード中に受けるダメージをさらに6%軽減",
-  "gui.the_four_primitives_and_weapons.upgrade.owned": "所持：エメラルド%s個・鍛錬の欠片%s個"
+  "gui.the_four_primitives_and_weapons.upgrade.owned": "所持：エメラルド%s個・鍛錬の欠片%s個",
+  "item.the_four_primitives_and_weapons.fantasy_mantle": "幻想のマント",
+  "curios.identifier.mantle": "マント",
+  "tooltip.the_four_primitives_and_weapons.fantasy_mantle": "マントスロットに装備。R長押しで薙ぎ払い・刺突・防御を選択",
+  "action.the_four_primitives_and_weapons.mantle.sweep": "マント：薙ぎ払い",
+  "action.the_four_primitives_and_weapons.mantle.thrust": "マント：刺突",
+  "action.the_four_primitives_and_weapons.mantle.guard": "マント：防御"
 }

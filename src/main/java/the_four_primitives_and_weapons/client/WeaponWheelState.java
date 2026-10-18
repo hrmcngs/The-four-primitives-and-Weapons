@@ -47,6 +47,7 @@ public class WeaponWheelState {
     /** ホイール上の特殊アクション ( 通常の抜刀 / 納刀候補とは別枠 )。 */
     public static final class SpecialAction {
         public final MagicalKatanaActionPacket.Action action;
+        public the_four_primitives_and_weapons.network.MantleActionPacket.Action mantleAction;
         public final ItemStack icon;
         public final String label;
         public final String slotLabel; // スロット位置ラベル ( "[インベントリ]" / "[背中]" 等 )
@@ -58,6 +59,19 @@ public class WeaponWheelState {
             this.icon = icon;
             this.label = label;
             this.slotLabel = slotLabel;
+        }
+    }
+
+    private static void addMantleActions(Player player, List<SpecialAction> actions) {
+        ItemStack mantle = the_four_primitives_and_weapons.network.MantleActionPacket.equipped(player);
+        if (mantle.isEmpty()) return;
+        for (var action : the_four_primitives_and_weapons.network.MantleActionPacket.Action.values()) {
+            String key = action.name().toLowerCase(java.util.Locale.ROOT);
+            SpecialAction entry = new SpecialAction(null, mantle.copy(),
+                net.minecraft.network.chat.Component.translatable("action.the_four_primitives_and_weapons.mantle." + key).getString(),
+                net.minecraft.network.chat.Component.translatable("curios.identifier.mantle").getString());
+            entry.mantleAction = action;
+            actions.add(entry);
         }
     }
 
@@ -93,6 +107,7 @@ public class WeaponWheelState {
         currentMode = WheelMode.DRAW;
         drawableWeapons = weapons;
         specialActions = buildSpecialActionsForDraw(player);
+        addMantleActions(player, specialActions);
         rKeyDown = true;
         selectedIndex = -1;
         wheelVisible = false;
@@ -118,6 +133,7 @@ public class WeaponWheelState {
         currentMode = WheelMode.SHEATH;
         drawableWeapons = emptyScabbards;
         specialActions = buildSpecialActionsForSheath(player, weaponStack);
+        addMantleActions(player, specialActions);
         rKeyDown = true;
         selectedIndex = -1;
         wheelVisible = false;
@@ -251,7 +267,9 @@ public class WeaponWheelState {
                 // SpecialAction
                 SpecialAction sp = savedSpecials.get(savedSelectedIndex - weaponCount);
                 TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(
-                        new MagicalKatanaActionPacket(sp.action));
+                        sp.mantleAction != null
+                            ? new the_four_primitives_and_weapons.network.MantleActionPacket(sp.mantleAction)
+                            : new MagicalKatanaActionPacket(sp.action));
             }
         } else {
             // デッドゾーンで離した or 鞘無し → RMessage デフォルト動作にフォールバック (サーバーのみ)
