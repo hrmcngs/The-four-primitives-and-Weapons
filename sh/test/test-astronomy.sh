@@ -10,6 +10,8 @@ javac -d "$astronomy_test_dir" src/main/java/the_four_primitives_and_weapons/wor
   src/main/java/the_four_primitives_and_weapons/world/AuroraBiomeStyle.java \
   src/main/java/the_four_primitives_and_weapons/world/AstronomySettings.java src/main/java/the_four_primitives_and_weapons/world/EclipseLightCurve.java tests/AstronomicalEventsTest.java
 java -cp "$astronomy_test_dir" AstronomicalEventsTest
+javac -d "$astronomy_test_dir" src/main/java/the_four_primitives_and_weapons/world/AuroraCurtainGeometry.java tests/AuroraCurtainGeometryTest.java
+java -cp "$astronomy_test_dir" AuroraCurtainGeometryTest
 bash sh/generate/generate-time-commands.sh --self-test
 cat > "$astronomy_test_dir/test.gradle" <<'GRADLE'
 allprojects {

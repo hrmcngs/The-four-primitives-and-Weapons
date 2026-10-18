@@ -26,20 +26,8 @@ public abstract class RegionalWeatherRendererMixin {
     @Unique private float regionalWeather$columnIntensity = 1F;
     @Unique private float regionalWeather$dropScale = 1F;
 
-    @org.spongepowered.asm.mixin.injection.Inject(method = "renderSky", at = @At(value = "INVOKE",
-        target = "Lcom/mojang/blaze3d/systems/RenderSystem;depthMask(Z)V", ordinal = 1))
-    private void regionalWeather$sky(com.mojang.blaze3d.vertex.PoseStack pose, org.joml.Matrix4f projection,
-            float partialTick, net.minecraft.client.Camera camera, boolean foggy, Runnable setupFog,
-            org.spongepowered.asm.mixin.injection.callback.CallbackInfo ci) {
-        if (Level.OVERWORLD.equals(level.dimension()))
-            the_four_primitives_and_weapons.client.RegionalWeatherSky.render(level, pose, partialTick);
-    }
-
-    @org.spongepowered.asm.mixin.injection.Inject(method = "renderClouds", at = @At("HEAD"), cancellable = true)
-    private void regionalWeather$replaceClouds(com.mojang.blaze3d.vertex.PoseStack pose, org.joml.Matrix4f projection,
-            float partialTick, double x, double y, double z, org.spongepowered.asm.mixin.injection.callback.CallbackInfo ci) {
-        if (Level.OVERWORLD.equals(level.dimension())) ci.cancel();
-    }
+    // Clouds belong to vanilla/the shader pack's normal cloud pass. Regional
+    // weather uses precipitation and terrain fog, never a camera-centred sky dome.
 
     @Redirect(method = "renderSnowAndRain", at = @At(value = "INVOKE",
         target = "Lnet/minecraft/world/level/biome/Biome;hasPrecipitation()Z"), require = 1)
