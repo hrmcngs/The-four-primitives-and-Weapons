@@ -26,8 +26,18 @@ public abstract class RegionalWeatherRendererMixin {
     @Unique private float regionalWeather$columnIntensity = 1F;
     @Unique private float regionalWeather$dropScale = 1F;
 
-    // Clouds belong to vanilla/the shader pack's normal cloud pass. Regional
-    // weather uses precipitation and terrain fog, never a camera-centred sky dome.
+    // Keep the normal cloud geometry; only change its lighting and coverage mask.
+    @Redirect(method = "renderClouds", at = @At(value = "INVOKE",
+        target = "Lnet/minecraft/client/multiplayer/ClientLevel;getCloudColor(F)Lnet/minecraft/world/phys/Vec3;"))
+    private net.minecraft.world.phys.Vec3 regionalWeather$cloudColor(ClientLevel client, float partialTick) {
+        return the_four_primitives_and_weapons.client.RegionalWeatherClouds.color(client.getCloudColor(partialTick));
+    }
+
+    @ModifyArg(method = "renderClouds", at = @At(value = "INVOKE",
+        target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderTexture(ILnet/minecraft/resources/ResourceLocation;)V"), index = 1)
+    private net.minecraft.resources.ResourceLocation regionalWeather$cloudTexture(net.minecraft.resources.ResourceLocation original) {
+        return the_four_primitives_and_weapons.client.RegionalWeatherClouds.texture(original);
+    }
 
     @Redirect(method = "renderSnowAndRain", at = @At(value = "INVOKE",
         target = "Lnet/minecraft/world/level/biome/Biome;hasPrecipitation()Z"), require = 1)
