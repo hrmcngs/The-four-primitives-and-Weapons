@@ -5,6 +5,25 @@ public class MantleCombatRulesTest {
         if (!value) throw new AssertionError(message);
     }
     public static void main(String[] args) {
+        // Regression: every intermediate position must go around the body,
+        // including the return stroke and the left-handed mirror.
+        for (int side : new int[]{-1, 1}) {
+            for (int tick = 0; tick <= 24; tick++) {
+                float progress = MantleCombatRules.guardGesture(tick);
+                for (int panel = -3; panel <= 3; panel++) {
+                    float[] p = MantleCombatRules.clothAroundBody(panel * .14f, .26f,
+                        side * .6f, -.4f, progress, side);
+                    float clearance = p[0]*p[0]/(.42f*.42f) + p[1]*p[1]/(.24f*.24f);
+                    check(clearance >= .999f, "cloth crossed the torso during guard/return");
+                }
+            }
+            float[] mid = MantleCombatRules.clothAroundBody(0, .26f, side*.6f, -.4f, .5f, side);
+            check(mid[0] * side > .42f, "cape must pass the dominant side");
+        }
+        check(MantleCombatRules.guardGesture(14) == 0, "gesture returns to the back");
+        check(MantleCombatRules.guardGesture(3) == 1, "parry reaches the side in three ticks");
+        check(MantleCombatRules.guardGesture(1) > .65f, "parry starts with momentum");
+        check(MantleCombatRules.guardGesture(10) > 0, "return has a short follow-through");
         check(MantleCombatRules.freeHand(true, true) == 0, "both empty chooses main hand");
         check(MantleCombatRules.freeHand(false, true) == 1, "main item wraps off hand");
         check(MantleCombatRules.freeHand(true, false) == 0, "off-hand item wraps main hand");

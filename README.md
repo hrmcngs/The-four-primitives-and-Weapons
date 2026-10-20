@@ -43,3 +43,36 @@ doragon Armorのtextureはここからダウンロードしました
 
 dagger鞘をslot backとbeltに入れても3Dmodelが出ない
 簡単にできるようにして自動で外部addonでも適応できるように
+
+### 任意MODを選んでビルド・導入
+
+`bash sh/menu.sh` のビルド一覧から「選択MOD＋必須の軽量化MODでビルド・導入」を選びます。
+「ビルド」「導入のみ」「クライアント起動」を選択でき、JARの番号を空白区切りで複数指定します。
+候補は `libs/external`・`libs/local`・`libs/runtime_selected` と入力したフォルダです。
+TiCEXなどの **Forge 1.20.1版JARと必須依存MODも一緒に選択**してください。
+自動ダウンロードや、必須依存の自動追加は行いません。
+
+```bash
+bash sh/build/build-with-mods.sh
+# JARを直接指定（パスに空白がある場合も対応）
+bash sh/build/build-with-mods.sh --jar "/path/TiCEX.jar" --jar "/path/TaCZ.jar" --offline
+# 導入だけ行い、後で実行する起動コマンドを表示
+bash sh/build/build-with-mods.sh --jar "/path/mod.jar" --prepare
+```
+
+選択ごとに `libs/interactive_<hash>/` を作り、元のJAR・既存の起動プロファイルは変更しません。
+追加MODは開発環境の実行依存として読み込み、本体の配布JARには同梱しません。
+ビルドでは選択MODの依存解決・リマップも確認しますが、起動互換性は `--run` で別途確認が必要です。
+同じMOD IDの複数バージョン、本体・既存のCurios/JEIとの二重導入は拒否します。
+
+TiCEX一式は `bash sh/build/build-with-mods.sh --ticex --offline` で選択できます。
+現在の構成は TiCEX 0.7.0-hotfix（beta）、Tinkers’ Construct 3.11.2.166、
+Mantle 1.11.117、AddonAPI-DynLoad 2.1.0 です。
+JARと配布元・SHA-512の記録は `libs/external/ticex/` に保存しています（Git対象外）。
+Tinkers’ Constructは、既存のJEI 15.20.0.129を満たす3.11系を選択しています。
+
+選択式ビルドでは **Embeddium・Oculus・extra_video_settingsを必ず導入**します。
+追加MODは選択したものだけです（本体のCurios・JEI依存は引き続き有効）。
+軽量化JARが不足している場合はビルド前に停止します。
+追加MODなしの場合は `bash sh/build/build-with-mods.sh --performance-only --offline` を使えます。
+この操作ではシェーダーパックや既存のゲーム設定を書き換えません。

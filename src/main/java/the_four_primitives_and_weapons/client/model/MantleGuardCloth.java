@@ -19,10 +19,10 @@ public final class MantleGuardCloth {
         Vector3f hand = new Vector3f(0, .57f, -.025f);
         local.last().pose().transformPosition(hand);
         inverseBody.transformPosition(hand);
-        for (int strip = 0; strip < 7; strip++) {
-            for (int row = 0; row < 8; row++) {
-                float u0 = strip / 7f, u1 = (strip + 1) / 7f;
-                float v0 = row / 8f, v1 = (row + 1) / 8f;
+        for (int strip = 0; strip < 32; strip++) {
+            for (int row = 0; row < 32; row++) {
+                float u0 = strip / 32f, u1 = (strip + 1) / 32f;
+                float v0 = row / 32f, v1 = (row + 1) / 32f;
                 Vector3f a = point(u0, v0, hand, side, blend, age);
                 Vector3f b = point(u0, v1, hand, side, blend, age);
                 Vector3f c = point(u1, v1, hand, side, blend, age);
@@ -40,20 +40,36 @@ public final class MantleGuardCloth {
         Vector3f rest = new Vector3f(width, v * 1.44f, .22f);
         float t = Math.min(1, v / .625f), q = 1 - t;
         Vector3f pulled = new Vector3f(
-            q*q*q * width + 3*q*q*t * side*.65f + 3*q*t*t * (hand.x + side*.1f) + t*t*t * hand.x,
+            3*q*q*t * side*.65f + 3*q*t*t * (hand.x + side*.1f) + t*t*t * hand.x,
             q*q*q * 0 + 3*q*q*t * .12f + 3*q*t*t * hand.y + t*t*t * hand.y,
             q*q*q * .22f + 3*q*q*t * .32f + 3*q*t*t * .32f + t*t*t * hand.z);
-        // Spread the drape over the wrist and forearm; its centre stays on the hand.
-        pulled.x += (u - .5f) * .75f * t;
-        pulled.z += (u - .5f) * side * .18f * t;
-        pulled.y -= (float)Math.sin(u * Math.PI) * .05f * t;
+        // Move one shared cross-section, keeping texture columns ordered and
+        // preventing adjacent vertices from choosing different angular routes.
+        pulled.y -= .05f * t;
         if (v > .625f) {
             float hem = (v - .625f) / .375f;
             pulled.y += hem * .95f;
             pulled.x += side * hem * .04f;
-            pulled.z += hem * (float)Math.sin(age * .45f + u * 3) * .06f;
+            pulled.z += hem * (float)Math.sin(age * .45f + v * 3) * .06f;
         }
-        return rest.lerp(pulled, blend);
+        // Keep the cloth surface outside the body even where adjacent grid cells
+        // cut across the curved path. The seam itself stays fixed on the back.
+        if (v == 0) return rest;
+        float rx = pulled.x / .42f, rz = pulled.z / .24f;
+        float radius = (float)Math.sqrt(rx * rx + rz * rz);
+        if (radius < 1.12f) {
+            if (radius < .001f) { pulled.x = side * .48f; pulled.z = 0; }
+            else { pulled.x *= 1.12f / radius; pulled.z *= 1.12f / radius; }
+        }
+        float[] route = the_four_primitives_and_weapons.util.MantleCombatRules.clothAroundBody(
+            0, rest.z, pulled.x, pulled.z, blend, side);
+        float angle = (float)Math.atan2(route[0] / .42f, route[1] / .24f);
+        float tx = (float)Math.cos(angle) * .42f;
+        float tz = -(float)Math.sin(angle) * .24f;
+        float length = (float)Math.sqrt(tx * tx + tz * tz);
+        float crossWidth = (u - .5f) * (.98f - .23f * t * blend);
+        return new Vector3f(route[0] + tx / length * crossWidth,
+            rest.y + (pulled.y - rest.y) * blend, route[1] + tz / length * crossWidth);
     }
     private static void vertex(PoseStack poses, VertexConsumer out, int light, Vector3f p, Vector3f normal, float u, float v) {
         out.vertex(poses.last().pose(), p.x, p.y, p.z).color(255,255,255,255)

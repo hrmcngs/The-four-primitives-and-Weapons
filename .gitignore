@@ -86,3 +86,6 @@ run/config/the_four_primitives_and_weapons/*
 !run/config/the_four_primitives_and_weapons/tooltip_corners/README.txt
 !run/config/the_four_primitives_and_weapons/tooltip_elements/
 !run/config/the_four_primitives_and_weapons/tooltip_elements/*.png
+
+# Interactive external-mod profiles (third-party JARs)
+/libs/interactive_*/

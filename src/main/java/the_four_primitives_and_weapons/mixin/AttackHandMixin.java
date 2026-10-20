@@ -32,11 +32,16 @@ public abstract class AttackHandMixin {
     @Inject(method = "getMainHandItem", at = @At("HEAD"), cancellable = true)
     private void tfpaw$attackWeapon(CallbackInfoReturnable<ItemStack> cir) {
         var context = AttackHandContext.forEntity((LivingEntity) (Object) this);
-        if (context != null) cir.setReturnValue(context.weapon());
+        ItemStack mantle = the_four_primitives_and_weapons.util.MantleAttackContext.weapon((LivingEntity)(Object)this);
+        if (!mantle.isEmpty()) cir.setReturnValue(mantle);
+        else if (context != null) cir.setReturnValue(context.weapon());
     }
     @Inject(method = "getItemInHand", at = @At("HEAD"), cancellable = true)
     private void tfpaw$attackHand(InteractionHand hand, CallbackInfoReturnable<ItemStack> cir) {
         var context = AttackHandContext.forEntity((LivingEntity) (Object) this);
-        if (context != null && hand == InteractionHand.MAIN_HAND) cir.setReturnValue(context.weapon());
+        if (hand != InteractionHand.MAIN_HAND) return;
+        ItemStack mantle = the_four_primitives_and_weapons.util.MantleAttackContext.weapon((LivingEntity)(Object)this);
+        if (!mantle.isEmpty()) cir.setReturnValue(mantle);
+        else if (context != null) cir.setReturnValue(context.weapon());
     }
 }

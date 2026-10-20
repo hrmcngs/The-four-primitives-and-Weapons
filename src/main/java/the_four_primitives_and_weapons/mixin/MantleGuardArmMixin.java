@@ -23,15 +23,30 @@ public abstract class MantleGuardArmMixin {
     private void mantleGuard(LivingEntity entity, float swing, float amount, float age, float yaw, float pitch, CallbackInfo ci) {
         if (!(entity instanceof Player player)) return;
         var state = MantleAnimationState.get(player);
-        if (state == null || state.action() != MantleActionPacket.Action.GUARD) return;
+        if (state == null) return;
         float partial = Math.max(0, Math.min(1, age - player.tickCount));
         float elapsed = player.level().getGameTime() - state.start() + partial;
+        if (state.action() == MantleActionPacket.Action.THRUST) {
+            if (!player.getItemInHand(state.hand()).isEmpty()) return;
+            HumanoidArm side = state.hand() == net.minecraft.world.InteractionHand.MAIN_HAND
+                ? player.getMainArm() : player.getMainArm().getOpposite();
+            ModelPart arm = side == HumanoidArm.RIGHT ? rightArm : leftArm;
+            int sign = side == HumanoidArm.RIGHT ? 1 : -1;
+            float blend = MantleCombatRules.envelope(elapsed, state.duration());
+            float extension = MantleCombatRules.thrustExtension(elapsed);
+            float aim = player.getXRot() * (float)Math.PI / 180;
+            // Wind up, straighten at the server hit tick, then lower the arm.
+            arm.xRot += (-.95f - extension * .62f + aim - arm.xRot) * blend;
+            arm.yRot += (sign * .15f * (1 - extension) - arm.yRot) * blend;
+            arm.zRot += (sign * .08f * (1 - extension) - arm.zRot) * blend;
+            return;
+        }
         float blend = MantleCombatRules.guardGesture(elapsed);
         float flick = MantleCombatRules.guardForward(elapsed);
         int sign = player.getMainArm() == HumanoidArm.RIGHT ? 1 : -1;
         ModelPart arm = sign > 0 ? rightArm : leftArm;
-        arm.xRot += (-.4f - flick * .95f - arm.xRot) * blend;
-        arm.yRot += (sign * (-.15f - flick * .5f) - arm.yRot) * blend;
-        arm.zRot += (sign * (.5f - flick * .3f) - arm.zRot) * blend;
+        arm.xRot += (-.25f - flick * .85f - arm.xRot) * blend;
+        arm.yRot += (sign * (.6f - flick * .3f) - arm.yRot) * blend;
+        arm.zRot += (sign * (.65f - flick * .1f) - arm.zRot) * blend;
     }
 }

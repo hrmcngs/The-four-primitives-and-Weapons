@@ -558,3 +558,14 @@ apply from: 'mcreator.gradle'
 apply from: 'lock_all_codes.gradle'
 apply from: 'gradle/compact-jar.gradle'
 apply from: 'gradle/dev-runtime-snapshot.gradle'
+
+// Resolve selected optional MODs during build as well as runClient. They remain
+// runtime dependencies and are never bundled into this mod's distribution JAR.
+if (withExternalMods) {
+    def verifyExternalMods = tasks.register('verifyExternalMods') {
+        group = 'verification'
+        description = 'Resolve/remap optional runtime MOD dependencies'
+        doLast { configurations.runtimeClasspath.files.each { it.length() } }
+    }
+    tasks.named('build').configure { dependsOn verifyExternalMods }
+}

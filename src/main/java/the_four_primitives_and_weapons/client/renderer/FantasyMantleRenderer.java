@@ -73,8 +73,6 @@ public class FantasyMantleRenderer implements ICurioRenderer {
         float winding = thrusting ? deformation : 0;
         for (int i = -3; i <= 3; i++) {
             ModelPart panel = cloth.getChild("panel" + i);
-            float wave = (float)Math.sin(ageTicks * .22f + i * .4f);
-            float response = MantleAnimationState.deflection(context.entity(), partialTicks);
             panel.x = i * 2.2f;
             panel.y = 0;
             panel.z = 3.2f + Math.abs(i) * .05f;
@@ -132,7 +130,8 @@ public class FantasyMantleRenderer implements ICurioRenderer {
             float extension = MantleCombatRules.thrustExtension(ageTicks);
             if (extension > 0) {
                 poses.translate(0, 9 / 16f, -2 / 16f);
-                poses.mulPose(Axis.XP.rotationDegrees(player.getXRot()));
+                // The arm already aims with player pitch; point the tip along its forearm.
+                poses.mulPose(Axis.XP.rotationDegrees(90));
                 var origin = player.getEyePosition().add(0, -.35, 0);
                 var end = origin.add(player.getLookAngle().scale(7));
                 var wall = player.level().clip(new ClipContext(origin, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player)).getLocation();

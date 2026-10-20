@@ -95,6 +95,8 @@ public final class MantleCombatHandler {
     }
     private static void thrust(ServerPlayer player, InteractionHand hand) {
         if (!player.getItemInHand(hand).isEmpty()) return;
+        var mantle = MantleActionPacket.equipped(player);
+        if (mantle.isEmpty()) return;
         Vec3 direction = player.getLookAngle().normalize();
         Vec3 origin = player.getEyePosition().add(0, -.35, 0);
         Vec3 end = origin.add(direction.scale(7));
@@ -105,8 +107,11 @@ public final class MantleCombatHandler {
             var box = target.getBoundingBox().inflate(.3);
             boolean intersects = box.contains(origin) || box.clip(origin, origin.add(direction.scale(range))).isPresent();
             if (!intersects || player.isAlliedTo(target) || target.isAlliedTo(player) || !player.hasLineOfSight(target)) continue;
-            if (target.hurt(player.damageSources().playerAttack(player), 10))
-                target.knockback(.6, player.getX() - target.getX(), player.getZ() - target.getZ());
+            the_four_primitives_and_weapons.util.MantleAttackContext.run(player, mantle, () -> {
+                float dealt = the_four_primitives_and_weapons.util.DamageCalculator.dealDamage(player, target, 10, mantle, origin);
+                if (dealt > 0)
+                    target.knockback(.6, player.getX() - target.getX(), player.getZ() - target.getZ());
+            });
         }
         player.level().playSound(null, player.blockPosition(), SoundEvents.PLAYER_ATTACK_STRONG, SoundSource.PLAYERS, 1, .8f);
     }

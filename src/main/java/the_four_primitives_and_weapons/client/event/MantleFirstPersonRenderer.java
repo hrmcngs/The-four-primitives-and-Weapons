@@ -55,9 +55,9 @@ public final class MantleFirstPersonRenderer {
             int sign = player.getMainArm() == HumanoidArm.RIGHT ? 1 : -1;
             float flick = MantleCombatRules.guardForward(age);
             // Follow the cape around the outside of the dominant arm.
-            poses.translate(sign * (.5 + (1 - envelope) * .7 - flick * .28),
+            poses.translate(sign * (.64 + (1 - envelope) * .7 - flick * .1),
                 -.22 + (1 - envelope) * .28 + flick * .2, -.48 + (1 - envelope) * .95);
-            poses.mulPose(Axis.YP.rotationDegrees(sign * (65 - flick * 40)));
+            poses.mulPose(Axis.YP.rotationDegrees(sign * (75 - flick * 25)));
             if (player.getMainHandItem().isEmpty()) {
                 poses.pushPose();
                 poses.mulPose(Axis.XP.rotationDegrees(-55 + flick * 18));
@@ -80,7 +80,22 @@ public final class MantleFirstPersonRenderer {
                 panel.yRot = i * .025f + flutter * .1f;
                 panel.getChild("hem").xRot = .3f + flutter * .3f;
             }
-            fan.render(poses, out, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+            // One continuous UV layout, matching the back cape instead of
+            // repeating the texture from (0,0) on every small cube.
+            for (int i = -3; i <= 3; i++) {
+                ModelPart panel = fan.getChild("panel" + i);
+                float u0 = (i + 3) / 7f, u1 = (i + 4) / 7f;
+                poses.pushPose();
+                panel.translateAndRotate(poses);
+                the_four_primitives_and_weapons.client.model.FantasyPatternQuad.draw(
+                    poses, out, light, OverlayTexture.NO_OVERLAY,
+                    -1.7f, 0, 1.7f, 5, .26f, u0, 0, u1, 5 / 9f, true, 1, 1, 1, 1);
+                panel.getChild("hem").translateAndRotate(poses);
+                the_four_primitives_and_weapons.client.model.FantasyPatternQuad.draw(
+                    poses, out, light, OverlayTexture.NO_OVERLAY,
+                    -1.7f, 0, 1.7f, 4, .26f, u0, 5 / 9f, u1, 1, true, 1, 1, 1, 1);
+                poses.popPose();
+            }
             poses.popPose();
             if (event.getHand() == InteractionHand.MAIN_HAND && !player.getMainHandItem().isEmpty()) {
                 poses.translate(sign * flick * .16, flick * .12, 0);
