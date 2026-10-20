@@ -68,31 +68,39 @@ public class FantasyMantleRenderer implements ICurioRenderer {
         boolean guarding = state != null && state.action() == MantleActionPacket.Action.GUARD;
         boolean thrusting = state != null && state.action() == MantleActionPacket.Action.THRUST
             && context.entity().getItemInHand(state.hand()).isEmpty();
-        float guard = guarding ? deformation : 0;
+        float guard = guarding ? MantleCombatRules.guardGesture(ageTicks) : 0;
+        int guardSide = context.entity().getMainArm() == HumanoidArm.RIGHT ? -1 : 1;
         float winding = thrusting ? deformation : 0;
         for (int i = -3; i <= 3; i++) {
             ModelPart panel = cloth.getChild("panel" + i);
             float wave = (float)Math.sin(ageTicks * .22f + i * .4f);
             float response = MantleAnimationState.deflection(context.entity(), partialTicks);
-            // Lift and sweep the cloth away from an impact; keep it open, never form a cocoon.
-            panel.x = i * 2.2f + guard * (i * .7f + response * 5);
-            panel.y = -guard * (2.5f + wave * .7f + Math.abs(response));
-            panel.z = 3.2f + Math.abs(i) * .05f - guard * (2.8f + Math.abs(response) * 2);
+            panel.x = i * 2.2f;
+            panel.y = 0;
+            panel.z = 3.2f + Math.abs(i) * .05f;
             panel.xRot = .07f + Math.min(limbAmount, 1) * .22f
-                + (float)Math.sin(age * .07f + i * .35f) * .018f
-                - guard * (.8f + wave * .18f + Math.abs(response) * .3f);
-            panel.yRot = -i * .025f + guard * (wave * .25f + response * .7f);
-            panel.zRot = -i * .012f + guard * (wave * .15f + response * .25f);
-            panel.getChild("hem").xRot = .035f + guard * (.35f + wave * .3f)
+                + (float)Math.sin(age * .07f + i * .35f) * .018f;
+            panel.yRot = -i * .025f;
+            panel.zRot = -i * .012f;
+            panel.getChild("hem").xRot = .035f
                 + (float)Math.sin(age * .07f + i * .35f - .5f) * .025f;
         }
         poses.pushPose();
         humanoid.body.translateAndRotate(poses);
         poses.scale(1 - winding * .2f, 1 - winding * .55f, 1);
         VertexConsumer out = buffers.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
+        boolean movingGuard = guard > .001f;
+        for (int i = -3; i <= 3; i++) cloth.getChild("panel" + i).visible = !movingGuard;
         cloth.render(poses, out, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
+        for (int i = -3; i <= 3; i++) cloth.getChild("panel" + i).visible = true;
+        if (movingGuard) {
+            ModelPart arm = guardSide < 0 ? humanoid.rightArm : humanoid.leftArm;
+            the_four_primitives_and_weapons.client.model.MantleGuardCloth.render(
+                poses, out, light, humanoid.body, arm, guardSide, guard, ageTicks);
+        }
         for (int i = -3; i <= 3; i++) {
             ModelPart panel = cloth.getChild("panel" + i);
+            if (movingGuard) continue;
             float u0 = (i + 3) / 7f;
             float u1 = (i + 4) / 7f;
             float split = 9 / 23f;

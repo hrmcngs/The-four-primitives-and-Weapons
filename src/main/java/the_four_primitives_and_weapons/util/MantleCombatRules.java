@@ -13,6 +13,15 @@ public final class MantleCombatRules {
     public static float deflection(float elapsed) {
         return elapsed < 0 || elapsed >= 10 ? 0 : (float)Math.sin(elapsed * Math.PI / 10);
     }
+    /** One gesture: lift sideways, pass diagonally forward, sweep back, release. */
+    public static float guardGesture(float age) {
+        if (age <= 0 || age >= 24) return 0;
+        float phase = age / 24f;
+        return (float)Math.sin(Math.PI * phase) * (float)Math.sin(Math.PI * phase);
+    }
+    public static float guardForward(float age) {
+        return age <= 0 || age >= 24 ? 0 : (float)Math.sin(Math.PI * age / 24f);
+    }
     public static float guardWave(float age) {
         return (float)Math.sin(age * .22f);
     }

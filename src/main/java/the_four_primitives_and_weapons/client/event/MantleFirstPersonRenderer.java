@@ -32,7 +32,8 @@ public final class MantleFirstPersonRenderer {
         var state = MantleAnimationState.get(player);
         if (state == null) return;
         float age = player.level().getGameTime() - state.start() + event.getPartialTick();
-        float envelope = MantleCombatRules.envelope(age, state.duration());
+        float envelope = state.action() == MantleActionPacket.Action.GUARD
+            ? MantleCombatRules.guardGesture(age) : MantleCombatRules.envelope(age, state.duration());
         if (state.action() == MantleActionPacket.Action.GUARD && envelope <= .001f) return;
         boolean thrust = state.action() == MantleActionPacket.Action.THRUST && player.getItemInHand(state.hand()).isEmpty();
         if (thrust && event.getHand() == state.hand()) event.setCanceled(true);
@@ -51,10 +52,26 @@ public final class MantleFirstPersonRenderer {
             float response = MantleAnimationState.deflection(player, event.getPartialTick());
             float wave = MantleCombatRules.guardWave(age);
             poses.pushPose();
-            poses.translate(response * .22 + wave * .06, -.18 + Math.abs(response) * .08, -.95);
+            int sign = player.getMainArm() == HumanoidArm.RIGHT ? 1 : -1;
+            float flick = MantleCombatRules.guardForward(age);
+            // Follow the cape around the outside of the dominant arm.
+            poses.translate(sign * (.5 + (1 - envelope) * .7 - flick * .28),
+                -.22 + (1 - envelope) * .28 + flick * .2, -.48 + (1 - envelope) * .95);
+            poses.mulPose(Axis.YP.rotationDegrees(sign * (65 - flick * 40)));
+            if (player.getMainHandItem().isEmpty()) {
+                poses.pushPose();
+                poses.mulPose(Axis.XP.rotationDegrees(-55 + flick * 18));
+                if (mc.getEntityRenderDispatcher().getRenderer(player) instanceof PlayerRenderer renderer) {
+                    if (sign > 0) renderer.renderRightHand(poses, buffers, light, player);
+                    else renderer.renderLeftHand(poses, buffers, light, player);
+                }
+                poses.popPose();
+                if (event.getHand() == InteractionHand.MAIN_HAND) event.setCanceled(true);
+            }
+            out = buffers.getBuffer(RenderType.entityCutoutNoCull(MantleActionModels.TEXTURE));
             poses.mulPose(Axis.YP.rotationDegrees(wave * 8 + response * 24));
             poses.mulPose(Axis.ZP.rotationDegrees(wave * 5 + response * 12));
-            poses.scale(envelope * .9f, -envelope * .9f, .9f);
+            poses.scale(1f, -1.25f, .7f);
             for (int i = -3; i <= 3; i++) {
                 ModelPart panel = fan.getChild("panel" + i);
                 float flutter = (float)Math.sin(age * .22f + i * .45f);
@@ -65,6 +82,11 @@ public final class MantleFirstPersonRenderer {
             }
             fan.render(poses, out, light, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
             poses.popPose();
+            if (event.getHand() == InteractionHand.MAIN_HAND && !player.getMainHandItem().isEmpty()) {
+                poses.translate(sign * flick * .16, flick * .12, 0);
+                poses.mulPose(Axis.ZP.rotationDegrees(sign * (12 + flick * 24) * envelope));
+                poses.mulPose(Axis.YP.rotationDegrees(sign * flick * 20 * envelope));
+            }
         } else if (thrust) {
             HumanoidArm side = state.hand() == InteractionHand.MAIN_HAND ? player.getMainArm() : player.getMainArm().getOpposite();
             int sign = side == HumanoidArm.RIGHT ? 1 : -1;

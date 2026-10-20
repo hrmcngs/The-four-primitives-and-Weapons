@@ -32,6 +32,7 @@
   "client": [
     "DualWieldFirstPersonMixin",
     "DualWieldThirdPersonMixin",
+    "MantleGuardArmMixin",
     "ElementGlintFoilMixin",
     "KeitoGlintMixin",
     "KeitoGlintBuffersMixin",

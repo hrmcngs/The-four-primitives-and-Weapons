@@ -63,7 +63,7 @@ public final class MantleCombatHandler {
         Active active = new Active(action, hand == null ? InteractionHand.MAIN_HAND : hand,
             player.level().getGameTime(), duration, false);
         ACTIVE.put(player.getUUID(), active);
-        player.getCooldowns().addCooldown(KnifeExtrasRegistrar.FANTASY_MANTLE.get(), action == MantleActionPacket.Action.GUARD ? 120 : 40);
+        player.getCooldowns().addCooldown(KnifeExtrasRegistrar.FANTASY_MANTLE.get(), action == MantleActionPacket.Action.GUARD ? 60 : 20);
         sync(player, active, duration);
         if (action == MantleActionPacket.Action.GUARD)
             player.level().playSound(null, player.blockPosition(), SoundEvents.ARMOR_EQUIP_LEATHER, SoundSource.PLAYERS, 1, .7f);
