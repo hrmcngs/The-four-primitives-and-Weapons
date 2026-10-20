@@ -16,5 +16,6 @@ public class FantasyMantleItem extends Item implements ICurioItem {
     @Override public boolean canEquipFromUse(SlotContext context, ItemStack stack) { return true; }
     @Override public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> lines, TooltipFlag flag) {
         lines.add(Component.translatable("tooltip.the_four_primitives_and_weapons.fantasy_mantle"));
+        lines.add(Component.translatable("tooltip.the_four_primitives_and_weapons.fantasy_mantle.guard"));
     }
 }

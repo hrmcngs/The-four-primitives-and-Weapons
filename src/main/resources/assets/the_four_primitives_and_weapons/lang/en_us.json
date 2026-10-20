@@ -1267,8 +1267,16 @@
   "gui.the_four_primitives_and_weapons.upgrade.owned": "Owned: %s emeralds, %s tempering shards",
   "item.the_four_primitives_and_weapons.fantasy_mantle": "Fantasy Mantle",
   "curios.identifier.mantle": "Mantle",
-  "tooltip.the_four_primitives_and_weapons.fantasy_mantle": "Equip in the mantle slot. Hold R to select Sweep, Thrust, or Guard.",
-  "action.the_four_primitives_and_weapons.mantle.sweep": "Mantle: Sweep",
+  "tooltip.the_four_primitives_and_weapons.fantasy_mantle": "Equip in the mantle slot. Hold R for Draw, Sheathe, Thrust, or Guard. Thrust requires an empty hand.",
   "action.the_four_primitives_and_weapons.mantle.thrust": "Mantle: Thrust",
-  "action.the_four_primitives_and_weapons.mantle.guard": "Mantle: Guard"
+  "action.the_four_primitives_and_weapons.mantle.guard": "Mantle: Guard",
+  "action.the_four_primitives_and_weapons.weapon.draw": "Draw",
+  "action.the_four_primitives_and_weapons.weapon.sheath": "Sheathe",
+  "action.the_four_primitives_and_weapons.weapon.default": "Default action",
+  "message.the_four_primitives_and_weapons.mantle.hands_full": "Mantle Thrust requires an empty hand.",
+  "hud.the_four_primitives_and_weapons.mantle.cooldown": "(Recharging)",
+  "message.the_four_primitives_and_weapons.mantle.cooldown": "Your mantle is recharging.",
+  "message.the_four_primitives_and_weapons.mantle.not_equipped": "Equip a mantle first.",
+  "message.the_four_primitives_and_weapons.mantle.hand_changed": "Thrust cancelled because your hand is occupied. You can try again.",
+  "tooltip.the_four_primitives_and_weapons.fantasy_mantle.guard": "Guard deflects physical hits and their on-hit effects. Potions still affect you."
 }

@@ -91,6 +91,11 @@ public class WeaponWheelOverlay {
                 WeaponWheelState.SpecialAction sp = specials.get(i - weaponCount);
                 displayIcon = sp.icon;
                 itemName = Component.literal(sp.label);
+                if (sp.mantleAction != null && mc.player.getCooldowns().isOnCooldown(
+                        the_four_primitives_and_weapons.init.KnifeExtrasRegistrar.FANTASY_MANTLE.get())) {
+                    itemName = Component.literal(sp.label + " ").append(Component.translatable(
+                        "hud.the_four_primitives_and_weapons.mantle.cooldown").withStyle(net.minecraft.ChatFormatting.GRAY));
+                }
                 slotLabel = sp.slotLabel != null ? sp.slotLabel : "特殊";
             }
 

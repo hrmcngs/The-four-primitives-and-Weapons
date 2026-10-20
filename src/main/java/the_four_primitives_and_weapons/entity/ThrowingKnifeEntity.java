@@ -197,10 +197,10 @@ public class ThrowingKnifeEntity extends ThrowableItemProjectile implements Item
                 the_four_primitives_and_weapons.item.rarity.WeaponRarity.getFromStack(raw);
             if (r != null) dmg += (float) r.getAttackBonus();
         }
-        target.hurt(this.damageSources().thrown(this, owner), dmg);
+        boolean landed = target.hurt(this.damageSources().thrown(this, owner), dmg);
 
         // STUN: 感電(雷視覚) + 移動速度低下/弱体化 + 電気属性の追加ダメージ
-        if (type == KnifeType.STUN && target instanceof net.minecraft.world.entity.LivingEntity le) {
+        if (landed && type == KnifeType.STUN && target instanceof net.minecraft.world.entity.LivingEntity le) {
             // 二重防衛: owner との同一性を再チェック。canHitEntity / 先頭の target==owner で
             // 弾いているはずだが、複数 hop の Entity 参照経由で潜り抜けるケースに備えて
             // ここでも UUID 比較を行う (鈍足/弱体化が自分に付くバグ対策)。

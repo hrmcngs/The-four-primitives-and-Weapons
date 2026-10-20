@@ -1266,8 +1266,16 @@
   "gui.the_four_primitives_and_weapons.upgrade.owned": "所持：エメラルド%s個・鍛錬の欠片%s個",
   "item.the_four_primitives_and_weapons.fantasy_mantle": "幻想のマント",
   "curios.identifier.mantle": "マント",
-  "tooltip.the_four_primitives_and_weapons.fantasy_mantle": "マントスロットに装備。R長押しで薙ぎ払い・刺突・防御を選択",
-  "action.the_four_primitives_and_weapons.mantle.sweep": "マント：薙ぎ払い",
+  "tooltip.the_four_primitives_and_weapons.fantasy_mantle": "マントスロットに装備。R長押しで抜刀・納刀・刺突・防御を選択。刺突には空いている手が必要",
   "action.the_four_primitives_and_weapons.mantle.thrust": "マント：刺突",
-  "action.the_four_primitives_and_weapons.mantle.guard": "マント：防御"
+  "action.the_four_primitives_and_weapons.mantle.guard": "マント：防御",
+  "action.the_four_primitives_and_weapons.weapon.draw": "抜刀",
+  "action.the_four_primitives_and_weapons.weapon.sheath": "納刀",
+  "action.the_four_primitives_and_weapons.weapon.default": "通常操作",
+  "message.the_four_primitives_and_weapons.mantle.hands_full": "両手にアイテムがあるため、マントで刺突できません",
+  "hud.the_four_primitives_and_weapons.mantle.cooldown": "（再使用待ち）",
+  "message.the_four_primitives_and_weapons.mantle.cooldown": "マントは再使用待ちです",
+  "message.the_four_primitives_and_weapons.mantle.not_equipped": "マントを装備してください",
+  "message.the_four_primitives_and_weapons.mantle.hand_changed": "手にアイテムを持ったため刺突を中止しました。再使用できます",
+  "tooltip.the_four_primitives_and_weapons.fantasy_mantle.guard": "防御中は物理攻撃と命中に伴う効果をいなす。ポーションは防げない"
 }

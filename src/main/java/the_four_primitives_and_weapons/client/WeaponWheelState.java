@@ -48,6 +48,7 @@ public class WeaponWheelState {
     public static final class SpecialAction {
         public final MagicalKatanaActionPacket.Action action;
         public the_four_primitives_and_weapons.network.MantleActionPacket.Action mantleAction;
+        public WheelMode weaponAction;
         public final ItemStack icon;
         public final String label;
         public final String slotLabel; // スロット位置ラベル ( "[インベントリ]" / "[背中]" 等 )
@@ -65,7 +66,17 @@ public class WeaponWheelState {
     private static void addMantleActions(Player player, List<SpecialAction> actions) {
         ItemStack mantle = the_four_primitives_and_weapons.network.MantleActionPacket.equipped(player);
         if (mantle.isEmpty()) return;
+        for (WheelMode mode : WheelMode.values()) {
+            SpecialAction entry = new SpecialAction(null,
+                new ItemStack(mode == WheelMode.DRAW ? net.minecraft.world.item.Items.IRON_SWORD : TheFourPrimitivesAndWeaponsModItems.SAYA.get()),
+                net.minecraft.network.chat.Component.translatable("action.the_four_primitives_and_weapons.weapon." + mode.name().toLowerCase(java.util.Locale.ROOT)).getString(),
+                net.minecraft.network.chat.Component.translatable("action.the_four_primitives_and_weapons.weapon.default").getString());
+            entry.weaponAction = mode;
+            actions.add(entry);
+        }
         for (var action : the_four_primitives_and_weapons.network.MantleActionPacket.Action.values()) {
+            if (action == the_four_primitives_and_weapons.network.MantleActionPacket.Action.THRUST
+                    && the_four_primitives_and_weapons.events.MantleCombatHandler.freeHand(player) == null) continue;
             String key = action.name().toLowerCase(java.util.Locale.ROOT);
             SpecialAction entry = new SpecialAction(null, mantle.copy(),
                 net.minecraft.network.chat.Component.translatable("action.the_four_primitives_and_weapons.mantle." + key).getString(),
@@ -246,6 +257,12 @@ public class WeaponWheelState {
      */
     public static void onRKeyReleased() {
         if (!rKeyDown) return;
+        if (wheelVisible) {
+            Minecraft mc = Minecraft.getInstance();
+            updateSelection(mc.mouseHandler.xpos() * mc.getWindow().getGuiScaledWidth() / mc.getWindow().getScreenWidth(),
+                mc.mouseHandler.ypos() * mc.getWindow().getGuiScaledHeight() / mc.getWindow().getScreenHeight(),
+                mc.getWindow().getGuiScaledWidth(), mc.getWindow().getGuiScaledHeight());
+        }
 
         // grabMouse() の cascade による再帰を防ぐため、状態保存→reset()→処理 の順
         boolean wasWheelVisible = wheelVisible;
@@ -267,7 +284,9 @@ public class WeaponWheelState {
                 // SpecialAction
                 SpecialAction sp = savedSpecials.get(savedSelectedIndex - weaponCount);
                 TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(
-                        sp.mantleAction != null
+                        sp.weaponAction != null
+                            ? new the_four_primitives_and_weapons.network.WeaponWheelDefaultActionPacket(sp.weaponAction == WheelMode.SHEATH)
+                            : sp.mantleAction != null
                             ? new the_four_primitives_and_weapons.network.MantleActionPacket(sp.mantleAction)
                             : new MagicalKatanaActionPacket(sp.action));
             }
