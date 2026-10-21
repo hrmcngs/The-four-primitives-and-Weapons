@@ -21,6 +21,9 @@
 #
 # macOS版では、外部MODを軽量化MODのみ・追加機能MODあり・重いMODありから対話で選べます。Windows版は `libs/local/` の一括取り込みです。
 #
+# 特定MODを個別に選ぶ: `bash sh/run/run_client_mac.sh --select-mods`（TiCEX一式は `--select-mods --ticex`）。
+# 選択起動は専用プロファイルを使い、軽量化MODを常に追加します。online / offline / --dry-run対応。
+#
 # ## 引数
 #
 # 複数併用可 ( 順不同 )。
@@ -226,6 +229,20 @@ for shell_help_arg in "$@"; do
 done
 
 cd "$(dirname "$0")/../.."
+
+# Delegate before daemon, TLS and broad MOD synchronization can run.
+selected_run_args=()
+selected_run_mode=0
+for selected_run_arg in "$@"; do
+    if [ "$selected_run_arg" = --select-mods ]; then
+        selected_run_mode=1
+    else
+        selected_run_args+=("$selected_run_arg")
+    fi
+done
+if [ "$selected_run_mode" = 1 ]; then
+    exec bash sh/run/run-with-mods.sh "${selected_run_args[@]}"
+fi
 
 show_help() {
     sed -n '2,/^$/p' "$0" | sed 's/^# \{0,1\}//'

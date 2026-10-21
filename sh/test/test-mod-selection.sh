@@ -35,4 +35,17 @@ if rg -q 'test_selected|ticex' "$test_mod_dir/performance"; then exit 1; fi
 mkdir "$test_mod_dir/missing-performance"
 if MAW_PERFORMANCE_DIR="$test_mod_dir/missing-performance" bash "$selector" --performance-only --dry-run > "$test_mod_dir/missing" 2>&1; then exit 1; fi
 rg -q '必須の軽量化MODがありません' "$test_mod_dir/missing"
+# Run entrypoints must use only the selected profile, with mandatory performance MODs.
+bash sh/run/run-with-mods.sh --jar "$test_mod_dir/space mod.jar" --dry-run > "$test_mod_dir/run"
+rg -q '実行: ./gradlew runClient .*--offline.*downloadAssets' "$test_mod_dir/run"
+rg -q '導入MOD: test_selected.*embeddium.*oculus.*extra_video_settings' "$test_mod_dir/run"
+bash sh/run/run-with-mods.sh --performance-only online --dry-run > "$test_mod_dir/run-online"
+rg -q '実行: ./gradlew runClient' "$test_mod_dir/run-online"
+if rg -q -- '--offline|downloadAssets' "$test_mod_dir/run-online"; then exit 1; fi
+bash sh/run/run_client_mac.sh --select-mods --performance-only --dry-run > "$test_mod_dir/mac-run"
+rg -q '実行: ./gradlew runClient' "$test_mod_dir/mac-run"
+if rg -q 'ticex|test_selected' "$test_mod_dir/mac-run"; then exit 1; fi
+printf '%s\n1\n' "$test_mod_dir/space mod.jar" | bash sh/run/run-with-mods.sh --dry-run > "$test_mod_dir/run-interactive"
+rg -q '導入MOD: test_selected' "$test_mod_dir/run-interactive"
+rg -q '実行: ./gradlew runClient' "$test_mod_dir/run-interactive"
 echo 'MOD selection tests passed.'
