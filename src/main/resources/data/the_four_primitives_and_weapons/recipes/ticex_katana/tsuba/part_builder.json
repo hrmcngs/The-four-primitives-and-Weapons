@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ticex"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "tconstruct:part_builder",
+  "cost": 1,
+  "pattern": "the_four_primitives_and_weapons:katana_tsuba",
+  "pattern_item": [
+    {
+      "tag": "tconstruct:patterns/default"
+    },
+    {
+      "item": "the_four_primitives_and_weapons:ticex_tsuba_cast"
+    }
+  ],
+  "result": {
+    "item": "the_four_primitives_and_weapons:ticex_tsuba"
+  }
+}

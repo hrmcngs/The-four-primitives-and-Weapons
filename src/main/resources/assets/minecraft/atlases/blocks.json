@@ -75,6 +75,26 @@
     {
       "type": "minecraft:single",
       "resource": "minecraft:entity/shield_base_nopattern"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/iron_sword",
+      "sprite": "the_four_primitives_and_weapons:gui/tinker_pattern/katana_blade"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/stick",
+      "sprite": "the_four_primitives_and_weapons:gui/tinker_pattern/katana_tsuka"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/iron_nugget",
+      "sprite": "the_four_primitives_and_weapons:gui/tinker_pattern/katana_tsuba"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "minecraft:item/gold_nugget",
+      "sprite": "the_four_primitives_and_weapons:gui/tinker_pattern/katana_kashira"
     }
   ]
 }

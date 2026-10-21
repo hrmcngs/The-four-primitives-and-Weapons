@@ -122,6 +122,16 @@ public class CreativeTabPopulator {
 			event.accept(KnifeExtrasRegistrar.MATERIALIZED_POUCH);
 			event.accept(KnifeExtrasRegistrar.BATTLE_STAKE);
 			event.accept(KnifeExtrasRegistrar.FANTASY_MANTLE);
+            if (TicexCastingRegistrar.KATANA_BLADE.isPresent()) {
+                event.accept(TicexCastingRegistrar.displayBlade());
+                event.accept(TicexCastingRegistrar.KATANA_BLADE_CAST);
+                event.accept(TicexCastingRegistrar.displayPart(TicexCastingRegistrar.TSUKA.get()));
+                event.accept(TicexCastingRegistrar.displayPart(TicexCastingRegistrar.TSUBA.get()));
+                event.accept(TicexCastingRegistrar.displayPart(TicexCastingRegistrar.KASHIRA.get()));
+                event.accept(TicexCastingRegistrar.TSUBA_CAST);
+                event.accept(TicexCastingRegistrar.KASHIRA_CAST);
+                event.accept(TicexCastingRegistrar.KATANA);
+            }
 			event.accept(CustomEntityInit.GUIDE_BOOK);
 			event.accept(CustomEntityInit.MANA_POTION);
 			event.accept(CustomEntityInit.UNDEAD_ARMY_BANISH);

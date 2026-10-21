@@ -1277,5 +1277,19 @@
   "message.the_four_primitives_and_weapons.mantle.cooldown": "マントは再使用待ちです",
   "message.the_four_primitives_and_weapons.mantle.not_equipped": "マントを装備してください",
   "message.the_four_primitives_and_weapons.mantle.hand_changed": "手にアイテムを持ったため刺突を中止しました。再使用できます",
-  "tooltip.the_four_primitives_and_weapons.fantasy_mantle.guard": "防御中は物理攻撃と命中に伴う効果をいなす。ポーションは防げない"
+  "tooltip.the_four_primitives_and_weapons.fantasy_mantle.guard": "防御中は物理攻撃と命中に伴う効果をいなす。ポーションは防げない",
+  "item.the_four_primitives_and_weapons.ticex_katana_blade": "刀身（TiCEX素材）",
+  "item.the_four_primitives_and_weapons.ticex_katana_blade_cast": "刀身用の金の鋳型",
+  "pattern.the_four_primitives_and_weapons.katana_blade": "刀身",
+  "jei.the_four_primitives_and_weapons.ticex_katana": "パーツビルダーで刀身を作り、鋳造台で刀身に溶融金90mBを流すと金の鋳型になります（元の刀身は消費）。鋳型に素材3個分の溶融金属を流して刀身を鋳造できます。刀身＋棒を作業台で組み合わせると、素材の攻撃力・耐久値を引き継いだ刀になります。",
+  "item.the_four_primitives_and_weapons.ticex_tsuka": "木製の柄（TiCEX）",
+  "item.the_four_primitives_and_weapons.ticex_tsuka_cast": "柄用の金の鋳型",
+  "pattern.the_four_primitives_and_weapons.katana_tsuka": "柄",
+  "item.the_four_primitives_and_weapons.ticex_tsuba": "鍔（TiCEX素材）",
+  "item.the_four_primitives_and_weapons.ticex_tsuba_cast": "鍔用の金の鋳型",
+  "pattern.the_four_primitives_and_weapons.katana_tsuba": "鍔",
+  "item.the_four_primitives_and_weapons.ticex_kashira": "頭（TiCEX素材）",
+  "item.the_four_primitives_and_weapons.ticex_kashira_cast": "頭用の金の鋳型",
+  "pattern.the_four_primitives_and_weapons.katana_kashira": "頭",
+  "item.the_four_primitives_and_weapons.ticex_katana": "四部品の刀（TiCEX）"
 }

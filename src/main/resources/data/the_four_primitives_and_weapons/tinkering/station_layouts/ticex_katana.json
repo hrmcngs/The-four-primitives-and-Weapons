@@ -1,0 +1,46 @@
+{
+  "icon": {
+    "item": "the_four_primitives_and_weapons:ticex_katana",
+    "nbt": "{tic_display:1b,tic_materials:[\"tconstruct:ui_render#head\",\"tconstruct:ui_render#handle\",\"tconstruct:ui_render#extra\",\"tconstruct:ui_render#extra\"]}"
+  },
+  "input_slots": [
+    {
+      "filter": {
+        "item": "the_four_primitives_and_weapons:ticex_katana_blade"
+      },
+      "icon": "the_four_primitives_and_weapons:katana_blade",
+      "translation_key": "item.the_four_primitives_and_weapons.ticex_katana_blade",
+      "x": 55,
+      "y": 15
+    },
+    {
+      "filter": {
+        "item": "the_four_primitives_and_weapons:ticex_tsuka"
+      },
+      "icon": "the_four_primitives_and_weapons:katana_tsuka",
+      "translation_key": "item.the_four_primitives_and_weapons.ticex_tsuka",
+      "x": 16,
+      "y": 62
+    },
+    {
+      "filter": {
+        "item": "the_four_primitives_and_weapons:ticex_tsuba"
+      },
+      "icon": "the_four_primitives_and_weapons:katana_tsuba",
+      "translation_key": "item.the_four_primitives_and_weapons.ticex_tsuba",
+      "x": 35,
+      "y": 40
+    },
+    {
+      "filter": {
+        "item": "the_four_primitives_and_weapons:ticex_kashira"
+      },
+      "icon": "the_four_primitives_and_weapons:katana_kashira",
+      "translation_key": "item.the_four_primitives_and_weapons.ticex_kashira",
+      "x": 5,
+      "y": 40
+    }
+  ],
+  "sortIndex": 4,
+  "translation_key": "item.the_four_primitives_and_weapons.ticex_katana"
+}

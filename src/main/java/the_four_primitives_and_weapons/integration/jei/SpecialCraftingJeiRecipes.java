@@ -64,6 +64,14 @@ final class SpecialCraftingJeiRecipes {
                 new ItemStack(TheFourPrimitivesAndWeaponsModItems.CORROSION_BOOK.get()));
         for (Item cord : List.of(Items.STRING, Items.CHAIN))
             add(displays, "ninjato_cord", new ItemStack(TheFourPrimitivesAndWeaponsModItems.NINJATO_SAYA.get()), new ItemStack(cord));
+        if (the_four_primitives_and_weapons.init.TicexCastingRegistrar.KATANA_BLADE.isPresent()) {
+            add(displays, "ticex_katana/assembly",
+                the_four_primitives_and_weapons.init.TicexCastingRegistrar.displayBlade(), new ItemStack(Items.STICK));
+            registration.addIngredientInfo(
+                the_four_primitives_and_weapons.init.TicexCastingRegistrar.displayBlade(),
+                mezz.jei.api.constants.VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.the_four_primitives_and_weapons.ticex_katana"));
+        }
         registration.addRecipes(RecipeTypes.CRAFTING, displays);
     }
 

@@ -1,0 +1,27 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "ticex"
+    },
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " P ",
+    " P "
+  ],
+  "key": {
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "item": "the_four_primitives_and_weapons:ticex_tsuka",
+    "count": 1,
+    "nbt": "{Material:\"tconstruct:wood\"}"
+  }
+}

@@ -371,7 +371,7 @@ minecraft {
 
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file(project.findProperty('devRunDirectory') ?: 'run')
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
@@ -385,7 +385,8 @@ minecraft {
         }
 
         server {
-            workingDirectory project.file('run')
+            if (project.hasProperty('smokeTest')) args 'nogui'
+            workingDirectory project.file(project.findProperty('devRunDirectory') ?: 'run')
 
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
@@ -461,6 +462,17 @@ dependencies {
     //   - フラット配置 ( libs/local/foo-1.2.3.jar ) を Maven 階層
     //     ( libs/local/foo/1.2.3/foo-1.2.3.jar ) に自動配置 → fg.deobf("local:foo:1.2.3")
     //   - これで ForgeGradle が SRG → official deobf を掛けるので dev でも動作する。
+    def serverLaunch = gradle.startParameter.taskNames.any { it.tokenize(':').last() == 'runServer' }
+    def clientOnlyJar = { File jar ->
+        if (!serverLaunch) return false
+        def zip = new java.util.zip.ZipFile(jar)
+        try {
+            def entry = zip.getEntry('META-INF/mods.toml')
+            if (entry == null) return false
+            def metadata = zip.getInputStream(entry).getText('UTF-8').split(/\[\[dependencies/)[0]
+            return (metadata =~ /(?m)^\s*modId\s*=\s*["'](?:embeddium|rubidium|oculus|extra_video_settings)["']/).find()
+        } finally { zip.close() }
+    }
     if (withExternalMods) {
         def localDir = file("libs/${externalModsGroup}")
         if (!localDir.exists()) {
@@ -480,6 +492,7 @@ dependencies {
             def loadedCoordinates = new HashSet<String>()
             // フラット配置の jar を Maven 階層に転送
             localDir.listFiles()?.findAll { it.isFile() && it.name.endsWith('.jar') }?.each { f ->
+                if (clientOnlyJar(f)) { logger.lifecycle("[external] Server: skip client-only ${f.name}"); return }
                 def base = f.name.replaceFirst(/\.jar$/, '')
                 def info = parseJar(base)
                 if (info == null) {
@@ -501,7 +514,7 @@ dependencies {
             (localDir.listFiles()?.findAll { it.isDirectory() } ?: []).each { artifactDir ->
                 artifactDir.listFiles()?.findAll { it.isDirectory() }?.each { verDir ->
                     def expected = new File(verDir, "${artifactDir.name}-${verDir.name}.jar")
-                    if (expected.exists()) {
+                    if (expected.exists() && !clientOnlyJar(expected)) {
                         def coordinate = "${artifactDir.name}:${verDir.name}"
                         if (!loadedCoordinates.contains(coordinate)) {
                             println "[Build] [external] local:${artifactDir.name}:${verDir.name} を fg.deobf で取り込み"

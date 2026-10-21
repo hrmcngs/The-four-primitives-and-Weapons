@@ -124,30 +124,7 @@ public class ChargedAttackHandler {
      * Forgeが通知する実際の攻撃クリックから送信する。他MODが入力を処理した後でも
      * 本MODの技パケットが消えないよう receiveCanceled も受け取る。
      */
-    @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
-    public static void onAttackKey(InputEvent.InteractionKeyMappingTriggered event) {
-        if (!event.isAttack() || !event.shouldSwingHand()) return;
-        Minecraft mc = Minecraft.getInstance();
-        Player player = mc.player;
-        if (player == null || mc.screen != null) return;
-        if (!isWeapon(player.getMainHandItem())) return;
 
-        // Luna attacks on click. Its beam readiness comes from the attack gauge, not a held input.
-        if (player.getMainHandItem().getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
-            event.setCanceled(true);
-            event.setSwingHand(false);
-            TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(0, 0));
-            return;
-        }
-
-        // 長押し採掘由来の繰り返し入力は WeaponBlockAttackMixin で止める。
-        // ブロックへの実クリックも通常攻撃として扱い、採掘だけキャンセルする。
-        if (mc.hitResult != null && mc.hitResult.getType() == HitResult.Type.BLOCK) {
-            event.setCanceled(true);
-            player.resetAttackStrengthTicker(); // クロスヘアの攻撃ゲージを空振りと同様に更新
-        }
-        TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(0, 0));
-    }
     
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
@@ -155,7 +132,7 @@ public class ChargedAttackHandler {
         
         Player player = event.player;
         UUID playerId = player.getUUID();
-        if (player.level().isClientSide && Minecraft.getInstance().player != player) return;
+        if (player.level().isClientSide && !ClientInput.isLocalPlayer(player)) return;
         ChargeData data = player.level().isClientSide
             ? clientChargeData.computeIfAbsent(player, ignored -> new ChargeData())
             : playerChargeData.computeIfAbsent(playerId, k -> new ChargeData());
@@ -167,7 +144,7 @@ public class ChargedAttackHandler {
 
         // クライアント側で左クリックの状態を検出
         if (player.level().isClientSide) {
-            checkMouseInput(player, data);
+            ClientInput.checkMouseInput(player, data);
         }
 
         // チャージ中の処理
@@ -203,107 +180,7 @@ public class ChargedAttackHandler {
 
     }
 
-    private static void checkMouseInput(Player player, ChargeData data) {
-        // クライアント側でのみ実行
-        if (!player.level().isClientSide) return;
 
-        Minecraft mc = Minecraft.getInstance();
-        if (mc.player != player) return;
-
-        ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
-        ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
-
-        if (mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
-            data.reset();
-            data.wasLeftClickPressed = mc.options.keyAttack.isDown();
-            return;
-        }
-
-        // Closing input with a menu or switching weapons cancels, rather than firing a stored attack.
-        if (mc.screen != null || (data.isCharging && (data.chargingSlot != player.getInventory().selected
-                || !ItemStack.isSameItemSameTags(data.chargingItem, mainHand)))) {
-            data.reset();
-            data.wasLeftClickPressed = mc.options.keyAttack.isDown();
-            return;
-        }
-
-        // 鞘を持っていて刀が納刀されている場合の落下中抜刀攻撃
-        boolean hasSheathWithKatana = (isSaya(mainHand) && hasStoredKatana(mainHand)) || 
-                                      (isSaya(offHand) && hasStoredKatana(offHand));
-        
-        // 落下中かチェック
-        boolean isFalling = !player.onGround() && player.getDeltaMovement().y < -0.1;
-        
-        if (isFalling && hasSheathWithKatana) {
-            boolean isLeftClickHeld = mc.options.keyAttack.isDown();
-            
-            // 落下中に左クリック長押し開始
-            if (isLeftClickHeld && !data.isFallingCharge) {
-                data.isFallingCharge = true;
-                data.fallTime = 0;
-                data.chargingItem = mainHand.copy();
-            }
-            // 落下中のチャージ継続
-            else if (isLeftClickHeld && data.isFallingCharge) {
-                data.fallTime++;
-                
-                // 落下チャージエフェクト
-                if (data.fallTime % 5 == 0) {
-                    // displayFallingChargeEffect(player, data.fallTime); // 一時的にコメントアウト
-                }
-            }
-            // 落下チャージ解除または着地
-            else if (!isLeftClickHeld && data.isFallingCharge) {
-                // 落下攻撃をサーバーに送信
-                float fallPower = Math.min((float) data.fallTime / 40.0f, 2.0f); // 最大2倍
-                TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(2, fallPower));
-                data.reset();
-            }
-            
-            data.wasLeftClickPressed = isLeftClickHeld;
-            return;
-        }
-
-        // 通常の武器を持っている場合
-        if (isWeapon(mainHand)) {
-            boolean isLeftClickHeld = mc.options.keyAttack.isDown();
-            
-            // チャージ開始（左クリック長押し）- クールダウン中は開始しない。
-            // 閾値を上げて「コンボの押しっぱなし」で誤ってチャージ攻撃(slam_down等)が
-            // 出るのを防ぐ ( 5→10 tick = 0.5秒明確に押し続けた時だけチャージ開始 )。
-            if (isLeftClickHeld && !data.isCharging && data.clickReleaseTimer > 10) {
-                if (data.chargeCooldown <= 0) {
-                    data.isCharging = true;
-                    data.chargeTime = 0;
-                    data.chargingItem = mainHand.copy();
-                    data.chargingSlot = player.getInventory().selected;
-                } else if (data.clickReleaseTimer == 6) { // 一度だけ表示
-                    // クールダウン中のメッセージ
-                    player.displayClientMessage(
-                        Component.literal(String.format("§cチャージクールダウン (%.1f秒)", data.chargeCooldown / 20.0f)),
-                        true
-                    );
-                }
-            }
-            // チャージ解除
-            else if (!isLeftClickHeld && data.isCharging) {
-                releaseChargedAttack(player, data);
-            }
-            // 左クリックが離された時はタイマーをリセット
-            else if (!isLeftClickHeld && data.wasLeftClickPressed) {
-                data.clickReleaseTimer = 0;
-            }
-
-            // 左クリック押し続けている時間をカウント
-            if (isLeftClickHeld) {
-                data.clickReleaseTimer++;
-            }
-            
-            data.wasLeftClickPressed = isLeftClickHeld;
-        } else {
-            data.reset();
-        }
-    }
     
     private static void releaseChargedAttack(Player player, ChargeData data) {
         // Only other weapons use the held-charge input path.
@@ -1061,4 +938,133 @@ public class ChargedAttackHandler {
     }
 
 
+    @Mod.EventBusSubscriber(modid = "the_four_primitives_and_weapons", value = net.minecraftforge.api.distmarker.Dist.CLIENT)
+    public static final class ClientInput {
+        private static boolean isLocalPlayer(Player player) { return Minecraft.getInstance().player == player; }
+    @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
+    public static void onAttackKey(InputEvent.InteractionKeyMappingTriggered event) {
+        if (!event.isAttack() || !event.shouldSwingHand()) return;
+        Minecraft mc = Minecraft.getInstance();
+        Player player = mc.player;
+        if (player == null || mc.screen != null) return;
+        if (!isWeapon(player.getMainHandItem())) return;
+
+        // Luna attacks on click. Its beam readiness comes from the attack gauge, not a held input.
+        if (player.getMainHandItem().getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
+            event.setCanceled(true);
+            event.setSwingHand(false);
+            TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(0, 0));
+            return;
+        }
+
+        // 長押し採掘由来の繰り返し入力は WeaponBlockAttackMixin で止める。
+        // ブロックへの実クリックも通常攻撃として扱い、採掘だけキャンセルする。
+        if (mc.hitResult != null && mc.hitResult.getType() == HitResult.Type.BLOCK) {
+            event.setCanceled(true);
+            player.resetAttackStrengthTicker(); // クロスヘアの攻撃ゲージを空振りと同様に更新
+        }
+        TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(0, 0));
+    }
+    private static void checkMouseInput(Player player, ChargeData data) {
+        // クライアント側でのみ実行
+        if (!player.level().isClientSide) return;
+
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player != player) return;
+
+        ItemStack mainHand = player.getItemInHand(InteractionHand.MAIN_HAND);
+        ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
+
+        if (mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
+            data.reset();
+            data.wasLeftClickPressed = mc.options.keyAttack.isDown();
+            return;
+        }
+
+        // Closing input with a menu or switching weapons cancels, rather than firing a stored attack.
+        if (mc.screen != null || (data.isCharging && (data.chargingSlot != player.getInventory().selected
+                || !ItemStack.isSameItemSameTags(data.chargingItem, mainHand)))) {
+            data.reset();
+            data.wasLeftClickPressed = mc.options.keyAttack.isDown();
+            return;
+        }
+
+        // 鞘を持っていて刀が納刀されている場合の落下中抜刀攻撃
+        boolean hasSheathWithKatana = (isSaya(mainHand) && hasStoredKatana(mainHand)) ||
+                                      (isSaya(offHand) && hasStoredKatana(offHand));
+
+        // 落下中かチェック
+        boolean isFalling = !player.onGround() && player.getDeltaMovement().y < -0.1;
+
+        if (isFalling && hasSheathWithKatana) {
+            boolean isLeftClickHeld = mc.options.keyAttack.isDown();
+
+            // 落下中に左クリック長押し開始
+            if (isLeftClickHeld && !data.isFallingCharge) {
+                data.isFallingCharge = true;
+                data.fallTime = 0;
+                data.chargingItem = mainHand.copy();
+            }
+            // 落下中のチャージ継続
+            else if (isLeftClickHeld && data.isFallingCharge) {
+                data.fallTime++;
+
+                // 落下チャージエフェクト
+                if (data.fallTime % 5 == 0) {
+                    // displayFallingChargeEffect(player, data.fallTime); // 一時的にコメントアウト
+                }
+            }
+            // 落下チャージ解除または着地
+            else if (!isLeftClickHeld && data.isFallingCharge) {
+                // 落下攻撃をサーバーに送信
+                float fallPower = Math.min((float) data.fallTime / 40.0f, 2.0f); // 最大2倍
+                TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(2, fallPower));
+                data.reset();
+            }
+
+            data.wasLeftClickPressed = isLeftClickHeld;
+            return;
+        }
+
+        // 通常の武器を持っている場合
+        if (isWeapon(mainHand)) {
+            boolean isLeftClickHeld = mc.options.keyAttack.isDown();
+
+            // チャージ開始（左クリック長押し）- クールダウン中は開始しない。
+            // 閾値を上げて「コンボの押しっぱなし」で誤ってチャージ攻撃(slam_down等)が
+            // 出るのを防ぐ ( 5→10 tick = 0.5秒明確に押し続けた時だけチャージ開始 )。
+            if (isLeftClickHeld && !data.isCharging && data.clickReleaseTimer > 10) {
+                if (data.chargeCooldown <= 0) {
+                    data.isCharging = true;
+                    data.chargeTime = 0;
+                    data.chargingItem = mainHand.copy();
+                    data.chargingSlot = player.getInventory().selected;
+                } else if (data.clickReleaseTimer == 6) { // 一度だけ表示
+                    // クールダウン中のメッセージ
+                    player.displayClientMessage(
+                        Component.literal(String.format("§cチャージクールダウン (%.1f秒)", data.chargeCooldown / 20.0f)),
+                        true
+                    );
+                }
+            }
+            // チャージ解除
+            else if (!isLeftClickHeld && data.isCharging) {
+                releaseChargedAttack(player, data);
+            }
+            // 左クリックが離された時はタイマーをリセット
+            else if (!isLeftClickHeld && data.wasLeftClickPressed) {
+                data.clickReleaseTimer = 0;
+            }
+
+            // 左クリック押し続けている時間をカウント
+            if (isLeftClickHeld) {
+                data.clickReleaseTimer++;
+            }
+
+            data.wasLeftClickPressed = isLeftClickHeld;
+        } else {
+            data.reset();
+        }
+    }
+    }
 }

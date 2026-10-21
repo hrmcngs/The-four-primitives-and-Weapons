@@ -1,0 +1,211 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "gui_light": "front",
+  "textures": {
+    "0": "the_four_primitives_and_weapons:blade/katana/katanairon3d",
+    "1": "the_four_primitives_and_weapons:katana_fitting/tsuba/tuba_gray",
+    "3": "the_four_primitives_and_weapons:katana_fitting/kasira/kasira_gray",
+    "4": "the_four_primitives_and_weapons:katana_fitting/tsuka/tuka_gray",
+    "particle": "the_four_primitives_and_weapons:blade/katana/katanairon3d",
+    "habaki": "the_four_primitives_and_weapons:katana_fitting/kasira/kasira_gray"
+  },
+  "elements": [
+    {
+      "name": "\u982d",
+      "from": [
+        6.8,
+        7.1,
+        6.8
+      ],
+      "to": [
+        9.2,
+        8.9,
+        9.2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            0,
+            7,
+            2
+          ],
+          "texture": "#3",
+          "tintindex": 0
+        },
+        "east": {
+          "uv": [
+            4,
+            4,
+            7,
+            6
+          ],
+          "texture": "#3",
+          "tintindex": 0
+        },
+        "south": {
+          "uv": [
+            0,
+            8,
+            3,
+            10
+          ],
+          "texture": "#3",
+          "tintindex": 0
+        },
+        "west": {
+          "uv": [
+            8,
+            0,
+            11,
+            2
+          ],
+          "texture": "#3",
+          "tintindex": 0
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            0,
+            0
+          ],
+          "texture": "#3",
+          "tintindex": 0
+        },
+        "down": {
+          "uv": [
+            3,
+            4,
+            0,
+            7
+          ],
+          "texture": "#3",
+          "tintindex": 0
+        }
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [
+        15,
+        70,
+        -15
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "ground": {
+      "rotation": [
+        0,
+        75,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.6,
+        0.6,
+        0.6
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        75,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        75,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        75,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        75,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        75,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    }
+  }
+}

@@ -1278,5 +1278,19 @@
   "message.the_four_primitives_and_weapons.mantle.cooldown": "Your mantle is recharging.",
   "message.the_four_primitives_and_weapons.mantle.not_equipped": "Equip a mantle first.",
   "message.the_four_primitives_and_weapons.mantle.hand_changed": "Thrust cancelled because your hand is occupied. You can try again.",
-  "tooltip.the_four_primitives_and_weapons.fantasy_mantle.guard": "Guard deflects physical hits and their on-hit effects. Potions still affect you."
+  "tooltip.the_four_primitives_and_weapons.fantasy_mantle.guard": "Guard deflects physical hits and their on-hit effects. Potions still affect you.",
+  "item.the_four_primitives_and_weapons.ticex_katana_blade": "Katana Blade (TiCEX Material)",
+  "item.the_four_primitives_and_weapons.ticex_katana_blade_cast": "Katana Blade Gold Cast",
+  "pattern.the_four_primitives_and_weapons.katana_blade": "Katana Blade",
+  "jei.the_four_primitives_and_weapons.ticex_katana": "Make a katana blade in the Part Builder, then pour 90 mB of molten gold over it on a Casting Table to make a reusable cast (consumes the original blade). Cast a new blade using three material units of molten metal. Craft the blade with a stick to make a katana that retains its material attack and durability stats.",
+  "item.the_four_primitives_and_weapons.ticex_tsuka": "Wooden Tsuka (TiCEX)",
+  "item.the_four_primitives_and_weapons.ticex_tsuka_cast": "Tsuka (Handle) Gold Cast",
+  "pattern.the_four_primitives_and_weapons.katana_tsuka": "Tsuka (Handle)",
+  "item.the_four_primitives_and_weapons.ticex_tsuba": "Tsuba (Guard) (TiCEX Material)",
+  "item.the_four_primitives_and_weapons.ticex_tsuba_cast": "Tsuba (Guard) Gold Cast",
+  "pattern.the_four_primitives_and_weapons.katana_tsuba": "Tsuba (Guard)",
+  "item.the_four_primitives_and_weapons.ticex_kashira": "Kashira (Pommel) (TiCEX Material)",
+  "item.the_four_primitives_and_weapons.ticex_kashira_cast": "Kashira (Pommel) Gold Cast",
+  "pattern.the_four_primitives_and_weapons.katana_kashira": "Kashira (Pommel)",
+  "item.the_four_primitives_and_weapons.ticex_katana": "Four-part Katana (TiCEX)"
 }

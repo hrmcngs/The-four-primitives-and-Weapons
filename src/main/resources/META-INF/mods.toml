@@ -52,3 +52,17 @@ authors="hiromichi-ngs"
     ordering="AFTER"
     side="BOTH"
 
+
+[[dependencies.the_four_primitives_and_weapons]]
+    modId="tconstruct"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.the_four_primitives_and_weapons]]
+    modId="ticex"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="AFTER"
+    side="BOTH"

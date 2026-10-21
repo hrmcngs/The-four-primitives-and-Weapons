@@ -116,6 +116,7 @@ public final class TicexWeaponRecipe extends CustomRecipe {
     @Override public RecipeSerializer<?> getSerializer(){return Registrar.SERIALIZER.get();}
     public static final class Registrar {
         public static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS=DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS,TheFourPrimitivesAndWeaponsMod.MODID);
+        public static final RegistryObject<RecipeSerializer<TicexKatanaAssemblyRecipe>> KATANA_ASSEMBLY=SERIALIZERS.register("ticex_katana_assembly",()->new SimpleCraftingRecipeSerializer<>(TicexKatanaAssemblyRecipe::new));
         public static final RegistryObject<RecipeSerializer<TicexWeaponRecipe>> SERIALIZER=SERIALIZERS.register("ticex_weapon",()->new SimpleCraftingRecipeSerializer<>(TicexWeaponRecipe::new));
     }
 }

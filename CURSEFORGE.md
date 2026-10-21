@@ -19,21 +19,50 @@ _Penetrate armor. Take out your daily grudges on your enemies._
 ## 📦 概要 / Overview
 
 武器・防具・鞘システムをMinecraftに追加するModです。
-<span style="color:#c2e0f4">氷</span>・<span style="color:#f1c40f">電気</span>・<span style="color:#ff00c8">侵食</span>・<span style="color:#fbeeb8">聖</span>・<span style="color:#5d3a8c">闇</span>・<span style="color:#ff6347">火</span>・<span style="color:#88d99c">風</span>・<span style="color:#b388ff">雷</span>・<span style="color:#4dabf7">水</span>・<span style="color:#95a85a">瘴気</span> の **10種類の属性** を武器に宿らせ、敵の防御を貫いて日頃の鬱憤を晴らしましょう！
+<span style="color:#c2e0f4">氷</span>・<span style="color:#f1c40f">電気</span>・<span style="color:#ff00c8">侵食</span>・<span style="color:#fbeeb8">聖</span>・<span style="color:#5d3a8c">闇</span>・<span style="color:#ff6347">火</span>・<span style="color:#88d99c">風</span>・<span style="color:#b388ff">雷</span>・<span style="color:#4dabf7">水</span>・<span style="color:#95a85a">瘴気</span> ・血・消滅・霊魂・霊火 の **14種類の属性** を武器に宿らせ、敵の防御を貫いて日頃の鬱憤を晴らしましょう！
 
 Adds elemental weapons, armor, and a sheath system to Minecraft.
-Wield **10 different elemental attributes** — Ice, Electric, Corrosion, Holy, Fire, Wind, Water, Thunder, Dark, and Miasma — and pierce through your enemies' defenses!
+Wield **14 elemental attributes** — Ice, Electric, Corrosion, Holy, Fire, Wind, Water, Thunder, Dark, Miasma, Blood, Erasure, Soul, and Soul Fire — and pierce through your enemies' defenses!
 
 ### ✨ 主な特徴 / Key Features
 
 * 🗡️ **多彩な武器 / Various Weapons** — 直刀・刀・大太刀・魔法武器など、複数の独自武器を追加 / Adds katanas, longswords, magical weapons and more
 * 🛡️ **鞘システム / Sheath System** — 抜刀・納刀のアクションで戦闘に没入感を / Draw and sheathe your blade for immersive combat
-* 🌈 **10種の属性 / 10 Elements** — それぞれが独自の効果を持つ10種類の属性 / 10 distinct elements, each with unique effects
+* 🌈 **14種の属性 / 14 Elements** — それぞれが独自の効果を持つ14種類の属性 / 14 distinct elements, each with unique effects
 * 🛡️ **カウンター属性システム / Counter System** — 本スロットの魔導書で属性ダメージを無効化 / Negate elemental damage with the right magic book
 * 🎯 **スキルカスタマイズ / Skill Customization** — 武器ごとに攻撃モーションを自由に組み合わせ / Customize attack motions per weapon type
 * ⚔️ **カスタム難易度 / Custom Difficulty** — `creative+` から `nightmare`・`lunatic_extreme` まで多彩な難易度 / From `creative+` to `nightmare` and `lunatic_extreme`
 * 👥 **戦闘AIを持つ敵Mob / Combat AI Mob** — 回避・チャージ・ガードを使いこなす一般兵 / Common Soldier dodges, charges, and guards
 * 🗃️ **武器ラック / Weapon Rack** — お気に入りの武器を飾れる装飾ブロック / A decorative block to display your weapons
+
+***
+
+## バージョン6の追加機能 / New in Version 6
+
+* **ファンタジーマント / Fantasy Mantle** — Curiosのマントスロットに装備し、Rキーの選択から防御・刺突を使えます。マント装備中も抜刀・納刀を選べます。 / Equip it in the Curios mantle slot and select Guard or Thrust through the R-key wheel. Draw and Sheathe remain available while wearing it.
+* **布でいなす防御 / Cloth Parry** — 利き手側へマントを回していなし、布が背中へ戻ります。近接攻撃と投射物を防ぎますが、ポーションや魔法・環境ダメージは防ぎません。 / Sweep the cape around your dominant arm, then return it to your back. Blocks melee attacks and projectiles; potions, magic and environmental damage still pass through.
+* **空いた手で刺突 / Empty-hand Thrust** — 空いた側の腕にマントを巻き付けて突きます。両手にアイテムがあると使用できません。マント自身の攻撃系エンチャント・属性を反映します。 / Wrap the cape around your free arm and thrust. Requires an empty hand and uses the mantle's own attack enchantments and elemental attribute.
+* **一人称・三人称アニメーション / First- and Third-person Animations** — 防御・刺突の布と腕の動きを両視点に反映。 / Cloth and arm movements are visible in both camera views.
+* **追加属性と装備 / More Elements and Equipment** — 血・消滅・霊魂・霊火、ダガーと専用鞘、投げナイフなどを追加・拡張。 / Expanded elemental options, daggers and sheaths, and throwing knives.
+
+**初期設定のCT / Default cooldowns:** マント防御3秒・刺突1秒 / Mantle Guard: 3 seconds; Thrust: 1 second.
+
+***
+
+### TiCEX連携：刀身の鋳造 / TiCEX Integration: Cast Katana Blades
+
+TiCEXとTinkers’ Constructを併用すると、素材付きの刀身と金の鋳型を追加します。
+
+1. パーツビルダーで素材3個分から刀身を作る。
+2. 鋳造台で刀身に溶融金90mBを流し、繰り返し使える金の鋳型を作る（元の刀身は消費）。
+3. 鋳型に対応する溶融金属3素材分を流し、刀身を鋳造する。
+4. 作業台で刀身と棒を組み合わせ、素材の攻撃力・耐久値を引き継いだ本MODの刀を作る。
+
+**四部品の刀 / Four-part Katana:** 柄・鍔・頭・刀身を個別に作り、Tinkersの金床（上位ツールステーション）で組み立てられます。各部品の素材・特性を引き継ぎます。普通のツールステーションは3枠のため、この4部品構成には金床が必要です。
+
+Build the blade, handle, guard and pommel separately, then assemble a four-part katana at a Tinkers' Anvil. The finished tool retains each part's material and traits. The ordinary Tinker Station has only three input slots.
+
+With TiCEX and Tinkers’ Construct installed, make a blade in the Part Builder, pour 90 mB of gold over it for a reusable cast, then cast blades from three material units of molten metal. Craft a blade with a stick to make this mod's katana with the material's attack and durability stats. Assembly uses a crafting table, not the Tool Station.
 
 ***
 
@@ -79,8 +108,8 @@ Each weapon has a dedicated **Saya (sheath)** that can be equipped in the Curios
 
 ## 🌪️ 属性システム / Elemental System
 
-このModには **10種類の属性** が存在します。それぞれ独自の効果を持ち、レベルに応じて強化されます。
-This mod features **10 elemental attributes**, each with unique effects that scale with level.
+このModには **14種類の属性** が存在します。それぞれ独自の効果を持ち、レベルに応じて強化されます。
+This mod features **14 elemental attributes**, each with unique effects that scale with level.
 
 ### <span style="color:#c2e0f4">氷 / Ice</span>
 
@@ -157,6 +186,14 @@ Applies a powerful **Slowness II** to enemies, crippling their mobility.
 
 * 回復阻害持続 / Healing block duration: **5秒** + **3秒/Lv**
 * DoT持続 / DoT duration: **3秒** + **2秒/Lv**
+
+***
+
+### 追加の4属性 / Four Additional Elements
+
+血（Blood）・消滅（Erasure）・霊魂（Soul）・霊火（Soul Fire）も利用できます。属性によって専用効果や魔導書が異なります。付与状態はゲーム内ツールチップで確認してください。
+
+Blood, Erasure, Soul and Soul Fire are also available, with element-specific effects and magic books. Check in-game tooltips for the element attached to your equipment.
 
 ***
 
@@ -254,7 +291,10 @@ Effects stack. Combining Blindness + Nausea + Weakness nearly disables the AI en
 ## 💻 動作環境 / Requirements
 
 * **Minecraft:** 1.20.1
-* **Mod Loader:** Forge
+* **Mod Loader:** Forge 47.4.0（Minecraft 1.20.1）
+* **Java:** 17
+* **必須 / Required:** [Curios API](https://www.curseforge.com/minecraft/mc-mods/curios) 5.14.1以上 / 5.14.1 or later
+* **任意 / Optional:** JEI。TiCEXを併用する場合はTiCEX側の必須依存も別途導入 / JEI. If using TiCEX, install its required dependencies separately.
 * **クライアント / Client:** 必須 / Required
 * **サーバー / Server:** 対応 / Supported
 
@@ -262,7 +302,7 @@ Effects stack. Combining Blindness + Nausea + Weakness nearly disables the AI en
 
 ## 📥 導入方法 / Installation
 
-1. Minecraft Forge 1.20.1 をインストール / Install Minecraft Forge 1.20.1
+1. Java 17・Minecraft Forge 1.20.1・Curios APIを用意 / Install Java 17, Minecraft Forge 1.20.1 and Curios API
 2. このModの `.jar` ファイルを `mods` フォルダに配置 / Place the mod `.jar` file into your `mods` folder
 3. Minecraftを起動 / Launch Minecraft
 4. ワールドを作成し、戦いを始めよう！ / Create a world and start your adventure!
