@@ -18,6 +18,7 @@ public class KatanaColorClient {
 	@SubscribeEvent
 	public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
 		event.register((stack, tintIndex) -> {
+			if (TicexMaterialColors.isMaterialKatana(stack)) return TicexMaterialColors.toolColor(stack, tintIndex);
 			// はばきは無彩色の地に直接乗算する。暗色でも指定 RGB をそのまま使う。
 			if (tintIndex == 5) return 0xFF000000 | KatanaFittings.habakiRgb(stack);
 			if (tintIndex == 6) return 0xFF000000 | KatanaFittings.bladeRgb(stack);

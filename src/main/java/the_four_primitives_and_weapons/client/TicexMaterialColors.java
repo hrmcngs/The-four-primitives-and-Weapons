@@ -39,7 +39,8 @@ public final class TicexMaterialColors {
                             String hex = json.get("color").getAsString().replace("#", "");
                             int color = (int) Long.parseLong(hex, 16) | 0xFF000000;
                             String path = id.getPath();
-                            loaded.put(id.getNamespace() + ":" + path.substring("tinkering/materials/".length(), path.length() - 5), color);
+                            loaded.put(MaterialColorLookup.resourceKey(id.getNamespace(),
+                                path.substring("tinkering/materials/".length(), path.length() - 5)), color);
                         }
                     } catch (java.io.IOException | RuntimeException exception) {
                         org.slf4j.LoggerFactory.getLogger(TicexMaterialColors.class).warn("Cannot read material color {}", id, exception);
@@ -64,19 +65,27 @@ public final class TicexMaterialColors {
 
     public static int partColor(ItemStack stack, int tint) {
         CompoundTag tag = stack.getTag();
-        return tint == 0 && tag != null ? materialColor(tag.getString("Material")) : 0xFFFFFFFF;
+        if (tint != 0) return 0xFFFFFFFF;
+        String material = tag == null ? "" : tag.getString("Material");
+        // Older or command-created wooden handles may not yet carry material NBT.
+        if (material.isEmpty() && TicexCastingRegistrar.TSUKA.isPresent()
+                && stack.is(TicexCastingRegistrar.TSUKA.get())) material = "tconstruct:wood";
+        return materialColor(material);
+    }
+
+    public static boolean isMaterialKatana(ItemStack stack) {
+        return TicexCastingRegistrar.KATANA.isPresent() && stack.is(TicexCastingRegistrar.KATANA.get());
     }
 
     public static int toolColor(ItemStack stack, int tint) {
         CompoundTag tag = stack.getTag();
         if (tag == null || tint < 0 || tint > 3) return 0xFFFFFFFF;
-        return materialColor(tag.getList("tic_materials", Tag.TAG_STRING).getString(tint));
+        String material = tag.getList("tic_materials", Tag.TAG_STRING).getString(tint);
+        if (material.isEmpty() && tint == 1) material = "tconstruct:wood";
+        return materialColor(material);
     }
 
     private static int materialColor(String material) {
-        Integer exact = colors.get(material);
-        if (exact != null) return exact;
-        int variant = material.indexOf('#');
-        return colors.getOrDefault(variant < 0 ? material : material.substring(0, variant), 0xFFFFFFFF);
+        return MaterialColorLookup.color(colors, material);
     }
 }

@@ -60,3 +60,16 @@ for(const lang of ['ja_jp','en_us']) {
   for(const key of ['item.the_four_primitives_and_weapons.ticex_weapon_pattern','gui.the_four_primitives_and_weapons.koshirae.tsuba.oval','gui.the_four_primitives_and_weapons.koshirae.tsuba.diamond','gui.the_four_primitives_and_weapons.koshirae.tsuba.circle']) assert.ok(translations[key]);
 }
 console.log('TicEX 3D geometry, guard UV preservation, recipe and language checks passed');
+
+// Parts must have exactly the assembled katana's geometry and display scale.
+const itemModels = 'src/main/resources/assets/the_four_primitives_and_weapons/models/item/';
+const katana = JSON.parse(fs.readFileSync(itemModels+'ticex_katana.json'));
+for (const [name, tint] of [['ticex_katana_blade',0], ['ticex_tsuka',1], ['ticex_tsuba',2], ['ticex_kashira',3]]) {
+  const part = JSON.parse(fs.readFileSync(itemModels+name+'.json'));
+  const expected = structuredClone(katana.elements.filter(e => Object.values(e.faces)[0].tintindex === tint));
+  for (const element of expected) for (const face of Object.values(element.faces)) face.tintindex = 0;
+  assert.deepEqual(part.elements, expected, name+' must preserve assembled dimensions, positions, UVs and rotations');
+  assert.deepEqual(part.display, katana.display, name+' must use the assembled display transforms');
+  assert.deepEqual(part.textures, katana.textures, name+' must use the same neutral tint textures');
+}
+console.log('Katana parts preserve assembled proportions and material tint faces');
