@@ -2,10 +2,6 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "ticex"
-    },
-    {
-      "type": "forge:mod_loaded",
       "modid": "tconstruct"
     }
   ],

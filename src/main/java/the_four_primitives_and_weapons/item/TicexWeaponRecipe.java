@@ -25,7 +25,7 @@ public final class TicexWeaponRecipe extends CustomRecipe {
     }
     @Override public boolean matches(CraftingContainer inv,Level level) {
         previews.remove(inv);
-        if(!ModList.get().isLoaded("ticex") || !ModList.get().isLoaded("tconstruct"))return false;
+        if(!ModList.get().isLoaded("tconstruct"))return false;
         ItemStack template=ItemStack.EMPTY;
         ItemStack pattern=ItemStack.EMPTY;
         boolean handle=false;

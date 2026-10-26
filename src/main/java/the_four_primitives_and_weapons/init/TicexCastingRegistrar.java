@@ -6,7 +6,7 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.*;
 import the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod;
 
-/** Native Tinkers parts, loaded only when both optional integrations are present. */
+/** Native Tinkers parts, loaded when Tinkers Construct is present; addon materials use its registry. */
 public final class TicexCastingRegistrar {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TheFourPrimitivesAndWeaponsMod.MODID);
     public static final RegistryObject<Item> KATANA_BLADE = ITEMS.register("ticex_katana_blade", TicexCastingRegistrar::blade);
@@ -20,7 +20,7 @@ public final class TicexCastingRegistrar {
     public static final RegistryObject<Item> KATANA = ITEMS.register("ticex_katana", TicexCastingRegistrar::katana);
     private TicexCastingRegistrar() {}
     public static void register(IEventBus bus) {
-        if (ModList.get().isLoaded("ticex") && ModList.get().isLoaded("tconstruct")) ITEMS.register(bus);
+        if (ModList.get().isLoaded("tconstruct")) ITEMS.register(bus);
     }
     private static Item blade() { return part("head"); }
     private static Item part(String kind) {

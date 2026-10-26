@@ -294,7 +294,7 @@ Effects stack. Combining Blindness + Nausea + Weakness nearly disables the AI en
 * **Mod Loader:** Forge 47.4.0（Minecraft 1.20.1）
 * **Java:** 17
 * **必須 / Required:** [Curios API](https://www.curseforge.com/minecraft/mc-mods/curios) 5.14.1以上 / 5.14.1 or later
-* **任意 / Optional:** JEI。TiCEXを併用する場合はTiCEX側の必須依存も別途導入 / JEI. If using TiCEX, install its required dependencies separately.
+* **任意 / Optional:** JEI、Tinkers’ Construct（素材武器・刀の部品製作・鋳造用。Mantleなど必須依存も必要）。TiCEXなしでも素材連携を利用可能 / JEI, Tinkers’ Construct with its required dependencies (including Mantle) for material weapons and katana parts/casting; TiCEX is optional. TiCEXを併用する場合はTiCEX側の必須依存も別途導入 / JEI. If using TiCEX, install its required dependencies separately.
 * **クライアント / Client:** 必須 / Required
 * **サーバー / Server:** 対応 / Supported
 

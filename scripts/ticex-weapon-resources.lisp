@@ -27,4 +27,4 @@
 (write-resource "src/main/resources/assets/the_four_primitives_and_weapons/models/item/ticex_weapon_pattern.json"
   "{\"parent\":\"minecraft:item/generated\",\"textures\":{\"layer0\":\"minecraft:item/paper\"}}")
 (write-resource "src/main/resources/data/the_four_primitives_and_weapons/recipes/ticex_weapon_pattern.json"
-  "{\"conditions\":[{\"type\":\"forge:mod_loaded\",\"modid\":\"ticex\"}],\"type\":\"minecraft:crafting_shapeless\",\"ingredients\":[{\"item\":\"minecraft:paper\"},{\"item\":\"minecraft:stick\"}],\"result\":{\"item\":\"the_four_primitives_and_weapons:ticex_weapon_pattern\"}}")
+  "{\"conditions\":[{\"type\":\"forge:mod_loaded\",\"modid\":\"tconstruct\"}],\"type\":\"minecraft:crafting_shapeless\",\"ingredients\":[{\"item\":\"minecraft:paper\"},{\"item\":\"minecraft:stick\"}],\"result\":{\"item\":\"the_four_primitives_and_weapons:ticex_weapon_pattern\"}}")

@@ -30,7 +30,30 @@ for (const name of tagged) {
   assert.ok(after.elements.some(e=>Object.values(e.faces).some(f=>f.tintindex===2)), 'Guard cannot be replaced: '+name);
 }
 const readRecipe = name => JSON.parse(fs.readFileSync('src/main/resources/data/the_four_primitives_and_weapons/recipes/'+name+'.json'));
-assert.ok(readRecipe('ticex_weapon').conditions.some(c=>c.modid==='ticex'));
+// Evaluate Forge mod-loaded conditions for both supported installations and absence.
+const recipeDir = 'src/main/resources/data/the_four_primitives_and_weapons/recipes/';
+const integrationRecipes = ['ticex_weapon', 'ticex_weapon_pattern'];
+function collectRecipes(dir, prefix = '') {
+  for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+    if (entry.isDirectory()) collectRecipes(dir+'/'+entry.name, prefix+entry.name+'/');
+    else if (entry.name.endsWith('.json')) integrationRecipes.push('ticex_katana/'+prefix+entry.name.slice(0,-5));
+  }
+}
+collectRecipes(recipeDir+'ticex_katana');
+for (const name of integrationRecipes) {
+  const recipe = readRecipe(name);
+  for (const [mods, expected] of [
+    [[], false], [['ticex'], false], [['tconstruct'], true], [['tconstruct','ticex'], true]
+  ]) {
+    assert.equal(recipe.conditions.every(c => c.type === 'forge:mod_loaded' && mods.includes(c.modid)),
+      expected, name+' with '+mods.join(','));
+  }
+}
+for (const name of ['casting', 'tsuba/casting', 'kashira/casting']) {
+  const recipe = readRecipe('ticex_katana/'+name);
+  assert.equal(recipe.type, 'tconstruct:table_casting_material');
+  assert.equal(recipe.fluid, undefined, 'Casting must resolve registered materials, not a fixed metal');
+}
 assert.deepEqual(readRecipe('ticex_weapon_pattern').ingredients.map(i=>i.item).sort(), ['minecraft:paper','minecraft:stick']);
 for(const lang of ['ja_jp','en_us']) {
   const translations=JSON.parse(fs.readFileSync('src/main/resources/assets/the_four_primitives_and_weapons/lang/'+lang+'.json'));
