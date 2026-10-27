@@ -37,6 +37,16 @@ Wield **14 elemental attributes** — Ice, Electric, Corrosion, Holy, Fire, Wind
 
 ***
 
+## バージョン7の追加機能 / New in Version 7
+
+* **Tetra連携 / Tetra Integration** — 基本6素材の刀をTetraの作業台でモジュール式の剣へ改造可能。改造後の外観と部品性能はTetraの仕様になります。 / Convert the six basic-material katanas into modular swords at a Tetra workbench; converted weapons use Tetra models and module stats.
+* **Tetra武器のスキル / Skills for Tetra Weapons** — 剣・短剣・大剣・盾・弓・クロスボウを本MODのスキルへ接続。 / Use this mod's skills with Tetra swords, short/heavy blades, shields, bows and crossbows.
+* **外部金属の鋳造 / External Metal Casting** — 対応する外部MODのインゴット鋳造レシピから、Tinkers未登録素材の互換データを生成。 / Generate Tinkers compatibility data for unregistered metals from supported external ingot casting recipes.
+
+Tetraは任意導入です。Forge 1.20.1用のTetraと必須依存MODを別途導入してください。 / Tetra is optional; install its Forge 1.20.1 release and required dependencies separately.
+
+***
+
 ## バージョン6の追加機能 / New in Version 6
 
 * **ファンタジーマント / Fantasy Mantle** — Curiosのマントスロットに装備し、Rキーの選択から防御・刺突を使えます。マント装備中も抜刀・納刀を選べます。 / Equip it in the Curios mantle slot and select Guard or Thrust through the R-key wheel. Draw and Sheathe remain available while wearing it.
@@ -49,9 +59,9 @@ Wield **14 elemental attributes** — Ice, Electric, Corrosion, Holy, Fire, Wind
 
 ***
 
-### TiCEX連携：刀身の鋳造 / TiCEX Integration: Cast Katana Blades
+### Tinkers連携：刀身の鋳造 / Tinkers Integration: Cast Katana Blades
 
-TiCEXとTinkers’ Constructを併用すると、素材付きの刀身と金の鋳型を追加します。
+Tinkers’ Constructとその必須依存MODで、素材付きの刀身と金の鋳型を追加します。TiCEXは任意です。
 
 1. パーツビルダーで素材3個分から刀身を作る。
 2. 鋳造台で刀身に溶融金90mBを流し、繰り返し使える金の鋳型を作る（元の刀身は消費）。
@@ -62,7 +72,7 @@ TiCEXとTinkers’ Constructを併用すると、素材付きの刀身と金の�
 
 Build the blade, handle, guard and pommel separately, then assemble a four-part katana at a Tinkers' Anvil. The finished tool retains each part's material and traits. The ordinary Tinker Station has only three input slots.
 
-With TiCEX and Tinkers’ Construct installed, make a blade in the Part Builder, pour 90 mB of gold over it for a reusable cast, then cast blades from three material units of molten metal. Craft a blade with a stick to make this mod's katana with the material's attack and durability stats. Assembly uses a crafting table, not the Tool Station.
+With Tinkers’ Construct and its required dependencies installed (TiCEX is optional), make a blade in the Part Builder, pour 90 mB of gold over it for a reusable cast, then cast blades from three material units of molten metal. Craft a blade with a stick to make this mod's katana with the material's attack and durability stats. Assembly uses a crafting table, not the Tool Station.
 
 ***
 

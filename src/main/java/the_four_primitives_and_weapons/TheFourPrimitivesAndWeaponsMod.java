@@ -54,6 +54,7 @@ public class TheFourPrimitivesAndWeaponsMod {
 	public TheFourPrimitivesAndWeaponsMod() {
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		bus.addListener(the_four_primitives_and_weapons.integration.casting.ExternalMetalPack::onAddPackFinders);
 
 		// クライアント側: ItemDisplayContext (SAYA_BACK / SAYA_BELT) を最早期に登録。
 		// JSON モデルロード (ItemTransforms.Deserializer) より前に登録されていないと、

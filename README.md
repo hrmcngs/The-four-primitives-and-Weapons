@@ -127,3 +127,90 @@ TiCEX連携部品と四部品の刀は、`tinkering/materials`の素材色を使
 `bash sh/menu.sh` →「ゲームを起動したい」→「特定MODを選んで起動（軽量化MODは必須）」で、任意のJAR・TiCEX一式・軽量化のみを選べます。任意JARは番号を空白区切りで複数選択してください。依存MODも選択が必要です。
 
 直接使う場合は `bash sh/run/run-with-mods.sh` または `bash sh/run/run_client_mac.sh --select-mods`。既定はオフラインで、オンラインは `online` を指定します。`--ticex` でTiCEXと依存一式、`--performance-only` で軽量化のみを指定できます。Embeddium・Oculus・extra_video_settingsは常に追加され、選ばなかった任意MODはその起動構成へ入りません。
+
+### 外部MODの金属・合金を鋳造する
+
+Tinkersに素材・溶融金属が登録済みなら、その性能・特性をそのまま使います。
+未登録金属については、導入MOD内の `tconstruct:casting_table` レシピから、
+再使用できるインゴット鋳型と1インゴットの流体量を検出し、互換素材を自動生成します。
+刀身は3インゴット分、鍔・頭は各1インゴット分です。柄は木製のままです。
+未登録素材の初期性能は鉄相当（耐久250・素材攻撃力2）、色は銀色で、独自の素材特性は追加しません。
+既存の合金製造・溶融レシピは変更しません。
+
+自動検出対象はMODに含まれるインゴット鋳造レシピです。ワールドの追加データパックだけにあるレシピ、
+特殊なレシピ形式、溶融流体のない金属は自動検出できません。
+対応する流体がある金属は、ゲームフォルダの
+`config/the_four_primitives_and_weapons/external_metals.json` に以下の配列形式で指定できます。
+流体の `amount` はそのMODの1インゴット当たりのmBです。IDは実際に導入したMODのものへ置き換えてください。
+
+```json
+[
+  {
+    "name": "example:custom_alloy",
+    "display_name": "Custom Alloy",
+    "ingot": { "item": "example:custom_alloy_ingot" },
+    "fluid": { "name": "example:molten_custom_alloy", "amount": 90 },
+    "temperature": 800,
+    "durability": 250,
+    "attack": 2,
+    "tier": 2,
+    "color": "FFD8D8D8"
+  }
+]
+```
+
+`fluid` は `{"tag":"forge:molten_custom_alloy","amount":90}`、
+`ingot` は `{"tag":"forge:ingots/custom_alloy"}` の形式も使えます。
+設定はゲーム／サーバーの再起動で反映されます。マルチプレイではサーバーとクライアントに同じ設定を配置してください。
+この設定だけで新しい溶融流体や合金レシピを作ることはできません。
+
+### Tetra連携（バージョン7）
+
+Tetra 6系（Forge 1.20.1）とその必須依存MODを別途導入すると、以下を利用できます。
+Tetraは任意導入で、配布JARには同梱しません。
+
+- 木・石・鉄・金・ダイヤモンド・ネザライトの刀をTetraの作業台でモジュール式の剣に改造し、部品交換・強化できます。元の基本素材に対応する初期部品を設定します。
+- 改造後の外観・素材性能・改造方法はTetraの仕様になります。本MODの属性・武器成長・名前と耐久消耗率を引き継ぎ、エンチャントはTetra標準の移行処理を使用します。元の固定攻撃力や素材NBTは移さず、交換したTetra部品の性能を使用します。
+- Tetraの剣・短い刃・重い刃は、それぞれ本MODの剣・短剣・大剣のスキルに対応します。本MODの刀から改造した基本の刃は刀スキルを使用します。
+- Tetraの盾・弓・クロスボウも対応するスキル体系を使用します。攻撃力・耐久値・攻撃速度はTetra側の計算を維持します。
+
+Tinkersの四部品の刀や専用能力を持つ特殊な刀は、Tetraへの変換対象に含みません。
+Tetra部品の能力が本MODのすべての独自スキルで発動することまでは保証しません。
+公式の変換データ形式は [Tetra 1.20公式ソース](https://github.com/mickelus/tetra/tree/1.20/src/main/resources/data/tetra/replacements) を参照しています。
+
+### Tetraをオフラインで起動する
+
+`bash sh/menu.sh` のMOD選択に「Tetra＋必須依存（オフライン対応）」を追加しました。
+ローカルの `libs/external/tetra/` からTetraとmutilを選びます。自動ダウンロードは行いません。
+
+```bash
+bash sh/run/run-with-mods.sh --tetra
+# オフラインでビルド
+bash sh/build/build-with-mods.sh --tetra --offline
+# 導入のみ（起動コマンドを表示）
+bash sh/build/build-with-mods.sh --tetra --prepare --offline
+```
+
+必要なファイルは `tetra-1.20.1-6.17.0.jar` と `mutil-1.20.1-6.3.0.jar` です。
+Tetra本体は指定されたDownloadsのJARをコピー済みです。
+現時点ではmutilの取得が回線側で拒否されたため、mutilを上記フォルダへ配置する必要があります。
+不足時は起動前にエラーを表示します。Minecraft本体のアセットとGradle依存も事前にキャッシュされている必要があります。
+
+### TetraとTinkersを一緒にビルド・起動する
+
+MOD選択メニューの「Tetra＋Tinkers＋必須依存」で、Tetra・mutil・Tinkers’ Construct・Mantleを同時に選択できます。
+TiCEXも追加する場合は「Tetra＋TiCEX＋Tinkers＋必須依存」を選びます。
+
+```bash
+# Tetra＋Tinkers（TiCEXなし）でオフラインビルド
+bash sh/build/build-with-mods.sh --tetra --tinkers --offline
+# TiCEXも含める
+bash sh/build/build-with-mods.sh --tetra --ticex --offline
+# Tetra＋Tinkersで起動（既定でオフライン）
+bash sh/run/run-with-mods.sh --tetra --tinkers
+# Tinkers＋Mantleだけ選択することも可能
+bash sh/build/build-with-mods.sh --tinkers --offline
+```
+
+mutilが未配置の場合は、前項の手順で `libs/external/tetra/` に配置してください。
+これらのMODは実行依存として同時に検証し、本体の配布JARには同梱しません。

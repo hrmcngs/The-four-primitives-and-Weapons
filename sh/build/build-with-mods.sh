@@ -4,6 +4,8 @@
 # bash sh/build/build-with-mods.sh --jar /path/mod.jar --jar /path/dependency.jar --offline
 # --performance-only: 軽量化MODのみ（軽量化MODはすべての選択で必須）
 # --ticex: TiCEX＋必須依存4MODを選択（取得済みJARが必要）
+# --tetra: Tetra＋mutilを選択（libs/external/tetra/ の取得済みJARのみ使用）
+# --tinkers: Tinkers’ Construct＋Mantleを選択。--tetra / --ticex と併用可能
 # --source DIR: 候補フォルダ追加 / --prepare: 導入のみ / --run: 選択MODで起動
 # --dry-run: コピー・Gradle実行なし。--prepare以外の未知の引数はGradleへ渡します。
 # TiCEX等はForge 1.20.1版と、その必須依存MODのJARも一緒に選んでください。
@@ -21,6 +23,24 @@ while [ "$#" -gt 0 ]; do
             if [ "$1" = --jar ]; then selected+=("$2"); else extra_sources+=("$2"); fi
             shift 2 ;;
         --performance-only) performance_only=1; shift ;;
+        --tinkers)
+            for name in TConstruct-1.20.1-3.11.2.166.jar Mantle-1.20.1-1.11.117.jar; do
+                selected+=("libs/external/ticex/$name")
+            done
+            shift ;;
+        --tetra)
+            tetra_dir="${MAW_TETRA_DIR:-libs/external/tetra}"
+            for prefix in tetra mutil; do
+                tetra_jar=""
+                if [ -d "$tetra_dir" ]; then
+                    while IFS= read -r -d '' candidate; do
+                        if [ -z "$tetra_jar" ] || [ "$candidate" -nt "$tetra_jar" ]; then tetra_jar="$candidate"; fi
+                    done < <(find "$tetra_dir" -type f -name "$prefix-*.jar" ! -name '*-sources.jar' ! -name '*-dev.jar' -print0)
+                fi
+                [ -n "$tetra_jar" ] || { echo "Tetraオフライン用JARがありません: $prefix ($tetra_dir)。Tetra 1.20.1版とmutil 6.3.0以上を配置してください。" >&2; exit 1; }
+                selected+=("$tetra_jar")
+            done
+            shift ;;
         --ticex)
             for name in ticex-mc1.20.1-0.7.0-hotfix-all.jar TConstruct-1.20.1-3.11.2.166.jar Mantle-1.20.1-1.11.117.jar addonapi-mc1.20.1-2.1.0.jar; do
                 selected+=("libs/external/ticex/$name")

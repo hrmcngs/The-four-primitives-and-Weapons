@@ -49,3 +49,27 @@ printf '%s\n1\n' "$test_mod_dir/space mod.jar" | bash sh/run/run-with-mods.sh --
 rg -q '導入MOD: test_selected' "$test_mod_dir/run-interactive"
 rg -q '実行: ./gradlew runClient' "$test_mod_dir/run-interactive"
 echo 'MOD selection tests passed.'
+# Tetra preset must select local Tetra and mutil, and fail before install if either is absent.
+mkdir "$test_mod_dir/tetra"
+python3 - "$test_mod_dir/tetra" <<'PY'
+import sys, zipfile
+from pathlib import Path
+for mod in ('tetra', 'mutil'):
+    with zipfile.ZipFile(Path(sys.argv[1]) / (mod+'-test.jar'), 'w') as jar:
+        jar.writestr('META-INF/mods.toml', 'modLoader="javafml"\n[[mods]]\nmodId="'+mod+'"\nversion="6.3.0"\n')
+PY
+MAW_TETRA_DIR="$test_mod_dir/tetra" bash sh/run/run-with-mods.sh --tetra --dry-run > "$test_mod_dir/tetra-run"
+rg -q '導入MOD: tetra mutil.*embeddium.*oculus.*extra_video_settings' "$test_mod_dir/tetra-run"
+rg -q -- '--offline.*downloadAssets' "$test_mod_dir/tetra-run"
+MAW_TETRA_DIR="$test_mod_dir/tetra" bash "$selector" --tetra --tinkers --offline --dry-run > "$test_mod_dir/tetra-tinkers"
+rg -q '導入MOD: tetra mutil tconstruct mantle.*embeddium.*oculus.*extra_video_settings' "$test_mod_dir/tetra-tinkers"
+if rg -q '導入MOD: .*ticex' "$test_mod_dir/tetra-tinkers"; then exit 1; fi
+MAW_TETRA_DIR="$test_mod_dir/tetra" bash "$selector" --tetra --tinkers --ticex --offline --dry-run > "$test_mod_dir/tetra-ticex"
+rg -q '導入MOD: .*tconstruct.*mantle.*ticex.*addonapi' "$test_mod_dir/tetra-ticex"
+bash "$selector" --tinkers --offline --dry-run > "$test_mod_dir/tinkers"
+rg -q '導入MOD: tconstruct mantle.*embeddium' "$test_mod_dir/tinkers"
+if rg -q '導入MOD: .*ticex' "$test_mod_dir/tinkers"; then exit 1; fi
+rm "$test_mod_dir/tetra/mutil-test.jar"
+if MAW_TETRA_DIR="$test_mod_dir/tetra" bash "$selector" --tetra --dry-run > "$test_mod_dir/tetra-missing" 2>&1; then exit 1; fi
+rg -q 'Tetraオフライン用JARがありません: mutil' "$test_mod_dir/tetra-missing"
+echo 'Tetra offline preset tests passed.'
