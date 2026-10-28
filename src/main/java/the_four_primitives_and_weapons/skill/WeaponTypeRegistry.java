@@ -457,10 +457,6 @@ public class WeaponTypeRegistry extends SimplePreparableReloadListener<Map<Strin
 
         ResourceLocation regName = ForgeRegistries.ITEMS.getKey(stack.getItem());
         if (regName != null) {
-            String tetraType = the_four_primitives_and_weapons.integration.TetraCombatRules.weaponType(
-                regName.toString(), stack.hasTag() ? stack.getTag().getString("sword/blade") : "",
-                stack.hasTag() ? stack.getTag().getString("TFPWTetraType") : "");
-            if (tetraType != null) return TYPES.get(tetraType);
             WeaponTypeData registered = ITEM_TO_TYPE.get(regName.toString());
             if (registered != null) return registered;
         }

@@ -66,10 +66,3 @@ authors="hiromichi-ngs"
     versionRange="[0,)"
     ordering="AFTER"
     side="BOTH"
-
-[[dependencies.the_four_primitives_and_weapons]]
-    modId="tetra"
-    mandatory=false
-    versionRange="[6,)"
-    ordering="AFTER"
-    side="BOTH"

@@ -45,7 +45,8 @@
     "TooltipPositionMixin",
     "TooltipMouseScrollMixin",
     "EclipseLightTextureMixin",
-    "EclipseShaderUniformMixin"
+    "EclipseShaderUniformMixin",
+    "JeiPageScrollMixin"
   ],
   "server": [],
   "injectors": {

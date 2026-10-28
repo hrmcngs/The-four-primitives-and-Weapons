@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class AttackPacket {
-    private final int attackType; // 0 = normal, 1 = charged, 2 = falling, 3 = Loki Decoy, 4 = Loki Disarm
+    private final int attackType; // 0 normal, 1 release charge, 2 falling, 3/4 reserved, 5 begin charge, 6 cancel charge
     private final float chargePercent;
 
     @SubscribeEvent
@@ -45,7 +45,11 @@ public class AttackPacket {
                     the_four_primitives_and_weapons.events.ChargedAttackHandler.performNormalAttack(player);
                 } else if (msg.attackType == 1) {
                     // 溜め攻撃
-                    the_four_primitives_and_weapons.events.ChargedAttackHandler.performChargedAttack(player, msg.chargePercent);
+                    the_four_primitives_and_weapons.events.ChargedAttackHandler.releaseHeldCharge(player);
+                } else if (msg.attackType == 5) {
+                    the_four_primitives_and_weapons.events.ChargedAttackHandler.beginHeldCharge(player);
+                } else if (msg.attackType == 6) {
+                    the_four_primitives_and_weapons.events.ChargedAttackHandler.cancelHeldCharge(player);
                 } else if (msg.attackType == 2) {
                     // 落下攻撃（特定アイテム専用のため一時的にコメントアウト）
                     // the_four_primitives_and_weapons.events.ChargedAttackHandler.performFallingAttack(player, msg.chargePercent);

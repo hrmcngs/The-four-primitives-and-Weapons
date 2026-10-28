@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # 任意のMODを対話で選び、必須の軽量化MODと一緒にMinecraftを起動します。
 # bash sh/run/run-with-mods.sh                    JARを対話選択（既定はオフライン）
-# bash sh/run/run-with-mods.sh --tetra             Tetra＋mutilでオフライン起動
 # bash sh/run/run-with-mods.sh --ticex             TiCEX＋必須依存で起動
 # bash sh/run/run-with-mods.sh --performance-only  軽量化MODのみで起動
 # bash sh/run/run-with-mods.sh online              オンラインで選択・起動

@@ -1,4 +1,5 @@
 package the_four_primitives_and_weapons.events;
+import net.minecraft.resources.ResourceLocation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,6 +75,33 @@ public class ChargedAttackHandler {
     private static final Map<Player, ChargeData> clientChargeData = new java.util.WeakHashMap<>();
     private static final int MAX_CHARGE_TIME = 60; // 3秒 (20 ticks/秒 × 3)
     private static final int MIN_CHARGE_TIME = 20; // 最小チャージ時間 1秒
+    private record HeldSession(long start, ItemStack item, int slot, ResourceLocation dimension) {}
+    private static final java.util.Map<Player, HeldSession> SERVER_HELD_CHARGES = new java.util.WeakHashMap<>();
+
+    public static void beginHeldCharge(Player player) {
+        if (player.level().isClientSide || !player.isAlive() || player.isSpectator()
+                || player.containerMenu != player.inventoryMenu || !isWeapon(player.getMainHandItem())) return;
+        ChargeData data = playerChargeData.get(player.getUUID());
+        if (data != null && data.chargeCooldown > 0) return;
+        SERVER_HELD_CHARGES.put(player, new HeldSession(player.level().getGameTime(),
+            player.getMainHandItem(), player.getInventory().selected, player.level().dimension().location()));
+    }
+
+    public static void cancelHeldCharge(Player player) { SERVER_HELD_CHARGES.remove(player); }
+
+    private static boolean validHeldSession(Player player, HeldSession session) {
+        return player.isAlive() && !player.isSpectator() && player.containerMenu == player.inventoryMenu
+            && player.level().dimension().location().equals(session.dimension())
+            && player.getInventory().selected == session.slot() && player.getMainHandItem() == session.item();
+    }
+
+    public static void releaseHeldCharge(Player player) {
+        HeldSession session = SERVER_HELD_CHARGES.remove(player);
+        if (session == null || !validHeldSession(player, session)) return;
+        float percent = the_four_primitives_and_weapons.skill.HeldChargeTiming.releasedPercent(
+            session.start(), player.level().getGameTime(), MIN_CHARGE_TIME, MAX_CHARGE_TIME);
+        if (percent >= 0) performChargedAttack(player, percent);
+    }
     /**
      * 攻撃ゲージが満タンになるまでの長さにかける倍率。 1.0 = バニラの攻撃クールダウンと同じ。
      *
@@ -91,6 +119,8 @@ public class ChargedAttackHandler {
     private static class ChargeData {
         boolean isCharging = false;
         int chargeTime = 0;
+        long chargeStartedAt = -1;
+        long holdStartedAt = -1;
         ItemStack chargingItem = ItemStack.EMPTY;
         int chargingSlot = -1;
         long lastAttackTime = 0;
@@ -105,6 +135,8 @@ public class ChargedAttackHandler {
         void reset() {
             isCharging = false;
             chargeTime = 0;
+            chargeStartedAt = -1;
+            holdStartedAt = -1;
             chargingItem = ItemStack.EMPTY;
             chargingSlot = -1;
             clickReleaseTimer = 0;
@@ -131,6 +163,10 @@ public class ChargedAttackHandler {
         if (event.phase != TickEvent.Phase.END) return;
         
         Player player = event.player;
+        if (!player.level().isClientSide) {
+            HeldSession session = SERVER_HELD_CHARGES.get(player);
+            if (session != null && !validHeldSession(player, session)) cancelHeldCharge(player);
+        }
         UUID playerId = player.getUUID();
         if (player.level().isClientSide && !ClientInput.isLocalPlayer(player)) return;
         ChargeData data = player.level().isClientSide
@@ -149,7 +185,8 @@ public class ChargedAttackHandler {
 
         // チャージ中の処理
         if (data.isCharging && !data.chargingItem.isEmpty()) {
-            data.chargeTime++;
+            data.chargeTime = the_four_primitives_and_weapons.skill.HeldChargeTiming.elapsed(
+                data.chargeStartedAt, player.level().getGameTime());
             
             // チャージエフェクト
             if (data.chargeTime % 10 == 0) {
@@ -191,6 +228,8 @@ public class ChargedAttackHandler {
 
             // チャージ攻撃後のクールダウンを設定（チャージ率に応じて長くなる）
             data.chargeCooldown = 20 + (int)(chargePercent * 20); // 1秒～2秒
+        } else {
+            TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(6, 0));
         }
         data.reset();
     }
@@ -940,7 +979,11 @@ public class ChargedAttackHandler {
 
     @Mod.EventBusSubscriber(modid = "the_four_primitives_and_weapons", value = net.minecraftforge.api.distmarker.Dist.CLIENT)
     public static final class ClientInput {
-        private static boolean isLocalPlayer(Player player) { return Minecraft.getInstance().player == player; }
+        private static void cancelClientCharge(ChargeData data) {
+        if (data.isCharging) TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(6, 0));
+        data.reset();
+    }
+    private static boolean isLocalPlayer(Player player) { return Minecraft.getInstance().player == player; }
     @SubscribeEvent(priority = EventPriority.HIGHEST, receiveCanceled = true)
     public static void onAttackKey(InputEvent.InteractionKeyMappingTriggered event) {
         if (!event.isAttack() || !event.shouldSwingHand()) return;
@@ -976,7 +1019,7 @@ public class ChargedAttackHandler {
         ItemStack offHand = player.getItemInHand(InteractionHand.OFF_HAND);
 
         if (mainHand.getItem() == TheFourPrimitivesAndWeaponsModItems.LUNA.get()) {
-            data.reset();
+            cancelClientCharge(data);
             data.wasLeftClickPressed = mc.options.keyAttack.isDown();
             return;
         }
@@ -984,7 +1027,7 @@ public class ChargedAttackHandler {
         // Closing input with a menu or switching weapons cancels, rather than firing a stored attack.
         if (mc.screen != null || (data.isCharging && (data.chargingSlot != player.getInventory().selected
                 || !ItemStack.isSameItemSameTags(data.chargingItem, mainHand)))) {
-            data.reset();
+            cancelClientCharge(data);
             data.wasLeftClickPressed = mc.options.keyAttack.isDown();
             return;
         }
@@ -1019,7 +1062,7 @@ public class ChargedAttackHandler {
                 // 落下攻撃をサーバーに送信
                 float fallPower = Math.min((float) data.fallTime / 40.0f, 2.0f); // 最大2倍
                 TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(2, fallPower));
-                data.reset();
+                cancelClientCharge(data);
             }
 
             data.wasLeftClickPressed = isLeftClickHeld;
@@ -1029,6 +1072,11 @@ public class ChargedAttackHandler {
         // 通常の武器を持っている場合
         if (isWeapon(mainHand)) {
             boolean isLeftClickHeld = mc.options.keyAttack.isDown();
+            long now = player.level().getGameTime();
+            if (isLeftClickHeld && (!data.wasLeftClickPressed || data.holdStartedAt < 0 || now < data.holdStartedAt))
+                data.holdStartedAt = now;
+            data.clickReleaseTimer = the_four_primitives_and_weapons.skill.HeldChargeTiming.elapsed(data.holdStartedAt, now);
+            if (data.isCharging) data.chargeTime = the_four_primitives_and_weapons.skill.HeldChargeTiming.elapsed(data.chargeStartedAt, now);
 
             // チャージ開始（左クリック長押し）- クールダウン中は開始しない。
             // 閾値を上げて「コンボの押しっぱなし」で誤ってチャージ攻撃(slam_down等)が
@@ -1037,6 +1085,8 @@ public class ChargedAttackHandler {
                 if (data.chargeCooldown <= 0) {
                     data.isCharging = true;
                     data.chargeTime = 0;
+                    data.chargeStartedAt = now;
+                    TheFourPrimitivesAndWeaponsMod.PACKET_HANDLER.sendToServer(new AttackPacket(5, 0));
                     data.chargingItem = mainHand.copy();
                     data.chargingSlot = player.getInventory().selected;
                 } else if (data.clickReleaseTimer == 6) { // 一度だけ表示
@@ -1057,13 +1107,14 @@ public class ChargedAttackHandler {
             }
 
             // 左クリック押し続けている時間をカウント
-            if (isLeftClickHeld) {
-                data.clickReleaseTimer++;
+            if (!isLeftClickHeld) {
+                data.holdStartedAt = -1;
+                data.clickReleaseTimer = 0;
             }
 
             data.wasLeftClickPressed = isLeftClickHeld;
         } else {
-            data.reset();
+            cancelClientCharge(data);
         }
     }
     }

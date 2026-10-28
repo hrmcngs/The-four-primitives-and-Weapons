@@ -39,11 +39,8 @@ Wield **14 elemental attributes** — Ice, Electric, Corrosion, Holy, Fire, Wind
 
 ## バージョン7の追加機能 / New in Version 7
 
-* **Tetra連携 / Tetra Integration** — 基本6素材の刀をTetraの作業台でモジュール式の剣へ改造可能。改造後の外観と部品性能はTetraの仕様になります。 / Convert the six basic-material katanas into modular swords at a Tetra workbench; converted weapons use Tetra models and module stats.
-* **Tetra武器のスキル / Skills for Tetra Weapons** — 剣・短剣・大剣・盾・弓・クロスボウを本MODのスキルへ接続。 / Use this mod's skills with Tetra swords, short/heavy blades, shields, bows and crossbows.
 * **外部金属の鋳造 / External Metal Casting** — 対応する外部MODのインゴット鋳造レシピから、Tinkers未登録素材の互換データを生成。 / Generate Tinkers compatibility data for unregistered metals from supported external ingot casting recipes.
 
-Tetraは任意導入です。Forge 1.20.1用のTetraと必須依存MODを別途導入してください。 / Tetra is optional; install its Forge 1.20.1 release and required dependencies separately.
 
 ***
 

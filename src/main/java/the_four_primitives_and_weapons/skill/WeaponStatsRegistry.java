@@ -282,8 +282,7 @@ public class WeaponStatsRegistry extends SimplePreparableReloadListener<WeaponSt
         String id = regName.toString();
         // Native Tinkers parts compute their own stats. Keep explicit item
         // overrides, but do not replace material bonuses with katana defaults.
-        if (id.equals("the_four_primitives_and_weapons:ticex_katana")
-                || the_four_primitives_and_weapons.integration.TetraCombatRules.isModularWeapon(id)) return STATS.get(id);
+        if (id.equals("the_four_primitives_and_weapons:ticex_katana")) return STATS.get(id);
 
 
         WeaponStats cached = MERGED_CACHE.get(id);

@@ -164,53 +164,11 @@ Tinkersに素材・溶融金属が登録済みなら、その性能・特性を�
 設定はゲーム／サーバーの再起動で反映されます。マルチプレイではサーバーとクライアントに同じ設定を配置してください。
 この設定だけで新しい溶融流体や合金レシピを作ることはできません。
 
-### Tetra連携（バージョン7）
-
-Tetra 6系（Forge 1.20.1）とその必須依存MODを別途導入すると、以下を利用できます。
-Tetraは任意導入で、配布JARには同梱しません。
-
-- 木・石・鉄・金・ダイヤモンド・ネザライトの刀をTetraの作業台でモジュール式の剣に改造し、部品交換・強化できます。元の基本素材に対応する初期部品を設定します。
-- 改造後の外観・素材性能・改造方法はTetraの仕様になります。本MODの属性・武器成長・名前と耐久消耗率を引き継ぎ、エンチャントはTetra標準の移行処理を使用します。元の固定攻撃力や素材NBTは移さず、交換したTetra部品の性能を使用します。
-- Tetraの剣・短い刃・重い刃は、それぞれ本MODの剣・短剣・大剣のスキルに対応します。本MODの刀から改造した基本の刃は刀スキルを使用します。
-- Tetraの盾・弓・クロスボウも対応するスキル体系を使用します。攻撃力・耐久値・攻撃速度はTetra側の計算を維持します。
-
-Tinkersの四部品の刀や専用能力を持つ特殊な刀は、Tetraへの変換対象に含みません。
-Tetra部品の能力が本MODのすべての独自スキルで発動することまでは保証しません。
-公式の変換データ形式は [Tetra 1.20公式ソース](https://github.com/mickelus/tetra/tree/1.20/src/main/resources/data/tetra/replacements) を参照しています。
-
-### Tetraをオフラインで起動する
-
-`bash sh/menu.sh` のMOD選択に「Tetra＋必須依存（オフライン対応）」を追加しました。
-ローカルの `libs/external/tetra/` からTetraとmutilを選びます。自動ダウンロードは行いません。
+### Tinkersだけを選んでビルド・起動する
 
 ```bash
-bash sh/run/run-with-mods.sh --tetra
-# オフラインでビルド
-bash sh/build/build-with-mods.sh --tetra --offline
-# 導入のみ（起動コマンドを表示）
-bash sh/build/build-with-mods.sh --tetra --prepare --offline
-```
-
-必要なファイルは `tetra-1.20.1-6.17.0.jar` と `mutil-1.20.1-6.3.0.jar` です。
-Tetra本体は指定されたDownloadsのJARをコピー済みです。
-現時点ではmutilの取得が回線側で拒否されたため、mutilを上記フォルダへ配置する必要があります。
-不足時は起動前にエラーを表示します。Minecraft本体のアセットとGradle依存も事前にキャッシュされている必要があります。
-
-### TetraとTinkersを一緒にビルド・起動する
-
-MOD選択メニューの「Tetra＋Tinkers＋必須依存」で、Tetra・mutil・Tinkers’ Construct・Mantleを同時に選択できます。
-TiCEXも追加する場合は「Tetra＋TiCEX＋Tinkers＋必須依存」を選びます。
-
-```bash
-# Tetra＋Tinkers（TiCEXなし）でオフラインビルド
-bash sh/build/build-with-mods.sh --tetra --tinkers --offline
-# TiCEXも含める
-bash sh/build/build-with-mods.sh --tetra --ticex --offline
-# Tetra＋Tinkersで起動（既定でオフライン）
-bash sh/run/run-with-mods.sh --tetra --tinkers
-# Tinkers＋Mantleだけ選択することも可能
 bash sh/build/build-with-mods.sh --tinkers --offline
+bash sh/run/run-with-mods.sh --tinkers
+# TiCEXも追加する場合
+bash sh/build/build-with-mods.sh --ticex --offline
 ```
-
-mutilが未配置の場合は、前項の手順で `libs/external/tetra/` に配置してください。
-これらのMODは実行依存として同時に検証し、本体の配布JARには同梱しません。
