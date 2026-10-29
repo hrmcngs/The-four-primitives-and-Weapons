@@ -18,6 +18,10 @@ public class CreativeTabPopulator {
 		if (event.getTab() == TheFourPrimitivesAndWeaponsModTabs.TAB_WEAPON.get()) {
 			event.accept(TheFourPrimitivesAndWeaponsModItems.WOODEN_KATANA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.IRON_KATANA);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.COPPER_KATANA);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.COPPER_SWORD);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.COPPER_RAPIER);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.COPPER_DAGGER);
             event.accept(TheFourPrimitivesAndWeaponsModItems.KEITO_KATANA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.STONE_KATANA);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.GOLD_KATANA);
@@ -75,6 +79,7 @@ public class CreativeTabPopulator {
 			event.accept(CustomEntityInit.WEAPON_RACK_WARPED);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.WOODEN_TYOKUTO);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.IRON_TYOKUTO);
+			event.accept(TheFourPrimitivesAndWeaponsModItems.COPPER_TYOKUTO);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.WOODEN_DAGGER);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.STONE_DAGGER);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.IRON_DAGGER);
@@ -295,12 +300,14 @@ public class CreativeTabPopulator {
 			// 拵え台
 			event.accept(KoshiraeInit.ITEM);
 			// 素の鞘
-			event.accept(TheFourPrimitivesAndWeaponsModItems.SAYA);
-			event.accept(TheFourPrimitivesAndWeaponsModItems.NINJATO_SAYA);
-			event.accept(TheFourPrimitivesAndWeaponsModItems.TYOKUTO_SAYA);
-			event.accept(TheFourPrimitivesAndWeaponsModItems.SWORD_SAYA);
-			event.accept(TheFourPrimitivesAndWeaponsModItems.RAPIER_SAYA);
-			event.accept(TheFourPrimitivesAndWeaponsModItems.DAGGER_SAYA);
+			var sayaTypes = java.util.List.of(
+					TheFourPrimitivesAndWeaponsModItems.SAYA,
+					TheFourPrimitivesAndWeaponsModItems.NINJATO_SAYA,
+					TheFourPrimitivesAndWeaponsModItems.TYOKUTO_SAYA,
+					TheFourPrimitivesAndWeaponsModItems.SWORD_SAYA,
+					TheFourPrimitivesAndWeaponsModItems.RAPIER_SAYA,
+					TheFourPrimitivesAndWeaponsModItems.DAGGER_SAYA);
+			for (var saya : sayaTypes) event.accept(saya);
 			// 漆素材
 			event.accept(TheFourPrimitivesAndWeaponsModItems.RAW_URUSHI);
 			event.accept(TheFourPrimitivesAndWeaponsModItems.URUSHI_BLACK);
@@ -323,18 +330,11 @@ public class CreativeTabPopulator {
 			event.accept(UrushiWoodInit.URUSHI_PLANKS_ITEM);
 			event.accept(UrushiWoodInit.URUSHI_LEAVES_ITEM);
 			event.accept(UrushiWoodInit.URUSHI_SAPLING_ITEM);
-			// 仕立て済みの鞘 ( 全鞘種: 刀/直刀/剣/レイピア ぶんを出す )
-			@SuppressWarnings("unchecked")
-			net.minecraftforge.registries.RegistryObject<net.minecraft.world.item.Item>[] sayaTypes =
-					new net.minecraftforge.registries.RegistryObject[]{
-					TheFourPrimitivesAndWeaponsModItems.SAYA,
-					TheFourPrimitivesAndWeaponsModItems.TYOKUTO_SAYA,
-					TheFourPrimitivesAndWeaponsModItems.SWORD_SAYA,
-					TheFourPrimitivesAndWeaponsModItems.RAPIER_SAYA};
+			// 素の鞘と同じ全6種類に仕立ての見本を出す。
 			for (net.minecraftforge.registries.RegistryObject<net.minecraft.world.item.Item> saya : sayaTypes) {
 				for (String style : new String[]{
 						"kise", "kizami", "ishime", "same",
-						"kuroro", "roiro", "shunuri", "tame"}) {
+						"kuroro", "roiro", "shunuri", "tame", "gunto"}) {
 					event.accept(styledSaya(saya, style));
 				}
 				for (String wood : the_four_primitives_and_weapons.util.SayaStyles.WOODS) {

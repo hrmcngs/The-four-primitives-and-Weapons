@@ -435,6 +435,44 @@
       "durability": 4062,
       "attack_damage": 12.0,
       "cooldown": 32
+    },
+    "the_four_primitives_and_weapons:copper_katana": {
+      "durability": 180,
+      "enchantability": 10,
+      "attack_damage": 5,
+      "attack_speed": -2.4
+    },
+    "the_four_primitives_and_weapons:copper_rapier": {
+      "durability": 180,
+      "enchantability": 10,
+      "attack_damage": 4,
+      "attack_speed": -2.4
+    },
+    "the_four_primitives_and_weapons:copper_dagger": {
+      "durability": 180,
+      "enchantability": 10,
+      "attack_damage": 1.75,
+      "attack_range": -2.0,
+      "thrust": {
+        "range": 3.5,
+        "hits": 4,
+        "knockback": 0.25,
+        "dash": 0.0,
+        "damage": 0
+      },
+      "attack_speed": -1.8
+    },
+    "the_four_primitives_and_weapons:copper_sword": {
+      "durability": 180,
+      "enchantability": 10,
+      "attack_damage": 5,
+      "attack_speed": -2.4
+    },
+    "the_four_primitives_and_weapons:copper_tyokuto": {
+      "durability": 180,
+      "enchantability": 10,
+      "attack_damage": 5,
+      "attack_speed": -2.4
     }
   }
 }

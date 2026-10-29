@@ -1,0 +1,6 @@
+{
+  "parent": "the_four_primitives_and_weapons:custom/iron_tyokuto3d",
+  "textures": {
+    "habaki": "the_four_primitives_and_weapons:katana_fitting/kasira/kasira_gray"
+  }
+}

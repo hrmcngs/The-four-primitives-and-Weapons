@@ -34,6 +34,7 @@ public class SwordSayaItem extends Item implements ICurioItem {
 	@Override
 	public void appendHoverText(ItemStack stack, Level world, List<Component> list, net.minecraft.world.item.TooltipFlag flag) {
 		super.appendHoverText(stack, world, list, flag);
+        the_four_primitives_and_weapons.util.SayaTooltip.appendType(stack, list);
 
 		String sayaHex = the_four_primitives_and_weapons.util.SayaDesign.getBaseHex(stack);
 		if (sayaHex != null) list.add(Component.translatable("tooltip.the_four_primitives_and_weapons.saya.base", sayaHex));

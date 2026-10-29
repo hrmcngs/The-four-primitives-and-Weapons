@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "the_four_primitives_and_weapons:copper_katana",
+    "the_four_primitives_and_weapons:copper_sword",
+    "the_four_primitives_and_weapons:copper_rapier",
+    "the_four_primitives_and_weapons:copper_dagger",
+    "the_four_primitives_and_weapons:copper_tyokuto"
+  ]
+}

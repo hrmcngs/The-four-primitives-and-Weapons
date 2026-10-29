@@ -253,6 +253,11 @@ public final class KatanaFittings {
 	public static int bladeRgb(ItemStack stack) {
 		int color = rgb(stack, BLADE_KEY);
 		if (color >= 0) return color;
+		ResourceLocation weaponId = ForgeRegistries.ITEMS.getKey(stack.getItem());
+		if (weaponId != null && weaponId.getNamespace().equals("the_four_primitives_and_weapons")
+				&& weaponId.getPath().startsWith("copper_")
+				&& (!stack.hasTag() || !stack.getTag().contains(
+					the_four_primitives_and_weapons.item.TicexWeaponRecipe.MATERIAL_TAG, net.minecraft.nbt.Tag.TAG_COMPOUND))) return 0xC87545;
 		// Keep the steel texture's shading, with an icy blue-white cast unique to Ketu.
 		// A rendering default also updates existing blades without rewriting their NBT.
 		return stack.getItem() instanceof the_four_primitives_and_weapons.item.KeitoKatanaItem

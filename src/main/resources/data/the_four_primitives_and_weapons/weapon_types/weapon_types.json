@@ -22,7 +22,8 @@
         "the_four_primitives_and_weapons:rivers_of_blood",
         "the_four_primitives_and_weapons:katana_nigu_humerus",
         "the_four_primitives_and_weapons:old_katana",
-        "the_four_primitives_and_weapons:ticex_katana"
+        "the_four_primitives_and_weapons:ticex_katana",
+        "the_four_primitives_and_weapons:copper_katana"
       ],
       "motions": {
         "combat": [
@@ -60,7 +61,8 @@
         "the_four_primitives_and_weapons:iron_rapier",
         "the_four_primitives_and_weapons:gold_rapier",
         "the_four_primitives_and_weapons:diamond_rapier",
-        "the_four_primitives_and_weapons:netherite_rapier"
+        "the_four_primitives_and_weapons:netherite_rapier",
+        "the_four_primitives_and_weapons:copper_rapier"
       ],
       "motions": {
         "combat": [
@@ -101,7 +103,8 @@
         "the_four_primitives_and_weapons:gold_tyokuto",
         "the_four_primitives_and_weapons:wooden_tyokuto",
         "the_four_primitives_and_weapons:diamond_tyokuto",
-        "the_four_primitives_and_weapons:netherite_tyokuto"
+        "the_four_primitives_and_weapons:netherite_tyokuto",
+        "the_four_primitives_and_weapons:copper_tyokuto"
       ],
       "motions": {
         "combat": [
@@ -147,7 +150,8 @@
         "minecraft:iron_sword",
         "minecraft:golden_sword",
         "minecraft:diamond_sword",
-        "minecraft:netherite_sword"
+        "minecraft:netherite_sword",
+        "the_four_primitives_and_weapons:copper_sword"
       ],
       "motions": {
         "combat": [
@@ -247,7 +251,8 @@
         "the_four_primitives_and_weapons:iron_dagger",
         "the_four_primitives_and_weapons:gold_dagger",
         "the_four_primitives_and_weapons:diamond_dagger",
-        "the_four_primitives_and_weapons:netherite_dagger"
+        "the_four_primitives_and_weapons:netherite_dagger",
+        "the_four_primitives_and_weapons:copper_dagger"
       ],
       "motions": {
         "combat": [

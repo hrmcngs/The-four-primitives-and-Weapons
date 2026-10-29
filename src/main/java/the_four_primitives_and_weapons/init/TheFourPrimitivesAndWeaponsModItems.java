@@ -142,6 +142,11 @@ public class TheFourPrimitivesAndWeaponsModItems {
 	public static final RegistryObject<Item> A = REGISTRY.register("a", () -> new AItem());
 	public static final RegistryObject<Item> HAMMER = REGISTRY.register("hammer", () -> new HammerItem());
 	public static final RegistryObject<Item> IRON_KATANA = REGISTRY.register("iron_katana", () -> new IronKatanaItem());
+	public static final RegistryObject<Item> COPPER_KATANA = REGISTRY.register("copper_katana", the_four_primitives_and_weapons.item.CopperWeapons::katana);
+	public static final RegistryObject<Item> COPPER_TYOKUTO = REGISTRY.register("copper_tyokuto", the_four_primitives_and_weapons.item.CopperWeapons::tyokuto);
+	public static final RegistryObject<Item> COPPER_SWORD = REGISTRY.register("copper_sword", the_four_primitives_and_weapons.item.CopperWeapons::sword);
+	public static final RegistryObject<Item> COPPER_RAPIER = REGISTRY.register("copper_rapier", the_four_primitives_and_weapons.item.CopperWeapons::rapier);
+	public static final RegistryObject<Item> COPPER_DAGGER = REGISTRY.register("copper_dagger", the_four_primitives_and_weapons.item.CopperWeapons::dagger);
     public static final RegistryObject<Item> KEITO_KATANA = REGISTRY.register("keito_katana", () -> new the_four_primitives_and_weapons.item.KeitoKatanaItem());
 	public static final RegistryObject<Item> WOODEN_KATANA = REGISTRY.register("wooden_katana", () -> new WoodenKatanaItem());
 	public static final RegistryObject<Item> WOODEN_TYOKUTO = REGISTRY.register("wooden_tyokuto", () -> new WoodenTyokutoItem());

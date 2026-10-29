@@ -35,7 +35,8 @@
     "the_four_primitives_and_weapons:rivers_of_blood": "the_four_primitives_and_weapons:custom/saya/katana/saya_riversofblood",
     "the_four_primitives_and_weapons:katana_nigu_humerus": "the_four_primitives_and_weapons:custom/saya/katana/saya_katananiguzyouwankotu3d",
     "the_four_primitives_and_weapons:diamond_katana": "the_four_primitives_and_weapons:custom/saya/katana/saya_diamond_katana",
-    "the_four_primitives_and_weapons:ninjatou": "the_four_primitives_and_weapons:custom/saya/ninjato/ninzyatousayatuki"
+    "the_four_primitives_and_weapons:ninjatou": "the_four_primitives_and_weapons:custom/saya/ninjato/ninzyatousayatuki",
+    "the_four_primitives_and_weapons:copper_katana": "the_four_primitives_and_weapons:custom/saya/katana/saya_iron_katana"
   },
   "tyokuto": {
     "the_four_primitives_and_weapons:luna": "the_four_primitives_and_weapons:custom/saya/tyokuto/saya_luna",
@@ -44,14 +45,16 @@
     "the_four_primitives_and_weapons:gold_tyokuto": "the_four_primitives_and_weapons:custom/saya/tyokuto/saya_gold_tyokuto",
     "the_four_primitives_and_weapons:stone_tyokuto": "the_four_primitives_and_weapons:custom/saya/tyokuto/saya_stone_tyokuto",
     "the_four_primitives_and_weapons:diamond_tyokuto": "the_four_primitives_and_weapons:custom/saya/tyokuto/saya_diamond_tyokuto",
-    "the_four_primitives_and_weapons:netherite_tyokuto": "the_four_primitives_and_weapons:custom/saya/tyokuto/saya_netherite_tyokuto"
+    "the_four_primitives_and_weapons:netherite_tyokuto": "the_four_primitives_and_weapons:custom/saya/tyokuto/saya_netherite_tyokuto",
+    "the_four_primitives_and_weapons:copper_tyokuto": "the_four_primitives_and_weapons:custom/saya/tyokuto/saya_iron_tyokuto"
   },
   "sword": {
     "minecraft:iron_sword": "the_four_primitives_and_weapons:custom/saya/sword/saya_sword_iron_sword",
     "minecraft:golden_sword": "the_four_primitives_and_weapons:custom/saya/sword/saya_sword_golden_sword",
     "minecraft:stone_sword": "the_four_primitives_and_weapons:custom/saya/sword/saya_sword_stone_sword",
     "minecraft:diamond_sword": "the_four_primitives_and_weapons:custom/saya/sword/saya_sword_diamond_sword",
-    "minecraft:netherite_sword": "the_four_primitives_and_weapons:custom/saya/sword/saya_sword_netherite_sword"
+    "minecraft:netherite_sword": "the_four_primitives_and_weapons:custom/saya/sword/saya_sword_netherite_sword",
+    "the_four_primitives_and_weapons:copper_sword": "the_four_primitives_and_weapons:custom/saya/sword/saya_sword_iron_sword"
   },
   "rapier": {
     "the_four_primitives_and_weapons:wooden_rapier": "the_four_primitives_and_weapons:custom/saya/rapier/saya_wooden_rapier",
@@ -59,7 +62,8 @@
     "the_four_primitives_and_weapons:iron_rapier": "the_four_primitives_and_weapons:custom/saya/rapier/saya_iron_rapier",
     "the_four_primitives_and_weapons:gold_rapier": "the_four_primitives_and_weapons:custom/saya/rapier/saya_gold_rapier",
     "the_four_primitives_and_weapons:diamond_rapier": "the_four_primitives_and_weapons:custom/saya/rapier/saya_diamond_rapier",
-    "the_four_primitives_and_weapons:netherite_rapier": "the_four_primitives_and_weapons:custom/saya/rapier/saya_netherite_rapier"
+    "the_four_primitives_and_weapons:netherite_rapier": "the_four_primitives_and_weapons:custom/saya/rapier/saya_netherite_rapier",
+    "the_four_primitives_and_weapons:copper_rapier": "the_four_primitives_and_weapons:custom/saya/rapier/saya_iron_rapier"
   },
   "dagger": {
     "the_four_primitives_and_weapons:wooden_dagger": "the_four_primitives_and_weapons:custom/saya/dagger/saya_wooden_dagger",
@@ -67,6 +71,7 @@
     "the_four_primitives_and_weapons:iron_dagger": "the_four_primitives_and_weapons:custom/saya/dagger/saya_iron_dagger",
     "the_four_primitives_and_weapons:gold_dagger": "the_four_primitives_and_weapons:custom/saya/dagger/saya_gold_dagger",
     "the_four_primitives_and_weapons:diamond_dagger": "the_four_primitives_and_weapons:custom/saya/dagger/saya_diamond_dagger",
-    "the_four_primitives_and_weapons:netherite_dagger": "the_four_primitives_and_weapons:custom/saya/dagger/saya_netherite_dagger"
+    "the_four_primitives_and_weapons:netherite_dagger": "the_four_primitives_and_weapons:custom/saya/dagger/saya_netherite_dagger",
+    "the_four_primitives_and_weapons:copper_dagger": "the_four_primitives_and_weapons:custom/saya/dagger/saya_iron_dagger"
   }
 }
