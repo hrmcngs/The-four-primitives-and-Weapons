@@ -68,7 +68,16 @@ public final class AttackHandContext {
             && context.mainHits().remove(target.getUUID());
         if (pairedHit) target.invulnerableTime = 0;
         boolean accepted = false;
-        try { accepted = target.hurt(source, damage); }
+        try {
+            // Only weapon-contact skill hits use melee hooks; magic/projectile damage keeps its own path.
+            boolean melee = source.getDirectEntity() == attacker && !source.is(net.minecraft.tags.DamageTypeTags.IS_PROJECTILE)
+                && (source.is(net.minecraft.world.damagesource.DamageTypes.PLAYER_ATTACK)
+                    || source.is(net.minecraft.world.damagesource.DamageTypes.MOB_ATTACK));
+            accepted = melee ? the_four_primitives_and_weapons.integration.TinkersSkillCombat.hurt(
+                attacker, target, context == null ? attacker.getMainHandItem() : context.weapon(),
+                context == null ? InteractionHand.MAIN_HAND : context.hand(), damage,
+                amount -> target.hurt(source, (float)amount)) : target.hurt(source, damage);
+        }
         finally { if (pairedHit && !accepted) target.invulnerableTime = previous; }
         if (accepted && context != null && context.hand() == InteractionHand.MAIN_HAND)
             context.mainHits().add(target.getUUID());

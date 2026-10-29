@@ -211,7 +211,8 @@ public final class SkillComboProcedure {
             if (to.scale(1.0 / distance).dot(look) < 0.35) continue;
 
             target.invulnerableTime = 0;
-            if (target.hurt(world.damageSources().playerAttack(player), pulseDamage)) {
+            if (the_four_primitives_and_weapons.skill.AttackHandContext.hurt(player, target,
+                    world.damageSources().playerAttack(player), pulseDamage)) {
                 target.knockback(0.08f + hitIndex * 0.03f, -look.x, -look.z);
                 hitCount++;
             }

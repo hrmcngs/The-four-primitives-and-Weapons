@@ -39,6 +39,9 @@ Wield **14 elemental attributes** — Ice, Electric, Corrosion, Holy, Fire, Wind
 
 ## バージョン7の追加機能 / New in Version 7
 
+* **素材特性と近接スキル / Material Traits in Melee Skills** — Tinkers／TiCEXのモジュール式武器の近接特性を、本MODの斬撃・突き・回転斬りなどにも反映。 / Melee skills invoke native Tinkers modifier hooks, including TiCEX addon traits.
+
+
 * **外部金属の鋳造 / External Metal Casting** — 対応する外部MODのインゴット鋳造レシピから、Tinkers未登録素材の互換データを生成。 / Generate Tinkers compatibility data for unregistered metals from supported external ingot casting recipes.
 
 
