@@ -101,14 +101,15 @@ public final class KatanaFittings {
 				|| isDyeableKnife(n);
 	}
 
-	/** 刀・直刀の鐔形状。練習刀でも形状の選択は可能。 */
+	/** 刀・直刀・短刀の鐔形状。練習刀でも形状の選択は可能。 */
 	public static boolean isTsubaShapeWeapon(ItemStack s) {
 		if (s == null || s.isEmpty()) return false;
 		var type = the_four_primitives_and_weapons.skill.WeaponTypeRegistry.getTypeForItem(s);
-		if (type != null && (type.getId().equals("katana") || type.getId().equals("straight_sword"))) return true;
+		if (type != null && (type.getId().equals("katana") || type.getId().equals("straight_sword") || type.getId().equals("small_sword"))) return true;
 		var id = ForgeRegistries.ITEMS.getKey(s.getItem());
 		return id != null && id.getNamespace().equals(the_four_primitives_and_weapons.TheFourPrimitivesAndWeaponsMod.MODID)
-			&& !id.getPath().contains("saya") && (id.getPath().contains("katana") || id.getPath().contains("tyokuto"));
+			&& !id.getPath().contains("saya") && (id.getPath().contains("katana") || id.getPath().contains("tyokuto")
+                || id.getPath().equals("small_sword") || id.getPath().equals("warabitetou"));
 	}
 
 	/**
@@ -242,6 +243,14 @@ public final class KatanaFittings {
 
 	/** 柄巻きの色 ( 0xRRGGBB )。 */
 	public static final String TSUKA_KEY = "TsukaColor";
+	public static final String TSUKA_BASE_KEY = "TsukaBaseColor";
+	public static final String[] SHAPES = { "", "oval", "diamond", "circle", "square", "octagon", "mokko", "hexagon" };
+	public static boolean hasSeparateWrap(ItemStack s) {
+		return isTsubaShapeWeapon(s) && (TsukaPattern.supported(getTsukaWrap(s)) || rgb(s, TSUKA_BASE_KEY) >= 0);
+	}
+	public static int tsukaBaseRgb(ItemStack s) { int c = rgb(s, TSUKA_BASE_KEY); return c < 0 ? 0xE8DFCC : c; }
+	public static int cordRgb(ItemStack s) { int c = tsukaRgb(s); return c < 0 ? 0x303030 : c; }
+	public static void setTsukaBase(ItemStack s, int color) { s.getOrCreateTag().putInt(TSUKA_BASE_KEY, color & 0xFFFFFF); }
 	/** 鍔の色 ( 0xRRGGBB )。 */
 	public static final String TSUBA_KEY = "TsubaColor";
 	/** 頭 ( かしら ) の色。 */
@@ -279,7 +288,7 @@ public final class KatanaFittings {
 	 *  ※ これらは刀UVレイアウトで描いた絵を source-relative で貼る ( 刀本体テクスチャの色替え )。
 	 *  ※ "tuka"(菱デザイン) は鞘が箱UVで直接使う専用テクスチャなので、 ここには入れない
 	 *     ( 持っている刀の source-relative では崩れるため )。 */
-	public static final String[] WRAPS = { "tuka_black", "tuka_red", "tuka_brown", "tuka_white" };
+	public static final String[] WRAPS = { "tuka_black", "tuka_red", "tuka_brown", "tuka_white", "hineri", "katate", "hira", "spiral", "basket" };
 	/** 頭 ( かしら ) のデザイン一覧。 */
 	public static final String[] KASHIRAS = { "kasira" };
 	/** 縁 ( ふち ) のデザイン一覧。 */
@@ -306,7 +315,7 @@ public final class KatanaFittings {
 
 	/** 鍔のデザイン ( 差し替え )。 "" = 既定。 */
 	public static final String TSUBA_STYLE_KEY = "TsubaStyle";
-	public static final String[] TSUBAS = { "tuba", "oval", "diamond", "circle" };
+	public static final String[] TSUBAS = { "tuba", "oval", "diamond", "circle", "square", "octagon", "mokko", "hexagon" };
 
 	public static String getTsubaStyle(ItemStack stack) {
 		CompoundTag t = stack.getTag();

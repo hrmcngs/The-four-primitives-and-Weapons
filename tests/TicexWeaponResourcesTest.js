@@ -73,3 +73,11 @@ for (const [name, tint] of [['ticex_katana_blade',0], ['ticex_tsuka',1], ['ticex
   assert.deepEqual(part.textures, katana.textures, name+' must use the same neutral tint textures');
 }
 console.log('Katana parts preserve assembled proportions and material tint faces');
+
+const sayaMap = JSON.parse(fs.readFileSync('src/main/resources/data/the_four_primitives_and_weapons/maw_saya/main.json'));
+const nativeSaya = sayaMap.katana['the_four_primitives_and_weapons:ticex_katana'];
+assert.ok(nativeSaya, 'Native Tinkers katana must have a sheathed model');
+const [sayaNamespace, sayaPath] = nativeSaya.split(':');
+const sayaModel = JSON.parse(fs.readFileSync('src/main/resources/assets/'+sayaNamespace+'/models/'+sayaPath+'.json'));
+assert.ok(sayaModel.parent, 'Sheathed model must retain sheath and fittings geometry');
+console.log('Native Tinkers/TiCEX katana has a registered sheathed model');

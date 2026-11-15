@@ -51,7 +51,7 @@ public final class KoshiraeFittings {
 		if (in.isEmpty()) return out;
 		boolean hasDye = dye != null && dye.getItem() instanceof net.minecraft.world.item.DyeItem;
 		if (!hasDye && KatanaFittings.isTsubaShapeWeapon(in)) {
-			for (String shape : new String[]{"", "oval", "diamond", "circle"}) {
+			for (String shape : KatanaFittings.SHAPES) {
 				ItemStack s = in.copy(); s.setCount(1);
 				KatanaFittings.setTsubaStyle(s, shape);
 				s.setHoverName(net.minecraft.network.chat.Component.translatable(
@@ -73,7 +73,8 @@ public final class KoshiraeFittings {
 			if (hasDye) {
 				int rgb = KatanaFittings.dyeRgb(((net.minecraft.world.item.DyeItem) dye.getItem()).getDyeColor());
 				if (KatanaFittings.isFittingWeapon(in)) {
-					out.add(katanaColor(in, "tsuka", rgb, "dye_tsuka"));
+					out.add(katanaColor(in, "tsuka", rgb, KatanaFittings.isTsubaShapeWeapon(in) ? "dye_tsuka_cord" : "dye_tsuka"));
+					if (KatanaFittings.isTsubaShapeWeapon(in)) out.add(katanaColor(in, "tsuka_base", rgb, "dye_tsuka_base"));
 					out.add(katanaColor(in, "tsuba", rgb, "dye_tsuba"));
 					out.add(katanaColor(in, "kashira", rgb, "dye_kashira"));
 				}
@@ -91,7 +92,9 @@ public final class KoshiraeFittings {
 				out.add(rapierDesign(in, "pommel", "pommel_b","pommel_b"));
 			} else {
 				out.add(katana(in, ""));                 // 既定 ( 元の柄 )
-				for (String w : KatanaFittings.WRAPS) out.add(katana(in, w));
+				for (String w : KatanaFittings.WRAPS) {
+					if (!TsukaPattern.supported(w) || KatanaFittings.isTsubaShapeWeapon(in)) out.add(katana(in, w));
+				}
 			}
 		} else if (SayaDesign.isSaya(in)) {
 			if (hasDye) {
@@ -133,11 +136,15 @@ public final class KoshiraeFittings {
 		ItemStack s = in.copy();
 		s.setCount(1);
 		switch (part) {
+			case "tsuka_base": KatanaFittings.setTsukaBase(s, rgb); break;
 			case "tsuba":   KatanaFittings.setTsuba(s, rgb); break;
 			case "fuchi":   KatanaFittings.setFuchi(s, rgb); break;
 			case "kashira": KatanaFittings.setKashira(s, rgb); break;
 			case "habaki":  KatanaFittings.setHabaki(s, rgb); break;
-			default:        KatanaFittings.setTsuka(s, rgb);
+			default:
+                KatanaFittings.setTsuka(s, rgb);
+                if (KatanaFittings.isTsubaShapeWeapon(s) && !TsukaPattern.supported(KatanaFittings.getTsukaWrap(s)))
+                    KatanaFittings.setTsukaWrap(s, "hineri");
 		}
 		s.setHoverName(net.minecraft.network.chat.Component.translatable("gui.the_four_primitives_and_weapons.koshirae." + label));
 		return s;

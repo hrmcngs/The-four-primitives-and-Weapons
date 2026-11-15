@@ -1303,5 +1303,16 @@
   "tooltip.the_four_primitives_and_weapons.saya.type.straight_sword": "直刀",
   "tooltip.the_four_primitives_and_weapons.saya.type.sword": "剣",
   "tooltip.the_four_primitives_and_weapons.saya.type.rapier": "レイピア",
-  "tooltip.the_four_primitives_and_weapons.saya.type.dagger": "ダガー"
+  "tooltip.the_four_primitives_and_weapons.saya.type.dagger": "ダガー",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.square": "鐔：角形",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.octagon": "鐔：八角形",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.mokko": "鐔：木瓜形",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.hineri": "菱巻風",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.katate": "片手巻風",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.hira": "平巻風",
+  "gui.the_four_primitives_and_weapons.koshirae.dye_tsuka_base": "柄の下地を染める",
+  "gui.the_four_primitives_and_weapons.koshirae.dye_tsuka_cord": "柄巻の紐を染める",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.hexagon": "鐔：六角形",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.spiral": "斜め巻風",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.basket": "格子巻風"
 }

@@ -77,20 +77,26 @@ public final class KatanaModelWrapper implements BakedModel {
 				design[1] = KatanaFittings.getTsukaWrap(stack);
 				design[2] = KatanaFittings.getTsubaStyle(stack);
 				design[3] = KatanaFittings.getKashiraStyle(stack);
-				return TsubaShapeModel.apply(KatanaTsukaModel.styleColor(base, design, mode), design[2]);
+				return withWrap(TsubaShapeModel.apply(KatanaTsukaModel.styleColor(base, design, mode), design[2]), stack);
 			}
 			String wrap = or(KatanaFittings.getTsukaWrap(stack), "tuka");
 			String tsuba = or(KatanaFittings.getTsubaStyle(stack), "tuba");
 			String kashira = or(KatanaFittings.getKashiraStyle(stack), "kasira");
 			String fuchi = or(KatanaFittings.getFuchiStyle(stack), "fuchi");
-			return TsubaShapeModel.apply(KatanaTsukaModel.maybe(base, wrap, tsuba, kashira, fuchi),
-					"shirasaya".equals(wrap) ? "" : tsuba);
+			return withWrap(TsubaShapeModel.apply(KatanaTsukaModel.maybe(base, wrap, tsuba, kashira, fuchi),
+					"shirasaya".equals(wrap) ? "" : tsuba), stack);
 		}
 
 		private String or(String v, String def) {
 			if (v != null && !v.isEmpty()) return v;
 			return katanaDefaults ? def : "";
 		}
+	}
+
+	private static BakedModel withWrap(BakedModel model, ItemStack stack) {
+		if (!KatanaFittings.hasSeparateWrap(stack)) return model;
+		String style = KatanaFittings.getTsukaWrap(stack);
+		return TsukaWrapModel.apply(model, the_four_primitives_and_weapons.util.TsukaPattern.supported(style) ? style : "hineri");
 	}
 
 	/** 色→差し替えモード: 未設定=0 / ほぼ黒=2(模様入り暗版) / それ以外=1(グレー版+tint)。 */

@@ -154,6 +154,7 @@ public class CauldronDyeHandler {
 				the_four_primitives_and_weapons.util.KatanaFittings.setKashira(held, cur);
 			} else if (held.hasTag()) {
 				held.getTag().remove(the_four_primitives_and_weapons.util.KatanaFittings.TSUKA_KEY);
+				held.getTag().remove(the_four_primitives_and_weapons.util.KatanaFittings.TSUKA_BASE_KEY);
 				held.getTag().remove(the_four_primitives_and_weapons.util.KatanaFittings.TSUBA_KEY);
 				held.getTag().remove(the_four_primitives_and_weapons.util.KatanaFittings.KASHIRA_KEY);
 			}

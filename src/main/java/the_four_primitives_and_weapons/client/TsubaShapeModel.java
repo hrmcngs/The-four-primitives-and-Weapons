@@ -49,8 +49,18 @@ public final class TsubaShapeModel implements BakedModel {
         float radius = Math.max(max[u]-min[u],max[v]-min[v])/2;
         double[][] outline = the_four_primitives_and_weapons.util.TsubaOutline.points(shape,radius,longAxis==u);
         int segments = outline.length;
-        TextureAtlasSprite sprite = guard.get(0).getSprite();
+        // The circular/diamond contour can exceed the original narrow rectangle.
+        // Use the generated bounds, and only sample each source face's occupied UV island.
+        float[] surfaceMin=min.clone(), surfaceMax=max.clone();
+        surfaceMin[u]=surfaceMin[v]=Float.MAX_VALUE;
+        surfaceMax[u]=surfaceMax[v]=-Float.MAX_VALUE;
         float[] center = {(min[0]+max[0])/2,(min[1]+max[1])/2,(min[2]+max[2])/2};
+        for(double[] point:outline) {
+            surfaceMin[u]=Math.min(surfaceMin[u],center[u]+(float)point[0]);
+            surfaceMax[u]=Math.max(surfaceMax[u],center[u]+(float)point[0]);
+            surfaceMin[v]=Math.min(surfaceMin[v],center[v]+(float)point[1]);
+            surfaceMax[v]=Math.max(surfaceMax[v],center[v]+(float)point[1]);
+        }
         for (int i=0;i<segments;i++) {
             double[] a=outline[i], b=outline[(i+1)%segments];
             float[] p=center.clone(), q=center.clone();
@@ -58,19 +68,27 @@ public final class TsubaShapeModel implements BakedModel {
             q[u]+=(float)b[0]; q[v]+=(float)b[1];
             for (int side=0;side<2;side++) {
                 float h=side==0?min[thin]:max[thin];
-                float[] c=center.clone(), x=p.clone(), y=q.clone(); c[thin]=x[thin]=y[thin]=h;
-                addFace(new float[][]{c,x,y,y}, sprite, thin, side==0?-1:1, u,v,min,max);
+                double[][] cell=the_four_primitives_and_weapons.util.TsubaOutline.capCell(outline,i);
+                float[][] face=new float[4][];
+                for(int j=0;j<4;j++) {
+                    face[j]=center.clone(); face[j][thin]=h;
+                    face[j][u]+=(float)cell[j][0]; face[j][v]+=(float)cell[j][1];
+                }
+                float[] normal=new float[3];normal[thin]=side==0?-1:1;
+                addFace(face, sourceFace(guard,normal), normal, u,v,surfaceMin,surfaceMax,true);
             }
             float[] p0=p.clone(),p1=p.clone(),q0=q.clone(),q1=q.clone();
             p0[thin]=q0[thin]=min[thin]; p1[thin]=q1[thin]=max[thin];
             float[] normal=new float[3]; normal[u]=(p[u]+q[u])/2-center[u]; normal[v]=(p[v]+q[v])/2-center[v];
-            addFace(new float[][]{p0,q0,q1,p1},sprite,normal,u,v,min,max);
+            addFace(new float[][]{p0,q0,q1,p1},sourceFace(guard,normal),normal,u,v,surfaceMin,surfaceMax,false);
         }
     }
-    private void addFace(float[][] p, TextureAtlasSprite sprite,int axis,int sign,int u,int v,float[] min,float[] max) {
-        float[] n=new float[3]; n[axis]=sign; addFace(p,sprite,n,u,v,min,max);
+    private static BakedQuad sourceFace(List<BakedQuad> guard,float[] normal) {
+        Direction direction=Direction.getNearest(normal[0],normal[1],normal[2]);
+        return guard.stream().filter(q->q.getDirection()==direction).findFirst().orElse(guard.get(0));
     }
-    private void addFace(float[][] p, TextureAtlasSprite sprite,float[] outward,int u,int v,float[] min,float[] max) {
+    private void addFace(float[][] p, BakedQuad source,float[] outward,int u,int v,float[] min,float[] max,boolean cap) {
+        TextureAtlasSprite sprite=source.getSprite();
         float[] a=new float[3],b=new float[3];
         for(int j=0;j<3;j++){a[j]=p[1][j]-p[0][j];b[j]=p[2][j]-p[0][j];}
         float[] n={a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]};
@@ -81,12 +99,25 @@ public final class TsubaShapeModel implements BakedModel {
         float len=(float)Math.sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2]);
         if(len==0)return;
         int packed=0;for(int j=0;j<3;j++)packed|=((byte)(n[j]/len*127)&255)<<(j*8);
+        int[] template=source.getVertices();int stride=template.length/4;
+        float uMin=Float.MAX_VALUE,uMax=-Float.MAX_VALUE,vMin=Float.MAX_VALUE,vMax=-Float.MAX_VALUE;
+        for(int i=0;i<4;i++) {
+            float su=Float.intBitsToFloat(template[i*stride+4]),sv=Float.intBitsToFloat(template[i*stride+5]);
+            uMin=Math.min(uMin,su);uMax=Math.max(uMax,su);
+            vMin=Math.min(vMin,sv);vMax=Math.max(vMax,sv);
+        }
         int[] data=new int[32];
         for(int i=0;i<4;i++) {
             int o=i*8;for(int j=0;j<3;j++)data[o+j]=Float.floatToRawIntBits(p[i][j]);
             data[o+3]=-1;
-            data[o+4]=Float.floatToRawIntBits(sprite.getU(16*(p[i][u]-min[u])/(max[u]-min[u])));
-            data[o+5]=Float.floatToRawIntBits(sprite.getV(16*(p[i][v]-min[v])/(max[v]-min[v])));
+            if(cap) {
+                double fu=the_four_primitives_and_weapons.util.TsubaOutline.uvFraction(p[i][u],min[u],max[u]);
+                double fv=the_four_primitives_and_weapons.util.TsubaOutline.uvFraction(p[i][v],min[v],max[v]);
+                data[o+4]=Float.floatToRawIntBits((float)(uMin+fu*(uMax-uMin)));
+                data[o+5]=Float.floatToRawIntBits((float)(vMin+fv*(vMax-vMin)));
+            } else {
+                data[o+4]=template[i*stride+4];data[o+5]=template[i*stride+5];
+            }
             data[o+7]=packed;
         }
         quads.add(new BakedQuad(data,2,Direction.getNearest(n[0],n[1],n[2]),sprite,true));

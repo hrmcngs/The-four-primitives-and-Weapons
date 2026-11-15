@@ -10,7 +10,7 @@
     (:build "macOS向けビルド" "sh/build/build_mac.sh" "clean / offline。出力先はbuild/libs")
     (:build "WSLからWindows版をビルド" "sh/build/build_win.sh" "cleanのみ対応。Windows側の固定パスを使用")
     (:generate "汎用Lispからデータパック生成" "sh/generate/generate-mcfunction.sh" "MOD不要。独立したtools/mcfunction-lispを他repoでも使用可能")
-    (:generate "蝶・刀のコマンドを対話式で生成" "sh/generate/generate_commands.sh" "49種類の蝶、拵え、設置角度などを設定。SBCLが必要")
+    (:generate "蝶・刀のコマンドを対話式で生成" "sh/generate/generate_commands.sh" "49種類の蝶、タイプ別の武器・対応部位の色、Tinkers・TiCEX素材、設置角度を設定。SBCLが必要")
     (:generate "月・オーロラ・天文現象・timeコマンドを生成" "sh/generate/generate-time-commands.sh" "月の効果・オーロラのお試し／月・流星・食・WMO天候の詳細設定。SBCLが必要")
     (:generate "ランダム地形の撮影ワールドを作成" "sh/generate/generate-photo-world.sh" "Lisp→mcfunction。毎回別の地形、シード指定で再現。SBCL・gzip・zip")
     (:generate "金木犀料理の素材・レシピを再生成" "sh/generate/generate-osmanthus-food.sh" "シロップ・ケーキ・クッキー。SBCL・Java 17・バニラ1.20.1素材")
@@ -31,6 +31,7 @@
     (:test "忍者刀の鎖切断を検証" "sh/test/test-ninjato-tether-cut.sh" "Javaの小規模テスト")
     (:test "忍者刀の跳躍操作を検証" "sh/test/test-ninjato-vault.sh" "Javaの小規模テスト")
     (:test "武器ラック表示を検証" "sh/test/test-rack-display.sh" "Gradleと依存キャッシュが必要。コンパイルを伴う")
+    (:test "納刀時の形・色・柄巻の引継ぎを検証" "sh/test/test-sheathed-fittings.sh" "Gradle。鍔形状・UV・素材tint・陰影・鞘本体を検証")
     (:test "刺した武器の形状を検証" "sh/test/test-stabbed-weapon-geometry.sh" "Gradleと依存キャッシュが必要。コンパイルを伴う")))
 (defun shell-comment-help (path)
   ;; Read comments; never invoke a target's help, since some targets are tests.

@@ -38,6 +38,9 @@ public final class KatanaTsukaModel implements BakedModel {
 
 	private static final Map<String, KatanaTsukaModel> CACHE = new ConcurrentHashMap<>();
 	private static final Map<String, KatanaTsukaModel> CACHE_GRAY = new ConcurrentHashMap<>();
+	private static final Map<BakedModel, Map<BakedModel, KatanaTsukaModel>> FITTING_CACHE = new java.util.IdentityHashMap<>();
+
+	public static void clearCache() { CACHE.clear(); CACHE_GRAY.clear(); FITTING_CACHE.clear(); }
 
 	private final BakedModel base;
 	private final List<BakedQuad> swappedNull;
@@ -46,9 +49,9 @@ public final class KatanaTsukaModel implements BakedModel {
 	private KatanaTsukaModel(BakedModel base, TextureAtlasSprite[] byTint, boolean hideTsuba) {
 		this.base = base;
 		this.swappedBySide = new EnumMap<>(Direction.class);
-		this.swappedNull = swap(base.getQuads(null, null, RandomSource.create(42L)), byTint, hideTsuba);
+		this.swappedNull = shadeKashira(swap(base.getQuads(null, null, RandomSource.create(42L)), byTint, hideTsuba));
 		for (Direction d : Direction.values()) {
-			swappedBySide.put(d, swap(base.getQuads(null, d, RandomSource.create(42L)), byTint, hideTsuba));
+			swappedBySide.put(d, shadeKashira(swap(base.getQuads(null, d, RandomSource.create(42L)), byTint, hideTsuba)));
 		}
 	}
 
@@ -57,9 +60,9 @@ public final class KatanaTsukaModel implements BakedModel {
 	private KatanaTsukaModel(BakedModel base, int[] modeByTint) {
 		this.base = base;
 		this.swappedBySide = new EnumMap<>(Direction.class);
-		this.swappedNull = swapVariant(base.getQuads(null, null, RandomSource.create(42L)), modeByTint);
+		this.swappedNull = shadeKashira(swapVariant(base.getQuads(null, null, RandomSource.create(42L)), modeByTint));
 		for (Direction d : Direction.values()) {
-			swappedBySide.put(d, swapVariant(base.getQuads(null, d, RandomSource.create(42L)), modeByTint));
+			swappedBySide.put(d, shadeKashira(swapVariant(base.getQuads(null, d, RandomSource.create(42L)), modeByTint)));
 		}
 	}
 
@@ -67,40 +70,67 @@ public final class KatanaTsukaModel implements BakedModel {
 	private KatanaTsukaModel(BakedModel base, String[] designByTint, int[] modeByTint) {
 		this.base = base;
 		this.swappedBySide = new EnumMap<>(Direction.class);
-		this.swappedNull = swapStyleColor(base.getQuads(null, null, RandomSource.create(42L)), designByTint, modeByTint);
+		this.swappedNull = shadeKashira(swapStyleColor(base.getQuads(null, null, RandomSource.create(42L)), designByTint, modeByTint));
 		for (Direction d : Direction.values()) {
-			swappedBySide.put(d, swapStyleColor(base.getQuads(null, d, RandomSource.create(42L)), designByTint, modeByTint));
+			swappedBySide.put(d, shadeKashira(swapStyleColor(base.getQuads(null, d, RandomSource.create(42L)), designByTint, modeByTint)));
 		}
 	}
 
-	/** 納刀時も、解決済みの武器モデルと同じ柄・鍔・頭を使う。鞘の形状とUVは維持する。 */
-	public static BakedModel withWeaponFittings(BakedModel base, BakedModel weapon) {
-		TextureAtlasSprite[] byTint = new TextureAtlasSprite[5];
-		collectFittingSprites(weapon.getQuads(null, null, RandomSource.create(42L)), byTint);
-		for (Direction side : Direction.values()) {
-			collectFittingSprites(weapon.getQuads(null, side, RandomSource.create(42L)), byTint);
-		}
-		boolean any = false;
-		StringBuilder key = new StringBuilder(Integer.toHexString(System.identityHashCode(base))).append("^weapon");
-		for (int tint = 1; tint <= 3; tint++) {
-			TextureAtlasSprite sprite = byTint[tint];
-			if (sprite != null) any = true;
-			key.append('/').append(sprite == null ? "" : sprite.contents().name());
-		}
-		if (!any) return base;
-		BakedModel fitted = CACHE.computeIfAbsent(key.toString(), k -> new KatanaTsukaModel(base, byTint, false));
-		return weapon instanceof TsubaShapeModel shaped ? TsubaShapeModel.apply(fitted, shaped.shape) : fitted;
-	}
+	/** Reuse the resolved weapon surfaces, including shape, UVs and baked vertex shading. */
+    public static BakedModel withWeaponFittings(BakedModel base, BakedModel weapon) {
+        List<BakedQuad> source = allQuads(weapon);
+        List<BakedQuad> target = allQuads(base);
+        int anchor = 0;
+        for (int tint : new int[]{2, 3, 1}) {
+            if (partCenter(source, tint) != null && partCenter(target, tint) != null) { anchor = tint; break; }
+        }
+        if (anchor == 0) return base;
+        final int anchorTint = anchor;
+        return FITTING_CACHE.computeIfAbsent(base, k -> new java.util.IdentityHashMap<>())
+            .computeIfAbsent(weapon, k -> new KatanaTsukaModel(base, source, target, anchorTint));
+    }
 
-	private static void collectFittingSprites(List<BakedQuad> quads, TextureAtlasSprite[] byTint) {
-		for (BakedQuad quad : quads) {
-			int tint = quad.getTintIndex();
-			if (tint >= 1 && tint <= 3 && byTint[tint] == null
-					&& !quad.getSprite().contents().name().equals(MissingTextureAtlasSprite.getLocation())) {
-				byTint[tint] = quad.getSprite();
-			}
-		}
-	}
+    private KatanaTsukaModel(BakedModel base, List<BakedQuad> source, List<BakedQuad> target, int anchor) {
+        this.base = base;
+        this.swappedBySide = new EnumMap<>(Direction.class);
+        for (Direction side : Direction.values()) swappedBySide.put(side, List.of());
+        this.swappedNull = new ArrayList<>();
+        for (BakedQuad quad : target) if (!isVisibleFitting(quad.getTintIndex())) swappedNull.add(quad);
+        float[] from = partCenter(source, anchor), to = partCenter(target, anchor);
+        for (BakedQuad quad : source) {
+            if (!isVisibleFitting(quad.getTintIndex())) continue;
+            int[] vertices = quad.getVertices().clone();
+            int stride = vertices.length / 4;
+            for (int i = 0; i < 4; i++) for (int axis = 0; axis < 3; axis++) {
+                int index = i * stride + axis;
+                vertices[index] = Float.floatToRawIntBits(Float.intBitsToFloat(vertices[index]) + to[axis] - from[axis]);
+            }
+            swappedNull.add(new BakedQuad(vertices, quad.getTintIndex(), quad.getDirection(), quad.getSprite(), quad.isShade()));
+        }
+    }
+
+    private static boolean isVisibleFitting(int tint) { return tint >= 1 && tint <= 3 || tint == 8; }
+
+    private static List<BakedQuad> allQuads(BakedModel model) {
+        List<BakedQuad> out = new ArrayList<>(model.getQuads(null, null, RandomSource.create(42L)));
+        for (Direction side : Direction.values()) out.addAll(model.getQuads(null, side, RandomSource.create(42L)));
+        return out;
+    }
+
+    private static float[] partCenter(List<BakedQuad> quads, int tint) {
+        float[] min = {Float.MAX_VALUE, Float.MAX_VALUE, Float.MAX_VALUE};
+        float[] max = {-Float.MAX_VALUE, -Float.MAX_VALUE, -Float.MAX_VALUE};
+        boolean found = false;
+        for (BakedQuad quad : quads) if (quad.getTintIndex() == tint) {
+            found = true;
+            int[] vertices = quad.getVertices(); int stride = vertices.length / 4;
+            for (int i = 0; i < 4; i++) for (int axis = 0; axis < 3; axis++) {
+                float value = Float.intBitsToFloat(vertices[i * stride + axis]);
+                min[axis] = Math.min(min[axis], value); max[axis] = Math.max(max[axis], value);
+            }
+        }
+        return found ? new float[]{(min[0]+max[0])/2, (min[1]+max[1])/2, (min[2]+max[2])/2} : null;
+    }
 
 	/** 柄(wrap)/鍔(tsubaStyle)/頭(kashira)/縁(fuchi) のデザインを反映。 どれも無く白鞘でもなければ base。 */
 	public static BakedModel maybe(BakedModel base, String wrap, String tsubaStyle, String kashira, String fuchi) {
@@ -154,7 +184,8 @@ public final class KatanaTsukaModel implements BakedModel {
 			if (modeByTint[t] != 0) any = true;
 			if (designByTint[t] != null && !designByTint[t].isEmpty()) any = true;
 		}
-		if (!any) return base;
+		if (!any) return CACHE_GRAY.computeIfAbsent(Integer.toHexString(System.identityHashCode(base)) + "^kashira",
+                k -> new KatanaTsukaModel(base, new int[5]));
 		try {
 			StringBuilder sb = new StringBuilder(Integer.toHexString(System.identityHashCode(base))).append("^sc");
 			for (int t = 1; t <= 4; t++) sb.append(modeByTint[t]).append(designByTint[t] == null ? "" : designByTint[t]).append('/');
@@ -189,6 +220,12 @@ public final class KatanaTsukaModel implements BakedModel {
 			if (mode == 1) dst = variant(baseS, "_gray");
 			else if (mode == 2) dst = variant(baseS, "_black");
 			else dst = (baseS != q.getSprite()) ? baseS : null; // デザインだけ替わったら差し替え
+            // Some sword finishes have no gray/black variant. Keep the chosen artwork
+            // instead of silently reverting to the original when a dye is also set.
+            if (dst == null && baseS != q.getSprite()) dst = baseS;
+            String sourcePath = baseS.contents().name().getPath();
+            if (dst == null && mode != 0 && (sourcePath.equals("block/kodachiiron3d") || sourcePath.equals("blade/katana/warabite3d")))
+                dst = spriteAt("minecraft", mode == 2 ? "block/black_concrete" : "block/white_concrete");
 			out.add(dst != null ? remap(q, dst) : q);
 		}
 		return out;
@@ -270,6 +307,25 @@ public final class KatanaTsukaModel implements BakedModel {
 		TextureAtlasSprite s = atlas.getSprite(new ResourceLocation(ns, path));
 		return (s == null || s.contents().name().equals(MissingTextureAtlasSprite.getLocation())) ? null : s;
 	}
+
+    /** Two subtle metal tones, retaining the default fitting texture's pixel pattern. */
+    private static List<BakedQuad> shadeKashira(List<BakedQuad> quads) {
+        List<BakedQuad> shaded=new ArrayList<>(quads.size());
+        for(BakedQuad q:quads) {
+            if(q.getTintIndex()!=3) { shaded.add(q);continue; }
+            int[] vertices=q.getVertices().clone();int stride=vertices.length/4;
+            // A single tone per face avoids an interpolated gradient. Keep the original
+            // pixel artwork, with the cap slightly brighter than the surrounding sides.
+            int level=q.getDirection()==Direction.UP ? 255 : 246;
+            for(int i=0;i<4;i++) {
+                int offset=i*stride+3,color=vertices[offset];
+                int r=(color&255)*level/255,g=((color>>>8)&255)*level/255,b=((color>>>16)&255)*level/255;
+                vertices[offset]=(color&0xFF000000)|(b<<16)|(g<<8)|r;
+            }
+            shaded.add(new BakedQuad(vertices,3,q.getDirection(),q.getSprite(),q.isShade()));
+        }
+        return shaded;
+    }
 
 	/** quad を複製し、 元スプライト基準の相対UV ( source-relative ) で 差し替え先へ写す。 tintindex 維持。 */
 	private static BakedQuad remap(BakedQuad src, TextureAtlasSprite dst) {

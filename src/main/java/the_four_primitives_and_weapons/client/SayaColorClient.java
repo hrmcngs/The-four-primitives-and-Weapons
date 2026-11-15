@@ -45,14 +45,9 @@ public class SayaColorClient {
 		if (t == null) return 0xFFFFFFFF;
 		ItemStack weapon = storedWeapon(t);
 		if (weapon == null || weapon.isEmpty()) return 0xFFFFFFFF;
-		int rgb;
-		switch (tintIndex) {
-			case 1: rgb = the_four_primitives_and_weapons.util.KatanaFittings.tsukaRgb(weapon); break;
-			case 2: rgb = the_four_primitives_and_weapons.util.KatanaFittings.tsubaRgb(weapon); break;
-			case 3: rgb = the_four_primitives_and_weapons.util.KatanaFittings.kashiraRgb(weapon); break;
-			default: rgb = -1; // 縁(4)は廃止
-		}
-		return the_four_primitives_and_weapons.util.KatanaFittings.fittingTint(weapon, tintIndex, rgb);
+        // Match the held weapon's registered handler, including native Tinkers material
+        // indices, two-color wraps, near-black variants and custom addon handlers.
+        return net.minecraft.client.Minecraft.getInstance().getItemColors().getColor(weapon, tintIndex);
 	}
 
 	/** 鞘に納められている武器 ItemStack を取り出す ( StoredKatana/Sword/Rapier )。 無ければ null。 */

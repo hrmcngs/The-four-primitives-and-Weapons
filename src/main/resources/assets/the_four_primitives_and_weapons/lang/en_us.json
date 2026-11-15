@@ -1304,5 +1304,16 @@
   "tooltip.the_four_primitives_and_weapons.saya.type.straight_sword": "Straight Sword",
   "tooltip.the_four_primitives_and_weapons.saya.type.sword": "Sword",
   "tooltip.the_four_primitives_and_weapons.saya.type.rapier": "Rapier",
-  "tooltip.the_four_primitives_and_weapons.saya.type.dagger": "Dagger"
+  "tooltip.the_four_primitives_and_weapons.saya.type.dagger": "Dagger",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.square": "Guard: Square",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.octagon": "Guard: Octagonal",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.mokko": "Guard: Mokko",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.hineri": "Diamond wrap",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.katate": "Katate-style wrap",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.hira": "Flat wrap",
+  "gui.the_four_primitives_and_weapons.koshirae.dye_tsuka_base": "Dye Grip Underlay",
+  "gui.the_four_primitives_and_weapons.koshirae.dye_tsuka_cord": "Dye Grip Cord",
+  "gui.the_four_primitives_and_weapons.koshirae.tsuba.hexagon": "Guard: Hexagonal",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.spiral": "Spiral wrap",
+  "gui.the_four_primitives_and_weapons.koshirae.wrap.basket": "Lattice wrap"
 }
