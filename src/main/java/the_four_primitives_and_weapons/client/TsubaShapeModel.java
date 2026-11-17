@@ -46,7 +46,8 @@ public final class TsubaShapeModel implements BakedModel {
         }
         int longAxis = blade ? (bladeMax[u]-bladeMin[u] > bladeMax[v]-bladeMin[v] ? u : v)
                             : (max[u]-min[u] > max[v]-min[v] ? u : v);
-        float radius = Math.max(max[u]-min[u],max[v]-min[v])/2;
+        // Keep the original axial thickness and mounting surfaces; only widen the outline.
+        float radius = Math.max(max[u]-min[u],max[v]-min[v]) * .55f;
         double[][] outline = the_four_primitives_and_weapons.util.TsubaOutline.points(shape,radius,longAxis==u);
         int segments = outline.length;
         // The circular/diamond contour can exceed the original narrow rectangle.
