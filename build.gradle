@@ -432,7 +432,12 @@ repositories {
         content { includeGroup 'curse.maven' }
     }
     // Iron's Spellbooks 依存: Playeranimator / Geckolib など
-    maven { url 'https://thedarkcolour.github.io/KotlinForForge/' } // kotlin for forge (transitive)
+    maven {
+        url 'https://thedarkcolour.github.io/KotlinForForge/'
+        // This repository only hosts KotlinForForge. Do not send unrelated
+        // dependency requests here: a 5xx response disables the repository.
+        content { includeGroup 'thedarkcolour' }
+    }
     maven { url 'https://maven.blamejared.com' }                    // Playeranimator
     maven { url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/' } // GeckoLib
 }
