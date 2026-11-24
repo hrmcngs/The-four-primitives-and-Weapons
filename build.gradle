@@ -5,8 +5,14 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '6.0.54'
         classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7.38'
+    }
+    configurations.classpath.resolutionStrategy.eachDependency { details ->
+        if (details.requested.group == 'com.google.guava' && details.requested.name == 'guava') {
+            details.useVersion project.findProperty('GUAVA_VERSION') ?: '33.7.2-jre'
+            details.because 'Guava deserialization allocation fix: GHSA-xxph-c9ww-hj94'
+        }
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
@@ -437,9 +443,13 @@ repositories {
 def netty_version = project.findProperty('NETTY_VERSION') ?: '4.1.137.Final'
 def log4j_version = project.findProperty('LOG4J_VERSION') ?: '2.25.5'
 def jline_version = project.findProperty('JLINE_VERSION') ?: '3.30.15'
+def guava_version = project.findProperty('GUAVA_VERSION') ?: '33.7.2-jre'
 configurations.configureEach {
     resolutionStrategy.eachDependency { details ->
-        if (details.requested.group == 'io.netty') {
+        if (details.requested.group == 'com.google.guava' && details.requested.name == 'guava') {
+            details.useVersion guava_version
+            details.because 'Guava deserialization allocation fix: GHSA-xxph-c9ww-hj94'
+        } else if (details.requested.group == 'io.netty') {
             details.useVersion netty_version
             details.because 'Netty TLS ClientHello fixes: GHSA-c4c3-7fpv-j4q5 and GHSA-fccg-mwvh-qqg4'
         } else if (details.requested.group == 'org.apache.logging.log4j') {

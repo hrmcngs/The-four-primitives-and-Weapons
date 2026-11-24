@@ -35,7 +35,7 @@ if (gradle.startParameter.offline) {
         metadataSources { mavenPom(); gradleMetadata(); artifact() }
     }
     logger.lifecycle('Offline: saved dependency JARs and metadata available locally (no downloads).')
-    // ForgeGradle 5's metadata task performs HTTP even with --offline.
+    // ForgeGradle's metadata task performs HTTP even with --offline.
     // Use its existing version JSON, but fail clearly instead of skipping a
     // required download when the cached output is absent or for another version.
     tasks.matching { it.name == 'downloadMCMeta' }.configureEach { download ->
